@@ -1,0 +1,8 @@
+* To be implemented
+
+| yreg \ mreg | linear | (logistic) |
+|-------------+--------+------------|
+| aft weibull |        |            |
+| aft exp     |        |            |
+| cox         |        |            |
+| ...         |        |            |
