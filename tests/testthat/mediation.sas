@@ -148,7 +148,7 @@ append from mean;
 quit;
 proc append base=data3 data=data2new&i;
 run;
-proc sql; 
+proc sql;
 		%LET i=%EVAL(&i+1);
 		%END;
 proc iml;
@@ -162,7 +162,7 @@ quit;
 			%LET cval= &c;
 			%LET i =1 ;
 			%DO %UNTIL(NOT %LENGTH(%SCAN(&cval,&i))) ;
-proc sql; 
+proc sql;
 create table data2 as
 select *, mean(%SCAN(&cval,&i)) as cval&i
 from data2
@@ -171,7 +171,7 @@ run;
 			%END;
 		%end;
 	%end;
-	
+
 
 
 
@@ -198,7 +198,7 @@ append from mean;
 quit;
 proc append base=data3 data=data2new&i;
 run;
-proc sql; 
+proc sql;
 		%LET i=%EVAL(&i+1);
 		%END;
 proc iml;
@@ -212,7 +212,7 @@ quit;
 			%LET cval= &c;
 			%LET i =1 ;
 			%DO %UNTIL(NOT %LENGTH(%SCAN(&cval,&i))) ;
-proc sql; 
+proc sql;
 create table data2 as
 select *, mean(%SCAN(&cval,&i)) as cval&i
 from data2
@@ -221,7 +221,7 @@ run;
 			%END;
 		%end;
 	%end;
-  
+
 
 
 
@@ -231,10 +231,10 @@ run;
 
 	%if (&boot^= & &boot^=false) %then %do;
 	*DMSLOGSIZE=MAX;
-	%if &boot=true %then %do;	
+	%if &boot=true %then %do;
 %LET n = 1000;
 	%end;
-%if &boot^=true %then %do;	
+%if &boot^=true %then %do;
 %LET n = &boot;
 	%end;
 ******************* bootstrap samples******************************;
@@ -257,15 +257,15 @@ set data1;
 int=&avar*&mvar;
 run;
 		%end;
-	
 
-  			%do t=1 %to &n;   
-	
-   data data1&t;                                                             
-   set data1(where=(sample=&t));                              
-   run; 
-		  
-		%end;    
+
+  			%do t=1 %to &n;
+
+   data data1&t;
+   set data1(where=(sample=&t));
+   run;
+
+		%end;
 
 	%end;
 
@@ -273,9 +273,9 @@ run;
 
 ***************** regression-for bootstrap *************************;
 	%if (&boot^= & &boot^=false) %then %do;
-		
+
 		%do t=1 %to &n;
-		
+
 ************************************************************************************************************************;
 			%if &yreg=linear  %then %do;
 ************************************************************************************************************************;
@@ -326,7 +326,7 @@ run;
 					%if &yreg=loglinear %then %do;
 proc genmod data=data1&t descending ;
 model &yvar=&avar &mvar  int &cvar/dist=binomial link=log covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -345,7 +345,7 @@ quit;
 					%if &yreg=poisson %then %do;
 proc genmod data=data1&t  ;
 model &yvar=&avar &mvar  int &cvar/dist=poisson covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -364,7 +364,7 @@ quit;
 					%if &yreg=negbin %then %do;
 proc genmod data=data1&t  ;
 model &yvar=&avar &mvar  int &cvar/dist=negbin covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -385,7 +385,7 @@ quit;
 	%if &yreg=survCox %then %do;
 	proc phreg data = data1&t ;
 model &yvar*&cens(1) = &avar &mvar int &cvar/covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -410,7 +410,7 @@ quit;
 %if &yreg=survAFT_exp %then %do;
 proc lifereg data = data1&t ;
    model &yvar*&cens(1) = &avar &mvar int &cvar /covb DISTRIBUTION=exponential ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -430,7 +430,7 @@ quit;
 %if &yreg=survAFT_weibull %then %do;
 proc lifereg data = data1&t ;
    model &yvar*&cens(1) = &avar &mvar int &cvar /covb DISTRIBUTION=weibull;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -459,7 +459,7 @@ run;
 					%if &yreg=loglinear %then %do;
 proc genmod data=data1&t descending ;
 model &yvar=&avar &mvar int /dist=binomial link=log covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -478,7 +478,7 @@ quit;
 					%if &yreg=poisson %then %do;
 proc genmod data=data1&t ;
 model &yvar=&avar &mvar  int /dist=poisson covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -497,7 +497,7 @@ quit;
 					%if &yreg=negbin %then %do;
 proc genmod data=data1&t  ;
 model &yvar=&avar &mvar  int /dist=negbin covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -518,7 +518,7 @@ quit;
 	%if &yreg=survCox %then %do;
 	proc phreg data = data1&t ;
 model &yvar*&cens(1) = &avar &mvar int /covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -542,7 +542,7 @@ quit;
 %if &yreg=survAFT_exp %then %do;
 proc lifereg data = data1&t ;
    model &yvar*&cens(1) = &avar &mvar int /covb DISTRIBUTION=exponential ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -562,7 +562,7 @@ quit;
 %if &yreg=survAFT_weibull %then %do;
 proc lifereg data = data1&t ;
    model &yvar*&cens(1) = &avar &mvar int /covb DISTRIBUTION=weibull;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -590,7 +590,7 @@ run;
 					%if &yreg=loglinear %then %do;
 proc genmod data=data1&t descending ;
 model &yvar=&avar &mvar  &cvar/dist=binomial link=log covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -609,7 +609,7 @@ quit;
 					%if &yreg=poisson %then %do;
 proc genmod data=data1&t  ;
 model &yvar=&avar &mvar  &cvar/dist=poisson covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -628,7 +628,7 @@ quit;
 					%if &yreg=negbin %then %do;
 proc genmod data=data1&t ;
 model &yvar=&avar &mvar  &cvar/dist=negbin covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -649,7 +649,7 @@ quit;
 	%if &yreg=survCox %then %do;
 	proc phreg data = data1&t ;
 model &yvar*&cens(1) = &avar &mvar &cvar/covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -673,7 +673,7 @@ quit;
 %if &yreg=survAFT_exp %then %do;
 proc lifereg data = data1&t ;
    model &yvar*&cens(1) = &avar &mvar &cvar/covb DISTRIBUTION=exponential ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -693,7 +693,7 @@ quit;
 %if &yreg=survAFT_weibull %then %do;
 proc lifereg data = data1&t ;
    model &yvar*&cens(1) = &avar &mvar &cvar/covb DISTRIBUTION=weibull ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -721,7 +721,7 @@ run;
 					%if &yreg=loglinear %then %do;
 proc genmod data=data1 descending ;
 model &yvar=&avar &mvar /dist=binomial link=log covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -740,7 +740,7 @@ quit;
 					%if &yreg=poisson %then %do;
 proc genmod data=data1&t  ;
 model &yvar=&avar &mvar /dist=poisson covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -759,7 +759,7 @@ quit;
 					%if &yreg=negbin %then %do;
 proc genmod data=data1&t ;
 model &yvar=&avar &mvar /dist=negbin covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -780,7 +780,7 @@ quit;
 	%if &yreg=survCox %then %do;
 	proc phreg data = data1&t ;
 model &yvar*&cens(1) = &avar &mvar /covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -804,7 +804,7 @@ quit;
 %if &yreg=survAFT_exp %then %do;
 proc lifereg data = data1&t ;
    model &yvar*&cens(1) = &avar &mvar /covb DISTRIBUTION=exponential ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -824,7 +824,7 @@ quit;
 %if &yreg=survAFT_weibull %then %do;
 proc lifereg data = data1&t ;
    model &yvar*&cens(1) = &avar &mvar /covb DISTRIBUTION=weibull ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -849,14 +849,14 @@ quit;
 ************************************************************************************************************************;
 
 				%if &cvar^= %then %do;
-					%if &casecontrol^=true %then %do; 
+					%if &casecontrol^=true %then %do;
 proc reg data=data1&t covout noprint
 outest=out2&t(drop=_model_ _type_ _name_ _depvar_ _rmse_ &mvar)  ;
 model  &mvar=&avar &cvar ;
 proc print;
-run;	
+run;
 					%end;
-					%if &casecontrol=true %then %do; 
+					%if &casecontrol=true %then %do;
 proc reg data=data1&t covout noprint
 outest=out2&t(drop=_model_ _type_ _name_ _depvar_ _rmse_ &mvar)  ;
 where &yvar=0;
@@ -866,14 +866,14 @@ run;
 					%end;
 				%end;
 				%if  &cvar= %then %do;
-					%if &casecontrol^=true %then %do; 
+					%if &casecontrol^=true %then %do;
 proc reg data=data1&t covout noprint
 outest=out2&t(drop=_model_ _type_ _name_ _depvar_ _rmse_ &mvar)   ;
 model  &mvar=&avar;
 
-run;	
+run;
 					%end;
-					%if &casecontrol=true %then %do; 
+					%if &casecontrol=true %then %do;
 proc reg data=data1&t covout noprint
 outest=out2&t(drop=_model_ _type_ _name_ _depvar_ _rmse_ &mvar)  ;
 where &yvar=0;
@@ -888,14 +888,14 @@ run;
 ************************************************************************************************************************;
 
 				%if &cvar^= %then %do;
-					%if &casecontrol^=true %then %do; 
+					%if &casecontrol^=true %then %do;
 proc reg data=data1&t covout noprint
 outest=out2&t(drop=_model_ _type_ _name_ _depvar_  &mvar)  ;
 model  &mvar=&avar &cvar ;
 proc print;
-run;	
+run;
 					%end;
-					%if &casecontrol=true %then %do; 
+					%if &casecontrol=true %then %do;
 proc reg data=data1&t covout noprint
 outest=out2&t(drop=_model_ _type_ _name_ _depvar_  &mvar)  ;
 where &yvar=0;
@@ -905,14 +905,14 @@ run;
 					%end;
 				%end;
 				%if  &cvar= %then %do;
-					%if &casecontrol^=true %then %do; 
+					%if &casecontrol^=true %then %do;
 proc reg data=data1&t covout noprint
 outest=out2&t(drop=_model_ _type_ _name_ _depvar_  &mvar)  ;
 model  &mvar=&avar;
 proc print;
-run;	
+run;
 					%end;
-					%if &casecontrol=true %then %do; 
+					%if &casecontrol=true %then %do;
 proc reg data=data1&t covout noprint
 outest=out2&t(drop=_model_ _type_ _name_ _depvar_ &mvar)  ;
 where &yvar=0;
@@ -930,14 +930,14 @@ run;
 ************************************************************************************************************************;
 
 				%if &cvar^= %then %do;
-					%if &casecontrol^=true %then %do; 
+					%if &casecontrol^=true %then %do;
 proc logistic data=data1&t descending covout noprint
 outest=out2&t(drop=_link_ _status_ _LNLIKE_ _type_ _name_ )  ;
 model  &mvar=&avar &cvar ;
 
 run;
 					%end;
-					%if &casecontrol=true %then %do; 
+					%if &casecontrol=true %then %do;
 proc logistic data=data1&t descending covout noprint
 outest=out2&t(drop=_link_ _status_ _LNLIKE_ _type_ _name_ )  ;
 where &yvar=0;
@@ -946,13 +946,13 @@ run;
 					%end;
 				%end;
 				%if &cvar= %then %do;
-					%if &casecontrol^=true %then %do; 
+					%if &casecontrol^=true %then %do;
 proc logistic data=data1&t descending covout noprint
 outest=out2&t(drop=_link_ _status_ _LNLIKE_ _type_ _name_ )  ;
 model  &mvar=&avar  ;
 run;
 					%end;
-					%if &casecontrol=true %then %do; 
+					%if &casecontrol=true %then %do;
 proc logistic data=data1&t descending covout noprint
 outest=out2&t(drop=_link_ _status_ _LNLIKE_ _type_ _name_ )  ;
 where &yvar=0;
@@ -960,12 +960,12 @@ model  &mvar=&avar  ;
 run;
 					%end;
 				%end;
-			%end; 
-		%end; 
+			%end;
+		%end;
 
 ***************** regression-for bootstrap 	END *************************;
 
-	
+
 
 
 ***************** causal effects for bootstrap  *************************;
@@ -1008,9 +1008,9 @@ bootsample=J(&n,6,0);
 */compute the causal effects*/;
 		%if (&mreg=linear & &interaction=false ) | (&yreg=linear & &mreg=logistic & &interaction=false & &cvar=)  %then %do;
 
-			
+
 			%do t=1 %to &n;
-			
+
 USE out2&t;
 READ ALL INTO VB;
 				%if (&yreg=linear) %then %do;
@@ -1050,9 +1050,9 @@ cname1 = { "boot1" "boot2" "boot3"};
 create bootdata from x [colname=cname1];
 append from x;
 		%end;* noint;
- 	
 
-		%if (&interaction=true) | (&mreg=logistic & &interaction=false & &cvar^=) |(&yreg^=linear & &mreg=logistic & &interaction=false) %then %do;	
+
+		%if (&interaction=true) | (&mreg=logistic & &interaction=false & &cvar^=) |(&yreg^=linear & &mreg=logistic & &interaction=false) %then %do;
 
 			%if &cvar^= %then %do;
 USE data2;
@@ -1069,7 +1069,7 @@ c=VB[1,ncol(vb)-&nc+1:ncol(vb)] ;
 
 			%if (&cvar^=) %then %do;
 				%do t=1 %to &n;
-				
+
 USE out1&t;
 READ ALL INTO VB;
 theta1=VB[1,2];
@@ -1095,8 +1095,8 @@ rm=s2;
 asq=(&a1**2);
 a1sq=(&a0**2);
 					%end;
-			
-	
+
+
 					%if (&yreg=linear & &mreg=linear & &interaction=true) %then %do;
 print cmean;
 */MARGINAL CDE*/;
@@ -1122,7 +1122,7 @@ bootsample[&t,9]=(theta2*beta1+theta3*beta1*&a0)*(&a1-&a0);
 bootsample[&t,10]=(theta1+theta3*beta0+theta3*beta1*&a1+(theta3*beta2*t(c)))*(&a1-&a0);
 */ CONDITIONAL TNIE*/;
 bootsample[&t,11]=(theta2*beta1+theta3*beta1*&a1)*(&a1-&a0);
-*/te conditional*/;	
+*/te conditional*/;
 bootsample[&t,12]=(theta1+theta3*beta0+theta3*beta1*&a0+(theta3*beta2*t(c))+theta2*beta1+theta3*beta1*&a1)*(&a1-&a0);
 						%end;
 					%end;
@@ -1165,7 +1165,7 @@ exp(beta0+beta1*&a1+sum(beta2*t(c)))/
 exp(beta0+beta1*&a0+sum(beta2*t(c)))/
 (1+exp(beta0+beta1*&a0+sum(beta2*t(c))))
 );
-*/te conditional*/;	
+*/te conditional*/;
 bootsample[&t,12]=bootsample[&t,8]+bootsample[&t,11];
 						%end;
 					%end;
@@ -1193,11 +1193,11 @@ bootsample[&t,9]=(theta2)*(exp(beta0+beta1*&a1+sum(beta2*t(c)))/(1+exp(beta0+bet
 bootsample[&t,10]=(theta1)*(&a1-&a0);
 */ CONDITIONAL TNIE*/;
 bootsample[&t,11]=(theta2)*(exp(beta0+beta1*&a1+sum(beta2*t(c)))/(1+exp(beta0+beta1*&a1+sum(beta2*t(c))))-exp(beta0+beta1*&a0+sum(beta2*t(c)))/(1+exp(beta0+beta1*&a0+sum(beta2*t(c)))));
-*/te conditional*/;	
+*/te conditional*/;
 bootsample[&t,12]=bootsample[&t,8]+bootsample[&t,11];
 						%end;
 					%end;
-					%if (&yreg^=linear & &mreg=linear & &interaction=true) %then %do; 
+					%if (&yreg^=linear & &mreg=linear & &interaction=true) %then %do;
   	  */MARGINAL CDE*/;
 	  x6=(theta1+theta3*&m)*(&a1-&a0);
 bootsample[&t,1]=exp(x6);
@@ -1218,7 +1218,7 @@ bootsample[&t,6]=bootsample[&t,2]*bootsample[&t,5];
 						%if &c^= %then %do;
 */CONDITIONAL CDE*/;
 bootsample[&t,7]=exp((theta1+theta3*&m)*(&a1-&a0));
-      */CONDITIONAL NDE*/;	  
+      */CONDITIONAL NDE*/;
 bootsample[&t,8]=exp((theta1+theta3*beta0+theta3*beta1*&a0+sum(theta3*beta2*t(c))+theta3*theta2*rm)*(&a1-&a0)+(1/2)*tsq*rm*(asq-a1sq)
 );
       */CONDITIONAL NIE*/;
@@ -1379,14 +1379,14 @@ append from x;
 			%end;
 
 			%if &cvar= %then %do;
-				
+
 				%do t=1 %to &n;
-				
-			
+
+
 USE out1&t;
 READ ALL INTO VB;
-NVB1= NROW(VB); 
-V1=VB[2:NVB1,]; 
+NVB1= NROW(VB);
+V1=VB[2:NVB1,];
 theta1=VB[1,2];
 theta2=VB[1,3];
 					%if &interaction=true %then %do;
@@ -1394,8 +1394,8 @@ theta3=VB[1,4] ;
 					%end;
 USE out2&t;
 READ ALL INTO VB;
-NVB2= NROW(VB); 
-V2=VB[2:NVB2,]; 
+NVB2= NROW(VB);
+V2=VB[2:NVB2,];
 					%if (&yreg=linear & &mreg=linear) | (&mreg=logistic) %then %do;
 beta0=VB[1,1];
 beta1=VB[1,2];
@@ -1540,9 +1540,9 @@ use bootdata;
 read all into bootdata;
 effect=J(1,3);
 			%do j=1 %to 3;
-			
+
 effect[,&j]=sum((bootdata[,&j]))/&n;
-		
+
 			%end;
 x=(effect);
 cname1 = {"effect1" "effect2" "effect3"};
@@ -1554,11 +1554,11 @@ use effect;
 read all into effect;
 se=J(3,1);
 square=J(&n,3);
-			
+
 
 *standard errors*;
 			%do j=1 %to 3;
-				
+
 				%do t=1 %to &n;
 square[&t,&j]=((bootdata[&t,&j])-effect[,&j])**2;
 				%end;*t loop;
@@ -1611,7 +1611,7 @@ quit;
 
 */ other ;
 
-		%if (&interaction=true) | (&mreg=logistic & &interaction=false & &cvar^=) |(&yreg^=linear & &mreg=logistic & &interaction=false) %then %do;	
+		%if (&interaction=true) | (&mreg=logistic & &interaction=false & &cvar^=) |(&yreg^=linear & &mreg=logistic & &interaction=false) %then %do;
 
 use bootdata;
 read all into bootdata;
@@ -1620,7 +1620,7 @@ effect=J(1,12);
 				%do j=1 %to 12;
 
 effect[,&j]=sum((bootdata[,&j]))/&n;
-			
+
 				%end;
 x=effect;
 cname1 = {"effect1" "effect2" "effect3" "effect4" "effect5" "effect6" "effect7" "effect8" "effect9" "effect10" "effect11" "effect12"};
@@ -1633,11 +1633,11 @@ read all into effect;
 se=J(12,1);
 
 square=J(&n,12);
-			
+
 *standard errors*;
 				%do j=1 %to 12;
 					%do t=1 %to &n;
-				
+
 square[&t,&j]=((bootdata[&t,&j])-effect[,&j])**2;
 					%end;*t loop;
 
@@ -1648,20 +1648,20 @@ sum(
 (square[,&j])
 )
 ))/sqrt(&n);
-				
+
 				%end;
 y=se;
 create se from y;
 append from y;
 			%end;
 
-		
+
 			%if &cvar= | (&cvar^= & &c=) %then %do;
 effect=J(1,6);
 				%do j=1 %to 6;
 
 effect[,&j]=sum((bootdata[,&j]))/&n;
-			
+
 				%end;
 x=effect;
 cname1 = {"effect1" "effect2" "effect3" "effect4" "effect5" "effect6"};
@@ -1674,12 +1674,12 @@ read all into effect;
 se=J(6,1);
 
 square=J(&n,6);
-			
+
 *standard errors*;
 				%do j=1 %to 6;
-						
+
 					%do t=1 %to &n;
-					
+
 square[&t,&j]=((bootdata[&t,&j])-effect[,&j])**2;
 					%end;*t loop;
 
@@ -1690,7 +1690,7 @@ sum(
 (square[,&j])
 )
 ))/sqrt(&n);
-			
+
 				%end;
 y=se;
 create se from y;
@@ -1711,7 +1711,7 @@ proc univariate data = bootdata alpha = .05 noprint;
   output out=pmethod&j mean = effect&j pctlpts=&a1 &a2 pctlpre = p pctlname = _cil&j _ciu&j ;
 run;
 				%end;
-			
+
 			%end;
 			%if (&cvar^= & &c=) | &cvar= %then %do;
 				%do j=1 %to 6;
@@ -1721,9 +1721,9 @@ output out=pmethod&j mean = effect&j pctlpts=&a1 &a2 pctlpre = p pctlname = _cil
 run;
 				%end;
 			%end;
-		
 
-			
+
+
 proc iml;
 			%if &c^= & &cvar^=  %then %do;
 
@@ -1801,7 +1801,7 @@ proc print;
 run;
 		%end;
 	%end;
-			
+
 ***********************************************************************************************************************************************************************************************************************************;
 	%if &yreg=logistic  | &yreg=loglinear  |&yreg=poisson | &yreg=negbin |&yreg=survCox |&yreg=survAdd |&yreg=survAFT_weibull |&yreg=survAFT_exp |&yreg=survAFT_gamma |&yreg=survAFT_loglogistic  |&yreg=survAFT_normal %then %do;
 ***********************************************************************************************************************************************************************************************************************************;
@@ -1819,7 +1819,7 @@ run;
 			%if &yreg=loglinear %then %do;
 proc genmod data=data1 descending;
 model &yvar=&avar &mvar  int &cvar/dist=binomial link=log covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -1838,7 +1838,7 @@ quit;
 			%if &yreg=poisson %then %do;
 proc genmod data=data1 ;
 model &yvar=&avar &mvar  int &cvar/dist=poisson covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -1857,7 +1857,7 @@ quit;
 			%if &yreg=negbin %then %do;
 proc genmod data=data1 ;
 model &yvar=&avar &mvar  int &cvar/dist=negbin covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -1881,7 +1881,7 @@ quit;
 				%if &yreg=survCox %then %do;
 	proc phreg data = data1;
 model &yvar*&cens(1) = &avar &mvar int &cvar/covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -1905,7 +1905,7 @@ quit;
 %if &yreg=survAFT_exp %then %do;
 proc lifereg data = data1;
    model &yvar*&cens(1) = &avar &mvar int &cvar/covb DISTRIBUTION=exponential ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -1925,7 +1925,7 @@ quit;
 %if &yreg=survAFT_weibull %then %do;
 proc lifereg data = data1;
    model &yvar*&cens(1) = &avar &mvar int &cvar/covb DISTRIBUTION=weibull ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -1954,7 +1954,7 @@ run;
 			%if &yreg=loglinear %then %do;
 proc genmod data=data1 descending;
 model &yvar=&avar &mvar int /dist=binomial link=log covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -1973,7 +1973,7 @@ quit;
 			%if &yreg=poisson %then %do;
 proc genmod data=data1;
 model &yvar=&avar &mvar  int /dist=poisson covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -1992,7 +1992,7 @@ quit;
 			%if &yreg=negbin %then %do;
 proc genmod data=data1 ;
 model &yvar=&avar &mvar  int /dist=negbin covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -2014,7 +2014,7 @@ quit;
 	%if &yreg=survCox %then %do;
 	proc phreg data = data1;
 model &yvar*&cens(1) = &avar &mvar int /covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -2038,7 +2038,7 @@ quit;
 %if &yreg=survAFT_exp %then %do;
 proc lifereg data = data1;
    model &yvar*&cens(1) = &avar &mvar int /covb DISTRIBUTION=exponential ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -2058,7 +2058,7 @@ quit;
 %if &yreg=survAFT_weibull %then %do;
 proc lifereg data = data1;
    model &yvar*&cens(1) = &avar &mvar int /covb DISTRIBUTION=weibull ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -2086,7 +2086,7 @@ run;
 			%if &yreg=loglinear %then %do;
 proc genmod data=data1 descending;
 model &yvar=&avar &mvar  &cvar/dist=binomial link=log covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -2105,7 +2105,7 @@ quit;
 			%if &yreg=poisson %then %do;
 proc genmod data=data1 ;
 model &yvar=&avar &mvar  &cvar/dist=poisson covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -2124,7 +2124,7 @@ quit;
 			%if &yreg=negbin %then %do;
 proc genmod data=data1 ;
 model &yvar=&avar &mvar  &cvar/dist=negbin covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -2146,7 +2146,7 @@ quit;
 	%if &yreg=survCox %then %do;
 	proc phreg data = data1;
 model &yvar*&cens(1) = &avar &mvar &cvar/covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -2170,7 +2170,7 @@ quit;
 %if &yreg=survAFT_exp %then %do;
 proc lifereg data = data1;
    model &yvar*&cens(1) = &avar &mvar &cvar/covb DISTRIBUTION=exponential ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -2190,7 +2190,7 @@ quit;
 %if &yreg=survAFT_weibull %then %do;
 proc lifereg data = data1;
    model &yvar*&cens(1) = &avar &mvar &cvar/covb DISTRIBUTION=weibull ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -2218,7 +2218,7 @@ run;
 			%if &yreg=loglinear %then %do;
 proc genmod data=data1 descending;
 model &yvar=&avar &mvar /dist=binomial link=log covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -2237,7 +2237,7 @@ quit;
 			%if &yreg=poisson %then %do;
 proc genmod data=data1 ;
 model &yvar=&avar &mvar /dist=poisson covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -2256,7 +2256,7 @@ quit;
 			%if &yreg=negbin %then %do;
 proc genmod data=data1 ;
 model &yvar=&avar &mvar /dist=negbin covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 run;
 proc iml;
@@ -2278,7 +2278,7 @@ quit;
 	%if &yreg=survCox %then %do;
 	proc phreg data = data1;
 model &yvar*&cens(1) = &avar &mvar/covb;
-ods output ParameterEstimates=gmparms	   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -2302,7 +2302,7 @@ quit;
 %if &yreg=survAFT_exp %then %do;
 proc lifereg data = data1;
    model &yvar*&cens(1) = &avar &mvar /covb DISTRIBUTION=exponential ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -2322,7 +2322,7 @@ quit;
 %if &yreg=survAFT_weibull %then %do;
 proc lifereg data = data1;
    model &yvar*&cens(1) = &avar &mvar /covb DISTRIBUTION=weibull ;
-ods output ParameterEstimates=gmparms   
+ods output ParameterEstimates=gmparms
 			CovB=gmcovb;
 			run;
 proc iml;
@@ -2346,14 +2346,14 @@ quit;
 ************************************************************************************************************************;
 
 		%if &cvar^= %then %do;
-			%if &casecontrol^=true %then %do; 
+			%if &casecontrol^=true %then %do;
 proc reg data=data1 covout
 outest=out2(drop=_model_ _type_ _name_ _depvar_ _rmse_ &mvar)  ;
 model  &mvar=&avar &cvar ;
 proc print;
 run;
 			%end;
-			%if &casecontrol=true %then %do; 
+			%if &casecontrol=true %then %do;
 proc reg data=data1 covout
 outest=out2(drop=_model_ _type_ _name_ _depvar_ _rmse_ &mvar)  ;
 where &yvar=0;
@@ -2363,14 +2363,14 @@ run;
 			%end;
 		%end;
 		%if  &cvar= %then %do;
-			%if &casecontrol^=true %then %do; 
+			%if &casecontrol^=true %then %do;
 proc reg data=data1 covout
 outest=out2(drop=_model_ _type_ _name_ _depvar_ _rmse_ &mvar)  ;
 model  &mvar=&avar ;
 proc print;
 run;
 			%end;
-			%if &casecontrol=true %then %do; 
+			%if &casecontrol=true %then %do;
 proc reg data=data1 covout
 outest=out2(drop=_model_ _type_ _name_ _depvar_ _rmse_ &mvar)  ;
 where &yvar=0;
@@ -2387,14 +2387,14 @@ run;
 ************************************************************************************************************************;
 
 		%if &cvar^= %then %do;
-			%if &casecontrol^=true %then %do; 
+			%if &casecontrol^=true %then %do;
 proc reg data=data1 covout
 outest=out2(drop=_model_ _type_ _name_ _depvar_ &mvar)  ;
 model  &mvar=&avar &cvar ;
 proc print;
 run;
 			%end;
-			%if &casecontrol=true %then %do; 
+			%if &casecontrol=true %then %do;
 proc reg data=data1 covout
 outest=out2(drop=_model_ _type_ _name_ _depvar_  &mvar)  ;
 where &yvar=0;
@@ -2404,14 +2404,14 @@ run;
 			%end;
 		%end;
 		%if  &cvar= %then %do;
-			%if &casecontrol^=true %then %do; 
+			%if &casecontrol^=true %then %do;
 proc reg data=data1 covout
 outest=out2(drop=_model_ _type_ _name_ _depvar_  &mvar)  ;
 model  &mvar=&avar ;
 proc print;
 run;
 			%end;
-			%if &casecontrol=true %then %do; 
+			%if &casecontrol=true %then %do;
 proc reg data=data1 covout
 outest=out2(drop=_model_ _type_ _name_ _depvar_ &mvar)  ;
 where &yvar=0;
@@ -2427,13 +2427,13 @@ run;
 ************************************************************************************************************************;
 
 		%if &cvar^= %then %do;
-			%if &casecontrol^=true %then %do; 
+			%if &casecontrol^=true %then %do;
 proc logistic data=data1 descending covout
 outest=out2(drop=_link_ _status_ _LNLIKE_ _type_ _name_ )  ;
 model  &mvar=&avar &cvar ;
 run;
 			%end;
-			%if &casecontrol=true %then %do; 
+			%if &casecontrol=true %then %do;
 proc logistic data=data1 descending covout
 outest=out2(drop=_link_ _status_ _LNLIKE_ _type_ _name_ )  ;
 where &yvar=0;
@@ -2442,13 +2442,13 @@ run;
 			%end;
 		%end;
 		%if &cvar= %then %do;
-			%if &casecontrol^=true %then %do; 
+			%if &casecontrol^=true %then %do;
 proc logistic data=data1 descending covout
 outest=out2(drop=_link_ _status_ _LNLIKE_ _type_ _name_ )  ;
 model  &mvar=&avar  ;
 run;
 			%end;
-			%if &casecontrol=true %then %do; 
+			%if &casecontrol=true %then %do;
 proc logistic data=data1 descending covout
 outest=out2(drop=_link_ _status_ _LNLIKE_ _type_ _name_ )  ;
 where &yvar=0;
@@ -2474,8 +2474,8 @@ proc iml;
 PROC IML;
 USE out1;
 READ ALL INTO VB;
-NVB1= NROW(VB); 
-V1=VB[2:NVB1,]; 
+NVB1= NROW(VB);
+V1=VB[2:NVB1,];
 theta1=VB[1,2];
 theta2=VB[1,3];
 USE out2;
@@ -2483,8 +2483,8 @@ READ ALL INTO VB;
 			%if (&yreg=linear & &mreg=linear) | (&yreg=linear & &mreg=logistic) %then %do;
 beta0= VB[1,1];
 beta1=VB[1,2];
-NVB2= NROW(VB); 
-V2=VB[2:NVB2,]; 
+NVB2= NROW(VB);
+V2=VB[2:NVB2,];
 zero1=J(nrow(V1),nrow(V2),0);
 zero2=J(nrow(V2),nrow(V1),0);
 A= V2 || zero2;
@@ -2494,8 +2494,8 @@ zero=0;
 one=1;		%end;
 			%if (&yreg^=linear & &mreg=linear) %then %do;
 beta1=VB[1,3];
-NVB2= NROW(VB); 
-V2=VB[2:NVB2,2:ncol(vb)]; 
+NVB2= NROW(VB);
+V2=VB[2:NVB2,2:ncol(vb)];
 zero1=J(nrow(V1),nrow(V2),0);
 zero2=J(nrow(V2),nrow(V1),0);
 A= V2 || zero2;
@@ -2508,7 +2508,7 @@ one=J(1,1,1);
 effect=J(1,3);
 			%if &cvar^= %then %do;
 		z1=J(1,&nc,0);
-z=zero||zero||z1||zero||one||zero;		
+z=zero||zero||z1||zero||one||zero;
 
 gamma=J(3,2*&nc+5);
 			%end;
@@ -2516,7 +2516,7 @@ gamma=J(3,2*&nc+5);
 gamma=J(3,5);
 			%end;
 			%if (&yreg=linear & &mreg=logistic) %then %do;
-z=zero||zero||zero||one||zero;		
+z=zero||zero||zero||one||zero;
 */cde and nde*/;
 effect[,1]=(theta1)*(&a1-&a0);
 gamma[1,]=z;
@@ -2560,7 +2560,7 @@ gamma[2,]=zero|| theta2|| zero ||zero|| beta1;
 gamma[3,]=zero||theta2||zero||one||beta1;
 				%end;
 			%end;
-			%if (&yreg^=linear & &mreg=linear ) %then %do; 
+			%if (&yreg^=linear & &mreg=linear ) %then %do;
 effect[,1]=((theta1)*(&a1-&a0));
 effect[,2]=((theta2*beta1)*(&a1-&a0));
 effect[,3]=effect[,2]+effect[,1];
@@ -2583,7 +2583,7 @@ pvalue=J(1,3);
 cil=J(1,3);
 ciu=J(1,3);
 				%if (&mreg=logistic & &yreg=linear) %then %do;
-se[,1]=sqrt(gamma[1,]*sigma*t(gamma[1,]))*abs(&a1-&a0);			
+se[,1]=sqrt(gamma[1,]*sigma*t(gamma[1,]))*abs(&a1-&a0);
 se[,2]=sqrt(gamma[2,]*sigma*t(gamma[2,]));
 se[,3]=sqrt(gamma[3,]*sigma*t(gamma[3,]));
 				%end;
@@ -2626,10 +2626,10 @@ cname1 = { "p1" "p2" "p3"};
 create pvalue from x [ colname=cname1 ];
 append from x;
 		%end;* noint;
- 	
+
 ***************************************************************************************;
 
-		%if (&interaction=true) | (&mreg=logistic & &interaction=false & &cvar^=) |(&yreg^=linear & &mreg=logistic & &interaction=false) %then %do;	
+		%if (&interaction=true) | (&mreg=logistic & &interaction=false & &cvar^=) |(&yreg^=linear & &mreg=logistic & &interaction=false) %then %do;
 
 			%if &cvar^= %then %do;
 USE data2;
@@ -2645,32 +2645,32 @@ c=VB[1,ncol(vb)-&nc+1:ncol(vb)] ;
 
 
 
-			
-		
 
-				%if &c^= & &interaction=false %then %do;		
+
+
+				%if &c^= & &interaction=false %then %do;
 effect=J(1,12);
 gamma=J(12,&nc*2+5);
 				%end;
-				%if &c^= & &interaction=true %then %do;		
+				%if &c^= & &interaction=true %then %do;
 effect=J(1,12);
 gamma=J(12,&nc*2+6);
 
 				%end;
-				%if &c= & &interaction=false %then %do;		
+				%if &c= & &interaction=false %then %do;
 effect=J(1,6);
 gamma=J(6,&nc*2+5);
 				%end;
-				%if &c= & &interaction=true %then %do;		
+				%if &c= & &interaction=true %then %do;
 effect=J(1,6);
 gamma=J(6,&nc*2+6);
 				%end;
 
-	
+
 USE out1;
 READ ALL INTO VB;
-NVB1= NROW(VB); 
-V1=VB[2:NVB1,]; 
+NVB1= NROW(VB);
+V1=VB[2:NVB1,];
 theta1=VB[1,2];
 theta2=VB[1,3];
 				%if &interaction=true %then %do;
@@ -2680,8 +2680,8 @@ USE out2;
 READ ALL INTO VB;
 
 				%if (&yreg=linear & &mreg=linear) | (&mreg=logistic) %then %do;
-NVB2= NROW(VB); 
-V2=VB[2:NVB2,]; 
+NVB2= NROW(VB);
+V2=VB[2:NVB2,];
 beta0=VB[1,1];
 beta1=VB[1,2];
 beta2= VB[1,3:ncol(vb)];
@@ -2708,7 +2708,7 @@ asq=(&a1**2);
 a1sq=(&a0**2);
 NVB2= NROW(VB);
 colvb=ncol(vb);
-V2=VB[2:NVB2,2:colvb]; 
+V2=VB[2:NVB2,2:colvb];
 zero1=J(nrow(V1),nrow(V2),0);
 zero2=J(nrow(V2),nrow(V1),0);
 z2=J(nrow(V1),1,0);
@@ -2722,21 +2722,21 @@ zero=0;
 one=1;
 z1=J(1,&nc,0);
 z=zero||zero||z1||zero||one||zero;
-				%if &c^= & &interaction=false %then %do;		
+				%if &c^= & &interaction=false %then %do;
 gamma=J(12,&nc*2+6);
 				%end;
-				%if &c^= & &interaction=true %then %do;		
+				%if &c^= & &interaction=true %then %do;
 gamma=J(12,&nc*2+7);
 				%end;
-				%if &c= & &interaction=false %then %do;		
+				%if &c= & &interaction=false %then %do;
 gamma=J(6,&nc*2+6);
 				%end;
-				%if &c= & &interaction=true %then %do;		
+				%if &c= & &interaction=true %then %do;
 gamma=J(6,&nc*2+7);
 				%end;
 				%end;
 
-				
+
 				%if &yreg=linear & &mreg=linear & &interaction=true %then %do;
 */MARGINAL CDE*/;
 effect[,1]=(theta1+theta3*&m)*(&a1-&a0);
@@ -2788,7 +2788,7 @@ effect[,9]=(theta2*beta1+theta3*beta1*&a0)*(&a1-&a0);
 effect[,10]=(theta1+theta3*beta0+theta3*beta1*&a1+(theta3*beta2*t(c)))*(&a1-&a0);
 */ CONDITIONAL TNIE*/;
 effect[,11]=(theta2*beta1+theta3*beta1*&a1)*(&a1-&a0);
-*/te conditional*/;	
+*/te conditional*/;
 effect[,12]=(theta1+theta3*beta0+theta3*beta1*&a0+(theta3*beta2*t(c))+theta2*beta1+theta3*beta1*&a1)*(&a1-&a0);
 *gamma=J(1,2*&nc+6);
 gamma[7,]=zero||zero||z1||zero||one||zero||&m || z1;
@@ -2897,7 +2897,7 @@ exp(beta0+beta1*&a1+sum(beta2*t(c)))/
 exp(beta0+beta1*&a0+sum(beta2*t(c)))/
 (1+exp(beta0+beta1*&a0+sum(beta2*t(c))))
 );
-*/te conditional*/;	
+*/te conditional*/;
 effect[,12]=effect[,8]+effect[,11];
 gamma[7,]=z||&m || z1;
 B=exp(beta0+beta1*&a0+beta2*t(c));
@@ -3014,7 +3014,7 @@ effect[,9]=(theta2)*(exp(beta0+beta1*&a1+sum(beta2*t(c)))/(1+exp(beta0+beta1*&a1
 effect[,10]=(theta1)*(&a1-&a0);
 */ CONDITIONAL TNIE*/;
 effect[,11]=(theta2)*(exp(beta0+beta1*&a1+sum(beta2*t(c)))/(1+exp(beta0+beta1*&a1+sum(beta2*t(c))))-exp(beta0+beta1*&a0+sum(beta2*t(c)))/(1+exp(beta0+beta1*&a0+sum(beta2*t(c)))));
-*/te conditional*/;	
+*/te conditional*/;
 effect[,12]=effect[,8]+effect[,11];
 gamma[7,]=z||z1;
 A=exp(beta0+beta1*&a0+beta2*t(c));
@@ -3051,10 +3051,10 @@ y=(theta2)*c*((D*E-E**2)/(E**2)-(A*B-B**2)/(B**2));
 t=t(D/E-A/B);
 s=(&a1-&a0);
 gamma[12,]=x||w||y||zero||s||t||z1;
-	
+
 					%end;
 				%end;
-				%if &yreg^=linear & &mreg=linear & &interaction=true %then %do; 
+				%if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
   	  */MARGINAL CDE*/;
 	  x6=(theta1+theta3*&m)*(&a1-&a0);
 effect[,1]=exp(x6);
@@ -3107,7 +3107,7 @@ gamma[6,]=theta3||d2||d3||zero||one||d6||d7||z1||d9;
 					%if &c^= %then %do;
 */CONDITIONAL CDE*/;
 effect[,7]=exp((theta1+theta3*&m)*(&a1-&a0));
-      */CONDITIONAL NDE*/;	  
+      */CONDITIONAL NDE*/;
 effect[,8]=exp((theta1+theta3*beta0+theta3*beta1*&a0+sum(theta3*beta2*t(c))+theta3*theta2*rm)*(&a1-&a0)+(1/2)*tsq*rm*(asq-a1sq)
 );
       */CONDITIONAL NIE*/;
@@ -3537,19 +3537,19 @@ gamma[12,]=d1||d2||d3||d4||d5||d6||d7||z1;
 				%end;
 			%end;
 
-			%if &cvar= %then %do;	
-				%if  &interaction=false %then %do;		
+			%if &cvar= %then %do;
+				%if  &interaction=false %then %do;
 effect=J(1,6);
 gamma=J(6,5);
 				%end;
-				%if  &interaction=true %then %do;		
+				%if  &interaction=true %then %do;
 effect=J(1,6);
 gamma=J(6,6);
-				%end;	
+				%end;
 USE out1;
 READ ALL INTO VB;
-NVB1= NROW(VB); 
-V1=VB[2:NVB1,]; 
+NVB1= NROW(VB);
+V1=VB[2:NVB1,];
 theta1=VB[1,2];
 theta2=VB[1,3];
 				%if &interaction=true %then %do;
@@ -3557,8 +3557,8 @@ theta3=VB[1,4] ;
 				%end;
 USE out2;
 READ ALL INTO VB;
-NVB2= NROW(VB); 
-V2=VB[2:NVB2,]; 
+NVB2= NROW(VB);
+V2=VB[2:NVB2,];
 				%if (&yreg=linear & &mreg=linear) | (&mreg=logistic) %then %do;
 beta0=VB[1,1];
 beta1=VB[1,2];
@@ -3582,7 +3582,7 @@ asq=(&a1**2);
 a1sq=(&a0**2);
 NVB2= NROW(VB);
 colvb=ncol(vb);
-V2=VB[2:NVB2,2:colvb]; 
+V2=VB[2:NVB2,2:colvb];
 zero1=J(nrow(V1),nrow(V2),0);
 zero2=J(nrow(V2),nrow(V1),0);
 z2=J(nrow(V1),1,0);
@@ -3595,14 +3595,14 @@ sigma= A // B//D;
 zero=0;
 one=1;
 z=zero||zero||zero||one||zero;
-%if  &interaction=false %then %do;		
+%if  &interaction=false %then %do;
 
 gamma=J(6,6);
 				%end;
-				%if  &interaction=true %then %do;		
+				%if  &interaction=true %then %do;
 
 gamma=J(6,7);
-				%end;	
+				%end;
 				%end;
 				%if &yreg=linear & &mreg=linear & &interaction=true %then %do;
 */CONDITIONAL=MARGINAL CDE*/;
@@ -3908,13 +3908,13 @@ pvalue=J(1,12);
 cil=J(1,12);
 ciu=J(1,12);
 
-				
+
 				%if (&mreg=logistic & &yreg^=linear) %then %do;
 					%do j=1 %to 12;
 se[,&j]=sqrt(gamma[&j,]*sigma*t(gamma[&j,]));
 					%end;
 				%end;
-				
+
 				%if &mreg=linear %then %do;
 					%do j=1 %to 12;
 se[,&j]=sqrt(gamma[&j,]*sigma*t(gamma[&j,]))*abs(&a1-&a0);
@@ -4087,7 +4087,7 @@ quit;
 
 
 */LINEAR LINEAR interaction ;
-	%if (&interaction=true) | (&mreg=logistic & &interaction=false & &cvar^=) |(&yreg^=linear & &mreg=logistic & &interaction=false) %then %do;	
+	%if (&interaction=true) | (&mreg=logistic & &interaction=false & &cvar^=) |(&yreg^=linear & &mreg=logistic & &interaction=false) %then %do;
 
 proc iml;
 use effect;
@@ -4095,7 +4095,7 @@ read all into effect;
 use se;
 read all into se;
 
-		%if &output=full & &c^= & &cvar^= %then %do; 
+		%if &output=full & &c^= & &cvar^= %then %do;
 name='marginal cde' || 'marginal pnde'||'marginal pnie'||'marginal tnde'||'marginal tnie'||'marginal total effect'||'conditional cde' || 'conditional pnde'||'conditional pnie'||'conditional tnde'||'conditional tnie'||'conditional total effect' ;
 name=t(name);
 cname2= {"effect"};
@@ -4127,7 +4127,7 @@ create x3 from x [ colname=cname1 ];
 append from x;
 quit;
 		%end;
-		%if (&output=full & &cvar=) | (&output=full & &cvar^= & &c=)  %then %do; 
+		%if (&output=full & &cvar=) | (&output=full & &cvar^= & &c=)  %then %do;
 name='cde'|| 'pnde'||'pnie'||'tnde'||'tnie'||'total effect';
 name=t(name);
 cname2= {"effect"};
@@ -4161,7 +4161,7 @@ create x3 from x [ colname=cname1 ];
 append from x;
 quit;
 		%end;
-		%if &output^=full %then %do; 
+		%if &output^=full %then %do;
 use effect;
 read all into effect;
 effect1=effect[,1:2];
@@ -4190,12 +4190,12 @@ ciu1=ciu[,1:2];
 ciu2=ciu[,5:6];
 ciu=ciu1||ciu2;
 			%end;
-			%if (&boot^= & &boot^=false)  %then %do;	
+			%if (&boot^= & &boot^=false)  %then %do;
 use se;
 read all into se;
 se1=se[1:2,];
 se2=se[5:6,];
-se=se1//se2;	
+se=se1//se2;
 use ci;
 read all into ci;
 ci1=ci[1:2,];
@@ -4229,8 +4229,8 @@ quit;
 
 
 
-DATA x5; 
-MERGE x4 x3; 
+DATA x5;
+MERGE x4 x3;
 proc print data=x5;
 quit;
 
@@ -4263,14 +4263,14 @@ pm=nie/(nde+nie);
 	%end;
 	%if &yreg^=linear %then %do;
 pm=(nde*(nie-1))/(nde*nie-1);
-	%end;		
+	%end;
 cname1 = { "Estimate"};
 create xtris from pm [ colname=cname1 ];
 append from pm;
 run;
 quit;
-DATA x6; 
-MERGE xbis xtris; 
+DATA x6;
+MERGE xbis xtris;
 proc print data=x6;
 quit;
 %end;
@@ -4330,5 +4330,3 @@ run;
 %mediation(data=data,yvar=y,avar=x,mvar=m,cvar=c,a0=0,a1=1,m=0,yreg=survAFT_exp,mreg=logistic,
 interaction=true,casecontrol=,output=,c=,boot=,cens=cens);
 run;
-
-
