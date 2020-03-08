@@ -1,6 +1,8 @@
 * regmedint (developmental repo)
 
 [[https://travis-ci.org/kaz-yos/medregint.svg?branch=develop]]
+[[http://www.r-pkg.org/badges/version/regmedint]]
+[[http://cranlogs.r-pkg.org/badges/regmedint]]
 
 
 * To be implemented
