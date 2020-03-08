@@ -1,4 +1,3 @@
-Title 'Surv Data';
 data data;
 input  id x m y cens c;
  cards;
