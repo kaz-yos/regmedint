@@ -79,9 +79,12 @@ install: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 
 ## run sas analyses
 sas:
-	-for f in $(SAS_FILES) ; do \
-	-sas $$f ; \
-	-done;
+# https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile
+	cd tests/testthat ; \
+	for f in $(wildcard sas-*) ; do \
+	sas $$f ; \
+	done;
+
 
 ## clean has no dependency, and execute removal of make output files.
 clean: revdep_clean
