@@ -1,3 +1,8 @@
+* regmedint (developmental repo)
+
+[[https://travis-ci.org/kaz-yos/medregint.svg?branch=develop][Travis-CI Build Status]]
+
+
 * To be implemented
 
 | yreg \ mreg | linear | (logistic) |
