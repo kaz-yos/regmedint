@@ -16,6 +16,7 @@ PKG_VERSION=$(shell grep -i ^version: DESCRIPTION | cut -d : -d \  -f 2)
 ## Define files to check for updates
 R_FILES   := $(wildcard R/*.R)
 TST_FILES := $(wildcard tests/testthat/*.R)
+SAS_FILES := $(wildcard tests/testthat/sas-*.sas)
 SRC_FILES := $(wildcard src/*) $(addprefix src/, $(COPY_SRC))
 VIG_FILES := $(wildcard vignettes/*)
 PKG_FILES := DESCRIPTION NAMESPACE NEWS $(R_FILES) $(TST_FILES) $(SRC_FILES) $(VIG_FILES)
@@ -76,6 +77,11 @@ revdep_clean:
 install: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 	Rscript -e "devtools::install('.')"
 
+## run sas analyses
+sas:
+	-for f in $(SAS_FILES) ; do \
+	-sas $$f ; \
+	-done;
 
 ## clean has no dependency, and execute removal of make output files.
 clean: revdep_clean
