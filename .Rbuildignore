@@ -1,0 +1,25 @@
+## Avoid Mac files
+.DS_Store
+
+## Avoid git(hub) related files
+\.git/*
+README.md
+
+## Avoid Makefile, testing-related files, and archives
+Makefile
+revdep
+revdep_check.txt
+regmedint.Rcheck
+.*.tar.gz
+.*.gif
+
+## unit testing
+test-all.txt
+tests/testthat/mediation.sas
+tests/testthat/sas-*
+tests/testthat/data-*
+
+## CRAN compatibility check
+cran-check.txt
+## Travis-CI
+^\.travis\.yml$
