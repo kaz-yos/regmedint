@@ -155,28 +155,31 @@ string_yreg_formula <- function(yvar,
                                 interaction,
                                 eventvar) {
 
-    ## This handles cvar = NULL ok and gives ""
-    cvar_string <- paste0(cvar, collapse = " + ")
+    ## Create A*M or A + M depending on interaction.
+    if (interaction) {
+        amvar_string <- sprintf("%s*%s", avar, mvar)
+    } else {
+        amvar_string <- sprintf("%s + %s", avar, mvar)
+    }
+
+    ## Add covariates if they exist.
+    if (is.null(cvar)) {
+        amcvar_string <- amvar_string
+    } else {
+        cvar_string <- paste0(cvar, collapse = " + ")
+        amcvar_string <- sprintf("%s + %s", amvar_string, cvar_string)
+    }
 
     ## eventvar must be NULL for a non-survival outcome model.
     if (is.null(eventvar)) {
 
-        ## Non-survival outcome
-        if (interaction) {
-            return(sprintf("%s ~ %s*%s + %s", yvar, avar, mvar, cvar_string))
-        } else {
-            return(sprintf("%s ~ %s + %s + %s", yvar, avar, mvar, cvar_string))
-        }
+        return(sprintf("%s ~ %s", yvar, amcvar_string))
 
     } else {
 
         ## Survival outcome
         surv_string <- sprintf("Surv(%s, %s)", yvar, eventvar)
-        if (interaction) {
-            return(sprintf("%s ~ %s*%s + %s", surv_string, avar, mvar, cvar_string))
-        } else {
-            return(sprintf("%s ~ %s + %s + %s", surv_string, avar, mvar, cvar_string))
-        }
+        return(sprintf("%s ~ %s", surv_string, amcvar_string))
 
     }
 }
