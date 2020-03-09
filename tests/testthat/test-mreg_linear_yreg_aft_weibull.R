@@ -15,18 +15,23 @@ library(survival)
 ################################################################################
 
 
+
 ###
 ### Fit separate models to obtain reference R results
 ################################################################################
 
-mreg_fit <- NA
-## lm(formula = ,
-##    data = )
+data1 <- read.delim(file = "./data-valeri-vanderweele-2015.txt",
+                    header = TRUE,
+                    sep = " ")
 
-yreg_fit <- NA
-## survreg(formula = ,
-##         data = ,
-##         dist = "weibull")
+mreg_fit <-
+    lm(formula = m ~ x + c,
+       data = data1)
+
+yreg_fit <-
+    survreg(formula = Surv(y, cens) ~ x*m + c,
+            data = data1,
+            dist = "weibull")
 
 
 ###
