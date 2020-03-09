@@ -56,7 +56,7 @@ med_fit <- regmedint(data = data1,
                      full_output = FALSE,
                      c_cond = NULL,
                      boot = FALSE,
-                     censvar = "cens")
+                     eventvar = "cens")
 
 ###
 ### Test against reference results
