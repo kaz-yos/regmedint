@@ -6,6 +6,10 @@
 ################################################################################
 
 
+###
+### Main user interface function
+################################################################################
+
 ##' Conduct regression-based causal mediation analysis
 ##'
 ##' This is a user-interface for regression-based causal mediation analysis as described in Valeri & VanderWeele 2013 and Valeri & VanderWeele 2015.
@@ -65,18 +69,28 @@ regmedint <- function(data,
                   boot,
                   eventvar)
 
-    ## Perform mreg
-    mreg_fit <- fit_mreg(mreg, data, avar, mvar, cvar)
+    ## Construct a regmedint object after argument validation.
+    res <- construct_regmedint(data,
+                               yvar,
+                               avar,
+                               mvar,
+                               cvar,
+                               a0,
+                               a1,
+                               m_cde,
+                               yreg,
+                               mreg,
+                               interaction,
+                               casecontrol,
+                               full_output,
+                               c_cond,
+                               boot,
+                               eventvar)
 
-    ## Perform yreg
-    yreg_fit <- fit_yreg(yreg, data, yvar, avar, mvar, cvar, eventvar)
+    ## Check the resulting object for anomalies
+    validate_result(res)
 
-    ## Construct result object
-    res <- list(mreg = mreg_fit,
-                yreg = yreg_fit,
-                ## FIXME: made up number
-                med = 42L)
-    class(res) <- c("regmedint", class(res))
-
+    ## Return results
     res
 }
+
