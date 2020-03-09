@@ -6,22 +6,22 @@
 ################################################################################
 
 
-construct_regmedint <- function(data,
-                                yvar,
-                                avar,
-                                mvar,
-                                cvar,
-                                a0,
-                                a1,
-                                m_cde,
-                                yreg,
-                                mreg,
-                                interaction,
-                                casecontrol,
-                                full_output,
-                                c_cond,
-                                boot,
-                                eventvar) {
+new_regmedint <- function(data,
+                          yvar,
+                          avar,
+                          mvar,
+                          cvar,
+                          a0,
+                          a1,
+                          m_cde,
+                          yreg,
+                          mreg,
+                          interaction,
+                          casecontrol,
+                          full_output,
+                          c_cond,
+                          boot,
+                          eventvar) {
 
     ## Perform mreg
     mreg_fit <- fit_mreg(mreg, data, avar, mvar, cvar)

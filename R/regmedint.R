@@ -10,6 +10,16 @@
 ### Main user interface function
 ################################################################################
 
+##
+## https://adv-r.hadley.nz/s3.html#s3-classes
+## Follow the recommendation for S3 classes in Advanced R.
+## Provide a low-level constructor, validator, and user-friendly helper.
+##
+## https://adv-r.hadley.nz/s3.html#s3-constructor
+## https://adv-r.hadley.nz/s3.html#validators
+## https://adv-r.hadley.nz/s3.html#helpers
+
+
 ##' Conduct regression-based causal mediation analysis
 ##'
 ##' This is a user-interface for regression-based causal mediation analysis as described in Valeri & VanderWeele 2013 and Valeri & VanderWeele 2015.
@@ -50,6 +60,8 @@ regmedint <- function(data,
                       c_cond = NULL,
                       boot = 0L,
                       eventvar) {
+    ## This is the user-friendly helper function with a name that is the class name.
+    ## https://adv-r.hadley.nz/s3.html#helpers
 
     ## Check data contains yvar, avar, mvar, cvar, eventvar (if provided)
     validate_args(data,
@@ -70,25 +82,29 @@ regmedint <- function(data,
                   eventvar)
 
     ## Construct a regmedint object after argument validation.
-    res <- construct_regmedint(data,
-                               yvar,
-                               avar,
-                               mvar,
-                               cvar,
-                               a0,
-                               a1,
-                               m_cde,
-                               yreg,
-                               mreg,
-                               interaction,
-                               casecontrol,
-                               full_output,
-                               c_cond,
-                               boot,
-                               eventvar)
+    ## This is the low-level constructor function.
+    ## https://adv-r.hadley.nz/s3.html#s3-constructor
+    res <- new_regmedint(data,
+                         yvar,
+                         avar,
+                         mvar,
+                         cvar,
+                         a0,
+                         a1,
+                         m_cde,
+                         yreg,
+                         mreg,
+                         interaction,
+                         casecontrol,
+                         full_output,
+                         c_cond,
+                         boot,
+                         eventvar)
 
-    ## Check the resulting object for anomalies
-    validate_result(res)
+    ## Check the resulting object for anomalies.
+    ## This is the class validator function.
+    ## https://adv-r.hadley.nz/s3.html#validators
+    validate_regmedint(res)
 
     ## Return results
     res
