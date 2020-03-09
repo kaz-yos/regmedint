@@ -77,13 +77,22 @@ revdep_clean:
 install: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 	Rscript -e "devtools::install('.')"
 
+
 ## run sas analyses
-sas:
 # https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile
-	cd tests/testthat ; \
-	for f in $(wildcard sas-*) ; do \
-	sas $$f ; \
-	done;
+sas:
+	-cd tests/testthat/ ; \
+	-for f in $(subst tests/testthat/,,$(SAS_FILES)) ; do \
+	-sas $$f ; \
+	-done;
+
+sas_clean:
+	-for f in $(subst .sas,.log,$(SAS_FILES)); do \
+	-rm $$f ; \
+	-done;
+	-for f in $(subst .sas,.lst,$(SAS_FILES)); do \
+	-rm $$f ; \
+	-done;
 
 
 ## clean has no dependency, and execute removal of make output files.
@@ -99,6 +108,9 @@ clean: revdep_clean
 list:
 	@echo "R files:"
 	@echo $(R_FILES)
+	@echo
+	@echo "SAS files:"
+	@echo $(SAS_FILES)
 	@echo
 	@echo "Test files:"
 	@echo $(TST_FILES)
