@@ -62,6 +62,39 @@ fit_mreg <- function(mreg,
                      mvar,
                      cvar) {
 
+    ## Create a string representation of the formula
+    string_formula <- string_mreg_formula(mvar,
+                                          avar,
+                                          cvar)
+
+    ## Quasi-quoting to make the formula readable.
+    ## bquote suppresses evaluation except within .(...).
+    ## Evaluate restart the evaluation with the .() part
+    ## already expanded.
+    if (mreg == "linear") {
+
+        eval(
+            bquote(
+                lm(formula = .(as.formula(string_formula)),
+                   data = data)
+            )
+        )
+
+    } else if (mreg == "logistic") {
+
+        eval(
+            bquote(
+                glm(formula = .(as.formula(string_formula)),
+                    family = binomial(link = "logit")
+                    data = data)
+            )
+        )
+
+    } else {
+
+        stop("Unsupported model type in yreg")
+
+    }
 }
 
 
