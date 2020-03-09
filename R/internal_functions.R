@@ -96,4 +96,26 @@ fit_yreg <- function(yreg,
                      interaction,
                      eventvar) {
 
+
+    if (mreg == "linear") {
+
+    } else if (mreg == "logistic") {
+
+    } else if (mreg == "loglinear") {
+
+    } else if (mreg == "poisson") {
+
+    } else if (mreg == "negbin") {
+
+    } else if (mreg == "survCox") {
+
+    } else if (mreg == "survAFT_exp") {
+
+    } else if (mreg == "survAFT_weibull") {
+
+    } else {
+
+        stop("Unsupported model type in mreg")
+
+    }
 }
