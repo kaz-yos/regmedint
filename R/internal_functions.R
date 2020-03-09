@@ -96,39 +96,76 @@ fit_yreg <- function(yreg,
                      interaction,
                      eventvar) {
 
+    ## Create a string representation of the formula
+    string_formula <- string_yreg_formula(yvar,
+                                          avar,
+                                          mvar,
+                                          cvar,
+                                          interaction,
+                                          eventvar)
+
     ## Quasi-quoting to make the formula readable.
     ## bquote suppresses evaluation except within .(...).
     ## Evaluate restart the evaluation with the .() part
     ## already expanded.
+    if (yreg == "linear") {
 
-    if (mreg == "linear") {
-
-        formula_string <- paste0(yvar, " ~ ", avar, " + ",
-                                 paste0(cvar, collapse = " + "))
         eval(
             bquote(
-                lm(formula = .(as.formula(formula_string)),
+                lm(formula = .(as.formula(string_formula)),
                    data = data)
             )
         )
 
-    } else if (mreg == "logistic") {
+    } else if (yreg == "logistic") {
 
-    } else if (mreg == "loglinear") {
+        eval(
+            bquote(
+                glm(formula = .(as.formula(string_formula)),
+                    family = binomial(link = "logit")
+                    data = data)
+            )
+        )
 
-    } else if (mreg == "poisson") {
+    } else if (yreg == "loglinear") {
 
-    } else if (mreg == "negbin") {
+    } else if (yreg == "poisson") {
 
-    } else if (mreg == "survCox") {
+        eval(
+            bquote(
+                glm(formula = .(as.formula(string_formula)),
+                    family = poisson(link = "log"),
+                    data = data)
+            )
+        )
 
-    } else if (mreg == "survAFT_exp") {
+    } else if (yreg == "negbin") {
 
-    } else if (mreg == "survAFT_weibull") {
+    } else if (yreg == "survCox") {
+
+    } else if (yreg == "survAFT_exp") {
+
+        eval(
+            bquote(
+                survival::survreg(formula = .(as.formula(string_formula)),
+                                  data = data,
+                                  dist = "exponential")
+            )
+        )
+
+    } else if (yreg == "survAFT_weibull") {
+
+        eval(
+            bquote(
+                survival::survreg(formula = .(as.formula(string_formula)),
+                                  data = data,
+                                  dist = "weibull")
+            )
+        )
 
     } else {
 
-        stop("Unsupported model type in mreg")
+        stop("Unsupported model type in yreg")
 
     }
 }
