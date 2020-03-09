@@ -11,7 +11,7 @@ libname w './';
 %include './mediation.sas';
 
 /* Load data */
-%include './data-valeri-vanderweele-2015.txt';
+%include './data-valeri-vanderweele-2015.sas';
 
 /* Invoke macro */
 %mediation(
