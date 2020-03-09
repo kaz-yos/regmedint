@@ -32,20 +32,20 @@ test_that("fit_yreg fit linear models with lm correctly", {
                           cvar = NULL,
                           interaction = FALSE,
                           eventvar = NULL)
-    lm0 <- lm(formula = alk.phos ~ trt + bili,
-              data = pbc_cc)
+    ref_fit0 <- lm(formula = alk.phos ~ trt + bili,
+                   data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_fit0),
-                 class(lm0))
+                 class(ref_fit0))
     ## Same formula
     expect_equal(as.character(yreg_fit0$call$formula),
-                 as.character(lm0$call$formula))
+                 as.character(ref_fit0$call$formula))
     ## Same coef
     expect_equal(coef(yreg_fit0),
-                 coef(lm0))
+                 coef(ref_fit0))
     ## Same vcov
     expect_equal(vcov(yreg_fit0),
-                 vcov(lm0))
+                 vcov(ref_fit0))
 
     ## One covariates
     yreg_fit1 <- fit_yreg(yreg = "linear",
@@ -56,20 +56,20 @@ test_that("fit_yreg fit linear models with lm correctly", {
                           cvar = c("age"),
                           interaction = FALSE,
                           eventvar = NULL)
-    lm1 <- lm(formula = alk.phos ~ trt + bili + age,
-              data = pbc_cc)
+    ref_fit1 <- lm(formula = alk.phos ~ trt + bili + age,
+                   data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_fit1),
-                 class(lm1))
+                 class(ref_fit1))
     ## Same formula
     expect_equal(as.character(yreg_fit1$call$formula),
-                 as.character(lm1$call$formula))
+                 as.character(ref_fit1$call$formula))
     ## Same coef
     expect_equal(coef(yreg_fit1),
-                 coef(lm1))
+                 coef(ref_fit1))
     ## Same vcov
     expect_equal(vcov(yreg_fit1),
-                 vcov(lm1))
+                 vcov(ref_fit1))
 
     ## Three covariates
     yreg_fit3 <- fit_yreg(yreg = "linear",
@@ -80,20 +80,20 @@ test_that("fit_yreg fit linear models with lm correctly", {
                           cvar = c("age","male","stage"),
                           interaction = FALSE,
                           eventvar = NULL)
-    lm3 <- lm(formula = alk.phos ~ trt + bili + age + male + stage,
-              data = pbc_cc)
+    ref_fit3 <- lm(formula = alk.phos ~ trt + bili + age + male + stage,
+                   data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_fit3),
-                 class(lm3))
+                 class(ref_fit3))
     ## Same formula
     expect_equal(as.character(yreg_fit3$call$formula),
-                 as.character(lm3$call$formula))
+                 as.character(ref_fit3$call$formula))
     ## Same coef
     expect_equal(coef(yreg_fit3),
-                 coef(lm3))
+                 coef(ref_fit3))
     ## Same vcov
     expect_equal(vcov(yreg_fit3),
-                 vcov(lm3))
+                 vcov(ref_fit3))
 
 })
 
@@ -115,20 +115,20 @@ test_that("fit_yreg fit linear models with lm correctly with interaction", {
                           cvar = NULL,
                           interaction = TRUE,
                           eventvar = NULL)
-    lm0 <- lm(formula = alk.phos ~ trt*bili,
-              data = pbc_cc)
+    ref_fit0 <- lm(formula = alk.phos ~ trt*bili,
+                   data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_fit0),
-                 class(lm0))
+                 class(ref_fit0))
     ## Same formula
     expect_equal(as.character(yreg_fit0$call$formula),
-                 as.character(lm0$call$formula))
+                 as.character(ref_fit0$call$formula))
     ## Same coef
     expect_equal(coef(yreg_fit0),
-                 coef(lm0))
+                 coef(ref_fit0))
     ## Same vcov
     expect_equal(vcov(yreg_fit0),
-                 vcov(lm0))
+                 vcov(ref_fit0))
 
     ## One covariates
     yreg_fit1 <- fit_yreg(yreg = "linear",
@@ -139,20 +139,20 @@ test_that("fit_yreg fit linear models with lm correctly with interaction", {
                           cvar = c("age"),
                           interaction = TRUE,
                           eventvar = NULL)
-    lm1 <- lm(formula = alk.phos ~ trt*bili + age,
-              data = pbc_cc)
+    ref_fit1 <- lm(formula = alk.phos ~ trt*bili + age,
+                   data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_fit1),
-                 class(lm1))
+                 class(ref_fit1))
     ## Same formula
     expect_equal(as.character(yreg_fit1$call$formula),
-                 as.character(lm1$call$formula))
+                 as.character(ref_fit1$call$formula))
     ## Same coef
     expect_equal(coef(yreg_fit1),
-                 coef(lm1))
+                 coef(ref_fit1))
     ## Same vcov
     expect_equal(vcov(yreg_fit1),
-                 vcov(lm1))
+                 vcov(ref_fit1))
 
     ## Three covariates
     yreg_fit3 <- fit_yreg(yreg = "linear",
@@ -163,19 +163,19 @@ test_that("fit_yreg fit linear models with lm correctly with interaction", {
                           cvar = c("age","male","stage"),
                           interaction = TRUE,
                           eventvar = NULL)
-    lm3 <- lm(formula = alk.phos ~ trt*bili + age + male + stage,
-              data = pbc_cc)
+    ref_fit3 <- lm(formula = alk.phos ~ trt*bili + age + male + stage,
+                   data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_fit3),
-                 class(lm3))
+                 class(ref_fit3))
     ## Same formula
     expect_equal(as.character(yreg_fit3$call$formula),
-                 as.character(lm3$call$formula))
+                 as.character(ref_fit3$call$formula))
     ## Same coef
     expect_equal(coef(yreg_fit3),
-                 coef(lm3))
+                 coef(ref_fit3))
     ## Same vcov
     expect_equal(vcov(yreg_fit3),
-                 vcov(lm3))
+                 vcov(ref_fit3))
 
 })
