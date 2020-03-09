@@ -86,6 +86,11 @@ sas:
 	sas $$f ; \
 	done;
 
+sas_extract:
+	for f in $(subst .sas,.lst,$(SAS_FILES)); do \
+	cat $${f} | grep " cde \| nde \| [pt]nde \| nie \| [pt]nie \| total effect " > $${f%lst}txt ; \
+	done;
+
 sas_clean:
 	-for f in $(subst .sas,.log,$(SAS_FILES)); do \
 	rm $$f ; \
