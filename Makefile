@@ -82,17 +82,17 @@ install: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 # https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile
 sas:
 	-cd tests/testthat/ ; \
-	-for f in $(subst tests/testthat/,,$(SAS_FILES)) ; do \
-	-sas $$f ; \
-	-done;
+	for f in $(subst tests/testthat/,,$(SAS_FILES)) ; do \
+	sas $$f ; \
+	done;
 
 sas_clean:
 	-for f in $(subst .sas,.log,$(SAS_FILES)); do \
-	-rm $$f ; \
-	-done;
+	rm $$f ; \
+	done;
 	-for f in $(subst .sas,.lst,$(SAS_FILES)); do \
-	-rm $$f ; \
-	-done;
+	rm $$f ; \
+	done;
 
 
 ## clean has no dependency, and execute removal of make output files.
