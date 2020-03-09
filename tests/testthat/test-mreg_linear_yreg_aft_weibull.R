@@ -8,12 +8,15 @@
 ## Load testthat in case this is run in isolation.
 library(testthat)
 library(survival)
+library(tidyverse)
 
+source("./utilities.R")
 
 ###
 ### Set up SAS reference results
 ################################################################################
 
+sas_res <- read_parsed_sas_mediation_output("./sas-mreg_linear_yreg_aft_weibull.txt")
 
 
 ###
