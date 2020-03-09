@@ -141,15 +141,18 @@
                                         4     0.50123     -0.00236     0.000206     0.002503
                                                            The SAS System                            04:23 Monday, March 9, 2020   5
 
-                                                                               _95__CI_    _95__CI_
-                                 Obs    Effect          Estimate    p_value      lower       upper
+                                                                                     _95__CI_    _95__CI_
+                           Obs    effect                      Estimate    p_value      lower       upper
 
-                                  1     cde              1.55067    0.15893     0.84223     2.85500
-                                  2     nde              1.63004    0.02470     1.06422     2.49669
-                                  3     nie              1.01813    0.63381     0.94558     1.09625
-                                  4     total effect     1.65959    0.02091     1.07971     2.55092
-                                                           The SAS System                            04:23 Monday, March 9, 2020   6
-
-                                               Obs          Effect           Estimate
-
-                                                1     proportion mediated    0.044807
+                             1    marginal cde                 1.55067    0.15893     0.84223     2.85500
+                             2    marginal pnde                1.63004    0.02470     1.06422     2.49669
+                             3    marginal pnie                1.00878    0.75323     0.95529     1.06527
+                             4    marginal tnde                1.64515    0.02455     1.06593     2.53913
+                             5    marginal tnie                1.01813    0.63381     0.94558     1.09625
+                             6    marginal total effect        1.65959    0.02091     1.07971     2.55092
+                             7    conditional cde              1.55067    0.15893     0.84223     2.85500
+                             8    conditional pnde             1.62049    0.02760     1.05467     2.48985
+                             9    conditional pnie             1.00878    0.75323     0.95529     1.06527
+                            10    conditional tnde             1.63551    0.02412     1.06653     2.50805
+                            11    conditional tnie             1.01813    0.63381     0.94558     1.09625
+                            12    conditional total effect     1.64987    0.02160     1.07629     2.52911
