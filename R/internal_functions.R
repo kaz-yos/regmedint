@@ -148,8 +148,7 @@ string_yreg_formula <- function(yvar,
                                 mvar,
                                 cvar,
                                 interaction,
-                                eventvar,
-                                interaction) {
+                                eventvar) {
 
     ## This handles cvar = NULL ok and gives ""
     cvar_string <- paste0(cvar, collapse = " + ")
