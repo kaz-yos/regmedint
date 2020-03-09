@@ -59,7 +59,7 @@ regmedint <- function(data,
                       full_output = FALSE,
                       c_cond = NULL,
                       boot = 0L,
-                      eventvar) {
+                      eventvar = NULL) {
     ## This is the user-friendly helper function with a name that is the class name.
     ## https://adv-r.hadley.nz/s3.html#helpers
 
