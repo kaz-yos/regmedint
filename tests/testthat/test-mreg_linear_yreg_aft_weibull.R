@@ -41,8 +41,22 @@ yreg_fit <-
 ### Run mediation analysis of interest
 ################################################################################
 
-med_fit <- NULL
-
+med_fit <- regmedint(data = data1,
+                     yvar = "y",
+                     avar = "x",
+                     mvar = "m",
+                     cvar = "c",
+                     a0 = 0,
+                     a1 = 1,
+                     m_cde = 0,
+                     yreg = "survAFT_weibull",
+                     mreg = "logistic",
+                     interaction = TRUE,
+                     casecontrol = FALSE,
+                     full_output = FALSE,
+                     c_cond = NULL,
+                     boot = FALSE,
+                     censvar = "cens")
 
 ###
 ### Test against reference results
