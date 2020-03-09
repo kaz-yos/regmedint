@@ -96,8 +96,21 @@ fit_yreg <- function(yreg,
                      interaction,
                      eventvar) {
 
+    ## Quasi-quoting to make the formula readable.
+    ## bquote suppresses evaluation except within .(...).
+    ## Evaluate restart the evaluation with the .() part
+    ## already expanded.
 
     if (mreg == "linear") {
+
+        formula_string <- paste0(yvar, " ~ ", avar, " + ",
+                                 paste0(cvar, collapse = " + "))
+        eval(
+            bquote(
+                lm(formula = .(as.formula(formula_string)),
+                   data = data)
+            )
+        )
 
     } else if (mreg == "logistic") {
 
@@ -116,6 +129,50 @@ fit_yreg <- function(yreg,
     } else {
 
         stop("Unsupported model type in mreg")
+
+    }
+}
+
+
+string_mreg_formula <- function(mvar,
+                                avar,
+                                cvar) {
+
+    ## This handles cvar = NULL ok and gives ""
+    cvar_string <- paste0(cvar, collapse = " + ")
+    sprintf("%s ~ %s + %s", mvar, avar, cvar_sring)
+}
+
+string_yreg_formula <- function(yvar,
+                                avar,
+                                mvar,
+                                cvar,
+                                interaction,
+                                eventvar,
+                                interaction) {
+
+    ## This handles cvar = NULL ok and gives ""
+    cvar_string <- paste0(cvar, collapse = " + ")
+
+    ## eventvar must be NULL for a non-survival outcome model.
+    if (is.null(eventvar)) {
+
+        ## Non-survival outcome
+        if (interaction) {
+            return(sprintf("%s ~ %s*%s + %s", yvar, avar, mvar, cvar_string))
+        } else {
+            return(sprintf("%s ~ %s + %s + %s", yvar, avar, mvar, cvar_string))
+        }
+
+    } else {
+
+        ## Survival outcome
+        surv_string <- sprintf("Surv(%s, %s)", yvar, eventvar)
+        if (interaction) {
+            return(sprintf("%s ~ %s*%s + %s", surv_string, avar, mvar, cvar_string))
+        } else {
+            return(sprintf("%s ~ %s + %s + %s", surv_string, avar, mvar, cvar_string))
+        }
 
     }
 }
