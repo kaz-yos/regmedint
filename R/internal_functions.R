@@ -85,7 +85,7 @@ fit_mreg <- function(mreg,
         eval(
             bquote(
                 glm(formula = .(as.formula(string_formula)),
-                    family = binomial(link = "logit")
+                    family = binomial(link = "logit"),
                     data = data)
             )
         )
@@ -155,7 +155,7 @@ fit_yreg <- function(yreg,
         eval(
             bquote(
                 glm(formula = .(as.formula(string_formula)),
-                    family = binomial(link = "logit")
+                    family = binomial(link = "logit"),
                     data = data)
             )
         )
