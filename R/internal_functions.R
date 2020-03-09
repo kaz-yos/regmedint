@@ -5,7 +5,13 @@
 ## Author: Kazuki Yoshida
 ################################################################################
 
-
+##' Low level constructor for a regmedint S3 class object.
+##'
+##' This is not a user function and meant to be executed within the regmedint function after validatingthe arguments.
+##'
+##' @inheritParams regmedint
+##'
+##' @return A regmedint object.
 new_regmedint <- function(data,
                           yvar,
                           avar,
@@ -29,12 +35,13 @@ new_regmedint <- function(data,
     ## Perform yreg
     yreg_fit <- fit_yreg(yreg, data, yvar, avar, mvar, cvar, eventvar)
 
-    ## Construct result object
+    ## Construct the result object
     res <- list(mreg = mreg_fit,
                 yreg = yreg_fit,
                 ## FIXME: made up numbers
                 med = 42L,
                 boot = 24L)
+    ## The main class is regmedint.
     class(res) <- c("regmedint", class(res))
 
     ##
