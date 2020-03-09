@@ -168,6 +168,78 @@ test_that("fit_mreg fit linear models with lm correctly", {
 
 test_that("fit_mreg fit logistic models with glm correctly", {
 
+    data(pbc)
+
+    ## Missing data should be warned in validate_args()
+    pbc_cc <- pbc[complete.cases(pbc),] %>%
+        mutate(male = if_else(sex == "m", 1L, 0L))
+
+    ## No covariates
+    mreg_logistic_fit0 <- fit_mreg(mreg = "logistic",
+                                   data = pbc_cc,
+                                   avar = "trt",
+                                   mvar = "hepato",
+                                   cvar = NULL)
+    glm0 <- glm(formula = hepato ~ trt,
+                family = binomial(link = "logit"),
+                data = pbc_cc)
+    ## Same classes
+    expect_equal(class(mreg_logistic_fit0),
+                 class(glm0))
+    ## Same formula
+    expect_equal(as.character(mreg_logistic_fit0$call$formula),
+                 as.character(glm0$call$formula))
+    ## Same coef
+    expect_equal(coef(mreg_logistic_fit0),
+                 coef(glm0))
+    ## Same vcov
+    expect_equal(vcov(mreg_logistic_fit0),
+                 vcov(glm0))
+
+    ## One covariates
+    mreg_logistic_fit1 <- fit_mreg(mreg = "logistic",
+                                   data = pbc_cc,
+                                   avar = "trt",
+                                   mvar = "hepato",
+                                   cvar = c("age"))
+    glm1 <- glm(formula = hepato ~ trt + age,
+                family = binomial(link = "logit"),
+                data = pbc_cc)
+    ## Same classes
+    expect_equal(class(mreg_logistic_fit1),
+                 class(glm1))
+    ## Same formula
+    expect_equal(as.character(mreg_logistic_fit1$call$formula),
+                 as.character(glm1$call$formula))
+    ## Same coef
+    expect_equal(coef(mreg_logistic_fit1),
+                 coef(glm1))
+    ## Same vcov
+    expect_equal(vcov(mreg_logistic_fit1),
+                 vcov(glm1))
+
+    ## Three covariates
+    mreg_logistic_fit3 <- fit_mreg(mreg = "logistic",
+                                   data = pbc_cc,
+                                   avar = "trt",
+                                   mvar = "hepato",
+                                   cvar = c("age","male","stage"))
+    glm3 <- glm(formula = hepato ~ trt + age + male + stage,
+                family = binomial(link = "logit"),
+                data = pbc_cc)
+    ## Same classes
+    expect_equal(class(mreg_logistic_fit3),
+                 class(glm3))
+    ## Same formula
+    expect_equal(as.character(mreg_logistic_fit3$call$formula),
+                 as.character(glm3$call$formula))
+    ## Same coef
+    expect_equal(coef(mreg_logistic_fit3),
+                 coef(glm3))
+    ## Same vcov
+    expect_equal(vcov(mreg_logistic_fit3),
+                 vcov(glm3))
+
 })
 
 
