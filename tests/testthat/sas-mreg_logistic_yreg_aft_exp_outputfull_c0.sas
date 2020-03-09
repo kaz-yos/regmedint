@@ -24,11 +24,11 @@ libname w './';
     a1=1,
     m=0,
     yreg=survAFT_exp,
-    mreg=linear,
+    mreg=logistic,
     interaction=true,
     casecontrol=,
-    output=,
-    c=,
+    output=full,
+    c=0,
     boot=,
     cens=cens);
 run;
