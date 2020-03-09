@@ -138,9 +138,14 @@ string_mreg_formula <- function(mvar,
                                 avar,
                                 cvar) {
 
-    ## This handles cvar = NULL ok and gives ""
-    cvar_string <- paste0(cvar, collapse = " + ")
-    sprintf("%s ~ %s + %s", mvar, avar, cvar_string)
+    if (is.null(cvar)) {
+        acvar_string <- avar
+    } else {
+        cvar_string <- paste0(cvar, collapse = " + ")
+        acvar_string <- paste0(c(avar, cvar_string), collapse = " + ")
+    }
+
+    sprintf("%s ~ %s", mvar, acvar_string)
 }
 
 string_yreg_formula <- function(yvar,
