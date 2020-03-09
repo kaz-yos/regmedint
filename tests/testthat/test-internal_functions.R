@@ -7,10 +7,11 @@
 
 ## Load testthat in case this is run in isolation.
 library(testthat)
+library(survival)
 
 
 ###
-### Internal functions for string formula creation
+### Internal function for mreg string formula creation
 ################################################################################
 
 test_that("string_mreg_formula create sound formula strings", {
@@ -26,6 +27,10 @@ test_that("string_mreg_formula create sound formula strings", {
 
 })
 
+
+###
+### Internal function for yreg string formula creation
+################################################################################
 
 test_that("string_yreg_formula create sound formula strings for non-survival outcomes", {
 
@@ -81,3 +86,21 @@ test_that("string_yreg_formula create sound formula strings for survival outcome
                                      eventvar = "event"),
                  "Surv(time, event) ~ A*M + C1 + C2 + C3")
 })
+
+
+###
+### Internal function for mreg model fitting
+################################################################################
+
+test_that("fit_mreg fit linear models with lm correctly", {
+
+})
+
+test_that("fit_mreg fit logistic models with glm correctly", {
+
+})
+
+
+###
+### Internal function for yreg model fitting
+################################################################################
