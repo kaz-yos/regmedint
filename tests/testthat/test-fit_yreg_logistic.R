@@ -32,20 +32,21 @@ test_that("fit_yreg fit logistic models with glm correctly", {
                                  cvar = NULL,
                                  interaction = FALSE,
                                  eventvar = NULL)
-    lm0 <- lm(formula = spiders ~ trt + bili,
-              data = pbc_cc)
+    glm0 <- glm(formula = spiders ~ trt + bili,
+                family = binomial(link = "logit"),
+                data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_linear_fit0),
-                 class(lm0))
+                 class(glm0))
     ## Same formula
     expect_equal(as.character(yreg_linear_fit0$call$formula),
-                 as.character(lm0$call$formula))
+                 as.character(glm0$call$formula))
     ## Same coef
     expect_equal(coef(yreg_linear_fit0),
-                 coef(lm0))
+                 coef(glm0))
     ## Same vcov
     expect_equal(vcov(yreg_linear_fit0),
-                 vcov(lm0))
+                 vcov(glm0))
 
     ## One covariates
     yreg_linear_fit1 <- fit_yreg(yreg = "logistic",
@@ -56,20 +57,21 @@ test_that("fit_yreg fit logistic models with glm correctly", {
                                  cvar = c("age"),
                                  interaction = FALSE,
                                  eventvar = NULL)
-    lm1 <- lm(formula = spiders ~ trt + bili + age,
-              data = pbc_cc)
+    glm1 <- glm(formula = spiders ~ trt + bili + age,
+                family = binomial(link = "logit"),
+                data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_linear_fit1),
-                 class(lm1))
+                 class(glm1))
     ## Same formula
     expect_equal(as.character(yreg_linear_fit1$call$formula),
-                 as.character(lm1$call$formula))
+                 as.character(glm1$call$formula))
     ## Same coef
     expect_equal(coef(yreg_linear_fit1),
-                 coef(lm1))
+                 coef(glm1))
     ## Same vcov
     expect_equal(vcov(yreg_linear_fit1),
-                 vcov(lm1))
+                 vcov(glm1))
 
     ## Three covariates
     yreg_linear_fit3 <- fit_yreg(yreg = "logistic",
@@ -80,20 +82,21 @@ test_that("fit_yreg fit logistic models with glm correctly", {
                                  cvar = c("age","male","stage"),
                                  interaction = FALSE,
                                  eventvar = NULL)
-    lm3 <- lm(formula = spiders ~ trt + bili + age + male + stage,
-              data = pbc_cc)
+    glm3 <- glm(formula = spiders ~ trt + bili + age + male + stage,
+                family = binomial(link = "logit"),
+                data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_linear_fit3),
-                 class(lm3))
+                 class(glm3))
     ## Same formula
     expect_equal(as.character(yreg_linear_fit3$call$formula),
-                 as.character(lm3$call$formula))
+                 as.character(glm3$call$formula))
     ## Same coef
     expect_equal(coef(yreg_linear_fit3),
-                 coef(lm3))
+                 coef(glm3))
     ## Same vcov
     expect_equal(vcov(yreg_linear_fit3),
-                 vcov(lm3))
+                 vcov(glm3))
 
 })
 
@@ -115,20 +118,21 @@ test_that("fit_yreg fit logistic models with glm correctly with interaction", {
                                  cvar = NULL,
                                  interaction = TRUE,
                                  eventvar = NULL)
-    lm0 <- lm(formula = spiders ~ trt*bili,
-              data = pbc_cc)
+    glm0 <- glm(formula = spiders ~ trt*bili,
+                family = binomial(link = "logit"),
+                data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_linear_fit0),
-                 class(lm0))
+                 class(glm0))
     ## Same formula
     expect_equal(as.character(yreg_linear_fit0$call$formula),
-                 as.character(lm0$call$formula))
+                 as.character(glm0$call$formula))
     ## Same coef
     expect_equal(coef(yreg_linear_fit0),
-                 coef(lm0))
+                 coef(glm0))
     ## Same vcov
     expect_equal(vcov(yreg_linear_fit0),
-                 vcov(lm0))
+                 vcov(glm0))
 
     ## One covariates
     yreg_linear_fit1 <- fit_yreg(yreg = "logistic",
@@ -139,20 +143,21 @@ test_that("fit_yreg fit logistic models with glm correctly with interaction", {
                                  cvar = c("age"),
                                  interaction = TRUE,
                                  eventvar = NULL)
-    lm1 <- lm(formula = spiders ~ trt*bili + age,
-              data = pbc_cc)
+    glm1 <- glm(formula = spiders ~ trt*bili + age,
+                family = binomial(link = "logit"),
+                data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_linear_fit1),
-                 class(lm1))
+                 class(glm1))
     ## Same formula
     expect_equal(as.character(yreg_linear_fit1$call$formula),
-                 as.character(lm1$call$formula))
+                 as.character(glm1$call$formula))
     ## Same coef
     expect_equal(coef(yreg_linear_fit1),
-                 coef(lm1))
+                 coef(glm1))
     ## Same vcov
     expect_equal(vcov(yreg_linear_fit1),
-                 vcov(lm1))
+                 vcov(glm1))
 
     ## Three covariates
     yreg_linear_fit3 <- fit_yreg(yreg = "logistic",
@@ -163,19 +168,20 @@ test_that("fit_yreg fit logistic models with glm correctly with interaction", {
                                  cvar = c("age","male","stage"),
                                  interaction = TRUE,
                                  eventvar = NULL)
-    lm3 <- lm(formula = spiders ~ trt*bili + age + male + stage,
-              data = pbc_cc)
+    glm3 <- glm(formula = spiders ~ trt*bili + age + male + stage,
+                family = binomial(link = "logit"),
+                data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_linear_fit3),
-                 class(lm3))
+                 class(glm3))
     ## Same formula
     expect_equal(as.character(yreg_linear_fit3$call$formula),
-                 as.character(lm3$call$formula))
+                 as.character(glm3$call$formula))
     ## Same coef
     expect_equal(coef(yreg_linear_fit3),
-                 coef(lm3))
+                 coef(glm3))
     ## Same vcov
     expect_equal(vcov(yreg_linear_fit3),
-                 vcov(lm3))
+                 vcov(glm3))
 
 })
