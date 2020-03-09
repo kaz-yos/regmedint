@@ -94,3 +94,17 @@ regmedint <- function(data,
     res
 }
 
+
+###
+### User interface methods for the regmedint class
+################################################################################
+
+## print method
+print.regmedint <- function(x, ...) {
+
+}
+
+## summary method
+summary.regmedint <- function(x, ...) {
+
+}
