@@ -1,5 +1,16 @@
+/* Downloaded from https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/ */
+/* on 2020-03-08 */
+/* https://cdn1.sph.harvard.edu/wp-content/uploads/sites/603/2019/03/MediationPsychMethods.zip */
 
-;
+/* Valeri L, VanderWeele TJ.
+Epidemiology. 2015 Mar;26(2):e23-4. doi: 10.1097/EDE.0000000000000253.
+    SAS macro for causal mediation analysis with survival data. */
+
+/* Valeri L, Vanderweele TJ.
+Psychol Methods. 2013 Jun;18(2):137-50. doi: 10.1037/a0031034. Epub 2013 Feb 4.
+Mediation analysis allowing for exposure-mediator interactions and causal interpretation: theoretical assumptions and implementation with SAS and SPSS macros. */
+
+
 *mediation analysis*;
 %macro mediation(data=,yvar=,avar=,mvar=,cvar=,a0=,a1=,m=,nc=, yreg=,mreg=,
 interaction=,casecontrol=false,output=reduced,c=,boot=,cens=);
