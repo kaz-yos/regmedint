@@ -5,11 +5,22 @@
 [[http://cranlogs.r-pkg.org/badges/regmedint]]
 
 
-* To be implemented
+* Status
+The eAppendix for SAS macro for causal mediation analysis with survival data (Valeri & VanderWeele 2015) describes the following grid of models.
 
-| yreg \ mreg | linear | (logistic) |
-|-------------+--------+------------|
-| aft weibull |        |            |
-| aft exp     |        |            |
-| cox         |        |            |
-| ...         |        |            |
+| yreg \ mreg     | linear | logistic |
+|-----------------+--------+----------|
+| linear          |        |          |
+| logistic        |        |          |
+| loglinear       |        |          |
+| poisson         |        |          |
+| negbin          |        |          |
+| survCox         |        |          |
+| survAFT exp     |      1 |        1 |
+| survAFT weibull |      1 |        1 |
+
+The current implementation status:
+0. None (left blank)
+1. SAS reference results created
+2. R implementation ongoing
+3. R implementation complete
