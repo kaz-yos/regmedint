@@ -35,11 +35,14 @@ new_regmedint <- function(data,
     ## Perform yreg
     yreg_fit <- fit_yreg(yreg, data, yvar, avar, mvar, cvar, interaction, eventvar)
 
+    ## Perform mediation analysis
+    myreg_fit <- fit_myreg(mreg_fit, yreg_fit, a0, a1, m_cde, c_cond)
+
     ## Construct the result object
     res <- list(mreg = mreg_fit,
                 yreg = yreg_fit,
                 ## FIXME: made up numbers
-                med = 42L,
+                myreg = myreg_fit,
                 boot = 24L)
     ## The main class is regmedint.
     class(res) <- c("regmedint", class(res))
