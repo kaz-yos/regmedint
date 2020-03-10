@@ -207,6 +207,16 @@ fit_yreg <- function(yreg,
 }
 
 
+
+fit_myreg <- function(...) {
+    ## Mock up
+    NULL
+}
+
+
+###
+### Formula string creators
+################################################################################
 string_mreg_formula <- function(mvar,
                                 avar,
                                 cvar) {
