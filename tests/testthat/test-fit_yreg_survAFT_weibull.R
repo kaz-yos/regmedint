@@ -21,20 +21,22 @@ test_that("fit_yreg fit Weibull AFT models with survreg correctly", {
 
     ## Missing data should be warned in validate_args()
     pbc_cc <- pbc[complete.cases(pbc),] %>%
-        mutate(male = if_else(sex == "m", 1L, 0L))
+        mutate(male = if_else(sex == "m", 1L, 0L),
+               ## Combine transplant and death for testing purpose
+               status = if_else(status == 0, 0L, 1L))
 
     ## No covariates
     yreg_fit0 <- fit_yreg(yreg = "survAFT_weibull",
                           data = pbc_cc,
-                          yvar = "spiders",
+                          yvar = "time",
                           avar = "trt",
                           mvar = "bili",
                           cvar = NULL,
                           interaction = FALSE,
-                          eventvar = NULL)
-    ref_fit0 <- glm(formula = spiders ~ trt + bili,
-                    family = binomial(link = "logit"),
-                    data = pbc_cc)
+                          eventvar = "status")
+    ref_fit0 <- survreg(formula = Surv(time,status) ~ trt + bili,
+                        dist = "weibull",
+                        data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_fit0),
                  class(ref_fit0))
@@ -51,15 +53,15 @@ test_that("fit_yreg fit Weibull AFT models with survreg correctly", {
     ## One covariates
     yreg_fit1 <- fit_yreg(yreg = "survAFT_weibull",
                           data = pbc_cc,
-                          yvar = "spiders",
+                          yvar = "time",
                           avar = "trt",
                           mvar = "bili",
                           cvar = c("age"),
                           interaction = FALSE,
-                          eventvar = NULL)
-    ref_fit1 <- glm(formula = spiders ~ trt + bili + age,
-                    family = binomial(link = "logit"),
-                    data = pbc_cc)
+                          eventvar = "status")
+    ref_fit1 <- survreg(formula = Surv(time,status) ~ trt + bili + age,
+                        dist = "weibull",
+                        data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_fit1),
                  class(ref_fit1))
@@ -76,15 +78,15 @@ test_that("fit_yreg fit Weibull AFT models with survreg correctly", {
     ## Three covariates
     yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
                           data = pbc_cc,
-                          yvar = "spiders",
+                          yvar = "time",
                           avar = "trt",
                           mvar = "bili",
                           cvar = c("age","male","stage"),
                           interaction = FALSE,
-                          eventvar = NULL)
-    ref_fit3 <- glm(formula = spiders ~ trt + bili + age + male + stage,
-                    family = binomial(link = "logit"),
-                    data = pbc_cc)
+                          eventvar = "status")
+    ref_fit3 <- survreg(formula = Surv(time,status) ~ trt + bili + age + male + stage,
+                        dist = "weibull",
+                        data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_fit3),
                  class(ref_fit3))
@@ -107,20 +109,22 @@ test_that("fit_yreg fit Weibull AFT models with survreg correctly with interacti
 
     ## Missing data should be warned in validate_args()
     pbc_cc <- pbc[complete.cases(pbc),] %>%
-        mutate(male = if_else(sex == "m", 1L, 0L))
+        mutate(male = if_else(sex == "m", 1L, 0L),
+               ## Combine transplant and death for testing purpose
+               status = if_else(status == 0, 0L, 1L))
 
     ## No covariates
     yreg_fit0 <- fit_yreg(yreg = "survAFT_weibull",
                           data = pbc_cc,
-                          yvar = "spiders",
+                          yvar = "time",
                           avar = "trt",
                           mvar = "bili",
                           cvar = NULL,
                           interaction = TRUE,
-                          eventvar = NULL)
-    ref_fit0 <- glm(formula = spiders ~ trt*bili,
-                    family = binomial(link = "logit"),
-                    data = pbc_cc)
+                          eventvar = "status")
+    ref_fit0 <- survreg(formula = Surv(time,status) ~ trt*bili,
+                        dist = "weibull",
+                        data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_fit0),
                  class(ref_fit0))
@@ -137,15 +141,15 @@ test_that("fit_yreg fit Weibull AFT models with survreg correctly with interacti
     ## One covariates
     yreg_fit1 <- fit_yreg(yreg = "survAFT_weibull",
                           data = pbc_cc,
-                          yvar = "spiders",
+                          yvar = "time",
                           avar = "trt",
                           mvar = "bili",
                           cvar = c("age"),
                           interaction = TRUE,
-                          eventvar = NULL)
-    ref_fit1 <- glm(formula = spiders ~ trt*bili + age,
-                    family = binomial(link = "logit"),
-                    data = pbc_cc)
+                          eventvar = "status")
+    ref_fit1 <- survreg(formula = Surv(time,status) ~ trt*bili + age,
+                        dist = "weibull",
+                        data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_fit1),
                  class(ref_fit1))
@@ -162,15 +166,15 @@ test_that("fit_yreg fit Weibull AFT models with survreg correctly with interacti
     ## Three covariates
     yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
                           data = pbc_cc,
-                          yvar = "spiders",
+                          yvar = "time",
                           avar = "trt",
                           mvar = "bili",
                           cvar = c("age","male","stage"),
                           interaction = TRUE,
-                          eventvar = NULL)
-    ref_fit3 <- glm(formula = spiders ~ trt*bili + age + male + stage,
-                    family = binomial(link = "logit"),
-                    data = pbc_cc)
+                          eventvar = "status")
+    ref_fit3 <- survreg(formula = Surv(time,status) ~ trt*bili + age + male + stage,
+                        dist = "weibull",
+                        data = pbc_cc)
     ## Same classes
     expect_equal(class(yreg_fit3),
                  class(ref_fit3))
