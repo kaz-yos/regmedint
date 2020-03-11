@@ -25,28 +25,37 @@ The current implementation status:
 2. R implementation ongoing
 3. R implementation complete
 
-* Effect formulas
-| yreg \ mreg     | linear                     | logistic                   |
-|-----------------+----------------------------+----------------------------|
-| linear          | V2015 p466 Proposition 2.3 | V2015 p471 Proposition 2.5 |
-| logistic        | V2015 p468 Proposition 2.4 | V2015 p473 Proposition 2.6 |
-| loglinear       |                            |                            |
-| poisson         |                            |                            |
-| negbin          |                            |                            |
-| survCox         | V2015 p496 Proposition 4.4 | V2015 p499 Proposition 4.6 |
-| survAFT exp     | V2015 p494 Proposition 4.1 | V2015 p495 Proposition 4.3 |
-| survAFT weibull |                            |                            |
-
+* Formulas
 - V2015: VanderWeele (2015) Explanation in Causal Inference.
+- VV2013A: Valeri & VanderWeele (2013) Appendix
+- VV2015A: Valeri & VanderWeele (2015) Appendix
 
-* Standard error formulas
+** Effect formulas
 | yreg \ mreg     | linear                         | logistic                       |
 |-----------------+--------------------------------+--------------------------------|
 | linear          | V2015 p466 Proposition 2.3     | V2015 p471 Proposition 2.5     |
+|                 |                                |                                |
 | logistic        | V2015 p468 Proposition 2.4     | V2015 p473 Proposition 2.6     |
-| loglinear       |                                |                                |
-| poisson         |                                |                                |
-| negbin          |                                |                                |
+| loglinear       | VV2013A p8 Use Proposition 2.4 | VV2013A p8 Use Proposition 2.6 |
+| poisson         | VV2013A p8 Use Proposition 2.4 | VV2013A p8 Use Proposition 2.6 |
+| negbin          | VV2013A p8 Use Proposition 2.4 | VV2013A p8 Use Proposition 2.6 |
+|                 |                                |                                |
+| survCox         | V2015 p496 Proposition 4.4     | V2015 p499 Proposition 4.6     |
+| survAFT exp     | V2015 p494 Proposition 4.1     | V2015 p495 Proposition 4.3     |
+| survAFT weibull | V2015 p494 Proposition 4.1     | V2015 p495 Proposition 4.3     |
+
+Note the loglinear outcome model means log link with binomial error.
+
+** Standard error formulas
+| yreg \ mreg     | linear                         | logistic                       |
+|-----------------+--------------------------------+--------------------------------|
+| linear          | V2015 p466 Proposition 2.3     | V2015 p471 Proposition 2.5     |
+|                 |                                |                                |
+| logistic        | V2015 p468 Proposition 2.4     | V2015 p473 Proposition 2.6     |
+| loglinear       | VV2013A p8 Use Proposition 2.4 | VV2013A p8 Use Proposition 2.6 |
+| poisson         | VV2013A p8 Use Proposition 2.4 | VV2013A p8 Use Proposition 2.6 |
+| negbin          | VV2013A p8 Use Proposition 2.4 | VV2013A p8 Use Proposition 2.6 |
+|                 |                                |                                |
 | survCox         | V2015 p496 Use Proposition 2.4 | V2015 p499 Use Proposition 2.6 |
 | survAFT exp     | V2015 p494 Use Proposition 2.4 | V2015 p495 Use Proposition 2.6 |
-| survAFT weibull |                                |                                |
+| survAFT weibull | V2015 p494 Use Proposition 2.4 | V2015 p495 Use Proposition 2.6 |
