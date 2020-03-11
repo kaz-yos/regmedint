@@ -10,7 +10,7 @@ library(testthat)
 library(survival)
 library(tidyverse)
 
-source("./utilities.R")
+source("./utilities_for_tests.R")
 
 ###
 ### Set up SAS reference results
