@@ -103,9 +103,11 @@ Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar) {
 }
 
 Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
-    vars <- if_else(interaction,
-                    c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar),
-                    c("(Intercept)", avar, mvar, cvar))
+    if (interaction) {
+        vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar)
+    } else {
+        vars <- c("(Intercept)", avar, mvar,                        cvar)
+    }
     vcov(yreg_fit)[vars,vars, drop = FALSE]
 }
 
