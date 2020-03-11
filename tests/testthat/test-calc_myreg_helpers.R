@@ -91,6 +91,173 @@ describe("Sigma_sigma_hat_sq", {
         expect_equal(Sigma_sigma_hat_sq(lm_fit),
                      ## (sigma_hat^2)^2 / (n-p)
                      matrix(((sigma(lm_fit))^2)^2 / lm_fit$df.residual))
+        expect_equal(dim(Sigma_sigma_hat_sq(lm_fit)),
+                     c(1,1))
     })
 })
 
+
+describe("Sigma_theta_hat", {
+
+    data(pbc)
+    ## Missing data should be warned in validate_args()
+    pbc_cc <- pbc[complete.cases(pbc),] %>%
+        mutate(male = if_else(sex == "m", 1L, 0L))
+
+    describe("yreg linear", {
+        it("extracts vcov correctly when there is no interaction", {
+            yreg_fit3 <- fit_yreg(yreg = "linear",
+                                  data = pbc_cc,
+                                  yvar = "alk.phos",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = FALSE,
+                                  eventvar = NULL)
+            vars <- c("(Intercept)","trt","bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "linear",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = FALSE),
+                         vcov(yreg_fit3)[vars,vars])
+        })
+        it("extracts vcov correctly when there is an interaction", {
+            yreg_fit3 <- fit_yreg(yreg = "linear",
+                                  data = pbc_cc,
+                                  yvar = "alk.phos",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = TRUE,
+                                  eventvar = NULL)
+            vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "linear",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = TRUE),
+                         vcov(yreg_fit3)[vars,vars])
+        })
+    })
+    describe("yreg logistic", {
+        it("extracts vcov correctly when there is no interaction", {
+            yreg_fit3 <- fit_yreg(yreg = "logistic",
+                                  data = pbc_cc,
+                                  yvar = "spiders",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = FALSE,
+                                  eventvar = NULL)
+            vars <- c("(Intercept)","trt","bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "logistic",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = FALSE),
+                         vcov(yreg_fit3)[vars,vars])
+        })
+        it("extracts vcov correctly when there is an interaction", {
+            yreg_fit3 <- fit_yreg(yreg = "logistic",
+                                  data = pbc_cc,
+                                  yvar = "spiders",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = TRUE,
+                                  eventvar = NULL)
+            vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "logistic",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = TRUE),
+                         vcov(yreg_fit3)[vars,vars])
+
+        })
+    })
+    describe("yreg loglinear", {
+        it("extracts vcov correctly when there is no interaction", {
+            expect_equal(TRUE,FALSE)
+        })
+        it("extracts vcov correctly when there is an interaction", {
+            expect_equal(TRUE,FALSE)
+        })
+    })
+    describe("yreg poisson", {
+        it("extracts vcov correctly when there is no interaction", {
+            expect_equal(TRUE,FALSE)
+        })
+        it("extracts vcov correctly when there is an interaction", {
+            expect_equal(TRUE,FALSE)
+        })
+    })
+    describe("yreg negbin", {
+        it("extracts vcov correctly when there is no interaction", {
+            expect_equal(TRUE,FALSE)
+        })
+        it("extracts vcov correctly when there is an interaction", {
+            expect_equal(TRUE,FALSE)
+        })
+    })
+    describe("yreg survCox", {
+        it("extracts vcov correctly when there is no interaction", {
+            expect_equal(TRUE,FALSE)
+        })
+        it("extracts vcov correctly when there is an interaction", {
+            expect_equal(TRUE,FALSE)
+        })
+    })
+    describe("yreg survAFT_exp", {
+        it("extracts vcov correctly when there is no interaction", {
+            expect_equal(TRUE,FALSE)
+        })
+        it("extracts vcov correctly when there is an interaction", {
+            expect_equal(TRUE,FALSE)
+        })
+    })
+    describe("yreg survAFT_weibull", {
+        it("extracts vcov correctly when there is no interaction", {
+            yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
+                                  data = pbc_cc,
+                                  yvar = "time",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = FALSE,
+                                  eventvar = "status")
+            vars <- c("(Intercept)","trt","bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "linear",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = FALSE),
+                         vcov(yreg_fit3)[vars,vars])
+        })
+        it("extracts vcov correctly when there is an interaction", {
+            yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
+                                  data = pbc_cc,
+                                  yvar = "time",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = TRUE,
+                                  eventvar = "status")
+            vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "linear",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = TRUE),
+                         vcov(yreg_fit3)[vars,vars])
+        })
+    })
+
+})
