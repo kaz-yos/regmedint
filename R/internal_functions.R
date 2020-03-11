@@ -181,6 +181,14 @@ fit_yreg <- function(yreg,
 
     } else if (yreg == "loglinear") {
 
+        eval(
+            bquote(
+                glm(formula = .(as.formula(string_formula)),
+                    family = binomial(link = "log"),
+                    data = data)
+            )
+        )
+
     } else if (yreg == "poisson") {
 
         eval(
@@ -193,7 +201,22 @@ fit_yreg <- function(yreg,
 
     } else if (yreg == "negbin") {
 
+        eval(
+            bquote(
+                MASS::glm.nb(formula = .(as.formula(string_formula)),
+                             data = data)
+            )
+        )
+
     } else if (yreg == "survCox") {
+
+        eval(
+            bquote(
+                survival::survreg(formula = .(as.formula(string_formula)),
+                                  data = data,
+                                  ties = "efron")
+            )
+        )
 
     } else if (yreg == "survAFT_exp") {
 
