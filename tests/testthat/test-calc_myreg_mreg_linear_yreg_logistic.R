@@ -7,6 +7,7 @@
 
 ## Load testthat in case this is run in isolation.
 library(testthat)
+library(survival)
 library(tidyverse)
 
 
