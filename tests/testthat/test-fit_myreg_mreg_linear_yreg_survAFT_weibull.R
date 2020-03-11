@@ -15,7 +15,7 @@ library(tidyverse)
 ### Internal function for myreg model fitting
 ################################################################################
 
-test_that("fit_myreg fit linear / Weibull AFT models correctly", {
+test_that("calc_myreg fit linear / Weibull AFT models correctly", {
 
     data(pbc)
 
@@ -39,7 +39,11 @@ test_that("fit_myreg fit linear / Weibull AFT models correctly", {
                           cvar = NULL,
                           interaction = FALSE,
                           eventvar = "status")
-    myreg_fit0 <- fit_myreg(mreg_fit0, yreg_fit0)
+    myreg_fit0 <- calc_myreg(mreg = "linear",
+                             mreg_fit = mreg_fit0,
+                             yreg = "survAFT_weibull",
+                             yreg_fit = yreg_fit0,
+                             interaction = FALSE)
     ## Point estimates
     ref_est0 <- tibble(beta_0 = coef(mreg_fit0)["(Intercept)"],
                        beta_A = coef(mreg_fit0)["trt"],
@@ -137,7 +141,7 @@ test_that("fit_myreg fit linear / Weibull AFT models correctly", {
 })
 
 
-test_that("fit_myreg fit linear / Weibull AFT models correctly with interaction", {
+test_that("calc_myreg fit linear / Weibull AFT models correctly with interaction", {
 
     data(pbc)
 
