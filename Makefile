@@ -16,7 +16,7 @@ PKG_VERSION=$(shell grep -i ^version: DESCRIPTION | cut -d : -d \  -f 2)
 ## Define files to check for updates
 R_FILES   := $(wildcard R/*.R)
 TST_FILES := $(wildcard tests/testthat/*.R)
-SAS_FILES := $(wildcard tests/testthat/sas-*.sas)
+SAS_FILES := $(wildcard tests/testthat/reference_results/sas-*.sas)
 SRC_FILES := $(wildcard src/*) $(addprefix src/, $(COPY_SRC))
 VIG_FILES := $(wildcard vignettes/*)
 PKG_FILES := DESCRIPTION NAMESPACE NEWS $(R_FILES) $(TST_FILES) $(SRC_FILES) $(VIG_FILES)
@@ -82,7 +82,7 @@ install: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 # https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile
 sas:
 	-cd tests/testthat/ ; \
-	for f in $(subst tests/testthat/,,$(SAS_FILES)) ; do \
+	for f in $(subst tests/testthat/reference_results/,,$(SAS_FILES)) ; do \
 	sas $$f ; \
 	done;
 
