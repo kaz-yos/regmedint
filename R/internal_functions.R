@@ -5,6 +5,10 @@
 ## Author: Kazuki Yoshida
 ################################################################################
 
+###
+### Constructor for internal use
+################################################################################
+
 ##' Low level constructor for a regmedint S3 class object.
 ##'
 ##' This is not a user function and meant to be executed within the regmedint function after validatingthe arguments.
@@ -59,6 +63,10 @@ new_regmedint <- function(data,
     res
 }
 
+
+###
+### Model fitters for mreg and yreg
+################################################################################
 
 ##' Fit a model for the mediator given the treatment and covariates.
 ##'
