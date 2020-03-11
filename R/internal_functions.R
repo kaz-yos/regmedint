@@ -36,7 +36,15 @@ new_regmedint <- function(data,
     yreg_fit <- fit_yreg(yreg, data, yvar, avar, mvar, cvar, interaction, eventvar)
 
     ## Perform mediation analysis
-    myreg_fit <- fit_myreg(mreg_fit, yreg_fit, a0, a1, m_cde, c_cond)
+    myreg_fit <- calc_myreg(mreg,
+                            mreg_fit,
+                            yreg,
+                            yreg_fit,
+                            interaction,
+                            a0,
+                            a1,
+                            m_cde,
+                            c_cond)
 
     ## Construct the result object
     res <- list(mreg = mreg_fit,
@@ -207,13 +215,6 @@ fit_yreg <- function(yreg,
 }
 
 
-
-fit_myreg <- function(...) {
-    ## Mock up
-    NULL
-}
-
-
 ###
 ### Formula string creators
 ################################################################################
@@ -265,4 +266,94 @@ string_yreg_formula <- function(yvar,
         return(sprintf("%s ~ %s", surv_string, amcvar_string))
 
     }
+}
+
+
+###
+### Functions for regression-based causal mediation analysis given two models
+################################################################################
+
+##' Calculate effect measures based on two regression fits.
+##'
+##' Causal effect measures are calculated given the mediator model fit (\code{mreg_fit}) and the outcome model fit (\code{yreg_fit}).
+##'
+##' @inheritParams regmedint
+##' @param mreg_fit Model fit from \code{\link{fit_mreg}}
+##' @param yreg_fit Model fit from \code{\link{fit_yreg}}
+##'
+##' @return \code{myreg} object containing effect measures.
+calc_myreg <- function(mreg,
+                       mreg_fit,
+                       yreg,
+                       yreg_fit,
+                       interaction,
+                       a0,
+                       a1,
+                       m_cde,
+                       c_cond) {
+
+    ## Only four patterns as the non-linear yreg cases are the
+    ## same as the logistic yreg case.
+    ## See VanderWeele 2015 Appendix.
+    ##     Valeri & VanderWeele 2013 Appendix.
+    ##     README for this repo.
+    if (mreg == "linear" & yreg == "linear") {
+
+        ## VanderWeele 2015 p466 Proposition 2.3
+        calc_myreg_mreg_linear_yreg_linear(mreg,
+                                           mreg_fit,
+                                           yreg,
+                                           yreg_fit,
+                                           interaction,
+                                           a0,
+                                           a1,
+                                           m_cde,
+                                           c_cond)
+
+    } else if (mreg == "linear" & yreg != "linear") {
+
+        ## VanderWeele 2015 p468 Proposition 2.4
+        calc_myreg_mreg_linear_yreg_logistic(mreg,
+                                             mreg_fit,
+                                             yreg,
+                                             yreg_fit,
+                                             interaction,
+                                             a0,
+                                             a1,
+                                             m_cde,
+                                             c_cond)
+
+    } else if (mreg == "logistic" & yreg == "linear") {
+
+        ## VanderWeele 2015 p471 Proposition 2.5
+        calc_myreg_mreg_logistic_yreg_linear(mreg,
+                                             mreg_fit,
+                                             yreg,
+                                             yreg_fit,
+                                             interaction,
+                                             a0,
+                                             a1,
+                                             m_cde,
+                                             c_cond)
+
+
+    } else if (mreg == "logistic" & yreg != "linear") {
+
+        ## VanderWeele 2015 p473 Proposition 2.6
+        calc_myreg_mreg_logistic_yreg_logistic(mreg,
+                                               mreg_fit,
+                                               yreg,
+                                               yreg_fit,
+                                               interaction,
+                                               a0,
+                                               a1,
+                                               m_cde,
+                                               c_cond)
+
+    } else  {
+
+        stop("Unsupported mreg or yreg.")
+
+    }
+
 }
