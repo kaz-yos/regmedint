@@ -99,11 +99,14 @@ calc_myreg <- function(mreg,
 
 Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar) {
     vars <- c("(Intercept)", avar, cvar)
-    vcov(mreg_fit)[vars,vars]
+    vcov(mreg_fit)[vars,vars, drop = FALSE]
 }
 
-Sigma_theta_hat <- function() {
-    ## Special handling
+Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
+    vars <- if_else(interaction,
+                    c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar),
+                    c("(Intercept)", avar, mvar, cvar))
+    vcov(yreg_fit)[vars,vars, drop = FALSE]
 }
 
 Sigma_sigma_hat_sq <- function(mreg_fit) {
