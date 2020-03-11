@@ -92,67 +92,20 @@ calc_myreg <- function(mreg,
 }
 
 
-## VanderWeele 2015 p466 Proposition 2.3
-##' Calculate effect measures based on two regression fits (linear/linear)
-##'
-##' Causal effect parameters are calculated.
-##'
-##' @inheritParams regmedint
-##' @param mreg_fit Model fit from \code{\link{fit_mreg}}
-##' @param yreg_fit Model fit from \code{\link{fit_yreg}}
-##'
-##' @return
-calc_myreg_mreg_linear_yreg_linear <- function(mreg,
-                                               mreg_fit,
-                                               yreg,
-                                               yreg_fit,
-                                               interaction,
-                                               a0,
-                                               a1,
-                                               m_cde,
-                                               c_cond) {
+###
+### calc_myreg helpers
+################################################################################
 
-    calc_myreg_mreg_linear_yreg_linear_est
-    calc_myreg_mreg_linear_yreg_linear_se
 
-    ## class myreg_mreg_linear_yreg_linear, myreg
+Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar) {
+    vars <- c("(Intercept)", avar, cvar)
+    vcov(mreg_fit)[vars,vars]
 }
 
-
-## VanderWeele 2015 p468 Proposition 2.4
-calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
-                                                 mreg_fit,
-                                                 yreg,
-                                                 yreg_fit,
-                                                 interaction,
-                                                 a0,
-                                                 a1,
-                                                 m_cde,
-                                                 c_cond) {
+Sigma_theta_hat <- function() {
+    ## Special handling
 }
 
-
-## VanderWeele 2015 p471 Proposition 2.5
-calc_myreg_mreg_logistic_yreg_linear <- function(mreg,
-                                                 mreg_fit,
-                                                 yreg,
-                                                 yreg_fit,
-                                                 interaction,
-                                                 a0,
-                                                 a1,
-                                                 m_cde,
-                                                 c_cond) {
-}
-
-
-## VanderWeele 2015 p473 Proposition 2.6
-calc_myreg_mreg_logistic_yreg_logistic <- function(mreg,
-                                                   mreg_fit,
-                                                   yreg,
-                                                   yreg_fit,
-                                                   interaction,
-                                                   a0,
-                                                   a1,
-                                                   m_cde,
-                                                   c_cond) {
+Sigma_sigma_hat_sq <- function() {
+    ## Only for calc_myreg_mreg_linear_yreg_logistic_se
 }
