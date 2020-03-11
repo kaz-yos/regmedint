@@ -73,22 +73,30 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
 
     m <- m_cde
     rm <- sigma^2 # FIXME
-    asq <- a1^2
-    a1sq <- a0^2 #
+    a1sq <- a1^2
+    a0sq <- a0^2
     tsq <- theta3^2 # FIXME
 
-    ## Adopted from mediation.sas
-    ## Look up
+    ## Adopted from mediation.sas and modified.
+    ## Look up the following:
     ## %if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
+    ##
     ## */MARGINAL=CONDITIONAL CDE*/;
     x1=(theta1+theta3*m)*(a1-a0);
-    ## */MARGINAL=CONDITIONAL NDE*/;
-    x2=(theta1+theta3*beta0+theta3*beta1*a0+theta3*theta2*rm)*(a1-a0)+(1/2)*tsq*rm*(asq-a1sq);
-    ## */MARGINAL=CONDITIONAL NIE*/;
+    ## */MARGINAL=CONDITIONAL PNDE (Pearl NDE)*/;
+    x2=(theta1+theta3*beta0+theta3*beta1*a0+theta3*theta2*rm)*(a1-a0)+(1/2)*tsq*rm*(a1sq-a0sq);
+    ## */MARGINAL=CONDITIONAL PNIE*/;
     x3=(theta2*beta1+theta3*beta1*a0)*(a1-a0);
     ## */MARGINAL=CONDITIONAL TNDE*/;
-    x4=(theta1+theta3*beta0+theta3*beta1*a1+theta3*theta2*rm)*(a1-a0)+(1/2)*tsq*rm*(asq-a1sq);
-    ## */ MARGINAL=CONDITIONAL TNIE*/;
+    x4=(theta1+theta3*beta0+theta3*beta1*a1+theta3*theta2*rm)*(a1-a0)+(1/2)*tsq*rm*(a1sq-a0sq);
+    ## */ MARGINAL=CONDITIONAL TNIE (Pearl NIE)*/;
     x5=(theta2*beta1+theta3*beta1*a1)*(a1-a0);
 
+    list(m_cde = m_cde,
+         cde = x1,
+         c_cond = c_cond,
+         pnde = x2,
+         pnie = x3,
+         tnde = x4,
+         tnie = x5)
 }
