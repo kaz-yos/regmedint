@@ -208,10 +208,40 @@ describe("Sigma_theta_hat", {
     })
     describe("yreg survCox", {
         it("extracts vcov correctly when there is no interaction", {
-            expect_equal(TRUE,FALSE)
+            yreg_fit3 <- fit_yreg(yreg = "survCox",
+                                  data = pbc_cc,
+                                  yvar = "time",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = FALSE,
+                                  eventvar = "status")
+            vars <- c("(Intercept)","trt","bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "survCox",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = FALSE),
+                         vcov(yreg_fit3)[vars,vars])
         })
         it("extracts vcov correctly when there is an interaction", {
-            expect_equal(TRUE,FALSE)
+            yreg_fit3 <- fit_yreg(yreg = "survCox",
+                                  data = pbc_cc,
+                                  yvar = "time",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = TRUE,
+                                  eventvar = "status")
+            vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "survCox",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = TRUE),
+                         vcov(yreg_fit3)[vars,vars])
         })
     })
     describe("yreg survAFT_exp", {
