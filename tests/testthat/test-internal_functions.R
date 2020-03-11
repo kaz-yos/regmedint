@@ -62,19 +62,19 @@ test_that("string_yreg_formula create sound formula strings for non-survival out
 test_that("string_yreg_formula create sound formula strings for survival outcomes", {
 
     ## Zero covariates
-    expect_equal(string_yreg_formula("time","A","M",NULL,"event", interaction = FALSE,
-                                     eventvar = NULL),
+    expect_equal(string_yreg_formula("time","A","M",NULL, interaction = FALSE,
+                                     eventvar = "event"),
                  "Surv(time, event) ~ A + M")
-    expect_equal(string_yreg_formula("time","A","M",NULL,"event", interaction = TRUE,
-                                     eventvar = NULL),
+    expect_equal(string_yreg_formula("time","A","M",NULL, interaction = TRUE,
+                                     eventvar = "event"),
                  "Surv(time, event) ~ A*M")
 
     ## One covariate
-    expect_equal(string_yreg_formula("time","A","M",c("C"),"event", interaction = FALSE,
-                                     eventvar = NULL),
+    expect_equal(string_yreg_formula("time","A","M",c("C"), interaction = FALSE,
+                                     eventvar = "event"),
                  "Surv(time, event) ~ A + M + C")
-    expect_equal(string_yreg_formula("time","A","M",c("C"),"event", interaction = TRUE,
-                                     eventvar = NULL),
+    expect_equal(string_yreg_formula("time","A","M",c("C"), interaction = TRUE,
+                                     eventvar = "event"),
                  "Surv(time, event) ~ A*M + C")
 
     ## Three covariates
