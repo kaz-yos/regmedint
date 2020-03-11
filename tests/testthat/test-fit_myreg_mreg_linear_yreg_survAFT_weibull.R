@@ -40,7 +40,8 @@ test_that("fit_myreg fit linear / Weibull AFT models correctly", {
                           interaction = FALSE,
                           eventvar = "status")
     myreg_fit0 <- fit_myreg(mreg_fit0, yreg_fit0)
-    ref_fit0 <- tibble(beta_0 = coef(mreg_fit0)["(Intercept)"],
+    ## Point estimates
+    ref_est0 <- tibble(beta_0 = coef(mreg_fit0)["(Intercept)"],
                        beta_A = coef(mreg_fit0)["trt"],
                        beta_C = list(0),
                        sigma = sigma(mreg_fit0),
@@ -64,15 +65,40 @@ test_that("fit_myreg fit linear / Weibull AFT models correctly", {
                tnde = 999,
                pnie = 888)
     expect_equal(myreg_fit0$myreg_fit["pnde"],
-                 ref_fit0$pnde)
+                 ref_est0$pnde)
     expect_equal(myreg_fit0$myreg_fit["tnie"],
-                 ref_fit0$tnie)
+                 ref_est0$tnie)
     expect_equal(myreg_fit0$myreg_fit["cde_m"],
-                 ref_fit0$cde_m)
+                 ref_est0$cde_m)
     expect_equal(myreg_fit0$myreg_fit["tnde"],
-                 ref_fit0$tnde)
+                 ref_est0$tnde)
     expect_equal(myreg_fit0$myreg_fit["pnie"],
-                 ref_fit0$pnie)
+                 ref_est0$pnie)
+    ## Standard error estimates
+    ref_se0 <- tibble(Sigma_beta = vcov(mreg_fit0),
+                      ## FIXME: This contains dimension for the scale parameter?
+                      Sigma_theta = vcov(yreg_fit0),
+                      ## FIXME: Variance of sigma^2 estimate
+                      Sigma_sigma = 0,
+                      a1 = 1,
+                      a0 = 0,
+                      m_cde = 0.6,
+                      c_cond = list(1.1),
+                      ## c part of linear predictor by inner product of beta_C and c_cond
+                      clp = map2_dbl(beta_C, c_cond, function(a,b) {sum(a*b)}),
+                      ## VanderWeele 2015 p468
+                      Gamma_cde_m =
+                          list(c(0,0,
+                                 0,1,0,m_cde,
+                                 0)),
+                      Gamma_pnde =
+                          list(c(theta_AM,theta_AM*a0,
+                                 0,1,theta_AM * sigma^2, beta_0 + beta_A * a0 + clp + theta_M * sigma^2 + theta_AM * sigma^2 * (a1 + a0),
+                                 theta_AM * theta_M + 1/2 * theta_AM^2 * (a1 + a0))),
+                      Gamma_tnie =
+                          list(c(0,theta_M + theta_AM * a,
+                                 0,0,beta_A,beta_A * a,
+                                 0)))
 
     ## One covariates
     yreg_fit1 <- fit_yreg(yreg = "survAFT_weibull",
