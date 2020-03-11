@@ -102,7 +102,8 @@ describe("Sigma_theta_hat", {
     data(pbc)
     ## Missing data should be warned in validate_args()
     pbc_cc <- pbc[complete.cases(pbc),] %>%
-        mutate(male = if_else(sex == "m", 1L, 0L))
+        mutate(male = if_else(sex == "m", 1L, 0L),
+               status = if_else(status == 0, 0L, 1L))
 
     describe("yreg linear", {
         it("extracts vcov correctly when there is no interaction", {
@@ -215,10 +216,40 @@ describe("Sigma_theta_hat", {
     })
     describe("yreg survAFT_exp", {
         it("extracts vcov correctly when there is no interaction", {
-            expect_equal(TRUE,FALSE)
+            yreg_fit3 <- fit_yreg(yreg = "survAFT_exp",
+                                  data = pbc_cc,
+                                  yvar = "time",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = FALSE,
+                                  eventvar = "status")
+            vars <- c("(Intercept)","trt","bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = FALSE),
+                         vcov(yreg_fit3)[vars,vars])
         })
         it("extracts vcov correctly when there is an interaction", {
-            expect_equal(TRUE,FALSE)
+            yreg_fit3 <- fit_yreg(yreg = "survAFT_exp",
+                                  data = pbc_cc,
+                                  yvar = "time",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = TRUE,
+                                  eventvar = "status")
+            vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = TRUE),
+                         vcov(yreg_fit3)[vars,vars])
         })
     })
     describe("yreg survAFT_weibull", {
@@ -232,7 +263,7 @@ describe("Sigma_theta_hat", {
                                   interaction = FALSE,
                                   eventvar = "status")
             vars <- c("(Intercept)","trt","bili","age","male","stage")
-            expect_equal(Sigma_theta_hat(yreg = "linear",
+            expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
                                          yreg_fit = yreg_fit3,
                                          avar = "trt",
                                          mvar = "bili",
@@ -250,7 +281,7 @@ describe("Sigma_theta_hat", {
                                   interaction = TRUE,
                                   eventvar = "status")
             vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
-            expect_equal(Sigma_theta_hat(yreg = "linear",
+            expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
                                          yreg_fit = yreg_fit3,
                                          avar = "trt",
                                          mvar = "bili",
