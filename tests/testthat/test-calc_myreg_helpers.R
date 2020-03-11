@@ -184,26 +184,118 @@ describe("Sigma_theta_hat", {
     })
     describe("yreg loglinear", {
         it("extracts vcov correctly when there is no interaction", {
-            expect_equal(TRUE,FALSE)
+            yreg_fit3 <- fit_yreg(yreg = "loglinear",
+                                  data = pbc_cc,
+                                  yvar = "spiders",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = FALSE,
+                                  eventvar = NULL)
+            vars <- c("(Intercept)","trt","bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "loglinear",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = FALSE),
+                         vcov(yreg_fit3)[vars,vars])
         })
         it("extracts vcov correctly when there is an interaction", {
-            expect_equal(TRUE,FALSE)
+            yreg_fit3 <- fit_yreg(yreg = "loglinear",
+                                  data = pbc_cc,
+                                  yvar = "spiders",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = TRUE,
+                                  eventvar = NULL)
+            vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "poisson",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = TRUE),
+                         vcov(yreg_fit3)[vars,vars])
         })
     })
     describe("yreg poisson", {
+        ## Use platelet as a fake count variable
         it("extracts vcov correctly when there is no interaction", {
-            expect_equal(TRUE,FALSE)
+            yreg_fit3 <- fit_yreg(yreg = "poisson",
+                                  data = pbc_cc,
+                                  yvar = "platelet",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = FALSE,
+                                  eventvar = NULL)
+            vars <- c("(Intercept)","trt","bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "poisson",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = FALSE),
+                         vcov(yreg_fit3)[vars,vars])
         })
         it("extracts vcov correctly when there is an interaction", {
-            expect_equal(TRUE,FALSE)
+            yreg_fit3 <- fit_yreg(yreg = "poisson",
+                                  data = pbc_cc,
+                                  yvar = "platelet",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = TRUE,
+                                  eventvar = NULL)
+            vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "poisson",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = TRUE),
+                         vcov(yreg_fit3)[vars,vars])
         })
     })
     describe("yreg negbin", {
+        ## Use platelet as a fake count variable
         it("extracts vcov correctly when there is no interaction", {
-            expect_equal(TRUE,FALSE)
+            yreg_fit3 <- fit_yreg(yreg = "negbin",
+                                  data = pbc_cc,
+                                  yvar = "platelet",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = FALSE,
+                                  eventvar = NULL)
+            vars <- c("(Intercept)","trt","bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "negbin",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = FALSE),
+                         vcov(yreg_fit3)[vars,vars])
         })
         it("extracts vcov correctly when there is an interaction", {
-            expect_equal(TRUE,FALSE)
+            yreg_fit3 <- fit_yreg(yreg = "negbin",
+                                  data = pbc_cc,
+                                  yvar = "platelet",
+                                  avar = "trt",
+                                  mvar = "bili",
+                                  cvar = c("age","male","stage"),
+                                  interaction = TRUE,
+                                  eventvar = NULL)
+            vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
+            expect_equal(Sigma_theta_hat(yreg = "negbin",
+                                         yreg_fit = yreg_fit3,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         interaction = TRUE),
+                         vcov(yreg_fit3)[vars,vars])
         })
     })
     describe("yreg survCox", {
