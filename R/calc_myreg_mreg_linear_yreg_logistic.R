@@ -25,4 +25,25 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                  a1,
                                                  m_cde,
                                                  c_cond) {
+
+    list(est = calc_myreg_mreg_linear_yreg_logistic_est(beta0,
+                                                        beta1,
+                                                        beta2,
+                                                        theta1,
+                                                        theta2,
+                                                        theta3,
+                                                        theta4,
+                                                        sigma),
+         se = calc_myreg_mreg_linear_yreg_logistic_se(beta0,
+                                                      beta1,
+                                                      beta2,
+                                                      theta1,
+                                                      theta2,
+                                                      theta3,
+                                                      theta4,
+                                                      sigma,
+                                                      Sigma_beta,
+                                                      Sigma_theta,
+                                                      Sigma_sigma))
+
 }
