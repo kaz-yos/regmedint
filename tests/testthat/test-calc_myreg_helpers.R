@@ -14,7 +14,18 @@ library(tidyverse)
 ### Helper functions
 ################################################################################
 
-test_that("variance estimates for sigma^2 is extracted", {
+##
+describe("Sigma_beta", {
+    it("extracts coefficients from linear models correctly", {
+
+    })
+
+    it("extracts coefficients from logistic models correctly", {
+
+    })
+})
+
+test_that("Sigma_sigma_hat_sq extracts the variance estimate for sigma^2", {
 
     data(pbc)
 
@@ -38,9 +49,6 @@ test_that("variance estimates for sigma^2 is extracted", {
     ## lm
     lm_fit <- lm(formula = alk.phos ~ trt + bili,
                  data    = pbc_cc)
-    ## Just vcov() for lm
-    expect_equal(Sigma_beta_hat(lm_fit),
-                 vcov(lm_fit))
     ## Derivation above.
     expect_equal(Sigma_sigma_hat_sq(lm_fit),
                  ## (sigma_hat^2)^2 / (n-p)
