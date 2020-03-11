@@ -212,9 +212,9 @@ fit_yreg <- function(yreg,
 
         eval(
             bquote(
-                survival::survreg(formula = .(as.formula(string_formula)),
-                                  data = data,
-                                  ties = "efron")
+                survival::coxph(formula = .(as.formula(string_formula)),
+                                data = data,
+                                ties = "efron")
             )
         )
 
