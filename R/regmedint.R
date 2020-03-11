@@ -112,6 +112,38 @@ regmedint <- function(data,
 
 
 ###
+### Argument validation function
+################################################################################
+##' Validate arguments to regmedint before passing to other functions
+##'
+##' Internal functions (usually) do not validate arguments, thus, we need to make sure informative errors are raised when the arguments are not safe for subsequent computation.
+##'
+##' @inheritParams regmedint
+##'
+##' @return None
+validate_args <- function(data,
+                          yvar,
+                          avar,
+                          mvar,
+                          cvar,
+                          a0,
+                          a1,
+                          m_cde,
+                          yreg,
+                          mreg,
+                          interaction,
+                          casecontrol,
+                          full_output,
+                          c_cond,
+                          boot,
+                          eventvar) {
+
+    stop("Unimplemented!
+Need to validate arguments before passing to other functions!")
+
+}
+
+###
 ### User interface methods for the regmedint class
 ################################################################################
 
