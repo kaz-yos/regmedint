@@ -16,14 +16,15 @@ source("./utilities_for_tests.R")
 ### Set up SAS reference results
 ################################################################################
 
-sas_res <- read_parsed_sas_mediation_output("./sas-mreg_linear_yreg_aft_weibull.txt")
+sas_res <- read_parsed_sas_mediation_output(
+    "../reference_results/sas-mreg_linear_yreg_aft_weibull.txt")
 
 
 ###
 ### Fit separate models to obtain reference R results
 ################################################################################
 
-data1 <- read.delim(file = "./data-valeri-vanderweele-2015.txt",
+data1 <- read.delim(file = "../reference_results/data-valeri-vanderweele-2015.txt",
                     header = TRUE,
                     sep = " ")
 
