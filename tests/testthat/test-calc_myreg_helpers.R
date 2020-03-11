@@ -7,6 +7,7 @@
 
 ## Load testthat in case this is run in isolation.
 library(testthat)
+library(survival)
 library(tidyverse)
 
 
@@ -14,13 +15,48 @@ library(tidyverse)
 ### Helper functions
 ################################################################################
 
-##
-describe("Sigma_beta", {
-    it("extracts coefficients from linear models correctly", {
+## BDD-style
+## https://github.com/r-lib/testthat/issues/747
+describe("Sigma_beta_hat", {
 
+    data(pbc)
+    ## Missing data should be warned in validate_args()
+    pbc_cc <- pbc[complete.cases(pbc),] %>%
+        mutate(male = if_else(sex == "m", 1L, 0L))
+
+    it("extracts vcov from linear models correctly", {
+
+        lm3 <- lm(formula = bili ~ trt + age + male + stage,
+                  data = pbc_cc)
+        expect_equal(Sigma_beta_hat(mreg = "linear",
+                                    mreg_fit = lm3,
+                                    avar = c("trt"),
+                                    cvar = c("age","male","stage")),
+                     vcov(lm3))
+        vars <- c("(Intercept)","trt","age","stage","male")
+        expect_equal(Sigma_beta_hat(mreg = "linear",
+                                    mreg_fit = lm3,
+                                    avar = c("trt"),
+                                    cvar = c("age","stage","male")),
+                     vcov(lm3)[vars,vars])
     })
 
-    it("extracts coefficients from logistic models correctly", {
+    it("extracts vcov from logistic models correctly", {
+
+        glm3 <- glm(formula = hepato ~ trt + age + male + stage,
+                    family = binomial(link = "logit"),
+                    data = pbc_cc)
+        expect_equal(Sigma_beta_hat(mreg = "logistic",
+                                    mreg_fit = glm3,
+                                    avar = c("trt"),
+                                    cvar = c("age","male","stage")),
+                     vcov(glm3))
+        vars <- c("(Intercept)","trt","age","stage","male")
+        expect_equal(Sigma_beta_hat(mreg = "logistic",
+                                    mreg_fit = glm3,
+                                    avar = c("trt"),
+                                    cvar = c("age","stage","male")),
+                     vcov(glm3)[vars,vars])
 
     })
 })
@@ -28,7 +64,6 @@ describe("Sigma_beta", {
 test_that("Sigma_sigma_hat_sq extracts the variance estimate for sigma^2", {
 
     data(pbc)
-
     ## Missing data should be warned in validate_args()
     pbc_cc <- pbc[complete.cases(pbc),] %>%
         mutate(male = if_else(sex == "m", 1L, 0L))
