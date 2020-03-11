@@ -24,3 +24,27 @@ The current implementation status:
 1. SAS reference results created
 2. R implementation ongoing
 3. R implementation complete
+
+* regression formula
+| yreg \ mreg     | linear | logistic |
+|-----------------+--------+----------|
+| linear          |        |          |
+| logistic        |        |          |
+| loglinear       |        |          |
+| poisson         |        |          |
+| negbin          |        |          |
+| survCox         |        |          |
+| survAFT exp     |        |          |
+| survAFT weibull |        |          |
+
+* standard error formula
+| yreg \ mreg     | linear | logistic |
+|-----------------+--------+----------|
+| linear          |        |          |
+| logistic        |        |          |
+| loglinear       |        |          |
+| poisson         |        |          |
+| negbin          |        |          |
+| survCox         |        |          |
+| survAFT exp     |        |          |
+| survAFT weibull |        |          |
