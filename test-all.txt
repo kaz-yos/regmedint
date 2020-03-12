@@ -1,0 +1,125 @@
+✔ |  OK F W S | Context
+⠏ |   0       | calc_myreg_helpers⠴ |  14 2     | calc_myreg_helpers✖ |  14 8     | calc_myreg_helpers [0.2 s]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+test-calc_myreg_helpers.R:187: error: yreg loglinear: extracts vcov correctly when there is no interaction
+no valid set of coefficients has been found: please supply starting values
+Backtrace:
+ 1. regmedint::fit_yreg(...) tests/testthat/test-calc_myreg_helpers.R:187:12
+ 4. stats::glm(...)
+ 7. stats::glm.fit(...)
+
+test-calc_myreg_helpers.R:205: error: yreg loglinear: extracts vcov correctly when there is an interaction
+no valid set of coefficients has been found: please supply starting values
+Backtrace:
+ 1. regmedint::fit_yreg(...) tests/testthat/test-calc_myreg_helpers.R:205:12
+ 4. stats::glm(...)
+ 7. stats::glm.fit(...)
+
+test-calc_myreg_helpers.R:312: error: yreg survCox: extracts vcov correctly when there is no interaction
+invalid dimnames given for "dgCMatrix" object
+Backtrace:
+ 1. testthat::expect_equal(...) tests/testthat/test-calc_myreg_helpers.R:312:12
+ 4. regmedint::Sigma_theta_hat(...)
+ 6. Matrix:::`dimnames<-`(...)
+ 7. Matrix:::dimnamesGets(x, value)
+
+test-calc_myreg_helpers.R:330: error: yreg survCox: extracts vcov correctly when there is an interaction
+invalid dimnames given for "dgCMatrix" object
+Backtrace:
+ 1. testthat::expect_equal(...) tests/testthat/test-calc_myreg_helpers.R:330:12
+ 4. regmedint::Sigma_theta_hat(...)
+ 6. Matrix:::`dimnames<-`(...)
+ 7. Matrix:::dimnamesGets(x, value)
+
+test-calc_myreg_helpers.R:350: error: yreg survAFT_exp: extracts vcov correctly when there is no interaction
+subscript out of bounds
+Backtrace:
+ 1. testthat::expect_equal(...) tests/testthat/test-calc_myreg_helpers.R:350:12
+ 4. regmedint::Sigma_theta_hat(...)
+
+test-calc_myreg_helpers.R:368: error: yreg survAFT_exp: extracts vcov correctly when there is an interaction
+subscript out of bounds
+Backtrace:
+ 1. testthat::expect_equal(...) tests/testthat/test-calc_myreg_helpers.R:368:12
+ 4. regmedint::Sigma_theta_hat(...)
+
+test-calc_myreg_helpers.R:388: error: yreg survAFT_weibull: extracts vcov correctly when there is no interaction
+subscript out of bounds
+Backtrace:
+ 1. testthat::expect_equal(...) tests/testthat/test-calc_myreg_helpers.R:388:12
+ 4. regmedint::Sigma_theta_hat(...)
+
+test-calc_myreg_helpers.R:406: error: yreg survAFT_weibull: extracts vcov correctly when there is an interaction
+subscript out of bounds
+Backtrace:
+ 1. testthat::expect_equal(...) tests/testthat/test-calc_myreg_helpers.R:406:12
+ 4. regmedint::Sigma_theta_hat(...)
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | calc_myreg_mreg_linear_yreg_linear
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+test-calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
+Reason: empty test
+
+test-calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | calc_myreg_mreg_linear_yreg_logistic✔ |   0     2 | calc_myreg_mreg_linear_yreg_logistic
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+test-calc_myreg_mreg_linear_yreg_logistic.R:18: skip: calc_myreg_mreg_linear_yreg_logistic_est works given coef
+Reason: empty test
+
+test-calc_myreg_mreg_linear_yreg_logistic.R:27: skip: calc_myreg_mreg_linear_yreg_logistic_se works given coef and vcov
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | calc_myreg_mreg_linear_yreg_survAFT_weibull✖ |   0 4     | calc_myreg_mreg_linear_yreg_survAFT_weibull
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+test-calc_myreg_mreg_linear_yreg_survAFT_weibull.R:42: error: calc_myreg fit linear / Weibull AFT models correctly
+argument "m_cde" is missing, with no default
+Backtrace:
+ 1. regmedint::calc_myreg(...) tests/testthat/test-calc_myreg_mreg_linear_yreg_survAFT_weibull.R:42:4
+ 2. regmedint::calc_myreg_mreg_linear_yreg_logistic(...) R/calc_myreg.R:50:8
+ 3. regmedint::calc_myreg_mreg_linear_yreg_logistic_est(...) R/calc_myreg_mreg_linear_yreg_logistic.R:29:4
+
+test-calc_myreg_mreg_linear_yreg_survAFT_weibull.R:163: failure: calc_myreg fit linear / Weibull AFT models correctly with interaction
+TRUE not equal to FALSE.
+1 element mismatch
+
+test-calc_myreg_mreg_linear_yreg_survAFT_weibull.R:175: failure: calc_myreg fit linear / Weibull AFT models correctly with interaction
+TRUE not equal to FALSE.
+1 element mismatch
+
+test-calc_myreg_mreg_linear_yreg_survAFT_weibull.R:187: failure: calc_myreg fit linear / Weibull AFT models correctly with interaction
+TRUE not equal to FALSE.
+1 element mismatch
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | calc_myreg_mreg_logistic_yreg_linear✔ |   0     2 | calc_myreg_mreg_logistic_yreg_linear
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+test-calc_myreg_mreg_logistic_yreg_linear.R:17: skip: calc_myreg_mreg_logistic_yreg_linear_est works given coef
+Reason: empty test
+
+test-calc_myreg_mreg_logistic_yreg_linear.R:26: skip: calc_myreg_mreg_logistic_yreg_linear_se works given coef and vcov
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | calc_myreg_mreg_logistic_yreg_logistic✔ |   0     2 | calc_myreg_mreg_logistic_yreg_logistic
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+test-calc_myreg_mreg_logistic_yreg_logistic.R:17: skip: calc_myreg_mreg_logistic_yreg_logistic_est works given coef
+Reason: empty test
+
+test-calc_myreg_mreg_logistic_yreg_logistic.R:26: skip: calc_myreg_mreg_logistic_yreg_logistic_se works given coef and vcov
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | fit_mreg✔ |  24       | fit_mreg
+⠏ |   0       | fit_yreg_linear✔ |  24       | fit_yreg_linear
+⠏ |   0       | fit_yreg_logistic✔ |  24       | fit_yreg_logistic
+⠏ |   0       | fit_yreg_poisson✔ |  24       | fit_yreg_poisson
+⠏ |   0       | fit_yreg_survAFT_exp✔ |  24       | fit_yreg_survAFT_exp
+⠏ |   0       | fit_yreg_survAFT_weibull✔ |  24       | fit_yreg_survAFT_weibull
+⠏ |   0       | internal_functions✔ |  15       | internal_functions
+⠴ |  15 1     | internal_functions
+══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
+Duration: 2.3 s
+
+OK:       173
+Failed:   13
+Warnings: 0
+Skipped:  8
