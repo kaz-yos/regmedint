@@ -88,7 +88,7 @@ describe("theta_hat", {
         mutate(male = if_else(sex == "m", 1L, 0L),
                status = if_else(status == 0, 0L, 1L))
 
-    describe("yreg linear", {
+    describe("theta_hat for yreg linear", {
         it("extracts coef correctly when there is no interaction (add zero)", {
             yreg_fit3 <- fit_yreg(yreg = "linear",
                                   data = pbc_cc,
@@ -131,7 +131,7 @@ describe("theta_hat", {
                          coef(yreg_fit3)[vars])
         })
     })
-    describe("yreg logistic", {
+    describe("theta_hat for yreg logistic", {
         it("extracts coef correctly when there is no interaction (add zero)", {
             yreg_fit3 <- fit_yreg(yreg = "logistic",
                                   data = pbc_cc,
@@ -174,7 +174,7 @@ describe("theta_hat", {
                          coef(yreg_fit3)[vars])
         })
     })
-    describe("yreg loglinear", {
+    describe("theta_hat for yreg loglinear", {
         it("extracts coef correctly when there is no interaction (add zero)", {
             yreg_fit3 <- fit_yreg(yreg = "loglinear",
                                   data = pbc_cc,
@@ -217,7 +217,7 @@ describe("theta_hat", {
                          coef(yreg_fit3)[vars])
         })
     })
-    describe("yreg poisson", {
+    describe("theta_hat for yreg poisson", {
         ## Use platelet as a fake count variable
         it("extracts coef correctly when there is no interaction (add zero)", {
             yreg_fit3 <- fit_yreg(yreg = "poisson",
@@ -261,7 +261,7 @@ describe("theta_hat", {
                          coef(yreg_fit3)[vars])
         })
     })
-    describe("yreg negbin", {
+    describe("theta_hat for yreg negbin", {
         ## Use platelet as a fake count variable
         it("extracts coef correctly when there is no interaction (add zero)", {
             yreg_fit3 <- fit_yreg(yreg = "negbin",
@@ -305,7 +305,7 @@ describe("theta_hat", {
                          coef(yreg_fit3)[vars])
         })
     })
-    describe("yreg survCox", {
+    describe("theta_hat for yreg survCox", {
         it("extracts coef correctly when there is no interaction (add zero)", {
             yreg_fit3 <- fit_yreg(yreg = "survCox",
                                   data = pbc_cc,
@@ -348,7 +348,7 @@ describe("theta_hat", {
                          coef(yreg_fit3)[vars])
         })
     })
-    describe("yreg survAFT_exp", {
+    describe("theta_hat for yreg survAFT_exp", {
         it("extracts coef correctly when there is no interaction (add zero)", {
             yreg_fit3 <- fit_yreg(yreg = "survAFT_exp",
                                   data = pbc_cc,
@@ -391,7 +391,7 @@ describe("theta_hat", {
                          coef(yreg_fit3)[vars])
         })
     })
-    describe("yreg survAFT_weibull", {
+    describe("theta_hat for yreg survAFT_weibull", {
         it("extracts coef correctly when there is no interaction (add zero)", {
             yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
                                   data = pbc_cc,
@@ -531,7 +531,7 @@ describe("Sigma_theta_hat", {
         mutate(male = if_else(sex == "m", 1L, 0L),
                status = if_else(status == 0, 0L, 1L))
 
-    describe("yreg linear", {
+    describe("Sigma_theta_hat for yreg linear", {
         it("extracts vcov correctly when there is no interaction", {
             yreg_fit3 <- fit_yreg(yreg = "linear",
                                   data = pbc_cc,
@@ -569,7 +569,7 @@ describe("Sigma_theta_hat", {
                          vcov(yreg_fit3)[vars,vars])
         })
     })
-    describe("yreg logistic", {
+    describe("Sigma_theta_hat for yreg logistic", {
         it("extracts vcov correctly when there is no interaction", {
             yreg_fit3 <- fit_yreg(yreg = "logistic",
                                   data = pbc_cc,
@@ -608,7 +608,7 @@ describe("Sigma_theta_hat", {
 
         })
     })
-    describe("yreg loglinear", {
+    describe("Sigma_theta_hat for yreg loglinear", {
         it("extracts vcov correctly when there is no interaction", {
             yreg_fit3 <- fit_yreg(yreg = "loglinear",
                                   data = pbc_cc,
@@ -646,7 +646,7 @@ describe("Sigma_theta_hat", {
                          vcov(yreg_fit3)[vars,vars])
         })
     })
-    describe("yreg poisson", {
+    describe("Sigma_theta_hat for yreg poisson", {
         ## Use platelet as a fake count variable
         it("extracts vcov correctly when there is no interaction", {
             yreg_fit3 <- fit_yreg(yreg = "poisson",
@@ -685,7 +685,7 @@ describe("Sigma_theta_hat", {
                          vcov(yreg_fit3)[vars,vars])
         })
     })
-    describe("yreg negbin", {
+    describe("Sigma_theta_hat for yreg negbin", {
         ## Use platelet as a fake count variable
         it("extracts vcov correctly when there is no interaction", {
             yreg_fit3 <- fit_yreg(yreg = "negbin",
@@ -724,7 +724,7 @@ describe("Sigma_theta_hat", {
                          vcov(yreg_fit3)[vars,vars])
         })
     })
-    describe("yreg survCox", {
+    describe("Sigma_theta_hat for yreg survCox", {
         it("extracts vcov correctly when there is no interaction", {
             yreg_fit3 <- fit_yreg(yreg = "survCox",
                                   data = pbc_cc,
@@ -762,7 +762,7 @@ describe("Sigma_theta_hat", {
                          vcov(yreg_fit3)[vars,vars])
         })
     })
-    describe("yreg survAFT_exp", {
+    describe("Sigma_theta_hat for yreg survAFT_exp", {
         it("extracts vcov correctly when there is no interaction", {
             yreg_fit3 <- fit_yreg(yreg = "survAFT_exp",
                                   data = pbc_cc,
@@ -800,7 +800,7 @@ describe("Sigma_theta_hat", {
                          vcov(yreg_fit3)[vars,vars])
         })
     })
-    describe("yreg survAFT_weibull", {
+    describe("Sigma_theta_hat for yreg survAFT_weibull", {
         it("extracts vcov correctly when there is no interaction", {
             yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
                                   data = pbc_cc,
