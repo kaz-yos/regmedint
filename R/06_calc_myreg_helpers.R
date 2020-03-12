@@ -12,7 +12,7 @@
 
 beta_hat <- function(mreg, mreg_fit, avar, cvar) {
     vars <- c("(Intercept)", avar, cvar)
-    vcov(mreg_fit)[vars,vars, drop = FALSE]
+    coef(mreg_fit)[vars]
 }
 
 theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
@@ -57,22 +57,7 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
 }
 
 sigma_hat_sq <- function(mreg_fit) {
-
-    ## FIXME: This is tentative and suspicious.
-    ## Chapter 2
-    ## Quadratic Forms of Random Variables
-    ## http://pages.stat.wisc.edu/~st849-1/lectures/Ch02.pdf
-    ## Corollary 6. In a full-rank Gaussian model for M with p covariates X.
-    ## ||M - X beta_hat||^2 / sigma^2 ~ (central chi-squared DF = (n - p))
-    ## Var(central chi-squared DF = (n - p)) = (n - p)
-    ## Var(sigma_hat^2) = Var(1/(n-p) * ||M - X beta_hat||^2)
-    ##                  = 1/(n-p)^2 * Var(||M - X beta_hat||^2 * sigma^2/sigma^2)
-    ##                  = 1/(n-p)^2 * (sigma^2)^2 * Var(||M - X beta_hat||^2 /sigma^2)
-    ##                  = 1/(n-p)^2 * (sigma^2)^2 * (n-p)
-    ##                  = (sigma^2)^2 / (n-p)
-    ##
-    ## (sigma_hat^2)^2 / (n-p)
-    matrix(((sigma(mreg_fit))^2)^2 / mreg_fit$df.residual)
+    sigma(mreg_fit)^2
 }
 
 
