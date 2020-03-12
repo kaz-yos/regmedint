@@ -157,5 +157,7 @@ Sigma_sigma_hat_sq <- function(mreg_fit) {
     ##                  = (sigma^2)^2 / (n-p)
     ##
     ## (sigma_hat^2)^2 / (n-p)
+    ## VanderWeele 2015. p470 states??
+    ## 2 * (sigma_hat^2)^2 / (n-p)
     matrix(((sigma(mreg_fit))^2)^2 / mreg_fit$df.residual)
 }
