@@ -154,9 +154,52 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                                                     Sigma_beta,
                                                     Sigma_theta,
                                                     Sigma_sigma) {
+
+    Sigma <- Matrix::bdiag(Sigma_beta,
+                           Sigma_theta,
+                           Sigma_sigma)
+
     ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond)
     fun_se <- function(a0, a1, m_cde, c_cond) {
-        return(NULL)
+
+        ## Term involving an inner product of beta2 and c_cond
+        ## matrix operation to error on non-conformant structure.
+        beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
+
+        ## VanderWeele 2015. p468
+        Gamma_cde <-
+            matrix(c(0, 0, rep(0, length(beta2)),
+                     0, 1, 0, m_cde, rep(0, length(theta4)),
+                     0))
+        ##
+        Gamma_pnde <-
+            matrix(c(theta3, (theta3 * a0), (theta3 * c_cond),
+                     0, 1, (theta3 * sigma_sq), (beta0 + beta1 * a0 + beta2_c + theta2 * sigma_sq + theta3 * sigma_sq * (a1 + a0)), rep(0, length(theta4)),
+                     (theta3 * theta2 + (1/2) * theta3^2 * (a1 + a0))))
+        ##
+        Gamma_tnie <-
+            matrix(c(0, (theta2 + theta3 * a1), rep(0, length(beta2)),
+                     0, 0, beta1, (beta1 * a1), rep(0, length(theta4)),
+                     0))
+
+        ## SEs
+        a1_sub_a0 <- (a1 - a0)
+        se_cde <- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% Gamma_cde)) * a1_sub_a0
+        se_pnde <- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% Gamma_pnde)) * a1_sub_a0
+        se_tnie <- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% Gamma_tnie)) * a1_sub_a0
+        se_tnde <- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% Gamma_tnde)) * a1_sub_a0
+        se_pnie <- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% Gamma_pnie)) * a1_sub_a0
+        se_te <- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te)) * a1_sub_a0
+        se_pm <- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm)) * a1_sub_a0
+
+        ## Return a vector
+        c(se_cde = se_cde,
+          se_pnde = pnde,
+          se_tnie = tnie,
+          se_tnde = tnde,
+          se_pnie = pnie,
+          se_te = te,
+          se_pm = pm)
     }
 
     return(fun_se)
