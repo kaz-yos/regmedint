@@ -15,45 +15,50 @@ beta_hat <- function(mreg, mreg_fit, avar, cvar) {
     coef(mreg_fit)[vars]
 }
 
+##' Create a vector of coefficients from the outcome model (yreg)
+##'
+##' This function extracts \code{\link{coef}} from \code{yreg_fit} and pads with zeros appropriately to create a named vector consistently having the following elements:
+##' \code{(Intercept)}: A zero element is added for \code{yreg = "survCox"} for which no intercept is estimated (the baseline hazard is left unspecified).
+##' \code{avar}
+##' \code{mvar}
+##' \code{avar:mvar}: A zero element is added when \code{interaction = FALSE}.
+##' \code{cvar}
+##'
+##' @inheritParams regmedint
+##'
+##' @return A named numeric vector of coefficients.
 theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
 
-    vcov_raw <- vcov(yreg_fit)
+    coef_raw <- coef(yreg_fit)
 
-    if (yreg == "survAFT_exp") {
+    if (yreg == "survCox") {
 
-        ## vcov.survreg gives an unnamed vcov matrix
-        vcov_ready <- vcov_raw
-        dimnames(vcov_ready) <- list(coef(yreg_fit),
-                                     coef(yreg_fit))
-
-    } else if (yreg == "survAFT_weibull") {
-
-        ## vcov.survreg(weibull_fit) has a scale parameter variance
-        ## as the right lower corner.
-        coef_ind <- seq_along(coef(yreg_fit))
-        vcov_ready <- vcov_raw[coef_ind,coef_ind]
-        dimnames(vcov_ready) <- list(coef(yreg_fit),
-                                     coef(yreg_fit))
-
-    } else if (yreg == "survCox") {
-
-        ## Pad the left and upper edges with zeros by creating a block diagonal.
-        vcov_ready <- Matrix::bdiag(matrix(0), vcov_raw)
-        dimnames(vcov_ready) <- list(coef(yreg_fit),
-                                     coef(yreg_fit))
+        ## Pad with a zero for the missing (Intercept)
+        coef_ready <- c(0, coef_raw)
+        names(coef_ready) <- c("(Intercept)", names(coef_raw))
 
     } else {
 
-        vcov_ready <- vcov_raw
+        coef_ready <- coef_raw
 
     }
 
-    if (interaction) {
-        vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar)
-    } else {
-        vars <- c("(Intercept)", avar, mvar,                        cvar)
+
+    if (!interaction) {
+
+        ## Always have a position for an interaction term to ease subsequent manipulation.
+        coef_ready <- c(coef_ready[c("(Intercept)",avar,mvar)],
+                        0,
+                        coef_ready[cvar])
+        names(coef_ready) <- c("(Intercept)",
+                               avar,mvar,
+                               paste0(avar,":",mvar),
+                               cvar)
     }
-    vcov_ready[vars,vars, drop = FALSE]
+
+    ## Subset to ensure the ordering and error on non-existent element.
+    vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar)
+    coef_ready[vars]
 }
 
 sigma_hat_sq <- function(mreg_fit) {
