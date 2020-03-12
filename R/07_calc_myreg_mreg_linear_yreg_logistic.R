@@ -98,5 +98,8 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
          pnde = x2,
          pnie = x3,
          tnde = x4,
-         tnie = x5)
+         tnie = x5,
+         ## FIXME: unimplemented.
+         te = NULL,
+         pm = NULL)
 }
