@@ -10,9 +10,8 @@ library(testthat)
 library(survival)
 library(tidyverse)
 
-
 ###
-### Helper functions
+### Tests for vcov extractions
 ################################################################################
 
 ## BDD-style
