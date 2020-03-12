@@ -6,31 +6,8 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers⠴ |   0 26     | 06_calc_myreg_helpers⠋ |  12 39     | 06_calc_myreg_helpers✖ |  12 42     | 06_calc_myreg_helpers [0.2 s]
+⠏ |   0       | 06_calc_myreg_helpers⠴ |   5 21     | 06_calc_myreg_helpers⠙ |  17 35     | 06_calc_myreg_helpers✖ |  17 37     | 06_calc_myreg_helpers [0.2 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-06_calc_myreg_helpers.R:31: failure: beta_hat: extracts coef from linear models correctly
-beta_hat(...) not equal to coef(lm3).
-Lengths differ: 25 is not 5
-
-test-06_calc_myreg_helpers.R:37: failure: beta_hat: extracts coef from linear models correctly
-beta_hat(...) not equal to coef(lm3)[vars].
-Lengths differ: 25 is not 5
-
-test-06_calc_myreg_helpers.R:49: failure: beta_hat: extracts coef from logistic models correctly
-beta_hat(...) not equal to coef(glm3).
-Lengths differ: 25 is not 5
-
-test-06_calc_myreg_helpers.R:55: failure: beta_hat: extracts coef from logistic models correctly
-beta_hat(...) not equal to coef(glm3)[vars].
-Lengths differ: 25 is not 5
-
-test-06_calc_myreg_helpers.R:77: failure: sigma_hat_sq: extracts the estimate for sigma^2
-sigma_hat_sq(lm_fit) not equal to sigma(lm_fit)^2.
-Attributes: < Modes: list, NULL >
-Attributes: < Lengths: 1, 0 >
-Attributes: < names for target but not for current >
-Attributes: < current is not list-like >
-
 test-06_calc_myreg_helpers.R:107: failure: theta_hat for yreg linear: extracts coef correctly when there is no interaction (add zero)
 theta_hat(...) not equal to ref_coef[vars].
 Lengths differ: 36 is not 7
@@ -1031,7 +1008,7 @@ invalid dimnames given for "dgCMatrix" object
 4: Sigma_theta_hat(yreg = "survCox", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), interaction = TRUE)
 5: `dimnames<-`(`*tmp*`, value = list(c(trt = -0.25595362347555, bili = 0.118783553178278, age = 0.00760790310326222, male = 0.5016444233669, 
    stage = 0.68860755499076, `trt:bili` = 0.0126980319813309), c(trt = -0.25595362347555, bili = 0.118783553178278, age = 0.00760790310326222, 
-   male = 0.5016444233669, stage = 0.68860755499076, `trt:bili` = 0.0126980319813309))) at /inv/kyoshida/cantos_stats/regmedint/R/06_calc_myreg_helpers.R:112
+   male = 0.5016444233669, stage = 0.68860755499076, `trt:bili` = 0.0126980319813309))) at /inv/kyoshida/cantos_stats/regmedint/R/06_calc_myreg_helpers.R:97
 6: `dimnames<-`(`*tmp*`, value = list(c(trt = -0.25595362347555, bili = 0.118783553178278, age = 0.00760790310326222, male = 0.5016444233669, 
    stage = 0.68860755499076, `trt:bili` = 0.0126980319813309), c(trt = -0.25595362347555, bili = 0.118783553178278, age = 0.00760790310326222, 
    male = 0.5016444233669, stage = 0.68860755499076, `trt:bili` = 0.0126980319813309)))
@@ -1141,7 +1118,7 @@ Need to validate arguments before passing to other functions!
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
 Duration: 2.3 s
 
-OK:       171
-Failed:   47
+OK:       176
+Failed:   42
 Warnings: 0
 Skipped:  8
