@@ -111,6 +111,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = FALSE),
                          ref_coef[vars])
+            expect_equal(theta_hat(yreg = "linear",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = FALSE) %>% length(),
+                         length(coef(yreg_fit3)) + 1)
         })
         it("extracts coef correctly when there is an interaction", {
             yreg_fit3 <- fit_yreg(yreg = "linear",
@@ -129,6 +136,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = TRUE),
                          coef(yreg_fit3)[vars])
+            expect_equal(theta_hat(yreg = "linear",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = FALSE) %>% length(),
+                         length(coef(yreg_fit3)) + 0)
         })
     })
     describe("theta_hat for yreg logistic", {
@@ -154,6 +168,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = FALSE),
                          ref_coef[vars])
+            expect_equal(theta_hat(yreg = "logistic",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = FALSE) %>% length(),
+                         length(coef(yreg_fit3)) + 1)
         })
         it("extracts coef correctly when there is an interaction", {
             yreg_fit3 <- fit_yreg(yreg = "logistic",
@@ -172,6 +193,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = TRUE),
                          coef(yreg_fit3)[vars])
+            expect_equal(theta_hat(yreg = "poisson",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = TRUE) %>% length(),
+                         length(coef(yreg_fit3)) + 0)
         })
     })
     describe("theta_hat for yreg loglinear", {
@@ -197,6 +225,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = FALSE),
                          ref_coef[vars])
+            expect_equal(theta_hat(yreg = "loglinear",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = FALSE) %>% length(),
+                         length(coef(yreg_fit3)) + 1)
         })
         it("extracts coef correctly when there is an interaction", {
             yreg_fit3 <- fit_yreg(yreg = "loglinear",
@@ -215,6 +250,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = TRUE),
                          coef(yreg_fit3)[vars])
+            expect_equal(theta_hat(yreg = "loglinear",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = TRUE) %>% length(),
+                         length(coef(yreg_fit3)) + 0)
         })
     })
     describe("theta_hat for yreg poisson", {
@@ -241,6 +283,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = FALSE),
                          ref_coef[vars])
+            expect_equal(theta_hat(yreg = "poisson",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = FALSE) %>% length(),
+                         length(coef(yreg_fit3)) + 1)
         })
         it("extracts coef correctly when there is an interaction", {
             yreg_fit3 <- fit_yreg(yreg = "poisson",
@@ -259,6 +308,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = TRUE),
                          coef(yreg_fit3)[vars])
+            expect_equal(theta_hat(yreg = "poisson",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = TRUE) %>% length(),
+                         length(coef(yreg_fit3)) + 0)
         })
     })
     describe("theta_hat for yreg negbin", {
@@ -285,6 +341,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = FALSE),
                          ref_coef[vars])
+            expect_equal(theta_hat(yreg = "negbin",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = FALSE) %>% length(),
+                         length(coef(yreg_fit3)) + 1)
         })
         it("extracts coef correctly when there is an interaction", {
             yreg_fit3 <- fit_yreg(yreg = "negbin",
@@ -303,6 +366,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = TRUE),
                          coef(yreg_fit3)[vars])
+            expect_equal(theta_hat(yreg = "negbin",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = TRUE) %>% length(),
+                         length(coef(yreg_fit3)) + 0)
         })
     })
     describe("theta_hat for yreg survCox", {
@@ -328,6 +398,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = FALSE),
                          ref_coef[vars])
+            expect_equal(theta_hat(yreg = "survCox",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = FALSE) %>% length(),
+                         length(coef(yreg_fit3)) + 2)
         })
         it("extracts coef correctly when there is an interaction", {
             yreg_fit3 <- fit_yreg(yreg = "survCox",
@@ -346,6 +423,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = TRUE),
                          coef(yreg_fit3)[vars])
+            expect_equal(theta_hat(yreg = "survCox",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = TRUE) %>% length(),
+                         length(coef(yreg_fit3)) + 1)
         })
     })
     describe("theta_hat for yreg survAFT_exp", {
@@ -371,6 +455,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = FALSE),
                          ref_coef[vars])
+            expect_equal(theta_hat(yreg = "survAFT_exp",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = FALSE) %>% length(),
+                         length(coef(yreg_fit3)) + 2)
         })
         it("extracts coef correctly when there is an interaction", {
             yreg_fit3 <- fit_yreg(yreg = "survAFT_exp",
@@ -389,6 +480,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = TRUE),
                          coef(yreg_fit3)[vars])
+            expect_equal(theta_hat(yreg = "survAFT_exp",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = TRUE) %>% length(),
+                         length(coef(yreg_fit3)) + 1)
         })
     })
     describe("theta_hat for yreg survAFT_weibull", {
@@ -414,6 +512,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = FALSE),
                          ref_coef[vars])
+            expect_equal(theta_hat(yreg = "survAFT_weibull",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = FALSE) %>% length(),
+                         length(coef(yreg_fit3)) + 2)
         })
         it("extracts coef correctly when there is an interaction", {
             yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
@@ -432,6 +537,13 @@ describe("theta_hat", {
                                    cvar = c("age","male","stage"),
                                    interaction = TRUE),
                          coef(yreg_fit3)[vars])
+            expect_equal(theta_hat(yreg = "survAFT_weibull",
+                                   yreg_fit = yreg_fit3,
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   interaction = TRUE) %>% length(),
+                         length(coef(yreg_fit3)) + 1)
         })
     })
 })
@@ -467,7 +579,7 @@ describe("Sigma_beta_hat", {
                      vcov(lm3)[vars,vars])
     })
 
-    it("extracts vcov from logistic models correctly", {
+    it("extracts vcov from negbin models correctly", {
 
         glm3 <- glm(formula = hepato ~ trt + age + male + stage,
                     family = binomial(link = "logit"),
