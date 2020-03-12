@@ -11,7 +11,7 @@ library(survival)
 library(tidyverse)
 
 ###
-### Tests for vcov extractions
+### Tests for vcov extractors
 ################################################################################
 
 ## BDD-style
