@@ -77,8 +77,8 @@ test-calc_myreg_mreg_linear_yreg_survAFT_weibull.R:42: error: calc_myreg fit lin
 argument "m_cde" is missing, with no default
 Backtrace:
  1. regmedint::calc_myreg(...) tests/testthat/test-calc_myreg_mreg_linear_yreg_survAFT_weibull.R:42:4
- 2. regmedint::calc_myreg_mreg_linear_yreg_logistic(...) R/calc_myreg.R:50:8
- 3. regmedint::calc_myreg_mreg_linear_yreg_logistic_est(...) R/calc_myreg_mreg_linear_yreg_logistic.R:29:4
+ 2. regmedint::calc_myreg_mreg_linear_yreg_logistic(...) R/05_calc_myreg_mediation_analysis.R:50:8
+ 3. regmedint::calc_myreg_mreg_linear_yreg_logistic_est(...) R/07_calc_myreg_mreg_linear_yreg_logistic.R:29:4
 
 test-calc_myreg_mreg_linear_yreg_survAFT_weibull.R:163: failure: calc_myreg fit linear / Weibull AFT models correctly with interaction
 TRUE not equal to FALSE.
@@ -117,7 +117,7 @@ Reason: empty test
 ⠏ |   0       | internal_functions✔ |  15       | internal_functions
 ⠴ |  15 1     | internal_functions
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 2.3 s
+Duration: 2.0 s
 
 OK:       173
 Failed:   13
