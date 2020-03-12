@@ -28,34 +28,64 @@ new_regmedint <- function(data,
                           mreg,
                           interaction,
                           casecontrol,
-                          full_output,
                           c_cond,
-                          boot,
                           eventvar) {
 
+    ## If the data is from a case-control study the mediator model
+    ## should be fit in the controls. This requires that the outcome
+    ## be rare in the population from which the controls were sampled.
+    ## Valeri & VanderWeele 2013. p144
+    if (casecontrol) {
+        mreg_data <- data[as.numeric(data[yvar,]) == 0,]
+    } else {
+        mreg_data <- data
+    }
+
     ## Perform mreg
-    mreg_fit <- fit_mreg(mreg, data, avar, mvar, cvar)
+    mreg_fit <- fit_mreg(mreg = mreg,
+                         data = mreg_data,
+                         avar = avar,
+                         mvar = mvar,
+                         cvar = cvar)
 
     ## Perform yreg
-    yreg_fit <- fit_yreg(yreg, data, yvar, avar, mvar, cvar, interaction, eventvar)
+    yreg_fit <- fit_yreg(yreg = yreg,
+                         data = data,
+                         yvar = yvar,
+                         avar = avar,
+                         mvar = mvar,
+                         cvar = cvar,
+                         interaction = interaction,
+                         eventvar = eventvar)
 
-    ## Perform mediation analysis
-    myreg_fit <- calc_myreg(mreg,
-                            mreg_fit,
-                            yreg,
-                            yreg_fit,
-                            interaction,
-                            a0,
-                            a1,
-                            m_cde,
-                            c_cond)
+    ## Return a list of functions
+    myreg_funs <- calc_myreg(mreg = mreg,
+                             mreg_fit = mreg_fit,
+                             yreg = yreg,
+                             yreg_fit = yreg_fit,
+                             avar = avar,
+                             mvar = mvar,
+                             cvar = cvar,
+                             interaction = interaction)
 
     ## Construct the result object
     res <- list(mreg = mreg_fit,
                 yreg = yreg_fit,
-                ## FIXME: made up numbers
-                myreg = myreg_fit,
-                boot = 24L)
+                myreg = myreg_funs,
+                ## Remember arguments
+                args = c(yvar = yvar,
+                         avar = avar,
+                         mvar = mvar,
+                         cvar = cvar,
+                         a0 = a0,
+                         a1 = a1,
+                         m_cde = m_cde,
+                         yreg = yreg,
+                         mreg = mreg,
+                         interaction = interaction,
+                         casecontrol = casecontrol,
+                         c_cond = c_cond,
+                         eventvar = eventvar))
     ## The main class is regmedint.
     class(res) <- c("regmedint", class(res))
 
