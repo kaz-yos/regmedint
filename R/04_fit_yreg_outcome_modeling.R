@@ -5,117 +5,10 @@
 ## Author: Kazuki Yoshida
 ################################################################################
 
-###
-### Constructor for internal use
-################################################################################
-
-##' Low level constructor for a regmedint S3 class object.
-##'
-##' This is not a user function and meant to be executed within the regmedint function after validatingthe arguments.
-##'
-##' @inheritParams regmedint
-##'
-##' @return A regmedint object.
-new_regmedint <- function(data,
-                          yvar,
-                          avar,
-                          mvar,
-                          cvar,
-                          a0,
-                          a1,
-                          m_cde,
-                          yreg,
-                          mreg,
-                          interaction,
-                          casecontrol,
-                          full_output,
-                          c_cond,
-                          boot,
-                          eventvar) {
-
-    ## Perform mreg
-    mreg_fit <- fit_mreg(mreg, data, avar, mvar, cvar)
-
-    ## Perform yreg
-    yreg_fit <- fit_yreg(yreg, data, yvar, avar, mvar, cvar, interaction, eventvar)
-
-    ## Perform mediation analysis
-    myreg_fit <- calc_myreg(mreg,
-                            mreg_fit,
-                            yreg,
-                            yreg_fit,
-                            interaction,
-                            a0,
-                            a1,
-                            m_cde,
-                            c_cond)
-
-    ## Construct the result object
-    res <- list(mreg = mreg_fit,
-                yreg = yreg_fit,
-                ## FIXME: made up numbers
-                myreg = myreg_fit,
-                boot = 24L)
-    ## The main class is regmedint.
-    class(res) <- c("regmedint", class(res))
-
-    ##
-    res
-}
-
 
 ###
-### Model fitters for mreg and yreg
+### Model fitters for yreg
 ################################################################################
-
-##' Fit a model for the mediator given the treatment and covariates.
-##'
-##' \code{\link{lm}} is called if \code{mreg = "linear"}. \code{\link{glm}} is called with \code{family = binomial()} if \code{mreg = "logistic"}.
-##'
-##' @inheritParams regmedint
-##'
-##' @return A regression object of class lm (linear) or glm (logistic)
-fit_mreg <- function(mreg,
-                     data,
-                     avar,
-                     mvar,
-                     cvar) {
-
-    ## Create a string representation of the formula
-    string_formula <- string_mreg_formula(mvar,
-                                          avar,
-                                          cvar)
-
-    ## Quasi-quoting to make the formula readable.
-    ## bquote suppresses evaluation except within .(...).
-    ## Evaluate restart the evaluation with the .() part
-    ## already expanded.
-    if (mreg == "linear") {
-
-        eval(
-            bquote(
-                lm(formula = .(as.formula(string_formula)),
-                   data = data)
-            )
-        )
-
-    } else if (mreg == "logistic") {
-
-        eval(
-            bquote(
-                glm(formula = .(as.formula(string_formula)),
-                    family = binomial(link = "logit"),
-                    data = data)
-            )
-        )
-
-    } else {
-
-        stop("Unsupported model type in yreg")
-
-    }
-}
-
 
 ## The third and subsequent paragraphs go into details.
 ## http://r-pkgs.had.co.nz/man.html#roxygen-comments
@@ -249,19 +142,6 @@ fit_yreg <- function(yreg,
 ###
 ### Formula string creators
 ################################################################################
-string_mreg_formula <- function(mvar,
-                                avar,
-                                cvar) {
-
-    if (is.null(cvar)) {
-        acvar_string <- avar
-    } else {
-        cvar_string <- paste0(cvar, collapse = " + ")
-        acvar_string <- paste0(c(avar, cvar_string), collapse = " + ")
-    }
-
-    sprintf("%s ~ %s", mvar, acvar_string)
-}
 
 string_yreg_formula <- function(yvar,
                                 avar,
