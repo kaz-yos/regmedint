@@ -79,28 +79,38 @@ Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
 
     vcov_raw <- vcov(yreg_fit)
 
+    ## Older versions of survival:::vcov.survreg() did not give dimension names.
+    ## https://github.com/therneau/survival/commit/ed1c71b3817d4bfced43ed374e5e598e5f229bb8
+
     if (yreg == "survAFT_exp") {
 
-        ## vcov.survreg gives an unnamed vcov matrix
         vcov_ready <- vcov_raw
-        dimnames(vcov_ready) <- list(coef(yreg_fit),
-                                     coef(yreg_fit))
+        if (is.null(dimnames(vcov_ready))) {
+            ## Older vcov.survreg gives an unnamed vcov matrix
+            dimnames(vcov_ready) <- list(names(coef(yreg_fit)),
+                                         names(coef(yreg_fit)))
+        }
 
     } else if (yreg == "survAFT_weibull") {
 
-        ## vcov.survreg(weibull_fit) has a scale parameter variance
-        ## as the right lower corner.
+        ## vcov.survreg(weibull_fit) has an extra row and column corresponding
+        ## to the log(scale) parameter (See the above commit).
         coef_ind <- seq_along(coef(yreg_fit))
         vcov_ready <- vcov_raw[coef_ind,coef_ind]
-        dimnames(vcov_ready) <- list(coef(yreg_fit),
-                                     coef(yreg_fit))
+        if (is.null(dimnames(vcov_ready))) {
+            ## Older vcov.survreg gives an unnamed vcov matrix
+            dimnames(vcov_ready) <- list(names(coef(yreg_fit)),
+                                         names(coef(yreg_fit)))
+        }
 
     } else if (yreg == "survCox") {
 
         ## Pad the left and upper edges with zeros by creating a block diagonal.
-        vcov_ready <- Matrix::bdiag(matrix(0), vcov_raw)
-        dimnames(vcov_ready) <- list(coef(yreg_fit),
-                                     coef(yreg_fit))
+        vcov_ready <- Matrix::bdiag(matrix(0),
+                                    vcov_raw)
+        vars_cox <- c("(Intercept)", names(coef(yreg_fit)))
+        dimnames(vcov_ready) <- list(vars_cox,
+                                     vars_cox)
 
     } else {
 
@@ -108,11 +118,26 @@ Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
 
     }
 
-    if (interaction) {
-        vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar)
-    } else {
-        vars <- c("(Intercept)", avar, mvar,                        cvar)
+    if (!interaction) {
+        ## Always have a position for an interaction term to ease subsequent manipulation.
+        vcov_ready <- Matrix::bdiag(vcov_ready[c("(Intercept)",avar,mvar),
+                                               c("(Intercept)",avar,mvar),
+                                               drop = FALSE],
+                                    ## Padding for the avar:mvar position.
+                                    matrix(0),
+                                    vcov_ready[cvar,
+                                               cvar,
+                                               drop = FALSE])
+        vars_add_int <- c("(Intercept)",
+                          avar,mvar,
+                          paste0(avar,":",mvar),
+                          cvar)
+        dimnames(vcov_ready) <- list(vars_add_int,
+                                     vars_add_int)
     }
+
+    ## Subset to ensure the ordering and error on non-existent element.
+    vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar)
     vcov_ready[vars,vars, drop = FALSE]
 }
 
