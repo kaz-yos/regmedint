@@ -100,35 +100,43 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
                                                      sigma_sq) {
     ## Construct a function for point estimates given (a0, a1, m_cde, c_cond).
     fun_est <- function(a0, a1, m_cde, c_cond) {
-        m <- m_cde
-        rm <- sigma_sq
-        a1sq <- a1^2
-        a0sq <- a0^2
-        tsq <- theta3^2 # FIXME
 
+        ## Term involving an inner product of beta2 and c_cond
+        ## matrix operation to error on non-conformant structure.
+        beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
+
+        ## VanderWeele 2015 p468
         ## Adopted from mediation.sas and modified.
-        ## Look up the following:
+        ## Look up the third occurrence of the following:
         ## %if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
-        ##
-        ## */MARGINAL=CONDITIONAL CDE*/;
-        x1=(theta1+theta3*m)*(a1-a0);
-        ## */MARGINAL=CONDITIONAL PNDE (Pearl NDE)*/;
-        x2=(theta1+theta3*beta0+theta3*beta1*a0+theta3*theta2*rm)*(a1-a0)+(1/2)*tsq*rm*(a1sq-a0sq);
-        ## */MARGINAL=CONDITIONAL PNIE*/;
-        x3=(theta2*beta1+theta3*beta1*a0)*(a1-a0);
-        ## */MARGINAL=CONDITIONAL TNDE*/;
-        x4=(theta1+theta3*beta0+theta3*beta1*a1+theta3*theta2*rm)*(a1-a0)+(1/2)*tsq*rm*(a1sq-a0sq);
-        ## */ MARGINAL=CONDITIONAL TNIE (Pearl NIE)*/;
-        x5=(theta2*beta1+theta3*beta1*a1)*(a1-a0);
+        cde <- (theta1 + (theta3 * m_cde)) * (a1 - a0)
+        ## Pearl decomposition (Regular NDE and NIE)
+        ## Note the a0 in the first line.                      vv
+        pnde <- (theta1 + (theta3 * beta0) + (theta3 * beta1 * a0) +
+                 (theta3 * beta2_c) + (theta3 * theta2 * sigma_sq)) * (a1 - a0) +
+            ((1/2) * theta3^2 * sigma_sq) * (a1^2 - a0^2)
+        ## Note the a1.                              vv
+        tnie <- ((theta2 * beta1) + theta3 * beta1 * a1) * (a1 - a0)
+        ## Another decomposition
+        ## Note the a0 -> a1 change in the first line.         vv
+        tnde <- (theta1 + (theta3 * beta0) + (theta3 * beta1 * a1) +
+                 (theta3 * beta2_c) + (theta3 * theta2 * sigma_sq)) * (a1 - a0) +
+            ((1/2) * theta3^2 * sigma_sq) * (a1^2 - a0^2)
+        ## Note the a1 -> a0 change.                 vv
+        pnie <- ((theta2 * beta1) + theta3 * beta1 * a0) * (a1 - a0)
+        ## It is the sum of NDE and NIE on the log scale.
+        te <- pnde + tnie
+        ## VanderWeele 2015 p48.
+        pm <- (exp(pnde) * (exp(tnie) - 1)) / (exp(te) - 1)
 
         ## Return a vector
-        c(cde = x1,
-          pnde = x2,
-          tnie = x5,
-          pnie = x3,
-          tnde = x4,
-          te = NULL,
-          pm = NULL)
+        c(cde = cde,
+          pnde = pnde,
+          tnie = tnie,
+          tnde = tnde,
+          pnie = pnie,
+          te = te,
+          pm = pm)
     }
 
     return(fun_est)
