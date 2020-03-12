@@ -6,24 +6,23 @@
 ################################################################################
 
 
-##' Calculate effect measures based on two regression fits.
+##' Return mediation analysis functions given mediator and outcome models.
 ##'
-##' Causal effect measures are calculated given the mediator model fit (\code{mreg_fit}) and the outcome model fit (\code{yreg_fit}).
+##' This function returns functions that can be used to calculate the causal effect measures, given the mediator model fit (\code{mreg_fit}) and the outcome model fit (\code{yreg_fit}).
 ##'
 ##' @inheritParams regmedint
 ##' @param mreg_fit Model fit from \code{\link{fit_mreg}}
 ##' @param yreg_fit Model fit from \code{\link{fit_yreg}}
 ##'
-##' @return \code{myreg} object containing effect measures.
+##' @return A list containing two functions. The first is for calculating point estimates. The second is for calculating the correspoding
 calc_myreg <- function(mreg,
                        mreg_fit,
                        yreg,
                        yreg_fit,
-                       interaction,
-                       a0,
-                       a1,
-                       m_cde,
-                       c_cond) {
+                       avar,
+                       mvar,
+                       cvar,
+                       interaction) {
 
     ## Only four patterns as the non-linear yreg cases are the
     ## same as the logistic yreg case.
@@ -38,11 +37,10 @@ calc_myreg <- function(mreg,
                                            mreg_fit,
                                            yreg,
                                            yreg_fit,
-                                           interaction,
-                                           a0,
-                                           a1,
-                                           m_cde,
-                                           c_cond)
+                                           avar,
+                                           mvar,
+                                           cvar,
+                                           interaction)
 
     } else if (mreg == "linear" & yreg != "linear") {
 
@@ -51,11 +49,10 @@ calc_myreg <- function(mreg,
                                              mreg_fit,
                                              yreg,
                                              yreg_fit,
-                                             interaction,
-                                             a0,
-                                             a1,
-                                             m_cde,
-                                             c_cond)
+                                             avar,
+                                             mvar,
+                                             cvar,
+                                             interaction)
 
     } else if (mreg == "logistic" & yreg == "linear") {
 
@@ -64,11 +61,10 @@ calc_myreg <- function(mreg,
                                              mreg_fit,
                                              yreg,
                                              yreg_fit,
-                                             interaction,
-                                             a0,
-                                             a1,
-                                             m_cde,
-                                             c_cond)
+                                             avar,
+                                             mvar,
+                                             cvar,
+                                             interaction)
 
 
     } else if (mreg == "logistic" & yreg != "linear") {
@@ -78,11 +74,10 @@ calc_myreg <- function(mreg,
                                                mreg_fit,
                                                yreg,
                                                yreg_fit,
-                                               interaction,
-                                               a0,
-                                               a1,
-                                               m_cde,
-                                               c_cond)
+                                               avar,
+                                               mvar,
+                                               cvar,
+                                               interaction)
 
     } else  {
 
