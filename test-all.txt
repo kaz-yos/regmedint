@@ -6,53 +6,66 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers⠸ |   4 20     | 06_calc_myreg_helpers✖ |  12 32     | 06_calc_myreg_helpers [0.2 s]
+⠏ |   0       | 06_calc_myreg_helpers⠴ |   0 26     | 06_calc_myreg_helpers⠋ |  12 39     | 06_calc_myreg_helpers✖ |  12 42     | 06_calc_myreg_helpers [0.2 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-06_calc_myreg_helpers.R:31: error: beta_hat: extracts coef from linear models correctly
-could not find function "beta_hat"
-1: expect_equal(beta_hat(mreg = "linear", mreg_fit = lm3, avar = c("trt"), cvar = c("age", "male", "stage")), coef(lm3)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:31
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers.R:31: failure: beta_hat: extracts coef from linear models correctly
+beta_hat(...) not equal to coef(lm3).
+Lengths differ: 25 is not 5
 
-test-06_calc_myreg_helpers.R:49: error: beta_hat: extracts coef from logistic models correctly
-could not find function "beta_hat"
-1: expect_equal(beta_hat(mreg = "logistic", mreg_fit = glm3, avar = c("trt"), cvar = c("age", "male", "stage")), coef(glm3)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:49
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers.R:37: failure: beta_hat: extracts coef from linear models correctly
+beta_hat(...) not equal to coef(lm3)[vars].
+Lengths differ: 25 is not 5
 
-test-06_calc_myreg_helpers.R:77: error: sigma_hat_sq: extracts the estimate for sigma^2
-could not find function "sigma_hat_sq"
-1: expect_equal(sigma_hat_sq(lm_fit), sigma(lm_fit)^2) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:77
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers.R:49: failure: beta_hat: extracts coef from logistic models correctly
+beta_hat(...) not equal to coef(glm3).
+Lengths differ: 25 is not 5
 
-test-06_calc_myreg_helpers.R:107: error: theta_hat for yreg linear: extracts coef correctly when there is no interaction (add zero)
-could not find function "theta_hat"
-1: expect_equal(theta_hat(yreg = "linear", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
-       interaction = FALSE), ref_coef[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:107
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers.R:55: failure: beta_hat: extracts coef from logistic models correctly
+beta_hat(...) not equal to coef(glm3)[vars].
+Lengths differ: 25 is not 5
 
-test-06_calc_myreg_helpers.R:132: error: theta_hat for yreg linear: extracts coef correctly when there is an interaction
-could not find function "theta_hat"
-1: expect_equal(theta_hat(yreg = "linear", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
-       interaction = TRUE), coef(yreg_fit3)[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:132
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers.R:77: failure: sigma_hat_sq: extracts the estimate for sigma^2
+sigma_hat_sq(lm_fit) not equal to sigma(lm_fit)^2.
+Attributes: < Modes: list, NULL >
+Attributes: < Lengths: 1, 0 >
+Attributes: < names for target but not for current >
+Attributes: < current is not list-like >
 
-test-06_calc_myreg_helpers.R:164: error: theta_hat for yreg logistic: extracts coef correctly when there is no interaction (add zero)
-could not find function "theta_hat"
-1: expect_equal(theta_hat(yreg = "logistic", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
-       interaction = FALSE), ref_coef[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:164
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers.R:107: failure: theta_hat for yreg linear: extracts coef correctly when there is no interaction (add zero)
+theta_hat(...) not equal to ref_coef[vars].
+Lengths differ: 36 is not 7
 
-test-06_calc_myreg_helpers.R:189: error: theta_hat for yreg logistic: extracts coef correctly when there is an interaction
-could not find function "theta_hat"
-1: expect_equal(theta_hat(yreg = "logistic", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
-       interaction = TRUE), coef(yreg_fit3)[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:189
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers.R:114: failure: theta_hat for yreg linear: extracts coef correctly when there is no interaction (add zero)
+`%>%`(...) not equal to length(coef(yreg_fit3)) + 1.
+1/1 mismatches
+[1] 36 - 7 == 29
+
+test-06_calc_myreg_helpers.R:132: failure: theta_hat for yreg linear: extracts coef correctly when there is an interaction
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Lengths differ: 49 is not 7
+
+test-06_calc_myreg_helpers.R:139: failure: theta_hat for yreg linear: extracts coef correctly when there is an interaction
+`%>%`(...) not equal to length(coef(yreg_fit3)) + 0.
+1/1 mismatches
+[1] 36 - 7 == 29
+
+test-06_calc_myreg_helpers.R:164: failure: theta_hat for yreg logistic: extracts coef correctly when there is no interaction (add zero)
+theta_hat(...) not equal to ref_coef[vars].
+Lengths differ: 36 is not 7
+
+test-06_calc_myreg_helpers.R:171: failure: theta_hat for yreg logistic: extracts coef correctly when there is no interaction (add zero)
+`%>%`(...) not equal to length(coef(yreg_fit3)) + 1.
+1/1 mismatches
+[1] 36 - 7 == 29
+
+test-06_calc_myreg_helpers.R:189: failure: theta_hat for yreg logistic: extracts coef correctly when there is an interaction
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Lengths differ: 49 is not 7
+
+test-06_calc_myreg_helpers.R:196: failure: theta_hat for yreg logistic: extracts coef correctly when there is an interaction
+`%>%`(...) not equal to length(coef(yreg_fit3)) + 0.
+1/1 mismatches
+[1] 49 - 7 == 42
 
 test-06_calc_myreg_helpers.R:207: error: theta_hat for yreg loglinear: extracts coef correctly when there is no interaction (add zero)
 no valid set of coefficients has been found: please supply starting values
@@ -455,75 +468,107 @@ no valid set of coefficients has been found: please supply starting values
            }), class = "family"), control = list(epsilon = 0.00000001, maxit = 25, trace = FALSE), intercept = TRUE, singular.ok = TRUE)
 8: stop("no valid set of coefficients has been found: please supply starting values", call. = FALSE)
 
-test-06_calc_myreg_helpers.R:279: error: theta_hat for yreg poisson: extracts coef correctly when there is no interaction (add zero)
-could not find function "theta_hat"
-1: expect_equal(theta_hat(yreg = "poisson", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
-       interaction = FALSE), ref_coef[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:279
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers.R:279: failure: theta_hat for yreg poisson: extracts coef correctly when there is no interaction (add zero)
+theta_hat(...) not equal to ref_coef[vars].
+Lengths differ: 36 is not 7
 
-test-06_calc_myreg_helpers.R:304: error: theta_hat for yreg poisson: extracts coef correctly when there is an interaction
-could not find function "theta_hat"
-1: expect_equal(theta_hat(yreg = "poisson", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
-       interaction = TRUE), coef(yreg_fit3)[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:304
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers.R:286: failure: theta_hat for yreg poisson: extracts coef correctly when there is no interaction (add zero)
+`%>%`(...) not equal to length(coef(yreg_fit3)) + 1.
+1/1 mismatches
+[1] 36 - 7 == 29
 
-test-06_calc_myreg_helpers.R:337: error: theta_hat for yreg negbin: extracts coef correctly when there is no interaction (add zero)
-could not find function "theta_hat"
-1: expect_equal(theta_hat(yreg = "negbin", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
-       interaction = FALSE), ref_coef[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:337
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers.R:304: failure: theta_hat for yreg poisson: extracts coef correctly when there is an interaction
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Lengths differ: 49 is not 7
 
-test-06_calc_myreg_helpers.R:362: error: theta_hat for yreg negbin: extracts coef correctly when there is an interaction
-could not find function "theta_hat"
-1: expect_equal(theta_hat(yreg = "negbin", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
-       interaction = TRUE), coef(yreg_fit3)[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:362
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers.R:311: failure: theta_hat for yreg poisson: extracts coef correctly when there is an interaction
+`%>%`(...) not equal to length(coef(yreg_fit3)) + 0.
+1/1 mismatches
+[1] 49 - 7 == 42
+
+test-06_calc_myreg_helpers.R:337: failure: theta_hat for yreg negbin: extracts coef correctly when there is no interaction (add zero)
+theta_hat(...) not equal to ref_coef[vars].
+Lengths differ: 36 is not 7
+
+test-06_calc_myreg_helpers.R:344: failure: theta_hat for yreg negbin: extracts coef correctly when there is no interaction (add zero)
+`%>%`(...) not equal to length(coef(yreg_fit3)) + 1.
+1/1 mismatches
+[1] 36 - 7 == 29
+
+test-06_calc_myreg_helpers.R:362: failure: theta_hat for yreg negbin: extracts coef correctly when there is an interaction
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Lengths differ: 49 is not 7
+
+test-06_calc_myreg_helpers.R:369: failure: theta_hat for yreg negbin: extracts coef correctly when there is an interaction
+`%>%`(...) not equal to length(coef(yreg_fit3)) + 0.
+1/1 mismatches
+[1] 49 - 7 == 42
 
 test-06_calc_myreg_helpers.R:394: error: theta_hat for yreg survCox: extracts coef correctly when there is no interaction (add zero)
-could not find function "theta_hat"
+invalid dimnames given for "dgCMatrix" object
 1: expect_equal(theta_hat(yreg = "survCox", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
        interaction = FALSE), ref_coef[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:394
 2: quasi_label(enquo(object), label, arg = "object")
 3: eval_bare(get_expr(quo), get_env(quo))
+4: theta_hat(yreg = "survCox", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), interaction = FALSE)
+5: `dimnames<-`(`*tmp*`, value = list(c(trt = -0.192511192336224, bili = 0.140134244186243, age = 0.00746274574726864, male = 0.504039545886158, 
+   stage = 0.674402193478484), c(trt = -0.192511192336224, bili = 0.140134244186243, age = 0.00746274574726864, male = 0.504039545886158, 
+   stage = 0.674402193478484))) at /inv/kyoshida/cantos_stats/regmedint/R/06_calc_myreg_helpers.R:42
+6: `dimnames<-`(`*tmp*`, value = list(c(trt = -0.192511192336224, bili = 0.140134244186243, age = 0.00746274574726864, male = 0.504039545886158, 
+   stage = 0.674402193478484), c(trt = -0.192511192336224, bili = 0.140134244186243, age = 0.00746274574726864, male = 0.504039545886158, 
+   stage = 0.674402193478484)))
+7: dimnamesGets(x, value)
+8: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
 
 test-06_calc_myreg_helpers.R:419: error: theta_hat for yreg survCox: extracts coef correctly when there is an interaction
-could not find function "theta_hat"
+invalid dimnames given for "dgCMatrix" object
 1: expect_equal(theta_hat(yreg = "survCox", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
        interaction = TRUE), coef(yreg_fit3)[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:419
 2: quasi_label(enquo(object), label, arg = "object")
 3: eval_bare(get_expr(quo), get_env(quo))
+4: theta_hat(yreg = "survCox", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), interaction = TRUE)
+5: `dimnames<-`(`*tmp*`, value = list(c(trt = -0.25595362347555, bili = 0.118783553178278, age = 0.00760790310326222, male = 0.5016444233669, 
+   stage = 0.68860755499076, `trt:bili` = 0.0126980319813309), c(trt = -0.25595362347555, bili = 0.118783553178278, age = 0.00760790310326222, 
+   male = 0.5016444233669, stage = 0.68860755499076, `trt:bili` = 0.0126980319813309))) at /inv/kyoshida/cantos_stats/regmedint/R/06_calc_myreg_helpers.R:42
+6: `dimnames<-`(`*tmp*`, value = list(c(trt = -0.25595362347555, bili = 0.118783553178278, age = 0.00760790310326222, male = 0.5016444233669, 
+   stage = 0.68860755499076, `trt:bili` = 0.0126980319813309), c(trt = -0.25595362347555, bili = 0.118783553178278, age = 0.00760790310326222, 
+   male = 0.5016444233669, stage = 0.68860755499076, `trt:bili` = 0.0126980319813309)))
+7: dimnamesGets(x, value)
+8: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
 
 test-06_calc_myreg_helpers.R:451: error: theta_hat for yreg survAFT_exp: extracts coef correctly when there is no interaction (add zero)
-could not find function "theta_hat"
+subscript out of bounds
 1: expect_equal(theta_hat(yreg = "survAFT_exp", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
        interaction = FALSE), ref_coef[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:451
 2: quasi_label(enquo(object), label, arg = "object")
 3: eval_bare(get_expr(quo), get_env(quo))
+4: theta_hat(yreg = "survAFT_exp", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), interaction = FALSE)
 
 test-06_calc_myreg_helpers.R:476: error: theta_hat for yreg survAFT_exp: extracts coef correctly when there is an interaction
-could not find function "theta_hat"
+subscript out of bounds
 1: expect_equal(theta_hat(yreg = "survAFT_exp", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
        interaction = TRUE), coef(yreg_fit3)[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:476
 2: quasi_label(enquo(object), label, arg = "object")
 3: eval_bare(get_expr(quo), get_env(quo))
+4: theta_hat(yreg = "survAFT_exp", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), interaction = TRUE)
 
 test-06_calc_myreg_helpers.R:508: error: theta_hat for yreg survAFT_weibull: extracts coef correctly when there is no interaction (add zero)
-could not find function "theta_hat"
+subscript out of bounds
 1: expect_equal(theta_hat(yreg = "survAFT_weibull", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", 
        "stage"), interaction = FALSE), ref_coef[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:508
 2: quasi_label(enquo(object), label, arg = "object")
 3: eval_bare(get_expr(quo), get_env(quo))
+4: theta_hat(yreg = "survAFT_weibull", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
+       interaction = FALSE)
 
 test-06_calc_myreg_helpers.R:533: error: theta_hat for yreg survAFT_weibull: extracts coef correctly when there is an interaction
-could not find function "theta_hat"
+subscript out of bounds
 1: expect_equal(theta_hat(yreg = "survAFT_weibull", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", 
        "stage"), interaction = TRUE), coef(yreg_fit3)[vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:533
 2: quasi_label(enquo(object), label, arg = "object")
 3: eval_bare(get_expr(quo), get_env(quo))
+4: theta_hat(yreg = "survAFT_weibull", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
+       interaction = TRUE)
 
 test-06_calc_myreg_helpers.R:629: error: Sigma_sigma_sq_hat: extracts the variance estimate for sigma^2
 could not find function "Sigma_sigma_sq_hat"
@@ -986,7 +1031,7 @@ invalid dimnames given for "dgCMatrix" object
 4: Sigma_theta_hat(yreg = "survCox", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), interaction = TRUE)
 5: `dimnames<-`(`*tmp*`, value = list(c(trt = -0.25595362347555, bili = 0.118783553178278, age = 0.00760790310326222, male = 0.5016444233669, 
    stage = 0.68860755499076, `trt:bili` = 0.0126980319813309), c(trt = -0.25595362347555, bili = 0.118783553178278, age = 0.00760790310326222, 
-   male = 0.5016444233669, stage = 0.68860755499076, `trt:bili` = 0.0126980319813309))) at /inv/kyoshida/cantos_stats/regmedint/R/06_calc_myreg_helpers.R:42
+   male = 0.5016444233669, stage = 0.68860755499076, `trt:bili` = 0.0126980319813309))) at /inv/kyoshida/cantos_stats/regmedint/R/06_calc_myreg_helpers.R:112
 6: `dimnames<-`(`*tmp*`, value = list(c(trt = -0.25595362347555, bili = 0.118783553178278, age = 0.00760790310326222, male = 0.5016444233669, 
    stage = 0.68860755499076, `trt:bili` = 0.0126980319813309), c(trt = -0.25595362347555, bili = 0.118783553178278, age = 0.00760790310326222, 
    male = 0.5016444233669, stage = 0.68860755499076, `trt:bili` = 0.0126980319813309)))
@@ -1094,9 +1139,9 @@ Need to validate arguments before passing to other functions!
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 2.4 s
+Duration: 2.3 s
 
 OK:       171
-Failed:   37
+Failed:   47
 Warnings: 0
 Skipped:  8
