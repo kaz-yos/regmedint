@@ -15,16 +15,15 @@
 ##' @param mreg_fit Model fit from \code{\link{fit_mreg}}
 ##' @param yreg_fit Model fit from \code{\link{fit_yreg}}
 ##'
-##' @return A list contraining a list of estimates and a list of corresponding standard errors.
+##' @return A list contraining a function for effect estimates and a function for corresponding standard errors.
 calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                  mreg_fit,
                                                  yreg,
                                                  yreg_fit,
-                                                 interaction,
-                                                 a0,
-                                                 a1,
-                                                 m_cde,
-                                                 c_cond) {
+                                                 avar,
+                                                 mvar,
+                                                 cvar,
+                                                 interaction) {
     ## mreg coefficients
     beta_hat <- beta_hat(mreg = mreg,
                          mreg_fit = mreg_fit,
@@ -46,7 +45,8 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
     theta2 <- theta_hat[mvar]
     theta3 <- theta_hat[paste0(avar,":",mvar)]
     theta4 <- theta_hat[cvar]
-
+    ## Construct a function of (a1, a0, m_cde, c_cond) that returns
+    ## a vector of point estimates for quantities of interest.
     myreg_est_fun <- calc_myreg_mreg_linear_yreg_logistic_est(beta0,
                                                               beta1,
                                                               beta2,
@@ -54,13 +54,21 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                               theta2,
                                                               theta3,
                                                               theta4,
-                                                              sigma_sq,
-                                                              ## Values at which to evaluate effects
-                                                              a0,
-                                                              a1,
-                                                              m_cde,
-                                                              c_cond)
+                                                              sigma_sq)
 
+    Sigma_beta_hat <- Sigma_beta_hat(mreg = mreg,
+                                     mreg_fit = mreg_fit,
+                                     avar = avar,
+                                     cvar = cvar)
+    Sigma_theta_hat <- Sigma_theta_hat(yreg = yreg,
+                                       yreg_fit = yreg_fit,
+                                       avar = avar,
+                                       mvar = mvar,
+                                       cvar = cvar,
+                                       interaction = interaction)
+    Sigma_sigma_hat_sq <- Sigma_sigma_hat_sq(mreg_fit = mreg_fit)
+    ## Construct a function of (a1, a0, m_cde, c_cond) that returns
+    ## a vector of estimates.
     myreg_se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0,
                                                             beta1,
                                                             beta2,
@@ -72,14 +80,9 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                             ## vcov
                                                             Sigma_beta,
                                                             Sigma_theta,
-                                                            Sigma_sigma,
-                                                            ## Values at which to evaluate effects
-                                                            a0,
-                                                            a1,
-                                                            m_cde,
-                                                            c_cond)
+                                                            Sigma_sigma)
 
-    ##
+    ## List of functions.
     list(myreg_est_fun = myreg_est_fun,
          myreg_se_fun = myreg_est_fun)
 }
