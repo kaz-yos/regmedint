@@ -47,15 +47,17 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
     theta4 <- theta_hat[cvar]
     ## Construct a function of (a1, a0, m_cde, c_cond) that returns
     ## a vector of point estimates for quantities of interest.
-    myreg_est_fun <- calc_myreg_mreg_linear_yreg_logistic_est(beta0,
-                                                              beta1,
-                                                              beta2,
-                                                              theta1,
-                                                              theta2,
-                                                              theta3,
-                                                              theta4,
-                                                              sigma_sq)
+    myreg_est_fun <-
+        calc_myreg_mreg_linear_yreg_logistic_est(beta0 = beta0,
+                                                 beta1 = beta1,
+                                                 beta2 = beta2,
+                                                 theta1 = theta1,
+                                                 theta2 = theta2,
+                                                 theta3 = theta3,
+                                                 theta4 = theta4,
+                                                 sigma_sq = sigma_sq)
 
+    ## vcovs
     Sigma_beta_hat <- Sigma_beta_hat(mreg = mreg,
                                      mreg_fit = mreg_fit,
                                      avar = avar,
@@ -67,22 +69,22 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                        cvar = cvar,
                                        interaction = interaction)
     Sigma_sigma_hat_sq <- Sigma_sigma_hat_sq(mreg_fit = mreg_fit)
-    ## Construct a function of (a1, a0, m_cde, c_cond) that returns
+    ## Construct a function of (a0, a1, m_cde, c_cond) that returns
     ## a vector of estimates.
-    myreg_se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0,
-                                                            beta1,
-                                                            beta2,
-                                                            theta1,
-                                                            theta2,
-                                                            theta3,
-                                                            theta4,
-                                                            sigma_sq,
-                                                            ## vcov
-                                                            Sigma_beta,
-                                                            Sigma_theta,
-                                                            Sigma_sigma)
+    myreg_se_fun <-
+        calc_myreg_mreg_linear_yreg_logistic_se(beta0 = beta0,
+                                                beta1 = beta1,
+                                                beta2 = beta2,
+                                                theta1 = theta1,
+                                                theta2 = theta2,
+                                                theta3 = theta3,
+                                                theta4 = theta4,
+                                                sigma_sq = sigma_sq,
+                                                Sigma_beta = Sigma_beta,
+                                                Sigma_theta = Sigma_theta,
+                                                Sigma_sigma = Sigma_sigma)
 
-    ## List of functions.
+    ## Return a list of functions.
     list(myreg_est_fun = myreg_est_fun,
          myreg_se_fun = myreg_est_fun)
 }
@@ -95,41 +97,59 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
                                                      theta2,
                                                      theta3,
                                                      theta4,
-                                                     sigma_sq,
-                                                     a0,
-                                                     a1,
-                                                     m_cde,
-                                                     c_cond) {
+                                                     sigma_sq) {
+    ## Construct a function for point estimates given (a0, a1, m_cde, c_cond).
+    fun_est <- function(a0, a1, m_cde, c_cond) {
+        m <- m_cde
+        rm <- sigma_sq
+        a1sq <- a1^2
+        a0sq <- a0^2
+        tsq <- theta3^2 # FIXME
 
-    m <- m_cde
-    rm <- sigma_sq
-    a1sq <- a1^2
-    a0sq <- a0^2
-    tsq <- theta3^2 # FIXME
+        ## Adopted from mediation.sas and modified.
+        ## Look up the following:
+        ## %if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
+        ##
+        ## */MARGINAL=CONDITIONAL CDE*/;
+        x1=(theta1+theta3*m)*(a1-a0);
+        ## */MARGINAL=CONDITIONAL PNDE (Pearl NDE)*/;
+        x2=(theta1+theta3*beta0+theta3*beta1*a0+theta3*theta2*rm)*(a1-a0)+(1/2)*tsq*rm*(a1sq-a0sq);
+        ## */MARGINAL=CONDITIONAL PNIE*/;
+        x3=(theta2*beta1+theta3*beta1*a0)*(a1-a0);
+        ## */MARGINAL=CONDITIONAL TNDE*/;
+        x4=(theta1+theta3*beta0+theta3*beta1*a1+theta3*theta2*rm)*(a1-a0)+(1/2)*tsq*rm*(a1sq-a0sq);
+        ## */ MARGINAL=CONDITIONAL TNIE (Pearl NIE)*/;
+        x5=(theta2*beta1+theta3*beta1*a1)*(a1-a0);
 
-    ## Adopted from mediation.sas and modified.
-    ## Look up the following:
-    ## %if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
-    ##
-    ## */MARGINAL=CONDITIONAL CDE*/;
-    x1=(theta1+theta3*m)*(a1-a0);
-    ## */MARGINAL=CONDITIONAL PNDE (Pearl NDE)*/;
-    x2=(theta1+theta3*beta0+theta3*beta1*a0+theta3*theta2*rm)*(a1-a0)+(1/2)*tsq*rm*(a1sq-a0sq);
-    ## */MARGINAL=CONDITIONAL PNIE*/;
-    x3=(theta2*beta1+theta3*beta1*a0)*(a1-a0);
-    ## */MARGINAL=CONDITIONAL TNDE*/;
-    x4=(theta1+theta3*beta0+theta3*beta1*a1+theta3*theta2*rm)*(a1-a0)+(1/2)*tsq*rm*(a1sq-a0sq);
-    ## */ MARGINAL=CONDITIONAL TNIE (Pearl NIE)*/;
-    x5=(theta2*beta1+theta3*beta1*a1)*(a1-a0);
+        ## Return a vector
+        c(cde = x1,
+          pnde = x2,
+          tnie = x5,
+          pnie = x3,
+          tnde = x4,
+          te = NULL,
+          pm = NULL)
+    }
 
-    list(m_cde = m_cde,
-         cde = x1,
-         c_cond = c_cond,
-         pnde = x2,
-         pnie = x3,
-         tnde = x4,
-         tnie = x5,
-         ## FIXME: unimplemented.
-         te = NULL,
-         pm = NULL)
+    return(fun_est)
+}
+
+
+calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
+                                                    beta1,
+                                                    beta2,
+                                                    theta1,
+                                                    theta2,
+                                                    theta3,
+                                                    theta4,
+                                                    sigma_sq,
+                                                    Sigma_beta,
+                                                    Sigma_theta,
+                                                    Sigma_sigma) {
+    ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond)
+    fun_se <- function(a0, a1, m_cde, c_cond) {
+        return(NULL)
+    }
+
+    return(fun_se)
 }
