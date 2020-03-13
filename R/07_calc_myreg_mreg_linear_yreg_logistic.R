@@ -167,6 +167,8 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
 
         ## VanderWeele 2015. p468
+        ## These are the gradient vector of each scalar quantity of interest.
+        ## Obtain the first partial derivative wrt to each parameter.
         Gamma_cde <-
             matrix(c(0,                       # beta0
                      0,                       # beta1
