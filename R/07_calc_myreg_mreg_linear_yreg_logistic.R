@@ -68,7 +68,7 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                        mvar = mvar,
                                        cvar = cvar,
                                        interaction = interaction)
-    Sigma_sigma_hat_sq <- Sigma_sigma_hat_sq(mreg_fit = mreg_fit)
+    Sigma_sigma_sq_hat <- Sigma_sigma_sq_hat(mreg_fit = mreg_fit)
     ## Construct a function of (a0, a1, m_cde, c_cond) that returns
     ## a vector of estimates.
     myreg_se_fun <-

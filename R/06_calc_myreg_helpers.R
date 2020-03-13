@@ -141,7 +141,7 @@ Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
     vcov_ready[vars,vars, drop = FALSE]
 }
 
-Sigma_sigma_hat_sq <- function(mreg_fit) {
+Sigma_sigma_sq_hat <- function(mreg_fit) {
 
     ## VanderWeele 2015. p470 states
     ## 2 * (sigma_hat^2)^2 / (n-p)
