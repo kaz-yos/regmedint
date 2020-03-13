@@ -167,6 +167,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
 
         ## VanderWeele 2015. p468
+        ## Valeri & VanderWeele 2013. Appendix p6-9
         ## These are the gradient vector of each scalar quantity of interest.
         ## Obtain the first partial derivative wrt to each parameter.
         Gamma_cde <-
@@ -239,7 +240,9 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                 rep(0, length(theta4)),  # theta4 vector
                 ##
                 0))                      # sigma^2
-        ##
+        ## Note VV2013 Appendix p9 seems to have an error in the gradient
+        ## vector element correspoding to sigma^2. Otherwise, it is a
+        ## sum of gradients for pnde and tnie.
         Gamma_te <-
             Gamma_pnde + Gamma_tnie # By linearity of differentiation
         ##
