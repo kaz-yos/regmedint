@@ -1,4 +1,10 @@
 ✔ |  OK F W S | Context
+⠏ |   0       | 02_new_regmedint✖ |   0 1     | 02_new_regmedint
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+test-02_new_regmedint.R:20: error: new_regmedint: returns an object with a class of regmedint
+argument "casecontrol" is missing, with no default
+1: new_regmedint(NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-02_new_regmedint.R:20
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 03_fit_mreg✔ |  24       | 03_fit_mreg
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  15       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
@@ -6,7 +12,27 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers⠧ |  24 4     | 06_calc_myreg_helpers⠏ |  36 14     | 06_calc_myreg_helpers✖ |  39 21     | 06_calc_myreg_helpers [0.3 s]
+⠼ |  24 1     | 04_fit_yreg_survAFT_weibull✖ |  24 1     | 04_fit_yreg_survAFT_weibull
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+test-05_calc_myreg.R:18: error: (unknown)
+argument "mreg" is missing, with no default
+1: describe("calc_myreg", {
+       res_calc_myreg <- calc_myreg()
+       it("returns a list of two functions", {
+           expect_equal(length(res_calc_myreg), 2)
+           expect_equal(class(res_calc_myreg[[1]]), "function")
+           expect_equal(class(res_calc_myreg[[2]]), "function")
+       })
+       it("returns a list of two functions with four argumens (a0, a1, m_cde, c_cond)", {
+           expect_equal(formals(res_calc_myreg[[1]]), c("a0", "a1", "m_cde", "c_cond"))
+           expect_equal(formals(res_calc_myreg[[2]]), c("a0", "a1", "m_cde", "c_cond"))
+       })
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-05_calc_myreg.R:18
+2: eval(substitute(code), describe_environment)
+3: eval(substitute(code), describe_environment)
+4: calc_myreg() at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-05_calc_myreg.R:19
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 06_calc_myreg_helpers⠇ |  24 5     | 06_calc_myreg_helpers⠸ |  40 14     | 06_calc_myreg_helpers✖ |  41 20     | 06_calc_myreg_helpers [0.2 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-06_calc_myreg_helpers.R:207: error: theta_hat for yreg loglinear: extracts coef correctly when there is no interaction (add zero)
 no valid set of coefficients has been found: please supply starting values
@@ -437,34 +463,28 @@ test-06_calc_myreg_helpers.R:540: failure: theta_hat for yreg survAFT_weibull: e
 1/1 mismatches
 [1] 7 - 8 == -1
 
-test-06_calc_myreg_helpers.R:629: error: Sigma_sigma_sq_hat: extracts the variance estimate for sigma^2
-could not find function "Sigma_sigma_sq_hat"
-1: expect_equal(Sigma_sigma_sq_hat(lm_fit), matrix(((sigma(lm_fit))^2)^2/lm_fit$df.residual)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:629
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
-
-test-06_calc_myreg_helpers.R:662: error: Sigma_theta_hat for yreg linear: extracts vcov correctly when there is no interaction
+test-06_calc_myreg_helpers.R:653: error: Sigma_theta_hat for yreg linear: extracts vcov correctly when there is no interaction
 invalid dimnames given for "dgCMatrix" object
 1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:662
+   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:653
 2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
    "trt", "bili", "trt:bili", "age", "male", "stage")))
 3: dimnamesGets(x, value)
 4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
 
-test-06_calc_myreg_helpers.R:720: error: Sigma_theta_hat for yreg logistic: extracts vcov correctly when there is no interaction
+test-06_calc_myreg_helpers.R:711: error: Sigma_theta_hat for yreg logistic: extracts vcov correctly when there is no interaction
 invalid dimnames given for "dgCMatrix" object
 1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:720
+   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:711
 2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
    "trt", "bili", "trt:bili", "age", "male", "stage")))
 3: dimnamesGets(x, value)
 4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
 
-test-06_calc_myreg_helpers.R:764: error: Sigma_theta_hat for yreg loglinear: extracts vcov correctly when there is no interaction
+test-06_calc_myreg_helpers.R:755: error: Sigma_theta_hat for yreg loglinear: extracts vcov correctly when there is no interaction
 no valid set of coefficients has been found: please supply starting values
 1: fit_yreg(yreg = "loglinear", data = pbc_cc, yvar = "spiders", avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
-       interaction = FALSE, eventvar = NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:764
+       interaction = FALSE, eventvar = NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:755
 2: eval(bquote(glm(formula = .(as.formula(string_formula)), family = binomial(link = "log"), data = data))) at /inv/kyoshida/cantos_stats/regmedint/R/04_fit_yreg_outcome_modeling.R:77
 3: eval(bquote(glm(formula = .(as.formula(string_formula)), family = binomial(link = "log"), data = data)))
 4: glm(formula = spiders ~ trt + bili + age + male + stage, family = binomial(link = "log"), data = data)
@@ -656,10 +676,10 @@ no valid set of coefficients has been found: please supply starting values
            }), class = "family"), control = list(epsilon = 0.00000001, maxit = 25, trace = FALSE), intercept = TRUE, singular.ok = TRUE)
 8: stop("no valid set of coefficients has been found: please supply starting values", call. = FALSE)
 
-test-06_calc_myreg_helpers.R:795: error: Sigma_theta_hat for yreg loglinear: extracts vcov correctly when there is an interaction
+test-06_calc_myreg_helpers.R:786: error: Sigma_theta_hat for yreg loglinear: extracts vcov correctly when there is an interaction
 no valid set of coefficients has been found: please supply starting values
 1: fit_yreg(yreg = "loglinear", data = pbc_cc, yvar = "spiders", avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), 
-       interaction = TRUE, eventvar = NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:795
+       interaction = TRUE, eventvar = NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:786
 2: eval(bquote(glm(formula = .(as.formula(string_formula)), family = binomial(link = "log"), data = data))) at /inv/kyoshida/cantos_stats/regmedint/R/04_fit_yreg_outcome_modeling.R:77
 3: eval(bquote(glm(formula = .(as.formula(string_formula)), family = binomial(link = "log"), data = data)))
 4: glm(formula = spiders ~ trt * bili + age + male + stage, family = binomial(link = "log"), data = data)
@@ -862,69 +882,69 @@ no valid set of coefficients has been found: please supply starting values
            }), class = "family"), control = list(epsilon = 0.00000001, maxit = 25, trace = FALSE), intercept = TRUE, singular.ok = TRUE)
 8: stop("no valid set of coefficients has been found: please supply starting values", call. = FALSE)
 
-test-06_calc_myreg_helpers.R:837: error: Sigma_theta_hat for yreg poisson: extracts vcov correctly when there is no interaction
+test-06_calc_myreg_helpers.R:828: error: Sigma_theta_hat for yreg poisson: extracts vcov correctly when there is no interaction
 invalid dimnames given for "dgCMatrix" object
 1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:837
+   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:828
 2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
    "trt", "bili", "trt:bili", "age", "male", "stage")))
 3: dimnamesGets(x, value)
 4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
 
-test-06_calc_myreg_helpers.R:897: error: Sigma_theta_hat for yreg negbin: extracts vcov correctly when there is no interaction
+test-06_calc_myreg_helpers.R:888: error: Sigma_theta_hat for yreg negbin: extracts vcov correctly when there is no interaction
 invalid dimnames given for "dgCMatrix" object
 1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:897
+   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:888
 2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
    "trt", "bili", "trt:bili", "age", "male", "stage")))
 3: dimnamesGets(x, value)
 4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
 
-test-06_calc_myreg_helpers.R:955: error: Sigma_theta_hat for yreg survCox: extracts vcov correctly when there is no interaction
+test-06_calc_myreg_helpers.R:946: error: Sigma_theta_hat for yreg survCox: extracts vcov correctly when there is no interaction
 invalid dimnames given for "dgCMatrix" object
 1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:955
+   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:946
 2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
    "trt", "bili", "trt:bili", "age", "male", "stage")))
 3: dimnamesGets(x, value)
 4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
 
-test-06_calc_myreg_helpers.R:981: error: Sigma_theta_hat for yreg survCox: extracts vcov correctly when there is an interaction
+test-06_calc_myreg_helpers.R:972: error: Sigma_theta_hat for yreg survCox: extracts vcov correctly when there is an interaction
 subscript out of bounds
 1: expect_equal(Sigma_theta_hat(yreg = "survCox", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", 
-       "stage"), interaction = TRUE), vcov(yreg_fit3)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:981
+       "stage"), interaction = TRUE), vcov(yreg_fit3)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:972
 2: quasi_label(enquo(expected), expected.label, arg = "expected")
 3: eval_bare(get_expr(quo), get_env(quo))
 
-test-06_calc_myreg_helpers.R:1013: error: Sigma_theta_hat for yreg survAFT_exp: extracts vcov correctly when there is no interaction
+test-06_calc_myreg_helpers.R:1004: error: Sigma_theta_hat for yreg survAFT_exp: extracts vcov correctly when there is no interaction
 invalid dimnames given for "dgCMatrix" object
 1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:1013
+   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:1004
 2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
    "trt", "bili", "trt:bili", "age", "male", "stage")))
 3: dimnamesGets(x, value)
 4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
 
-test-06_calc_myreg_helpers.R:1039: error: Sigma_theta_hat for yreg survAFT_exp: extracts vcov correctly when there is an interaction
+test-06_calc_myreg_helpers.R:1030: error: Sigma_theta_hat for yreg survAFT_exp: extracts vcov correctly when there is an interaction
 no 'dimnames' attribute for array
 1: expect_equal(Sigma_theta_hat(yreg = "survAFT_exp", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", 
-       "stage"), interaction = TRUE), vcov(yreg_fit3)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:1039
+       "stage"), interaction = TRUE), vcov(yreg_fit3)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:1030
 2: quasi_label(enquo(expected), expected.label, arg = "expected")
 3: eval_bare(get_expr(quo), get_env(quo))
 
-test-06_calc_myreg_helpers.R:1071: error: Sigma_theta_hat for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
+test-06_calc_myreg_helpers.R:1062: error: Sigma_theta_hat for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
 invalid dimnames given for "dgCMatrix" object
 1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:1071
+   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:1062
 2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
    "trt", "bili", "trt:bili", "age", "male", "stage")))
 3: dimnamesGets(x, value)
 4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
 
-test-06_calc_myreg_helpers.R:1097: error: Sigma_theta_hat for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
+test-06_calc_myreg_helpers.R:1088: error: Sigma_theta_hat for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
 no 'dimnames' attribute for array
 1: expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", 
-       "male", "stage"), interaction = TRUE), vcov(yreg_fit3)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:1097
+       "male", "stage"), interaction = TRUE), vcov(yreg_fit3)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers.R:1088
 2: quasi_label(enquo(expected), expected.label, arg = "expected")
 3: eval_bare(get_expr(quo), get_env(quo))
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -936,13 +956,23 @@ Empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_logistic
+⠹ |   0 1   2 | 07_calc_myreg_mreg_linear_yreg_linear✖ |   0 1   2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:18: skip: calc_myreg_mreg_linear_yreg_logistic_est works given coef
-Empty test
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:27: skip: calc_myreg_mreg_linear_yreg_logistic_se works given coef and vcov
-Empty test
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:27: error: (unknown)
+argument "beta2" is missing, with no default
+1: describe("calc_myreg_mreg_linear_yreg_logistic_est", {
+       est_fun <- calc_myreg_mreg_linear_yreg_logistic_est()
+       res <- est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = c(1, 2, 3))
+       it("returns a numeric vector of length 7 with appropriate named elements", {
+           expect_equal(length(res), 7)
+           expect_equal(names(res), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm"))
+       })
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:27
+2: eval(substitute(code), describe_environment)
+3: eval(substitute(code), describe_environment)
+4: est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = c(1, 2, 3)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:30
+5: t(matrix(beta2)) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:106
+6: matrix(beta2)
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_logistic_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -963,10 +993,10 @@ Empty test
 ⠏ |   0       | calc_myreg_mreg_linear_yreg_survAFT_weibull✖ |   0 4     | calc_myreg_mreg_linear_yreg_survAFT_weibull
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-calc_myreg_mreg_linear_yreg_survAFT_weibull.R:42: error: calc_myreg fit linear / Weibull AFT models correctly
-argument "m_cde" is missing, with no default
+argument "avar" is missing, with no default
 1: calc_myreg(mreg = "linear", mreg_fit = mreg_fit0, yreg = "survAFT_weibull", yreg_fit = yreg_fit0, interaction = FALSE) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-calc_myreg_mreg_linear_yreg_survAFT_weibull.R:42
-2: calc_myreg_mreg_linear_yreg_logistic(mreg, mreg_fit, yreg, yreg_fit, interaction, a0, a1, m_cde, c_cond) at /inv/kyoshida/cantos_stats/regmedint/R/05_calc_myreg_mediation_analysis.R:50
-3: calc_myreg_mreg_linear_yreg_logistic_est(beta0, beta1, beta2, theta1, theta2, theta3, theta4, sigma, a0, a1, m_cde, c_cond) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:29
+2: calc_myreg_mreg_linear_yreg_logistic(mreg, mreg_fit, yreg, yreg_fit, avar, mvar, cvar, interaction) at /inv/kyoshida/cantos_stats/regmedint/R/05_calc_myreg_mediation_analysis.R:48
+3: beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar, cvar = cvar) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:28
 
 test-calc_myreg_mreg_linear_yreg_survAFT_weibull.R:163: failure: calc_myreg fit linear / Weibull AFT models correctly with interaction
 TRUE not equal to FALSE.
@@ -993,11 +1023,9 @@ Need to validate arguments before passing to other functions!
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 2.4 s
+Duration: 2.3 s
 
-OK:       198
-Failed:   26
+OK:       200
+Failed:   28
 Warnings: 0
-Skipped:  8
-
-Don't worry, you'll get it.
+Skipped:  6
