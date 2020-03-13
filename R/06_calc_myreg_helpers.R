@@ -143,21 +143,22 @@ Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
 
 Sigma_sigma_hat_sq <- function(mreg_fit) {
 
-    ## FIXME: This is tentative and suspicious.
-    ## Chapter 2
-    ## Quadratic Forms of Random Variables
+    ## VanderWeele 2015. p470 states
+    ## 2 * (sigma_hat^2)^2 / (n-p)
+    ##
+    ## Chapter 2 Quadratic Forms of Random Variables
     ## http://pages.stat.wisc.edu/~st849-1/lectures/Ch02.pdf
     ## Corollary 6. In a full-rank Gaussian model for M with p covariates X.
-    ## ||M - X beta_hat||^2 / sigma^2 ~ (central chi-squared DF = (n - p))
-    ## Var(central chi-squared DF = (n - p)) = (n - p)
+    ## (||M - X beta_hat||^2 / sigma^2) ~ (central chi-squared DF = (n - p))
+    ##
+    ## https://en.wikipedia.org/wiki/Chi-squared_distribution
+    ## Var(central chi-squared with DF = (n - p)) = 2 * (n - p)
+    ##
     ## Var(sigma_hat^2) = Var(1/(n-p) * ||M - X beta_hat||^2)
     ##                  = 1/(n-p)^2 * Var(||M - X beta_hat||^2 * sigma^2/sigma^2)
     ##                  = 1/(n-p)^2 * (sigma^2)^2 * Var(||M - X beta_hat||^2 /sigma^2)
-    ##                  = 1/(n-p)^2 * (sigma^2)^2 * (n-p)
-    ##                  = (sigma^2)^2 / (n-p)
+    ##                  = 1/(n-p)^2 * (sigma^2)^2 * (2 * (n-p))
+    ##                  = 2 * (sigma^2)^2 / (n-p)
     ##
-    ## (sigma_hat^2)^2 / (n-p)
-    ## VanderWeele 2015. p470 states??
-    ## 2 * (sigma_hat^2)^2 / (n-p)
-    matrix(((sigma(mreg_fit))^2)^2 / mreg_fit$df.residual)
+    matrix(2 * ((sigma(mreg_fit))^2)^2 / mreg_fit$df.residual)
 }
