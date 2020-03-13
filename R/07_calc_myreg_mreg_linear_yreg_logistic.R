@@ -226,7 +226,19 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                 ##
                 (theta3 * theta2 + (1/2) * theta3^2 * (a1 + a0))))  # sigma^2
         ##
-        Gamma_pnie
+        Gamma_pnie <-
+            matrix(c(
+                0,                       # beta0
+                (theta2 + theta3 * a0),  # beta1 a1 -> a0
+                rep(0, length(beta2)),   # beta2 vector
+                ##
+                0,                       # theta0
+                0,                       # theta1
+                beta1,                   # theta2
+                (beta1 * a0),            # theta3 a1 -> a0
+                rep(0, length(theta4)),  # theta4 vector
+                ##
+                0))                      # sigma^2
 
 
         ## SEs
