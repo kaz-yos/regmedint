@@ -168,9 +168,17 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
 
         ## VanderWeele 2015. p468
         Gamma_cde <-
-            matrix(c(0, 0, rep(0, length(beta2)),
-                     0, 1, 0, m_cde, rep(0, length(theta4)),
-                     0))
+            matrix(c(0,                       # beta0
+                     0,                       # beta1
+                     rep(0, length(beta2)),   # beta2 vector
+                     ##
+                     0,                       # theta0
+                     1,                       # theta1
+                     0,                       # theta2
+                     m_cde,                   # theta3
+                     rep(0, length(theta4)),  # theta4
+                     ##
+                     0))                      # sigma^2
         ##
         Gamma_pnde <-
             matrix(c(theta3, (theta3 * a0), (theta3 * c_cond),
