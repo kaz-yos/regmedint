@@ -32,8 +32,6 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
     beta0 <- beta_hat["(Intercept)"]
     beta1 <- beta_hat[avar]
     beta2 <- beta_hat[cvar]
-    ## This mreg linear yreg linear is the only case that uses sigma^2.
-    sigma_sq <- sigma_hat_sq(mreg_fit = mreg_fit)
     ## yreg coefficients
     theta_hat <- theta_hat(yreg = yreg,
                            yreg_fit = yreg_fit,
@@ -54,8 +52,7 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                                theta1 = theta1,
                                                theta2 = theta2,
                                                theta3 = theta3,
-                                               theta4 = theta4,
-                                               sigma_sq = sigma_sq)
+                                               theta4 = theta4)
 
     ## vcovs
     Sigma_beta_hat <- Sigma_beta_hat(mreg = mreg,
@@ -68,7 +65,6 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                        mvar = mvar,
                                        cvar = cvar,
                                        interaction = interaction)
-    Sigma_sigma_sq_hat <- Sigma_sigma_sq_hat(mreg_fit = mreg_fit)
     ## Construct a function of (a0, a1, m_cde, c_cond) that returns
     ## a vector of estimates.
     myreg_se_fun <-
@@ -79,10 +75,8 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                               theta2 = theta2,
                                               theta3 = theta3,
                                               theta4 = theta4,
-                                              sigma_sq = sigma_sq,
-                                              Sigma_beta = Sigma_beta,
-                                              Sigma_theta = Sigma_theta,
-                                              Sigma_sigma = Sigma_sigma)
+                                              Sigma_beta = Sigma_beta_hat,
+                                              Sigma_theta = Sigma_theta_hat)
 
     ## Return a list of functions.
     list(myreg_est_fun = myreg_est_fun,
@@ -96,8 +90,7 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
                                                    theta1,
                                                    theta2,
                                                    theta3,
-                                                   theta4,
-                                                   sigma_sq) {
+                                                   theta4) {
     ## Construct a function for point estimates given (a0, a1, m_cde, c_cond).
     fun_est <- function(a0, a1, m_cde, c_cond) {
 
@@ -150,10 +143,8 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
                                                   theta2,
                                                   theta3,
                                                   theta4,
-                                                  sigma_sq,
                                                   Sigma_beta,
-                                                  Sigma_theta,
-                                                  Sigma_sigma) {
+                                                  Sigma_theta) {
 
     Sigma <- Matrix::bdiag(Sigma_beta,
                            Sigma_theta,
