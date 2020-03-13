@@ -239,6 +239,11 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                 rep(0, length(theta4)),  # theta4 vector
                 ##
                 0))                      # sigma^2
+        ##
+        Gamma_te <-
+            Gamma_pnde + Gamma_tnie # By linearity of differentiation
+        ##
+        Gamma_pm
 
 
         ## SEs
