@@ -609,26 +609,17 @@ describe("Sigma_sigma_sq_hat", {
 
     it("extracts the variance estimate for sigma^2", {
 
-        ## FIXME: This is tentative and suspicious.
-        ## Chapter 2
-        ## Quadratic Forms of Random Variables
-        ## http://pages.stat.wisc.edu/~st849-1/lectures/Ch02.pdf
-        ## Corollary 6. In a full-rank Gaussian model for M with p covariates X.
-        ## ||M - X beta_hat||^2 / sigma^2 ~ (central chi-squared DF = (n - p))
-        ## Var(central chi-squared DF = (n - p)) = (n - p)
-        ## Var(sigma_hat^2) = Var(1/(n-p) * ||M - X beta_hat||^2)
-        ##                  = 1/(n-p)^2 * Var(||M - X beta_hat||^2 * sigma^2/sigma^2)
-        ##                  = 1/(n-p)^2 * (sigma^2)^2 * Var(||M - X beta_hat||^2 /sigma^2)
-        ##                  = 1/(n-p)^2 * (sigma^2)^2 * (n-p)
-        ##                  = (sigma^2)^2 / (n-p)
+        ## VanderWeele 2015. p470 states
+        ## 2 * (sigma_hat^2)^2 / (n-p)
+        ## Also see the comment in the body of the function.
 
         ## lm
         lm_fit <- lm(formula = alk.phos ~ trt + bili,
                      data    = pbc_cc)
-        ## Derivation above.
         expect_equal(Sigma_sigma_sq_hat(lm_fit),
-                     ## (sigma_hat^2)^2 / (n-p)
-                     matrix(((sigma(lm_fit))^2)^2 / lm_fit$df.residual))
+                     ## 2 * (sigma_hat^2)^2 / (n-p)
+                     matrix(2 * ((sigma(lm_fit))^2)^2 / lm_fit$df.residual))
+        ## Must be a matrix for later manipulation
         expect_equal(dim(Sigma_sigma_sq_hat(lm_fit)),
                      c(1,1))
     })
