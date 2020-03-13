@@ -220,7 +220,35 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
         Gamma_te <-
             Gamma_pnde + Gamma_tnie # By linearity of differentiation
         ##
-        Gamma_pm
+        ## PM part. VV2013 Appendix p5-6.
+        d1_numer <- -theta3 * ((theta2 * beta1) + (theta3 * beta1 * a1))
+        d1_denom_sqrt <- (theta1 + (theta3 * beta0) + (theta3 * beta1 * a0) + (theta3 * beta2_c) + (theta2 * beta1) + (theta3 * beta1 * a1))
+        ##
+        d1 <- d1_numer / d1_denom_sqrt^2
+        ##
+        d2 <- ((theta2 + (theta3 * a1) * (-1 * ((theta2 * beta1) + (theta3 * best1 * a1)) + d1_denom_sqrt)) - (theta3 * a0)) / d1_denom_sqrt^2
+        ## Vector valued
+        d3 <- c_cond * (d1_numer / d1_denom_sqrt^2)
+        ##
+        d4 <- 0
+        ##
+        d5 <- ((theta2 * beta1) + (theta3 * beta1 * a1)) / d1_denom_sqrt^2
+        ##
+        d6 <- beta1 * (-1 * ((theta2 * beta1) + (theta3 * beta1 * a1)) + d1_denom_sqrt) / d1_denom_sqrt^2
+        ##
+        d7 <- ((beta1 * a1 * d1_denom_sqrt) - ((beta0 + (beta1 * (a1 + a0)) + beta2_c) * ((theta2 * beta1) + (theta3 * beta1 * a1)))) / d1_denom_sqrt^2
+        ##
+        d8 <- rep(0, length(theta4))
+        ##
+        Gamma_pm <- c(d1, # beta0
+                      d2, # beta1
+                      d3, # beta2 vector
+                      ##
+                      d4, # theta0
+                      d5, # theta1
+                      d6, # theta2
+                      d7, # theta3
+                      d8) # theta4 vector
 
 
         ## SEs
