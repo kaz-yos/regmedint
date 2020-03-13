@@ -145,8 +145,7 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
                                                   Sigma_theta) {
 
     Sigma <- Matrix::bdiag(Sigma_beta,
-                           Sigma_theta,
-                           Sigma_sigma)
+                           Sigma_theta)
 
     ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond)
     fun_se <- function(a0, a1, m_cde, c_cond) {
@@ -168,70 +167,56 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
                      1,                       # theta1
                      0,                       # theta2
                      m_cde,                   # theta3
-                     rep(0, length(theta4)),  # theta4 vector
-                     ##
-                     0))                      # sigma^2
+                     rep(0, length(theta4)))) # theta4 vector
         ##
         Gamma_pnde <-
             matrix(c(
-                theta3,                                             # beta0
-                (theta3 * a0),                                      # beta1
-                (theta3 * c_cond),                                  # beta2 vector
+                theta3,                            # beta0
+                (theta3 * a0),                     # beta1
+                (theta3 * c_cond),                 # beta2 vector
                 ##
-                0,                                                  # theta0
-                1,                                                  # theta1
-                (theta3 * sigma_sq),                                # theta2
-                (beta0 + beta1 * a0 + beta2_c + theta2 *
-                 sigma_sq + theta3 * sigma_sq * (a1 + a0)),         # theta3
-                rep(0, length(theta4)),                             # theta4 vector
-                ##
-                (theta3 * theta2 + (1/2) * theta3^2 * (a1 + a0))))  # sigma^2
+                0,                                 # theta0
+                1,                                 # theta1
+                0,                                 # theta2
+                (beta0 + (beta1 * a0) + beta2_c),  # theta3
+                rep(0, length(theta4))))           # theta4 vector
         ##
         Gamma_tnie <-
             matrix(c(
-                0,                       # beta0
-                (theta2 + theta3 * a1),  # beta1
-                rep(0, length(beta2)),   # beta2 vector
+                0,                         # beta0
+                (theta2 + (theta3 * a1)),  # beta1
+                rep(0, length(beta2)),     # beta2 vector
                 ##
-                0,                       # theta0
-                0,                       # theta1
-                beta1,                   # theta2
-                (beta1 * a1),            # theta3
-                rep(0, length(theta4)),  # theta4 vector
-                ##
-                0))                      # sigma^2
+                0,                         # theta0
+                0,                         # theta1
+                beta1,                     # theta2
+                (beta1 * a1),              # theta3
+                rep(0, length(theta4))))   # theta4 vector
         ##
         Gamma_tnde <-
             matrix(c(
-                theta3,                                             # beta0
-                (theta3 * a1),                                      # beta1 a0 -> a1
-                (theta3 * c_cond),                                  # beta2 vector
+                theta3,                            # beta0
+                (theta3 * a1),                     # beta1 a0 -> a1
+                (theta3 * c_cond),                 # beta2 vector
                 ##
-                0,                                                  # theta0
-                1,                                                  # theta1
-                (theta3 * sigma_sq),                                # theta2
-                (beta0 + beta1 * a1 + beta2_c + theta2 *
-                 sigma_sq + theta3 * sigma_sq * (a1 + a0)),         # theta3 a0 -> a1
-                rep(0, length(theta4)),                             # theta4 vector
-                ##
-                (theta3 * theta2 + (1/2) * theta3^2 * (a1 + a0))))  # sigma^2
+                0,                                 # theta0
+                1,                                 # theta1
+                (theta3 * sigma_sq),               # theta2
+                (beta0 + (beta1 * a1) + beta2_c),  # theta3 a0 -> a1
+                rep(0, length(theta4))))           # theta4 vector
         ##
         Gamma_pnie <-
             matrix(c(
-                0,                       # beta0
-                (theta2 + theta3 * a0),  # beta1 a1 -> a0
-                rep(0, length(beta2)),   # beta2 vector
+                0,                         # beta0
+                (theta2 + (theta3 * a0)),  # beta1 a1 -> a0
+                rep(0, length(beta2)),     # beta2 vector
                 ##
-                0,                       # theta0
-                0,                       # theta1
-                beta1,                   # theta2
-                (beta1 * a0),            # theta3 a1 -> a0
-                rep(0, length(theta4)),  # theta4 vector
-                ##
-                0))                      # sigma^2
-        ## Note VV2013 Appendix p9 seems to have an error in the gradient
-        ## vector element correspoding to sigma^2. Otherwise, it is a
-        ## sum of gradients for pnde and tnie.
+                0,                         # theta0
+                0,                         # theta1
+                beta1,                     # theta2
+                (beta1 * a0),              # theta3 a1 -> a0
+                rep(0, length(theta4))))   # theta4 vector
+        ##
         Gamma_te <-
             Gamma_pnde + Gamma_tnie # By linearity of differentiation
         ##
