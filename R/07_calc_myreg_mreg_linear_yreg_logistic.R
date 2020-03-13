@@ -7,9 +7,9 @@
 
 
 ## VanderWeele 2015 p468 Proposition 2.4
-##' Calculate effect measures based on two regression fits (linear/linear)
+##' Create calculators for effects and se (mreg linear / yreg logistic)
 ##'
-##' Causal effect parameters are calculated.
+##' Construct functions for the conditional effect estimates and their standard errors in the mreg linear / yreg logistic setting.
 ##'
 ##' @inheritParams regmedint
 ##' @param mreg_fit Model fit from \code{\link{fit_mreg}}
