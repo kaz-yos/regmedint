@@ -98,7 +98,7 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
         ## matrix operation to error on non-conformant structure.
         beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
 
-        ## VanderWeele 2015 p468
+        ## VanderWeele 2015 p466
         ## Adopted from mediation.sas and modified.
         ## Look up the third occurrence of the following:
         ## %if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
@@ -106,21 +106,19 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
         ## Pearl decomposition (Regular NDE and NIE)
         ## Note the a0 in the first line.                      vv
         pnde <- (theta1 + (theta3 * beta0) + (theta3 * beta1 * a0) +
-                 (theta3 * beta2_c) + (theta3 * theta2 * sigma_sq)) * (a1 - a0) +
-            ((1/2) * theta3^2 * sigma_sq) * (a1^2 - a0^2)
-        ## Note the a1.                              vv
-        tnie <- ((theta2 * beta1) + theta3 * beta1 * a1) * (a1 - a0)
+                 (theta3 * beta2_c)) * (a1 - a0)
+        ## Note the a1.                               vv
+        tnie <- ((theta2 * beta1) + (theta3 * beta1 * a1)) * (a1 - a0)
         ## Another decomposition
         ## Note the a0 -> a1 change in the first line.         vv
         tnde <- (theta1 + (theta3 * beta0) + (theta3 * beta1 * a1) +
-                 (theta3 * beta2_c) + (theta3 * theta2 * sigma_sq)) * (a1 - a0) +
-            ((1/2) * theta3^2 * sigma_sq) * (a1^2 - a0^2)
-        ## Note the a1 -> a0 change.                 vv
-        pnie <- ((theta2 * beta1) + theta3 * beta1 * a0) * (a1 - a0)
+                 (theta3 * beta2_c)) * (a1 - a0)
+        ## Note the a1 -> a0 change.                  vv
+        pnie <- ((theta2 * beta1) + (theta3 * beta1 * a0)) * (a1 - a0)
         ## It is the sum of NDE and NIE on the log scale.
         te <- pnde + tnie
-        ## VanderWeele 2015 p48.
-        pm <- (exp(pnde) * (exp(tnie) - 1)) / (exp(te) - 1)
+        ## VanderWeele 2015 p47
+        pm <- tnie / te
 
         ## Return a vector
         c(cde = cde,
