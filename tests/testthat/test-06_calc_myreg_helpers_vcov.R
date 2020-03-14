@@ -646,7 +646,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit1)[vars2])
+                                          vcov(yreg_fit1)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "linear",
                                              yreg_fit = yreg_fit1,
@@ -704,7 +704,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit1)[vars2])
+                                          vcov(yreg_fit1)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
                                              yreg_fit = yreg_fit1,
@@ -762,7 +762,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit1)[vars2])
+                                          vcov(yreg_fit1)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
                                              yreg_fit = yreg_fit1,
@@ -821,7 +821,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit1)[vars2])
+                                          vcov(yreg_fit1)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
                                              yreg_fit = yreg_fit1,
@@ -881,7 +881,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit1)[vars2])
+                                          vcov(yreg_fit1)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
                                              yreg_fit = yreg_fit1,
@@ -939,7 +939,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit1)[vars2])
+                                          vcov(yreg_fit1)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
                                              yreg_fit = yreg_fit1,
@@ -997,7 +997,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit1)[vars2])
+                                          vcov(yreg_fit1)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
                                              yreg_fit = yreg_fit1,
@@ -1055,7 +1055,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit1)[vars2])
+                                          vcov(yreg_fit1)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
                                              yreg_fit = yreg_fit1,
@@ -1117,7 +1117,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit3)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "linear",
                                              yreg_fit = yreg_fit3,
@@ -1175,7 +1175,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit3)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
                                              yreg_fit = yreg_fit3,
@@ -1233,7 +1233,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit3)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
                                              yreg_fit = yreg_fit3,
@@ -1292,7 +1292,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit3)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
                                              yreg_fit = yreg_fit3,
@@ -1352,7 +1352,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit3)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
                                              yreg_fit = yreg_fit3,
@@ -1410,7 +1410,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit3)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
                                              yreg_fit = yreg_fit3,
@@ -1468,7 +1468,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit3)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
                                              yreg_fit = yreg_fit3,
@@ -1526,7 +1526,7 @@ describe("Sigma_theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1,vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit3)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
                                              yreg_fit = yreg_fit3,
