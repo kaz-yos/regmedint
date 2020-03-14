@@ -449,7 +449,7 @@ describe("theta_hat", {
             })
         })
         describe("theta_hat (NULL cvar) for yreg survCox", {
-            it("extracts coef correctly when there is no interaction (add zero)", {
+            it("extracts coef correctly when there is no interaction (add two zeros)", {
                 yreg_fit0 <- fit_yreg(yreg = "survCox",
                                       data = pbc_cc,
                                       yvar = "time",
@@ -458,10 +458,11 @@ describe("theta_hat", {
                                       cvar = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
-                vars1 <- c("(Intercept)","trt","bili")
+                vars1 <- c("trt","bili")
                 vars2 <- NULL
                 vars <- c("(Intercept)","trt","bili","trt:bili")
-                ref_coef <- c(coef(yreg_fit0)[vars1],
+                ref_coef <- c("(Intercept)" = 0,
+                              coef(yreg_fit0)[vars1],
                               "trt:bili" = 0)
                 expect_equal(theta_hat(yreg = "survCox",
                                        yreg_fit = yreg_fit0,
@@ -478,7 +479,7 @@ describe("theta_hat", {
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit0)) + 2)
             })
-            it("extracts coef correctly when there is an interaction", {
+            it("extracts coef correctly when there is an interaction (add zero for Intercept)", {
                 yreg_fit0 <- fit_yreg(yreg = "survCox",
                                       data = pbc_cc,
                                       yvar = "time",
@@ -487,14 +488,16 @@ describe("theta_hat", {
                                       cvar = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
-                vars <- c("(Intercept)","trt","bili","trt:bili")
+                vars <- c("trt","bili","trt:bili")
+                ref_coef <- c("(Intercept)" = 0,
+                              coef(yreg_fit0)[vars])
                 expect_equal(theta_hat(yreg = "survCox",
                                        yreg_fit = yreg_fit0,
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
                                        interaction = TRUE),
-                             coef(yreg_fit0)[vars])
+                             ref_coef[vars])
                 expect_equal(theta_hat(yreg = "survCox",
                                        yreg_fit = yreg_fit0,
                                        avar = "trt",
@@ -907,7 +910,7 @@ describe("theta_hat", {
             })
         })
         describe("theta_hat (1 cvar) for yreg survCox", {
-            it("extracts coef correctly when there is no interaction (add zero)", {
+            it("extracts coef correctly when there is no interaction (add two zeros)", {
                 yreg_fit1 <- fit_yreg(yreg = "survCox",
                                       data = pbc_cc,
                                       yvar = "time",
@@ -916,10 +919,11 @@ describe("theta_hat", {
                                       cvar = c("age"),
                                       interaction = FALSE,
                                       eventvar = "status")
-                vars1 <- c("(Intercept)","trt","bili")
+                vars1 <- c("trt","bili")
                 vars2 <- c("age")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
-                ref_coef <- c(coef(yreg_fit1)[vars1],
+                ref_coef <- c("(Intercept)" = 0,
+                              coef(yreg_fit1)[vars1],
                               "trt:bili" = 0,
                               coef(yreg_fit1)[vars2])
                 expect_equal(theta_hat(yreg = "survCox",
@@ -937,7 +941,7 @@ describe("theta_hat", {
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit1)) + 2)
             })
-            it("extracts coef correctly when there is an interaction", {
+            it("extracts coef correctly when there is an interaction (add zero for Intercept)", {
                 yreg_fit1 <- fit_yreg(yreg = "survCox",
                                       data = pbc_cc,
                                       yvar = "time",
@@ -946,14 +950,16 @@ describe("theta_hat", {
                                       cvar = c("age"),
                                       interaction = TRUE,
                                       eventvar = "status")
-                vars <- c("(Intercept)","trt","bili","trt:bili","age")
+                vars <- c("trt","bili","trt:bili","age")
+                ref_coef <- c("(Intercept)" = 0,
+                              coef(yreg_fit1)[vars])
                 expect_equal(theta_hat(yreg = "survCox",
                                        yreg_fit = yreg_fit1,
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
                                        interaction = TRUE),
-                             coef(yreg_fit1)[vars])
+                             ref_coef)
                 expect_equal(theta_hat(yreg = "survCox",
                                        yreg_fit = yreg_fit1,
                                        avar = "trt",
@@ -1368,7 +1374,7 @@ describe("theta_hat", {
             })
         })
         describe("theta_hat (3 cvar) for yreg survCox", {
-            it("extracts coef correctly when there is no interaction (add zero)", {
+            it("extracts coef correctly when there is no interaction (add two zeros)", {
                 yreg_fit3 <- fit_yreg(yreg = "survCox",
                                       data = pbc_cc,
                                       yvar = "time",
@@ -1377,10 +1383,11 @@ describe("theta_hat", {
                                       cvar = c("age","male","stage"),
                                       interaction = FALSE,
                                       eventvar = "status")
-                vars1 <- c("(Intercept)","trt","bili")
+                vars1 <- c("trt","bili")
                 vars2 <- c("age","male","stage")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
-                ref_coef <- c(coef(yreg_fit3)[vars1],
+                ref_coef <- c("(Intercept)" = 0,
+                              coef(yreg_fit3)[vars1],
                               "trt:bili" = 0,
                               coef(yreg_fit3)[vars2])
                 expect_equal(theta_hat(yreg = "survCox",
@@ -1398,7 +1405,7 @@ describe("theta_hat", {
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit3)) + 2)
             })
-            it("extracts coef correctly when there is an interaction", {
+            it("extracts coef correctly when there is an interaction (Add zero for Intercept)", {
                 yreg_fit3 <- fit_yreg(yreg = "survCox",
                                       data = pbc_cc,
                                       yvar = "time",
@@ -1408,13 +1415,15 @@ describe("theta_hat", {
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
+                ref_coef <- c("(Intercept)" = 0,
+                              coef(yreg_fit3)[vars])
                 expect_equal(theta_hat(yreg = "survCox",
                                        yreg_fit = yreg_fit3,
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
                                        interaction = TRUE),
-                             coef(yreg_fit3)[vars])
+                             ref_coef)
                 expect_equal(theta_hat(yreg = "survCox",
                                        yreg_fit = yreg_fit3,
                                        avar = "trt",
