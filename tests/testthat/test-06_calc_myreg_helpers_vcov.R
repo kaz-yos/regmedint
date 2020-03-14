@@ -934,10 +934,11 @@ describe("Sigma_theta_hat", {
                                       cvar = c("age"),
                                       interaction = FALSE,
                                       eventvar = "status")
-                vars1 <- c("(Intercept)","trt","bili")
+                vars1 <- c("trt","bili")
                 vars2 <- c("age")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1,vars1],
+                ref_vcov <- Matrix::bdiag(matrix(0),
+                                          vcov(yreg_fit1)[vars1,vars1],
                                           matrix(0),
                                           vcov(yreg_fit1)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
@@ -965,14 +966,18 @@ describe("Sigma_theta_hat", {
                                       cvar = c("age"),
                                       interaction = TRUE,
                                       eventvar = "status")
+                vars1 <- c("trt","bili","trt:bili","age")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
+                ref_vcov <- Matrix::bdiag(matrix(0),
+                                          vcov(yreg_fit1)[vars1,vars1])
+                dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
                                              yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE),
-                             vcov(yreg_fit1)[vars,vars])
+                             ref_vcov)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
                                              yreg_fit = yreg_fit1,
                                              avar = "trt",
@@ -1405,10 +1410,11 @@ describe("Sigma_theta_hat", {
                                       cvar = c("age","male","stage"),
                                       interaction = FALSE,
                                       eventvar = "status")
-                vars1 <- c("(Intercept)","trt","bili")
+                vars1 <- c("trt","bili")
                 vars2 <- c("age","male","stage")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1,vars1],
+                ref_vcov <- Matrix::bdiag(matrix(0),
+                                          vcov(yreg_fit3)[vars1,vars1],
                                           matrix(0),
                                           vcov(yreg_fit3)[vars2,vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
@@ -1436,14 +1442,18 @@ describe("Sigma_theta_hat", {
                                       cvar = c("age","male","stage"),
                                       interaction = TRUE,
                                       eventvar = "status")
+                vars1 <- c("trt","bili","trt:bili","age","male","stage")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
+                ref_vcov <- Matrix::bdiag(matrix(0),
+                                          vcov(yreg_fit3)[vars1,vars1])
+                dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
                                              yreg_fit = yreg_fit3,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             ref_vcov)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
                                              yreg_fit = yreg_fit3,
                                              avar = "trt",
