@@ -18,46 +18,112 @@ library(tidyverse)
 ## BDD-style
 ## https://github.com/r-lib/testthat/issues/747
 describe("Sigma_beta_hat", {
-
+    ##
     data(pbc)
     ## Missing data should be warned in validate_args()
     pbc_cc <- pbc[complete.cases(pbc),] %>%
         mutate(male = if_else(sex == "m", 1L, 0L))
-
-    it("extracts vcov from linear models correctly", {
-
-        lm3 <- lm(formula = bili ~ trt + age + male + stage,
-                  data = pbc_cc)
-        expect_equal(Sigma_beta_hat(mreg = "linear",
-                                    mreg_fit = lm3,
-                                    avar = c("trt"),
-                                    cvar = c("age","male","stage")),
-                     vcov(lm3))
-        vars <- c("(Intercept)","trt","age","stage","male")
-        expect_equal(Sigma_beta_hat(mreg = "linear",
-                                    mreg_fit = lm3,
-                                    avar = c("trt"),
-                                    cvar = c("age","stage","male")),
-                     vcov(lm3)[vars,vars])
+    ##
+    describe("Sigma_beta_hat (NULL cvar)", {
+        it("extracts vcov from linear models correctly without cvar", {
+            lm3 <- lm(formula = bili ~ trt,
+                      data = pbc_cc)
+            expect_equal(Sigma_beta_hat(mreg = "linear",
+                                        mreg_fit = lm3,
+                                        avar = c("trt"),
+                                        cvar = NULL),
+                         vcov(lm3))
+            vars <- c("(Intercept)","trt")
+            expect_equal(Sigma_beta_hat(mreg = "linear",
+                                        mreg_fit = lm3,
+                                        avar = c("trt"),
+                                        cvar = NULL),
+                         vcov(lm3)[vars,vars])
+        })
+        it("extracts vcov from logistic models correctly without cvar", {
+            glm3 <- glm(formula = hepato ~ trt,
+                        family = binomial(link = "logit"),
+                        data = pbc_cc)
+            expect_equal(Sigma_beta_hat(mreg = "logistic",
+                                        mreg_fit = glm3,
+                                        avar = c("trt"),
+                                        cvar = NULL),
+                         vcov(glm3))
+            vars <- c("(Intercept)","trt")
+            expect_equal(Sigma_beta_hat(mreg = "logistic",
+                                        mreg_fit = glm3,
+                                        avar = c("trt"),
+                                        cvar = NULL),
+                         vcov(glm3)[vars,vars])
+        })
     })
-
-    it("extracts vcov from negbin models correctly", {
-
-        glm3 <- glm(formula = hepato ~ trt + age + male + stage,
-                    family = binomial(link = "logit"),
-                    data = pbc_cc)
-        expect_equal(Sigma_beta_hat(mreg = "logistic",
-                                    mreg_fit = glm3,
-                                    avar = c("trt"),
-                                    cvar = c("age","male","stage")),
-                     vcov(glm3))
-        vars <- c("(Intercept)","trt","age","stage","male")
-        expect_equal(Sigma_beta_hat(mreg = "logistic",
-                                    mreg_fit = glm3,
-                                    avar = c("trt"),
-                                    cvar = c("age","stage","male")),
-                     vcov(glm3)[vars,vars])
-
+    ##
+    describe("Sigma_beta_hat (1 cvar)", {
+        it("extracts vcov from linear models correctly with one cvar", {
+            lm3 <- lm(formula = bili ~ trt + age,
+                      data = pbc_cc)
+            expect_equal(Sigma_beta_hat(mreg = "linear",
+                                        mreg_fit = lm3,
+                                        avar = c("trt"),
+                                        cvar = c("age")),
+                         vcov(lm3))
+            vars <- c("(Intercept)","trt","age")
+            expect_equal(Sigma_beta_hat(mreg = "linear",
+                                        mreg_fit = lm3,
+                                        avar = c("trt"),
+                                        cvar = c("age")),
+                         vcov(lm3)[vars,vars])
+        })
+        it("extracts vcov from logistic models correctly", {
+            glm3 <- glm(formula = hepato ~ trt + age,
+                        family = binomial(link = "logit"),
+                        data = pbc_cc)
+            expect_equal(Sigma_beta_hat(mreg = "logistic",
+                                        mreg_fit = glm3,
+                                        avar = c("trt"),
+                                        cvar = c("age")),
+                         vcov(glm3))
+            vars <- c("(Intercept)","trt","age")
+            expect_equal(Sigma_beta_hat(mreg = "logistic",
+                                        mreg_fit = glm3,
+                                        avar = c("trt"),
+                                        cvar = c("age")),
+                         vcov(glm3)[vars,vars])
+        })
+    })
+    ##
+    describe("Sigma_beta_hat (3 cvar)", {
+        it("extracts vcov from linear models correctly", {
+            lm3 <- lm(formula = bili ~ trt + age + male + stage,
+                      data = pbc_cc)
+            expect_equal(Sigma_beta_hat(mreg = "linear",
+                                        mreg_fit = lm3,
+                                        avar = c("trt"),
+                                        cvar = c("age","male","stage")),
+                         vcov(lm3))
+            vars <- c("(Intercept)","trt","age","stage","male")
+            expect_equal(Sigma_beta_hat(mreg = "linear",
+                                        mreg_fit = lm3,
+                                        avar = c("trt"),
+                                        cvar = c("age","stage","male")),
+                         vcov(lm3)[vars,vars])
+        })
+        it("extracts vcov from logistic models correctly", {
+            glm3 <- glm(formula = hepato ~ trt + age + male + stage,
+                        family = binomial(link = "logit"),
+                        data = pbc_cc)
+            expect_equal(Sigma_beta_hat(mreg = "logistic",
+                                        mreg_fit = glm3,
+                                        avar = c("trt"),
+                                        cvar = c("age","male","stage")),
+                         vcov(glm3))
+            vars <- c("(Intercept)","trt","age","stage","male")
+            expect_equal(Sigma_beta_hat(mreg = "logistic",
+                                        mreg_fit = glm3,
+                                        avar = c("trt"),
+                                        cvar = c("age","stage","male")),
+                         vcov(glm3)[vars,vars])
+        })
     })
 })
 
