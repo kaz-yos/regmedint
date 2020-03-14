@@ -269,6 +269,12 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
             expect_error(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3))
             expect_error(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:4))
         })
+        it("returns a function that gives a numeric vector without NA", {
+            res <- est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
+            expect_true(is.vector(res))
+            expect_true(is.numeric(res))
+            expect_true(all(!is.na(res)))
+        })
     })
     ##
     describe("calc_myreg_mreg_linear_yreg_logistic_est (one cvar)", {
@@ -306,6 +312,12 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
             expect_error(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3))
             expect_error(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:4))
         })
+        it("returns a function that gives a numeric vector without NA", {
+            res <- est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
+            expect_true(is.vector(res))
+            expect_true(is.numeric(res))
+            expect_true(all(!is.na(res)))
+        })
     })
     ##
     describe("calc_myreg_mreg_linear_yreg_logistic_est (three cvar)", {
@@ -342,6 +354,12 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
             expect_error(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:2))
             expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3))
             expect_error(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:4))
+        })
+        it("returns a function that gives a numeric vector without NA", {
+            res <- est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
+            expect_true(is.vector(res))
+            expect_true(is.numeric(res))
+            expect_true(all(!is.na(res)))
         })
     })
 })
