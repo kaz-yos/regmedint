@@ -88,7 +88,7 @@ describe("Sigma_sigma_sq_hat", {
 })
 
 
-describe("Sigma_theta_hat", {
+describe("Sigma_theta_hat (3 covariates)", {
 
     data(pbc)
     ## Missing data should be warned in validate_args()
