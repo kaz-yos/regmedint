@@ -22,8 +22,12 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                                yreg_fit,
                                                avar,
                                                mvar,
-                                               cvar,
+                                               cvar, # This can be NULL.
                                                interaction) {
+
+    ## FIXME: This needs to be allowed and handled nicely!
+    assertthat::assert_that(!is.null(cvar))
+
     ## mreg coefficients
     beta_hat <- beta_hat(mreg = mreg,
                          mreg_fit = mreg_fit,
@@ -31,7 +35,7 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                          cvar = cvar)
     beta0 <- beta_hat["(Intercept)"]
     beta1 <- beta_hat[avar]
-    beta2 <- beta_hat[cvar]
+    beta2 <- beta_hat[cvar] # This can be length 0.
     ## yreg coefficients
     theta_hat <- theta_hat(yreg = yreg,
                            yreg_fit = yreg_fit,

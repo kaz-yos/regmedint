@@ -24,6 +24,9 @@ calc_myreg <- function(mreg,
                        cvar,
                        interaction) {
 
+    ## FIXME: This needs to be allowed and handled nicely!
+    assertthat::assert_that(!is.null(cvar))
+
     ## Only four patterns as the non-linear yreg cases are the
     ## same as the logistic yreg case.
     ## See VanderWeele 2015 Appendix.

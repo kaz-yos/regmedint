@@ -25,4 +25,7 @@ calc_myreg_mreg_logistic_yreg_linear <- function(mreg,
                                                  a1,
                                                  m_cde,
                                                  c_cond) {
+
+    ## FIXME: This needs to be allowed and handled nicely!
+    assertthat::assert_that(!is.null(cvar))
 }
