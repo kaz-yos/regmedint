@@ -6,112 +6,12 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠧ |  38       | 06_calc_myreg_helpers_coef⠸ |  84       | 06_calc_myreg_helpers_coef✖ | 106 3     | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠧ |  38       | 06_calc_myreg_helpers_coef⠸ |  84       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠼ |  25       | 06_calc_myreg_helpers_vcov⠹ |  43 10     | 06_calc_myreg_helpers_vcov⠇ |  57 22     | 06_calc_myreg_helpers_vcov✖ |  59 28     | 06_calc_myreg_helpers_vcov [0.3 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-06_calc_myreg_helpers_coef.R:1420: failure: theta_hat (3 cvar) for yreg survCox: extracts coef correctly when there is an interaction (Add zero for Intercept)
-theta_hat(...) not equal to `ref_coef`.
-Lengths differ: 7 is not 8
-
-test-06_calc_myreg_helpers_coef.R:1516: failure: theta_hat (3 cvar) for yreg survAFT_weibull: extracts coef correctly when there is no interaction (add zero)
-`%>%`(...) not equal to length(coef(yreg_fit3)) + 2.
-1/1 mismatches
-[1] 7 - 8 == -1
-
-test-06_calc_myreg_helpers_coef.R:1541: failure: theta_hat (3 cvar) for yreg survAFT_weibull: extracts coef correctly when there is an interaction
-`%>%`(...) not equal to length(coef(yreg_fit3)) + 1.
-1/1 mismatches
-[1] 7 - 8 == -1
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠸ |  14 10     | 06_calc_myreg_helpers_vcov⠇ |  24 25     | 06_calc_myreg_helpers_vcov✖ |  34 38     | 06_calc_myreg_helpers_vcov [0.3 s]
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-06_calc_myreg_helpers_vcov.R:181: error: Sigma_theta_hat (NULL cvar) for yreg linear: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:181
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
-
-test-06_calc_myreg_helpers_vcov.R:207: error: Sigma_theta_hat (NULL cvar) for yreg linear: extracts vcov correctly when there is an interaction
+test-06_calc_myreg_helpers_vcov.R:467: error: Sigma_theta_hat (NULL cvar) for yreg survCox: extracts vcov correctly when there is no interaction
 subscript out of bounds
-1: expect_equal(Sigma_theta_hat(yreg = "linear", yreg_fit = yreg_fit0, avar = "trt", mvar = "bili", cvar = NULL, interaction = TRUE), 
-       vcov(yreg_fit0)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:207
-2: quasi_label(enquo(expected), expected.label, arg = "expected")
-3: eval_bare(get_expr(quo), get_env(quo))
-
-test-06_calc_myreg_helpers_vcov.R:238: error: Sigma_theta_hat (NULL cvar) for yreg logistic: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:238
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
-
-test-06_calc_myreg_helpers_vcov.R:264: error: Sigma_theta_hat (NULL cvar) for yreg logistic: extracts vcov correctly when there is an interaction
-subscript out of bounds
-1: expect_equal(Sigma_theta_hat(yreg = "logistic", yreg_fit = yreg_fit0, avar = "trt", mvar = "bili", cvar = NULL, interaction = TRUE), 
-       vcov(yreg_fit0)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:264
-2: quasi_label(enquo(expected), expected.label, arg = "expected")
-3: eval_bare(get_expr(quo), get_env(quo))
-
-test-06_calc_myreg_helpers_vcov.R:295: error: Sigma_theta_hat (NULL cvar) for yreg loglinear: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:295
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
-
-test-06_calc_myreg_helpers_vcov.R:321: error: Sigma_theta_hat (NULL cvar) for yreg loglinear: extracts vcov correctly when there is an interaction
-subscript out of bounds
-1: expect_equal(Sigma_theta_hat(yreg = "poisson", yreg_fit = yreg_fit0, avar = "trt", mvar = "bili", cvar = NULL, interaction = TRUE), 
-       vcov(yreg_fit0)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:321
-2: quasi_label(enquo(expected), expected.label, arg = "expected")
-3: eval_bare(get_expr(quo), get_env(quo))
-
-test-06_calc_myreg_helpers_vcov.R:353: error: Sigma_theta_hat (NULL cvar) for yreg poisson: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:353
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
-
-test-06_calc_myreg_helpers_vcov.R:380: error: Sigma_theta_hat (NULL cvar) for yreg poisson: extracts vcov correctly when there is an interaction
-subscript out of bounds
-1: expect_equal(Sigma_theta_hat(yreg = "poisson", yreg_fit = yreg_fit0, avar = "trt", mvar = "bili", cvar = NULL, interaction = TRUE), 
-       vcov(yreg_fit0)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:380
-2: quasi_label(enquo(expected), expected.label, arg = "expected")
-3: eval_bare(get_expr(quo), get_env(quo))
-
-test-06_calc_myreg_helpers_vcov.R:412: error: Sigma_theta_hat (NULL cvar) for yreg negbin: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:412
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
-
-test-06_calc_myreg_helpers_vcov.R:438: error: Sigma_theta_hat (NULL cvar) for yreg negbin: extracts vcov correctly when there is an interaction
-subscript out of bounds
-1: expect_equal(Sigma_theta_hat(yreg = "negbin", yreg_fit = yreg_fit0, avar = "trt", mvar = "bili", cvar = NULL, interaction = TRUE), 
-       vcov(yreg_fit0)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:438
-2: quasi_label(enquo(expected), expected.label, arg = "expected")
-3: eval_bare(get_expr(quo), get_env(quo))
-
-test-06_calc_myreg_helpers_vcov.R:469: error: Sigma_theta_hat (NULL cvar) for yreg survCox: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:469
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+1: Matrix::bdiag(vcov(yreg_fit0)[vars1, vars1], matrix(0)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:467
 
 test-06_calc_myreg_helpers_vcov.R:495: error: Sigma_theta_hat (NULL cvar) for yreg survCox: extracts vcov correctly when there is an interaction
 subscript out of bounds
@@ -120,14 +20,9 @@ subscript out of bounds
 2: quasi_label(enquo(expected), expected.label, arg = "expected")
 3: eval_bare(get_expr(quo), get_env(quo))
 
-test-06_calc_myreg_helpers_vcov.R:526: error: Sigma_theta_hat (NULL cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:526
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:524: error: Sigma_theta_hat (NULL cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction
+no 'dimnames' attribute for array
+1: Matrix::bdiag(vcov(yreg_fit0)[vars1, vars1], matrix(0)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:524
 
 test-06_calc_myreg_helpers_vcov.R:552: error: Sigma_theta_hat (NULL cvar) for yreg survAFT_exp: extracts vcov correctly when there is an interaction
 no 'dimnames' attribute for array
@@ -136,14 +31,9 @@ no 'dimnames' attribute for array
 2: quasi_label(enquo(expected), expected.label, arg = "expected")
 3: eval_bare(get_expr(quo), get_env(quo))
 
-test-06_calc_myreg_helpers_vcov.R:583: error: Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:583
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:581: error: Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
+no 'dimnames' attribute for array
+1: Matrix::bdiag(vcov(yreg_fit0)[vars1, vars1], matrix(0)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:581
 
 test-06_calc_myreg_helpers_vcov.R:609: error: Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
 no 'dimnames' attribute for array
@@ -152,59 +42,29 @@ no 'dimnames' attribute for array
 2: quasi_label(enquo(expected), expected.label, arg = "expected")
 3: eval_bare(get_expr(quo), get_env(quo))
 
-test-06_calc_myreg_helpers_vcov.R:645: error: Sigma_theta_hat (1 cvar) for yreg linear: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:645
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:646: failure: Sigma_theta_hat (1 cvar) for yreg linear: extracts vcov correctly when there is no interaction
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Attributes: < Component "x": 'is.NA' value mismatch: 1 in current 0 in target >
 
-test-06_calc_myreg_helpers_vcov.R:703: error: Sigma_theta_hat (1 cvar) for yreg logistic: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:703
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:704: failure: Sigma_theta_hat (1 cvar) for yreg logistic: extracts vcov correctly when there is no interaction
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Attributes: < Component "x": 'is.NA' value mismatch: 1 in current 0 in target >
 
-test-06_calc_myreg_helpers_vcov.R:761: error: Sigma_theta_hat (1 cvar) for yreg loglinear: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:761
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:762: failure: Sigma_theta_hat (1 cvar) for yreg loglinear: extracts vcov correctly when there is no interaction
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Attributes: < Component "x": 'is.NA' value mismatch: 1 in current 0 in target >
 
-test-06_calc_myreg_helpers_vcov.R:820: error: Sigma_theta_hat (1 cvar) for yreg poisson: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:820
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:821: failure: Sigma_theta_hat (1 cvar) for yreg poisson: extracts vcov correctly when there is no interaction
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Attributes: < Component "x": 'is.NA' value mismatch: 1 in current 0 in target >
 
-test-06_calc_myreg_helpers_vcov.R:880: error: Sigma_theta_hat (1 cvar) for yreg negbin: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:880
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:881: failure: Sigma_theta_hat (1 cvar) for yreg negbin: extracts vcov correctly when there is no interaction
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Attributes: < Component "x": 'is.NA' value mismatch: 1 in current 0 in target >
 
-test-06_calc_myreg_helpers_vcov.R:938: error: Sigma_theta_hat (1 cvar) for yreg survCox: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:938
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:935: error: Sigma_theta_hat (1 cvar) for yreg survCox: extracts vcov correctly when there is no interaction
+subscript out of bounds
+1: Matrix::bdiag(vcov(yreg_fit1)[vars1, vars1], matrix(0), vcov(yreg_fit1)[vars2]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:935
 
 test-06_calc_myreg_helpers_vcov.R:964: error: Sigma_theta_hat (1 cvar) for yreg survCox: extracts vcov correctly when there is an interaction
 subscript out of bounds
@@ -213,14 +73,9 @@ subscript out of bounds
 2: quasi_label(enquo(expected), expected.label, arg = "expected")
 3: eval_bare(get_expr(quo), get_env(quo))
 
-test-06_calc_myreg_helpers_vcov.R:996: error: Sigma_theta_hat (1 cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:996
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:993: error: Sigma_theta_hat (1 cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction
+no 'dimnames' attribute for array
+1: Matrix::bdiag(vcov(yreg_fit1)[vars1, vars1], matrix(0), vcov(yreg_fit1)[vars2]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:993
 
 test-06_calc_myreg_helpers_vcov.R:1022: error: Sigma_theta_hat (1 cvar) for yreg survAFT_exp: extracts vcov correctly when there is an interaction
 no 'dimnames' attribute for array
@@ -229,14 +84,9 @@ no 'dimnames' attribute for array
 2: quasi_label(enquo(expected), expected.label, arg = "expected")
 3: eval_bare(get_expr(quo), get_env(quo))
 
-test-06_calc_myreg_helpers_vcov.R:1054: error: Sigma_theta_hat (1 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1054
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age"), c("(Intercept)", "trt", "bili", "trt:bili", 
-   "age")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:1051: error: Sigma_theta_hat (1 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
+no 'dimnames' attribute for array
+1: Matrix::bdiag(vcov(yreg_fit1)[vars1, vars1], matrix(0), vcov(yreg_fit1)[vars2]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1051
 
 test-06_calc_myreg_helpers_vcov.R:1080: error: Sigma_theta_hat (1 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
 no 'dimnames' attribute for array
@@ -290,14 +140,9 @@ invalid dimnames given for "dgCMatrix" object
 3: dimnamesGets(x, value)
 4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
 
-test-06_calc_myreg_helpers_vcov.R:1409: error: Sigma_theta_hat (3 cvar) for yreg survCox: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1409
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:1406: error: Sigma_theta_hat (3 cvar) for yreg survCox: extracts vcov correctly when there is no interaction
+subscript out of bounds
+1: Matrix::bdiag(vcov(yreg_fit3)[vars1, vars1], matrix(0), vcov(yreg_fit3)[vars2]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1406
 
 test-06_calc_myreg_helpers_vcov.R:1435: error: Sigma_theta_hat (3 cvar) for yreg survCox: extracts vcov correctly when there is an interaction
 subscript out of bounds
@@ -306,14 +151,9 @@ subscript out of bounds
 2: quasi_label(enquo(expected), expected.label, arg = "expected")
 3: eval_bare(get_expr(quo), get_env(quo))
 
-test-06_calc_myreg_helpers_vcov.R:1467: error: Sigma_theta_hat (3 cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1467
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:1464: error: Sigma_theta_hat (3 cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction
+no 'dimnames' attribute for array
+1: Matrix::bdiag(vcov(yreg_fit3)[vars1, vars1], matrix(0), vcov(yreg_fit3)[vars2]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1464
 
 test-06_calc_myreg_helpers_vcov.R:1493: error: Sigma_theta_hat (3 cvar) for yreg survAFT_exp: extracts vcov correctly when there is an interaction
 no 'dimnames' attribute for array
@@ -322,14 +162,9 @@ no 'dimnames' attribute for array
 2: quasi_label(enquo(expected), expected.label, arg = "expected")
 3: eval_bare(get_expr(quo), get_env(quo))
 
-test-06_calc_myreg_helpers_vcov.R:1525: error: Sigma_theta_hat (3 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
-invalid dimnames given for "dgCMatrix" object
-1: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage"))) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1525
-2: `dimnames<-`(`*tmp*`, value = list(c("(Intercept)", "trt", "bili", "trt:bili", "age", "male", "stage"), c("(Intercept)", 
-   "trt", "bili", "trt:bili", "age", "male", "stage")))
-3: dimnamesGets(x, value)
-4: stop(gettextf("invalid dimnames given for %s object", dQuote(class(x))), domain = NA)
+test-06_calc_myreg_helpers_vcov.R:1522: error: Sigma_theta_hat (3 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
+no 'dimnames' attribute for array
+1: Matrix::bdiag(vcov(yreg_fit3)[vars1, vars1], matrix(0), vcov(yreg_fit3)[vars2]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1522
 
 test-06_calc_myreg_helpers_vcov.R:1551: error: Sigma_theta_hat (3 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
 no 'dimnames' attribute for array
@@ -430,9 +265,9 @@ Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 2.4 s
+Duration: 2.5 s
 
-OK:       307
-Failed:   42
+OK:       335
+Failed:   29
 Warnings: 0
 Skipped:  6
