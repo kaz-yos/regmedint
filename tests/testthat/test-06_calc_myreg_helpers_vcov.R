@@ -461,10 +461,11 @@ describe("Sigma_theta_hat", {
                                       cvar = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
-                vars1 <- c("(Intercept)","trt","bili")
+                vars1 <- c("trt","bili")
                 vars2 <- NULL
                 vars <- c("(Intercept)","trt","bili","trt:bili")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit0)[vars1,vars1],
+                ref_vcov <- Matrix::bdiag(matrix(0),
+                                          vcov(yreg_fit0)[vars1,vars1],
                                           matrix(0))
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
@@ -473,7 +474,7 @@ describe("Sigma_theta_hat", {
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE),
-                             ref_vcov[vars,vars])
+                             ref_vcov)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
                                              yreg_fit = yreg_fit0,
                                              avar = "trt",
@@ -491,14 +492,18 @@ describe("Sigma_theta_hat", {
                                       cvar = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
+                vars1 <- c("trt","bili","trt:bili")
                 vars <- c("(Intercept)","trt","bili","trt:bili")
+                ref_vcov <- Matrix::bdiag(matrix(0),
+                                          vcov(yreg_fit0)[vars1,vars1])
+                dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
                                              yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE),
-                             vcov(yreg_fit0)[vars,vars])
+                             ref_vcov)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
                                              yreg_fit = yreg_fit0,
                                              avar = "trt",
