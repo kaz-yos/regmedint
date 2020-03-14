@@ -74,11 +74,15 @@ fit_yreg <- function(yreg,
 
     } else if (yreg == "loglinear") {
 
-        ## https://github.com/mdonoghoe/logbin
+        ## FIXME: implement loglinear
+        message("loglinear is unsupported currently. Just running regular Poisson!")
+        ## https://github.com/mdonoghoe/logbin does not support an interaction term
+        ## in the formula.
         eval(
             bquote(
-                logbin::logbin(formula = .(as.formula(string_formula)),
-                               data = data)
+                glm(formula = .(as.formula(string_formula)),
+                    family = poisson(link = "log"),
+                    data = data)
             )
         )
 
