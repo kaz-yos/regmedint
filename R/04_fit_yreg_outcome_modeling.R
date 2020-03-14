@@ -74,11 +74,11 @@ fit_yreg <- function(yreg,
 
     } else if (yreg == "loglinear") {
 
+        ## https://github.com/mdonoghoe/logbin
         eval(
             bquote(
-                glm(formula = .(as.formula(string_formula)),
-                    family = binomial(link = "log"),
-                    data = data)
+                logbin::logbin(formula = .(as.formula(string_formula)),
+                               data = data)
             )
         )
 
