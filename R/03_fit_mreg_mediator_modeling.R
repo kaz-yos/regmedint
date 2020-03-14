@@ -66,6 +66,9 @@ string_mreg_formula <- function(mvar,
                                 avar,
                                 cvar) {
 
+    assertthat::assert_that(!is.null(mvar))
+    assertthat::assert_that(!is.null(avar))
+
     if (is.null(cvar)) {
         acvar_string <- avar
     } else {
