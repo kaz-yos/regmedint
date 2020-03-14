@@ -54,57 +54,168 @@ describe("string_mreg_formula", {
 ### Internal function for yreg string formula creation
 ################################################################################
 
-test_that("string_yreg_formula create sound formula strings for non-survival outcomes", {
-
-    ## Zero covariates
-    expect_equal(string_yreg_formula("Y","A","M",NULL, interaction = FALSE,
-                                     eventvar = NULL),
-                 "Y ~ A + M")
-    expect_equal(string_yreg_formula("Y","A","M",NULL, interaction = TRUE,
-                                     eventvar = NULL),
-                 "Y ~ A*M")
-
-    ## One covariate
-    expect_equal(string_yreg_formula("Y","A","M",c("C"), interaction = FALSE,
-                                     eventvar = NULL),
-                 "Y ~ A + M + C")
-    expect_equal(string_yreg_formula("Y","A","M",c("C"), interaction = TRUE,
-                                     eventvar = NULL),
-                 "Y ~ A*M + C")
-
-    ## Three covariates
-    expect_equal(string_yreg_formula("Y","A","M",c("C1","C2","C3"), interaction = FALSE,
-                                     eventvar = NULL),
-                 "Y ~ A + M + C1 + C2 + C3")
-    expect_equal(string_yreg_formula("Y","A","M",c("C1","C2","C3"), interaction = TRUE,
-                                     eventvar = NULL),
-                 "Y ~ A*M + C1 + C2 + C3")
-})
-
-
-test_that("string_yreg_formula create sound formula strings for survival outcomes", {
-
-    ## Zero covariates
-    expect_equal(string_yreg_formula("time","A","M",NULL, interaction = FALSE,
-                                     eventvar = "event"),
-                 "Surv(time, event) ~ A + M")
-    expect_equal(string_yreg_formula("time","A","M",NULL, interaction = TRUE,
-                                     eventvar = "event"),
-                 "Surv(time, event) ~ A*M")
-
-    ## One covariate
-    expect_equal(string_yreg_formula("time","A","M",c("C"), interaction = FALSE,
-                                     eventvar = "event"),
-                 "Surv(time, event) ~ A + M + C")
-    expect_equal(string_yreg_formula("time","A","M",c("C"), interaction = TRUE,
-                                     eventvar = "event"),
-                 "Surv(time, event) ~ A*M + C")
-
-    ## Three covariates
-    expect_equal(string_yreg_formula("time","A","M",c("C1","C2","C3"), interaction = FALSE,
-                                     eventvar = "event"),
-                 "Surv(time, event) ~ A + M + C1 + C2 + C3")
-    expect_equal(string_yreg_formula("time","A","M",c("C1","C2","C3"), interaction = TRUE,
-                                     eventvar = "event"),
-                 "Surv(time, event) ~ A*M + C1 + C2 + C3")
+describe("string_yreg_formula", {
+    describe("string_yreg_formula (non-survival yvar)", {
+        describe("string_yreg_formula (non-survival yvar; good args)", {
+            it("handles NULL cvar by omitting", {
+                ## Zero covariates
+                expect_equal(string_yreg_formula(yvar = "Y",
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = NULL,
+                                                 interaction = FALSE,
+                                                 eventvar = NULL),
+                             "Y ~ A + M")
+                expect_equal(string_yreg_formula(yvar = "Y",
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = NULL,
+                                                 interaction = TRUE,
+                                                 eventvar = NULL),
+                             "Y ~ A*M")
+            })
+            it("handles one cvar by adding", {
+                ## One covariate
+                expect_equal(string_yreg_formula(yvar = "Y",
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = c("C"),
+                                                 interaction = FALSE,
+                                                 eventvar = NULL),
+                             "Y ~ A + M + C")
+                expect_equal(string_yreg_formula(yvar = "Y",
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = c("C"),
+                                                 interaction = TRUE,
+                                                 eventvar = NULL),
+                             "Y ~ A*M + C")
+            })
+            it("handles three cvar by adding all", {
+                ## Three covariates
+                expect_equal(string_yreg_formula(yvar = "Y",
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = c("C1","C2","C3"),
+                                                 interaction = FALSE,
+                                                 eventvar = NULL),
+                             "Y ~ A + M + C1 + C2 + C3")
+                expect_equal(string_yreg_formula(yvar = "Y",
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = c("C1","C2","C3"),
+                                                 interaction = TRUE,
+                                                 eventvar = NULL),
+                             "Y ~ A*M + C1 + C2 + C3")
+            })
+        })
+        describe("string_yreg_formula (non-survival yvar; bad args)", {
+            it("throws an error on NULL yvar", {
+                expect_error(string_yreg_formula(yvar = NULL,
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = c("C1","C2","C3"),
+                                                 interaction = FALSE,
+                                                 eventvar = NULL))
+            })
+            it("throws an error on NULL mvar", {
+                expect_error(string_yreg_formula(yvar = "Y",
+                                                 avar = NULL,
+                                                 mvar = "M",
+                                                 cvar = c("C1","C2","C3"),
+                                                 interaction = FALSE,
+                                                 eventvar = NULL))
+            })
+            it("throws an error on NULL avar", {
+                expect_error(string_yreg_formula(yvar = "Y",
+                                                 avar = "A",
+                                                 mvar = NULL,
+                                                 cvar = c("C1","C2","C3"),
+                                                 interaction = FALSE,
+                                                 eventvar = NULL))
+            })
+        })
+    })
+    ##
+    describe("string_yreg_formula (survival yvar)", {
+        describe("string_yreg_formula (survival yvar; good args)", {
+            it("handles NULL cvar by omitting", {
+                ## Zero covariates
+                expect_equal(string_yreg_formula(yvar = "time",
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = NULL,
+                                                 interaction = FALSE,
+                                                 eventvar = "event"),
+                             "Surv(time, event) ~ A + M")
+                expect_equal(string_yreg_formula(yvar = "time",
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = NULL,
+                                                 interaction = TRUE,
+                                                 eventvar = "event"),
+                             "Surv(time, event) ~ A*M")
+            })
+            it("handles one cvar by adding", {
+                ## One covariate
+                expect_equal(string_yreg_formula(yvar = "time",
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = c("C"),
+                                                 interaction = FALSE,
+                                                 eventvar = "event"),
+                             "Surv(time, event) ~ A + M + C")
+                expect_equal(string_yreg_formula(yvar = "time",
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = c("C"),
+                                                 interaction = TRUE,
+                                                 eventvar = "event"),
+                             "Surv(time, event) ~ A*M + C")
+            })
+            it("handles three cvar by adding all", {
+                ## Three covariates
+                expect_equal(string_yreg_formula(yvar = "time",
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = c("C1","C2","C3"),
+                                                 interaction = FALSE,
+                                                 eventvar = "event"),
+                             "Surv(time, event) ~ A + M + C1 + C2 + C3")
+                expect_equal(string_yreg_formula(yvar = "time",
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = c("C1","C2","C3"),
+                                                 interaction = TRUE,
+                                                 eventvar = "event"),
+                             "Surv(time, event) ~ A*M + C1 + C2 + C3")
+            })
+        })
+        describe("string_yreg_formula (survival yvar; bad args)", {
+            it("throws an error on NULL yvar", {
+                expect_error(string_yreg_formula(yvar = NULL,
+                                                 avar = "A",
+                                                 mvar = "M",
+                                                 cvar = c("C1","C2","C3"),
+                                                 interaction = FALSE,
+                                                 eventvar = "event"))
+            })
+            it("throws an error on NULL mvar", {
+                expect_error(string_yreg_formula(yvar = "time",
+                                                 avar = NULL,
+                                                 mvar = "M",
+                                                 cvar = c("C1","C2","C3"),
+                                                 interaction = FALSE,
+                                                 eventvar = "event"))
+            })
+            it("throws an error on NULL avar", {
+                expect_error(string_yreg_formula(yvar = "time",
+                                                 avar = "A",
+                                                 mvar = NULL,
+                                                 cvar = c("C1","C2","C3"),
+                                                 interaction = FALSE,
+                                                 eventvar = "event"))
+            })
+        })
+    })
 })
