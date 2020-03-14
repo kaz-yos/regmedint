@@ -497,7 +497,7 @@ describe("theta_hat", {
                                        mvar = "bili",
                                        cvar = NULL,
                                        interaction = TRUE),
-                             ref_coef[vars])
+                             ref_coef)
                 expect_equal(theta_hat(yreg = "survCox",
                                        yreg_fit = yreg_fit0,
                                        avar = "trt",
