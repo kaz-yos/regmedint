@@ -32,7 +32,7 @@ argument "mreg" is missing, with no default
 3: eval(substitute(code), describe_environment)
 4: calc_myreg() at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-05_calc_myreg.R:19
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 06_calc_myreg_helpers⠇ |  24 5     | 06_calc_myreg_helpers⠸ |  40 14     | 06_calc_myreg_helpers✖ |  41 20     | 06_calc_myreg_helpers [0.2 s]
+⠏ |   0       | 06_calc_myreg_helpers⠴ |  22 4     | 06_calc_myreg_helpers⠹ |  39 14     | 06_calc_myreg_helpers✖ |  41 20     | 06_calc_myreg_helpers [0.3 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-06_calc_myreg_helpers.R:207: error: theta_hat for yreg loglinear: extracts coef correctly when there is no interaction (add zero)
 no valid set of coefficients has been found: please supply starting values
