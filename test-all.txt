@@ -1,13 +1,13 @@
 ✔ |  OK F W S | Context
-⠏ |   0       | 03_fit_mreg✔ |  24       | 03_fit_mreg
+⠋ |   0   1   | ⠏ |   0       | 03_fit_mreg✔ |  24       | 03_fit_mreg
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  23       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
 ⠏ |   0       | 04_fit_yreg_logistic✔ |  24       | 04_fit_yreg_logistic
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠧ |  38       | 06_calc_myreg_helpers_coef⠸ |  84       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠦ |  27       | 06_calc_myreg_helpers_vcov⠸ |  49 5     | 06_calc_myreg_helpers_vcov⠇ |  70 9     | 06_calc_myreg_helpers_vcov✖ |  84 13     | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠋ |  41       | 06_calc_myreg_helpers_coef⠴ |  86       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠦ |  27       | 06_calc_myreg_helpers_vcov⠴ |  53 3     | 06_calc_myreg_helpers_vcov⠙ |  77 5     | 06_calc_myreg_helpers_vcov⠧ | 102 6     | 06_calc_myreg_helpers_vcov✖ | 102 7     | 06_calc_myreg_helpers_vcov [0.4 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-06_calc_myreg_helpers_vcov.R:471: error: Sigma_theta_hat (NULL cvar) for yreg survCox: extracts vcov correctly when there is no interaction
 invalid or not-yet-implemented 'Matrix' subsetting
@@ -22,71 +22,41 @@ invalid or not-yet-implemented 'Matrix' subsetting
 7: vcov_ready[cvar, cvar, drop = FALSE]
 8: stop("invalid or not-yet-implemented 'Matrix' subsetting")
 
-test-06_calc_myreg_helpers_vcov.R:529: error: Sigma_theta_hat (NULL cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction
-no 'dimnames' attribute for array
-1: Matrix::bdiag(vcov(yreg_fit0)[vars1, vars1], matrix(0)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:529
+test-06_calc_myreg_helpers_vcov.R:596: failure: Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
+`%>%`(...) not equal to dim(vcov(yreg_fit0)) + 1.
+2/2 mismatches (average diff: 1)
+[1] 4 - 5 == -1
+[2] 4 - 5 == -1
 
-test-06_calc_myreg_helpers_vcov.R:557: error: Sigma_theta_hat (NULL cvar) for yreg survAFT_exp: extracts vcov correctly when there is an interaction
-no 'dimnames' attribute for array
-1: expect_equal(Sigma_theta_hat(yreg = "survAFT_exp", yreg_fit = yreg_fit0, avar = "trt", mvar = "bili", cvar = NULL, interaction = TRUE), 
-       vcov(yreg_fit0)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:557
-2: quasi_label(enquo(expected), expected.label, arg = "expected")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers_vcov.R:621: failure: Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
+`%>%`(...) not equal to dim(vcov(yreg_fit0)) + 0.
+2/2 mismatches (average diff: 1)
+[1] 4 - 5 == -1
+[2] 4 - 5 == -1
 
-test-06_calc_myreg_helpers_vcov.R:586: error: Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
-no 'dimnames' attribute for array
-1: Matrix::bdiag(vcov(yreg_fit0)[vars1, vars1], matrix(0)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:586
+test-06_calc_myreg_helpers_vcov.R:1072: failure: Sigma_theta_hat (1 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
+`%>%`(...) not equal to dim(vcov(yreg_fit1)) + 1.
+2/2 mismatches (average diff: 1)
+[1] 5 - 6 == -1
+[2] 5 - 6 == -1
 
-test-06_calc_myreg_helpers_vcov.R:614: error: Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
-no 'dimnames' attribute for array
-1: expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull", yreg_fit = yreg_fit0, avar = "trt", mvar = "bili", cvar = NULL, interaction = TRUE), 
-       vcov(yreg_fit0)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:614
-2: quasi_label(enquo(expected), expected.label, arg = "expected")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers_vcov.R:1097: failure: Sigma_theta_hat (1 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
+`%>%`(...) not equal to dim(vcov(yreg_fit1)) + 0.
+2/2 mismatches (average diff: 1)
+[1] 5 - 6 == -1
+[2] 5 - 6 == -1
 
-test-06_calc_myreg_helpers_vcov.R:1003: error: Sigma_theta_hat (1 cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction
-no 'dimnames' attribute for array
-1: Matrix::bdiag(vcov(yreg_fit1)[vars1, vars1], matrix(0), vcov(yreg_fit1)[vars2, vars2]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1003
+test-06_calc_myreg_helpers_vcov.R:1548: failure: Sigma_theta_hat (3 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
+`%>%`(...) not equal to dim(vcov(yreg_fit3)) + 1.
+2/2 mismatches (average diff: 1)
+[1] 7 - 8 == -1
+[2] 7 - 8 == -1
 
-test-06_calc_myreg_helpers_vcov.R:1032: error: Sigma_theta_hat (1 cvar) for yreg survAFT_exp: extracts vcov correctly when there is an interaction
-no 'dimnames' attribute for array
-1: expect_equal(Sigma_theta_hat(yreg = "survAFT_exp", yreg_fit = yreg_fit1, avar = "trt", mvar = "bili", cvar = c("age"), interaction = TRUE), 
-       vcov(yreg_fit1)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1032
-2: quasi_label(enquo(expected), expected.label, arg = "expected")
-3: eval_bare(get_expr(quo), get_env(quo))
-
-test-06_calc_myreg_helpers_vcov.R:1061: error: Sigma_theta_hat (1 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
-no 'dimnames' attribute for array
-1: Matrix::bdiag(vcov(yreg_fit1)[vars1, vars1], matrix(0), vcov(yreg_fit1)[vars2, vars2]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1061
-
-test-06_calc_myreg_helpers_vcov.R:1090: error: Sigma_theta_hat (1 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
-no 'dimnames' attribute for array
-1: expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull", yreg_fit = yreg_fit1, avar = "trt", mvar = "bili", cvar = c("age"), 
-       interaction = TRUE), vcov(yreg_fit1)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1090
-2: quasi_label(enquo(expected), expected.label, arg = "expected")
-3: eval_bare(get_expr(quo), get_env(quo))
-
-test-06_calc_myreg_helpers_vcov.R:1479: error: Sigma_theta_hat (3 cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction
-no 'dimnames' attribute for array
-1: Matrix::bdiag(vcov(yreg_fit3)[vars1, vars1], matrix(0), vcov(yreg_fit3)[vars2, vars2]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1479
-
-test-06_calc_myreg_helpers_vcov.R:1508: error: Sigma_theta_hat (3 cvar) for yreg survAFT_exp: extracts vcov correctly when there is an interaction
-no 'dimnames' attribute for array
-1: expect_equal(Sigma_theta_hat(yreg = "survAFT_exp", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", "male", 
-       "stage"), interaction = TRUE), vcov(yreg_fit3)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1508
-2: quasi_label(enquo(expected), expected.label, arg = "expected")
-3: eval_bare(get_expr(quo), get_env(quo))
-
-test-06_calc_myreg_helpers_vcov.R:1537: error: Sigma_theta_hat (3 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
-no 'dimnames' attribute for array
-1: Matrix::bdiag(vcov(yreg_fit3)[vars1, vars1], matrix(0), vcov(yreg_fit3)[vars2, vars2]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1537
-
-test-06_calc_myreg_helpers_vcov.R:1566: error: Sigma_theta_hat (3 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
-no 'dimnames' attribute for array
-1: expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull", yreg_fit = yreg_fit3, avar = "trt", mvar = "bili", cvar = c("age", 
-       "male", "stage"), interaction = TRUE), vcov(yreg_fit3)[vars, vars]) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:1566
-2: quasi_label(enquo(expected), expected.label, arg = "expected")
-3: eval_bare(get_expr(quo), get_env(quo))
+test-06_calc_myreg_helpers_vcov.R:1573: failure: Sigma_theta_hat (3 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
+`%>%`(...) not equal to dim(vcov(yreg_fit3)) + 0.
+2/2 mismatches (average diff: 1)
+[1] 7 - 8 == -1
+[2] 7 - 8 == -1
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -182,7 +152,7 @@ Empty test
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
 Duration: 2.5 s
 
-OK:       360
-Failed:   14
-Warnings: 0
+OK:       378
+Failed:   8
+Warnings: 1
 Skipped:  6
