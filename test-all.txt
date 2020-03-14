@@ -6,8 +6,8 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠋ |  41       | 06_calc_myreg_helpers_coef⠴ |  86       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠦ |  27       | 06_calc_myreg_helpers_vcov⠴ |  53 3     | 06_calc_myreg_helpers_vcov⠙ |  77 5     | 06_calc_myreg_helpers_vcov⠧ | 102 6     | 06_calc_myreg_helpers_vcov✖ | 102 7     | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠧ |  38       | 06_calc_myreg_helpers_coef⠼ |  85       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠼ |  25       | 06_calc_myreg_helpers_vcov⠸ |  53 1     | 06_calc_myreg_helpers_vcov⠧ |  77 1     | 06_calc_myreg_helpers_vcov⠸ | 103 1     | 06_calc_myreg_helpers_vcov✖ | 108 1     | 06_calc_myreg_helpers_vcov [0.4 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-06_calc_myreg_helpers_vcov.R:471: error: Sigma_theta_hat (NULL cvar) for yreg survCox: extracts vcov correctly when there is no interaction
 invalid or not-yet-implemented 'Matrix' subsetting
@@ -21,42 +21,6 @@ invalid or not-yet-implemented 'Matrix' subsetting
 6: vcov_ready[cvar, cvar, drop = FALSE] at /inv/kyoshida/cantos_stats/regmedint/R/06_calc_myreg_helpers_vcov.R:63
 7: vcov_ready[cvar, cvar, drop = FALSE]
 8: stop("invalid or not-yet-implemented 'Matrix' subsetting")
-
-test-06_calc_myreg_helpers_vcov.R:596: failure: Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
-`%>%`(...) not equal to dim(vcov(yreg_fit0)) + 1.
-2/2 mismatches (average diff: 1)
-[1] 4 - 5 == -1
-[2] 4 - 5 == -1
-
-test-06_calc_myreg_helpers_vcov.R:621: failure: Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
-`%>%`(...) not equal to dim(vcov(yreg_fit0)) + 0.
-2/2 mismatches (average diff: 1)
-[1] 4 - 5 == -1
-[2] 4 - 5 == -1
-
-test-06_calc_myreg_helpers_vcov.R:1072: failure: Sigma_theta_hat (1 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
-`%>%`(...) not equal to dim(vcov(yreg_fit1)) + 1.
-2/2 mismatches (average diff: 1)
-[1] 5 - 6 == -1
-[2] 5 - 6 == -1
-
-test-06_calc_myreg_helpers_vcov.R:1097: failure: Sigma_theta_hat (1 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
-`%>%`(...) not equal to dim(vcov(yreg_fit1)) + 0.
-2/2 mismatches (average diff: 1)
-[1] 5 - 6 == -1
-[2] 5 - 6 == -1
-
-test-06_calc_myreg_helpers_vcov.R:1548: failure: Sigma_theta_hat (3 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction
-`%>%`(...) not equal to dim(vcov(yreg_fit3)) + 1.
-2/2 mismatches (average diff: 1)
-[1] 7 - 8 == -1
-[2] 7 - 8 == -1
-
-test-06_calc_myreg_helpers_vcov.R:1573: failure: Sigma_theta_hat (3 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction
-`%>%`(...) not equal to dim(vcov(yreg_fit3)) + 0.
-2/2 mismatches (average diff: 1)
-[1] 7 - 8 == -1
-[2] 7 - 8 == -1
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -150,9 +114,9 @@ Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 2.5 s
+Duration: 2.7 s
 
-OK:       378
-Failed:   8
+OK:       384
+Failed:   2
 Warnings: 1
 Skipped:  6
