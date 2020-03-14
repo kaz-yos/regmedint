@@ -535,7 +535,7 @@ describe("theta_hat", {
                                        mvar = "bili",
                                        cvar = NULL,
                                        interaction = FALSE) %>% length(),
-                             length(coef(yreg_fit0)) + 2)
+                             length(coef(yreg_fit0)) + 1)
             })
             it("extracts coef correctly when there is an interaction", {
                 yreg_fit0 <- fit_yreg(yreg = "survAFT_exp",
@@ -560,7 +560,7 @@ describe("theta_hat", {
                                        mvar = "bili",
                                        cvar = NULL,
                                        interaction = TRUE) %>% length(),
-                             length(coef(yreg_fit0)) + 1)
+                             length(coef(yreg_fit0)) + 0)
             })
         })
         describe("theta_hat (NULL cvar) for yreg survAFT_weibull", {
@@ -591,7 +591,7 @@ describe("theta_hat", {
                                        mvar = "bili",
                                        cvar = NULL,
                                        interaction = FALSE) %>% length(),
-                             length(coef(yreg_fit0)) + 2)
+                             length(coef(yreg_fit0)) + 1)
             })
             it("extracts coef correctly when there is an interaction", {
                 yreg_fit0 <- fit_yreg(yreg = "survAFT_weibull",
@@ -616,7 +616,7 @@ describe("theta_hat", {
                                        mvar = "bili",
                                        cvar = NULL,
                                        interaction = TRUE) %>% length(),
-                             length(coef(yreg_fit0)) + 1)
+                             length(coef(yreg_fit0)) + 0)
             })
         })
     })
@@ -998,7 +998,7 @@ describe("theta_hat", {
                                        mvar = "bili",
                                        cvar = c("age"),
                                        interaction = FALSE) %>% length(),
-                             length(coef(yreg_fit1)) + 2)
+                             length(coef(yreg_fit1)) + 1)
             })
             it("extracts coef correctly when there is an interaction", {
                 yreg_fit1 <- fit_yreg(yreg = "survAFT_exp",
@@ -1023,7 +1023,7 @@ describe("theta_hat", {
                                        mvar = "bili",
                                        cvar = c("age"),
                                        interaction = TRUE) %>% length(),
-                             length(coef(yreg_fit1)) + 1)
+                             length(coef(yreg_fit1)) + 0)
             })
         })
         describe("theta_hat (1 cvar) for yreg survAFT_weibull", {
@@ -1055,7 +1055,7 @@ describe("theta_hat", {
                                        mvar = "bili",
                                        cvar = c("age"),
                                        interaction = FALSE) %>% length(),
-                             length(coef(yreg_fit1)) + 2)
+                             length(coef(yreg_fit1)) + 1)
             })
             it("extracts coef correctly when there is an interaction", {
                 yreg_fit1 <- fit_yreg(yreg = "survAFT_weibull",
@@ -1080,7 +1080,7 @@ describe("theta_hat", {
                                        mvar = "bili",
                                        cvar = c("age"),
                                        interaction = TRUE) %>% length(),
-                             length(coef(yreg_fit1)) + 1)
+                             length(coef(yreg_fit1)) + 0)
             })
         })
     })
@@ -1462,7 +1462,7 @@ describe("theta_hat", {
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
                                        interaction = FALSE) %>% length(),
-                             length(coef(yreg_fit3)) + 2)
+                             length(coef(yreg_fit3)) + 1)
             })
             it("extracts coef correctly when there is an interaction", {
                 yreg_fit3 <- fit_yreg(yreg = "survAFT_exp",
@@ -1487,7 +1487,7 @@ describe("theta_hat", {
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
                                        interaction = TRUE) %>% length(),
-                             length(coef(yreg_fit3)) + 1)
+                             length(coef(yreg_fit3)) + 0)
             })
         })
         describe("theta_hat (3 cvar) for yreg survAFT_weibull", {
