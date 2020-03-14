@@ -24,40 +24,42 @@ describe("beta_hat", {
     pbc_cc <- pbc[complete.cases(pbc),] %>%
         mutate(male = if_else(sex == "m", 1L, 0L))
 
-    it("extracts coef from linear models correctly", {
+    describe("beta_hat (3 covariates)", {
+        ##
+        it("extracts coef from linear models correctly", {
 
-        lm3 <- lm(formula = bili ~ trt + age + male + stage,
-                  data = pbc_cc)
-        expect_equal(beta_hat(mreg = "linear",
-                              mreg_fit = lm3,
-                              avar = c("trt"),
-                              cvar = c("age","male","stage")),
-                     coef(lm3))
-        vars <- c("(Intercept)","trt","age","stage","male")
-        expect_equal(beta_hat(mreg = "linear",
-                              mreg_fit = lm3,
-                              avar = c("trt"),
-                              cvar = c("age","stage","male")),
-                     coef(lm3)[vars])
-    })
+            lm3 <- lm(formula = bili ~ trt + age + male + stage,
+                      data = pbc_cc)
+            expect_equal(beta_hat(mreg = "linear",
+                                  mreg_fit = lm3,
+                                  avar = c("trt"),
+                                  cvar = c("age","male","stage")),
+                         coef(lm3))
+            vars <- c("(Intercept)","trt","age","stage","male")
+            expect_equal(beta_hat(mreg = "linear",
+                                  mreg_fit = lm3,
+                                  avar = c("trt"),
+                                  cvar = c("age","stage","male")),
+                         coef(lm3)[vars])
+        })
+        ##
+        it("extracts coef from logistic models correctly", {
 
-    it("extracts coef from logistic models correctly", {
-
-        glm3 <- glm(formula = hepato ~ trt + age + male + stage,
-                    family = binomial(link = "logit"),
-                    data = pbc_cc)
-        expect_equal(beta_hat(mreg = "logistic",
-                              mreg_fit = glm3,
-                              avar = c("trt"),
-                              cvar = c("age","male","stage")),
-                     coef(glm3))
-        vars <- c("(Intercept)","trt","age","stage","male")
-        expect_equal(beta_hat(mreg = "logistic",
-                              mreg_fit = glm3,
-                              avar = c("trt"),
-                              cvar = c("age","stage","male")),
-                     coef(glm3)[vars])
-
+            glm3 <- glm(formula = hepato ~ trt + age + male + stage,
+                        family = binomial(link = "logit"),
+                        data = pbc_cc)
+            expect_equal(beta_hat(mreg = "logistic",
+                                  mreg_fit = glm3,
+                                  avar = c("trt"),
+                                  cvar = c("age","male","stage")),
+                         coef(glm3))
+            vars <- c("(Intercept)","trt","age","stage","male")
+            expect_equal(beta_hat(mreg = "logistic",
+                                  mreg_fit = glm3,
+                                  avar = c("trt"),
+                                  cvar = c("age","stage","male")),
+                         coef(glm3)[vars])
+        })
     })
 })
 
