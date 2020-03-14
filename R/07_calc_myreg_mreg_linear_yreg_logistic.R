@@ -107,6 +107,15 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
                                                      theta3,
                                                      theta4,
                                                      sigma_sq) {
+
+    assertthat::assert_that(length(beta0) == 1,
+                            length(beta1) == 1,
+                            length(beta2) == length(theta4),
+                            length(theta1) == 1,
+                            length(theta2) == 1,
+                            length(theta3) == 1,
+                            length(sigma_sq) == 1)
+
     ## Construct a function for point estimates given (a0, a1, m_cde, c_cond).
     fun_est <- function(a0, a1, m_cde, c_cond) {
 
