@@ -31,3 +31,11 @@ read_parsed_sas_mediation_output <- function(file) {
     ## Finally return the parsed result
     return(res)
 }
+
+## Functions to skip describe() and it()
+xdescribe <- function(description, ...) {
+    cat("Skipping", description, "\n")
+}
+xit <- function(description, ...) {
+    cat("Skipping", description, "\n")
+}
