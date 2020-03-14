@@ -61,3 +61,16 @@ Note the loglinear outcome model means log link with binomial error.
 | survCox         | V2015 p496 Use Proposition 2.4 | V2015 p499 Use Proposition 2.6 |
 | survAFT exp     | V2015 p494 Use Proposition 2.4 | V2015 p495 Use Proposition 2.6 |
 | survAFT weibull | V2015 p494 Use Proposition 2.4 | V2015 p495 Use Proposition 2.6 |
+
+* Implementation progress
+
+| mreg     | yreg     | est                                      | se                                      |
+|----------+----------+------------------------------------------+-----------------------------------------|
+| linear   | linear   | calc_myreg_mreg_linear_yreg_linear_est   | calc_myreg_mreg_linear_yreg_linear_se   |
+|          |          | implemented, need cvar=NULL handling     | implemented, need cvar=NULL handling    |
+| linear   | logistic | calc_myreg_mreg_linear_yreg_logistic_est | calc_myreg_mreg_linear_yreg_logistic_se |
+|          |          | implemented, need cvar=NULL handling     | se_pm missing, need cvar=NULL handling  |
+| logistic | linear   |                                          |                                         |
+|          |          |                                          |                                         |
+| logistic | logistic |                                          |                                         |
+|          |          |                                          |                                         |
