@@ -380,7 +380,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6,
                                                         theta4 = NULL,
-                                                        sigma_sq = 8
+                                                        sigma_sq = 8,
                                                         Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                         Sigma_theta = diag(2, nrow = 4, ncol = 4),
                                                         Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
