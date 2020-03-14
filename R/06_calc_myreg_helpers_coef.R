@@ -32,7 +32,7 @@ beta_hat <- function(mreg, mreg_fit, avar, cvar) {
 ##' \code{avar}
 ##' \code{mvar}
 ##' \code{avar:mvar}: A zero element is added when \code{interaction = FALSE}.
-##' \code{cvar}: A zero element is added when \code{cvar = NULL}.
+##' \code{cvar}: This part is eliminated when \code{cvar = NULL}.
 ##'
 ##' @inheritParams regmedint
 ##'
@@ -41,6 +41,7 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
 
     coef_raw <- coef(yreg_fit)
 
+    ## Handle the absence of (Intercept) for Cox regression
     if (yreg == "survCox") {
 
         ## Pad with a zero for the missing (Intercept)
@@ -53,21 +54,46 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
 
     }
 
+    ## Construct vars to extract from coef_ready
+    ## Make sure theta3 for avar:mvar is always exist
+    if (interaction) {
 
-    if (!interaction) {
+        ## Interaction case
+        ## No data manipulation is necessary.
+        ## Technically, the first case can be used in both because NULL
+        ## drops out in c(..., NULL). Here it is made explicit.
+        if (!is.null(cvar)) {
+            vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar)
+        } else {
+            vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar))
+        }
 
-        ## Always have a position for an interaction term to ease subsequent manipulation.
-        coef_ready <- c(coef_ready[c("(Intercept)",avar,mvar)],
-                        0,
-                        coef_ready[cvar])
-        names(coef_ready) <- c("(Intercept)",
-                               avar,mvar,
-                               paste0(avar,":",mvar),
-                               cvar)
+    } else {
+
+        ## No interaction case
+        if (!is.null(cvar)) {
+            coef_ready <- c(coef_ready[c("(Intercept)",avar,mvar)],
+                            ## Add zero for the interaction term
+                            0,
+                            coef_ready[cvar])
+            names(coef_ready) <- c("(Intercept)",
+                                   avar,mvar,
+                                   ## Name for interaction term
+                                   paste0(avar,":",mvar),
+                                   cvar)
+            vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar)
+        } else {
+            coef_ready <- c(coef_ready[c("(Intercept)",avar,mvar)],
+                            0)
+            names(coef_ready) <- c("(Intercept)",
+                                   avar,mvar,
+                                   paste0(avar,":",mvar))
+            vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar))
+        }
+
     }
 
     ## Subset to ensure the ordering and error on non-existent element.
-    vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar)
     coef_ready[vars]
 }
 
