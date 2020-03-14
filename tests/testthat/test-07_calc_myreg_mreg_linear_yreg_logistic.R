@@ -370,5 +370,285 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
 ################################################################################
 
 describe("calc_myreg_mreg_linear_yreg_logistic_se", {
-
+    describe("calc_myreg_mreg_linear_yreg_logistic_se (error handling)", {
+        it("errors given inconsistent beta2 and theta4", {
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2,
+                                                        beta2 = 3,
+                                                        theta1 = 4,
+                                                        theta2 = 5,
+                                                        theta3 = 6,
+                                                        theta4 = NULL,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2,
+                                                        beta2 = 1:2,
+                                                        theta1 = 4,
+                                                        theta2 = 5,
+                                                        theta3 = 6,
+                                                        theta4 = NULL,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2,
+                                                        beta2 = NULL,
+                                                        theta1 = 4,
+                                                        theta2 = 5,
+                                                        theta3 = 6,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2,
+                                                        beta2 = NULL,
+                                                        theta1 = 4,
+                                                        theta2 = 5,
+                                                        theta3 = 6,
+                                                        theta4 = 7:8,
+                                                        sigma_sq = 8))
+        })
+        it("errors given vector inputs in arguments other than beta2 and theta4", {
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1:2,
+                                                        beta1 = 2,
+                                                        beta2 = 3,
+                                                        theta1 = 4,
+                                                        theta2 = 5,
+                                                        theta3 = 6,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2:3,
+                                                        beta2 = 3,
+                                                        theta1 = 4,
+                                                        theta2 = 5,
+                                                        theta3 = 6,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2,
+                                                        beta2 = 3,
+                                                        theta1 = 4:5,
+                                                        theta2 = 5,
+                                                        theta3 = 6,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2,
+                                                        beta2 = 3,
+                                                        theta1 = 4,
+                                                        theta2 = 5:6,
+                                                        theta3 = 6,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2,
+                                                        beta2 = 3,
+                                                        theta1 = 4,
+                                                        theta2 = 5,
+                                                        theta3 = 6:7,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2,
+                                                        beta2 = 3,
+                                                        theta1 = 4,
+                                                        theta2 = 5,
+                                                        theta3 = 6:7,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8:9))
+        })
+        it("errors given NULL inputs in arguments other than beta2 and theta4", {
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = NULL,
+                                                        beta1 = 2,
+                                                        beta2 = 3,
+                                                        theta1 = 4,
+                                                        theta2 = 5,
+                                                        theta3 = 6,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = NULL,
+                                                        beta2 = 3,
+                                                        theta1 = 4,
+                                                        theta2 = 5,
+                                                        theta3 = 6,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2,
+                                                        beta2 = 3,
+                                                        theta1 = NULL,
+                                                        theta2 = 5,
+                                                        theta3 = 6,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2,
+                                                        beta2 = 3,
+                                                        theta1 = 4,
+                                                        theta2 = NULL,
+                                                        theta3 = 6,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2,
+                                                        beta2 = 3,
+                                                        theta1 = 4,
+                                                        theta2 = 5,
+                                                        theta3 = NULL,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8))
+            expect_error(
+                calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                        beta1 = 2,
+                                                        beta2 = 3,
+                                                        theta1 = 4,
+                                                        theta2 = 5,
+                                                        theta3 = NULL,
+                                                        theta4 = 7,
+                                                        sigma_sq = 8:9))
+        })
+    })
+    ## Note that this function does not require a model object and easy to tse.
+    describe("calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar)", {
+        se_fun <-
+            calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                    beta1 = 2,
+                                                    beta2 = NULL,
+                                                    theta1 = 4,
+                                                    theta2 = 5,
+                                                    theta3 = 6,
+                                                    theta4 = NULL,
+                                                    sigma_sq = 8)
+        it("returns a function", {
+            expect_equal(class(se_fun),
+                         "function")
+        })
+        it("returns a function that takes a0, a1, m_cde, and c_cond", {
+            expect_equal(names(formals(se_fun)),
+                         c("a0","a1","m_cde","c_cond"))
+        })
+        it("returns a function with parameters in the enslosing environment", {
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), NULL)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), NULL)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "sigma_sq"), 8)
+        })
+        it("returns a function that errors given inconsistent c_cond", {
+            expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
+            expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1))
+            expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:2))
+            expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3))
+            expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:4))
+        })
+        it("returns a function that gives a numeric vector without NA", {
+            res <- se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
+            expect_true(is.vector(res))
+            expect_true(is.numeric(res))
+            expect_true(all(!is.na(res)))
+        })
+    })
+    ##
+    describe("calc_myreg_mreg_linear_yreg_logistic_se (one cvar)", {
+        se_fun <-
+            calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                    beta1 = 2,
+                                                    beta2 = 3,
+                                                    theta1 = 4,
+                                                    theta2 = 5,
+                                                    theta3 = 6,
+                                                    theta4 = 7,
+                                                    sigma_sq = 8)
+        it("returns a function", {
+            expect_equal(class(se_fun),
+                         "function")
+        })
+        it("returns a function that takes a0, a1, m_cde, and c_cond", {
+            expect_equal(names(formals(se_fun)),
+                         c("a0","a1","m_cde","c_cond"))
+        })
+        it("returns a function with parameters in the enslosing environment", {
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), 3)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), 7)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "sigma_sq"), 8)
+        })
+        it("returns a function that errors given inconsistent c_cond", {
+            expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
+            expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1))
+            expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:2))
+            expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3))
+            expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:4))
+        })
+        it("returns a function that gives a numeric vector without NA", {
+            res <- se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
+            expect_true(is.vector(res))
+            expect_true(is.numeric(res))
+            expect_true(all(!is.na(res)))
+        })
+    })
+    ##
+    describe("calc_myreg_mreg_linear_yreg_logistic_se (three cvar)", {
+        se_fun <-
+            calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
+                                                    beta1 = 2,
+                                                    beta2 = 3:5,
+                                                    theta1 = 4,
+                                                    theta2 = 5,
+                                                    theta3 = 6,
+                                                    theta4 = 7:9,
+                                                    sigma_sq = 8)
+        it("returns a function", {
+            expect_equal(class(se_fun),
+                         "function")
+        })
+        it("returns a function that takes a0, a1, m_cde, and c_cond", {
+            expect_equal(names(formals(se_fun)),
+                         c("a0","a1","m_cde","c_cond"))
+        })
+        it("returns a function with parameters in the enslosing environment", {
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), 3:5)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), 7:9)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "sigma_sq"), 8)
+        })
+        it("returns a function that errors given inconsistent c_cond", {
+            expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
+            expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1))
+            expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:2))
+            expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3))
+            expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:4))
+        })
+        it("returns a function that gives a numeric vector without NA", {
+            res <- se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
+            expect_true(is.vector(res))
+            expect_true(is.numeric(res))
+            expect_true(all(!is.na(res)))
+        })
+    })
 })
