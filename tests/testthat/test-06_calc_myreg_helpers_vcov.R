@@ -599,7 +599,8 @@ describe("Sigma_theta_hat", {
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit0)) + 1)
+                             ## -1 for Log(scale)
+                             dim(vcov(yreg_fit0)) -1 + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
                 yreg_fit0 <- fit_yreg(yreg = "survAFT_weibull",
@@ -624,7 +625,8 @@ describe("Sigma_theta_hat", {
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit0)) + 0)
+                             ## -1 for Log(scale)
+                             dim(vcov(yreg_fit0)) -1 + 0)
             })
         })
     })
@@ -1075,7 +1077,8 @@ describe("Sigma_theta_hat", {
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit1)) + 1)
+                             ## -1 for Log(scale)
+                             dim(vcov(yreg_fit1)) -1 + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
                 yreg_fit1 <- fit_yreg(yreg = "survAFT_weibull",
@@ -1100,7 +1103,8 @@ describe("Sigma_theta_hat", {
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit1)) + 0)
+                             ## -1 for Log(scale)
+                             dim(vcov(yreg_fit1)) -1 + 0)
             })
         })
     })
@@ -1551,7 +1555,8 @@ describe("Sigma_theta_hat", {
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             ## -1 for Log(scale)
+                             dim(vcov(yreg_fit3)) -1 + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
                 yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
@@ -1576,7 +1581,8 @@ describe("Sigma_theta_hat", {
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             ## -1 for Log(scale)
+                             dim(vcov(yreg_fit3)) -1 + 0)
             })
         })
     })
