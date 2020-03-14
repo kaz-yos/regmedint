@@ -24,7 +24,7 @@ PKG_FILES := DESCRIPTION NAMESPACE NEWS $(R_FILES) $(TST_FILES) $(SRC_FILES) $(V
 
 ## .PHONY to allow non-file targets (file targets should not be here)
 ## https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
-.PHONY: test winbuild vignettes build check check_devtools revdep install sas clean
+.PHONY: test winbuild vignettes build check check_devtools lint revdep install sas clean
 
 
 ### Define targets
@@ -32,6 +32,11 @@ PKG_FILES := DESCRIPTION NAMESPACE NEWS $(R_FILES) $(TST_FILES) $(SRC_FILES) $(V
 ## test just runs testthat scripts. No dependencies.
 test: NAMESPACE
 	Rscript -e 'options(width = 120); options("testthat.progress.max_fails" = Inf); devtools::test()' | tee test-all.txt
+
+## lintr
+# https://github.com/jimhester/lintr#continuous
+lint: NAMESPACE
+	Rscript -e 'options(width = 120); lintr::lint_package()' | tee lint_package.txt
 
 ## winbuild always build regardless of file update status
 ## Links to results e-mailed (no useful output locally)
