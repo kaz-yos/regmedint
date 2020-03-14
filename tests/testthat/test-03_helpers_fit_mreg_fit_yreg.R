@@ -13,17 +13,40 @@ library(testthat)
 ### Internal function for mreg string formula creation
 ################################################################################
 
-test_that("string_mreg_formula create sound formula strings", {
-
-    expect_equal(string_mreg_formula("M","A",NULL),
-                 "M ~ A")
-
-    expect_equal(string_mreg_formula("M","A",c("C")),
-                 "M ~ A + C")
-
-    expect_equal(string_mreg_formula("M","A",c("C1","C2","C3")),
-                 "M ~ A + C1 + C2 + C3")
-
+describe("string_mreg_formula", {
+    describe("string_mreg_formula (good args)", {
+        it("handles NULL cvar by omitting", {
+            expect_equal(string_mreg_formula(mvar = "M",
+                                             avar = "A",
+                                             cvar = NULL),
+                         "M ~ A")
+        })
+        it("handles one cvar by adding", {
+            expect_equal(string_mreg_formula(mvar = "M",
+                                             avar = "A",
+                                             cvar = c("C")),
+                         "M ~ A + C")
+        })
+        it("handles three cvar by adding all", {
+            expect_equal(string_mreg_formula(mvar = "M",
+                                             avar = "A",
+                                             cvar = c("C1","C2","C3")),
+                         "M ~ A + C1 + C2 + C3")
+        })
+    })
+    ##
+    describe("string_mreg_formula (bad args)", {
+        it("throws an error on NULL mvar", {
+            expect_error(string_mreg_formula(mvar = NULL,
+                                             avar = "A",
+                                             cvar = NULL))
+        })
+        it("throws an error on NULL avar", {
+            expect_error(string_mreg_formula(mvar = "M",
+                                             avar = NULL,
+                                             cvar = NULL))
+        })
+    })
 })
 
 
