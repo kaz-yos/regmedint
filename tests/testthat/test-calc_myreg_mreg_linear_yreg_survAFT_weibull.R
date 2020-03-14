@@ -43,9 +43,14 @@ test_that("calc_myreg fit linear / Weibull AFT models correctly", {
                              mreg_fit = mreg_fit0,
                              yreg = "survAFT_weibull",
                              yreg_fit = yreg_fit0,
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = NULL, # FIXME: This may break.
                              interaction = FALSE)
     ## Point estimates
-    ref_est0 <- tibble(beta_0 = coef(mreg_fit0)["(Intercept)"],
+
+    ## Reference point estimates
+    ref_est0 <- tibble(beta0 = coef(mreg_fit0)["(Intercept)"],
                        beta1 = coef(mreg_fit0)["trt"],
                        beta2 = list(0),
                        sigma = sigma(mreg_fit0),
@@ -60,19 +65,21 @@ test_that("calc_myreg fit linear / Weibull AFT models correctly", {
                        clp = map2_dbl(beta_C, c_cond, function(a,b) {sum(a*b)})) %>%
         ## VanderWeele 2015 p494
         ## natural effects on log scale
-        mutate(pnde = (theta_A +
-                       theta3 * ((beta_0 + beta1 * a0 + clp) +
-                                   sigma^2 * (theta_M + 1/2 * theta3 * (a1 + a0)))) * (a1 - a0),
-               tnie = beta1 * (theta_M + theta3 * a1) * (a1 - a0),
-               cde_m = (theta_A + theta3 * m_cde) * (a1 - a0),
-               ## FIXME: Made upg
+        mutate(cde = (theta1 + theta3 * m_cde) * (a1 - a0),
+               pnde = (theta1 +
+                       theta3 * ((beta0 + beta1 * a0 + clp) +
+                                   sigma^2 * (theta2 + 1/2 * theta3 * (a1 + a0)))) * (a1 - a0),
+               tnie = beta1 * (theta2 + theta3 * a1) * (a1 - a0),
                tnde = 999,
-               pnie = 888)
+               pnie = 888,
+               te = pnde + tnie,
+               pm = 777)
+    ##
     expect_equal(myreg_fit0$myreg_fit["pnde"],
                  ref_est0$pnde)
     expect_equal(myreg_fit0$myreg_fit["tnie"],
                  ref_est0$tnie)
-    expect_equal(myreg_fit0$myreg_fit["cde_m"],
+    expect_equal(myreg_fit0$myreg_fit["cde"],
                  ref_est0$cde_m)
     expect_equal(myreg_fit0$myreg_fit["tnde"],
                  ref_est0$tnde)
@@ -92,16 +99,27 @@ test_that("calc_myreg fit linear / Weibull AFT models correctly", {
                       clp = map2_dbl(beta_C, c_cond, function(a,b) {sum(a*b)}),
                       ## VanderWeele 2015 p468
                       Gamma_cde_m =
-                          list(c(0,0,
-                                 0,1,0,m_cde,
+                          list(c(0,
+                                 0,
+                                 ##
+                                 0,
+                                 1,
+                                 0,
+                                 m_cde,
+                                 ##
                                  0)),
                       Gamma_pnde =
-                          list(c(theta_AM,theta_AM*a0,
-                                 0,1,theta_AM * sigma^2, beta_0 + beta1 * a0 + clp + theta2 * sigma^2 + theta3 * sigma^2 * (a1 + a0),
+                          list(c(theta3,
+                                 theta3*a0,
+                                 ##
+                                 0,1,theta3 * sigma^2, beta0 + beta1 * a0 + clp + theta2 * sigma^2 + theta3 * sigma^2 * (a1 + a0),
+                                 ##
                                  theta3 * theta2 + 1/2 * theta3^2 * (a1 + a0))),
                       Gamma_tnie =
-                          list(c(0,theta_M + theta3 * a,
+                          list(c(0,theta2 + theta3 * a,
+                                 ##
                                  0,0,beta1,beta1 * a,
+                                 ##
                                  0)))
 
     ## One covariates
