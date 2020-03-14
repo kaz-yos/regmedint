@@ -250,8 +250,8 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
                       d7, # theta3
                       d8) # theta4 vector
 
-
-        ## SEs
+        ## SE calcuation via multivariate delta method
+        ## https://en.wikipedia.org/wiki/Delta_method# Multivariate_delta_method
         a1_sub_a0 <- (a1 - a0)
         se_cde <- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% Gamma_cde)) * a1_sub_a0
         se_pnde <- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% Gamma_pnde)) * a1_sub_a0
