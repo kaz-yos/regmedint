@@ -13,15 +13,19 @@
 ##' Create a vector of coefficients from the mediator model (mreg)
 ##'
 ##' This function extracts \code{\link{coef}} from \code{mreg_fit} and pads with zeros appropriately to create a named vector consistently having the following elements:
-##' \code{(Intercept)}:
+##' \code{(Intercept)}
 ##' \code{avar}
-##' \code{cvar}: A zero element is added when \code{cvar = NULL}.
+##' \code{cvar}: This part is eliminated when \code{cvar = NULL}.
 ##'
 ##' @inheritParams regmedint
 ##'
 ##' @return A named numeric vector of coefficients.
 beta_hat <- function(mreg, mreg_fit, avar, cvar) {
-    vars <- c("(Intercept)", avar, cvar)
+    if (!is.null(cvar)) {
+        vars <- c("(Intercept)", avar, cvar)
+    } else {
+        vars <- c("(Intercept)", avar)
+    }
     coef(mreg_fit)[vars]
 }
 
