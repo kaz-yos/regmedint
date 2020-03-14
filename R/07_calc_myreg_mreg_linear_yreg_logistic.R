@@ -9,7 +9,7 @@
 ## VanderWeele 2015 p468 Proposition 2.4
 ##' Create calculators for effects and se (mreg linear / yreg logistic)
 ##'
-##' Construct functions for the conditional effect estimates and their standard errors in the mreg linear / yreg logistic setting.
+##' Construct functions for the conditional effect estimates and their standard errors in the mreg linear / yreg logistic setting. Internally, this function deconstruct model objects and feed parameter estiamtes to the internal worker functions \code{\link{calc_myreg_mreg_linear_yreg_logistic_est}} and \code{\link{calc_myreg_mreg_linear_yreg_logistic_se}}.
 ##'
 ##' @inheritParams regmedint
 ##' @param mreg_fit Model fit from \code{\link{fit_mreg}}
@@ -22,11 +22,8 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                  yreg_fit,
                                                  avar,
                                                  mvar,
-                                                 cvar,
+                                                 cvar, # This can be NULL.
                                                  interaction) {
-
-    ## FIXME: This needs to be allowed and handled nicely!
-    assertthat::assert_that(!is.null(cvar))
 
     ## mreg coefficients
     beta_hat <- beta_hat(mreg = mreg,
@@ -35,7 +32,12 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                          cvar = cvar)
     beta0 <- beta_hat["(Intercept)"]
     beta1 <- beta_hat[avar]
-    beta2 <- beta_hat[cvar]
+    if (is.null(cvar)) {
+        ## beta_hat does not contain the cvar part in this case.
+        beta2 <- NULL
+    } else {
+        beta2 <- beta_hat[cvar]
+    }
     ## This mreg linear yreg logistic is the only case that uses sigma^2.
     sigma_sq <- sigma_hat_sq(mreg_fit = mreg_fit)
     ## yreg coefficients
@@ -48,7 +50,12 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
     theta1 <- theta_hat[avar]
     theta2 <- theta_hat[mvar]
     theta3 <- theta_hat[paste0(avar,":",mvar)]
-    theta4 <- theta_hat[cvar]
+    if (is.null(cvar)) {
+        ## theta_hat does not contain the cvar part in this case.
+        theta4 <- NULL
+    } else {
+        theta4 <- theta_hat[cvar]
+    }
     ## Construct a function of (a1, a0, m_cde, c_cond) that returns
     ## a vector of point estimates for quantities of interest.
     myreg_est_fun <-
@@ -121,7 +128,12 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
 
         ## Term involving an inner product of beta2 and c_cond
         ## matrix operation to error on non-conformant structure.
-        beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
+        if (is.null(beta2)) {
+            assertthat::assert_that(is.null(c_cond))
+            beta2_c <- 0
+        } else {
+            beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
+        }
 
         ## VanderWeele 2015 p468
         ## Adopted from mediation.sas and modified.
@@ -177,12 +189,34 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                            Sigma_theta,
                            Sigma_sigma)
 
+    ## The dimension
+    assertthat::assert_that(dim(Sigma),
+                            sum(1, # beta0 (Intercept)
+                                1, # beta1 for avar
+                                ## This can be 0 = length(NULL) when cvar = NULL
+                                length(beta2), # beta2 vector cvar
+                                ##
+                                1, # theta0 (Intercept)
+                                1, # theta1 for avar
+                                1, # theta2 for mvar
+                                1, # theta3 for avar:mvar
+                                ## This can be 0 = length(NULL) when cvar = NULL
+                                lenth(theta4), # theta4 for cvar
+                                ##
+                                1 # sigma_sq
+                                ))
+
     ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond)
     fun_se <- function(a0, a1, m_cde, c_cond) {
 
         ## Term involving an inner product of beta2 and c_cond
         ## matrix operation to error on non-conformant structure.
-        beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
+        if (is.null(beta2)) {
+            assertthat::assert_that(is.null(c_cond))
+            beta2_c <- 0
+        } else {
+            beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
+        }
 
         ## VanderWeele 2015. p468
         ## Valeri & VanderWeele 2013. Appendix p6-9
