@@ -150,6 +150,10 @@ string_yreg_formula <- function(yvar,
                                 interaction,
                                 eventvar) {
 
+    assertthat::assert_that(!is.null(mvar))
+    assertthat::assert_that(!is.null(avar))
+    assertthat::assert_that(!is.null(yvar))
+
     ## Create A*M or A + M depending on interaction.
     if (interaction) {
         amvar_string <- sprintf("%s*%s", avar, mvar)
