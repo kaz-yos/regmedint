@@ -6,7 +6,7 @@ argument "casecontrol" is missing, with no default
 1: new_regmedint(NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-02_new_regmedint.R:20
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 03_fit_mreg✔ |  24       | 03_fit_mreg
-⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  15       | 03_helpers_fit_mreg_fit_yreg
+⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  17       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
 ⠏ |   0       | 04_fit_yreg_logistic✔ |  24       | 04_fit_yreg_logistic
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
@@ -475,7 +475,7 @@ test-06_calc_myreg_helpers_coef.R:618: failure: theta_hat for yreg survAFT_weibu
 1/1 mismatches
 [1] 7 - 8 == -1
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠙ |  14 8     | 06_calc_myreg_helpers_vcov✖ |  14 12     | 06_calc_myreg_helpers_vcov [0.1 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  14 7     | 06_calc_myreg_helpers_vcov✖ |  14 12     | 06_calc_myreg_helpers_vcov [0.1 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-06_calc_myreg_helpers_vcov.R:115: error: Sigma_theta_hat for yreg linear: extracts vcov correctly when there is no interaction
 invalid dimnames given for "dgCMatrix" object
@@ -1074,9 +1074,9 @@ Need to validate arguments before passing to other functions!
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 2.2 s
+Duration: 2.5 s
 
-OK:       208
+OK:       210
 Failed:   28
 Warnings: 0
 Skipped:  6
