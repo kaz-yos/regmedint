@@ -33,44 +33,8 @@ calc_myreg <- function(mreg,
     if (mreg == "linear" & yreg == "linear") {
 
         ## VanderWeele 2015 p466 Proposition 2.3
-        calc_myreg_mreg_linear_yreg_linear(mreg,
-                                           mreg_fit,
-                                           yreg,
-                                           yreg_fit,
-                                           avar,
-                                           mvar,
-                                           cvar,
-                                           interaction)
-
-    } else if (mreg == "linear" & yreg != "linear") {
-
-        ## VanderWeele 2015 p468 Proposition 2.4
-        calc_myreg_mreg_linear_yreg_logistic(mreg,
-                                             mreg_fit,
-                                             yreg,
-                                             yreg_fit,
-                                             avar,
-                                             mvar,
-                                             cvar,
-                                             interaction)
-
-    } else if (mreg == "logistic" & yreg == "linear") {
-
-        ## VanderWeele 2015 p471 Proposition 2.5
-        calc_myreg_mreg_logistic_yreg_linear(mreg,
-                                             mreg_fit,
-                                             yreg,
-                                             yreg_fit,
-                                             avar,
-                                             mvar,
-                                             cvar,
-                                             interaction)
-
-
-    } else if (mreg == "logistic" & yreg != "linear") {
-
-        ## VanderWeele 2015 p473 Proposition 2.6
-        calc_myreg_mreg_logistic_yreg_logistic(mreg,
+        list_est_fun_se_fun <-
+            calc_myreg_mreg_linear_yreg_linear(mreg,
                                                mreg_fit,
                                                yreg,
                                                yreg_fit,
@@ -79,9 +43,54 @@ calc_myreg <- function(mreg,
                                                cvar,
                                                interaction)
 
+    } else if (mreg == "linear" & yreg != "linear") {
+
+        ## VanderWeele 2015 p468 Proposition 2.4
+        list_est_fun_se_fun <-
+            calc_myreg_mreg_linear_yreg_logistic(mreg,
+                                                 mreg_fit,
+                                                 yreg,
+                                                 yreg_fit,
+                                                 avar,
+                                                 mvar,
+                                                 cvar,
+                                                 interaction)
+
+    } else if (mreg == "logistic" & yreg == "linear") {
+
+        ## VanderWeele 2015 p471 Proposition 2.5
+        list_est_fun_se_fun <-
+            calc_myreg_mreg_logistic_yreg_linear(mreg,
+                                                 mreg_fit,
+                                                 yreg,
+                                                 yreg_fit,
+                                                 avar,
+                                                 mvar,
+                                                 cvar,
+                                                 interaction)
+
+
+    } else if (mreg == "logistic" & yreg != "linear") {
+
+        ## VanderWeele 2015 p473 Proposition 2.6
+        list_est_fun_se_fun <-
+            calc_myreg_mreg_logistic_yreg_logistic(mreg,
+                                                   mreg_fit,
+                                                   yreg,
+                                                   yreg_fit,
+                                                   avar,
+                                                   mvar,
+                                                   cvar,
+                                                   interaction)
+
     } else  {
 
         stop("Unsupported mreg or yreg.")
 
     }
+
+    ## Return a list of the form:
+    ##  list(myreg_est_fun = myreg_est_fun,
+    ##       myreg_se_fun = myreg_est_fun)
+    return(list_est_fun_se_fun)
 }
