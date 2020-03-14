@@ -28,7 +28,7 @@
 ##' @param yvar A character vector of length 1. Outcome variable name. It should be the time variable for survival outcomes.
 ##' @param avar A character vector of length 1. Treatment variable name.
 ##' @param mvar A character vector of length 1. Mediator variable name.
-##' @param cvar A character vector of length > 0. Covariate names.
+##' @param cvar A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{avar} and \code{yvar}.
 ##' @param a0 A numeric vector of length 1. Reference level of treatment variable that is considered "untreated" or "unexposed".
 ##' @param a1 A numeric vector of length 1.
 ##' @param m_cde A numeric vector of length 1. Mediator level at which controlled direct effect is evaluated at.
