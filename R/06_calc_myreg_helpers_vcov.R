@@ -58,7 +58,23 @@ Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
 
     }
 
-    if (!interaction) {
+
+    if (interaction) {
+
+        ## Interaction case
+        ## No data manipulation is necessary.
+        ## Technically, the first case can be used in both because NULL
+        ## drops out in c(..., NULL). Here it is made explicit.
+        if (!is.null(cvar)) {
+            vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar)
+        } else {
+            vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar))
+        }
+
+    } else {
+
+        message("cvar = NULL handling is not complete! See theta_hat. handle these conditionally!")
+
         ## Always have a position for an interaction term to ease subsequent manipulation.
         vcov_ready <- Matrix::bdiag(vcov_ready[c("(Intercept)",avar,mvar),
                                                c("(Intercept)",avar,mvar),
