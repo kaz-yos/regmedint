@@ -46,25 +46,25 @@ test_that("calc_myreg fit linear / Weibull AFT models correctly", {
                              interaction = FALSE)
     ## Point estimates
     ref_est0 <- tibble(beta_0 = coef(mreg_fit0)["(Intercept)"],
-                       beta_A = coef(mreg_fit0)["trt"],
-                       beta_C = list(0),
+                       beta1 = coef(mreg_fit0)["trt"],
+                       beta2 = list(0),
                        sigma = sigma(mreg_fit0),
-                       theta_A = coef(yreg_fit0)["trt"],
-                       theta_M = coef(yreg_fit0)["bili"],
-                       theta_AM = 0,
+                       theta1 = coef(yreg_fit0)["trt"],
+                       theta2 = coef(yreg_fit0)["bili"],
+                       theta3 = 0,
                        a1 = 1,
                        a0 = 0,
                        m_cde = 0.6,
                        c_cond = list(1.1),
-                       ## c part of linear predictor by inner product of beta_C and c_cond
+                       ## c part of linear predictor by inner product of beta2 and c_cond
                        clp = map2_dbl(beta_C, c_cond, function(a,b) {sum(a*b)})) %>%
         ## VanderWeele 2015 p494
         ## natural effects on log scale
         mutate(pnde = (theta_A +
-                       theta_AM * ((beta_0 + beta_A * a0 + clp) +
-                                   sigma^2 * (theta_M + 1/2 * theta_AM * (a1 + a0)))) * (a1 - a0),
-               tnie = beta_A * (theta_M + theta_AM * a1) * (a1 - a0),
-               cde_m = (theta_A + theta_AM * m_cde) * (a1 - a0),
+                       theta3 * ((beta_0 + beta1 * a0 + clp) +
+                                   sigma^2 * (theta_M + 1/2 * theta3 * (a1 + a0)))) * (a1 - a0),
+               tnie = beta1 * (theta_M + theta3 * a1) * (a1 - a0),
+               cde_m = (theta_A + theta3 * m_cde) * (a1 - a0),
                ## FIXME: Made upg
                tnde = 999,
                pnie = 888)
@@ -88,7 +88,7 @@ test_that("calc_myreg fit linear / Weibull AFT models correctly", {
                       a0 = 0,
                       m_cde = 0.6,
                       c_cond = list(1.1),
-                      ## c part of linear predictor by inner product of beta_C and c_cond
+                      ## c part of linear predictor by inner product of beta2 and c_cond
                       clp = map2_dbl(beta_C, c_cond, function(a,b) {sum(a*b)}),
                       ## VanderWeele 2015 p468
                       Gamma_cde_m =
@@ -97,11 +97,11 @@ test_that("calc_myreg fit linear / Weibull AFT models correctly", {
                                  0)),
                       Gamma_pnde =
                           list(c(theta_AM,theta_AM*a0,
-                                 0,1,theta_AM * sigma^2, beta_0 + beta_A * a0 + clp + theta_M * sigma^2 + theta_AM * sigma^2 * (a1 + a0),
-                                 theta_AM * theta_M + 1/2 * theta_AM^2 * (a1 + a0))),
+                                 0,1,theta_AM * sigma^2, beta_0 + beta1 * a0 + clp + theta2 * sigma^2 + theta3 * sigma^2 * (a1 + a0),
+                                 theta3 * theta2 + 1/2 * theta3^2 * (a1 + a0))),
                       Gamma_tnie =
-                          list(c(0,theta_M + theta_AM * a,
-                                 0,0,beta_A,beta_A * a,
+                          list(c(0,theta_M + theta3 * a,
+                                 0,0,beta1,beta1 * a,
                                  0)))
 
     ## One covariates
