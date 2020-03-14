@@ -163,9 +163,9 @@ describe("Sigma_theta_hat", {
     ##
     describe("Sigma_theta_hat (NULL cvar)", {
 
-        describe("Sigma_theta_hat (3 cvar) for yreg linear", {
+        describe("Sigma_theta_hat (NULL cvar) for yreg linear", {
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "linear",
+                yreg_fit0 <- fit_yreg(yreg = "linear",
                                       data = pbc_cc,
                                       yvar = "alk.phos",
                                       avar = "trt",
@@ -176,26 +176,26 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- NULL
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit0)[vars1],
                                           matrix(0))
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "linear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "linear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit0)) + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "linear",
+                yreg_fit0 <- fit_yreg(yreg = "linear",
                                       data = pbc_cc,
                                       yvar = "alk.phos",
                                       avar = "trt",
@@ -205,24 +205,24 @@ describe("Sigma_theta_hat", {
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 expect_equal(Sigma_theta_hat(yreg = "linear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "linear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit0)) + 0)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg logistic", {
+        describe("Sigma_theta_hat (NULL cvar) for yreg logistic", {
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "logistic",
+                yreg_fit0 <- fit_yreg(yreg = "logistic",
                                       data = pbc_cc,
                                       yvar = "spiders",
                                       avar = "trt",
@@ -233,26 +233,26 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- NULL
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit0)[vars1],
                                           matrix(0))
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit0)) + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "logistic",
+                yreg_fit0 <- fit_yreg(yreg = "logistic",
                                       data = pbc_cc,
                                       yvar = "spiders",
                                       avar = "trt",
@@ -262,24 +262,24 @@ describe("Sigma_theta_hat", {
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit0)) + 0)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg loglinear", {
+        describe("Sigma_theta_hat (NULL cvar) for yreg loglinear", {
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "loglinear",
+                yreg_fit0 <- fit_yreg(yreg = "loglinear",
                                       data = pbc_cc,
                                       yvar = "spiders",
                                       avar = "trt",
@@ -290,26 +290,26 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- NULL
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit0)[vars1],
                                           matrix(0))
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit0)) + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "loglinear",
+                yreg_fit0 <- fit_yreg(yreg = "loglinear",
                                       data = pbc_cc,
                                       yvar = "spiders",
                                       avar = "trt",
@@ -319,25 +319,25 @@ describe("Sigma_theta_hat", {
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit0)) + 0)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg poisson", {
+        describe("Sigma_theta_hat (NULL cvar) for yreg poisson", {
             ## Use platelet as a fake count variable
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "poisson",
+                yreg_fit0 <- fit_yreg(yreg = "poisson",
                                       data = pbc_cc,
                                       yvar = "platelet",
                                       avar = "trt",
@@ -348,27 +348,27 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- NULL
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit0)[vars1],
                                           matrix(0))
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit0)) + 1)
 
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "poisson",
+                yreg_fit0 <- fit_yreg(yreg = "poisson",
                                       data = pbc_cc,
                                       yvar = "platelet",
                                       avar = "trt",
@@ -378,25 +378,25 @@ describe("Sigma_theta_hat", {
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit0)) + 0)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg negbin", {
+        describe("Sigma_theta_hat (NULL cvar) for yreg negbin", {
             ## Use platelet as a fake count variable
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "negbin",
+                yreg_fit0 <- fit_yreg(yreg = "negbin",
                                       data = pbc_cc,
                                       yvar = "platelet",
                                       avar = "trt",
@@ -407,26 +407,26 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- NULL
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit0)[vars1],
                                           matrix(0))
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit0)) + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "negbin",
+                yreg_fit0 <- fit_yreg(yreg = "negbin",
                                       data = pbc_cc,
                                       yvar = "platelet",
                                       avar = "trt",
@@ -436,24 +436,24 @@ describe("Sigma_theta_hat", {
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit0)) + 0)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg survCox", {
+        describe("Sigma_theta_hat (NULL cvar) for yreg survCox", {
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "survCox",
+                yreg_fit0 <- fit_yreg(yreg = "survCox",
                                       data = pbc_cc,
                                       yvar = "time",
                                       avar = "trt",
@@ -464,26 +464,26 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- NULL
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit0)[vars1],
                                           matrix(0))
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 2)
+                             dim(vcov(yreg_fit0)) + 2)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "survCox",
+                yreg_fit0 <- fit_yreg(yreg = "survCox",
                                       data = pbc_cc,
                                       yvar = "time",
                                       avar = "trt",
@@ -493,24 +493,24 @@ describe("Sigma_theta_hat", {
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit0)) + 1)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg survAFT_exp", {
+        describe("Sigma_theta_hat (NULL cvar) for yreg survAFT_exp", {
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "survAFT_exp",
+                yreg_fit0 <- fit_yreg(yreg = "survAFT_exp",
                                       data = pbc_cc,
                                       yvar = "time",
                                       avar = "trt",
@@ -521,26 +521,26 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- NULL
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit0)[vars1],
                                           matrix(0))
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit0)) + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "survAFT_exp",
+                yreg_fit0 <- fit_yreg(yreg = "survAFT_exp",
                                       data = pbc_cc,
                                       yvar = "time",
                                       avar = "trt",
@@ -550,24 +550,24 @@ describe("Sigma_theta_hat", {
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit0)) + 0)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg survAFT_weibull", {
+        describe("Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull", {
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
+                yreg_fit0 <- fit_yreg(yreg = "survAFT_weibull",
                                       data = pbc_cc,
                                       yvar = "time",
                                       avar = "trt",
@@ -578,26 +578,26 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- NULL
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit0)[vars1],
                                           matrix(0))
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit0)) + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
+                yreg_fit0 <- fit_yreg(yreg = "survAFT_weibull",
                                       data = pbc_cc,
                                       yvar = "time",
                                       avar = "trt",
@@ -607,28 +607,28 @@ describe("Sigma_theta_hat", {
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit0,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit0)) + 0)
             })
         })
     })
     ##
     describe("Sigma_theta_hat (1 cvar)", {
 
-        describe("Sigma_theta_hat (3 cvar) for yreg linear", {
+        describe("Sigma_theta_hat (1 cvar) for yreg linear", {
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "linear",
+                yreg_fit1 <- fit_yreg(yreg = "linear",
                                       data = pbc_cc,
                                       yvar = "alk.phos",
                                       avar = "trt",
@@ -639,27 +639,27 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- c("age")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit1)[vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "linear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "linear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit1)) + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "linear",
+                yreg_fit1 <- fit_yreg(yreg = "linear",
                                       data = pbc_cc,
                                       yvar = "alk.phos",
                                       avar = "trt",
@@ -669,24 +669,24 @@ describe("Sigma_theta_hat", {
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 expect_equal(Sigma_theta_hat(yreg = "linear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "linear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit1)) + 0)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg logistic", {
+        describe("Sigma_theta_hat (1 cvar) for yreg logistic", {
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "logistic",
+                yreg_fit1 <- fit_yreg(yreg = "logistic",
                                       data = pbc_cc,
                                       yvar = "spiders",
                                       avar = "trt",
@@ -697,27 +697,27 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- c("age")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit1)[vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit1)) + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "logistic",
+                yreg_fit1 <- fit_yreg(yreg = "logistic",
                                       data = pbc_cc,
                                       yvar = "spiders",
                                       avar = "trt",
@@ -727,24 +727,24 @@ describe("Sigma_theta_hat", {
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit1)) + 0)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg loglinear", {
+        describe("Sigma_theta_hat (1 cvar) for yreg loglinear", {
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "loglinear",
+                yreg_fit1 <- fit_yreg(yreg = "loglinear",
                                       data = pbc_cc,
                                       yvar = "spiders",
                                       avar = "trt",
@@ -755,27 +755,27 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- c("age")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit1)[vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit1)) + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "loglinear",
+                yreg_fit1 <- fit_yreg(yreg = "loglinear",
                                       data = pbc_cc,
                                       yvar = "spiders",
                                       avar = "trt",
@@ -785,25 +785,25 @@ describe("Sigma_theta_hat", {
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit1)) + 0)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg poisson", {
+        describe("Sigma_theta_hat (1 cvar) for yreg poisson", {
             ## Use platelet as a fake count variable
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "poisson",
+                yreg_fit1 <- fit_yreg(yreg = "poisson",
                                       data = pbc_cc,
                                       yvar = "platelet",
                                       avar = "trt",
@@ -814,28 +814,28 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- c("age")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit1)[vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit1)) + 1)
 
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "poisson",
+                yreg_fit1 <- fit_yreg(yreg = "poisson",
                                       data = pbc_cc,
                                       yvar = "platelet",
                                       avar = "trt",
@@ -845,25 +845,25 @@ describe("Sigma_theta_hat", {
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit1)) + 0)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg negbin", {
+        describe("Sigma_theta_hat (1 cvar) for yreg negbin", {
             ## Use platelet as a fake count variable
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "negbin",
+                yreg_fit1 <- fit_yreg(yreg = "negbin",
                                       data = pbc_cc,
                                       yvar = "platelet",
                                       avar = "trt",
@@ -874,27 +874,27 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- c("age")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit1)[vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit1)) + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "negbin",
+                yreg_fit1 <- fit_yreg(yreg = "negbin",
                                       data = pbc_cc,
                                       yvar = "platelet",
                                       avar = "trt",
@@ -904,24 +904,24 @@ describe("Sigma_theta_hat", {
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit1)) + 0)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg survCox", {
+        describe("Sigma_theta_hat (1 cvar) for yreg survCox", {
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "survCox",
+                yreg_fit1 <- fit_yreg(yreg = "survCox",
                                       data = pbc_cc,
                                       yvar = "time",
                                       avar = "trt",
@@ -932,27 +932,27 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- c("age")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit1)[vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 2)
+                             dim(vcov(yreg_fit1)) + 2)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "survCox",
+                yreg_fit1 <- fit_yreg(yreg = "survCox",
                                       data = pbc_cc,
                                       yvar = "time",
                                       avar = "trt",
@@ -962,24 +962,24 @@ describe("Sigma_theta_hat", {
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit1)) + 1)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg survAFT_exp", {
+        describe("Sigma_theta_hat (1 cvar) for yreg survAFT_exp", {
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "survAFT_exp",
+                yreg_fit1 <- fit_yreg(yreg = "survAFT_exp",
                                       data = pbc_cc,
                                       yvar = "time",
                                       avar = "trt",
@@ -990,27 +990,27 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- c("age")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit1)[vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit1)) + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "survAFT_exp",
+                yreg_fit1 <- fit_yreg(yreg = "survAFT_exp",
                                       data = pbc_cc,
                                       yvar = "time",
                                       avar = "trt",
@@ -1020,24 +1020,24 @@ describe("Sigma_theta_hat", {
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit1)) + 0)
             })
         })
-        describe("Sigma_theta_hat (3 cvar) for yreg survAFT_weibull", {
+        describe("Sigma_theta_hat (1 cvar) for yreg survAFT_weibull", {
             it("extracts vcov correctly when there is no interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
+                yreg_fit1 <- fit_yreg(yreg = "survAFT_weibull",
                                       data = pbc_cc,
                                       yvar = "time",
                                       avar = "trt",
@@ -1048,27 +1048,27 @@ describe("Sigma_theta_hat", {
                 vars1 <- c("(Intercept)","trt","bili")
                 vars2 <- c("age")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
-                ref_vcov <- Matrix::bdiag(vcov(yreg_fit3)[vars1],
+                ref_vcov <- Matrix::bdiag(vcov(yreg_fit1)[vars1],
                                           matrix(0),
-                                          vcov(yreg_fit3)[vars2])
+                                          vcov(yreg_fit1)[vars2])
                 dimnames(ref_vcov) <- list(vars,vars)
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = FALSE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 1)
+                             dim(vcov(yreg_fit1)) + 1)
             })
             it("extracts vcov correctly when there is an interaction", {
-                yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
+                yreg_fit1 <- fit_yreg(yreg = "survAFT_weibull",
                                       data = pbc_cc,
                                       yvar = "time",
                                       avar = "trt",
@@ -1078,19 +1078,19 @@ describe("Sigma_theta_hat", {
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE),
-                             vcov(yreg_fit3)[vars,vars])
+                             vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
-                                             yreg_fit = yreg_fit3,
+                                             yreg_fit = yreg_fit1,
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
                                              interaction = TRUE) %>% dim(),
-                             dim(vcov(yreg_fit3)) + 0)
+                             dim(vcov(yreg_fit1)) + 0)
             })
         })
     })
