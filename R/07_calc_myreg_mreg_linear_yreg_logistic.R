@@ -89,8 +89,13 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                 Sigma_sigma = Sigma_sigma)
 
     ## Return a list of functions.
-    list(myreg_est_fun = myreg_est_fun,
-         myreg_se_fun = myreg_est_fun)
+    list(
+        ## args (a0, a1, m_cde, c_cond)
+        ## -> vector c(cde, pnde, tnie, tnde, pnie, te, pm)
+        myreg_est_fun = myreg_est_fun,
+        ## args (a0, a1, m_cde, c_cond)
+        ## -> vector c(se_cde, se_pnde, se_tnie, se_tnde, se_pnie, se_te, se_pm)
+        myreg_se_fun = myreg_est_fun)
 }
 
 
@@ -265,12 +270,12 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
 
         ## Return a vector
         c(se_cde = se_cde,
-          se_pnde = pnde,
-          se_tnie = tnie,
-          se_tnde = tnde,
-          se_pnie = pnie,
-          se_te = te,
-          se_pm = pm)
+          se_pnde = se_pnde,
+          se_tnie = se_tnie,
+          se_tnde = se_tnde,
+          se_pnie = se_pnie,
+          se_te = se_te,
+          se_pm = se_pm)
     }
 
     return(fun_se)
