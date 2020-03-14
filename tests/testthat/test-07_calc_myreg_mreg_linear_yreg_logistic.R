@@ -380,7 +380,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6,
                                                         theta4 = NULL,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
@@ -389,7 +392,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6,
                                                         theta4 = NULL,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
@@ -398,7 +404,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6,
                                                         theta4 = 7,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
@@ -407,7 +416,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6,
                                                         theta4 = 7:8,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
         })
         it("errors given vector inputs in arguments other than beta2 and theta4", {
             expect_error(
@@ -418,7 +430,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6,
                                                         theta4 = 7,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2:3,
@@ -427,7 +442,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6,
                                                         theta4 = 7,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
@@ -436,7 +454,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6,
                                                         theta4 = 7,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
@@ -445,7 +466,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5:6,
                                                         theta3 = 6,
                                                         theta4 = 7,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
@@ -454,7 +478,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6:7,
                                                         theta4 = 7,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
@@ -463,7 +490,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6:7,
                                                         theta4 = 7,
-                                                        sigma_sq = 8:9))
+                                                        sigma_sq = 8:9,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
         })
         it("errors given NULL inputs in arguments other than beta2 and theta4", {
             expect_error(
@@ -474,7 +504,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6,
                                                         theta4 = 7,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = NULL,
@@ -483,7 +516,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6,
                                                         theta4 = 7,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
@@ -492,7 +528,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = 6,
                                                         theta4 = 7,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
@@ -501,7 +540,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = NULL,
                                                         theta3 = 6,
                                                         theta4 = 7,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
@@ -510,7 +552,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = NULL,
                                                         theta4 = 7,
-                                                        sigma_sq = 8))
+                                                        sigma_sq = 8,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
@@ -519,7 +564,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                         theta2 = 5,
                                                         theta3 = NULL,
                                                         theta4 = 7,
-                                                        sigma_sq = 8:9))
+                                                        sigma_sq = 8:9,
+                                                        Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                        Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                        Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
         })
     })
     ## Note that this function does not require a model object and easy to tse.
@@ -532,7 +580,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                     theta2 = 5,
                                                     theta3 = 6,
                                                     theta4 = NULL,
-                                                    sigma_sq = 8)
+                                                    sigma_sq = 8,
+                                                    Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                    Sigma_theta = diag(2, nrow = 4, ncol = 4),
+                                                    Sigma_sigma = diag(3, nrow = 1, ncol = 1))
         it("returns a function", {
             expect_equal(class(se_fun),
                          "function")
@@ -575,7 +626,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                     theta2 = 5,
                                                     theta3 = 6,
                                                     theta4 = 7,
-                                                    sigma_sq = 8)
+                                                    sigma_sq = 8,
+                                                    Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                    Sigma_theta = diag(2, nrow = 5, ncol = 5),
+                                                    Sigma_sigma = diag(3, nrow = 1, ncol = 1))
         it("returns a function", {
             expect_equal(class(se_fun),
                          "function")
@@ -618,7 +672,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                                                     theta2 = 5,
                                                     theta3 = 6,
                                                     theta4 = 7:9,
-                                                    sigma_sq = 8)
+                                                    sigma_sq = 8,
+                                                    Sigma_beta = diag(1, nrow = 5, ncol = 5),
+                                                    Sigma_theta = diag(2, nrow = 7, ncol = 7),
+                                                    Sigma_sigma = diag(3, nrow = 1, ncol = 1))
         it("returns a function", {
             expect_equal(class(se_fun),
                          "function")
