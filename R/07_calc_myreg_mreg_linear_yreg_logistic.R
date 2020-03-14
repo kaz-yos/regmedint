@@ -255,7 +255,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         Gamma_te <-
             Gamma_pnde + Gamma_tnie # By linearity of differentiation
         ##
-        Gamma_pm
+        Gamma_pm <- NA
 
 
         ## SEs
