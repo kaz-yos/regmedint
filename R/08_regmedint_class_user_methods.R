@@ -130,14 +130,96 @@ summary.regmedint <- function(x,
 ### Others
 ################################################################################
 
-coef.regmedint <- function(x, ...) {
+##' Extract coefficients
+##'
+##' .. content for \details{} ..
+##'
+##' @param x
+##' @param a0
+##' @param a1
+##' @param m_cde
+##' @param c_cond
+##' @param ...
+##' @return
+coef.regmedint <- function(x,
+                              a0 = NULL,
+                              a1 = NULL,
+                              m_cde = NULL,
+                              c_cond = NULL,
+                              ...) {
 
-    stop("coef.regmedint not implemented")
+    ## This is a user function. Check arguments heavily.
+    assertthat::assert_that(is.null(a0) | (length(a0) == 1))
+    assertthat::assert_that(is.null(a1) | (length(a1) == 1))
+    assertthat::assert_that(is.null(m_cde) | (length(m_cde) == 1))
+    assertthat::assert_that(is.null(c_cond) | (length(c_cond) == length(x$args$cvar)))
 
+    if (is.null(a0)) {
+        a0 <- x$args$a0
+    }
+    if (is.null(a1)) {
+        a1 <- x$args$a1
+    }
+    if (is.null(m_cde)) {
+        m_cde <- x$args$m_cde
+    }
+    if (is.null(c_cond)) {
+        c_cond <- x$args$c_cond
+    }
+
+    res_est <- x$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond)
+
+    res_est
 }
 
-confint.regmedint <- function(x, ...) {
+##' Confidence intervals for mediation prameter estimates.
+##'
+##' .. content for \details{} ..
+##'
+##' @param x
+##' @param a0
+##' @param a1
+##' @param m_cde
+##' @param c_cond
+##' @param alpha
+##' @param ...
+##' @return
+confint.regmedint <- function(x,
+                              a0 = NULL,
+                              a1 = NULL,
+                              m_cde = NULL,
+                              c_cond = NULL,
+                              alpha = 0.05,
+                              ...) {
 
-    stop("confint.regmedint not implemented")
+    ## This is a user function. Check arguments heavily.
+    assertthat::assert_that(is.null(a0) | (length(a0) == 1))
+    assertthat::assert_that(is.null(a1) | (length(a1) == 1))
+    assertthat::assert_that(is.null(m_cde) | (length(m_cde) == 1))
+    assertthat::assert_that(is.null(c_cond) | (length(c_cond) == length(x$args$cvar)))
 
+    if (is.null(a0)) {
+        a0 <- x$args$a0
+    }
+    if (is.null(a1)) {
+        a1 <- x$args$a1
+    }
+    if (is.null(m_cde)) {
+        m_cde <- x$args$m_cde
+    }
+    if (is.null(c_cond)) {
+        c_cond <- x$args$c_cond
+    }
+
+    res_est <- x$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond)
+    res_se <- x$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond)
+
+    res_mat <- cbind(lower = res_est - qnorm(p = (1 - alpha / 2)) * res_se,
+                     upper = res_est + qnorm(p = (1 - alpha / 2)) * res_se)
+
+
+    ## Set as attributes.
+    attrr(res_mat, args = list(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond))
+
+    res_mat
 }
