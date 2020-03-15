@@ -69,17 +69,17 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                  sigma_sq = sigma_sq)
 
     ## vcovs
-    Sigma_beta_hat <- Sigma_beta_hat(mreg = mreg,
-                                     mreg_fit = mreg_fit,
-                                     avar = avar,
-                                     cvar = cvar)
-    Sigma_theta_hat <- Sigma_theta_hat(yreg = yreg,
-                                       yreg_fit = yreg_fit,
-                                       avar = avar,
-                                       mvar = mvar,
-                                       cvar = cvar,
-                                       interaction = interaction)
-    Sigma_sigma_sq_hat <- Sigma_sigma_sq_hat(mreg_fit = mreg_fit)
+    Sigma_beta <- Sigma_beta_hat(mreg = mreg,
+                                 mreg_fit = mreg_fit,
+                                 avar = avar,
+                                 cvar = cvar)
+    Sigma_theta <- Sigma_theta_hat(yreg = yreg,
+                                   yreg_fit = yreg_fit,
+                                   avar = avar,
+                                   mvar = mvar,
+                                   cvar = cvar,
+                                   interaction = interaction)
+    Sigma_sigma_sq <- Sigma_sigma_sq_hat(mreg_fit = mreg_fit)
     ## Construct a function of (a0, a1, m_cde, c_cond) that returns
     ## a vector of estimates.
     myreg_se_fun <-
@@ -93,7 +93,7 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                 sigma_sq = sigma_sq,
                                                 Sigma_beta = Sigma_beta,
                                                 Sigma_theta = Sigma_theta,
-                                                Sigma_sigma = Sigma_sigma)
+                                                Sigma_sigma_sq = Sigma_sigma_sq)
 
     ## Return a list of functions.
     list(
@@ -183,11 +183,11 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                                                     sigma_sq,
                                                     Sigma_beta,
                                                     Sigma_theta,
-                                                    Sigma_sigma) {
+                                                    Sigma_sigma_sq) {
 
     Sigma <- Matrix::bdiag(Sigma_beta,
                            Sigma_theta,
-                           Sigma_sigma)
+                           Sigma_sigma_sq)
 
     ## The dimension
     assertthat::assert_that(dim(Sigma),
@@ -196,7 +196,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                                 ## This can be 0 = length(NULL) when cvar = NULL
                                 length(beta2), # beta2 vector cvar
                                 ##
-                                1, # theta0 (Intercept)
+                                1, # theta0 (Intercept). Never used so not in args.
                                 1, # theta1 for avar
                                 1, # theta2 for mvar
                                 1, # theta3 for avar:mvar
