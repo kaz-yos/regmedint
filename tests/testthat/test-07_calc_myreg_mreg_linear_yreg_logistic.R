@@ -207,6 +207,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5,
                                                          theta3 = 6,
@@ -216,6 +217,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2,
                                                          beta2 = 1:2,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5,
                                                          theta3 = 6,
@@ -225,6 +227,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2,
                                                          beta2 = NULL,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5,
                                                          theta3 = 6,
@@ -234,6 +237,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2,
                                                          beta2 = NULL,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5,
                                                          theta3 = 6,
@@ -245,6 +249,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1:2,
                                                          beta1 = 2,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5,
                                                          theta3 = 6,
@@ -254,6 +259,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2:3,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5,
                                                          theta3 = 6,
@@ -263,6 +269,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = 4:5,
                                                          theta2 = 5,
                                                          theta3 = 6,
@@ -272,6 +279,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5:6,
                                                          theta3 = 6,
@@ -281,6 +289,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5,
                                                          theta3 = 6:7,
@@ -290,6 +299,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5,
                                                          theta3 = 6:7,
@@ -301,6 +311,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = NULL,
                                                          beta1 = 2,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5,
                                                          theta3 = 6,
@@ -310,6 +321,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = NULL,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5,
                                                          theta3 = 6,
@@ -319,6 +331,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = NULL,
                                                          theta2 = 5,
                                                          theta3 = 6,
@@ -328,6 +341,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = NULL,
                                                          theta3 = 6,
@@ -337,6 +351,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5,
                                                          theta3 = NULL,
@@ -346,6 +361,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
                 calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                          beta1 = 2,
                                                          beta2 = 3,
+                                                         theta0 = 0,
                                                          theta1 = 4,
                                                          theta2 = 5,
                                                          theta3 = NULL,
@@ -359,6 +375,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
             calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                      beta1 = 2,
                                                      beta2 = NULL,
+                                                     theta0 = 0,
                                                      theta1 = 4,
                                                      theta2 = 5,
                                                      theta3 = 6,
@@ -376,6 +393,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "beta0"), 1)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "beta1"), 2)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "beta2"), NULL)
+            expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta0"), 0)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta1"), 4)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta2"), 5)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta3"), 6)
@@ -402,6 +420,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
             calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                      beta1 = 2,
                                                      beta2 = 3,
+                                                     theta0 = 0,
                                                      theta1 = 4,
                                                      theta2 = 5,
                                                      theta3 = 6,
@@ -419,6 +438,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "beta0"), 1)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "beta1"), 2)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "beta2"), 3)
+            expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta0"), 0)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta1"), 4)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta2"), 5)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta3"), 6)
@@ -445,6 +465,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
             calc_myreg_mreg_linear_yreg_logistic_est(beta0 = 1,
                                                      beta1 = 2,
                                                      beta2 = 3:5,
+                                                     theta0 = 0,
                                                      theta1 = 4,
                                                      theta2 = 5,
                                                      theta3 = 6,
@@ -462,6 +483,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "beta0"), 1)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "beta1"), 2)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "beta2"), 3:5)
+            expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta0"), 0)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta1"), 4)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta2"), 5)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta3"), 6)
@@ -496,6 +518,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5,
                                                         theta3 = 6,
@@ -508,6 +531,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
                                                         beta2 = 1:2,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5,
                                                         theta3 = 6,
@@ -520,6 +544,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
                                                         beta2 = NULL,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5,
                                                         theta3 = 6,
@@ -532,6 +557,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
                                                         beta2 = NULL,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5,
                                                         theta3 = 6,
@@ -546,6 +572,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1:2,
                                                         beta1 = 2,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5,
                                                         theta3 = 6,
@@ -558,6 +585,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2:3,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5,
                                                         theta3 = 6,
@@ -570,6 +598,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = 4:5,
                                                         theta2 = 5,
                                                         theta3 = 6,
@@ -582,6 +611,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5:6,
                                                         theta3 = 6,
@@ -594,6 +624,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5,
                                                         theta3 = 6:7,
@@ -606,6 +637,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5,
                                                         theta3 = 6:7,
@@ -620,6 +652,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = NULL,
                                                         beta1 = 2,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5,
                                                         theta3 = 6,
@@ -632,6 +665,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = NULL,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5,
                                                         theta3 = 6,
@@ -644,6 +678,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = NULL,
                                                         theta2 = 5,
                                                         theta3 = 6,
@@ -656,6 +691,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = NULL,
                                                         theta3 = 6,
@@ -668,6 +704,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5,
                                                         theta3 = NULL,
@@ -680,6 +717,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
                 calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                         beta1 = 2,
                                                         beta2 = 3,
+                                                        theta0 = 0,
                                                         theta1 = 4,
                                                         theta2 = 5,
                                                         theta3 = NULL,
@@ -696,6 +734,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
             calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                     beta1 = 2,
                                                     beta2 = NULL,
+                                                    theta0 = 0,
                                                     theta1 = 4,
                                                     theta2 = 5,
                                                     theta3 = 6,
@@ -716,6 +755,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), NULL)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
@@ -742,6 +782,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
             calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                     beta1 = 2,
                                                     beta2 = 3,
+                                                    theta0 = 0,
                                                     theta1 = 4,
                                                     theta2 = 5,
                                                     theta3 = 6,
@@ -762,6 +803,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), 3)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
@@ -788,6 +830,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
             calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1,
                                                     beta1 = 2,
                                                     beta2 = 3:5,
+                                                    theta0 = 0,
                                                     theta1 = 4,
                                                     theta2 = 5,
                                                     theta3 = 6,
@@ -808,6 +851,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se", {
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), 3:5)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
