@@ -73,27 +73,37 @@ Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
 
     } else {
 
-        message("cvar = NULL handling is not complete! See theta_hat. handle these conditionally!")
+        if (!is.null(cvar)) {
+            vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar)
+            ## Always have a position for an interaction term
+            ## to ease subsequent manipulation.
+            vcov_ready <-
+                Matrix::bdiag(vcov_ready[c("(Intercept)",avar,mvar),
+                                         c("(Intercept)",avar,mvar),
+                                         drop = FALSE],
+                              ## Padding for the avar:mvar position.
+                              matrix(0),
+                              vcov_ready[cvar,
+                                         cvar,
+                                         drop = FALSE])
+            dimnames(vcov_ready) <- list(vars,
+                                         vars)
+        } else {
+            vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar))
+            ## Always have a position for an interaction term
+            ## to ease subsequent manipulation.
+            vcov_ready <-
+                Matrix::bdiag(vcov_ready[c("(Intercept)",avar,mvar),
+                                         c("(Intercept)",avar,mvar),
+                                         drop = FALSE],
+                              ## Padding for the avar:mvar position.
+                              matrix(0))
+            dimnames(vcov_ready) <- list(vars,
+                                         vars)
+        }
 
-        ## Always have a position for an interaction term to ease subsequent manipulation.
-        vcov_ready <- Matrix::bdiag(vcov_ready[c("(Intercept)",avar,mvar),
-                                               c("(Intercept)",avar,mvar),
-                                               drop = FALSE],
-                                    ## Padding for the avar:mvar position.
-                                    matrix(0),
-                                    vcov_ready[cvar,
-                                               cvar,
-                                               drop = FALSE])
-        vars_add_int <- c("(Intercept)",
-                          avar,mvar,
-                          paste0(avar,":",mvar),
-                          cvar)
-        dimnames(vcov_ready) <- list(vars_add_int,
-                                     vars_add_int)
     }
 
-    ## Subset to ensure the ordering and error on non-existent element.
-    vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar)
     vcov_ready[vars,vars, drop = FALSE]
 }
 
