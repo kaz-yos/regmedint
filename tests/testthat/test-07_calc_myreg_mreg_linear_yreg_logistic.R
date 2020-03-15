@@ -55,9 +55,9 @@ describe("calc_myreg_mreg_linear_yreg_logistic", {
                          2)
         })
         it("returns functions that take 4 arguments", {
-            expect_equal(formals(myreg_funs[[1]]),
+            expect_equal(names(formals(myreg_funs[[1]])),
                          c("a0","a1","m_cde","c_cond"))
-            expect_equal(formals(myreg_funs[[2]]),
+            expect_equal(names(formals(myreg_funs[[2]])),
                          c("a0","a1","m_cde","c_cond"))
         })
         it("returns functions that return named vector of effect estimates", {
