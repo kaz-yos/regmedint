@@ -190,21 +190,21 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                            Sigma_sigma_sq)
 
     ## The dimension
-    assertthat::assert_that(dim(Sigma),
-                            sum(1, # beta0 (Intercept)
-                                1, # beta1 for avar
-                                ## This can be 0 = length(NULL) when cvar = NULL
-                                length(beta2), # beta2 vector cvar
-                                ##
-                                1, # theta0 (Intercept). Never used so not in args.
-                                1, # theta1 for avar
-                                1, # theta2 for mvar
-                                1, # theta3 for avar:mvar
-                                ## This can be 0 = length(NULL) when cvar = NULL
-                                lenth(theta4), # theta4 for cvar
-                                ##
-                                1 # sigma_sq
-                                ))
+    size_expected <- sum(1, # beta0 (Intercept)
+                         1, # beta1 for avar
+                         ## This can be 0 = length(NULL) when cvar = NULL
+                         length(beta2), # beta2 vector cvar
+                         ##
+                         1, # theta0 (Intercept). Never used so not in args.
+                         1, # theta1 for avar
+                         1, # theta2 for mvar
+                         1, # theta3 for avar:mvar
+                         ## This can be 0 = length(NULL) when cvar = NULL
+                         length(theta4), # theta4 for cvar
+                         ##
+                         1) # sigma_sq
+    assertthat::assert_that(dim(Sigma)[1] == size_expected)
+    assertthat::assert_that(dim(Sigma)[2] == size_expected)
 
     ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond)
     fun_se <- function(a0, a1, m_cde, c_cond) {
