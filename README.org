@@ -74,3 +74,8 @@ Note the loglinear outcome model means log link with binomial error.
 |          |          |                                          |                                         |
 | logistic | logistic |                                          |                                         |
 |          |          |                                          |                                         |
+
+* TODOs
+** 2020-03-15
+*** TODO Complete implementation of calc_myreg_mreg_linear_yreg_logistic
+*** TODO Copy test for calc_myreg_mreg_linear_yreg_linear
