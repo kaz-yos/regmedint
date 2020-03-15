@@ -75,8 +75,8 @@ describe("calc_myreg_mreg_linear_yreg_logistic", {
                            "se_pm"))
         })
         it("returns functions that error on inconsistent c_cond", {
-            expect_error(myreg_funs[[1]](1,2,3,4))
-            expect_error(myreg_funs[[2]](1,2,3,4))
+            expect_error(myreg_funs[[1]](1,2,3,4), regexp = "c_cond")
+            expect_error(myreg_funs[[2]](1,2,3,4), regexp = "c_cond")
         })
     })
 })
