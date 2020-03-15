@@ -81,6 +81,7 @@ summary.regmedint <- function(x,
                               a1 = NULL,
                               m_cde = NULL,
                               c_cond = NULL,
+                              exponentiate = FALSE
                               ...) {
 
     ## This is a user function. Check arguments heavily.
@@ -115,13 +116,19 @@ summary.regmedint <- function(x,
     res_Z <- res_est / res_se
     res_p <- pnorm(q = res_Z)
 
-    res_mat <- cbind(estimate = res_est,
-                     estimate = res_se,
-                     Z = res_Z,
-                     p = res_p)
+    if (exponentiate & x$args$yreg != "linear") {
+        res_mat <- cbind(`exp(est)` = res_est,
+                         SE = res_se,
+                         Z = res_Z,
+                         p = res_p)
+    } else {
+        res_mat <- cbind(est = res_est,
+                         SE = res_se,
+                         Z = res_Z,
+                         p = res_p)
+    }
 
     print(res_mat, quote = FALSE)
-
     invisible(res_mat)
 }
 
