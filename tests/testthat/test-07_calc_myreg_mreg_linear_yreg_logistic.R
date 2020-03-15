@@ -12,7 +12,7 @@ library(tidyverse)
 
 
 ###
-###
+### Tests for calc_myreg_mreg_linear_yreg_logistic
 ################################################################################
 
 describe("calc_myreg_mreg_linear_yreg_logistic logistic no int", {
@@ -375,6 +375,8 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic int", {
 ###
 ### Effect estimation function constructor
 ################################################################################
+## No need to repeat this part for Poisson etc because *_est functions work
+## on extracted parameters not on model objects.
 
 ## FIXME: Most of these functionalities should be factored out to be shared
 ## among calc_myreg_mreg_*_yreg_*_est.
@@ -688,6 +690,8 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
 ###
 ### Standard error estimation function constructor
 ################################################################################
+## No need to repeat this part for Poisson etc because *_se functions work
+## on extracted parameters not on model objects.
 
 describe("calc_myreg_mreg_linear_yreg_logistic_se", {
     describe("calc_myreg_mreg_linear_yreg_logistic_se (error handling)", {
