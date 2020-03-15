@@ -15,23 +15,51 @@ library(tidyverse)
 ### calc_myreg
 ################################################################################
 
+## The only job of calc_myreg is to delegate the subsequent work to the correct
+## specialized functions like calc_myreg_mreg_linear_yreg_logistic
+
 describe("calc_myreg", {
-    res_calc_myreg <- calc_myreg(
-
-    )
-    it("returns a list of two functions", {
-        expect_equal(length(res_calc_myreg),
-                     2)
-        expect_equal(class(res_calc_myreg[[1]]),
-                     "function")
-        expect_equal(class(res_calc_myreg[[2]]),
-                     "function")
+    describe("calc_myreg mreg linear", {
+        it("calls calc_myreg_mreg_linear_yreg_linear when mreg linear/yreg linear", {
+            with_mock(
+                ## Mock
+                calc_myreg_mreg_linear_yreg_linear =
+                    function(...) {
+                        message("calc_myreg_mreg_linear_yreg_linear was called!")
+                    },
+                ## Body
+                {
+                    expect_message(calc_myreg(mreg,
+                                              mreg_fit,
+                                              yreg,
+                                              yreg_fit,
+                                              avar,
+                                              mvar,
+                                              cvar,
+                                              interaction),
+                                   "calc_myreg_mreg_linear_yreg_logistic was called!")
+                })
+        })
+        ##
+        it("calls calc_myreg_mreg_linear_yreg_logistic when mreg linear/yreg logistic", {
+            with_mock(
+                ## Mock
+                calc_myreg_mreg_linear_yreg_logistic =
+                    function(...) {
+                        message("calc_myreg_mreg_linear_yreg_logistic was called!")
+                    },
+                ## Body
+                {
+                    expect_message(calc_myreg(mreg,
+                                              mreg_fit,
+                                              yreg,
+                                              yreg_fit,
+                                              avar,
+                                              mvar,
+                                              cvar,
+                                              interaction),
+                                   "calc_myreg_mreg_linear_yreg_logistic was called!")
+                })
+        })
     })
-    it("returns a list of two functions with four argumens (a0, a1, m_cde, c_cond)", {
-        expect_equal(formals(res_calc_myreg[[1]]),
-                     c("a0","a1","m_cde","c_cond"))
-        expect_equal(formals(res_calc_myreg[[2]]),
-                     c("a0","a1","m_cde","c_cond"))
-    })
-
 })
