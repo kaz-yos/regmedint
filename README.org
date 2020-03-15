@@ -81,3 +81,29 @@ Note the loglinear outcome model means log link with binomial error.
 **** TODO Expand tests to include interactions (software check)
 **** TODO Test changes in estiamtes as m_cde and c_cond change (math check)
 *** TODO Copy test for calc_myreg_mreg_linear_yreg_linear
+
+* Design
+
+** regmedint UI function
+*** new_regmedint internal constructor
+**** fit_mreg
+**** fit_yreg
+**** calc_myreg calls a specialized worker function
+***** eg calc_myreg_mreg_linear_yreg_linear
+****** calc_myreg_mreg_linear_yreg_linear_est returns an effect calculator
+****** calc_myreg_mreg_linear_yreg_linear_se returns an se calculator
+
+** regmedint object
+*** mreg_fit mediator regression model object as is
+*** yreg_fit outcome regression model object as is
+*** myreg_funs list
+**** est_fun: (a0,a1,m_cde,c_cond) -> (cde,pnde,tnie,tnde,pnie,te,pm)
+**** se_fun: (a0,a1,m_cde,c_cond) -> se for (cde,pnde,tnie,tnde,pnie,te,pm)
+*** args preserves arguments given to the UI
+
+** methods for regmedint
+*** print.regmedint
+*** summary.regmedint: regmedint -> regmedint_summary
+**** coef.regmedint_summary: regmedint_summary -> data.frame of (coef, se, ci, p)
+*** coef.regmedint: regmedint -> vector (cde,pnde,tnie,tnde,pnie,te,pm)
+*** confint.regmedint: regmedint -> matrix of (lower,upper)
