@@ -61,10 +61,18 @@ describe("calc_myreg_mreg_linear_yreg_logistic", {
                          c("a0","a1","m_cde","c_cond"))
         })
         it("returns functions that return named vector of effect estimates", {
-            expect(names(myreg_funs[[1]](1,2,3,NULL)),
-                   c("cde","pnde","tnie","tnde","pnie","te","pm"))
-            expect(names(myreg_funs[[2]](1,2,3,NULL)),
-                   c("se_cde","se_pnde","se_tnie","se_tnde","se_pnie","se_te","se_pm"))
+            expect_equal(names(myreg_funs[[1]](1,2,3,NULL)),
+                         c("cde",
+                           "pnde","tnie",
+                           "tnde","pnie",
+                           "te",
+                           "pm"))
+            expect_equal(names(myreg_funs[[2]](1,2,3,NULL)),
+                         c("se_cde",
+                           "se_pnde","se_tnie",
+                           "se_tnde","se_pnie",
+                           "se_te",
+                           "se_pm"))
         })
         it("returns functions that error on inconsistent c_cond", {
             expect_error(myreg_funs[[1]](1,2,3,4))
