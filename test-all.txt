@@ -6,22 +6,8 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠧ |  38       | 06_calc_myreg_helpers_coef⠼ |  85       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠼ |  25       | 06_calc_myreg_helpers_vcov⠸ |  53 1     | 06_calc_myreg_helpers_vcov⠧ |  77 1     | 06_calc_myreg_helpers_vcov⠸ | 103 1     | 06_calc_myreg_helpers_vcov✖ | 108 1     | 06_calc_myreg_helpers_vcov [0.4 s]
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-06_calc_myreg_helpers_vcov.R:471: error: Sigma_theta_hat (NULL cvar) for yreg survCox: extracts vcov correctly when there is no interaction
-invalid or not-yet-implemented 'Matrix' subsetting
-1: expect_equal(Sigma_theta_hat(yreg = "survCox", yreg_fit = yreg_fit0, avar = "trt", mvar = "bili", cvar = NULL, interaction = FALSE), 
-       ref_vcov) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-06_calc_myreg_helpers_vcov.R:471
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
-4: Sigma_theta_hat(yreg = "survCox", yreg_fit = yreg_fit0, avar = "trt", mvar = "bili", cvar = NULL, interaction = FALSE)
-5: Matrix::bdiag(vcov_ready[c("(Intercept)", avar, mvar), c("(Intercept)", avar, mvar), drop = FALSE], matrix(0), vcov_ready[cvar, 
-       cvar, drop = FALSE]) at /inv/kyoshida/cantos_stats/regmedint/R/06_calc_myreg_helpers_vcov.R:63
-6: vcov_ready[cvar, cvar, drop = FALSE] at /inv/kyoshida/cantos_stats/regmedint/R/06_calc_myreg_helpers_vcov.R:63
-7: vcov_ready[cvar, cvar, drop = FALSE]
-8: stop("invalid or not-yet-implemented 'Matrix' subsetting")
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 06_calc_myreg_helpers_coef⠋ |  41       | 06_calc_myreg_helpers_coef⠴ |  86       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠙ |  62       | 06_calc_myreg_helpers_vcov⠦ |  87       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -114,9 +100,9 @@ Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 2.7 s
+Duration: 2.5 s
 
-OK:       384
-Failed:   2
+OK:       386
+Failed:   1
 Warnings: 1
 Skipped:  6
