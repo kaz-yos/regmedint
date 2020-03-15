@@ -24,7 +24,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic", {
                ## Combine transplant and death for testing purpose
                status = if_else(status == 0, 0L, 1L))
 
-    describe("calc_myreg_mreg_linear_yreg_logistic(cvar = NULL)", {
+    describe("calc_myreg_mreg_linear_yreg_logistic (NULL cvar)", {
         mreg_fit <- fit_mreg(mreg = "linear",
                              data = pbc_cc,
                              avar = "trt",
@@ -46,6 +46,118 @@ describe("calc_myreg_mreg_linear_yreg_logistic", {
                                                  avar = "trt",
                                                  mvar = "bili",
                                                  cvar = NULL,
+                                                 interaction = FALSE)
+        ##
+        it("returns a list of two functions", {
+            expect_equal(class(myreg_funs),
+                         "list")
+            expect_equal(length(myreg_funs),
+                         2)
+        })
+        it("returns functions that take 4 arguments", {
+            expect_equal(names(formals(myreg_funs[[1]])),
+                         c("a0","a1","m_cde","c_cond"))
+            expect_equal(names(formals(myreg_funs[[2]])),
+                         c("a0","a1","m_cde","c_cond"))
+        })
+        it("returns functions that return named vector of effect estimates", {
+            expect_equal(names(myreg_funs[[1]](1,2,3,NULL)),
+                         c("cde",
+                           "pnde","tnie",
+                           "tnde","pnie",
+                           "te",
+                           "pm"))
+            expect_equal(names(myreg_funs[[2]](1,2,3,NULL)),
+                         c("se_cde",
+                           "se_pnde","se_tnie",
+                           "se_tnde","se_pnie",
+                           "se_te",
+                           "se_pm"))
+        })
+        it("returns functions that error on inconsistent c_cond", {
+            expect_error(myreg_funs[[1]](1,2,3,4), regexp = "c_cond")
+            expect_error(myreg_funs[[2]](1,2,3,4), regexp = "c_cond")
+        })
+    })
+    ##
+    describe("calc_myreg_mreg_linear_yreg_logistic (1 cvar)", {
+        mreg_fit <- fit_mreg(mreg = "linear",
+                             data = pbc_cc,
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = c("age"))
+        yreg_fit <- fit_yreg(yreg = "logistic",
+                             data = pbc_cc,
+                             yvar = "spiders",
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = c("age"),
+                             interaction = FALSE,
+                             eventvar = NULL)
+        myreg_funs <-
+            calc_myreg_mreg_linear_yreg_logistic(mreg = "linear",
+                                                 mreg_fit = mreg_fit,
+                                                 yreg = "logistic",
+                                                 yreg_fit = yreg_fit,
+                                                 avar = "trt",
+                                                 mvar = "bili",
+                                                 cvar = c("age"),
+                                                 interaction = FALSE)
+        ##
+        it("returns a list of two functions", {
+            expect_equal(class(myreg_funs),
+                         "list")
+            expect_equal(length(myreg_funs),
+                         2)
+        })
+        it("returns functions that take 4 arguments", {
+            expect_equal(names(formals(myreg_funs[[1]])),
+                         c("a0","a1","m_cde","c_cond"))
+            expect_equal(names(formals(myreg_funs[[2]])),
+                         c("a0","a1","m_cde","c_cond"))
+        })
+        it("returns functions that return named vector of effect estimates", {
+            expect_equal(names(myreg_funs[[1]](1,2,3,NULL)),
+                         c("cde",
+                           "pnde","tnie",
+                           "tnde","pnie",
+                           "te",
+                           "pm"))
+            expect_equal(names(myreg_funs[[2]](1,2,3,NULL)),
+                         c("se_cde",
+                           "se_pnde","se_tnie",
+                           "se_tnde","se_pnie",
+                           "se_te",
+                           "se_pm"))
+        })
+        it("returns functions that error on inconsistent c_cond", {
+            expect_error(myreg_funs[[1]](1,2,3,4), regexp = "c_cond")
+            expect_error(myreg_funs[[2]](1,2,3,4), regexp = "c_cond")
+        })
+    })
+    ##
+    describe("calc_myreg_mreg_linear_yreg_logistic (3 cvar)", {
+        mreg_fit <- fit_mreg(mreg = "linear",
+                             data = pbc_cc,
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = c("age","male","stage"))
+        yreg_fit <- fit_yreg(yreg = "logistic",
+                             data = pbc_cc,
+                             yvar = "spiders",
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = c("age","male","stage"),
+                             interaction = FALSE,
+                             eventvar = NULL)
+        myreg_funs <-
+            calc_myreg_mreg_linear_yreg_logistic(mreg = "linear",
+                                                 mreg_fit = mreg_fit,
+                                                 yreg = "logistic",
+                                                 yreg_fit = yreg_fit,
+                                                 avar = "trt",
+                                                 mvar = "bili",
+                                                 cvar = c("age","male","stage"),
                                                  interaction = FALSE)
         ##
         it("returns a list of two functions", {
