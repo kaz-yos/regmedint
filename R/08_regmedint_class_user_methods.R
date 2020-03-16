@@ -109,15 +109,24 @@ summary.regmedint <- function(x,
     if (is.null(c_cond)) {
         c_cond <- x$args$c_cond
     }
+    ## Compute point estimates
+    res_est <- x$myreg$est_fun(a0 = a0,
+                               a1 = a1,
+                               m_cde = m_cde,
+                               c_cond = c_cond)
+    ## Compute SE estimates
+    res_se <- x$myreg$se_fun(a0 = a0,
+                             a1 = a1,
+                             m_cde = m_cde,
+                             c_cond = c_cond)
 
-    res_est <- x$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond)
-    res_se <- x$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond)
     assertthat::assert_that(length(res_est) == length(res_se))
     res_Z <- res_est / res_se
     res_p <- pnorm(q = res_Z)
 
     if (exponentiate & x$args$yreg != "linear") {
-        res_mat <- cbind(`exp(est)` = res_est,
+        ## Note only the point estimates are are exponentiated.
+        res_mat <- cbind(`exp(est)` = exp(res_est),
                          `SE(est)` = res_se,
                          Z = res_Z,
                          p = res_p)
