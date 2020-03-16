@@ -84,21 +84,19 @@ print.regmedint <- function(x,
 
 ##' summary method for regmedint object
 ##'
-##' Show summary of each model.
+##' Summarize the \code{mreg_fit}, \code{yreg_fit}, and the mediation analysis effect estimates.
 ##'
-##' @param x
-##' @param a0
-##' @param a1
-##' @param m_cde
-##' @param c_cond
-##' @param ...
+##' @inheritParams print.regmedint
+##' @param exponentiate Whether to show exponentiated point estimates.
 ##'
-##' @return
+##' @return A numeric matrix corresponding to what is displayed.
 summary.regmedint <- function(x,
                               a0 = NULL,
                               a1 = NULL,
                               m_cde = NULL,
                               c_cond = NULL,
+                              args_mreg_fit = list(),
+                              args_yreg_fit = list(),
                               exponentiate = FALSE,
                               ...) {
 
@@ -109,10 +107,12 @@ summary.regmedint <- function(x,
     assertthat::assert_that(is.null(c_cond) | (length(c_cond) == length(x$args$cvar)))
 
     cat("### Mediator model\n")
-    summary(x$mreg)
+    do.call(summary, c(x$mreg,
+                       args_mreg_fit))
 
     cat("### Outcome model\n")
-    summary(x$yreg)
+    do.call(summary, c(x$yreg,
+                       args_yreg_fit))
 
     cat("### Mediation analysis \n")
     if (is.null(a0)) {
