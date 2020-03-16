@@ -105,7 +105,7 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
         myreg_est_fun = myreg_est_fun,
         ## args (a0, a1, m_cde, c_cond)
         ## -> vector c(se_cde, se_pnde, se_tnie, se_tnde, se_pnie, se_te, se_pm)
-        myreg_se_fun = myreg_est_fun)
+        myreg_se_fun = myreg_se_fun)
 }
 
 
