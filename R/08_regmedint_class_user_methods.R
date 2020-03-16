@@ -5,6 +5,11 @@
 ## Author: Kazuki Yoshida
 ################################################################################
 
+## Advanced R. 13.4 Generics and methods
+## https://adv-r.hadley.nz/s3.html#s3-methods
+## sloop::s3_dispatch(print(x))to check the method being called.
+## sloop::s3_methods_class("regmedint") to check all methods for regmedint.
+
 
 ###
 ### print method
