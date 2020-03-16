@@ -81,7 +81,7 @@ summary.regmedint <- function(x,
                               a1 = NULL,
                               m_cde = NULL,
                               c_cond = NULL,
-                              exponentiate = FALSE
+                              exponentiate = FALSE,
                               ...) {
 
     ## This is a user function. Check arguments heavily.
