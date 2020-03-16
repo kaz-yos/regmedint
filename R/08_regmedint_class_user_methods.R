@@ -118,12 +118,12 @@ summary.regmedint <- function(x,
 
     if (exponentiate & x$args$yreg != "linear") {
         res_mat <- cbind(`exp(est)` = res_est,
-                         SE = res_se,
+                         `SE(est)` = res_se,
                          Z = res_Z,
                          p = res_p)
     } else {
         res_mat <- cbind(est = res_est,
-                         SE = res_se,
+                         `SE(est)` = res_se,
                          Z = res_Z,
                          p = res_p)
     }
