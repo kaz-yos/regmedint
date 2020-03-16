@@ -19,12 +19,14 @@
 ##'
 ##' Print the \code{mreg_fit}, \code{yreg_fit}, and the mediation analysis effect estimates.
 ##'
-##' @param x An object of the \code{regmedint} class.
+##' @param x An object of the \code{\link{regmedint}} class.
 ##' @param a0 A numeric vector of length one.
 ##' @param a1 A numeric vector of length one.
 ##' @param m_cde A numeric vector of length one. A mediator value at which the controlled direct effect (CDE) conditional on the adjustment covariates is evaluated. If not provided, the default value supplied to the call to \code{\link{regmedint}} will be used. Only the CDE is affected.
 ##' @param c_cond A numeric vector as long as the number of adjustment covariates. A set of covariate values at which the conditional natural effects are evaluated.
-##' @param ...
+##' @param args_mreg_fit A named list of argument to be passed to the method for the \code{mreg_fit} object.
+##' @param args_yreg_fit A named list of argument to be passed to the method for the \code{mreg_fit} object.
+##' @param ... For compatibility with the generic. Ignored.
 ##'
 ##' @return Invisibly return the \code{regmedint} class object as is.
 print.regmedint <- function(x,
@@ -32,6 +34,8 @@ print.regmedint <- function(x,
                             a1 = NULL,
                             m_cde = NULL,
                             c_cond = NULL,
+                            args_mreg_fit = list(),
+                            args_yreg_fit = list(),
                             ...) {
 
     ## This is a user function. Check arguments heavily.
@@ -41,10 +45,12 @@ print.regmedint <- function(x,
     assertthat::assert_that(is.null(c_cond) | (length(c_cond) == length(x$args$cvar)))
 
     cat("### Mediator model\n")
-    print(x$mreg)
+    do.call(print, c(x$mreg,
+                     args_mreg_fit))
 
     cat("### Outcome model\n")
-    print(x$yreg)
+    do.call(print, c(x$mreg,
+                     args_yreg_fit))
 
     cat("### Mediation analysis \n")
     if (is.null(a0)) {
@@ -59,7 +65,14 @@ print.regmedint <- function(x,
     if (is.null(c_cond)) {
         c_cond <- x$args$c_cond
     }
-    print(x$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond))
+    ## Compute point estimates
+    res <- x$myreg$est_fun(a0 = a0,
+                           a1 = a1,
+                           m_cde = m_cde,
+                           c_cond = c_cond)
+    assertthat::assert_that(is.numeric(res),
+                            is.vector(res))
+    print(res)
 
     invisible(x)
 }
