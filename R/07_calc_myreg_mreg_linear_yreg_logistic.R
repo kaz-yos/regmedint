@@ -163,14 +163,14 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
         ## VanderWeele 2015 p48.
         pm <- (exp(pnde) * (exp(tnie) - 1)) / (exp(te) - 1)
 
-        ## Return a vector
-        c(cde = cde,
-          pnde = pnde,
-          tnie = tnie,
-          tnde = tnde,
-          pnie = pnie,
-          te = te,
-          pm = pm)
+        ## Return a named vector
+        c(cde  = unname(cde),
+          pnde = unname(pnde),
+          tnie = unname(tnie),
+          tnde = unname(tnde),
+          pnie = unname(pnie),
+          te   = unname(te),
+          pm   = unname(pm))
     }
 
     return(fun_est)
@@ -317,13 +317,13 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         se_pm <- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm)) * a1_sub_a0
 
         ## Return a vector
-        c(se_cde = se_cde,
-          se_pnde = se_pnde,
-          se_tnie = se_tnie,
-          se_tnde = se_tnde,
-          se_pnie = se_pnie,
-          se_te = se_te,
-          se_pm = se_pm)
+        c(se_cde  = unname(se_cde),
+          se_pnde = unname(se_pnde),
+          se_tnie = unname(se_tnie),
+          se_tnde = unname(se_tnde),
+          se_pnie = unname(se_pnie),
+          se_te   = unname(se_te),
+          se_pm   = unname(se_pm))
     }
 
     return(fun_se)
