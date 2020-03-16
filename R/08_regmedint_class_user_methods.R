@@ -155,6 +155,11 @@ summary.regmedint <- function(x,
                          p = res_p)
     }
 
+    attr(res_mat, which = "args") <- list(a0 = a0,
+                                          a1 = a1,
+                                          m_cde = m_cde,
+                                          c_cond = c_cond)
+
     print(res_mat, quote = FALSE)
     invisible(res_mat)
 }
@@ -164,23 +169,19 @@ summary.regmedint <- function(x,
 ### Others
 ################################################################################
 
-##' Extract coefficients
+##' Extract point estimates.
 ##'
-##' .. content for \details{} ..
+##' Extract point estimates evaluated at \code{a0}, \code{a1}, \code{m_cde}, and \code{c_cond}.
 ##'
-##' @param x
-##' @param a0
-##' @param a1
-##' @param m_cde
-##' @param c_cond
-##' @param ...
-##' @return
+##' @inheritParams print.regmedint
+##'
+##' @return A numeric vector of point estimates.
 coef.regmedint <- function(x,
-                              a0 = NULL,
-                              a1 = NULL,
-                              m_cde = NULL,
-                              c_cond = NULL,
-                              ...) {
+                           a0 = NULL,
+                           a1 = NULL,
+                           m_cde = NULL,
+                           c_cond = NULL,
+                           ...) {
 
     ## This is a user function. Check arguments heavily.
     assertthat::assert_that(is.null(a0) | (length(a0) == 1))
@@ -201,7 +202,15 @@ coef.regmedint <- function(x,
         c_cond <- x$args$c_cond
     }
 
-    res_est <- x$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond)
+    res_est <- x$myreg$est_fun(a0 = a0,
+                               a1 = a1,
+                               m_cde = m_cde,
+                               c_cond = c_cond)
+
+    attr(res_est, which = "args") <- list(a0 = a0,
+                                          a1 = a1,
+                                          m_cde = m_cde,
+                                          c_cond = c_cond)
 
     res_est
 }
@@ -217,7 +226,8 @@ coef.regmedint <- function(x,
 ##' @param c_cond
 ##' @param alpha
 ##' @param ...
-##' @return
+##'
+##' @return A numeric matrix
 confint.regmedint <- function(x,
                               a0 = NULL,
                               a1 = NULL,
@@ -244,16 +254,26 @@ confint.regmedint <- function(x,
     if (is.null(c_cond)) {
         c_cond <- x$args$c_cond
     }
+    ## Compute point estimates
+    res_est <- x$myreg$est_fun(a0 = a0,
+                               a1 = a1,
+                               m_cde = m_cde,
+                               c_cond = c_cond)
+    ## Compute SE estimates
+    res_se <- x$myreg$se_fun(a0 = a0,
+                             a1 = a1,
+                             m_cde = m_cde,
+                             c_cond = c_cond)
 
-    res_est <- x$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond)
-    res_se <- x$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond)
-
-    res_mat <- cbind(lower = res_est - qnorm(p = (1 - alpha / 2)) * res_se,
-                     upper = res_est + qnorm(p = (1 - alpha / 2)) * res_se)
+    res_mat <- cbind(lower = res_est - qnorm(p = (1 - (alpha / 2))) * res_se,
+                     upper = res_est + qnorm(p = (1 - (alpha / 2))) * res_se)
 
 
     ## Set as attributes.
-    attrr(res_mat, args = list(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond))
+    attr(res_mat, which = "args") <- list(a0 = a0,
+                                          a1 = a1,
+                                          m_cde = m_cde,
+                                          c_cond = c_cond)
 
     res_mat
 }
