@@ -6,8 +6,8 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠏ |  40       | 06_calc_myreg_helpers_coef⠴ |  86       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠋ |  61       | 06_calc_myreg_helpers_vcov⠦ |  87       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠸ |  34       | 06_calc_myreg_helpers_coef⠙ |  72       | 06_calc_myreg_helpers_coef⠴ | 106       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠦ |  27       | 06_calc_myreg_helpers_vcov⠙ |  52       | 06_calc_myreg_helpers_vcov⠹ |  73       | 06_calc_myreg_helpers_vcov⠦ |  97       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.5 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -16,110 +16,177 @@ Empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠼ |  21 3 1   | 07_calc_myreg_mreg_linear_yreg_logistic⠏ |  36 3 1   | 07_calc_myreg_mreg_linear_yreg_logistic✖ |  88 6 1   | 07_calc_myreg_mreg_linear_yreg_logistic [0.3 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ |   8 1     | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  69 14     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 117 17     | 07_calc_myreg_mreg_linear_yreg_logistic [0.3 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:58: failure: calc_myreg_mreg_linear_yreg_logistic(cvar = NULL): returns functions that take 4 arguments
-formals(myreg_funs[[1]]) not equal to c("a0", "a1", "m_cde", "c_cond").
-Modes: pairlist, character
-names for target but not for current
-Component 1: Modes of target, current: name, character
-Component 1: target, current do not match when deparsed
-Component 2: Modes of target, current: name, character
-Component 2: target, current do not match when deparsed
-Component 3: Modes of target, current: name, character
-Component 3: target, current do not match when deparsed
-Component 4: Modes of target, current: name, character
-...
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:70: failure: calc_myreg_mreg_linear_yreg_logistic logistic no int (NULL cvar): returns functions that return named vector of effect estimates
+names(myreg_funs[[2]](1, 2, 3, NULL)) not equal to c(...).
+7/7 mismatches
+x[1]: "cde"
+y[1]: "se_cde"
 
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:60: failure: calc_myreg_mreg_linear_yreg_logistic(cvar = NULL): returns functions that take 4 arguments
-formals(myreg_funs[[2]]) not equal to c("a0", "a1", "m_cde", "c_cond").
-Modes: pairlist, character
-names for target but not for current
-Component 1: Modes of target, current: name, character
-Component 1: target, current do not match when deparsed
-Component 2: Modes of target, current: name, character
-Component 2: target, current do not match when deparsed
-Component 3: Modes of target, current: name, character
-Component 3: target, current do not match when deparsed
-Component 4: Modes of target, current: name, character
-...
+x[2]: "pnde"
+y[2]: "se_pnde"
 
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:64: warning: calc_myreg_mreg_linear_yreg_logistic(cvar = NULL): returns functions that return named vector of effect estimates
-the condition has length > 1 and only the first element will be used
+x[3]: "tnie"
+y[3]: "se_tnie"
 
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:64: error: calc_myreg_mreg_linear_yreg_logistic(cvar = NULL): returns functions that return named vector of effect estimates
-argument is not interpretable as logical
-1: expect(names(myreg_funs[[1]](1, 2, 3, NULL)), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm")) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:64
+x[4]: "tnde"
+y[4]: "se_tnde"
 
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:375: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
+x[5]: "pnie"
+y[5]: "se_pnie"
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:120: error: calc_myreg_mreg_linear_yreg_logistic logistic no int (1 cvar): returns functions that return named vector of effect estimates
+'data' must be of a vector type, was 'NULL'
+1: expect_equal(names(myreg_funs[[1]](1, 2, 3, NULL)), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm")) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:120
+2: quasi_label(enquo(object), label, arg = "object")
+3: eval_bare(get_expr(quo), get_env(quo))
+4: myreg_funs[[1]](1, 2, 3, NULL)
+5: matrix(c_cond) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:139
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:134: failure: calc_myreg_mreg_linear_yreg_logistic logistic no int (1 cvar): returns functions that error on inconsistent c_cond
+`myreg_funs[[1]](1, 2, 3, 4)` did not throw an error.
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:135: failure: calc_myreg_mreg_linear_yreg_logistic logistic no int (1 cvar): returns functions that error on inconsistent c_cond
+`myreg_funs[[2]](1, 2, 3, 4)` did not throw an error.
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:176: error: calc_myreg_mreg_linear_yreg_logistic logistic no int (3 cvar): returns functions that return named vector of effect estimates
+'data' must be of a vector type, was 'NULL'
+1: expect_equal(names(myreg_funs[[1]](1, 2, 3, NULL)), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm")) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:176
+2: quasi_label(enquo(object), label, arg = "object")
+3: eval_bare(get_expr(quo), get_env(quo))
+4: myreg_funs[[1]](1, 2, 3, NULL)
+5: matrix(c_cond) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:139
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:190: failure: calc_myreg_mreg_linear_yreg_logistic logistic no int (3 cvar): returns functions that error on inconsistent c_cond
+`myreg_funs[[1]](1, 2, 3, 4)` threw an error with unexpected message.
+Expected match: "c_cond"
+Actual message: "non-conformable arguments"
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:191: failure: calc_myreg_mreg_linear_yreg_logistic logistic no int (3 cvar): returns functions that error on inconsistent c_cond
+`myreg_funs[[2]](1, 2, 3, 4)` threw an error with unexpected message.
+Expected match: "c_cond"
+Actual message: "non-conformable arguments"
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:248: failure: calc_myreg_mreg_linear_yreg_logistic logistic int (NULL cvar): returns functions that return named vector of effect estimates
+names(myreg_funs[[2]](1, 2, 3, NULL)) not equal to c(...).
+7/7 mismatches
+x[1]: "cde"
+y[1]: "se_cde"
+
+x[2]: "pnde"
+y[2]: "se_pnde"
+
+x[3]: "tnie"
+y[3]: "se_tnie"
+
+x[4]: "tnde"
+y[4]: "se_tnde"
+
+x[5]: "pnie"
+y[5]: "se_pnie"
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:298: error: calc_myreg_mreg_linear_yreg_logistic logistic int (1 cvar): returns functions that return named vector of effect estimates
+'data' must be of a vector type, was 'NULL'
+1: expect_equal(names(myreg_funs[[1]](1, 2, 3, NULL)), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm")) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:298
+2: quasi_label(enquo(object), label, arg = "object")
+3: eval_bare(get_expr(quo), get_env(quo))
+4: myreg_funs[[1]](1, 2, 3, NULL)
+5: matrix(c_cond) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:139
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:312: failure: calc_myreg_mreg_linear_yreg_logistic logistic int (1 cvar): returns functions that error on inconsistent c_cond
+`myreg_funs[[1]](1, 2, 3, 4)` did not throw an error.
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:313: failure: calc_myreg_mreg_linear_yreg_logistic logistic int (1 cvar): returns functions that error on inconsistent c_cond
+`myreg_funs[[2]](1, 2, 3, 4)` did not throw an error.
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:354: error: calc_myreg_mreg_linear_yreg_logistic logistic int (3 cvar): returns functions that return named vector of effect estimates
+'data' must be of a vector type, was 'NULL'
+1: expect_equal(names(myreg_funs[[1]](1, 2, 3, NULL)), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm")) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:354
+2: quasi_label(enquo(object), label, arg = "object")
+3: eval_bare(get_expr(quo), get_env(quo))
+4: myreg_funs[[1]](1, 2, 3, NULL)
+5: matrix(c_cond) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:139
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:368: failure: calc_myreg_mreg_linear_yreg_logistic logistic int (3 cvar): returns functions that error on inconsistent c_cond
+`myreg_funs[[1]](1, 2, 3, 4)` threw an error with unexpected message.
+Expected match: "c_cond"
+Actual message: "non-conformable arguments"
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:369: failure: calc_myreg_mreg_linear_yreg_logistic logistic int (3 cvar): returns functions that error on inconsistent c_cond
+`myreg_funs[[2]](1, 2, 3, 4)` threw an error with unexpected message.
+Expected match: "c_cond"
+Actual message: "non-conformable arguments"
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:699: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
 `calc_myreg_mreg_linear_yreg_logistic_se(...)` did not throw an error.
 
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:399: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:725: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
 `calc_myreg_mreg_linear_yreg_logistic_se(...)` did not throw an error.
 
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:372: error: (unknown)
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:696: error: (unknown)
 dim(Sigma)[1] not equal to size_expected
 1: describe("calc_myreg_mreg_linear_yreg_logistic_se", {
        describe("calc_myreg_mreg_linear_yreg_logistic_se (error handling)", {
            it("errors given inconsistent beta2 and theta4", {
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta1 = 4, theta2 = 5, 
-                   theta3 = 6, theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
                      nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 1:2, theta1 = 4, theta2 = 5, 
-                   theta3 = 6, theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 1:2, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
                      nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta1 = 4, theta2 = 5, 
-                   theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
-                     ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta1 = 4, theta2 = 5, 
-                   theta3 = 6, theta4 = 7:8, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
-                     ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = 7:8, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
            })
            it("errors given vector inputs in arguments other than beta2 and theta4", {
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1:2, beta1 = 2, beta2 = 3, theta1 = 4, theta2 = 5, 
-                   theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
-                     ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2:3, beta2 = 3, theta1 = 4, theta2 = 5, 
-                   theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
-                     ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta1 = 4:5, theta2 = 5, 
-                   theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
-                     ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta1 = 4, theta2 = 5:6, 
-                   theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
-                     ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta1 = 4, theta2 = 5, 
-                   theta3 = 6:7, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
-                     ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta1 = 4, theta2 = 5, 
-                   theta3 = 6:7, theta4 = 7, sigma_sq = 8:9, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1:2, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2:3, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4:5, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5:6, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6:7, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6:7, theta4 = 7, sigma_sq = 8:9, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
                      nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
            })
            it("errors given NULL inputs in arguments other than beta2 and theta4", {
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = NULL, beta1 = 2, beta2 = 3, theta1 = 4, theta2 = 5, 
-                   theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
-                     ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = NULL, beta2 = 3, theta1 = 4, theta2 = 5, 
-                   theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
-                     ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta1 = NULL, theta2 = 5, 
-                   theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
-                     ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta1 = 4, theta2 = NULL, 
-                   theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
-                     ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta1 = 4, theta2 = 5, 
-                   theta3 = NULL, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = NULL, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
                      nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta1 = 4, theta2 = 5, 
-                   theta3 = NULL, theta4 = 7, sigma_sq = 8:9, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = NULL, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = NULL, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = NULL, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = NULL, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = NULL, theta4 = 7, sigma_sq = 8:9, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
                      nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
            })
        })
        describe("calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar)", {
-           se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta1 = 4, theta2 = 5, theta3 = 6, 
-               theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, ncol = 4), 
-               Sigma_sigma = diag(3, nrow = 1, ncol = 1))
+           se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, theta2 = 5, 
+               theta3 = 6, theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
+                   ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1))
            it("returns a function", {
                expect_equal(class(se_fun), "function")
            })
@@ -130,6 +197,7 @@ dim(Sigma)[1] not equal to size_expected
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), NULL)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
@@ -151,9 +219,9 @@ dim(Sigma)[1] not equal to size_expected
            })
        })
        describe("calc_myreg_mreg_linear_yreg_logistic_se (one cvar)", {
-           se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta1 = 4, theta2 = 5, theta3 = 6, 
-               theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 5, ncol = 5), 
-               Sigma_sigma = diag(3, nrow = 1, ncol = 1))
+           se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, theta2 = 5, 
+               theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 5, 
+                   ncol = 5), Sigma_sigma = diag(3, nrow = 1, ncol = 1))
            it("returns a function", {
                expect_equal(class(se_fun), "function")
            })
@@ -164,6 +232,7 @@ dim(Sigma)[1] not equal to size_expected
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), 3)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
@@ -185,9 +254,9 @@ dim(Sigma)[1] not equal to size_expected
            })
        })
        describe("calc_myreg_mreg_linear_yreg_logistic_se (three cvar)", {
-           se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3:5, theta1 = 4, theta2 = 5, theta3 = 6, 
-               theta4 = 7:9, sigma_sq = 8, Sigma_beta = diag(1, nrow = 5, ncol = 5), Sigma_theta = diag(2, nrow = 7, ncol = 7), 
-               Sigma_sigma = diag(3, nrow = 1, ncol = 1))
+           se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3:5, theta0 = 0, theta1 = 4, theta2 = 5, 
+               theta3 = 6, theta4 = 7:9, sigma_sq = 8, Sigma_beta = diag(1, nrow = 5, ncol = 5), Sigma_theta = diag(2, nrow = 7, 
+                   ncol = 7), Sigma_sigma = diag(3, nrow = 1, ncol = 1))
            it("returns a function", {
                expect_equal(class(se_fun), "function")
            })
@@ -198,6 +267,7 @@ dim(Sigma)[1] not equal to size_expected
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), 3:5)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
                expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
@@ -218,13 +288,13 @@ dim(Sigma)[1] not equal to size_expected
                expect_true(all(!is.na(res)))
            })
        })
-   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:372
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:696
 2: eval(substitute(code), describe_environment)
 3: eval(substitute(code), describe_environment)
 4: describe("calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar)", {
-       se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta1 = 4, theta2 = 5, theta3 = 6, 
-           theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, ncol = 4), 
-           Sigma_sigma = diag(3, nrow = 1, ncol = 1))
+       se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, theta2 = 5, 
+           theta3 = 6, theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
+               ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1))
        it("returns a function", {
            expect_equal(class(se_fun), "function")
        })
@@ -235,6 +305,7 @@ dim(Sigma)[1] not equal to size_expected
            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), NULL)
+           expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
@@ -254,12 +325,12 @@ dim(Sigma)[1] not equal to size_expected
            expect_true(is.numeric(res))
            expect_true(all(!is.na(res)))
        })
-   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:574
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:914
 5: eval(substitute(code), describe_environment)
 6: eval(substitute(code), describe_environment)
-7: calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta1 = 4, theta2 = 5, theta3 = 6, theta4 = NULL, 
-       sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, ncol = 4), Sigma_sigma = diag(3, 
-           nrow = 1, ncol = 1)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:575
+7: calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, theta2 = 5, theta3 = 6, 
+       theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, ncol = 4), Sigma_sigma = diag(3, 
+           nrow = 1, ncol = 1)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:915
 8: assertthat::assert_that(dim(Sigma)[1] == size_expected) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:211
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_logistic_yreg_linear
@@ -278,11 +349,19 @@ Empty test
 test-07_calc_myreg_mreg_logistic_yreg_logistic.R:26: skip: calc_myreg_mreg_logistic_yreg_logistic_se works given coef and vcov
 Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠹ |   0 1   2 | 07_calc_myreg_mreg_logistic_yreg_logistic✖ |   0 1   2 | 07_calc_myreg_mreg_logistic_yreg_logistic
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+test-08_regmedint_class_user_methods.R:18: error: (unknown)
+argument is missing, with no default
+1: describe("confint.regmedint, {}") at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-08_regmedint_class_user_methods.R:18
+2: eval(substitute(code), describe_environment)
+3: eval(substitute(code), describe_environment)
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 2.9 s
+Duration: 3.3 s
 
-OK:       474
-Failed:   6
-Warnings: 2
+OK:       503
+Failed:   18
+Warnings: 1
 Skipped:  6
