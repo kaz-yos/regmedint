@@ -197,6 +197,75 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction", {
             expect_error(myreg_funs[[2]](1,2,3,4), regexp = "c_cond")
         })
     })
+    describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness)", {
+        mreg_fit <- fit_mreg(mreg = "linear",
+                             data = pbc_cc,
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = c("age","male","stage"))
+        yreg_fit <- fit_yreg(yreg = "logistic",
+                             data = pbc_cc,
+                             yvar = "spiders",
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = c("age","male","stage"),
+                             interaction = FALSE,
+                             eventvar = NULL)
+        myreg_funs <-
+            calc_myreg_mreg_linear_yreg_logistic(mreg = "linear",
+                                                 mreg_fit = mreg_fit,
+                                                 yreg = "logistic",
+                                                 yreg_fit = yreg_fit,
+                                                 avar = "trt",
+                                                 mvar = "bili",
+                                                 cvar = c("age","male","stage"),
+                                                 interaction = FALSE)
+        it("returns functions where cde does not depend on m_cde", {
+            expect_equal(myreg_funs[[1]](1,2,-3,c(4,5,6))["cde"],
+                         myreg_funs[[1]](1,2,+3,c(4,5,6))["cde"])
+            expect_equal(myreg_funs[[2]](1,2,-3,c(4,5,6))["cde"],
+                         myreg_funs[[2]](1,2,+3,c(4,5,6))["cde"])
+        })
+        it("returns functions where natural effects do no depend on c_cond", {
+            expect_equal(myreg_funs[[1]](1,2,-3,-1 * c(4,5,6)),
+                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6)))
+            expect_equal(myreg_funs[[2]](1,2,-3,-1 * c(4,5,6)),
+                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6)))
+        })
+        it("returns functions where direct effects match up", {
+            expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["cde"]),
+                         unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"]))
+            expect_equal(unname(myreg_funs[[2]](1,2,3,c(4,5,6))["cde"]),
+                         unname(myreg_funs[[2]](1,2,3,c(4,5,6))["tnde"]))
+        })
+        it("returns functions where total effect is nde+nie", {
+            expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["te"]),
+                         ## Pearl decomposition
+                         unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"]) +
+                         unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"]))
+            expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["te"]),
+                         ## The other decomposition
+                         unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnde"]) +
+                         unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnie"]))
+            ##
+            expect_equal(unname(myreg_funs[[2]](1,2,3,c(4,5,6))["te"]),
+                         ## Pearl decomposition
+                         unname(myreg_funs[[2]](1,2,3,c(4,5,6))["pnde"]) +
+                         unname(myreg_funs[[2]](1,2,3,c(4,5,6))["tnie"]))
+            expect_equal(unname(myreg_funs[[2]](1,2,3,c(4,5,6))["te"]),
+                         ## The other decomposition
+                         unname(myreg_funs[[2]](1,2,3,c(4,5,6))["tnde"]) +
+                         unname(myreg_funs[[2]](1,2,3,c(4,5,6))["pnie"]))
+        })
+        it("returns functions where pm is calculated from natural effects correctly", {
+            log_nde <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"])
+            log_nie <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"])
+            expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pm"]),
+                         ## VanderWeele 2015. p48.
+            ((exp(log_nde) * (exp(log_nie) - 1)) /
+             ((exp(log_nde) * exp(log_nie)) - 1)))
+        })
+    })
 })
 ##
 describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
