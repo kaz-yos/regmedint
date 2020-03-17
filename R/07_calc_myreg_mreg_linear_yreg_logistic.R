@@ -136,6 +136,8 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
             assertthat::assert_that(is.null(c_cond))
             beta2_c <- 0
         } else {
+            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(length(c_cond) == length(beta2))
             beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
         }
 
@@ -220,6 +222,8 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
             assertthat::assert_that(is.null(c_cond))
             beta2_c <- 0
         } else {
+            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(length(c_cond) == length(beta2))
             beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
         }
 
