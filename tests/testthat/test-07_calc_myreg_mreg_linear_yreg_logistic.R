@@ -464,6 +464,8 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
                              cvar = c("age","male","stage"),
                              interaction = TRUE,
                              eventvar = NULL)
+        ## Sign of the interaction coefficient is important.
+        sign_theta3 <- sign(coef(yreg_fit)["trt:bili"])
         myreg_funs <-
             calc_myreg_mreg_linear_yreg_logistic(mreg = "linear",
                                                  mreg_fit = mreg_fit,
