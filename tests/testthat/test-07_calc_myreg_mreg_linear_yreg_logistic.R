@@ -392,7 +392,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
 
 ## FIXME: Most of these functionalities should be factored out to be shared
 ## among calc_myreg_mreg_*_yreg_*_est.
-describe("calc_myreg_mreg_linear_yreg_logistic_est", {
+describe("calc_myreg_mreg_linear_yreg_logistic_est function factory", {
     describe("calc_myreg_mreg_linear_yreg_logistic_est (error handling)", {
         it("errors given inconsistent beta2 and theta4", {
             expect_error(
@@ -705,7 +705,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_est", {
 ## No need to repeat this part for Poisson etc because *_se functions work
 ## on extracted parameters not on model objects.
 
-describe("calc_myreg_mreg_linear_yreg_logistic_se", {
+describe("calc_myreg_mreg_linear_yreg_logistic_se function factory", {
     describe("calc_myreg_mreg_linear_yreg_logistic_se (error handling)", {
         it("errors given inconsistent beta2 and theta4", {
             expect_error(
