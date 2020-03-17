@@ -1,13 +1,40 @@
 ✔ |  OK F W S | Context
-⠋ |   0   1   | ⠏ |   0       | 03_fit_mreg✔ |  24       | 03_fit_mreg
+⠋ |   0   1   | ⠙ |   0 1 1   | ✖ |   0 1 1   |  [0.7 s]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+test-01_regmedint_class_ui.R:8: warning: (unknown)
+package 'survival' was built under R version 3.6.2
+
+test-01_regmedint_class_ui.R:15: error: (unknown)
+could not find function "mutate"
+1: describe("regmedint", {
+       data(pbc)
+       pbc_cc <- pbc[complete.cases(pbc), ] %>% mutate(male = if_else(sex == "m", 1L, 0L), status = if_else(status == 0, 0L, 
+           1L))
+       it("runs", {
+           fit_regmedint <- regmedint(data = pbc_cc, yvar = "alk.phos", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, a1 = 2, 
+               m_cde = 0, c_cond = NULL, mreg = "linear", yreg = "linear", interaction = FALSE, casecontrol = FALSE, eventvar = NULL)
+       })
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-01_regmedint_class_ui.R:15
+2: eval(substitute(code), describe_environment)
+3: eval(substitute(code), describe_environment)
+4: pbc[complete.cases(pbc), ] %>% mutate(male = if_else(sex == "m", 1L, 0L), status = if_else(status == 0, 0L, 1L)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-01_regmedint_class_ui.R:19
+5: withVisible(eval(quote(`_fseq`(`_lhs`)), env, env))
+6: eval(quote(`_fseq`(`_lhs`)), env, env)
+7: eval(quote(`_fseq`(`_lhs`)), env, env)
+8: `_fseq`(`_lhs`)
+9: freduce(value, `_function_list`)
+10: withVisible(function_list[[k]](value))
+11: function_list[[k]](value)
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 03_fit_mreg✔ |  24       | 03_fit_mreg
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  23       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
 ⠏ |   0       | 04_fit_yreg_logistic✔ |  24       | 04_fit_yreg_logistic
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠋ |  41       | 06_calc_myreg_helpers_coef⠴ |  86       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠋ |  61       | 06_calc_myreg_helpers_vcov⠦ |  87       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠴ |  36       | 06_calc_myreg_helpers_coef⠹ |  73       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠇ |  29       | 06_calc_myreg_helpers_vcov⠙ |  52       | 06_calc_myreg_helpers_vcov⠼ |  75       | 06_calc_myreg_helpers_vcov⠇ |  99       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -16,7 +43,7 @@ Empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_logistic⠴ |  72 4     | 07_calc_myreg_mreg_linear_yreg_logistic⠼ | 159 6     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 165 7     | 07_calc_myreg_mreg_linear_yreg_logistic [0.4 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ |   8       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_logistic⠙ |  71 1     | 07_calc_myreg_mreg_linear_yreg_logistic⠙ | 148 4     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 165 7     | 07_calc_myreg_mreg_linear_yreg_logistic [0.5 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_logistic.R:479: failure: calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where cde does not depend on m_cde
 myreg_funs[[1]](1, 2, -3, c(4, 5, 6))["cde"] not equal to myreg_funs[[1]](1, 2, +3, c(4, 5, 6))["cde"].
@@ -278,17 +305,68 @@ Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠹ |   0 1   2 | 07_calc_myreg_mreg_logistic_yreg_logistic✖ |   0 1   2 | 07_calc_myreg_mreg_logistic_yreg_logistic
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-08_regmedint_class_user_methods.R:18: error: (unknown)
-argument is missing, with no default
-1: describe("confint.regmedint, {}") at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-08_regmedint_class_user_methods.R:18
+test-08_regmedint_class_user_methods.R:12: error: (unknown)
+cvar is not a character vector
+1: describe("methods for regmedint", {
+       data(pbc)
+       pbc_cc <- pbc[complete.cases(pbc), ] %>% mutate(male = if_else(sex == "m", 1L, 0L), status = if_else(status == 0, 0L, 
+           1L))
+       fit_mreg_lin_yreg_lin <- regmedint(data = pbc_cc, yvar = "alk.phos", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, 
+           a1 = 2, m_cde = 0, c_cond = NULL, mreg = "linear", yreg = "linear", interaction = FALSE, casecontrol = FALSE, eventvar = NULL)
+       describe("print.regmedint", {
+           it("prints results with expected elements", {
+               expect_output(print(fit_mreg_lin_yreg_lin), "cde")
+               expect_output(print(fit_mreg_lin_yreg_lin), "pnde")
+               expect_output(print(fit_mreg_lin_yreg_lin), "tnie")
+               expect_output(print(fit_mreg_lin_yreg_lin), "tnde")
+               expect_output(print(fit_mreg_lin_yreg_lin), "pnie")
+               expect_output(print(fit_mreg_lin_yreg_lin), "te")
+               expect_output(print(fit_mreg_lin_yreg_lin), "pm")
+           })
+       })
+       describe("summary.regmedint", {
+           expect_output(summary(fit_mreg_lin_yreg_lin), "cde")
+           expect_output(summary(fit_mreg_lin_yreg_lin), "pnde")
+           expect_output(summary(fit_mreg_lin_yreg_lin), "tnie")
+           expect_output(summary(fit_mreg_lin_yreg_lin), "tnde")
+           expect_output(summary(fit_mreg_lin_yreg_lin), "pnie")
+           expect_output(summary(fit_mreg_lin_yreg_lin), "te")
+           expect_output(summary(fit_mreg_lin_yreg_lin), "pm")
+       })
+       describe("coef.regmedint", {
+           expect_output(coef(fit_mreg_lin_yreg_lin), "cde")
+           expect_output(coef(fit_mreg_lin_yreg_lin), "pnde")
+           expect_output(coef(fit_mreg_lin_yreg_lin), "tnie")
+           expect_output(coef(fit_mreg_lin_yreg_lin), "tnde")
+           expect_output(coef(fit_mreg_lin_yreg_lin), "pnie")
+           expect_output(coef(fit_mreg_lin_yreg_lin), "te")
+           expect_output(coef(fit_mreg_lin_yreg_lin), "pm")
+       })
+       describe("confint.regmedint", {
+           expect_output(confint(fit_mreg_lin_yreg_lin), "cde")
+           expect_output(confint(fit_mreg_lin_yreg_lin), "pnde")
+           expect_output(confint(fit_mreg_lin_yreg_lin), "tnie")
+           expect_output(confint(fit_mreg_lin_yreg_lin), "tnde")
+           expect_output(confint(fit_mreg_lin_yreg_lin), "pnie")
+           expect_output(confint(fit_mreg_lin_yreg_lin), "te")
+           expect_output(confint(fit_mreg_lin_yreg_lin), "pm")
+       })
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-08_regmedint_class_user_methods.R:12
 2: eval(substitute(code), describe_environment)
 3: eval(substitute(code), describe_environment)
+4: regmedint(data = pbc_cc, yvar = "alk.phos", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, a1 = 2, m_cde = 0, c_cond = NULL, 
+       mreg = "linear", yreg = "linear", interaction = FALSE, casecontrol = FALSE, eventvar = NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-08_regmedint_class_user_methods.R:21
+5: validate_args(data = data, yvar = yvar, avar = avar, mvar = mvar, cvar = cvar, a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond, 
+       mreg = mreg, yreg = yreg, interaction = interaction, casecontrol = casecontrol, eventvar = eventvar) at /inv/kyoshida/cantos_stats/regmedint/R/01_regmedint_class_ui.R:63
+6: assertthat::assert_that(is.character(cvar)) at /inv/kyoshida/cantos_stats/regmedint/R/01_regmedint_class_ui.R:142
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 2.9 s
+Duration: 3.2 s
 
 OK:       551
-Failed:   8
+Failed:   9
 Warnings: 1
 Skipped:  6
+
+Don't worry, you'll get it.
