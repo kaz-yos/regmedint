@@ -6,8 +6,8 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠸ |  34       | 06_calc_myreg_helpers_coef⠙ |  72       | 06_calc_myreg_helpers_coef⠴ | 106       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠦ |  27       | 06_calc_myreg_helpers_vcov⠙ |  52       | 06_calc_myreg_helpers_vcov⠹ |  73       | 06_calc_myreg_helpers_vcov⠦ |  97       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.5 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠋ |  41       | 06_calc_myreg_helpers_coef⠴ |  86       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠋ |  61       | 06_calc_myreg_helpers_vcov⠦ |  87       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -16,117 +16,44 @@ Empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ |   8 1     | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  69 14     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 117 17     | 07_calc_myreg_mreg_linear_yreg_logistic [0.3 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_logistic⠴ |  72 4     | 07_calc_myreg_mreg_linear_yreg_logistic⠼ | 159 6     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 165 7     | 07_calc_myreg_mreg_linear_yreg_logistic [0.4 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:70: failure: calc_myreg_mreg_linear_yreg_logistic logistic no int (NULL cvar): returns functions that return named vector of effect estimates
-names(myreg_funs[[2]](1, 2, 3, NULL)) not equal to c(...).
-7/7 mismatches
-x[1]: "cde"
-y[1]: "se_cde"
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:479: failure: calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where cde does not depend on m_cde
+myreg_funs[[1]](1, 2, -3, c(4, 5, 6))["cde"] not equal to myreg_funs[[1]](1, 2, +3, c(4, 5, 6))["cde"].
+1/1 mismatches
+[1] -0.0346 - -0.287 == 0.253
 
-x[2]: "pnde"
-y[2]: "se_pnde"
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:485: failure: calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where natural effects do no depend on c_cond
+myreg_funs[[1]](1, 2, -3, -1 * c(4, 5, 6)) not equal to myreg_funs[[1]](1, 2, +3, +2 * c(4, 5, 6)).
+5/7 mismatches (average diff: 0.531)
+[1] -0.0346 - -0.2873 == 0.253
+[2]  0.0327 - -0.5470 == 0.580
+[4]  0.0071 - -0.5726 == 0.580
+[6]  0.0785 - -0.5012 == 0.580
+[7]  0.5930 - -0.0688 == 0.662
 
-x[3]: "tnie"
-y[3]: "se_tnie"
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:487: failure: calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where natural effects do no depend on c_cond
+myreg_funs[[2]](1, 2, -3, -1 * c(4, 5, 6)) not equal to myreg_funs[[2]](1, 2, +3, +2 * c(4, 5, 6)).
+4/7 mismatches (average diff: 0.0757)
+[1] 0.539 - 0.300 ==  0.23855
+[2] 0.658 - 0.640 ==  0.01801
+[4] 0.624 - 0.668 == -0.04397
+[6] 0.650 - 0.648 ==  0.00208
 
-x[4]: "tnde"
-y[4]: "se_tnde"
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:491: failure: calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where direct effects match up
+unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["cde"]) not equal to unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]).
+1/1 mismatches
+[1] -0.287 - -0.354 == 0.0665
 
-x[5]: "pnie"
-y[5]: "se_pnie"
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:120: error: calc_myreg_mreg_linear_yreg_logistic logistic no int (1 cvar): returns functions that return named vector of effect estimates
-'data' must be of a vector type, was 'NULL'
-1: expect_equal(names(myreg_funs[[1]](1, 2, 3, NULL)), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm")) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:120
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
-4: myreg_funs[[1]](1, 2, 3, NULL)
-5: matrix(c_cond) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:139
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:134: failure: calc_myreg_mreg_linear_yreg_logistic logistic no int (1 cvar): returns functions that error on inconsistent c_cond
-`myreg_funs[[1]](1, 2, 3, 4)` did not throw an error.
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:135: failure: calc_myreg_mreg_linear_yreg_logistic logistic no int (1 cvar): returns functions that error on inconsistent c_cond
-`myreg_funs[[2]](1, 2, 3, 4)` did not throw an error.
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:176: error: calc_myreg_mreg_linear_yreg_logistic logistic no int (3 cvar): returns functions that return named vector of effect estimates
-'data' must be of a vector type, was 'NULL'
-1: expect_equal(names(myreg_funs[[1]](1, 2, 3, NULL)), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm")) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:176
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
-4: myreg_funs[[1]](1, 2, 3, NULL)
-5: matrix(c_cond) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:139
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:190: failure: calc_myreg_mreg_linear_yreg_logistic logistic no int (3 cvar): returns functions that error on inconsistent c_cond
-`myreg_funs[[1]](1, 2, 3, 4)` threw an error with unexpected message.
-Expected match: "c_cond"
-Actual message: "non-conformable arguments"
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:191: failure: calc_myreg_mreg_linear_yreg_logistic logistic no int (3 cvar): returns functions that error on inconsistent c_cond
-`myreg_funs[[2]](1, 2, 3, 4)` threw an error with unexpected message.
-Expected match: "c_cond"
-Actual message: "non-conformable arguments"
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:248: failure: calc_myreg_mreg_linear_yreg_logistic logistic int (NULL cvar): returns functions that return named vector of effect estimates
-names(myreg_funs[[2]](1, 2, 3, NULL)) not equal to c(...).
-7/7 mismatches
-x[1]: "cde"
-y[1]: "se_cde"
-
-x[2]: "pnde"
-y[2]: "se_pnde"
-
-x[3]: "tnie"
-y[3]: "se_tnie"
-
-x[4]: "tnde"
-y[4]: "se_tnde"
-
-x[5]: "pnie"
-y[5]: "se_pnie"
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:298: error: calc_myreg_mreg_linear_yreg_logistic logistic int (1 cvar): returns functions that return named vector of effect estimates
-'data' must be of a vector type, was 'NULL'
-1: expect_equal(names(myreg_funs[[1]](1, 2, 3, NULL)), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm")) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:298
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
-4: myreg_funs[[1]](1, 2, 3, NULL)
-5: matrix(c_cond) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:139
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:312: failure: calc_myreg_mreg_linear_yreg_logistic logistic int (1 cvar): returns functions that error on inconsistent c_cond
-`myreg_funs[[1]](1, 2, 3, 4)` did not throw an error.
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:313: failure: calc_myreg_mreg_linear_yreg_logistic logistic int (1 cvar): returns functions that error on inconsistent c_cond
-`myreg_funs[[2]](1, 2, 3, 4)` did not throw an error.
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:354: error: calc_myreg_mreg_linear_yreg_logistic logistic int (3 cvar): returns functions that return named vector of effect estimates
-'data' must be of a vector type, was 'NULL'
-1: expect_equal(names(myreg_funs[[1]](1, 2, 3, NULL)), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm")) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:354
-2: quasi_label(enquo(object), label, arg = "object")
-3: eval_bare(get_expr(quo), get_env(quo))
-4: myreg_funs[[1]](1, 2, 3, NULL)
-5: matrix(c_cond) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:139
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:368: failure: calc_myreg_mreg_linear_yreg_logistic logistic int (3 cvar): returns functions that error on inconsistent c_cond
-`myreg_funs[[1]](1, 2, 3, 4)` threw an error with unexpected message.
-Expected match: "c_cond"
-Actual message: "non-conformable arguments"
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:369: failure: calc_myreg_mreg_linear_yreg_logistic logistic int (3 cvar): returns functions that error on inconsistent c_cond
-`myreg_funs[[2]](1, 2, 3, 4)` threw an error with unexpected message.
-Expected match: "c_cond"
-Actual message: "non-conformable arguments"
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:699: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:851: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
 `calc_myreg_mreg_linear_yreg_logistic_se(...)` did not throw an error.
 
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:725: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:877: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
 `calc_myreg_mreg_linear_yreg_logistic_se(...)` did not throw an error.
 
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:696: error: (unknown)
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:848: error: (unknown)
 dim(Sigma)[1] not equal to size_expected
-1: describe("calc_myreg_mreg_linear_yreg_logistic_se", {
+1: describe("calc_myreg_mreg_linear_yreg_logistic_se function factory", {
        describe("calc_myreg_mreg_linear_yreg_logistic_se (error handling)", {
            it("errors given inconsistent beta2 and theta4", {
                expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
@@ -288,7 +215,7 @@ dim(Sigma)[1] not equal to size_expected
                expect_true(all(!is.na(res)))
            })
        })
-   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:696
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:848
 2: eval(substitute(code), describe_environment)
 3: eval(substitute(code), describe_environment)
 4: describe("calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar)", {
@@ -325,13 +252,13 @@ dim(Sigma)[1] not equal to size_expected
            expect_true(is.numeric(res))
            expect_true(all(!is.na(res)))
        })
-   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:914
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:1066
 5: eval(substitute(code), describe_environment)
 6: eval(substitute(code), describe_environment)
 7: calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, theta2 = 5, theta3 = 6, 
        theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, ncol = 4), Sigma_sigma = diag(3, 
-           nrow = 1, ncol = 1)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:915
-8: assertthat::assert_that(dim(Sigma)[1] == size_expected) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:211
+           nrow = 1, ncol = 1)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:1067
+8: assertthat::assert_that(dim(Sigma)[1] == size_expected) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:213
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_logistic_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -359,9 +286,9 @@ argument is missing, with no default
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 3.3 s
+Duration: 2.9 s
 
-OK:       503
-Failed:   18
+OK:       551
+Failed:   8
 Warnings: 1
 Skipped:  6
