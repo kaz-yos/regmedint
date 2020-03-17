@@ -36,7 +36,6 @@
 ##' @param mreg A character vector of length 1. Outcome regression type. One of "linear"
 ##' @param interaction A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.
 ##' @param casecontrol A logical vector of length 1. Default to FALSE. Whether data comes from a case-control study.
-##' @param full_output A logical vector of length 1. Default to FALSE. Whether to give a full output containing both pure and total natural effects. When FALSE, the natural direct effect is the pure natural direct effect
 ##' @param c_cond A numeric vector of the same length as cvar. Required for the ful output. The conditional effect
 ##' @param eventvar An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.
 ##'
@@ -55,7 +54,6 @@ regmedint <- function(data,
                       mreg,
                       interaction = TRUE,
                       casecontrol = FALSE,
-                      full_output = FALSE,
                       c_cond = NULL,
                       eventvar = NULL) {
     ## This is the user-friendly helper function with a name that is the class name.
@@ -93,7 +91,6 @@ regmedint <- function(data,
                          mreg,
                          interaction,
                          casecontrol,
-                         full_output,
                          c_cond,
                          eventvar)
 
