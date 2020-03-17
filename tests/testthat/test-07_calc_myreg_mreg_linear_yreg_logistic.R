@@ -15,7 +15,7 @@ library(tidyverse)
 ### Tests for calc_myreg_mreg_linear_yreg_logistic
 ################################################################################
 
-describe("calc_myreg_mreg_linear_yreg_logistic logistic no int", {
+describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction", {
 
     data(pbc)
     ## Missing data should be warned in validate_args()
@@ -24,7 +24,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic no int", {
                ## Combine transplant and death for testing purpose
                status = if_else(status == 0, 0L, 1L))
 
-    describe("calc_myreg_mreg_linear_yreg_logistic logistic no int (NULL cvar)", {
+    describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction (NULL cvar)", {
         mreg_fit <- fit_mreg(mreg = "linear",
                              data = pbc_cc,
                              avar = "trt",
@@ -82,7 +82,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic no int", {
         })
     })
     ##
-    describe("calc_myreg_mreg_linear_yreg_logistic logistic no int (1 cvar)", {
+    describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction (1 cvar)", {
         mreg_fit <- fit_mreg(mreg = "linear",
                              data = pbc_cc,
                              avar = "trt",
@@ -140,7 +140,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic no int", {
         })
     })
     ##
-    describe("calc_myreg_mreg_linear_yreg_logistic logistic no int (3 cvar)", {
+    describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction (3 cvar)", {
         mreg_fit <- fit_mreg(mreg = "linear",
                              data = pbc_cc,
                              avar = "trt",
@@ -199,7 +199,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic no int", {
     })
 })
 ##
-describe("calc_myreg_mreg_linear_yreg_logistic logistic int", {
+describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
 
     data(pbc)
     ## Missing data should be warned in validate_args()
@@ -208,7 +208,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic int", {
                ## Combine transplant and death for testing purpose
                status = if_else(status == 0, 0L, 1L))
 
-    describe("calc_myreg_mreg_linear_yreg_logistic logistic int (NULL cvar)", {
+    describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction (NULL cvar)", {
         mreg_fit <- fit_mreg(mreg = "linear",
                              data = pbc_cc,
                              avar = "trt",
@@ -266,7 +266,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic int", {
         })
     })
     ##
-    describe("calc_myreg_mreg_linear_yreg_logistic logistic int (1 cvar)", {
+    describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction (1 cvar)", {
         mreg_fit <- fit_mreg(mreg = "linear",
                              data = pbc_cc,
                              avar = "trt",
@@ -324,7 +324,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic int", {
         })
     })
     ##
-    describe("calc_myreg_mreg_linear_yreg_logistic logistic int (3 cvar)", {
+    describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction (3 cvar)", {
         mreg_fit <- fit_mreg(mreg = "linear",
                              data = pbc_cc,
                              avar = "trt",
