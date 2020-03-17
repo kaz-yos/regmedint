@@ -261,6 +261,8 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic int", {
         it("returns functions that error on inconsistent c_cond", {
             expect_error(myreg_funs[[1]](1,2,3,4), regexp = "c_cond")
             expect_error(myreg_funs[[2]](1,2,3,4), regexp = "c_cond")
+            expect_error(myreg_funs[[1]](1,2,3,c(4,5,6)), regexp = "c_cond")
+            expect_error(myreg_funs[[2]](1,2,3,c(4,5,6)), regexp = "c_cond")
         })
     })
     ##
@@ -301,13 +303,13 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic int", {
                          c("a0","a1","m_cde","c_cond"))
         })
         it("returns functions that return named vector of effect estimates", {
-            expect_equal(names(myreg_funs[[1]](1,2,3,NULL)),
+            expect_equal(names(myreg_funs[[1]](1,2,3,4)),
                          c("cde",
                            "pnde","tnie",
                            "tnde","pnie",
                            "te",
                            "pm"))
-            expect_equal(names(myreg_funs[[2]](1,2,3,NULL)),
+            expect_equal(names(myreg_funs[[2]](1,2,3,4)),
                          c("se_cde",
                            "se_pnde","se_tnie",
                            "se_tnde","se_pnie",
@@ -315,8 +317,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic int", {
                            "se_pm"))
         })
         it("returns functions that error on inconsistent c_cond", {
-            expect_error(myreg_funs[[1]](1,2,3,4), regexp = "c_cond")
-            expect_error(myreg_funs[[2]](1,2,3,4), regexp = "c_cond")
+            expect_error(myreg_funs[[1]](1,2,3,NULL), regexp = "c_cond")
+            expect_error(myreg_funs[[2]](1,2,3,NULL), regexp = "c_cond")
+            expect_error(myreg_funs[[1]](1,2,3,c(4,5,6)), regexp = "c_cond")
+            expect_error(myreg_funs[[2]](1,2,3,c(4,5,6)), regexp = "c_cond")
         })
     })
     ##
@@ -357,13 +361,13 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic int", {
                          c("a0","a1","m_cde","c_cond"))
         })
         it("returns functions that return named vector of effect estimates", {
-            expect_equal(names(myreg_funs[[1]](1,2,3,NULL)),
+            expect_equal(names(myreg_funs[[1]](1,2,3,c(4,5,6))),
                          c("cde",
                            "pnde","tnie",
                            "tnde","pnie",
                            "te",
                            "pm"))
-            expect_equal(names(myreg_funs[[2]](1,2,3,NULL)),
+            expect_equal(names(myreg_funs[[2]](1,2,3,c(4,5,6))),
                          c("se_cde",
                            "se_pnde","se_tnie",
                            "se_tnde","se_pnie",
@@ -371,6 +375,8 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic int", {
                            "se_pm"))
         })
         it("returns functions that error on inconsistent c_cond", {
+            expect_error(myreg_funs[[1]](1,2,3,NULL), regexp = "c_cond")
+            expect_error(myreg_funs[[2]](1,2,3,NULL), regexp = "c_cond")
             expect_error(myreg_funs[[1]](1,2,3,4), regexp = "c_cond")
             expect_error(myreg_funs[[2]](1,2,3,4), regexp = "c_cond")
         })
