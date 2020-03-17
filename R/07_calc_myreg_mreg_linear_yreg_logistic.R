@@ -303,18 +303,20 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         Gamma_te <-
             Gamma_pnde + Gamma_tnie # By linearity of differentiation
         ##
-        Gamma_pm <- NA
+        ## Not implemented in mediation.sas.
+        ## Not mentioned in VV2013, VV2015, or VanderWeele 2015.
+        Gamma_pm <- matrix(rep(as.numeric(NA), nrow(Sigma)))
 
 
         ## SEs
         a1_sub_a0 <- (a1 - a0)
-        se_cde <- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% Gamma_cde)) * a1_sub_a0
+        se_cde  <- sqrt(as.numeric(t(Gamma_cde)  %*% Sigma %*% Gamma_cde)) * a1_sub_a0
         se_pnde <- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% Gamma_pnde)) * a1_sub_a0
         se_tnie <- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% Gamma_tnie)) * a1_sub_a0
         se_tnde <- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% Gamma_tnde)) * a1_sub_a0
         se_pnie <- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% Gamma_pnie)) * a1_sub_a0
-        se_te <- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te)) * a1_sub_a0
-        se_pm <- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm)) * a1_sub_a0
+        se_te   <- sqrt(as.numeric(t(Gamma_te)   %*% Sigma %*% Gamma_te)) * a1_sub_a0
+        se_pm   <- sqrt(as.numeric(t(Gamma_pm)   %*% Sigma %*% Gamma_pm)) * a1_sub_a0
 
         ## Return a vector
         c(se_cde  = unname(se_cde),
