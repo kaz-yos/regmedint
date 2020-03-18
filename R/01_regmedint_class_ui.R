@@ -106,6 +106,7 @@ regmedint <- function(data,
 ###
 ### Argument validation function
 ################################################################################
+
 ##' Validate arguments to regmedint before passing to other functions
 ##'
 ##' Internal functions (usually) do not validate arguments, thus, we need to make sure informative errors are raised when the arguments are not safe for subsequent computation.
@@ -171,6 +172,25 @@ validate_args <- function(data,
     ##
     assertthat::assert_that(is.null(eventvar) | is.character(eventvar))
     assertthat::assert_that(length(eventvar) <= 1)
+
+    NULL
+}
+
+
+###
+### Argument validation function
+################################################################################
+
+##' Validate soundness of a regmedint object.
+##'
+##' Check the structure of a proposed regmedint object for soundness.
+##'
+##' @param obj A \code{regmedint} object.
+##'
+##' @return NULL
+validate_regmedint <- function(obj) {
+
+    assertthat::assert_that(class(obj)[[1]] == "regmedint")
 
     NULL
 }
