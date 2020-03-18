@@ -469,7 +469,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
                              interaction = TRUE,
                              eventvar = NULL)
         ## Sign of the interaction coefficient is important.
-        sign_theta3 <- sign(coef(yreg_fit)["trt:bili"])
+        theta3 <- coef(yreg_fit)["trt:bili"]
         myreg_funs <-
             calc_myreg_mreg_linear_yreg_logistic(mreg = "linear",
                                                  mreg_fit = mreg_fit,
@@ -481,11 +481,11 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
                                                  interaction = TRUE)
         it("returns functions where cde depends on m_cde", {
             ## Positive (a1 - a0)
-            if (sign_theta3 > 0) {
+            if (theta3 > 0) {
                ## Increasing in m_cde
                 expect_gt(myreg_funs[[1]](1,2,+3,c(4,5,6))["cde"],
                           myreg_funs[[1]](1,2,-3,c(4,5,6))["cde"])
-            } else if (sign_theta3 < 0) {
+            } else if (theta3 < 0) {
                 ## Decreasing in m_cde
                 expect_lt(myreg_funs[[1]](1,2,+3,c(4,5,6))["cde"],
                           myreg_funs[[1]](1,2,-3,c(4,5,6))["cde"])
