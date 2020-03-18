@@ -5,6 +5,7 @@
 ## Author: Kazuki Yoshida
 ################################################################################
 
+library(testthat)
 library(survival)
 
 
