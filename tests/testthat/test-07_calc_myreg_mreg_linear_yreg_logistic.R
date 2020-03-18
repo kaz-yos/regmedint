@@ -470,6 +470,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
                              eventvar = NULL)
         ## Sign of the interaction coefficient is important.
         theta3 <- coef(yreg_fit)["trt:bili"]
+        beta2 <- coef(mreg_fit)[c("age","male","stage")]
         myreg_funs <-
             calc_myreg_mreg_linear_yreg_logistic(mreg = "linear",
                                                  mreg_fit = mreg_fit,
@@ -508,11 +509,46 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
             expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["pnie"],
                          myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))["pnie"])
         })
-        it("returns functions where natural effects depend on c_cond", {
-            expect_equal(myreg_funs[[1]](1,2,+3,-1 * c(4,5,6)),
-                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6)))
-            expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6)),
-                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6)))
+        it("returns functions where nde and te depend on c_cond", {
+            c_cond <- c(4,5,6)
+            beta2_c1 <- sum(-1 * beta2 * c_cond)
+            beta2_c2 <- sum(+2 * beta2 * c_cond)
+            ## Positive (a1 - a0)
+            if (theta3 > 0) {
+                ## Increasing in beta2_c
+                if (beta2_c1 - beta2_c2 > 0) {
+                    expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["pnde"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["pnde"])
+                    expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["tnde"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["tnde"])
+                    expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["te"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["te"])
+                } else if (beta2_c1 - beta2_c2 < 0) {
+                    expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["pnde"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["pnde"])
+                    expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["tnde"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["tnde"])
+                    expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["te"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["te"])
+                }
+            } else if (theta3 < 0) {
+                ## Decreasing in beta2_c
+                if (beta2_c1 - beta2_c2 > 0) {
+                    expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["pnde"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["pnde"])
+                    expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["tnde"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["tnde"])
+                    expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["te"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["te"])
+                } else if (beta2_c1 - beta2_c2 < 0) {
+                    expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["pnde"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["pnde"])
+                    expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["tnde"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["tnde"])
+                    expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["te"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["te"])
+                }
+            }
         })
         it("returns functions where direct effects match up", {
             expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["cde"]),
