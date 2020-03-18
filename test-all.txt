@@ -31,10 +31,10 @@ could not find function "mutate"
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
 ⠏ |   0       | 04_fit_yreg_logistic✔ |  24       | 04_fit_yreg_logistic
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
-⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
+⠏ |   0       | 04_fit_yreg_survAFT_exp⠋ |   1       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp [0.3 s]
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠙ |  42       | 06_calc_myreg_helpers_coef⠼ |  85       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠇ |  59       | 06_calc_myreg_helpers_vcov⠦ |  87       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠙ |  42       | 06_calc_myreg_helpers_coef⠴ |  86       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠏ |  60       | 06_calc_myreg_helpers_vcov⠧ |  88       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -43,47 +43,15 @@ Empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  76 5     | 07_calc_myreg_mreg_linear_yreg_logistic⠧ | 161 7     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 166 8     | 07_calc_myreg_mreg_linear_yreg_logistic [0.4 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_logistic⠸ |  84       | 07_calc_myreg_mreg_linear_yreg_logistic⠸ | 172 2     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 176 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.4 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:483: failure: calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where cde does not depend on m_cde
-myreg_funs[[1]](1, 2, -3, c(4, 5, 6))["cde"] not equal to myreg_funs[[1]](1, 2, +3, c(4, 5, 6))["cde"].
-1/1 mismatches
-[1] -0.0346 - -0.287 == 0.253
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:489: failure: calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where natural effects do no depend on c_cond
-myreg_funs[[1]](1, 2, -3, -1 * c(4, 5, 6)) not equal to myreg_funs[[1]](1, 2, +3, +2 * c(4, 5, 6)).
-5/7 mismatches (average diff: 0.531)
-[1] -0.0346 - -0.2873 == 0.253
-[2]  0.0327 - -0.5470 == 0.580
-[4]  0.0071 - -0.5726 == 0.580
-[6]  0.0785 - -0.5012 == 0.580
-[7]  0.5930 - -0.0688 == 0.662
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:491: failure: calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where natural effects do no depend on c_cond
-myreg_funs[[2]](1, 2, -3, -1 * c(4, 5, 6)) not equal to myreg_funs[[2]](1, 2, +3, +2 * c(4, 5, 6)).
-4/7 mismatches (average diff: 0.0757)
-[1] 0.539 - 0.300 ==  0.23855
-[2] 0.658 - 0.640 ==  0.01801
-[4] 0.624 - 0.668 == -0.04397
-[6] 0.650 - 0.648 ==  0.00208
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:495: failure: calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where direct effects match up
-unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["cde"]) not equal to unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]).
-1/1 mismatches
-[1] -0.287 - -0.354 == 0.0665
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:501: failure: calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where indirect effects match up
-unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["tnie"]) not equal to unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnie"]).
-1/1 mismatches
-[1] 0.0458 - 0.0714 == -0.0256
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:859: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:925: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
 `calc_myreg_mreg_linear_yreg_logistic_se(...)` did not throw an error.
 
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:885: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:951: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
 `calc_myreg_mreg_linear_yreg_logistic_se(...)` did not throw an error.
 
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:856: error: (unknown)
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:922: error: (unknown)
 dim(Sigma)[1] not equal to size_expected
 1: describe("calc_myreg_mreg_linear_yreg_logistic_se function factory", {
        describe("calc_myreg_mreg_linear_yreg_logistic_se (error handling)", {
@@ -247,7 +215,7 @@ dim(Sigma)[1] not equal to size_expected
                expect_true(all(!is.na(res)))
            })
        })
-   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:856
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:922
 2: eval(substitute(code), describe_environment)
 3: eval(substitute(code), describe_environment)
 4: describe("calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar)", {
@@ -284,12 +252,12 @@ dim(Sigma)[1] not equal to size_expected
            expect_true(is.numeric(res))
            expect_true(all(!is.na(res)))
        })
-   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:1074
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:1140
 5: eval(substitute(code), describe_environment)
 6: eval(substitute(code), describe_environment)
 7: calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, theta2 = 5, theta3 = 6, 
        theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, ncol = 4), Sigma_sigma = diag(3, 
-           nrow = 1, ncol = 1)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:1075
+           nrow = 1, ncol = 1)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:1141
 8: assertthat::assert_that(dim(Sigma)[1] == size_expected) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:213
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_logistic_yreg_linear
@@ -367,9 +335,9 @@ cvar is not a character vector
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 2.9 s
+Duration: 3.2 s
 
-OK:       552
-Failed:   10
+OK:       562
+Failed:   5
 Warnings: 1
 Skipped:  6
