@@ -470,6 +470,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
                              eventvar = NULL)
         ## Sign of the interaction coefficient is important.
         theta3 <- coef(yreg_fit)["trt:bili"]
+        beta1 <- coef(mreg_fit)[c("trt")]
         beta2 <- coef(mreg_fit)[c("age","male","stage")]
         myreg_funs <-
             calc_myreg_mreg_linear_yreg_logistic(mreg = "linear",
@@ -550,15 +551,21 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
                 }
             }
         })
-        it("returns functions where direct effects match up", {
-            expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["cde"]),
-                         unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"]))
-            expect_equal(unname(myreg_funs[[2]](1,2,3,c(4,5,6))["cde"]),
-                         unname(myreg_funs[[2]](1,2,3,c(4,5,6))["tnde"]))
-        })
-        it("returns functions where indirect effects match up", {
-            expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"]),
-                         unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnie"]))
+        it("returns functions where natural effects relate correctly", {
+            ## Positive (a1 - a0)
+            if (theta3 * beta1 > 0) {
+                ## Increasing in a0 (pure) -> a1 (total)
+                expect_gt(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnde"]),
+                          unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"]))
+                expect_gt(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"]),
+                          unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnie"]))
+            } else if (theta3 * beta1 < 0) {
+                ## Decreasing in a0 (pure) -> a1 (total)
+                expect_lt(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnde"]),
+                          unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"]))
+                expect_lt(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"]),
+                          unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnie"]))
+            }
         })
         it("returns functions where total effect is nde+nie", {
             expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["te"]),
