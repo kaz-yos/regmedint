@@ -497,10 +497,21 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
             expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["cde"],
                          myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))["cde"])
         })
-        it("returns functions where natural effects do no depend on c_cond", {
-            expect_equal(myreg_funs[[1]](1,2,-3,-1 * c(4,5,6)),
+        it("returns functions where nie does not depend on c_cond", {
+            expect_equal(myreg_funs[[1]](1,2,+3,-1 * c(4,5,6))["tnie"],
+                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6))["tnie"])
+            expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["tnie"],
+                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))["tnie"])
+            ##
+            expect_equal(myreg_funs[[1]](1,2,+3,-1 * c(4,5,6))["pnie"],
+                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6))["pnie"])
+            expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["pnie"],
+                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))["pnie"])
+        })
+        it("returns functions where natural effects depend on c_cond", {
+            expect_equal(myreg_funs[[1]](1,2,+3,-1 * c(4,5,6)),
                          myreg_funs[[1]](1,2,+3,+2 * c(4,5,6)))
-            expect_equal(myreg_funs[[2]](1,2,-3,-1 * c(4,5,6)),
+            expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6)),
                          myreg_funs[[2]](1,2,+3,+2 * c(4,5,6)))
         })
         it("returns functions where direct effects match up", {
