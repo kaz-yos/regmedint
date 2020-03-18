@@ -479,11 +479,23 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
                                                  mvar = "bili",
                                                  cvar = c("age","male","stage"),
                                                  interaction = TRUE)
-        it("returns functions where cde does not depend on m_cde", {
-            expect_equal(myreg_funs[[1]](1,2,-3,c(4,5,6))["cde"],
-                         myreg_funs[[1]](1,2,+3,c(4,5,6))["cde"])
-            expect_equal(myreg_funs[[2]](1,2,-3,c(4,5,6))["cde"],
-                         myreg_funs[[2]](1,2,+3,c(4,5,6))["cde"])
+        it("returns functions where cde depends on m_cde", {
+            ## Positive (a1 - a0)
+            if (sign_theta3 > 0) {
+               ## Increasing in m_cde
+                expect_gt(myreg_funs[[1]](1,2,+3,c(4,5,6))["cde"],
+                          myreg_funs[[1]](1,2,-3,c(4,5,6))["cde"])
+            } else if (sign_theta3 < 0) {
+                ## Decreasing in m_cde
+                expect_lt(myreg_funs[[1]](1,2,+3,c(4,5,6))["cde"],
+                          myreg_funs[[1]](1,2,-3,c(4,5,6))["cde"])
+            }
+        })
+        it("returns functions where cde does no depend on c_cond", {
+            expect_equal(myreg_funs[[1]](1,2,+3,-1 * c(4,5,6))["cde"],
+                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6))["cde"])
+            expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["cde"],
+                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))["cde"])
         })
         it("returns functions where natural effects do no depend on c_cond", {
             expect_equal(myreg_funs[[1]](1,2,-3,-1 * c(4,5,6)),
