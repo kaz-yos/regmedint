@@ -191,6 +191,11 @@ validate_args <- function(data,
 validate_regmedint <- function(obj) {
 
     assertthat::assert_that(class(obj)[[1]] == "regmedint")
+    ##
+    assertthat::assert_that("myreg" %in% names(obj))
+    assertthat::assert_that("args" %in% names(obj))
+    ##
+    assertthat::assert_that(is.list(x$args))
 
     NULL
 }
