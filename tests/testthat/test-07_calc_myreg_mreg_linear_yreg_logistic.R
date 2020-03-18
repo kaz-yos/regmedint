@@ -238,6 +238,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction", {
             expect_equal(unname(myreg_funs[[2]](1,2,3,c(4,5,6))["cde"]),
                          unname(myreg_funs[[2]](1,2,3,c(4,5,6))["tnde"]))
         })
+        it("returns functions where indirect effects match up", {
+            expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"]),
+                         unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnie"]))
+        })
         it("returns functions where total effect is nde+nie", {
             expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["te"]),
                          ## Pearl decomposition
@@ -492,6 +496,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
                          unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"]))
             expect_equal(unname(myreg_funs[[2]](1,2,3,c(4,5,6))["cde"]),
                          unname(myreg_funs[[2]](1,2,3,c(4,5,6))["tnde"]))
+        })
+        it("returns functions where indirect effects match up", {
+            expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"]),
+                         unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnie"]))
         })
         it("returns functions where total effect is nde+nie", {
             expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["te"]),
