@@ -139,7 +139,7 @@ validate_args <- function(data,
     assertthat::assert_that(is.character(mvar))
     assertthat::assert_that(length(mvar) == 1)
     ##
-    assertthat::assert_that(is.character(cvar))
+    assertthat::assert_that(is.null(cvar) | is.character(cvar))
     ##
     assertthat::assert_that(is.numeric(a0))
     assertthat::assert_that(length(a0) == 1)
@@ -150,7 +150,7 @@ validate_args <- function(data,
     assertthat::assert_that(is.numeric(m_cde))
     assertthat::assert_that(length(m_cde) == 1)
     ##
-    assertthat::assert_that(is.numeric(c_cond))
+    assertthat::assert_that(is.null(c_cond) | is.numeric(c_cond))
     assertthat::assert_that(length(c_cond) == length(cvar))
     ##
     assertthat::assert_that(is.character(mreg))
@@ -169,8 +169,8 @@ validate_args <- function(data,
     assertthat::assert_that(is.logical(casecontrol))
     assertthat::assert_that(length(casecontrol) == 1)
     ##
-    assertthat::assert_that(is.character(eventvar))
-    assertthat::assert_that(length(eventvar) == 1)
+    assertthat::assert_that(is.null(eventvar) | is.character(eventvar))
+    assertthat::assert_that(length(eventvar) <= 1)
 
     NULL
 }
