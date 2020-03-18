@@ -43,7 +43,7 @@ could not find function "mutate"
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠴ |  36       | 06_calc_myreg_helpers_coef⠙ |  72       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠧ |  38       | 06_calc_myreg_helpers_coef⠸ |  74       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
 ⠏ |   0       | 06_calc_myreg_helpers_vcov⠇ |  29       | 06_calc_myreg_helpers_vcov⠹ |  53       | 06_calc_myreg_helpers_vcov⠦ |  77       | 06_calc_myreg_helpers_vcov⠋ | 101       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -53,7 +53,7 @@ Empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ |   8       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_logistic⠼ |  75       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ | 157       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 176 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.5 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ |   8       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_logistic⠼ |  75       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ | 158       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 176 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.5 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_logistic.R:925: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
 `calc_myreg_mreg_linear_yreg_logistic_se(...)` did not throw an error.
@@ -294,56 +294,144 @@ test-08_regmedint_class_user_methods.R:12: error: (unknown)
        data(pbc)
        pbc_cc <- pbc[complete.cases(pbc), ] %>% mutate(male = if_else(sex == "m", 1L, 0L), status = if_else(status == 0, 0L, 
            1L))
-       fit_mreg_lin_yreg_lin <- regmedint(data = pbc_cc, yvar = "alk.phos", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, 
-           a1 = 2, m_cde = 0, c_cond = NULL, mreg = "linear", yreg = "linear", interaction = FALSE, casecontrol = FALSE, eventvar = NULL)
-       describe("print.regmedint", {
-           it("prints results with expected elements", {
-               expect_output(print(fit_mreg_lin_yreg_lin), "cde")
-               expect_output(print(fit_mreg_lin_yreg_lin), "pnde")
-               expect_output(print(fit_mreg_lin_yreg_lin), "tnie")
-               expect_output(print(fit_mreg_lin_yreg_lin), "tnde")
-               expect_output(print(fit_mreg_lin_yreg_lin), "pnie")
-               expect_output(print(fit_mreg_lin_yreg_lin), "te")
-               expect_output(print(fit_mreg_lin_yreg_lin), "pm")
+       describe("methods for regmedint mreg linear yreg linear", {
+           fit_regmedint <- regmedint(data = pbc_cc, yvar = "alk.phos", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, a1 = 2, 
+               m_cde = 0, c_cond = NULL, mreg = "linear", yreg = "linear", interaction = FALSE, casecontrol = FALSE, eventvar = NULL)
+           describe("print.regmedint", {
+               it("prints results with expected elements", {
+                   expect_output(print(fit_regmedint), "cde")
+                   expect_output(print(fit_regmedint), "pnde")
+                   expect_output(print(fit_regmedint), "tnie")
+                   expect_output(print(fit_regmedint), "tnde")
+                   expect_output(print(fit_regmedint), "pnie")
+                   expect_output(print(fit_regmedint), "te")
+                   expect_output(print(fit_regmedint), "pm")
+               })
+           })
+           describe("summary.regmedint", {
+               expect_output(summary(fit_regmedint), "cde")
+               expect_output(summary(fit_regmedint), "pnde")
+               expect_output(summary(fit_regmedint), "tnie")
+               expect_output(summary(fit_regmedint), "tnde")
+               expect_output(summary(fit_regmedint), "pnie")
+               expect_output(summary(fit_regmedint), "te")
+               expect_output(summary(fit_regmedint), "pm")
+           })
+           describe("coef.regmedint", {
+               expect_output(coef(fit_regmedint), "cde")
+               expect_output(coef(fit_regmedint), "pnde")
+               expect_output(coef(fit_regmedint), "tnie")
+               expect_output(coef(fit_regmedint), "tnde")
+               expect_output(coef(fit_regmedint), "pnie")
+               expect_output(coef(fit_regmedint), "te")
+               expect_output(coef(fit_regmedint), "pm")
+           })
+           describe("confint.regmedint", {
+               expect_output(confint(fit_regmedint), "cde")
+               expect_output(confint(fit_regmedint), "pnde")
+               expect_output(confint(fit_regmedint), "tnie")
+               expect_output(confint(fit_regmedint), "tnde")
+               expect_output(confint(fit_regmedint), "pnie")
+               expect_output(confint(fit_regmedint), "te")
+               expect_output(confint(fit_regmedint), "pm")
            })
        })
-       describe("summary.regmedint", {
-           expect_output(summary(fit_mreg_lin_yreg_lin), "cde")
-           expect_output(summary(fit_mreg_lin_yreg_lin), "pnde")
-           expect_output(summary(fit_mreg_lin_yreg_lin), "tnie")
-           expect_output(summary(fit_mreg_lin_yreg_lin), "tnde")
-           expect_output(summary(fit_mreg_lin_yreg_lin), "pnie")
-           expect_output(summary(fit_mreg_lin_yreg_lin), "te")
-           expect_output(summary(fit_mreg_lin_yreg_lin), "pm")
-       })
-       describe("coef.regmedint", {
-           expect_output(coef(fit_mreg_lin_yreg_lin), "cde")
-           expect_output(coef(fit_mreg_lin_yreg_lin), "pnde")
-           expect_output(coef(fit_mreg_lin_yreg_lin), "tnie")
-           expect_output(coef(fit_mreg_lin_yreg_lin), "tnde")
-           expect_output(coef(fit_mreg_lin_yreg_lin), "pnie")
-           expect_output(coef(fit_mreg_lin_yreg_lin), "te")
-           expect_output(coef(fit_mreg_lin_yreg_lin), "pm")
-       })
-       describe("confint.regmedint", {
-           expect_output(confint(fit_mreg_lin_yreg_lin), "cde")
-           expect_output(confint(fit_mreg_lin_yreg_lin), "pnde")
-           expect_output(confint(fit_mreg_lin_yreg_lin), "tnie")
-           expect_output(confint(fit_mreg_lin_yreg_lin), "tnde")
-           expect_output(confint(fit_mreg_lin_yreg_lin), "pnie")
-           expect_output(confint(fit_mreg_lin_yreg_lin), "te")
-           expect_output(confint(fit_mreg_lin_yreg_lin), "pm")
+       describe("methods for regmedint mreg linear yreg logisitc", {
+           fit_regmedint <- regmedint(data = pbc_cc, yvar = "spiders", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, a1 = 2, 
+               m_cde = 0, c_cond = NULL, mreg = "linear", yreg = "logistic", interaction = FALSE, casecontrol = FALSE, eventvar = NULL)
+           describe("print.regmedint", {
+               it("prints results with expected elements", {
+                   expect_output(print(fit_regmedint), "cde")
+                   expect_output(print(fit_regmedint), "pnde")
+                   expect_output(print(fit_regmedint), "tnie")
+                   expect_output(print(fit_regmedint), "tnde")
+                   expect_output(print(fit_regmedint), "pnie")
+                   expect_output(print(fit_regmedint), "te")
+                   expect_output(print(fit_regmedint), "pm")
+               })
+           })
+           describe("summary.regmedint", {
+               expect_output(summary(fit_regmedint), "cde")
+               expect_output(summary(fit_regmedint), "pnde")
+               expect_output(summary(fit_regmedint), "tnie")
+               expect_output(summary(fit_regmedint), "tnde")
+               expect_output(summary(fit_regmedint), "pnie")
+               expect_output(summary(fit_regmedint), "te")
+               expect_output(summary(fit_regmedint), "pm")
+           })
+           describe("coef.regmedint", {
+               expect_output(coef(fit_regmedint), "cde")
+               expect_output(coef(fit_regmedint), "pnde")
+               expect_output(coef(fit_regmedint), "tnie")
+               expect_output(coef(fit_regmedint), "tnde")
+               expect_output(coef(fit_regmedint), "pnie")
+               expect_output(coef(fit_regmedint), "te")
+               expect_output(coef(fit_regmedint), "pm")
+           })
+           describe("confint.regmedint", {
+               expect_output(confint(fit_regmedint), "cde")
+               expect_output(confint(fit_regmedint), "pnde")
+               expect_output(confint(fit_regmedint), "tnie")
+               expect_output(confint(fit_regmedint), "tnde")
+               expect_output(confint(fit_regmedint), "pnie")
+               expect_output(confint(fit_regmedint), "te")
+               expect_output(confint(fit_regmedint), "pm")
+           })
        })
    }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-08_regmedint_class_user_methods.R:12
 2: eval(substitute(code), describe_environment)
 3: eval(substitute(code), describe_environment)
-4: regmedint(data = pbc_cc, yvar = "alk.phos", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, a1 = 2, m_cde = 0, c_cond = NULL, 
-       mreg = "linear", yreg = "linear", interaction = FALSE, casecontrol = FALSE, eventvar = NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-08_regmedint_class_user_methods.R:21
-5: new_regmedint(data = data, yvar = yvar, avar = avar, mvar = mvar, cvar = cvar, a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond, 
+4: describe("methods for regmedint mreg linear yreg linear", {
+       fit_regmedint <- regmedint(data = pbc_cc, yvar = "alk.phos", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, a1 = 2, 
+           m_cde = 0, c_cond = NULL, mreg = "linear", yreg = "linear", interaction = FALSE, casecontrol = FALSE, eventvar = NULL)
+       describe("print.regmedint", {
+           it("prints results with expected elements", {
+               expect_output(print(fit_regmedint), "cde")
+               expect_output(print(fit_regmedint), "pnde")
+               expect_output(print(fit_regmedint), "tnie")
+               expect_output(print(fit_regmedint), "tnde")
+               expect_output(print(fit_regmedint), "pnie")
+               expect_output(print(fit_regmedint), "te")
+               expect_output(print(fit_regmedint), "pm")
+           })
+       })
+       describe("summary.regmedint", {
+           expect_output(summary(fit_regmedint), "cde")
+           expect_output(summary(fit_regmedint), "pnde")
+           expect_output(summary(fit_regmedint), "tnie")
+           expect_output(summary(fit_regmedint), "tnde")
+           expect_output(summary(fit_regmedint), "pnie")
+           expect_output(summary(fit_regmedint), "te")
+           expect_output(summary(fit_regmedint), "pm")
+       })
+       describe("coef.regmedint", {
+           expect_output(coef(fit_regmedint), "cde")
+           expect_output(coef(fit_regmedint), "pnde")
+           expect_output(coef(fit_regmedint), "tnie")
+           expect_output(coef(fit_regmedint), "tnde")
+           expect_output(coef(fit_regmedint), "pnie")
+           expect_output(coef(fit_regmedint), "te")
+           expect_output(coef(fit_regmedint), "pm")
+       })
+       describe("confint.regmedint", {
+           expect_output(confint(fit_regmedint), "cde")
+           expect_output(confint(fit_regmedint), "pnde")
+           expect_output(confint(fit_regmedint), "tnie")
+           expect_output(confint(fit_regmedint), "tnde")
+           expect_output(confint(fit_regmedint), "pnie")
+           expect_output(confint(fit_regmedint), "te")
+           expect_output(confint(fit_regmedint), "pm")
+       })
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-08_regmedint_class_user_methods.R:21
+5: eval(substitute(code), describe_environment)
+6: eval(substitute(code), describe_environment)
+7: regmedint(data = pbc_cc, yvar = "alk.phos", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, a1 = 2, m_cde = 0, c_cond = NULL, 
+       mreg = "linear", yreg = "linear", interaction = FALSE, casecontrol = FALSE, eventvar = NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-08_regmedint_class_user_methods.R:22
+8: new_regmedint(data = data, yvar = yvar, avar = avar, mvar = mvar, cvar = cvar, a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond, 
        mreg = mreg, yreg = yreg, interaction = interaction, casecontrol = casecontrol, eventvar = eventvar) at /inv/kyoshida/cantos_stats/regmedint/R/01_regmedint_class_ui.R:81
-6: calc_myreg(mreg = mreg, mreg_fit = mreg_fit, yreg = yreg, yreg_fit = yreg_fit, avar = avar, mvar = mvar, cvar = cvar, interaction = interaction) at /inv/kyoshida/cantos_stats/regmedint/R/02_regmedint_class_constructor.R:62
-7: calc_myreg_mreg_linear_yreg_linear(mreg, mreg_fit, yreg, yreg_fit, avar, mvar, cvar, interaction) at /inv/kyoshida/cantos_stats/regmedint/R/05_calc_myreg_mediation_analysis.R:46
-8: assertthat::assert_that(!is.null(cvar)) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_linear.R:29
+9: calc_myreg(mreg = mreg, mreg_fit = mreg_fit, yreg = yreg, yreg_fit = yreg_fit, avar = avar, mvar = mvar, cvar = cvar, interaction = interaction) at /inv/kyoshida/cantos_stats/regmedint/R/02_regmedint_class_constructor.R:62
+10: calc_myreg_mreg_linear_yreg_linear(mreg, mreg_fit, yreg, yreg_fit, avar, mvar, cvar, interaction) at /inv/kyoshida/cantos_stats/regmedint/R/05_calc_myreg_mediation_analysis.R:46
+11: assertthat::assert_that(!is.null(cvar)) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_linear.R:29
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
