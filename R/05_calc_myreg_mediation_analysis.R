@@ -24,9 +24,6 @@ calc_myreg <- function(mreg,
                        cvar,
                        interaction) {
 
-    ## FIXME: This needs to be allowed and handled nicely!
-    assertthat::assert_that(!is.null(cvar))
-
     ## FIXME: Use this to do.call()
     args <- list(mreg = mreg,
                  mreg_fit = mreg_fit,
