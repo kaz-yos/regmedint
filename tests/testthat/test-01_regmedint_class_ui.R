@@ -7,6 +7,7 @@
 
 library(testthat)
 library(survival)
+library(tidyverse)
 
 
 ###
