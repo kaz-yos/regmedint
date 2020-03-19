@@ -73,19 +73,19 @@ new_regmedint <- function(data,
                 yreg = yreg_fit,
                 myreg = myreg_funs,
                 ## Remember arguments
-                args = c(yvar = yvar,
-                         avar = avar,
-                         mvar = mvar,
-                         cvar = cvar,
-                         a0 = a0,
-                         a1 = a1,
-                         m_cde = m_cde,
-                         yreg = yreg,
-                         mreg = mreg,
-                         interaction = interaction,
-                         casecontrol = casecontrol,
-                         c_cond = c_cond,
-                         eventvar = eventvar))
+                args = list(yvar = yvar,
+                            avar = avar,
+                            mvar = mvar,
+                            cvar = cvar,
+                            a0 = a0,
+                            a1 = a1,
+                            m_cde = m_cde,
+                            yreg = yreg,
+                            mreg = mreg,
+                            interaction = interaction,
+                            casecontrol = casecontrol,
+                            c_cond = c_cond,
+                            eventvar = eventvar))
     ## The main class is regmedint.
     class(res) <- c("regmedint", class(res))
 
