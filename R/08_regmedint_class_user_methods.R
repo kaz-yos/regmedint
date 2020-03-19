@@ -43,13 +43,15 @@ print.regmedint <- function(x,
     assertthat::assert_that(is.null(a1) | (length(a1) == 1))
     assertthat::assert_that(is.null(m_cde) | (length(m_cde) == 1))
     assertthat::assert_that(is.null(c_cond) | (length(c_cond) == length(x$args$cvar)))
+    assertthat::assert_that(is.list(args_mreg_fit))
+    assertthat::assert_that(is.list(args_yreg_fit))
 
     cat("### Mediator model\n")
-    do.call(print, c(x$mreg,
+    do.call(print, c(list(x$mreg),
                      args_mreg_fit))
 
     cat("### Outcome model\n")
-    do.call(print, c(x$mreg,
+    do.call(print, c(list(x$yreg),
                      args_yreg_fit))
 
     cat("### Mediation analysis \n")
