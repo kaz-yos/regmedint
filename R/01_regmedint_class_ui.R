@@ -185,15 +185,15 @@ validate_args <- function(data,
 ##'
 ##' Check the structure of a proposed regmedint object for soundness.
 ##'
-##' @param obj A \code{regmedint} object.
+##' @param x A \code{regmedint} object.
 ##'
 ##' @return NULL
-validate_regmedint <- function(obj) {
+validate_regmedint <- function(x) {
 
-    assertthat::assert_that(class(obj)[[1]] == "regmedint")
+    assertthat::assert_that(class(x)[[1]] == "regmedint")
     ##
-    assertthat::assert_that("myreg" %in% names(obj))
-    assertthat::assert_that("args" %in% names(obj))
+    assertthat::assert_that("myreg" %in% names(x))
+    assertthat::assert_that("args" %in% names(x))
     ##
     assertthat::assert_that(is.list(x$args))
 
