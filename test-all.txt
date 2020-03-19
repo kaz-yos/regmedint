@@ -1,40 +1,33 @@
 ✔ |  OK F W S | Context
-⠋ |   0   1   | ⠙ |   0 1 1   | ✖ |   0 1 1   |  [0.7 s]
+⠋ |   0   1   | ⠏ |   0       | 01_regmedint_class_ui✖ |   0 2     | 01_regmedint_class_ui [0.1 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-01_regmedint_class_ui.R:9: warning: (unknown)
-package 'survival' was built under R version 3.6.2
+test-01_regmedint_class_ui.R:28: error: regmedint mreg linear yreg linear: runs witmh zero cvar with no interaction
+!is.null(cvar) is not TRUE
+1: regmedint(data = pbc_cc, yvar = "alk.phos", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, a1 = 2, m_cde = 0, c_cond = NULL, 
+       mreg = "linear", yreg = "linear", interaction = FALSE, casecontrol = FALSE, eventvar = NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-01_regmedint_class_ui.R:28
+2: new_regmedint(data = data, yvar = yvar, avar = avar, mvar = mvar, cvar = cvar, a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond, 
+       mreg = mreg, yreg = yreg, interaction = interaction, casecontrol = casecontrol, eventvar = eventvar) at /inv/kyoshida/cantos_stats/regmedint/R/01_regmedint_class_ui.R:81
+3: calc_myreg(mreg = mreg, mreg_fit = mreg_fit, yreg = yreg, yreg_fit = yreg_fit, avar = avar, mvar = mvar, cvar = cvar, interaction = interaction) at /inv/kyoshida/cantos_stats/regmedint/R/02_regmedint_class_constructor.R:62
+4: calc_myreg_mreg_linear_yreg_linear(mreg, mreg_fit, yreg, yreg_fit, avar, mvar, cvar, interaction) at /inv/kyoshida/cantos_stats/regmedint/R/05_calc_myreg_mediation_analysis.R:46
+5: assertthat::assert_that(!is.null(cvar)) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_linear.R:29
 
-test-01_regmedint_class_ui.R:16: error: (unknown)
-could not find function "mutate"
-1: describe("regmedint", {
-       data(pbc)
-       pbc_cc <- pbc[complete.cases(pbc), ] %>% mutate(male = if_else(sex == "m", 1L, 0L), status = if_else(status == 0, 0L, 
-           1L))
-       describe("regmedint mreg linear yreg linear", {
-           it("runs witmh zero cvar with no interaction", {
-               fit_regmedint <- regmedint(data = pbc_cc, yvar = "alk.phos", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, 
-                   a1 = 2, m_cde = 0, c_cond = NULL, mreg = "linear", yreg = "linear", interaction = FALSE, casecontrol = FALSE, 
-                   eventvar = NULL)
-           })
-       })
-       describe("regmedint mreg linear yreg logistic", {
-           it("runs witmh zero cvar with no interaction", {
-               fit_regmedint <- regmedint(data = pbc_cc, yvar = "spiders", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, 
-                   a1 = 2, m_cde = 0, c_cond = NULL, mreg = "linear", yreg = "logistic", interaction = FALSE, casecontrol = FALSE, 
-                   eventvar = NULL)
-           })
-       })
-   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-01_regmedint_class_ui.R:16
-2: eval(substitute(code), describe_environment)
-3: eval(substitute(code), describe_environment)
-4: pbc[complete.cases(pbc), ] %>% mutate(male = if_else(sex == "m", 1L, 0L), status = if_else(status == 0, 0L, 1L)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-01_regmedint_class_ui.R:20
-5: withVisible(eval(quote(`_fseq`(`_lhs`)), env, env))
-6: eval(quote(`_fseq`(`_lhs`)), env, env)
-7: eval(quote(`_fseq`(`_lhs`)), env, env)
-8: `_fseq`(`_lhs`)
-9: freduce(value, `_function_list`)
-10: withVisible(function_list[[k]](value))
-11: function_list[[k]](value)
+test-01_regmedint_class_ui.R:47: error: regmedint mreg linear yreg logistic: runs witmh zero cvar with no interaction
+object 'x' not found
+1: regmedint(data = pbc_cc, yvar = "spiders", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, a1 = 2, m_cde = 0, c_cond = NULL, 
+       mreg = "linear", yreg = "logistic", interaction = FALSE, casecontrol = FALSE, eventvar = NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-01_regmedint_class_ui.R:47
+2: validate_regmedint(res) at /inv/kyoshida/cantos_stats/regmedint/R/01_regmedint_class_ui.R:99
+3: assertthat::assert_that(is.list(x$args)) at /inv/kyoshida/cantos_stats/regmedint/R/01_regmedint_class_ui.R:198
+4: see_if(..., env = env, msg = msg)
+5: tryCatch({
+       eval(assertion, env)
+   }, assertError = function(e) {
+       structure(FALSE, msg = e$message)
+   })
+6: tryCatchList(expr, classes, parentenv, handlers)
+7: tryCatchOne(expr, names, parentenv, handlers[[1L]])
+8: doTryCatch(return(expr), name, parentenv, handler)
+9: eval(assertion, env)
+10: eval(assertion, env)
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 03_fit_mreg✔ |  24       | 03_fit_mreg
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  23       | 03_helpers_fit_mreg_fit_yreg
@@ -43,8 +36,8 @@ could not find function "mutate"
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠧ |  38       | 06_calc_myreg_helpers_coef⠸ |  74       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠇ |  29       | 06_calc_myreg_helpers_vcov⠹ |  53       | 06_calc_myreg_helpers_vcov⠦ |  77       | 06_calc_myreg_helpers_vcov⠋ | 101       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠸ |  34       | 06_calc_myreg_helpers_coef⠏ |  70       | 06_calc_myreg_helpers_coef⠹ | 103       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠦ |  57       | 06_calc_myreg_helpers_vcov⠋ |  71       | 06_calc_myreg_helpers_vcov⠦ |  97       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.5 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -53,7 +46,7 @@ Empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ |   8       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_logistic⠼ |  75       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ | 158       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 176 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.5 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  61       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ | 119       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 176 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.3 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_logistic.R:925: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
 `calc_myreg_mreg_linear_yreg_logistic_se(...)` did not throw an error.
@@ -435,9 +428,9 @@ test-08_regmedint_class_user_methods.R:12: error: (unknown)
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 3.2 s
+Duration: 3.5 s
 
 OK:       562
-Failed:   5
+Failed:   6
 Warnings: 1
 Skipped:  6
