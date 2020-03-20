@@ -24,7 +24,7 @@ describe("regmedint", {
                status = if_else(status == 0, 0L, 1L))
 
     describe("regmedint mreg linear yreg linear", {
-        it("runs witmh zero cvar with no interaction", {
+        it("runs with zero cvar with no interaction", {
             fit_regmedint <- regmedint(data = pbc_cc,
                                        yvar = "alk.phos",
                                        avar = "trt",
@@ -43,7 +43,7 @@ describe("regmedint", {
     })
     ##
     describe("regmedint mreg linear yreg logistic", {
-        it("runs witmh zero cvar with no interaction", {
+        it("runs with zero cvar with no interaction", {
             fit_regmedint <- regmedint(data = pbc_cc,
                                        yvar = "spiders",
                                        avar = "trt",
