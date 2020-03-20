@@ -7,8 +7,8 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠧ |  38       | 06_calc_myreg_helpers_coef⠦ |  77       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠦ |  57       | 06_calc_myreg_helpers_vcov⠹ |  83       | 06_calc_myreg_helpers_vcov⠼ | 105       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠦ |  37       | 06_calc_myreg_helpers_coef⠋ |  71       | 06_calc_myreg_helpers_coef⠇ | 109       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠼ |  55       | 06_calc_myreg_helpers_vcov⠏ |  80       | 06_calc_myreg_helpers_vcov⠹ | 103       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -17,16 +17,10 @@ Empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  63       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ | 131       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 176 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.3 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  61       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ | 117       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 178 1     | 07_calc_myreg_mreg_linear_yreg_logistic [0.3 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:925: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
-`calc_myreg_mreg_linear_yreg_logistic_se(...)` did not throw an error.
-
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:951: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
-`calc_myreg_mreg_linear_yreg_logistic_se(...)` did not throw an error.
-
 test-07_calc_myreg_mreg_linear_yreg_logistic.R:922: error: (unknown)
-dim(Sigma)[1] not equal to size_expected
+dim(Sigma_beta)[1] not equal to Sigma_beta_size
 1: describe("calc_myreg_mreg_linear_yreg_logistic_se function factory", {
        describe("calc_myreg_mreg_linear_yreg_logistic_se (error handling)", {
            it("errors given inconsistent beta2 and theta4", {
@@ -232,7 +226,9 @@ dim(Sigma)[1] not equal to size_expected
 7: calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, theta2 = 5, theta3 = 6, 
        theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, ncol = 4), Sigma_sigma = diag(3, 
            nrow = 1, ncol = 1)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:1141
-8: assertthat::assert_that(dim(Sigma)[1] == size_expected) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:196
+8: validate_myreg_vcovs(beta0 = beta0, beta1 = beta1, beta2 = beta2, theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
+       theta4 = theta4, sigma_sq = sigma_sq, Sigma_beta = Sigma_beta, Sigma_theta = Sigma_theta, Sigma_sigma_sq = Sigma_sigma_sq) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:189
+9: assertthat::assert_that(dim(Sigma_beta)[1] == Sigma_beta_size) at /inv/kyoshida/cantos_stats/regmedint/R/06_calc_myreg_helpers_coef.R:188
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_logistic_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -926,9 +922,9 @@ argument "object" is missing, with no default
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 3.2 s
+Duration: 3.3 s
 
-OK:       562
-Failed:   5
+OK:       564
+Failed:   3
 Warnings: 1
 Skipped:  6
