@@ -71,7 +71,6 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                               theta2 = theta_hat$theta2,
                                               theta3 = theta_hat$theta3,
                                               theta4 = theta_hat$theta4,
-                                              sigma_sq = sigma_sq,
                                               Sigma_beta = Sigma_beta,
                                               Sigma_theta = Sigma_theta)
 
@@ -161,7 +160,6 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
                                                     theta2,
                                                     theta3,
                                                     theta4,
-                                                    sigma_sq,
                                                     Sigma_beta,
                                                     Sigma_theta) {
 
@@ -245,7 +243,7 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
                 ##
                 0,                                 # theta0
                 1,                                 # theta1
-                (theta3 * sigma_sq),               # theta2
+                0,                                 # theta2
                 (beta0 + (beta1 * a1) + beta2_c),  # theta3 a0 -> a1
                 rep(0, length(theta4))))           # theta4 vector
         ##
