@@ -26,48 +26,30 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                  interaction) {
 
     ## mreg coefficients
-    beta_hat <- beta_hat(mreg = mreg,
-                         mreg_fit = mreg_fit,
-                         avar = avar,
-                         cvar = cvar)
-    beta0 <- beta_hat["(Intercept)"]
-    beta1 <- beta_hat[avar]
-    if (is.null(cvar)) {
-        ## beta_hat does not contain the cvar part in this case.
-        beta2 <- NULL
-    } else {
-        beta2 <- beta_hat[cvar]
-    }
+    beta_hat <- beta_hat_helper(mreg = mreg,
+                                mreg_fit = mreg_fit,
+                                avar = avar,
+                                cvar = cvar)
     ## This mreg linear yreg logistic is the only case that uses sigma^2.
     sigma_sq <- sigma_hat_sq(mreg_fit = mreg_fit)
     ## yreg coefficients
-    theta_hat <- theta_hat(yreg = yreg,
-                           yreg_fit = yreg_fit,
-                           avar = avar,
-                           mvar = mvar,
-                           cvar = cvar,
-                           interaction = interaction)
-    theta0 <- theta_hat["(Intercept)"]
-    theta1 <- theta_hat[avar]
-    theta2 <- theta_hat[mvar]
-    theta3 <- theta_hat[paste0(avar,":",mvar)]
-    if (is.null(cvar)) {
-        ## theta_hat does not contain the cvar part in this case.
-        theta4 <- NULL
-    } else {
-        theta4 <- theta_hat[cvar]
-    }
+    theta_hat <- theta_hat_helper(yreg = yreg,
+                                  yreg_fit = yreg_fit,
+                                  avar = avar,
+                                  mvar = mvar,
+                                  cvar = cvar,
+                                  interaction = interaction)
     ## Construct a function of (a1, a0, m_cde, c_cond) that returns
     ## a vector of point estimates for quantities of interest.
     myreg_est_fun <-
-        calc_myreg_mreg_linear_yreg_logistic_est(beta0 = beta0,
-                                                 beta1 = beta1,
-                                                 beta2 = beta2,
-                                                 theta0 = theta0,
-                                                 theta1 = theta1,
-                                                 theta2 = theta2,
-                                                 theta3 = theta3,
-                                                 theta4 = theta4,
+        calc_myreg_mreg_linear_yreg_logistic_est(beta0 = beta_hat$beta0,
+                                                 beta1 = beta_hat$beta1,
+                                                 beta2 = beta_hat$beta2,
+                                                 theta0 = theta_hat$theta0,
+                                                 theta1 = theta_hat$theta1,
+                                                 theta2 = theta_hat$theta2,
+                                                 theta3 = theta_hat$theta3,
+                                                 theta4 = theta_hat$theta4,
                                                  sigma_sq = sigma_sq)
 
     ## vcovs
@@ -85,14 +67,14 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
     ## Construct a function of (a0, a1, m_cde, c_cond) that returns
     ## a vector of estimates.
     myreg_se_fun <-
-        calc_myreg_mreg_linear_yreg_logistic_se(beta0 = beta0,
-                                                beta1 = beta1,
-                                                beta2 = beta2,
-                                                theta0 = theta0,
-                                                theta1 = theta1,
-                                                theta2 = theta2,
-                                                theta3 = theta3,
-                                                theta4 = theta4,
+        calc_myreg_mreg_linear_yreg_logistic_se(beta0 = beta_hat$beta0,
+                                                beta1 = beta_hat$beta1,
+                                                beta2 = beta_hat$beta2,
+                                                theta0 = theta_hat$theta0,
+                                                theta1 = theta_hat$theta1,
+                                                theta2 = theta_hat$theta2,
+                                                theta3 = theta_hat$theta3,
+                                                theta4 = theta_hat$theta4,
                                                 sigma_sq = sigma_sq,
                                                 Sigma_beta = Sigma_beta,
                                                 Sigma_theta = Sigma_theta,
