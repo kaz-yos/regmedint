@@ -86,13 +86,13 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
 
 
 calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
-                                                     beta1,
-                                                     beta2,
-                                                     theta0,
-                                                     theta1,
-                                                     theta2,
-                                                     theta3,
-                                                     theta4) {
+                                                   beta1,
+                                                   beta2,
+                                                   theta0,
+                                                   theta1,
+                                                   theta2,
+                                                   theta3,
+                                                   theta4) {
 
     assertthat::assert_that(length(beta0) == 1,
                             length(beta1) == 1,
@@ -153,15 +153,15 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
 
 
 calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
-                                                    beta1,
-                                                    beta2,
-                                                    theta0,
-                                                    theta1,
-                                                    theta2,
-                                                    theta3,
-                                                    theta4,
-                                                    Sigma_beta,
-                                                    Sigma_theta) {
+                                                  beta1,
+                                                  beta2,
+                                                  theta0,
+                                                  theta1,
+                                                  theta2,
+                                                  theta3,
+                                                  theta4,
+                                                  Sigma_beta,
+                                                  Sigma_theta) {
 
     Sigma <- Matrix::bdiag(Sigma_beta,
                            Sigma_theta)
