@@ -94,13 +94,14 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
                                                    theta3,
                                                    theta4) {
 
-    assertthat::assert_that(length(beta0) == 1,
-                            length(beta1) == 1,
-                            length(beta2) == length(theta4),
-                            length(theta0) == 1,
-                            length(theta1) == 1,
-                            length(theta2) == 1,
-                            length(theta3) == 1)
+    validate_myreg_coefs(beta0 = beta0,
+                         beta1 = beta1,
+                         beta2 = beta2,
+                         theta0 = theta0,
+                         theta1 = theta1,
+                         theta2 = theta2,
+                         theta3 = theta3,
+                         theta4 = theta4)
 
     ## Construct a function for point estimates given (a0, a1, m_cde, c_cond).
     fun_est <- function(a0, a1, m_cde, c_cond) {
@@ -163,24 +164,28 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
                                                   Sigma_beta,
                                                   Sigma_theta) {
 
+    validate_myreg_coefs(beta0 = beta0,
+                         beta1 = beta1,
+                         beta2 = beta2,
+                         theta0 = theta0,
+                         theta1 = theta1,
+                         theta2 = theta2,
+                         theta3 = theta3,
+                         theta4 = theta4)
+
+    validate_myreg_vcovs(beta0 = beta0,
+                         beta1 = beta1,
+                         beta2 = beta2,
+                         theta0 = theta0,
+                         theta1 = theta1,
+                         theta2 = theta2,
+                         theta3 = theta3,
+                         theta4 = theta4,
+                         Sigma_beta = Sigma_beta,
+                         Sigma_theta = Sigma_theta)
+
     Sigma <- Matrix::bdiag(Sigma_beta,
                            Sigma_theta)
-
-    ## The dimension
-    size_expected <- sum(1, # beta0 (Intercept)
-                         1, # beta1 for avar
-                         ## This can be 0 = length(NULL) when cvar = NULL
-                         length(beta2), # beta2 vector cvar
-                         ##
-                         1, # theta0 (Intercept). Never used so not in args.
-                         1, # theta1 for avar
-                         1, # theta2 for mvar
-                         1, # theta3 for avar:mvar
-                         ## This can be 0 = length(NULL) when cvar = NULL
-                         length(theta4)) # theta4 for cvar
-    assertthat::assert_that(dim(Sigma)[1] == size_expected)
-    assertthat::assert_that(dim(Sigma)[2] == size_expected)
-
 
     ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond)
     fun_se <- function(a0, a1, m_cde, c_cond) {
