@@ -26,34 +26,28 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                                interaction) {
 
     ## mreg coefficients
-    beta_hat <- beta_hat(mreg = mreg,
-                         mreg_fit = mreg_fit,
-                         avar = avar,
-                         cvar = cvar)
-    beta0 <- beta_hat["(Intercept)"]
-    beta1 <- beta_hat[avar]
-    beta2 <- beta_hat[cvar] # This can be length 0.
+    beta_hat <- beta_hat_helper(mreg = mreg,
+                                mreg_fit = mreg_fit,
+                                avar = avar,
+                                cvar = cvar)
     ## yreg coefficients
-    theta_hat <- theta_hat(yreg = yreg,
-                           yreg_fit = yreg_fit,
-                           avar = avar,
-                           mvar = mvar,
-                           cvar = cvar,
-                           interaction = interaction)
-    theta1 <- theta_hat[avar]
-    theta2 <- theta_hat[mvar]
-    theta3 <- theta_hat[paste0(avar,":",mvar)]
-    theta4 <- theta_hat[cvar]
+    theta_hat <- theta_hat_helper(yreg = yreg,
+                                  yreg_fit = yreg_fit,
+                                  avar = avar,
+                                  mvar = mvar,
+                                  cvar = cvar,
+                                  interaction = interaction)
     ## Construct a function of (a1, a0, m_cde, c_cond) that returns
     ## a vector of point estimates for quantities of interest.
     myreg_est_fun <-
-        calc_myreg_mreg_linear_yreg_linear_est(beta0 = beta0,
-                                               beta1 = beta1,
-                                               beta2 = beta2,
-                                               theta1 = theta1,
-                                               theta2 = theta2,
-                                               theta3 = theta3,
-                                               theta4 = theta4)
+        calc_myreg_mreg_linear_yreg_linear_est(beta0 = beta_hat$beta0,
+                                               beta1 = beta_hat$beta1,
+                                               beta2 = beta_hat$beta2,
+                                               theta0 = theta_hat$theta0,
+                                               theta1 = theta_hat$theta1,
+                                               theta2 = theta_hat$theta2,
+                                               theta3 = theta_hat$theta3,
+                                               theta4 = theta_hat$theta4)
 
     ## vcovs
     Sigma_beta_hat <- Sigma_beta_hat(mreg = mreg,
@@ -69,35 +63,59 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
     ## Construct a function of (a0, a1, m_cde, c_cond) that returns
     ## a vector of estimates.
     myreg_se_fun <-
-        calc_myreg_mreg_linear_yreg_linear_se(beta0 = beta0,
-                                              beta1 = beta1,
-                                              beta2 = beta2,
-                                              theta1 = theta1,
-                                              theta2 = theta2,
-                                              theta3 = theta3,
-                                              theta4 = theta4,
-                                              Sigma_beta = Sigma_beta_hat,
-                                              Sigma_theta = Sigma_theta_hat)
+        calc_myreg_mreg_linear_yreg_linear_se(beta0 = beta_hat$beta0,
+                                              beta1 = beta_hat$beta1,
+                                              beta2 = beta_hat$beta2,
+                                              theta0 = theta_hat$theta0,
+                                              theta1 = theta_hat$theta1,
+                                              theta2 = theta_hat$theta2,
+                                              theta3 = theta_hat$theta3,
+                                              theta4 = theta_hat$theta4,
+                                              sigma_sq = sigma_sq,
+                                              Sigma_beta = Sigma_beta,
+                                              Sigma_theta = Sigma_theta)
 
     ## Return a list of functions.
-    list(myreg_est_fun = myreg_est_fun,
-         myreg_se_fun = myreg_est_fun)
+    list(
+        ## args (a0, a1, m_cde, c_cond)
+        ## -> vector c(cde, pnde, tnie, tnde, pnie, te, pm)
+        myreg_est_fun = myreg_est_fun,
+        ## args (a0, a1, m_cde, c_cond)
+        ## -> vector c(se_cde, se_pnde, se_tnie, se_tnde, se_pnie, se_te, se_pm)
+        myreg_se_fun = myreg_se_fun)
 }
 
 
 calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
-                                                   beta1,
-                                                   beta2,
-                                                   theta1,
-                                                   theta2,
-                                                   theta3,
-                                                   theta4) {
+                                                     beta1,
+                                                     beta2,
+                                                     theta0,
+                                                     theta1,
+                                                     theta2,
+                                                     theta3,
+                                                     theta4) {
+
+    assertthat::assert_that(length(beta0) == 1,
+                            length(beta1) == 1,
+                            length(beta2) == length(theta4),
+                            length(theta0) == 0,
+                            length(theta1) == 1,
+                            length(theta2) == 1,
+                            length(theta3) == 1)
+
     ## Construct a function for point estimates given (a0, a1, m_cde, c_cond).
     fun_est <- function(a0, a1, m_cde, c_cond) {
 
         ## Term involving an inner product of beta2 and c_cond
         ## matrix operation to error on non-conformant structure.
-        beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
+        if (is.null(beta2)) {
+            assertthat::assert_that(is.null(c_cond))
+            beta2_c <- 0
+        } else {
+            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(length(c_cond) == length(beta2))
+            beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
+        }
 
         ## VanderWeele 2015 p466
         ## Adopted from mediation.sas and modified.
@@ -121,14 +139,14 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
         ## VanderWeele 2015 p47
         pm <- tnie / te
 
-        ## Return a vector
-        c(cde = cde,
-          pnde = pnde,
-          tnie = tnie,
-          tnde = tnde,
-          pnie = pnie,
-          te = te,
-          pm = pm)
+        ## Return a named vector
+        c(cde  = unname(cde),
+          pnde = unname(pnde),
+          tnie = unname(tnie),
+          tnde = unname(tnde),
+          pnie = unname(pnie),
+          te   = unname(te),
+          pm   = unname(pm))
     }
 
     return(fun_est)
@@ -136,24 +154,49 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
 
 
 calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
-                                                  beta1,
-                                                  beta2,
-                                                  theta1,
-                                                  theta2,
-                                                  theta3,
-                                                  theta4,
-                                                  Sigma_beta,
-                                                  Sigma_theta) {
+                                                    beta1,
+                                                    beta2,
+                                                    theta0,
+                                                    theta1,
+                                                    theta2,
+                                                    theta3,
+                                                    theta4,
+                                                    sigma_sq,
+                                                    Sigma_beta,
+                                                    Sigma_theta) {
 
     Sigma <- Matrix::bdiag(Sigma_beta,
                            Sigma_theta)
+
+    ## The dimension
+    size_expected <- sum(1, # beta0 (Intercept)
+                         1, # beta1 for avar
+                         ## This can be 0 = length(NULL) when cvar = NULL
+                         length(beta2), # beta2 vector cvar
+                         ##
+                         1, # theta0 (Intercept). Never used so not in args.
+                         1, # theta1 for avar
+                         1, # theta2 for mvar
+                         1, # theta3 for avar:mvar
+                         ## This can be 0 = length(NULL) when cvar = NULL
+                         length(theta4)) # theta4 for cvar
+    assertthat::assert_that(dim(Sigma)[1] == size_expected)
+    assertthat::assert_that(dim(Sigma)[2] == size_expected)
+
 
     ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond)
     fun_se <- function(a0, a1, m_cde, c_cond) {
 
         ## Term involving an inner product of beta2 and c_cond
         ## matrix operation to error on non-conformant structure.
-        beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
+        if (is.null(beta2)) {
+            assertthat::assert_that(is.null(c_cond))
+            beta2_c <- 0
+        } else {
+            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(length(c_cond) == length(beta2))
+            beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
+        }
 
         ## VanderWeele 2015. p468
         ## Valeri & VanderWeele 2013. Appendix p6-9
@@ -263,13 +306,13 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
         se_pm <- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm)) * a1_sub_a0
 
         ## Return a vector
-        c(se_cde = se_cde,
-          se_pnde = pnde,
-          se_tnie = tnie,
-          se_tnde = tnde,
-          se_pnie = pnie,
-          se_te = te,
-          se_pm = pm)
+        c(se_cde  = unname(se_cde),
+          se_pnde = unname(se_pnde),
+          se_tnie = unname(se_tnie),
+          se_tnde = unname(se_tnde),
+          se_pnie = unname(se_pnie),
+          se_te   = unname(se_te),
+          se_pm   = unname(se_pm))
     }
 
     return(fun_se)
