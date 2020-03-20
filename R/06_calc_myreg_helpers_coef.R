@@ -146,3 +146,24 @@ theta_hat_helper <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
 sigma_hat_sq <- function(mreg_fit) {
     sigma(mreg_fit)^2
 }
+
+validate_myreg_coefs <- function(beta0,
+                                 beta1,
+                                 beta2,
+                                 theta0,
+                                 theta1,
+                                 theta2,
+                                 theta3,
+                                 theta4,
+                                 sigma_sq = NULL) {
+    assertthat::assert_that(length(beta0) == 1)
+    assertthat::assert_that(length(beta1) == 1)
+    assertthat::assert_that(length(beta2) == length(theta4))
+    assertthat::assert_that(length(theta0) == 1)
+    assertthat::assert_that(length(theta1) == 1)
+    assertthat::assert_that(length(theta2) == 1)
+    assertthat::assert_that(length(theta3) == 1)
+    if (!is.null(sigma_sq)) {
+        assertthat::assert_that(length(sigma_sq) == 1)
+    }
+}
