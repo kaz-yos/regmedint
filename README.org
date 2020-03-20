@@ -78,8 +78,11 @@ Note the loglinear outcome model means log link with binomial error.
 * TODOs
 ** 2020-03-15
 *** TODO Complete implementation of calc_myreg_mreg_linear_yreg_logistic
-**** TODO Expand tests to include interactions (software check)
-**** TODO Test changes in estiamtes as m_cde and c_cond change (math check)
+**** DONE Expand tests to include interactions (software check)
+     CLOSED: [2020-03-20 Fri 06:34]
+**** DONE Test changes in estiamtes as m_cde and c_cond change (math check)
+     CLOSED: [2020-03-20 Fri 06:34]
+**** TODO Complete input UI -> output UI
 *** TODO Copy test for calc_myreg_mreg_linear_yreg_linear
 
 * Design
