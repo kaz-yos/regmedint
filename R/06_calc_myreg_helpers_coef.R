@@ -185,8 +185,8 @@ validate_myreg_vcovs <- function(beta0,
                            1, # beta1 for avar
                            ## This can be 0 = length(NULL) when cvar = NULL
                            length(beta2)) # beta2 vector cvar
-    assertthat::assert_that(dim(Sigma_beta)[1] == 1)
-    assertthat::assert_that(dim(Sigma_beta)[2] == 1)
+    assertthat::assert_that(dim(Sigma_beta)[1] == Sigma_beta_size)
+    assertthat::assert_that(dim(Sigma_beta)[2] == Sigma_beta_size)
 
     Sigma_theta_size <- sum(1, # theta0 (Intercept). Never used so not in args.
                             1, # theta1 for avar
@@ -194,8 +194,8 @@ validate_myreg_vcovs <- function(beta0,
                             1, # theta3 for avar:mvar
                             ## This can be 0 = length(NULL) when cvar = NULL
                             length(theta4)) # theta4 for cvar
-    assertthat::assert_that(dim(Sigma_theta)[1] == 1)
-    assertthat::assert_that(dim(Sigma_theta)[2] == 1)
+    assertthat::assert_that(dim(Sigma_theta)[1] == Sigma_theta_size)
+    assertthat::assert_that(dim(Sigma_theta)[2] == Sigma_theta_size)
 
     if (!is.null(Sigma_sigma_sq)) {
         assertthat::assert_that(dim(Sigma_sigma_sq)[1] == 1)
