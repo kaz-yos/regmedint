@@ -71,8 +71,8 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                               theta2 = theta_hat$theta2,
                                               theta3 = theta_hat$theta3,
                                               theta4 = theta_hat$theta4,
-                                              Sigma_beta = Sigma_beta,
-                                              Sigma_theta = Sigma_theta)
+                                              Sigma_beta = Sigma_beta_hat,
+                                              Sigma_theta = Sigma_theta_hat)
 
     ## Return a list of functions.
     list(
