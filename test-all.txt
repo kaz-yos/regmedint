@@ -1,31 +1,18 @@
 ✔ |  OK F W S | Context
-⠋ |   0   1   | ⠏ |   0       | 01_regmedint_class_ui✖ |   0 2     | 01_regmedint_class_ui
+⠋ |   0   1   | ⠏ |   0       | 01_regmedint_class_ui✖ |   0 1     | 01_regmedint_class_ui
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-01_regmedint_class_ui.R:28: error: regmedint mreg linear yreg linear: runs with zero cvar with no interaction
-length(theta0) not equal to 0
+object 'Sigma_beta' not found
 1: regmedint(data = pbc_cc, yvar = "alk.phos", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, a1 = 2, m_cde = 0, c_cond = NULL, 
        mreg = "linear", yreg = "linear", interaction = FALSE, casecontrol = FALSE, eventvar = NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-01_regmedint_class_ui.R:28
 2: new_regmedint(data = data, yvar = yvar, avar = avar, mvar = mvar, cvar = cvar, a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond, 
        mreg = mreg, yreg = yreg, interaction = interaction, casecontrol = casecontrol, eventvar = eventvar) at /inv/kyoshida/cantos_stats/regmedint/R/01_regmedint_class_ui.R:81
 3: calc_myreg(mreg = mreg, mreg_fit = mreg_fit, yreg = yreg, yreg_fit = yreg_fit, avar = avar, mvar = mvar, cvar = cvar, interaction = interaction) at /inv/kyoshida/cantos_stats/regmedint/R/02_regmedint_class_constructor.R:62
 4: calc_myreg_mreg_linear_yreg_linear(mreg, mreg_fit, yreg, yreg_fit, avar, mvar, cvar, interaction) at /inv/kyoshida/cantos_stats/regmedint/R/05_calc_myreg_mediation_analysis.R:46
-5: calc_myreg_mreg_linear_yreg_linear_est(beta0 = beta_hat$beta0, beta1 = beta_hat$beta1, beta2 = beta_hat$beta2, theta0 = theta_hat$theta0, 
-       theta1 = theta_hat$theta1, theta2 = theta_hat$theta2, theta3 = theta_hat$theta3, theta4 = theta_hat$theta4) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_linear.R:42
-6: assertthat::assert_that(length(beta0) == 1, length(beta1) == 1, length(beta2) == length(theta4), length(theta0) == 0, length(theta1) == 
-       1, length(theta2) == 1, length(theta3) == 1) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_linear.R:98
-
-test-01_regmedint_class_ui.R:47: error: regmedint mreg linear yreg logistic: runs with zero cvar with no interaction
-length(theta0) not equal to 0
-1: regmedint(data = pbc_cc, yvar = "spiders", avar = "trt", mvar = "bili", cvar = NULL, a0 = 1, a1 = 2, m_cde = 0, c_cond = NULL, 
-       mreg = "linear", yreg = "logistic", interaction = FALSE, casecontrol = FALSE, eventvar = NULL) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-01_regmedint_class_ui.R:47
-2: new_regmedint(data = data, yvar = yvar, avar = avar, mvar = mvar, cvar = cvar, a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond, 
-       mreg = mreg, yreg = yreg, interaction = interaction, casecontrol = casecontrol, eventvar = eventvar) at /inv/kyoshida/cantos_stats/regmedint/R/01_regmedint_class_ui.R:81
-3: calc_myreg(mreg = mreg, mreg_fit = mreg_fit, yreg = yreg, yreg_fit = yreg_fit, avar = avar, mvar = mvar, cvar = cvar, interaction = interaction) at /inv/kyoshida/cantos_stats/regmedint/R/02_regmedint_class_constructor.R:62
-4: calc_myreg_mreg_linear_yreg_logistic(mreg, mreg_fit, yreg, yreg_fit, avar, mvar, cvar, interaction) at /inv/kyoshida/cantos_stats/regmedint/R/05_calc_myreg_mediation_analysis.R:59
-5: calc_myreg_mreg_linear_yreg_logistic_est(beta0 = beta_hat$beta0, beta1 = beta_hat$beta1, beta2 = beta_hat$beta2, theta0 = theta_hat$theta0, 
-       theta1 = theta_hat$theta1, theta2 = theta_hat$theta2, theta3 = theta_hat$theta3, theta4 = theta_hat$theta4, sigma_sq = sigma_sq) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:44
-6: assertthat::assert_that(length(beta0) == 1, length(beta1) == 1, length(beta2) == length(theta4), length(theta0) == 0, length(theta1) == 
-       1, length(theta2) == 1, length(theta3) == 1, length(sigma_sq) == 1) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:104
+5: calc_myreg_mreg_linear_yreg_linear_se(beta0 = beta_hat$beta0, beta1 = beta_hat$beta1, beta2 = beta_hat$beta2, theta0 = theta_hat$theta0, 
+       theta1 = theta_hat$theta1, theta2 = theta_hat$theta2, theta3 = theta_hat$theta3, theta4 = theta_hat$theta4, sigma_sq = sigma_sq, 
+       Sigma_beta = Sigma_beta, Sigma_theta = Sigma_theta) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_linear.R:65
+6: Matrix::bdiag(Sigma_beta, Sigma_theta) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_linear.R:168
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 03_fit_mreg✔ |  24       | 03_fit_mreg
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  23       | 03_helpers_fit_mreg_fit_yreg
@@ -34,8 +21,8 @@ length(theta0) not equal to 0
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠋ |  41       | 06_calc_myreg_helpers_coef⠴ |  86       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠇ |  59       | 06_calc_myreg_helpers_vcov⠦ |  87       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠏ |  40       | 06_calc_myreg_helpers_coef⠙ |  82       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠹ |  33       | 06_calc_myreg_helpers_vcov⠙ |  62       | 06_calc_myreg_helpers_vcov⠧ |  88       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -44,167 +31,222 @@ Empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠹ |   0 1   2 | 07_calc_myreg_mreg_linear_yreg_linear✖ |   0 1   2 | 07_calc_myreg_mreg_linear_yreg_linear
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  73       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ | 157       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 176 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.2 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-07_calc_myreg_mreg_linear_yreg_logistic.R:18: error: (unknown)
-length(theta0) not equal to 0
-1: describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction", {
-       data(pbc)
-       pbc_cc <- pbc[complete.cases(pbc), ] %>% mutate(male = if_else(sex == "m", 1L, 0L), status = if_else(status == 0, 0L, 
-           1L))
-       describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction (NULL cvar)", {
-           mreg_fit <- fit_mreg(mreg = "linear", data = pbc_cc, avar = "trt", mvar = "bili", cvar = NULL)
-           yreg_fit <- fit_yreg(yreg = "logistic", data = pbc_cc, yvar = "spiders", avar = "trt", mvar = "bili", cvar = NULL, 
-               interaction = FALSE, eventvar = NULL)
-           myreg_funs <- calc_myreg_mreg_linear_yreg_logistic(mreg = "linear", mreg_fit = mreg_fit, yreg = "logistic", yreg_fit = yreg_fit, 
-               avar = "trt", mvar = "bili", cvar = NULL, interaction = FALSE)
-           it("returns a list of two functions", {
-               expect_equal(class(myreg_funs), "list")
-               expect_equal(length(myreg_funs), 2)
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:925: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
+`calc_myreg_mreg_linear_yreg_logistic_se(...)` did not throw an error.
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:951: failure: calc_myreg_mreg_linear_yreg_logistic_se (error handling): errors given inconsistent beta2 and theta4
+`calc_myreg_mreg_linear_yreg_logistic_se(...)` did not throw an error.
+
+test-07_calc_myreg_mreg_linear_yreg_logistic.R:922: error: (unknown)
+dim(Sigma)[1] not equal to size_expected
+1: describe("calc_myreg_mreg_linear_yreg_logistic_se function factory", {
+       describe("calc_myreg_mreg_linear_yreg_logistic_se (error handling)", {
+           it("errors given inconsistent beta2 and theta4", {
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 1:2, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = 7:8, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
            })
-           it("returns functions that take 4 arguments", {
-               expect_equal(names(formals(myreg_funs[[1]])), c("a0", "a1", "m_cde", "c_cond"))
-               expect_equal(names(formals(myreg_funs[[2]])), c("a0", "a1", "m_cde", "c_cond"))
+           it("errors given vector inputs in arguments other than beta2 and theta4", {
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1:2, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2:3, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4:5, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5:6, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6:7, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6:7, theta4 = 7, sigma_sq = 8:9, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
            })
-           it("returns functions that return named vector of effect estimates", {
-               expect_equal(names(myreg_funs[[1]](1, 2, 3, NULL)), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm"))
-               expect_equal(names(myreg_funs[[2]](1, 2, 3, NULL)), c("se_cde", "se_pnde", "se_tnie", "se_tnde", "se_pnie", "se_te", 
-                   "se_pm"))
-           })
-           it("returns functions that error on inconsistent c_cond", {
-               expect_error(myreg_funs[[1]](1, 2, 3, 4), regexp = "c_cond")
-               expect_error(myreg_funs[[2]](1, 2, 3, 4), regexp = "c_cond")
-               expect_error(myreg_funs[[1]](1, 2, 3, c(4, 5, 6)), regexp = "c_cond")
-               expect_error(myreg_funs[[2]](1, 2, 3, c(4, 5, 6)), regexp = "c_cond")
-           })
-       })
-       describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction (1 cvar)", {
-           mreg_fit <- fit_mreg(mreg = "linear", data = pbc_cc, avar = "trt", mvar = "bili", cvar = c("age"))
-           yreg_fit <- fit_yreg(yreg = "logistic", data = pbc_cc, yvar = "spiders", avar = "trt", mvar = "bili", cvar = c("age"), 
-               interaction = FALSE, eventvar = NULL)
-           myreg_funs <- calc_myreg_mreg_linear_yreg_logistic(mreg = "linear", mreg_fit = mreg_fit, yreg = "logistic", yreg_fit = yreg_fit, 
-               avar = "trt", mvar = "bili", cvar = c("age"), interaction = FALSE)
-           it("returns a list of two functions", {
-               expect_equal(class(myreg_funs), "list")
-               expect_equal(length(myreg_funs), 2)
-           })
-           it("returns functions that take 4 arguments", {
-               expect_equal(names(formals(myreg_funs[[1]])), c("a0", "a1", "m_cde", "c_cond"))
-               expect_equal(names(formals(myreg_funs[[2]])), c("a0", "a1", "m_cde", "c_cond"))
-           })
-           it("returns functions that return named vector of effect estimates", {
-               expect_equal(names(myreg_funs[[1]](1, 2, 3, 4)), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm"))
-               expect_equal(names(myreg_funs[[2]](1, 2, 3, 4)), c("se_cde", "se_pnde", "se_tnie", "se_tnde", "se_pnie", "se_te", 
-                   "se_pm"))
-           })
-           it("returns functions that error on inconsistent c_cond", {
-               expect_error(myreg_funs[[1]](1, 2, 3, NULL), regexp = "c_cond")
-               expect_error(myreg_funs[[2]](1, 2, 3, NULL), regexp = "c_cond")
-               expect_error(myreg_funs[[1]](1, 2, 3, c(4, 5, 6)), regexp = "c_cond")
-               expect_error(myreg_funs[[2]](1, 2, 3, c(4, 5, 6)), regexp = "c_cond")
-           })
-       })
-       describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction (3 cvar)", {
-           mreg_fit <- fit_mreg(mreg = "linear", data = pbc_cc, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"))
-           yreg_fit <- fit_yreg(yreg = "logistic", data = pbc_cc, yvar = "spiders", avar = "trt", mvar = "bili", cvar = c("age", 
-               "male", "stage"), interaction = FALSE, eventvar = NULL)
-           myreg_funs <- calc_myreg_mreg_linear_yreg_logistic(mreg = "linear", mreg_fit = mreg_fit, yreg = "logistic", yreg_fit = yreg_fit, 
-               avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), interaction = FALSE)
-           it("returns a list of two functions", {
-               expect_equal(class(myreg_funs), "list")
-               expect_equal(length(myreg_funs), 2)
-           })
-           it("returns functions that take 4 arguments", {
-               expect_equal(names(formals(myreg_funs[[1]])), c("a0", "a1", "m_cde", "c_cond"))
-               expect_equal(names(formals(myreg_funs[[2]])), c("a0", "a1", "m_cde", "c_cond"))
-           })
-           it("returns functions that return named vector of effect estimates", {
-               expect_equal(names(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm"))
-               expect_equal(names(myreg_funs[[2]](1, 2, 3, c(4, 5, 6))), c("se_cde", "se_pnde", "se_tnie", "se_tnde", "se_pnie", 
-                   "se_te", "se_pm"))
-           })
-           it("returns functions that error on inconsistent c_cond", {
-               expect_error(myreg_funs[[1]](1, 2, 3, NULL), regexp = "c_cond")
-               expect_error(myreg_funs[[2]](1, 2, 3, NULL), regexp = "c_cond")
-               expect_error(myreg_funs[[1]](1, 2, 3, 4), regexp = "c_cond")
-               expect_error(myreg_funs[[2]](1, 2, 3, 4), regexp = "c_cond")
+           it("errors given NULL inputs in arguments other than beta2 and theta4", {
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = NULL, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = NULL, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = NULL, 
+                   theta2 = 5, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = NULL, theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = NULL, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+               expect_error(calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, 
+                   theta2 = 5, theta3 = NULL, theta4 = 7, sigma_sq = 8:9, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, 
+                     nrow = 4, ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
            })
        })
-       describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness)", {
-           mreg_fit <- fit_mreg(mreg = "linear", data = pbc_cc, avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"))
-           yreg_fit <- fit_yreg(yreg = "logistic", data = pbc_cc, yvar = "spiders", avar = "trt", mvar = "bili", cvar = c("age", 
-               "male", "stage"), interaction = FALSE, eventvar = NULL)
-           myreg_funs <- calc_myreg_mreg_linear_yreg_logistic(mreg = "linear", mreg_fit = mreg_fit, yreg = "logistic", yreg_fit = yreg_fit, 
-               avar = "trt", mvar = "bili", cvar = c("age", "male", "stage"), interaction = FALSE)
-           it("returns functions where cde does not depend on m_cde", {
-               expect_equal(myreg_funs[[1]](1, 2, -3, c(4, 5, 6))["cde"], myreg_funs[[1]](1, 2, +3, c(4, 5, 6))["cde"])
-               expect_equal(myreg_funs[[2]](1, 2, -3, c(4, 5, 6))["cde"], myreg_funs[[2]](1, 2, +3, c(4, 5, 6))["cde"])
+       describe("calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar)", {
+           se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, theta2 = 5, 
+               theta3 = 6, theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
+                   ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1))
+           it("returns a function", {
+               expect_equal(class(se_fun), "function")
            })
-           it("returns functions where natural effects do no depend on c_cond", {
-               expect_equal(myreg_funs[[1]](1, 2, -3, -1 * c(4, 5, 6)), myreg_funs[[1]](1, 2, +3, +2 * c(4, 5, 6)))
-               expect_equal(myreg_funs[[2]](1, 2, -3, -1 * c(4, 5, 6)), myreg_funs[[2]](1, 2, +3, +2 * c(4, 5, 6)))
+           it("returns a function that takes a0, a1, m_cde, and c_cond", {
+               expect_equal(names(formals(se_fun)), c("a0", "a1", "m_cde", "c_cond"))
            })
-           it("returns functions where direct effects match up", {
-               expect_equal(unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["cde"]), unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]))
-               expect_equal(unname(myreg_funs[[2]](1, 2, 3, c(4, 5, 6))["cde"]), unname(myreg_funs[[2]](1, 2, 3, c(4, 5, 6))["tnde"]))
+           it("returns a function with parameters in the enslosing environment", {
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), NULL)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), NULL)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "sigma_sq"), 8)
            })
-           it("returns functions where indirect effects match up", {
-               expect_equal(unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["tnie"]), unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnie"]))
+           it("returns a function that errors given inconsistent c_cond", {
+               expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
+               expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1))
+               expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:2))
+               expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3))
+               expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:4))
            })
-           it("returns functions where total effect is nde+nie", {
-               expect_equal(unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["te"]), unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]) + 
-                   unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["tnie"]))
-               expect_equal(unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["te"]), unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["tnde"]) + 
-                   unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnie"]))
-               expect_equal(unname(myreg_funs[[2]](1, 2, 3, c(4, 5, 6))["te"]), unname(myreg_funs[[2]](1, 2, 3, c(4, 5, 6))["pnde"]) + 
-                   unname(myreg_funs[[2]](1, 2, 3, c(4, 5, 6))["tnie"]))
-               expect_equal(unname(myreg_funs[[2]](1, 2, 3, c(4, 5, 6))["te"]), unname(myreg_funs[[2]](1, 2, 3, c(4, 5, 6))["tnde"]) + 
-                   unname(myreg_funs[[2]](1, 2, 3, c(4, 5, 6))["pnie"]))
-           })
-           it("returns functions where pm is calculated from natural effects correctly", {
-               log_nde <- unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"])
-               log_nie <- unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["tnie"])
-               expect_equal(unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pm"]), ((exp(log_nde) * (exp(log_nie) - 1))/((exp(log_nde) * 
-                   exp(log_nie)) - 1)))
+           it("returns a function that gives a numeric vector without NA", {
+               res <- se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
+               expect_true(is.vector(res))
+               expect_true(is.numeric(res))
+               expect_true(all(!is.na(res)))
            })
        })
-   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:18
+       describe("calc_myreg_mreg_linear_yreg_logistic_se (one cvar)", {
+           se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3, theta0 = 0, theta1 = 4, theta2 = 5, 
+               theta3 = 6, theta4 = 7, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 5, 
+                   ncol = 5), Sigma_sigma = diag(3, nrow = 1, ncol = 1))
+           it("returns a function", {
+               expect_equal(class(se_fun), "function")
+           })
+           it("returns a function that takes a0, a1, m_cde, and c_cond", {
+               expect_equal(names(formals(se_fun)), c("a0", "a1", "m_cde", "c_cond"))
+           })
+           it("returns a function with parameters in the enslosing environment", {
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), 3)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), 7)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "sigma_sq"), 8)
+           })
+           it("returns a function that errors given inconsistent c_cond", {
+               expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
+               expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1))
+               expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:2))
+               expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3))
+               expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:4))
+           })
+           it("returns a function that gives a numeric vector without NA", {
+               res <- se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
+               expect_true(is.vector(res))
+               expect_true(is.numeric(res))
+               expect_true(all(!is.na(res)))
+           })
+       })
+       describe("calc_myreg_mreg_linear_yreg_logistic_se (three cvar)", {
+           se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = 3:5, theta0 = 0, theta1 = 4, theta2 = 5, 
+               theta3 = 6, theta4 = 7:9, sigma_sq = 8, Sigma_beta = diag(1, nrow = 5, ncol = 5), Sigma_theta = diag(2, nrow = 7, 
+                   ncol = 7), Sigma_sigma = diag(3, nrow = 1, ncol = 1))
+           it("returns a function", {
+               expect_equal(class(se_fun), "function")
+           })
+           it("returns a function that takes a0, a1, m_cde, and c_cond", {
+               expect_equal(names(formals(se_fun)), c("a0", "a1", "m_cde", "c_cond"))
+           })
+           it("returns a function with parameters in the enslosing environment", {
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), 3:5)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), 7:9)
+               expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "sigma_sq"), 8)
+           })
+           it("returns a function that errors given inconsistent c_cond", {
+               expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
+               expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1))
+               expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:2))
+               expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3))
+               expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:4))
+           })
+           it("returns a function that gives a numeric vector without NA", {
+               res <- se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
+               expect_true(is.vector(res))
+               expect_true(is.numeric(res))
+               expect_true(all(!is.na(res)))
+           })
+       })
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:922
 2: eval(substitute(code), describe_environment)
 3: eval(substitute(code), describe_environment)
-4: describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction (NULL cvar)", {
-       mreg_fit <- fit_mreg(mreg = "linear", data = pbc_cc, avar = "trt", mvar = "bili", cvar = NULL)
-       yreg_fit <- fit_yreg(yreg = "logistic", data = pbc_cc, yvar = "spiders", avar = "trt", mvar = "bili", cvar = NULL, interaction = FALSE, 
-           eventvar = NULL)
-       myreg_funs <- calc_myreg_mreg_linear_yreg_logistic(mreg = "linear", mreg_fit = mreg_fit, yreg = "logistic", yreg_fit = yreg_fit, 
-           avar = "trt", mvar = "bili", cvar = NULL, interaction = FALSE)
-       it("returns a list of two functions", {
-           expect_equal(class(myreg_funs), "list")
-           expect_equal(length(myreg_funs), 2)
+4: describe("calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar)", {
+       se_fun <- calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, theta2 = 5, 
+           theta3 = 6, theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, 
+               ncol = 4), Sigma_sigma = diag(3, nrow = 1, ncol = 1))
+       it("returns a function", {
+           expect_equal(class(se_fun), "function")
        })
-       it("returns functions that take 4 arguments", {
-           expect_equal(names(formals(myreg_funs[[1]])), c("a0", "a1", "m_cde", "c_cond"))
-           expect_equal(names(formals(myreg_funs[[2]])), c("a0", "a1", "m_cde", "c_cond"))
+       it("returns a function that takes a0, a1, m_cde, and c_cond", {
+           expect_equal(names(formals(se_fun)), c("a0", "a1", "m_cde", "c_cond"))
        })
-       it("returns functions that return named vector of effect estimates", {
-           expect_equal(names(myreg_funs[[1]](1, 2, 3, NULL)), c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm"))
-           expect_equal(names(myreg_funs[[2]](1, 2, 3, NULL)), c("se_cde", "se_pnde", "se_tnie", "se_tnde", "se_pnie", "se_te", 
-               "se_pm"))
+       it("returns a function with parameters in the enslosing environment", {
+           expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
+           expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
+           expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), NULL)
+           expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
+           expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
+           expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
+           expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
+           expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), NULL)
+           expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "sigma_sq"), 8)
        })
-       it("returns functions that error on inconsistent c_cond", {
-           expect_error(myreg_funs[[1]](1, 2, 3, 4), regexp = "c_cond")
-           expect_error(myreg_funs[[2]](1, 2, 3, 4), regexp = "c_cond")
-           expect_error(myreg_funs[[1]](1, 2, 3, c(4, 5, 6)), regexp = "c_cond")
-           expect_error(myreg_funs[[2]](1, 2, 3, c(4, 5, 6)), regexp = "c_cond")
+       it("returns a function that errors given inconsistent c_cond", {
+           expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
+           expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1))
+           expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:2))
+           expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3))
+           expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:4))
        })
-   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:27
+       it("returns a function that gives a numeric vector without NA", {
+           res <- se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
+           expect_true(is.vector(res))
+           expect_true(is.numeric(res))
+           expect_true(all(!is.na(res)))
+       })
+   }) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:1140
 5: eval(substitute(code), describe_environment)
 6: eval(substitute(code), describe_environment)
-7: calc_myreg_mreg_linear_yreg_logistic(mreg = "linear", mreg_fit = mreg_fit, yreg = "logistic", yreg_fit = yreg_fit, avar = "trt", 
-       mvar = "bili", cvar = NULL, interaction = FALSE) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:41
-8: calc_myreg_mreg_linear_yreg_logistic_est(beta0 = beta_hat$beta0, beta1 = beta_hat$beta1, beta2 = beta_hat$beta2, theta0 = theta_hat$theta0, 
-       theta1 = theta_hat$theta1, theta2 = theta_hat$theta2, theta3 = theta_hat$theta3, theta4 = theta_hat$theta4, sigma_sq = sigma_sq) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:44
-9: assertthat::assert_that(length(beta0) == 1, length(beta1) == 1, length(beta2) == length(theta4), length(theta0) == 0, length(theta1) == 
-       1, length(theta2) == 1, length(theta3) == 1, length(sigma_sq) == 1) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:104
+7: calc_myreg_mreg_linear_yreg_logistic_se(beta0 = 1, beta1 = 2, beta2 = NULL, theta0 = 0, theta1 = 4, theta2 = 5, theta3 = 6, 
+       theta4 = NULL, sigma_sq = 8, Sigma_beta = diag(1, nrow = 3, ncol = 3), Sigma_theta = diag(2, nrow = 4, ncol = 4), Sigma_sigma = diag(3, 
+           nrow = 1, ncol = 1)) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:1141
+8: assertthat::assert_that(dim(Sigma)[1] == size_expected) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:196
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_logistic_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -222,10 +264,10 @@ Empty test
 test-07_calc_myreg_mreg_logistic_yreg_logistic.R:26: skip: calc_myreg_mreg_logistic_yreg_logistic_se works given coef and vcov
 Empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠹ |   0 1   2 | 07_calc_myreg_mreg_logistic_yreg_logistic✖ |   0 1   2 | 07_calc_myreg_mreg_logistic_yreg_logistic
+⠹ |   0 1   2 | 07_calc_myreg_mreg_logistic_yreg_logistic✖ |   0 1   2 | 07_calc_myreg_mreg_logistic_yreg_logistic [0.1 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-08_regmedint_class_user_methods.R:12: error: (unknown)
-length(theta0) not equal to 0
+object 'Sigma_beta' not found
 1: describe("methods for regmedint", {
        data(pbc)
        pbc_cc <- pbc[complete.cases(pbc), ] %>% mutate(male = if_else(sex == "m", 1L, 0L), status = if_else(status == 0, 0L, 
@@ -367,16 +409,16 @@ length(theta0) not equal to 0
        mreg = mreg, yreg = yreg, interaction = interaction, casecontrol = casecontrol, eventvar = eventvar) at /inv/kyoshida/cantos_stats/regmedint/R/01_regmedint_class_ui.R:81
 9: calc_myreg(mreg = mreg, mreg_fit = mreg_fit, yreg = yreg, yreg_fit = yreg_fit, avar = avar, mvar = mvar, cvar = cvar, interaction = interaction) at /inv/kyoshida/cantos_stats/regmedint/R/02_regmedint_class_constructor.R:62
 10: calc_myreg_mreg_linear_yreg_linear(mreg, mreg_fit, yreg, yreg_fit, avar, mvar, cvar, interaction) at /inv/kyoshida/cantos_stats/regmedint/R/05_calc_myreg_mediation_analysis.R:46
-11: calc_myreg_mreg_linear_yreg_linear_est(beta0 = beta_hat$beta0, beta1 = beta_hat$beta1, beta2 = beta_hat$beta2, theta0 = theta_hat$theta0, 
-       theta1 = theta_hat$theta1, theta2 = theta_hat$theta2, theta3 = theta_hat$theta3, theta4 = theta_hat$theta4) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_linear.R:42
-12: assertthat::assert_that(length(beta0) == 1, length(beta1) == 1, length(beta2) == length(theta4), length(theta0) == 0, length(theta1) == 
-       1, length(theta2) == 1, length(theta3) == 1) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_linear.R:98
+11: calc_myreg_mreg_linear_yreg_linear_se(beta0 = beta_hat$beta0, beta1 = beta_hat$beta1, beta2 = beta_hat$beta2, theta0 = theta_hat$theta0, 
+       theta1 = theta_hat$theta1, theta2 = theta_hat$theta2, theta3 = theta_hat$theta3, theta4 = theta_hat$theta4, sigma_sq = sigma_sq, 
+       Sigma_beta = Sigma_beta, Sigma_theta = Sigma_theta) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_linear.R:65
+12: Matrix::bdiag(Sigma_beta, Sigma_theta) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_linear.R:168
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 3.7 s
+Duration: 3.1 s
 
-OK:       386
-Failed:   4
+OK:       562
+Failed:   5
 Warnings: 1
 Skipped:  6
