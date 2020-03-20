@@ -31,7 +31,7 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                 avar = avar,
                                 cvar = cvar)
     ## This mreg linear yreg logistic is the only case that uses sigma^2.
-    sigma_sq <- sigma_hat_sq(mreg_fit = mreg_fit)
+    sigma_sq_hat <- sigma_hat_sq(mreg_fit = mreg_fit)
     ## yreg coefficients
     theta_hat <- theta_hat_helper(yreg = yreg,
                                   yreg_fit = yreg_fit,
@@ -50,20 +50,20 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                  theta2 = theta_hat$theta2,
                                                  theta3 = theta_hat$theta3,
                                                  theta4 = theta_hat$theta4,
-                                                 sigma_sq = sigma_sq)
+                                                 sigma_sq = sigma_sq_hat)
 
     ## vcovs
-    Sigma_beta <- Sigma_beta_hat(mreg = mreg,
-                                 mreg_fit = mreg_fit,
-                                 avar = avar,
-                                 cvar = cvar)
-    Sigma_theta <- Sigma_theta_hat(yreg = yreg,
-                                   yreg_fit = yreg_fit,
-                                   avar = avar,
-                                   mvar = mvar,
-                                   cvar = cvar,
-                                   interaction = interaction)
-    Sigma_sigma_sq <- Sigma_sigma_sq_hat(mreg_fit = mreg_fit)
+    Sigma_beta_hat <- Sigma_beta_hat(mreg = mreg,
+                                     mreg_fit = mreg_fit,
+                                     avar = avar,
+                                     cvar = cvar)
+    Sigma_theta_hat <- Sigma_theta_hat(yreg = yreg,
+                                       yreg_fit = yreg_fit,
+                                       avar = avar,
+                                       mvar = mvar,
+                                       cvar = cvar,
+                                       interaction = interaction)
+    Sigma_sigma_sq_hat <- Sigma_sigma_sq_hat(mreg_fit = mreg_fit)
     ## Construct a function of (a0, a1, m_cde, c_cond) that returns
     ## a vector of estimates.
     myreg_se_fun <-
@@ -75,10 +75,10 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                 theta2 = theta_hat$theta2,
                                                 theta3 = theta_hat$theta3,
                                                 theta4 = theta_hat$theta4,
-                                                sigma_sq = sigma_sq,
-                                                Sigma_beta = Sigma_beta,
-                                                Sigma_theta = Sigma_theta,
-                                                Sigma_sigma_sq = Sigma_sigma_sq)
+                                                sigma_sq = sigma_sq_hat,
+                                                Sigma_beta = Sigma_beta_hat,
+                                                Sigma_theta = Sigma_theta_hat,
+                                                Sigma_sigma_sq = Sigma_sigma_sq_hat)
 
     ## Return a list of functions.
     list(
