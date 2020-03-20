@@ -22,20 +22,20 @@ length(theta0) not equal to 0
        mreg = mreg, yreg = yreg, interaction = interaction, casecontrol = casecontrol, eventvar = eventvar) at /inv/kyoshida/cantos_stats/regmedint/R/01_regmedint_class_ui.R:81
 3: calc_myreg(mreg = mreg, mreg_fit = mreg_fit, yreg = yreg, yreg_fit = yreg_fit, avar = avar, mvar = mvar, cvar = cvar, interaction = interaction) at /inv/kyoshida/cantos_stats/regmedint/R/02_regmedint_class_constructor.R:62
 4: calc_myreg_mreg_linear_yreg_logistic(mreg, mreg_fit, yreg, yreg_fit, avar, mvar, cvar, interaction) at /inv/kyoshida/cantos_stats/regmedint/R/05_calc_myreg_mediation_analysis.R:59
-5: calc_myreg_mreg_linear_yreg_logistic_est(beta0 = beta0, beta1 = beta1, beta2 = beta2, theta0 = theta0, theta1 = theta1, theta2 = theta2, 
-       theta3 = theta3, theta4 = theta4, sigma_sq = sigma_sq) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:62
+5: calc_myreg_mreg_linear_yreg_logistic_est(beta0 = beta_hat$beta0, beta1 = beta_hat$beta1, beta2 = beta_hat$beta2, theta0 = theta_hat$theta0, 
+       theta1 = theta_hat$theta1, theta2 = theta_hat$theta2, theta3 = theta_hat$theta3, theta4 = theta_hat$theta4, sigma_sq = sigma_sq) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:44
 6: assertthat::assert_that(length(beta0) == 1, length(beta1) == 1, length(beta2) == length(theta4), length(theta0) == 0, length(theta1) == 
-       1, length(theta2) == 1, length(theta3) == 1, length(sigma_sq) == 1) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:122
+       1, length(theta2) == 1, length(theta3) == 1, length(sigma_sq) == 1) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:104
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 03_fit_mreg✔ |  24       | 03_fit_mreg
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  23       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
 ⠏ |   0       | 04_fit_yreg_logistic✔ |  24       | 04_fit_yreg_logistic
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
-⠏ |   0       | 04_fit_yreg_survAFT_exp⠋ |   1       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp [0.4 s]
+⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠏ |  40       | 06_calc_myreg_helpers_coef⠙ |  82       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠇ |  59       | 06_calc_myreg_helpers_vcov⠼ |  85       | 06_calc_myreg_helpers_vcov⠧ | 108       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠋ |  41       | 06_calc_myreg_helpers_coef⠴ |  86       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠇ |  59       | 06_calc_myreg_helpers_vcov⠦ |  87       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -201,10 +201,10 @@ length(theta0) not equal to 0
 6: eval(substitute(code), describe_environment)
 7: calc_myreg_mreg_linear_yreg_logistic(mreg = "linear", mreg_fit = mreg_fit, yreg = "logistic", yreg_fit = yreg_fit, avar = "trt", 
        mvar = "bili", cvar = NULL, interaction = FALSE) at /inv/kyoshida/cantos_stats/regmedint/tests/testthat/test-07_calc_myreg_mreg_linear_yreg_logistic.R:41
-8: calc_myreg_mreg_linear_yreg_logistic_est(beta0 = beta0, beta1 = beta1, beta2 = beta2, theta0 = theta0, theta1 = theta1, theta2 = theta2, 
-       theta3 = theta3, theta4 = theta4, sigma_sq = sigma_sq) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:62
+8: calc_myreg_mreg_linear_yreg_logistic_est(beta0 = beta_hat$beta0, beta1 = beta_hat$beta1, beta2 = beta_hat$beta2, theta0 = theta_hat$theta0, 
+       theta1 = theta_hat$theta1, theta2 = theta_hat$theta2, theta3 = theta_hat$theta3, theta4 = theta_hat$theta4, sigma_sq = sigma_sq) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:44
 9: assertthat::assert_that(length(beta0) == 1, length(beta1) == 1, length(beta2) == length(theta4), length(theta0) == 0, length(theta1) == 
-       1, length(theta2) == 1, length(theta3) == 1, length(sigma_sq) == 1) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:122
+       1, length(theta2) == 1, length(theta3) == 1, length(sigma_sq) == 1) at /inv/kyoshida/cantos_stats/regmedint/R/07_calc_myreg_mreg_linear_yreg_logistic.R:104
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_logistic_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -374,7 +374,7 @@ length(theta0) not equal to 0
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 3.2 s
+Duration: 3.7 s
 
 OK:       386
 Failed:   4
