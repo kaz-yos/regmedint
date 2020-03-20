@@ -167,3 +167,38 @@ validate_myreg_coefs <- function(beta0,
         assertthat::assert_that(length(sigma_sq) == 1)
     }
 }
+
+validate_myreg_vcovs <- function(beta0,
+                                 beta1,
+                                 beta2,
+                                 theta0,
+                                 theta1,
+                                 theta2,
+                                 theta3,
+                                 theta4,
+                                 sigma_sq = NULL,
+                                 Sigma_beta,
+                                 Sigma_theta,
+                                 Sigma_sigma_sq = NULL) {
+
+    Sigma_beta_size <- sum(1, # beta0 (Intercept)
+                           1, # beta1 for avar
+                           ## This can be 0 = length(NULL) when cvar = NULL
+                           length(beta2)) # beta2 vector cvar
+    assertthat::assert_that(dim(Sigma_beta)[1] == 1)
+    assertthat::assert_that(dim(Sigma_beta)[2] == 1)
+
+    Sigma_theta_size <- sum(1, # theta0 (Intercept). Never used so not in args.
+                            1, # theta1 for avar
+                            1, # theta2 for mvar
+                            1, # theta3 for avar:mvar
+                            ## This can be 0 = length(NULL) when cvar = NULL
+                            length(theta4)) # theta4 for cvar
+    assertthat::assert_that(dim(Sigma_theta)[1] == 1)
+    assertthat::assert_that(dim(Sigma_theta)[2] == 1)
+
+    if (!is.null(Sigma_sigma_sq)) {
+        assertthat::assert_that(dim(Sigma_sigma_sq)[1] == 1)
+        assertthat::assert_that(dim(Sigma_sigma_sq)[2] == 1)
+    }
+}
