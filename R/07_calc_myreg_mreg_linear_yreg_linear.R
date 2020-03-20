@@ -25,9 +25,6 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                                cvar, # This can be NULL.
                                                interaction) {
 
-    ## FIXME: This needs to be allowed and handled nicely!
-    assertthat::assert_that(!is.null(cvar))
-
     ## mreg coefficients
     beta_hat <- beta_hat(mreg = mreg,
                          mreg_fit = mreg_fit,
