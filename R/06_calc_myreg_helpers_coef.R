@@ -29,6 +29,24 @@ beta_hat <- function(mreg, mreg_fit, avar, cvar) {
     coef(mreg_fit)[vars]
 }
 
+beta_hat_helper <- function(mreg, mreg_fit, avar, cvar) {
+    beta_hat <- beta_hat(mreg = mreg,
+                         mreg_fit = mreg_fit,
+                         avar = avar,
+                         cvar = cvar)
+    beta0 <- beta_hat["(Intercept)"]
+    beta1 <- beta_hat[avar]
+    if (is.null(cvar)) {
+        ## beta_hat does not contain the cvar part in this case.
+        beta2 <- NULL
+    } else {
+        beta2 <- beta_hat[cvar]
+    }
+    list(beta0 = beta0,
+         beta1 = beta1,
+         beta2 = beta2)
+}
+
 ##' Create a vector of coefficients from the outcome model (yreg)
 ##'
 ##' This function extracts \code{\link{coef}} from \code{yreg_fit} and pads with zeros appropriately to create a named vector consistently having the following elements:
@@ -99,6 +117,30 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
 
     ## Subset to ensure the ordering and error on non-existent element.
     coef_ready[vars]
+}
+
+theta_hat_helper <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
+    theta_hat <- theta_hat(yreg = yreg,
+                           yreg_fit = yreg_fit,
+                           avar = avar,
+                           mvar = mvar,
+                           cvar = cvar,
+                           interaction = interaction)
+    theta0 <- theta_hat["(Intercept)"]
+    theta1 <- theta_hat[avar]
+    theta2 <- theta_hat[mvar]
+    theta3 <- theta_hat[paste0(avar,":",mvar)]
+    if (is.null(cvar)) {
+        ## theta_hat does not contain the cvar part in this case.
+        theta4 <- NULL
+    } else {
+        theta4 <- theta_hat[cvar]
+    }
+    list(theta0 = theta0,
+         theta1 = theta1,
+         theta2 = theta2,
+         theta3 = theta3,
+         theta4 = theta4)
 }
 
 sigma_hat_sq <- function(mreg_fit) {
