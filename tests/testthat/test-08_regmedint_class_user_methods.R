@@ -17,7 +17,7 @@ describe("methods for regmedint", {
         mutate(male = if_else(sex == "m", 1L, 0L),
                ## Combine transplant and death for testing purpose
                status = if_else(status == 0, 0L, 1L))
-    ##
+
     describe("methods for regmedint mreg linear yreg linear", {
         fit_regmedint <- regmedint(data = pbc_cc,
                                    yvar = "alk.phos",
@@ -135,4 +135,5 @@ describe("methods for regmedint", {
             expect_output(confint(fit_regmedint), "pm")
         })
     })
+
 })
