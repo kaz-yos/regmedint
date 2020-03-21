@@ -273,7 +273,7 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
         ##
         d1 <- d1_numer / d1_denom_sqrt^2
         ##
-        d2 <- ((theta2 + (theta3 * a1) * (-1 * ((theta2 * beta1) + (theta3 * best1 * a1)) + d1_denom_sqrt)) - (theta3 * a0)) / d1_denom_sqrt^2
+        d2 <- ((theta2 + (theta3 * a1) * (-1 * ((theta2 * beta1) + (theta3 * beta1 * a1)) + d1_denom_sqrt)) - (theta3 * a0)) / d1_denom_sqrt^2
         ## Vector valued
         d3 <- c_cond * (d1_numer / d1_denom_sqrt^2)
         ##
