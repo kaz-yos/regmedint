@@ -100,7 +100,7 @@ calc_myreg <- function(mreg,
     }
 
     ## Return a list of the form:
-    ##  list(myreg_est_fun = myreg_est_fun,
-    ##       myreg_se_fun = myreg_est_fun)
+    ##  list(est_fun = est_fun,
+    ##       se_fun = est_fun)
     return(list_est_fun_se_fun)
 }

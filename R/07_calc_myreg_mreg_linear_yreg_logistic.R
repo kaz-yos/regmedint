@@ -41,7 +41,7 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                   interaction = interaction)
     ## Construct a function of (a1, a0, m_cde, c_cond) that returns
     ## a vector of point estimates for quantities of interest.
-    myreg_est_fun <-
+    est_fun <-
         calc_myreg_mreg_linear_yreg_logistic_est(beta0 = beta_hat$beta0,
                                                  beta1 = beta_hat$beta1,
                                                  beta2 = beta_hat$beta2,
@@ -66,7 +66,7 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
     Sigma_sigma_sq_hat <- Sigma_sigma_sq_hat(mreg_fit = mreg_fit)
     ## Construct a function of (a0, a1, m_cde, c_cond) that returns
     ## a vector of estimates.
-    myreg_se_fun <-
+    se_fun <-
         calc_myreg_mreg_linear_yreg_logistic_se(beta0 = beta_hat$beta0,
                                                 beta1 = beta_hat$beta1,
                                                 beta2 = beta_hat$beta2,
@@ -84,10 +84,10 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
     list(
         ## args (a0, a1, m_cde, c_cond)
         ## -> vector c(cde, pnde, tnie, tnde, pnie, te, pm)
-        myreg_est_fun = myreg_est_fun,
+        est_fun = est_fun,
         ## args (a0, a1, m_cde, c_cond)
         ## -> vector c(se_cde, se_pnde, se_tnie, se_tnde, se_pnie, se_te, se_pm)
-        myreg_se_fun = myreg_se_fun)
+        se_fun = se_fun)
 }
 
 
