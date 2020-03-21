@@ -47,13 +47,24 @@ describe("methods for regmedint", {
         })
         ##
         describe("summary.regmedint", {
-            expect_output(summary(fit_regmedint), "cde")
-            expect_output(summary(fit_regmedint), "pnde")
-            expect_output(summary(fit_regmedint), "tnie")
-            expect_output(summary(fit_regmedint), "tnde")
-            expect_output(summary(fit_regmedint), "pnie")
-            expect_output(summary(fit_regmedint), "te")
-            expect_output(summary(fit_regmedint), "pm")
+            it("prints results with expected elements", {
+                expect_output(summary(fit_regmedint), "cde")
+                expect_output(summary(fit_regmedint), "pnde")
+                expect_output(summary(fit_regmedint), "tnie")
+                expect_output(summary(fit_regmedint), "tnde")
+                expect_output(summary(fit_regmedint), "pnie")
+                expect_output(summary(fit_regmedint), "te")
+                expect_output(summary(fit_regmedint), "pm")
+            })
+            it("prints results with expected elements exponentiated", {
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "cde")
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "pnde")
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "tnie")
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "tnde")
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "pnie")
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "te")
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "pm")
+            })
         })
         ##
         describe("coef.regmedint", {
