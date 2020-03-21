@@ -1148,7 +1148,7 @@ describe("calc_myreg_mreg_linear_yreg_logistic_se function factory", {
                                                     theta3 = 6,
                                                     theta4 = NULL,
                                                     sigma_sq = 8,
-                                                    Sigma_beta = diag(1, nrow = 3, ncol = 3),
+                                                    Sigma_beta = diag(1, nrow = 2, ncol = 2),
                                                     Sigma_theta = diag(2, nrow = 4, ncol = 4),
                                                     Sigma_sigma = diag(3, nrow = 1, ncol = 1))
         it("returns a function", {
