@@ -7,8 +7,8 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠙ |  32       | 06_calc_myreg_helpers_coef⠦ |  67       | 06_calc_myreg_helpers_coef⠏ | 100       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠦ |  27       | 06_calc_myreg_helpers_vcov⠋ |  51       | 06_calc_myreg_helpers_vcov⠼ |  75       | 06_calc_myreg_helpers_vcov⠇ |  99       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.5 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠸ |  34       | 06_calc_myreg_helpers_coef⠏ |  70       | 06_calc_myreg_helpers_coef⠴ | 106       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠏ |  30       | 06_calc_myreg_helpers_vcov⠋ |  51       | 06_calc_myreg_helpers_vcov⠼ |  75       | 06_calc_myreg_helpers_vcov⠋ | 101       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -17,7 +17,7 @@ Reason: empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  31       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  71       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ | 103       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ | 163       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ | 193       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ |  29       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  61       | 07_calc_myreg_mreg_linear_yreg_logistic⠸ |  94       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ | 133       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ | 169       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ | 209 1     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.7 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_logistic.R:1184: failure: calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar): returns a function that gives a numeric vector without NA
 all(!is.na(res)) isn't true.
@@ -44,25 +44,99 @@ Reason: empty test
 test-07_calc_myreg_mreg_logistic_yreg_logistic.R:26: skip: calc_myreg_mreg_logistic_yreg_logistic_se works given coef and vcov
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 08_regmedint_class_user_methods✖ |   7 1     | 08_regmedint_class_user_methods
+⠏ |   0       | 08_regmedint_class_user_methods⠸ |  14       | 08_regmedint_class_user_methods⠋ |  27 14     | 08_regmedint_class_user_methods✖ |  28 28     | 08_regmedint_class_user_methods [0.2 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-08_regmedint_class_user_methods.R:12: error: (unknown)
-object 'best1' not found
-Backtrace:
-  1. testthat::describe(...) tests/testthat/test-08_regmedint_class_user_methods.R:12:0
-  2. [ base::eval(...) ] with 1 more call
-  4. testthat::describe(...) tests/testthat/test-08_regmedint_class_user_methods.R:21:4
-  5. [ base::eval(...) ] with 1 more call
-  7. testthat::describe(...) tests/testthat/test-08_regmedint_class_user_methods.R:49:8
-  8. [ base::eval(...) ] with 1 more call
- 20. regmedint::summary.regmedint(fit_regmedint)
- 21. x$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) R/08_regmedint_class_user_methods.R:140:4
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`coef(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
+
+test-08_regmedint_class_user_methods.R:12: failure: (unknown)
+`confint(fit_regmedint)` produced no output
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 4.3 s
+Duration: 4.4 s
 
-OK:       625
-Failed:   4
+OK:       646
+Failed:   31
 Warnings: 0
 Skipped:  6
+
+Don't worry, you'll get it.
