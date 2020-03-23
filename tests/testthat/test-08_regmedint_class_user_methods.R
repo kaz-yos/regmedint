@@ -33,6 +33,20 @@ describe("methods for regmedint", {
                                    interaction = FALSE,
                                    casecontrol = FALSE,
                                    eventvar = NULL)
+        fit_regmedint_int <- regmedint(data = pbc_cc,
+                                       yvar = "alk.phos",
+                                       avar = "trt",
+                                       mvar = "bili",
+                                       cvar = NULL,
+                                       a0 = 1,
+                                       a1 = 2,
+                                       m_cde = 0,
+                                       c_cond = NULL,
+                                       mreg = "linear",
+                                       yreg = "linear",
+                                       interaction = TRUE,
+                                       casecontrol = FALSE,
+                                       eventvar = NULL)
         ##
         describe("print.regmedint", {
             it("prints the mreg results", {
@@ -133,6 +147,20 @@ describe("methods for regmedint", {
                                    interaction = FALSE,
                                    casecontrol = FALSE,
                                    eventvar = NULL)
+        fit_regmedint_int <- regmedint(data = pbc_cc,
+                                       yvar = "spiders",
+                                       avar = "trt",
+                                       mvar = "bili",
+                                       cvar = NULL,
+                                       a0 = 1,
+                                       a1 = 2,
+                                       m_cde = 0,
+                                       c_cond = NULL,
+                                       mreg = "linear",
+                                       yreg = "logistic",
+                                       interaction = TRUE,
+                                       casecontrol = FALSE,
+                                       eventvar = NULL)
         ##
                 describe("print.regmedint", {
             it("prints the mreg results", {
