@@ -7,8 +7,8 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠴ |  36       | 06_calc_myreg_helpers_coef⠸ |  74       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠹ |  33       | 06_calc_myreg_helpers_vcov⠸ |  64       | 06_calc_myreg_helpers_vcov⠼ |  95       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠸ |  54       | 06_calc_myreg_helpers_coef⠴ |  96       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.2 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  41       | 06_calc_myreg_helpers_vcov⠦ |  77       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.3 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -17,7 +17,7 @@ Reason: empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ |  47       | 07_calc_myreg_mreg_linear_yreg_logistic⠙ |  82       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ | 118       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ | 171       | 07_calc_myreg_mreg_linear_yreg_logistic⠙ | 230 2     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.5 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  31       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ |  70       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ | 100       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ | 157       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ | 208 1     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_logistic.R:1184: failure: calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar): returns a function that gives a numeric vector without NA
 all(!is.na(res)) isn't true.
@@ -44,7 +44,7 @@ Reason: empty test
 test-07_calc_myreg_mreg_logistic_yreg_logistic.R:26: skip: calc_myreg_mreg_logistic_yreg_logistic_se works given coef and vcov
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 08_regmedint_class_user_methods⠧ |  24 4     | 08_regmedint_class_user_methods✖ |  48 8     | 08_regmedint_class_user_methods [0.2 s]
+⠏ |   0       | 08_regmedint_class_user_methods⠹ |  19 4     | 08_regmedint_class_user_methods⠼ |  47 8     | 08_regmedint_class_user_methods✖ |  49 9     | 08_regmedint_class_user_methods [0.2 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-08_regmedint_class_user_methods.R:39: failure: print.regmedint: prints the mreg results
 `print\(fit_regmedint\)` does not match "lm(formula = bili ~ trt, data = data)".
@@ -62,33 +62,36 @@ test-08_regmedint_class_user_methods.R:63: failure: summary.regmedint: prints th
 `print\(summary\(fit_regmedint\)\)` does not match "lm(formula = alk.phos ~ trt + bili, data = data)".
 Actual value: "### Mediator model\\n### Outcome model\\n### Mediation analysis \\n            est    SE\(est\)          Z         p\\ncde  -87\.700481 253\.935185 -0\.3453656 0\.3649098\\npnde -87\.700481 253\.935185 -0\.3453656 0\.3649098\\ntnie  48\.010649  41\.213102  1\.1649366 0\.8779777\\ntnde -87\.700481 253\.935185 -0\.3453656 0\.3649098\\npnie  48\.010649  41\.213102  1\.1649366 0\.8779777\\nte   -39\.689832 255\.611196 -0\.1552742 0\.4383026\\npm    -1\.209646   7\.914485 -0\.1528395 0\.4392624\\nattr\(,"args"\)\\nattr\(,"args"\)\$a0\\n\[1\] 1\\n\\nattr\(,"args"\)\$a1\\n\[1\] 2\\n\\nattr\(,"args"\)\$m_cde\\n\[1\] 0\\n\\nattr\(,"args"\)\$c_cond\\nNULL\\n\\n            est    SE\(est\)          Z         p\\ncde  -87\.700481 253\.935185 -0\.3453656 0\.3649098\\npnde -87\.700481 253\.935185 -0\.3453656 0\.3649098\\ntnie  48\.010649  41\.213102  1\.1649366 0\.8779777\\ntnde -87\.700481 253\.935185 -0\.3453656 0\.3649098\\npnie  48\.010649  41\.213102  1\.1649366 0\.8779777\\nte   -39\.689832 255\.611196 -0\.1552742 0\.4383026\\npm    -1\.209646   7\.914485 -0\.1528395 0\.4392624\\nattr\(,"args"\)\\nattr\(,"args"\)\$a0\\n\[1\] 1\\n\\nattr\(,"args"\)\$a1\\n\[1\] 2\\n\\nattr\(,"args"\)\$m_cde\\n\[1\] 0\\n\\nattr\(,"args"\)\$c_cond\\nNULL\\n"
 
-test-08_regmedint_class_user_methods.R:121: failure: print.regmedint: prints the mreg results
+test-08_regmedint_class_user_methods.R:125: failure: print.regmedint: prints the mreg results
 `print\(fit_regmedint\)` does not match "lm(formula = bili ~ trt, data = data)".
 Actual value: "### Mediator model\\n\\nCall:\\nlm\(formula = bili ~ trt, data = data\)\\n\\nCoefficients:\\n\(Intercept\)          trt  \\n     2\.2132       0\.7434  \\n\\n### Outcome model\\n\\nCall:  glm\(formula = spiders ~ trt \+ bili, family = binomial\(link = "logit"\), \\n    data = data\)\\n\\nCoefficients:\\n\(Intercept\)          trt         bili  \\n    -1\.1071      -0\.1440       0\.1189  \\n\\nDegrees of Freedom: 275 Total \(i\.e\. Null\);  273 Residual\\nNull Deviance:\\t    332\.3 \\nResidual Deviance: 314\.7 \\tAIC: 320\.7\\n### Mediation analysis \\n        cde        pnde        tnie        tnde        pnie          te \\n-0\.14403023 -0\.14403023  0\.08836967 -0\.14403023  0\.08836967 -0\.05566056 \\n         pm \\n-1\.47762819 "
 
-test-08_regmedint_class_user_methods.R:125: error: print.regmedint: prints the yreg results
+test-08_regmedint_class_user_methods.R:129: error: print.regmedint: prints the yreg results
 invalid regular expression 'glm(formula = spiders ~ trt + bili, family = binomial(link = "logit"), ', reason 'Missing ')''
 Backtrace:
- 1. testthat::expect_output(print(fit_regmedint), deparse(fit_regmedint$yreg$call)[1]) tests/testthat/test-08_regmedint_class_user_methods.R:125:16
+ 1. testthat::expect_output(print(fit_regmedint), deparse(fit_regmedint$yreg$call)[1]) tests/testthat/test-08_regmedint_class_user_methods.R:129:16
  2. testthat::expect_match(...)
  3. base::grepl(regexp, act$val, perl = perl, fixed = fixed, ...)
 
-test-08_regmedint_class_user_methods.R:141: failure: summary.regmedint: prints the mreg results
+test-08_regmedint_class_user_methods.R:145: failure: summary.regmedint: prints the mreg results
 `print\(summary\(fit_regmedint\)\)` does not match "lm(formula = bili ~ trt, data = data)".
 Actual value: "### Mediator model\\n### Outcome model\\n### Mediation analysis \\n             est    SE\(est\)          Z         p\\ncde  -0\.14403023 0\.27604401 -0\.5217655 0\.3009168\\npnde -0\.14403023 0\.27604401 -0\.5217655 0\.3009168\\ntnie  0\.08836967 0\.06955445  1\.2705108 0\.8980486\\ntnde -0\.14403023 0\.27604401 -0\.5217655 0\.3009168\\npnie  0\.08836967 0\.06955445  1\.2705108 0\.8980486\\nte   -0\.05566056 0\.28289358 -0\.1967544 0\.4220099\\npm   -1\.47762819         NA         NA        NA\\nattr\(,"args"\)\\nattr\(,"args"\)\$a0\\n\[1\] 1\\n\\nattr\(,"args"\)\$a1\\n\[1\] 2\\n\\nattr\(,"args"\)\$m_cde\\n\[1\] 0\\n\\nattr\(,"args"\)\$c_cond\\nNULL\\n\\n             est    SE\(est\)          Z         p\\ncde  -0\.14403023 0\.27604401 -0\.5217655 0\.3009168\\npnde -0\.14403023 0\.27604401 -0\.5217655 0\.3009168\\ntnie  0\.08836967 0\.06955445  1\.2705108 0\.8980486\\ntnde -0\.14403023 0\.27604401 -0\.5217655 0\.3009168\\npnie  0\.08836967 0\.06955445  1\.2705108 0\.8980486\\nte   -0\.05566056 0\.28289358 -0\.1967544 0\.4220099\\npm   -1\.47762819         NA         NA        NA\\nattr\(,"args"\)\\nattr\(,"args"\)\$a0\\n\[1\] 1\\n\\nattr\(,"args"\)\$a1\\n\[1\] 2\\n\\nattr\(,"args"\)\$m_cde\\n\[1\] 0\\n\\nattr\(,"args"\)\$c_cond\\nNULL\\n"
 
-test-08_regmedint_class_user_methods.R:145: error: summary.regmedint: prints the yreg results
+test-08_regmedint_class_user_methods.R:149: error: summary.regmedint: prints the yreg results
 invalid regular expression 'glm(formula = spiders ~ trt + bili, family = binomial(link = "logit"), ', reason 'Missing ')''
 Backtrace:
- 1. testthat::expect_output(print(summary(fit_regmedint)), deparse(fit_regmedint$yreg$call)[1]) tests/testthat/test-08_regmedint_class_user_methods.R:145:16
+ 1. testthat::expect_output(print(summary(fit_regmedint)), deparse(fit_regmedint$yreg$call)[1]) tests/testthat/test-08_regmedint_class_user_methods.R:149:16
  2. testthat::expect_match(...)
  3. base::grepl(regexp, act$val, perl = perl, fixed = fixed, ...)
+
+test-08_regmedint_class_user_methods.R:187: failure: confint.regmedint: creates the lower column less than the upper column
+all(...) isn't true.
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
 Duration: 3.8 s
 
-OK:       666
-Failed:   11
+OK:       667
+Failed:   12
 Warnings: 0
 Skipped:  6
