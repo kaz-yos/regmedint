@@ -97,6 +97,10 @@ describe("methods for regmedint", {
                 expect_equal(rownames(confint(fit_regmedint)),
                              c("cde","pnde","tnie","tnde","pnie","te","pm"))
             })
+            it("creates the lower column less than the upper column", {
+                expect_true(all(confint(fit_regmedint)[,"lower"] <
+                                confint(fit_regmedint)[,"upper"]))
+            })
         })
     })
     ##
@@ -179,6 +183,11 @@ describe("methods for regmedint", {
                 expect_equal(rownames(confint(fit_regmedint)),
                              c("cde","pnde","tnie","tnde","pnie","te","pm"))
             })
+            it("creates the lower column less than the upper column", {
+                expect_true(all(confint(fit_regmedint)[,"lower"] <
+                                confint(fit_regmedint)[,"upper"]))
+            })
+
         })
     })
 
