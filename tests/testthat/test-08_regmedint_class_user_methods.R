@@ -81,6 +81,18 @@ describe("methods for regmedint", {
                 expect_output(summary(fit_regmedint, exponentiate = TRUE), "te")
                 expect_output(summary(fit_regmedint, exponentiate = TRUE), "pm")
             })
+            it("prints evaluation information", {
+                expect_output(summary(fit_regmedint),
+                              "^Evaluated at:")
+                expect_output(summary(fit_regmedint),
+                              "^a1 (intervened value of avar) = ")
+                expect_output(summary(fit_regmedint),
+                              "^a0 (reference value of avar)  = ")
+                expect_output(summary(fit_regmedint),
+                              "^m_cde (intervend value of mvar for cde) = ")
+                expect_output(summary(fit_regmedint),
+                              "^c_cond (covariate vector value) =\n$")
+            })
         })
         ##
         describe("coef.regmedint", {
@@ -166,6 +178,18 @@ describe("methods for regmedint", {
                 expect_output(summary(fit_regmedint, exponentiate = TRUE), "pnie")
                 expect_output(summary(fit_regmedint, exponentiate = TRUE), "te")
                 expect_output(summary(fit_regmedint, exponentiate = TRUE), "pm")
+            })
+            it("prints evaluation information", {
+                expect_output(summary(fit_regmedint),
+                              "^Evaluated at:")
+                expect_output(summary(fit_regmedint),
+                              "^a1 (intervened value of avar) = ")
+                expect_output(summary(fit_regmedint),
+                              "^a0 (reference value of avar)  = ")
+                expect_output(summary(fit_regmedint),
+                              "^m_cde (intervend value of mvar for cde) = ")
+                expect_output(summary(fit_regmedint),
+                              "^c_cond (covariate vector value) =\n$")
             })
         })
         ##
