@@ -159,12 +159,16 @@ summary.regmedint <- function(x,
                          p = res_p)
     }
 
+    ## Print before assignment of attributes
+    print(res_mat, quote = FALSE)
+
     attr(res_mat, which = "args") <- list(a0 = a0,
                                           a1 = a1,
                                           m_cde = m_cde,
                                           c_cond = c_cond)
 
-    print(res_mat, quote = FALSE)
+    ## FIXME: Need to print attributes nicely with explanation.
+
     invisible(res_mat)
 }
 
