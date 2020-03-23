@@ -35,7 +35,15 @@ describe("methods for regmedint", {
                                    eventvar = NULL)
         ##
         describe("print.regmedint", {
-            it("prints results with expected elements", {
+            it("prints the mreg results", {
+                expect_output(print(fit_regmedint),
+                              deparse(fit_regmedint$mreg$call)[1])
+            })
+            it("prints the yreg results", {
+                expect_output(print(fit_regmedint),
+                              deparse(fit_regmedint$yreg$call)[1])
+            })
+            it("prints mediation analysis results with expected elements", {
                 expect_output(print(fit_regmedint), "cde")
                 expect_output(print(fit_regmedint), "pnde")
                 expect_output(print(fit_regmedint), "tnie")
@@ -47,7 +55,15 @@ describe("methods for regmedint", {
         })
         ##
         describe("summary.regmedint", {
-            it("prints results with expected elements", {
+            it("prints the mreg results", {
+                expect_output(print(summary(fit_regmedint)),
+                              deparse(fit_regmedint$mreg$call)[1])
+            })
+            it("prints the yreg results", {
+                expect_output(print(summary(fit_regmedint)),
+                              deparse(fit_regmedint$yreg$call)[1])
+            })
+            it("prints mediation analysis results with expected elements", {
                 expect_output(summary(fit_regmedint), "cde")
                 expect_output(summary(fit_regmedint), "pnde")
                 expect_output(summary(fit_regmedint), "tnie")
@@ -56,7 +72,7 @@ describe("methods for regmedint", {
                 expect_output(summary(fit_regmedint), "te")
                 expect_output(summary(fit_regmedint), "pm")
             })
-            it("prints results with expected elements exponentiated", {
+            it("prints mediation analysis results with expected elements exponentiated", {
                 expect_output(summary(fit_regmedint, exponentiate = TRUE), "cde")
                 expect_output(summary(fit_regmedint, exponentiate = TRUE), "pnde")
                 expect_output(summary(fit_regmedint, exponentiate = TRUE), "tnie")
