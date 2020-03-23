@@ -111,12 +111,12 @@ summary.regmedint <- function(x,
     assertthat::assert_that(is.list(args_yreg_fit))
 
     cat("### Mediator model\n")
-    do.call(summary, c(list(x$mreg),
-                       args_mreg_fit))
+    print(do.call(summary, c(list(x$mreg),
+                             args_mreg_fit)))
 
     cat("### Outcome model\n")
-    do.call(summary, c(list(x$yreg),
-                       args_yreg_fit))
+    print(do.call(summary, c(list(x$yreg),
+                             args_yreg_fit)))
 
     cat("### Mediation analysis \n")
     if (is.null(a0)) {
