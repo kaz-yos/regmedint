@@ -68,23 +68,19 @@ describe("methods for regmedint", {
         })
         ##
         describe("coef.regmedint", {
-            expect_output(coef(fit_regmedint), "cde")
-            expect_output(coef(fit_regmedint), "pnde")
-            expect_output(coef(fit_regmedint), "tnie")
-            expect_output(coef(fit_regmedint), "tnde")
-            expect_output(coef(fit_regmedint), "pnie")
-            expect_output(coef(fit_regmedint), "te")
-            expect_output(coef(fit_regmedint), "pm")
+            it("creates a vector of estimates", {
+                expect_equal(names(coef(fit_regmedint)),
+                             c("cde","pnde","tnie","tnde","pnie","te","pm"))
+            })
         })
         ##
         describe("confint.regmedint", {
-            expect_output(confint(fit_regmedint), "cde")
-            expect_output(confint(fit_regmedint), "pnde")
-            expect_output(confint(fit_regmedint), "tnie")
-            expect_output(confint(fit_regmedint), "tnde")
-            expect_output(confint(fit_regmedint), "pnie")
-            expect_output(confint(fit_regmedint), "te")
-            expect_output(confint(fit_regmedint), "pm")
+            it("creates a matrix of estimates", {
+                expect_equal(colnames(confint(fit_regmedint)),
+                             c("lower","upper"))
+                expect_equal(rownames(confint(fit_regmedint)),
+                             c("cde","pnde","tnie","tnde","pnie","te","pm"))
+            })
         })
     })
     ##
