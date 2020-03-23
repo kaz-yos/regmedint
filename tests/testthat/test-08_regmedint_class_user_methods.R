@@ -108,6 +108,10 @@ describe("methods for regmedint", {
                               "^m_cde (intervend value of mvar for cde) = ")
                 expect_output(summary(fit_regmedint),
                               "^c_cond (covariate vector value) =\n$")
+                expect_output(summary(fit_regmedint),
+                              "^Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.")
+                expect_output(summary(fit_regmedint_int),
+                              "^Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.")
             })
         })
         ##
@@ -222,6 +226,10 @@ describe("methods for regmedint", {
                               "^m_cde (intervend value of mvar for cde) = ")
                 expect_output(summary(fit_regmedint),
                               "^c_cond (covariate vector value) =\n$")
+                expect_output(summary(fit_regmedint),
+                              "^Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.")
+                expect_output(summary(fit_regmedint_int),
+                              "^Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.")
             })
         })
         ##
