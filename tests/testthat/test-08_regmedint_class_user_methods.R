@@ -55,12 +55,14 @@ describe("methods for regmedint", {
         })
         ##
         describe("summary.regmedint", {
+            ## Explicit printing within the function.
+            ## No need to print the return value.
             it("prints the mreg results", {
-                expect_output(print(summary(fit_regmedint)),
+                expect_output(summary(fit_regmedint),
                               deparse(fit_regmedint$mreg$call)[1])
             })
             it("prints the yreg results", {
-                expect_output(print(summary(fit_regmedint)),
+                expect_output(summary(fit_regmedint),
                               deparse(fit_regmedint$yreg$call)[1])
             })
             it("prints mediation analysis results with expected elements", {
@@ -153,12 +155,14 @@ describe("methods for regmedint", {
         })
         ##
         describe("summary.regmedint", {
+            ## Explicit printing within the function.
+            ## No need to print the return value.
             it("prints the mreg results", {
-                expect_output(print(summary(fit_regmedint)),
+                expect_output(summary(fit_regmedint),
                               deparse(fit_regmedint$mreg$call)[1])
             })
             it("prints the yreg results", {
-                expect_output(print(summary(fit_regmedint)),
+                expect_output(summary(fit_regmedint),
                               deparse(fit_regmedint$yreg$call)[1])
             })
             it("prints mediation analysis results with expected elements", {
