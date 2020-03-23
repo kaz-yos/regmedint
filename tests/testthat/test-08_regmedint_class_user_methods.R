@@ -49,7 +49,7 @@ describe("methods for regmedint", {
                                        casecontrol = FALSE,
                                        eventvar = NULL)
         ##
-                describe("print.regmedint", {
+        describe("print.regmedint", {
             it("prints the mreg results", {
                 expect_output(print(fit_regmedint),
                               deparse(fit_regmedint$mreg$call)[1])
