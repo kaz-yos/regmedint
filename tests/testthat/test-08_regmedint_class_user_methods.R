@@ -116,8 +116,16 @@ describe("methods for regmedint", {
                                    casecontrol = FALSE,
                                    eventvar = NULL)
         ##
-        describe("print.regmedint", {
-            it("prints results with expected elements", {
+                describe("print.regmedint", {
+            it("prints the mreg results", {
+                expect_output(print(fit_regmedint),
+                              deparse(fit_regmedint$mreg$call)[1])
+            })
+            it("prints the yreg results", {
+                expect_output(print(fit_regmedint),
+                              deparse(fit_regmedint$yreg$call)[1])
+            })
+            it("prints mediation analysis results with expected elements", {
                 expect_output(print(fit_regmedint), "cde")
                 expect_output(print(fit_regmedint), "pnde")
                 expect_output(print(fit_regmedint), "tnie")
@@ -129,33 +137,48 @@ describe("methods for regmedint", {
         })
         ##
         describe("summary.regmedint", {
-            expect_output(summary(fit_regmedint), "cde")
-            expect_output(summary(fit_regmedint), "pnde")
-            expect_output(summary(fit_regmedint), "tnie")
-            expect_output(summary(fit_regmedint), "tnde")
-            expect_output(summary(fit_regmedint), "pnie")
-            expect_output(summary(fit_regmedint), "te")
-            expect_output(summary(fit_regmedint), "pm")
+            it("prints the mreg results", {
+                expect_output(print(summary(fit_regmedint)),
+                              deparse(fit_regmedint$mreg$call)[1])
+            })
+            it("prints the yreg results", {
+                expect_output(print(summary(fit_regmedint)),
+                              deparse(fit_regmedint$yreg$call)[1])
+            })
+            it("prints mediation analysis results with expected elements", {
+                expect_output(summary(fit_regmedint), "cde")
+                expect_output(summary(fit_regmedint), "pnde")
+                expect_output(summary(fit_regmedint), "tnie")
+                expect_output(summary(fit_regmedint), "tnde")
+                expect_output(summary(fit_regmedint), "pnie")
+                expect_output(summary(fit_regmedint), "te")
+                expect_output(summary(fit_regmedint), "pm")
+            })
+            it("prints mediation analysis results with expected elements exponentiated", {
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "cde")
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "pnde")
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "tnie")
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "tnde")
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "pnie")
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "te")
+                expect_output(summary(fit_regmedint, exponentiate = TRUE), "pm")
+            })
         })
         ##
         describe("coef.regmedint", {
-            expect_output(coef(fit_regmedint), "cde")
-            expect_output(coef(fit_regmedint), "pnde")
-            expect_output(coef(fit_regmedint), "tnie")
-            expect_output(coef(fit_regmedint), "tnde")
-            expect_output(coef(fit_regmedint), "pnie")
-            expect_output(coef(fit_regmedint), "te")
-            expect_output(coef(fit_regmedint), "pm")
+            it("creates a vector of estimates", {
+                expect_equal(names(coef(fit_regmedint)),
+                             c("cde","pnde","tnie","tnde","pnie","te","pm"))
+            })
         })
         ##
         describe("confint.regmedint", {
-            expect_output(confint(fit_regmedint), "cde")
-            expect_output(confint(fit_regmedint), "pnde")
-            expect_output(confint(fit_regmedint), "tnie")
-            expect_output(confint(fit_regmedint), "tnde")
-            expect_output(confint(fit_regmedint), "pnie")
-            expect_output(confint(fit_regmedint), "te")
-            expect_output(confint(fit_regmedint), "pm")
+            it("creates a matrix of estimates", {
+                expect_equal(colnames(confint(fit_regmedint)),
+                             c("lower","upper"))
+                expect_equal(rownames(confint(fit_regmedint)),
+                             c("cde","pnde","tnie","tnde","pnie","te","pm"))
+            })
         })
     })
 
