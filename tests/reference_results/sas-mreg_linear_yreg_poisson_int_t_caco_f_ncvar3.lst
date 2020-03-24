@@ -1,4 +1,4 @@
-                                                           The SAS System                          05:14 Tuesday, March 24, 2020   1
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -56,7 +56,7 @@
            Prm5      -0.009730      0.0005972      -0.000054      0.0000202      0.0002067      -0.002013      -0.000648
            Prm6        0.07457       0.003791       0.003696      -0.001194      -0.002013        0.17282      -0.001382
            Prm7       -0.12268       -0.01141      -0.003425       0.001698      -0.000648      -0.001382        0.05043
-                                                           The SAS System                          05:14 Tuesday, March 24, 2020   2
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -75,7 +75,7 @@
                     Scale         0      1.0000      0.0000      1.0000      1.0000                            
 
 NOTE: The scale parameter was held fixed.
-                                                           The SAS System                          05:14 Tuesday, March 24, 2020   3
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -110,7 +110,7 @@ NOTE: The scale parameter was held fixed.
                                 age           1        0.02419        0.02706       0.89      0.3720
                                 male          1       -0.61583        0.84467      -0.73      0.4666
                                 stage         1        1.26164        0.32279       3.91      0.0001
-                                                           The SAS System                          05:14 Tuesday, March 24, 2020   4
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   4
 
                             Obs     _RMSE_    Intercept       trt         age         male        stage
 
@@ -120,7 +120,7 @@ NOTE: The scale parameter was held fixed.
                              4     4.47232     -0.03377     0.00195     0.000732    -0.00527    -0.00164
                              5     4.47232      0.14180     0.01920    -0.005274     0.71347     0.00132
                              6     4.47232     -0.20740    -0.01857    -0.001637     0.00132     0.10419
-                                                           The SAS System                          05:14 Tuesday, March 24, 2020   5
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper

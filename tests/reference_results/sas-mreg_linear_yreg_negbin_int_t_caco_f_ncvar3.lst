@@ -1,4 +1,4 @@
-                                                           The SAS System                          05:14 Tuesday, March 24, 2020   1
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -57,7 +57,7 @@ Prm5            -0.009855      0.0006197      -0.000048      0.0000181      0.00
 Prm6              0.06367       0.005313       0.004345      -0.001270      -0.001985        0.18107      -0.000555         0.03050
 Prm7             -0.12429       -0.01134      -0.003392       0.001711      -0.000648      -0.000555        0.05075        0.003214
 Dispersion       -0.04600       0.007152       0.002821      -0.000391      0.0001354        0.03050       0.003214         0.12903
-                                                           The SAS System                          05:14 Tuesday, March 24, 2020   2
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -76,7 +76,7 @@ Dispersion       -0.04600       0.007152       0.002821      -0.000391      0.00
                     Dispersion     1      0.0149      0.3592      0.0000    5.686E18                            
 
 NOTE: The negative binomial dispersion parameter was estimated by maximum likelihood.
-                                                           The SAS System                          05:14 Tuesday, March 24, 2020   3
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -111,7 +111,7 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
                                 age           1        0.02419        0.02706       0.89      0.3720
                                 male          1       -0.61583        0.84467      -0.73      0.4666
                                 stage         1        1.26164        0.32279       3.91      0.0001
-                                                           The SAS System                          05:14 Tuesday, March 24, 2020   4
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   4
 
                             Obs     _RMSE_    Intercept       trt         age         male        stage
 
@@ -121,7 +121,7 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
                              4     4.47232     -0.03377     0.00195     0.000732    -0.00527    -0.00164
                              5     4.47232      0.14180     0.01920    -0.005274     0.71347     0.00132
                              6     4.47232     -0.20740    -0.01857    -0.001637     0.00132     0.10419
-                                                           The SAS System                          05:14 Tuesday, March 24, 2020   5
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper

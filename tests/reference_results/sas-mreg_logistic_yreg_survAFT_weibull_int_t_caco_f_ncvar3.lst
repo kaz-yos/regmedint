@@ -1,4 +1,4 @@
-                                                           The SAS System                          05:15 Tuesday, March 24, 2020   1
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   1
 
                                                        The LIFEREG Procedure
 
@@ -54,7 +54,7 @@
                             Algorithm converged.                                                       
 
 
-                                                           The SAS System                          05:15 Tuesday, March 24, 2020   2
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   2
 
                                                        The LIFEREG Procedure
 
@@ -99,7 +99,7 @@
      male           0.009056  -0.000041242     -0.000476     -0.002645     -0.000349      0.029597      0.002030     -0.000107
      stage         -0.020957     -0.000715      0.000877     -0.001541     -0.000135      0.002030      0.008814     -0.000986
      Scale          0.008373   0.000076945     -0.002513     -0.000329  -0.000044260     -0.000107     -0.000986      0.002607
-                                                           The SAS System                          05:15 Tuesday, March 24, 2020   3
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -152,7 +152,7 @@
                                       Wald                    27.5947        4         <.0001
 
 
-                                                           The SAS System                          05:15 Tuesday, March 24, 2020   4
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -185,7 +185,7 @@
                                          Percent Discordant     29.6    Gamma        0.407
                                          Percent Tied            0.0    Tau-a        0.204
                                          Pairs                 19035    c            0.704
-                                                           The SAS System                          05:15 Tuesday, March 24, 2020   5
+                                                           The SAS System                          05:31 Tuesday, March 24, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
