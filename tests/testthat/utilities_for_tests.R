@@ -24,7 +24,7 @@ read_parsed_sas_mediation_output <- function(file) {
                    header = FALSE,
                    sep = " ",
                    stringsAsFactors = FALSE,
-                   col.names = c("effect","estimate","p","lower","upper")) %>%
+                   col.names = c("effect","estimate","se","p","lower","upper")) %>%
         as_tibble()
     ## Make sure the connection is closed
     close(conn)
