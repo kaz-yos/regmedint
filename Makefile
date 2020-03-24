@@ -16,7 +16,7 @@ PKG_VERSION=$(shell grep -i ^version: DESCRIPTION | cut -d : -d \  -f 2)
 ## Define files to check for updates
 R_FILES   := $(wildcard R/*.R)
 TST_FILES := $(wildcard tests/testthat/*.R)
-SAS_FILES := $(wildcard tests/testthat/reference_results/sas-*.sas)
+SAS_FILES := $(wildcard tests/reference_results/sas-*.sas)
 SRC_FILES := $(wildcard src/*) $(addprefix src/, $(COPY_SRC))
 VIG_FILES := $(wildcard vignettes/*)
 PKG_FILES := DESCRIPTION NAMESPACE NEWS $(R_FILES) $(TST_FILES) $(SRC_FILES) $(VIG_FILES)
@@ -94,8 +94,8 @@ sas_scripts:
 	Rscript 02_generate_sas_macro_calls.R 2>&1 | tee 02_generate_sas_macro_calls.R.txt
 
 sas: $(SAS_FILES)
-	-cd tests/testthat/ ; \
-	for f in $(subst tests/testthat/reference_results/,,$(SAS_FILES)) ; do \
+	-cd tests/reference_results/ ; \
+	for f in $(subst tests/reference_results/,,$(SAS_FILES)) ; do \
 	sas $$f ; \
 	done;
 
