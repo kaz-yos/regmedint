@@ -231,9 +231,14 @@ macro_args_r_res <- macro_args %>%
 ### Tests
 ################################################################################
 
-test_that("all result objects are of the regmedint class", {
-    junk <- macro_args_r_res %>%
-        mutate(junk = map(res, function(res) {
-            expect_equal(class(res)[[1]], "regmedint")
-        }))
-})
+## This stops on the first error when run interactively.
+## It continues when running
+for (i in seq_len(nrow(macro_args_r_res))) {
+    ##
+    title <- sprintf("Index %d: File %s equivalent fits ok", i, macro_args_r_res$filename[i])
+    res <- macro_args_r_res$res[[i]]
+    ##
+    test_that(title, {
+        expect_equal(class(res)[[1]], "regmedint")
+    })
+}
