@@ -10,6 +10,52 @@ library(tidyverse)
 
 
 ###
+### Read data from csv
+################################################################################
+
+## For the purpose of this cross testing, complete case analysis is fine.
+pbc_cc <- pbc %>%
+    as_tibble() %>%
+    ## Missing data should be warned in validate_args()
+    drop_na() %>%
+    mutate(male = if_else(sex == "m", 1L, 0L),
+           ## Combine transplant and death for testing purpose
+           status = if_else(status == 0, 0L, 1L),
+           ## censoring status reverse coded for SAS macro
+           cens = if_else(status == 1L, 0L, 1L),
+           ## Binary mvar
+           bili_bin = if_else(bili > median(bili), 1L, 0L),
+           ## Fake count yvar
+           edema = 2 * edema,
+           alk_phos = alk.phos) %>%
+    select(
+        ## avar
+        trt,
+        ##
+        ## mvar (continuous)
+        bili,
+        ## mvar (binary)
+        bili_bin,
+        ##
+        ## yvar (continuous)
+        alk_phos,
+        ## yvar (binary)
+        spiders,
+        ## yvar (fake count)
+        edema,
+        ## yvar (survival)
+        time,
+        ## eventvar (survival)
+        status,
+        ## censvar (survival)
+        cens,
+        ##
+        ## cvar (continuous/binary/handled continuous)
+        age, male, stage
+    )
+
+
+###
 ### Prepare to cover all available patterns
 ################################################################################
 
@@ -72,3 +118,53 @@ macro_args <-
                               str_sub(interaction, start = 1, end = 1),
                               str_sub(casecontrol, start = 1, end = 1),
                               ncvar))
+
+
+###
+### Conduct R analysis
+################################################################################
+
+macro_args_r_res <- macro_args %>%
+    mutate(res = pmap(list(yvar,
+                           avar,
+                           mvar,
+                           cvar,
+                           a0,
+                           a1,
+                           m_cde,
+                           c_cond,
+                           mreg,
+                           yreg,
+                           interaction,
+                           casecontrol,
+                           eventvar),
+                      function(yvar,
+                               avar,
+                               mvar,
+                               cvar,
+                               a0,
+                               a1,
+                               m_cde,
+                               c_cond,
+                               mreg,
+                               yreg,
+                               interaction,
+                               casecontrol,
+                               eventvar) {
+                          ##
+                          regmedint(data = pbc_cc,
+                                    yvar = yvar,
+                                    avar = avar,
+                                    mvar = mvar,
+                                    cvar = ifelse(cvar == "", NULL, cvar),
+                                    a0 = as.numeric(a0),
+                                    a1 = as.numeric(a1),
+                                    m_cde = as.numeric(m_cde),
+                                    c_cond = as.numeric(c_cond),
+                                    mreg = mreg,
+                                    yreg = yreg,
+                                    interaction = if_else(interaction == "true", TRUE, FALSE),
+                                    casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
+                                    eventvar = ifelse(eventvar == "", NULL, eventvar))
+                          ##
+                      }))
