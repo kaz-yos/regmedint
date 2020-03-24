@@ -106,7 +106,7 @@ sas: $(SAS_FILES)
 
 sas_extract: sas
 	for f in $(subst .sas,.lst,$(SAS_FILES)); do \
-	cat $${f} | grep " cde \| nde \| [pt]nde \| nie \| [pt]nie \| total effect " > $${f%lst}txt ; \
+	cat $${f} | grep " cde \| nde \| cde=nde \| [pt]nde \| nie \| [pt]nie \| total effect " > $${f%lst}txt ; \
 	done;
 
 sas_clean:
