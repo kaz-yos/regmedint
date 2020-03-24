@@ -93,6 +93,11 @@ sas_scripts:
 	cd tests/reference_results/ ; \
 	Rscript 02_generate_sas_macro_calls.R 2>&1 | tee 02_generate_sas_macro_calls.R.txt
 
+sas_scripts_clean:
+	-for f in $(SAS_FILES); do \
+	rm $$f ; \
+	done;
+
 sas: $(SAS_FILES)
 	-cd tests/reference_results/ ; \
 	for f in $(subst tests/reference_results/,,$(SAS_FILES)) ; do \
