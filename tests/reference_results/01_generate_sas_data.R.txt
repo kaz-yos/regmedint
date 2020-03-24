@@ -12,7 +12,7 @@
 > ## Record start time
 > start_time <- Sys.time()
 > cat("### Started ", as.character(start_time), "\n")
-### Started  2020-03-24 03:53:57 
+### Started  2020-03-24 04:16:34 
 > 
 > ## Load packages
 > library(survival)
@@ -128,7 +128,7 @@
 ################################################################################
 > 
 > write_csv(pbc_cc,
-+           path = "./data-pbc_cc_for_sas.csv")
++           path = "./data-pbc_cc.csv")
 > 
 > 
 > ################################################################################
