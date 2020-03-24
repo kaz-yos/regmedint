@@ -32,7 +32,7 @@ cat("
 ### Construct macro call templates
 ################################################################################\n")
 
-common_string_ <- "
+common_string <- "
 /** Set libname */
 libname w './';
 
@@ -48,7 +48,7 @@ run;
 "
 
 macro_call_string_fmt <- "
-%mediation(
+%%mediation(
     data = pbc_cc,
     yvar = %s,
     avar = %s,
@@ -137,6 +137,9 @@ macro_args <-
                                 casecontrol,
                                 c_cond,
                                 cens)) %>%
+    ## Construct the entire sas script
+    mutate(sas_script = paste0(common_string,
+                               macro_call)) %>%
     ## File name
     mutate(filename = sprintf("sas-mreg_%s_yreg_%s_int_%s_caco_%s_ncvar%s.sas",
                               ## All variables in crossing() should appear hear.
@@ -152,6 +155,17 @@ macro_args %>%
     select(filename) %>%
     print(n = Inf)
 
+
+cat("
+###
+### Write to sas scripts
+################################################################################\n")
+
+junk <- macro_args %>%
+    mutate(junk = map2(sas_script, filename,
+                       function(sas_script, filename) {
+                           write_lines(x = sas_script, path = filename)
+                       }))
 
 
 ################################################################################
