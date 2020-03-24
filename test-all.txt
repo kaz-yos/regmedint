@@ -7,8 +7,8 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠸ |  34       | 06_calc_myreg_helpers_coef⠏ |  70       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠦ |  57       | 06_calc_myreg_helpers_vcov⠸ |  84       | 06_calc_myreg_helpers_vcov⠦ | 107       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠸ |  34       | 06_calc_myreg_helpers_coef⠙ |  72       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠦ |  57       | 06_calc_myreg_helpers_vcov⠹ |  83       | 06_calc_myreg_helpers_vcov⠦ | 107       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -17,7 +17,7 @@ Reason: empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  31       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ |  69       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ |  99       | 07_calc_myreg_mreg_linear_yreg_logistic⠴ | 146       | 07_calc_myreg_mreg_linear_yreg_logistic⠼ | 175       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ | 226 2     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  31       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ |  70       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ | 101       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ | 157       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ | 191       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_logistic.R:1184: failure: calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar): returns a function that gives a numeric vector without NA
 all(!is.na(res)) isn't true.
@@ -44,7 +44,7 @@ Reason: empty test
 test-07_calc_myreg_mreg_logistic_yreg_logistic.R:26: skip: calc_myreg_mreg_logistic_yreg_logistic_se works given coef and vcov
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 08_regmedint_class_user_methods⠙ |  12       | 08_regmedint_class_user_methods⠹ |  23       | 08_regmedint_class_user_methods⠼ |  28 7     | 08_regmedint_class_user_methods✖ |  28 8     | 08_regmedint_class_user_methods [0.3 s]
+⠏ |   0       | 08_regmedint_class_user_methods⠹ |  13       | 08_regmedint_class_user_methods⠼ |  25       | 08_regmedint_class_user_methods✖ |  28 8     | 08_regmedint_class_user_methods [0.3 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-08_regmedint_class_user_methods.R:106: failure: summary.regmedint: prints evaluation information
 `summary\(fit_regmedint\)` does not match "^Evaluated at:".
@@ -77,147 +77,330 @@ Actual value: "### Mediator model\\n\\nCall:\\nlm\(formula = bili ~ trt, data = 
 test-08_regmedint_class_user_methods.R:138: failure: confint.regmedint: creates the lower column less than the upper column
 all(...) isn't true.
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠦ |  28 8 1   | 08_regmedint_class_user_methods⠧ |  28 8 2   | 08_regmedint_class_user_methods⠇ |  28 8 3   | 08_regmedint_class_user_methods⠏ |  28 8 4   | 08_regmedint_class_user_methods⠋ |  28 8 25   | 08_regmedint_class_user_methods⠼ |  28 8 39   | 08_regmedint_class_user_methods⠹ |  28 8 57   | 08_regmedint_class_user_methods⠏ |   0       | 09_cross_check_with_sas_macro✖ |  16 24     | 09_cross_check_with_sas_macro
+⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  81   1   | 09_cross_check_with_sas_macro⠹ |  81   2   | 09_cross_check_with_sas_macro⠸ |  81   3   | 09_cross_check_with_sas_macro⠼ |  81   4   | 09_cross_check_with_sas_macro⠦ |  81   26   | 09_cross_check_with_sas_macro⠧ |  81   47   | 09_cross_check_with_sas_macro⠧ |  81   57   | 09_cross_check_with_sas_macro⠙ |  81 1 60   | 09_cross_check_with_sas_macro✖ |  97 25 60   | 09_cross_check_with_sas_macro [1.8 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-09_cross_check_with_sas_macro.R:242: failure: Index 4: File sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+Length of logical index must be 1 or 276, not 12
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+Length of logical index must be 1 or 276, not 12
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+Length of logical index must be 1 or 276, not 12
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+Length of logical index must be 1 or 276, not 12
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+iteration limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+alternation limit reached
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+Length of logical index must be 1 or 276, not 12
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+Length of logical index must be 1 or 276, not 12
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+Length of logical index must be 1 or 276, not 12
+
+test-09_cross_check_with_sas_macro.R:163: warning: (unknown)
+Length of logical index must be 1 or 276, not 12
+
+???: failure: fake
+FALSE isn't true.
+
+test-09_cross_check_with_sas_macro.R:279: failure: Index 4: File sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 6: File sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 6: File sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 8: File sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 8: File sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 10: File sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 10: File sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 21: File sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 21: File sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 22: File sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 22: File sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 23: File sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 23: File sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 24: File sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 24: File sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 25: File sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 25: File sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 26: File sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 26: File sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 27: File sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 27: File sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 28: File sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 28: File sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 29: File sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 29: File sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 30: File sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 30: File sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 31: File sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 31: File sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 32: File sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 32: File sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 33: File sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 33: File sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 34: File sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 34: File sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 35: File sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 35: File sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 36: File sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 36: File sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 37: File sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 37: File sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 38: File sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 38: File sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 39: File sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 39: File sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
 y[1]: "regmedint"
 
-test-09_cross_check_with_sas_macro.R:242: failure: Index 40: File sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas equivalent fits ok
+test-09_cross_check_with_sas_macro.R:279: failure: Index 40: File sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
 1/1 mismatches
 x[1]: "try-error"
@@ -225,9 +408,9 @@ y[1]: "regmedint"
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 5.7 s
+Duration: 5.8 s
 
-OK:       662
-Failed:   35
+OK:       743
+Failed:   36
 Warnings: 60
 Skipped:  6
