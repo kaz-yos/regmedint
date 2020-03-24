@@ -36,7 +36,9 @@ new_regmedint <- function(data,
     ## be rare in the population from which the controls were sampled.
     ## Valeri & VanderWeele 2013. p144
     if (casecontrol) {
-        mreg_data <- data[as.numeric(data[yvar,]) == 0,]
+        ## Single index to extract as an unnamed vector.
+        ## This works on both data.frame and tbl_df.
+        mreg_data <- data[data[[yvar]] == 0,]
     } else {
         mreg_data <- data
     }
