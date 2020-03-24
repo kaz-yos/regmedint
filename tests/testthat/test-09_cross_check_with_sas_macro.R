@@ -311,3 +311,29 @@ for (i in seq_len(nrow(macro_args_sas_r))) {
         expect_equal(class(res)[[1]], "regmedint")
     })
 }
+
+
+## Result comparison
+junk <- macro_args_sas_r %>%
+    mutate(
+        junk = pmap(list(filename, sas, res, coef, p, lower, upper),
+                    function(filename, sas, res, coef, p, lower, upper) {
+
+                        if (class(res) == "try-error") {
+                            stop(paste0("R fit for ", filename, "gave an try-error object"))
+                        } else {
+
+                            test_that(paste0("coef match with ", filename), {
+                                expect_equal(coef, sas$estimate)
+                            })
+                            test_that(paste0("p match with ", filename), {
+                                expect_equal(coef, sas$p)
+                            })
+                            test_that(paste0("lower confint match with ", filename), {
+                                expect_equal(coef, sas$lower)
+                            })
+                            test_that(paste0("upper confint match with ", filename), {
+                                expect_equal(coef, sas$upper)
+                            })
+                        }
+                    }))
