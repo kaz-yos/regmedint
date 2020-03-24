@@ -10,12 +10,6 @@ library(testthat)
 library(tidyverse)
 
 
-test_that("placeholder fails", {
-    expect_equal(TRUE,
-                 FALSE)
-})
-
-
 ###
 ### Prepare data
 ################################################################################
@@ -196,6 +190,7 @@ macro_args_r_res <- macro_args %>%
                        }
                    } else {
                        cvar <- str_split(cvar, " ")[[1]]
+                       c_cond <- str_split(c_cond, " ")[[1]]
                        if (eventvar == "") {
                            try(regmedint(data = pbc_cc,
                                          yvar = yvar,
@@ -230,3 +225,15 @@ macro_args_r_res <- macro_args %>%
                    }
                    ##
                }))
+
+
+###
+### Tests
+################################################################################
+
+test_that("all result objects are of the regmedint class", {
+    junk <- macro_args_r_res %>%
+        mutate(junk = map(res, function(res) {
+            expect_equal(class(res)[[1]], "regmedint")
+        }))
+})
