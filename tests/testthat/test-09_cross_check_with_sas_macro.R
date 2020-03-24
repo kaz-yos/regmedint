@@ -9,6 +9,17 @@ library(survival)
 library(testthat)
 library(tidyverse)
 
+source("./utilities_for_tests.R")
+
+
+###
+### Placeholder test to turn on the display of errors
+################################################################################
+
+test_that("placeholder", {
+    expect_true(TRUE)
+})
+
 
 ###
 ### Prepare data
@@ -131,9 +142,19 @@ macro_args_sas <- macro_args %>%
         ## Load SAS results in comparable form
     mutate(sas = map(filename, function(filename) {
         res_filename <- stringr::str_replace_all(filename, "sas$", "txt")
-        print(res_filename)
-        read_parsed_sas_mediation_output(paste0("reference_results/",
-                                                res_filename))
+        ## The working directory here is the enclosing folder ./tests/testthat/.
+        ## print(getwd())
+        relpath <- paste0("../reference_results/", res_filename)
+        read_parsed_sas_mediation_output(relpath)
+    }))
+
+junk <- macro_args_sas %>%
+    mutate(junk = map2(filename, sas, function(filename, sas) {
+        res_filename <- stringr::str_replace_all(filename, "sas$", "txt")
+        test_that(paste0(res_filename, " was extracted successfully"), {
+            expect_equal(class(sas)[1], "tbl_df")
+            expect_true(ncol(sas) %in% c(5,6))
+        })
     }))
 
 
@@ -248,10 +269,10 @@ macro_args_sas_r <- macro_args_sas %>%
 
 ## This stops on the first error when run interactively.
 ## It continues when running
-for (i in seq_len(nrow(macro_args_r_res))) {
+for (i in seq_len(nrow(macro_args_sas_r))) {
     ##
-    title <- sprintf("Index %d: File %s equivalent fits ok", i, macro_args_r_res$filename[i])
-    res <- macro_args_r_res$res[[i]]
+    title <- sprintf("Index %d: File %s equivalent fits ok", i, macro_args_sas_r$filename[i])
+    res <- macro_args_sas_r$res[[i]]
     ##
     test_that(title, {
         expect_equal(class(res)[[1]], "regmedint")
