@@ -5,6 +5,7 @@
 ## Author: Kazuki Yoshida
 ################################################################################
 
+library(survival)
 library(testthat)
 library(tidyverse)
 
@@ -16,8 +17,10 @@ test_that("placeholder fails", {
 
 
 ###
-### Read data from csv
+### Prepare data
 ################################################################################
+
+data(pbc)
 
 ## For the purpose of this cross testing, complete case analysis is fine.
 pbc_cc <- pbc %>%
@@ -131,97 +134,99 @@ macro_args <-
 ################################################################################
 
 macro_args_r_res <- macro_args %>%
-    mutate(res = pmap(list(yvar,
-                           avar,
-                           mvar,
-                           cvar,
-                           a0,
-                           a1,
-                           m_cde,
-                           c_cond,
-                           mreg,
-                           yreg,
-                           interaction,
-                           casecontrol,
-                           eventvar),
-                      function(yvar,
-                               avar,
-                               mvar,
-                               cvar,
-                               a0,
-                               a1,
-                               m_cde,
-                               c_cond,
-                               mreg,
-                               yreg,
-                               interaction,
-                               casecontrol,
-                               eventvar) {
-                          ##
-                          if (cvar == "") {
-                              if (eventvar == "") {
-                                  regmedint(data = pbc_cc,
-                                            yvar = yvar,
-                                            avar = avar,
-                                            mvar = mvar,
-                                            cvar = NULL,
-                                            a0 = as.numeric(a0),
-                                            a1 = as.numeric(a1),
-                                            m_cde = as.numeric(m_cde),
-                                            c_cond = NULL,
-                                            mreg = mreg,
-                                            yreg = yreg,
-                                            interaction = if_else(interaction == "true", TRUE, FALSE),
-                                            casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
-                                            eventvar = NULL)
-                              } else {
-                                  regmedint(data = pbc_cc,
-                                            yvar = yvar,
-                                            avar = avar,
-                                            mvar = mvar,
-                                            cvar = NULL,
-                                            a0 = as.numeric(a0),
-                                            a1 = as.numeric(a1),
-                                            m_cde = as.numeric(m_cde),
-                                            c_cond = NULL,
-                                            mreg = mreg,
-                                            yreg = yreg,
-                                            interaction = if_else(interaction == "true", TRUE, FALSE),
-                                            casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
-                                            eventvar = eventvar)
-                              }
-                          } else {
-                              if (eventvar == "") {
-                                  regmedint(data = pbc_cc,
-                                            yvar = yvar,
-                                            avar = avar,
-                                            mvar = mvar,
-                                            cvar = cvar,
-                                            a0 = as.numeric(a0),
-                                            a1 = as.numeric(a1),
-                                            m_cde = as.numeric(m_cde),
-                                            c_cond = c_cond,
-                                            mreg = mreg,
-                                            yreg = yreg,
-                                            interaction = if_else(interaction == "true", TRUE, FALSE),
-                                            casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
-                                            eventvar = NULL)
-                              } else {
-                                  regmedint(data = pbc_cc,
-                                            yvar = yvar,
-                                            avar = avar,
-                                            mvar = mvar,
-                                            cvar = cvar,
-                                            a0 = as.numeric(a0),
-                                            a1 = as.numeric(a1),
-                                            m_cde = as.numeric(m_cde),
-                                            c_cond = c_cond,
-                                            mreg = mreg,
-                                            yreg = yreg,
-                                            interaction = if_else(interaction == "true", TRUE, FALSE),
-                                            casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
-                                            eventvar = eventvar)
-                              }
-                          }
-                          ##
-                      }))
+    mutate(res = pmap(
+               list(yvar,
+                    avar,
+                    mvar,
+                    cvar,
+                    a0,
+                    a1,
+                    m_cde,
+                    c_cond,
+                    mreg,
+                    yreg,
+                    interaction,
+                    casecontrol,
+                    eventvar),
+               function(yvar,
+                        avar,
+                        mvar,
+                        cvar,
+                        a0,
+                        a1,
+                        m_cde,
+                        c_cond,
+                        mreg,
+                        yreg,
+                        interaction,
+                        casecontrol,
+                        eventvar) {
+                   ##
+                   if (cvar == "") {
+                       if (eventvar == "") {
+                           try(regmedint(data = pbc_cc,
+                                         yvar = yvar,
+                                         avar = avar,
+                                         mvar = mvar,
+                                         cvar = NULL,
+                                         a0 = as.numeric(a0),
+                                         a1 = as.numeric(a1),
+                                         m_cde = as.numeric(m_cde),
+                                         c_cond = NULL,
+                                         mreg = mreg,
+                                         yreg = yreg,
+                                         interaction = if_else(interaction == "true", TRUE, FALSE),
+                                         casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
+                                         eventvar = NULL))
+                       } else {
+                           try(regmedint(data = pbc_cc,
+                                         yvar = yvar,
+                                         avar = avar,
+                                         mvar = mvar,
+                                         cvar = NULL,
+                                         a0 = as.numeric(a0),
+                                         a1 = as.numeric(a1),
+                                         m_cde = as.numeric(m_cde),
+                                         c_cond = NULL,
+                                         mreg = mreg,
+                                         yreg = yreg,
+                                         interaction = if_else(interaction == "true", TRUE, FALSE),
+                                         casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
+                                         eventvar = eventvar))
+                       }
+                   } else {
+                       cvar <- str_split(cvar, " ")[[1]]
+                       if (eventvar == "") {
+                           try(regmedint(data = pbc_cc,
+                                         yvar = yvar,
+                                         avar = avar,
+                                         mvar = mvar,
+                                         cvar = cvar,
+                                         a0 = as.numeric(a0),
+                                         a1 = as.numeric(a1),
+                                         m_cde = as.numeric(m_cde),
+                                         c_cond = as.numeric(c_cond),
+                                         mreg = mreg,
+                                         yreg = yreg,
+                                         interaction = if_else(interaction == "true", TRUE, FALSE),
+                                         casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
+                                         eventvar = NULL))
+                       } else {
+                           try(regmedint(data = pbc_cc,
+                                         yvar = yvar,
+                                         avar = avar,
+                                         mvar = mvar,
+                                         cvar = cvar,
+                                         a0 = as.numeric(a0),
+                                         a1 = as.numeric(a1),
+                                         m_cde = as.numeric(m_cde),
+                                         c_cond = as.numeric(c_cond),
+                                         mreg = mreg,
+                                         yreg = yreg,
+                                         interaction = if_else(interaction == "true", TRUE, FALSE),
+                                         casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
+                                         eventvar = eventvar))
+                       }
+                   }
+                   ##
+               }))
