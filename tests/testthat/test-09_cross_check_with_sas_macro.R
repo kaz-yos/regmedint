@@ -162,7 +162,7 @@ junk <- macro_args_sas %>%
 ### Add R results
 ################################################################################
 
-macro_args_sas_r <- macro_args_sas %>%
+macro_args_sas_r_prelim <- macro_args_sas %>%
     ## Run R analyses
     mutate(res = pmap(
                list(yvar,
@@ -260,7 +260,14 @@ macro_args_sas_r <- macro_args_sas %>%
                        }
                    }
                    ##
-               })) %>%
+               }))
+
+
+###
+### Extract R results for testing
+################################################################################
+
+macro_args_sas_r <- macro_args_sas_r_prelim %>%
     ## Extract useful elements when available
     mutate(
         coef = map(res, function(res) {
@@ -293,7 +300,7 @@ macro_args_sas_r <- macro_args_sas %>%
                 return(confint(res, alpha = 2 * (1 - pnorm(1.96)))[,"upper"])
             }
         })
-        )
+    )
 
 
 ###
