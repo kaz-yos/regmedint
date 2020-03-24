@@ -23,11 +23,18 @@ read_parsed_sas_mediation_output <- function(file) {
         read.delim(text = .,
                    header = FALSE,
                    sep = " ",
-                   stringsAsFactors = FALSE,
-                   col.names = c("effect","estimate","se","p","lower","upper")) %>%
+                   stringsAsFactors = FALSE) %>%
         as_tibble()
     ## Make sure the connection is closed
     close(conn)
+    if (ncol(res) == 6) {
+        names(res) <- c("effect","estimate","se","p","lower","upper")
+    } else if (ncol(res) == 5) {
+        names(res) <- c("effect","estimate","p","lower","upper")
+    } else {
+        print(ncol(res))
+        stop("The number of columns is unexpected.")
+    }
     ## Finally return the parsed result
     return(res)
 }
