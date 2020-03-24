@@ -49,6 +49,8 @@ pbc_cc <- pbc %>%
     mutate(male = if_else(sex == "m", 1L, 0L),
            ## Combine transplant and death for testing purpose
            status = if_else(status == 0, 0L, 1L),
+           ## censoring status reverse coded for SAS macro
+           cens = if_else(status == 1L, 0L, 1L),
            ## Binary mvar
            bili_bin = if_else(bili > median(bili), 1L, 0L),
            ## Fake count yvar
@@ -73,6 +75,8 @@ pbc_cc <- pbc %>%
         time,
         ## eventvar (survival)
         status,
+        ## censvar (survival)
+        cens,
         ##
         ## cvar (continuous/binary/handled continuous)
         age, male, stage
@@ -86,7 +90,7 @@ cat("
 
 tab1 <- CreateTableOne(data = pbc_cc,
                        vars = c("bili","bili_bin",
-                                "alk_phos","spiders","edema","time","status",
+                                "alk_phos","spiders","edema","time","status","cens",
                                 "age","male","stage"),
                        strata = c("trt"),
                        test = FALSE)
