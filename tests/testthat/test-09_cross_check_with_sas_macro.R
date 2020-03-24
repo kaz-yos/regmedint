@@ -9,6 +9,12 @@ library(testthat)
 library(tidyverse)
 
 
+test_that("placeholder fails", {
+    expect_equal(TRUE,
+                 FALSE)
+})
+
+
 ###
 ### Read data from csv
 ################################################################################
