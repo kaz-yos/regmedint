@@ -85,13 +85,18 @@ install: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 
 ## run sas analyses
 # https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile
-sas:
+sas_data:
+	cd tests/reference_results/ ; \
+	Rscript 01_generate_sas_data.R 2>&1 | tee 01_generate_sas_data.R.txt
+
+
+sas: $(SAS_FILES)
 	-cd tests/testthat/ ; \
 	for f in $(subst tests/testthat/reference_results/,,$(SAS_FILES)) ; do \
 	sas $$f ; \
 	done;
 
-sas_extract:
+sas_extract: sas
 	for f in $(subst .sas,.lst,$(SAS_FILES)); do \
 	cat $${f} | grep " cde \| nde \| [pt]nde \| nie \| [pt]nie \| total effect " > $${f%lst}txt ; \
 	done;
