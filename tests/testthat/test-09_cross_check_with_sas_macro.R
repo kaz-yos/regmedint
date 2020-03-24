@@ -124,10 +124,25 @@ macro_args <-
 
 
 ###
-### Conduct R analysis
+### Add SAS results
 ################################################################################
 
-macro_args_r_res <- macro_args %>%
+macro_args_sas <- macro_args %>%
+        ## Load SAS results in comparable form
+    mutate(sas = map(filename, function(filename) {
+        res_filename <- stringr::str_replace_all(filename, "sas$", "txt")
+        print(res_filename)
+        read_parsed_sas_mediation_output(paste0("reference_results/",
+                                                res_filename))
+    }))
+
+
+###
+### Add R results
+################################################################################
+
+macro_args_sas_r <- macro_args_sas %>%
+    ## Run R analyses
     mutate(res = pmap(
                list(yvar,
                     avar,
