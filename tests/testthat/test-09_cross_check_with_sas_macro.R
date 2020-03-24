@@ -260,7 +260,40 @@ macro_args_sas_r <- macro_args_sas %>%
                        }
                    }
                    ##
-               }))
+               })) %>%
+    ## Extract useful elements when available
+    mutate(
+        coef = map(res, function(res) {
+            if(class(res) == "try-error") {
+                return(NULL)
+            } else {
+                return(coef(res))
+            }
+        }),
+        p = map(res, function(res) {
+            if(class(res) == "try-error") {
+                return(NULL)
+            } else {
+                capture_output(summary_mat <- summary(res))
+                return(summary_mat[,"p"])
+            }
+        }),
+        ## 2 * (1 - pnorm(1.96)) to get confint corresponding to 1.96 * se
+        lower = map(res, function(res) {
+            if(class(res) == "try-error") {
+                return(NULL)
+            } else {
+                return(confint(res, alpha = 2 * (1 - pnorm(1.96)))[,"lower"])
+            }
+        }),
+        upper = map(res, function(res) {
+            if(class(res) == "try-error") {
+                return(NULL)
+            } else {
+                return(confint(res, alpha = 2 * (1 - pnorm(1.96)))[,"upper"])
+            }
+        })
+        )
 
 
 ###
