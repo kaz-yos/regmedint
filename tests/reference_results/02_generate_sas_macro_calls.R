@@ -86,7 +86,8 @@ macro_args <-
                       "survAFT_weibull"),
              interaction = c("false","true"),
              casecontrol = c("false","true"),
-             ncvar = c(0,3)) %>%
+             ## empty cvar may not work with output = full
+             ncvar = c(3)) %>%
     ## casecontrol is only relevant for binary yreg
     filter(casecontrol == "false" |
            (casecontrol == "true" & (yreg == "logistic" | yreg == "loglinear"))) %>%
