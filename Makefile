@@ -89,6 +89,9 @@ sas_data:
 	cd tests/reference_results/ ; \
 	Rscript 01_generate_sas_data.R 2>&1 | tee 01_generate_sas_data.R.txt
 
+sas_scripts:
+	cd tests/reference_results/ ; \
+	Rscript 02_generate_sas_macro_calls.R 2>&1 | tee 02_generate_sas_macro_calls.R.txt
 
 sas: $(SAS_FILES)
 	-cd tests/testthat/ ; \
