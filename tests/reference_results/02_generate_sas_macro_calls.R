@@ -43,10 +43,39 @@ macro_args <- crossing(mreg = c("linear",
                                 "survAFT_exp",
                                 "survAFT_weibull"),
                        interaction = c("false","true"),
-                       casecontrol = c("false","true")) %>%
+                       casecontrol = c("false","true"),
+                       ncvar = c(0,3)) %>%
     ## casecontrol is only relevant for binary yreg
     filter(casecontrol == "false" |
            (casecontrol == "true" & (yreg == "logistic" | yreg == "loglinear"))) %>%
+    ## Choose appropriate variable names
+    mutate(avar = "trt",
+           ##
+           mvar = case_when(mreg == "linear" ~ "bili",
+                            mreg == "logistic" ~ "bili_bin"),
+           ##
+           yvar = case_when(yreg == "linear" ~ "alk_phos",
+                            ##
+                            yreg == "logistic" ~ "spiders",
+                            yreg == "loglinear" ~ "spiders",
+                            ##
+                            yreg == "poisson" ~ "edema",
+                            yreg == "negbin" ~ "edema",
+                            ##
+                            yreg == "survCox" ~ "time",
+                            yreg == "survAFT_exp" ~ "time",
+                            yreg == "survAFT_weibull" ~ "time"),
+           ##
+           eventvar = case_when(yreg == "survCox" ~ "status",
+                                yreg == "survAFT_exp" ~ "status",
+                                yreg == "survAFT_weibull" ~ "status",
+                                TRUE ~ ""),
+           ##
+           cvar = case_when(ncvar == 0 ~ "",
+                            ncvar == 3 ~ "age male stage"),
+           ##
+           c_cond = case_when(ncvar == 0 ~ "",
+                              ncvar == 3 ~ "50 1 2")) %>%
     ## File name
     mutate(filename = sprintf("sas-mreg_%s_yreg_%s_int_%s_caco_%s.sas",
                               mreg,
@@ -62,6 +91,40 @@ cat("
 ### Construct macro calls
 ################################################################################\n")
 
+common_string_ <- "
+/** Set libname */
+libname w './';
+
+/* Load SAS macro */
+%include './mediation.sas';
+
+/* Load data */
+proc import datafile = './data-pbc_cc.csv'
+    out = pbc_cc
+    dbms = csv
+    replace;
+run;
+"
+
+macro_call_string_fmt <- "
+%mediation(
+    data = pbc_cc,
+    yvar = %s,
+    avar = %s,
+    mvar = %s,
+    cvar = %s,
+    a0 = %s,
+    a1 = %s,
+    m = %s,
+    yreg = %s,
+    mreg = %s,
+    interaction = %s,
+    casecontrol = %s,
+    output = full,
+    c = %s,
+    boot = ,
+    cens = %s);
+run;"
 
 
 
