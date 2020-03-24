@@ -158,19 +158,70 @@ macro_args_r_res <- macro_args %>%
                                casecontrol,
                                eventvar) {
                           ##
-                          regmedint(data = pbc_cc,
-                                    yvar = yvar,
-                                    avar = avar,
-                                    mvar = mvar,
-                                    cvar = ifelse(cvar == "", NULL, cvar),
-                                    a0 = as.numeric(a0),
-                                    a1 = as.numeric(a1),
-                                    m_cde = as.numeric(m_cde),
-                                    c_cond = as.numeric(c_cond),
-                                    mreg = mreg,
-                                    yreg = yreg,
-                                    interaction = if_else(interaction == "true", TRUE, FALSE),
-                                    casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
-                                    eventvar = ifelse(eventvar == "", NULL, eventvar))
+                          if (cvar == "") {
+                              if (eventvar == "") {
+                                  regmedint(data = pbc_cc,
+                                            yvar = yvar,
+                                            avar = avar,
+                                            mvar = mvar,
+                                            cvar = NULL,
+                                            a0 = as.numeric(a0),
+                                            a1 = as.numeric(a1),
+                                            m_cde = as.numeric(m_cde),
+                                            c_cond = NULL,
+                                            mreg = mreg,
+                                            yreg = yreg,
+                                            interaction = if_else(interaction == "true", TRUE, FALSE),
+                                            casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
+                                            eventvar = NULL)
+                              } else {
+                                  regmedint(data = pbc_cc,
+                                            yvar = yvar,
+                                            avar = avar,
+                                            mvar = mvar,
+                                            cvar = NULL,
+                                            a0 = as.numeric(a0),
+                                            a1 = as.numeric(a1),
+                                            m_cde = as.numeric(m_cde),
+                                            c_cond = NULL,
+                                            mreg = mreg,
+                                            yreg = yreg,
+                                            interaction = if_else(interaction == "true", TRUE, FALSE),
+                                            casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
+                                            eventvar = eventvar)
+                              }
+                          } else {
+                              if (eventvar == "") {
+                                  regmedint(data = pbc_cc,
+                                            yvar = yvar,
+                                            avar = avar,
+                                            mvar = mvar,
+                                            cvar = cvar,
+                                            a0 = as.numeric(a0),
+                                            a1 = as.numeric(a1),
+                                            m_cde = as.numeric(m_cde),
+                                            c_cond = c_cond,
+                                            mreg = mreg,
+                                            yreg = yreg,
+                                            interaction = if_else(interaction == "true", TRUE, FALSE),
+                                            casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
+                                            eventvar = NULL)
+                              } else {
+                                  regmedint(data = pbc_cc,
+                                            yvar = yvar,
+                                            avar = avar,
+                                            mvar = mvar,
+                                            cvar = cvar,
+                                            a0 = as.numeric(a0),
+                                            a1 = as.numeric(a1),
+                                            m_cde = as.numeric(m_cde),
+                                            c_cond = c_cond,
+                                            mreg = mreg,
+                                            yreg = yreg,
+                                            interaction = if_else(interaction == "true", TRUE, FALSE),
+                                            casecontrol = if_else(casecontrol == "true", TRUE, FALSE),
+                                            eventvar = eventvar)
+                              }
+                          }
                           ##
                       }))
