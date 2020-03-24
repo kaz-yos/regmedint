@@ -1,5 +1,5 @@
 ✔ |  OK F W S | Context
-⠏ |   0       | 01_regmedint_class_ui✔ |   0       | 01_regmedint_class_ui
+⠏ |   0       | 01_regmedint_class_ui✔ |   0       | 01_regmedint_class_ui [0.1 s]
 ⠏ |   0       | 03_fit_mreg✔ |  24       | 03_fit_mreg
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  23       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
@@ -7,8 +7,8 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠧ |  38       | 06_calc_myreg_helpers_coef⠧ |  78       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠼ |  35       | 06_calc_myreg_helpers_vcov⠹ |  63       | 06_calc_myreg_helpers_vcov⠹ |  93       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠋ |  31       | 06_calc_myreg_helpers_coef⠦ |  67       | 06_calc_myreg_helpers_coef⠹ | 103       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠏ |  30       | 06_calc_myreg_helpers_vcov⠸ |  54       | 06_calc_myreg_helpers_vcov⠇ |  79       | 06_calc_myreg_helpers_vcov⠹ | 103       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -17,7 +17,7 @@ Reason: empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ |  39       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ |  79       | 07_calc_myreg_mreg_linear_yreg_logistic⠴ | 126       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ | 177       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.5 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  31       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ |  70       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ |  99       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ | 148       | 07_calc_myreg_mreg_linear_yreg_logistic⠴ | 176       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ | 228 2     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_logistic.R:1184: failure: calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar): returns a function that gives a numeric vector without NA
 all(!is.na(res)) isn't true.
@@ -44,7 +44,7 @@ Reason: empty test
 test-07_calc_myreg_mreg_logistic_yreg_logistic.R:26: skip: calc_myreg_mreg_logistic_yreg_logistic_se works given coef and vcov
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 08_regmedint_class_user_methods⠼ |  15       | 08_regmedint_class_user_methods⠋ |  25 6     | 08_regmedint_class_user_methods✖ |  28 8     | 08_regmedint_class_user_methods [0.2 s]
+⠏ |   0       | 08_regmedint_class_user_methods⠙ |  12       | 08_regmedint_class_user_methods⠸ |  24       | 08_regmedint_class_user_methods✖ |  28 8     | 08_regmedint_class_user_methods [0.3 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-08_regmedint_class_user_methods.R:106: failure: summary.regmedint: prints evaluation information
 `summary\(fit_regmedint\)` does not match "^Evaluated at:".
@@ -77,20 +77,8 @@ Actual value: "### Mediator model\\n\\nCall:\\nlm\(formula = bili ~ trt, data = 
 test-08_regmedint_class_user_methods.R:138: failure: confint.regmedint: creates the lower column less than the upper column
 all(...) isn't true.
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 09_cross_check_with_sas_macro⠧ |   8       | 09_cross_check_with_sas_macro⠙ |  81   1   | 09_cross_check_with_sas_macro⠹ |  81   2   | 09_cross_check_with_sas_macro⠸ |  81   3   | 09_cross_check_with_sas_macro⠸ |  81   23   | 09_cross_check_with_sas_macro⠙ |  81   41   | 09_cross_check_with_sas_macro⠧ |  81   57   | 09_cross_check_with_sas_macro⠙ |  81   61   | 09_cross_check_with_sas_macro⠏ |  81   89   | 09_cross_check_with_sas_macro⠴ |  97 15 124   | 09_cross_check_with_sas_macro✖ |  97 82 127   | 09_cross_check_with_sas_macro [1.7 s]
+⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  81   1   | 09_cross_check_with_sas_macro⠼ |  81   24   | 09_cross_check_with_sas_macro⠸ |  81   43   | 09_cross_check_with_sas_macro⠸ |  81   53   | 09_cross_check_with_sas_macro⠹ |  81   82   | 09_cross_check_with_sas_macro⠦ |  81   106   | 09_cross_check_with_sas_macro⠋ | 101 46 134   | 09_cross_check_with_sas_macro⠹ | 101 104 138   | 09_cross_check_with_sas_macro⠇ | 101 145 143   | 09_cross_check_with_sas_macro⠹ | 101 185 147   | 09_cross_check_with_sas_macro⠦ | 101 224 152   | 09_cross_check_with_sas_macro✖ | 101 231 152   | 09_cross_check_with_sas_macro [1.9 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
-Length of logical index must be 1 or 276, not 12
-
-test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
-Length of logical index must be 1 or 276, not 12
-
-test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
-Length of logical index must be 1 or 276, not 12
-
-test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
-Length of logical index must be 1 or 276, not 12
-
 test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
 iteration limit reached
 
@@ -248,16 +236,40 @@ test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
 alternation limit reached
 
 test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
-Length of logical index must be 1 or 276, not 12
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
+the condition has length > 1 and only the first element will be used
 
 test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
-Length of logical index must be 1 or 276, not 12
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
+the condition has length > 1 and only the first element will be used
 
 test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
-Length of logical index must be 1 or 276, not 12
+the condition has length > 1 and only the first element will be used
 
 test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
-Length of logical index must be 1 or 276, not 12
+the condition has length > 1 and only the first element will be used
 
 test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
 the condition has length > 1 and only the first element will be used
@@ -451,29 +463,17 @@ the condition has length > 1 and only the first element will be used
 test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
 the condition has length > 1 and only the first element will be used
 
-test-09_cross_check_with_sas_macro.R:311: failure: Index 4: File sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas equivalent fits ok
-class(res)[[1]] not equal to "regmedint".
-1/1 mismatches
-x[1]: "try-error"
-y[1]: "regmedint"
+test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
+the condition has length > 1 and only the first element will be used
 
-test-09_cross_check_with_sas_macro.R:311: failure: Index 6: File sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas equivalent fits ok
-class(res)[[1]] not equal to "regmedint".
-1/1 mismatches
-x[1]: "try-error"
-y[1]: "regmedint"
+test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
+the condition has length > 1 and only the first element will be used
 
-test-09_cross_check_with_sas_macro.R:311: failure: Index 8: File sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas equivalent fits ok
-class(res)[[1]] not equal to "regmedint".
-1/1 mismatches
-x[1]: "try-error"
-y[1]: "regmedint"
+test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
+the condition has length > 1 and only the first element will be used
 
-test-09_cross_check_with_sas_macro.R:311: failure: Index 10: File sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas equivalent fits ok
-class(res)[[1]] not equal to "regmedint".
-1/1 mismatches
-x[1]: "try-error"
-y[1]: "regmedint"
+test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
+the condition has length > 1 and only the first element will be used
 
 test-09_cross_check_with_sas_macro.R:311: failure: Index 21: File sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas equivalent fits ok
 class(res)[[1]] not equal to "regmedint".
@@ -895,8 +895,926 @@ Backtrace:
  2. testthat::quasi_label(enquo(object), label, arg = "object")
  3. rlang::eval_bare(expr, quo_get_env(quo))
 
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:456: error: coef match with sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:456:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:465: failure: p match with sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas
+p[["cde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.149 - 0.298 == -0.149
+
+test-09_cross_check_with_sas_macro.R:466: failure: p match with sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.149 - 0.298 == -0.149
+
+test-09_cross_check_with_sas_macro.R:467: failure: p match with sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.839 - 0.321 == 0.518
+
+test-09_cross_check_with_sas_macro.R:468: failure: p match with sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.149 - 0.298 == -0.149
+
+test-09_cross_check_with_sas_macro.R:469: failure: p match with sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.839 - 0.321 == 0.518
+
+test-09_cross_check_with_sas_macro.R:470: failure: p match with sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas
+p[["te"]] not equal to sas_p[["te"]].
+1/1 mismatches
+[1] 0.193 - 0.385 == -0.193
+
+test-09_cross_check_with_sas_macro.R:474: error: lower confint match with sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:474:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:483: error: upper confint match with sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:483:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:377: error: coef match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:377:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:386: failure: p match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["conditional_cde"]].
+1/1 mismatches
+[1] 0.278 - 0.555 == -0.278
+
+test-09_cross_check_with_sas_macro.R:387: failure: p match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
+1/1 mismatches
+[1] 0.169 - 0.339 == -0.17
+
+test-09_cross_check_with_sas_macro.R:388: failure: p match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
+1/1 mismatches
+[1] 0.838 - 0.324 == 0.514
+
+test-09_cross_check_with_sas_macro.R:389: failure: p match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
+1/1 mismatches
+[1] 0.15 - 0.301 == -0.151
+
+test-09_cross_check_with_sas_macro.R:390: failure: p match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.833 - 0.334 == 0.5
+
+test-09_cross_check_with_sas_macro.R:391: failure: p match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["conditional_te"]].
+1/1 mismatches
+[1] 0.21 - 0.422 == -0.211
+
+test-09_cross_check_with_sas_macro.R:395: error: lower confint match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:395:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:404: error: upper confint match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:404:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:377: error: coef match with sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:377:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:386: failure: p match with sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas
+p[["cde"]] not equal to sas_p[["conditional_cde"]].
+1/1 mismatches
+[1] 0.278 - 0.555 == -0.278
+
+test-09_cross_check_with_sas_macro.R:387: failure: p match with sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
+1/1 mismatches
+[1] 0.163 - 0.326 == -0.163
+
+test-09_cross_check_with_sas_macro.R:388: failure: p match with sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
+1/1 mismatches
+[1] 0.828 - 0.343 == 0.485
+
+test-09_cross_check_with_sas_macro.R:389: failure: p match with sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
+1/1 mismatches
+[1] 0.146 - 0.292 == -0.146
+
+test-09_cross_check_with_sas_macro.R:390: failure: p match with sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.824 - 0.352 == 0.472
+
+test-09_cross_check_with_sas_macro.R:391: failure: p match with sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas
+p[["te"]] not equal to sas_p[["conditional_te"]].
+1/1 mismatches
+[1] 0.201 - 0.402 == -0.201
+
+test-09_cross_check_with_sas_macro.R:395: error: lower confint match with sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:395:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:404: error: upper confint match with sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:404:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:456: error: coef match with sas-mreg_linear_yreg_loglinear_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:456:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:465: failure: p match with sas-mreg_linear_yreg_loglinear_int_f_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.22 - 0.436 == -0.215
+
+test-09_cross_check_with_sas_macro.R:466: failure: p match with sas-mreg_linear_yreg_loglinear_int_f_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.22 - 0.436 == -0.215
+
+test-09_cross_check_with_sas_macro.R:467: failure: p match with sas-mreg_linear_yreg_loglinear_int_f_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.84 - 0.292 == 0.548
+
+test-09_cross_check_with_sas_macro.R:468: failure: p match with sas-mreg_linear_yreg_loglinear_int_f_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.22 - 0.436 == -0.215
+
+test-09_cross_check_with_sas_macro.R:469: failure: p match with sas-mreg_linear_yreg_loglinear_int_f_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.84 - 0.292 == 0.548
+
+test-09_cross_check_with_sas_macro.R:470: failure: p match with sas-mreg_linear_yreg_loglinear_int_f_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["te"]].
+1/1 mismatches
+[1] 0.255 - 0.524 == -0.269
+
+test-09_cross_check_with_sas_macro.R:474: error: lower confint match with sas-mreg_linear_yreg_loglinear_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:474:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:483: error: upper confint match with sas-mreg_linear_yreg_loglinear_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:483:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:456: error: coef match with sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:456:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:465: failure: p match with sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas
+p[["cde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.22 - 0.436 == -0.215
+
+test-09_cross_check_with_sas_macro.R:466: failure: p match with sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.22 - 0.436 == -0.215
+
+test-09_cross_check_with_sas_macro.R:467: failure: p match with sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.831 - 0.314 == 0.517
+
+test-09_cross_check_with_sas_macro.R:468: failure: p match with sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.22 - 0.436 == -0.215
+
+test-09_cross_check_with_sas_macro.R:469: failure: p match with sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.831 - 0.314 == 0.517
+
+test-09_cross_check_with_sas_macro.R:470: failure: p match with sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas
+p[["te"]] not equal to sas_p[["te"]].
+1/1 mismatches
+[1] 0.253 - 0.519 == -0.266
+
+test-09_cross_check_with_sas_macro.R:474: error: lower confint match with sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:474:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:483: error: upper confint match with sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:483:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:377: error: coef match with sas-mreg_linear_yreg_loglinear_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:377:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:386: failure: p match with sas-mreg_linear_yreg_loglinear_int_t_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["conditional_cde"]].
+1/1 mismatches
+[1] 0.296 - 0.476 == -0.181
+
+test-09_cross_check_with_sas_macro.R:387: failure: p match with sas-mreg_linear_yreg_loglinear_int_t_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
+1/1 mismatches
+[1] 0.271 - 0.457 == -0.186
+
+test-09_cross_check_with_sas_macro.R:388: failure: p match with sas-mreg_linear_yreg_loglinear_int_t_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
+1/1 mismatches
+[1] 0.826 - 0.306 == 0.52
+
+test-09_cross_check_with_sas_macro.R:389: failure: p match with sas-mreg_linear_yreg_loglinear_int_t_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
+1/1 mismatches
+[1] 0.258 - 0.446 == -0.188
+
+test-09_cross_check_with_sas_macro.R:390: failure: p match with sas-mreg_linear_yreg_loglinear_int_t_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.811 - 0.339 == 0.472
+
+test-09_cross_check_with_sas_macro.R:391: failure: p match with sas-mreg_linear_yreg_loglinear_int_t_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["conditional_te"]].
+1/1 mismatches
+[1] 0.301 - 0.53 == -0.229
+
+test-09_cross_check_with_sas_macro.R:395: error: lower confint match with sas-mreg_linear_yreg_loglinear_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:395:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:404: error: upper confint match with sas-mreg_linear_yreg_loglinear_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:404:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:377: error: coef match with sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:377:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:386: failure: p match with sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas
+p[["cde"]] not equal to sas_p[["conditional_cde"]].
+1/1 mismatches
+[1] 0.296 - 0.476 == -0.181
+
+test-09_cross_check_with_sas_macro.R:387: failure: p match with sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
+1/1 mismatches
+[1] 0.261 - 0.447 == -0.187
+
+test-09_cross_check_with_sas_macro.R:388: failure: p match with sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
+1/1 mismatches
+[1] 0.818 - 0.327 == 0.491
+
+test-09_cross_check_with_sas_macro.R:389: failure: p match with sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
+1/1 mismatches
+[1] 0.249 - 0.438 == -0.189
+
+test-09_cross_check_with_sas_macro.R:390: failure: p match with sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.804 - 0.357 == 0.447
+
+test-09_cross_check_with_sas_macro.R:391: failure: p match with sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas
+p[["te"]] not equal to sas_p[["conditional_te"]].
+1/1 mismatches
+[1] 0.289 - 0.518 == -0.228
+
+test-09_cross_check_with_sas_macro.R:395: error: lower confint match with sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:395:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:404: error: upper confint match with sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:404:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:456: error: coef match with sas-mreg_linear_yreg_negbin_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:456:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:465: failure: p match with sas-mreg_linear_yreg_negbin_int_f_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.136 - 0.27 == -0.134
+
+test-09_cross_check_with_sas_macro.R:466: failure: p match with sas-mreg_linear_yreg_negbin_int_f_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.136 - 0.27 == -0.134
+
+test-09_cross_check_with_sas_macro.R:467: failure: p match with sas-mreg_linear_yreg_negbin_int_f_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.862 - 0.277 == 0.584
+
+test-09_cross_check_with_sas_macro.R:468: failure: p match with sas-mreg_linear_yreg_negbin_int_f_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.136 - 0.27 == -0.134
+
+test-09_cross_check_with_sas_macro.R:469: failure: p match with sas-mreg_linear_yreg_negbin_int_f_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.862 - 0.277 == 0.584
+
+test-09_cross_check_with_sas_macro.R:470: failure: p match with sas-mreg_linear_yreg_negbin_int_f_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["te"]].
+1/1 mismatches
+[1] 0.191 - 0.38 == -0.189
+
+test-09_cross_check_with_sas_macro.R:474: error: lower confint match with sas-mreg_linear_yreg_negbin_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:474:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:483: error: upper confint match with sas-mreg_linear_yreg_negbin_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:483:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:377: error: coef match with sas-mreg_linear_yreg_negbin_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:377:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:386: failure: p match with sas-mreg_linear_yreg_negbin_int_t_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["conditional_cde"]].
+1/1 mismatches
+[1] 0.275 - 0.551 == -0.276
+
+test-09_cross_check_with_sas_macro.R:387: failure: p match with sas-mreg_linear_yreg_negbin_int_t_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
+1/1 mismatches
+[1] 0.221 - 0.443 == -0.222
+
+test-09_cross_check_with_sas_macro.R:388: failure: p match with sas-mreg_linear_yreg_negbin_int_t_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
+1/1 mismatches
+[1] 0.859 - 0.283 == 0.575
+
+test-09_cross_check_with_sas_macro.R:389: failure: p match with sas-mreg_linear_yreg_negbin_int_t_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
+1/1 mismatches
+[1] 0.206 - 0.413 == -0.207
+
+test-09_cross_check_with_sas_macro.R:390: failure: p match with sas-mreg_linear_yreg_negbin_int_t_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.855 - 0.291 == 0.564
+
+test-09_cross_check_with_sas_macro.R:391: failure: p match with sas-mreg_linear_yreg_negbin_int_t_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["conditional_te"]].
+1/1 mismatches
+[1] 0.276 - 0.553 == -0.277
+
+test-09_cross_check_with_sas_macro.R:395: error: lower confint match with sas-mreg_linear_yreg_negbin_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:395:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:404: error: upper confint match with sas-mreg_linear_yreg_negbin_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:404:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:456: error: coef match with sas-mreg_linear_yreg_poisson_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:456:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:465: failure: p match with sas-mreg_linear_yreg_poisson_int_f_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.134 - 0.267 == -0.134
+
+test-09_cross_check_with_sas_macro.R:466: failure: p match with sas-mreg_linear_yreg_poisson_int_f_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.134 - 0.267 == -0.134
+
+test-09_cross_check_with_sas_macro.R:467: failure: p match with sas-mreg_linear_yreg_poisson_int_f_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.862 - 0.276 == 0.586
+
+test-09_cross_check_with_sas_macro.R:468: failure: p match with sas-mreg_linear_yreg_poisson_int_f_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.134 - 0.267 == -0.134
+
+test-09_cross_check_with_sas_macro.R:469: failure: p match with sas-mreg_linear_yreg_poisson_int_f_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.862 - 0.276 == 0.586
+
+test-09_cross_check_with_sas_macro.R:470: failure: p match with sas-mreg_linear_yreg_poisson_int_f_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["te"]].
+1/1 mismatches
+[1] 0.189 - 0.377 == -0.189
+
+test-09_cross_check_with_sas_macro.R:474: error: lower confint match with sas-mreg_linear_yreg_poisson_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:474:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:483: error: upper confint match with sas-mreg_linear_yreg_poisson_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:483:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:377: error: coef match with sas-mreg_linear_yreg_poisson_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:377:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:386: failure: p match with sas-mreg_linear_yreg_poisson_int_t_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["conditional_cde"]].
+1/1 mismatches
+[1] 0.274 - 0.548 == -0.274
+
+test-09_cross_check_with_sas_macro.R:387: failure: p match with sas-mreg_linear_yreg_poisson_int_t_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
+1/1 mismatches
+[1] 0.22 - 0.44 == -0.22
+
+test-09_cross_check_with_sas_macro.R:388: failure: p match with sas-mreg_linear_yreg_poisson_int_t_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
+1/1 mismatches
+[1] 0.859 - 0.282 == 0.577
+
+test-09_cross_check_with_sas_macro.R:389: failure: p match with sas-mreg_linear_yreg_poisson_int_t_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
+1/1 mismatches
+[1] 0.205 - 0.41 == -0.205
+
+test-09_cross_check_with_sas_macro.R:390: failure: p match with sas-mreg_linear_yreg_poisson_int_t_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.855 - 0.29 == 0.566
+
+test-09_cross_check_with_sas_macro.R:391: failure: p match with sas-mreg_linear_yreg_poisson_int_t_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["conditional_te"]].
+1/1 mismatches
+[1] 0.275 - 0.55 == -0.275
+
+test-09_cross_check_with_sas_macro.R:395: error: lower confint match with sas-mreg_linear_yreg_poisson_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:395:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:404: error: upper confint match with sas-mreg_linear_yreg_poisson_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:404:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:456: error: coef match with sas-mreg_linear_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:456:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:465: failure: p match with sas-mreg_linear_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.823 - 0.354 == 0.469
+
+test-09_cross_check_with_sas_macro.R:466: failure: p match with sas-mreg_linear_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.823 - 0.354 == 0.469
+
+test-09_cross_check_with_sas_macro.R:467: failure: p match with sas-mreg_linear_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.135 - 0.27 == -0.135
+
+test-09_cross_check_with_sas_macro.R:468: failure: p match with sas-mreg_linear_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.823 - 0.354 == 0.469
+
+test-09_cross_check_with_sas_macro.R:469: failure: p match with sas-mreg_linear_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.135 - 0.27 == -0.135
+
+test-09_cross_check_with_sas_macro.R:470: failure: p match with sas-mreg_linear_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["te"]].
+1/1 mismatches
+[1] 0.693 - 0.614 == 0.0794
+
+test-09_cross_check_with_sas_macro.R:474: error: lower confint match with sas-mreg_linear_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:474:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:483: error: upper confint match with sas-mreg_linear_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:483:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:377: error: coef match with sas-mreg_linear_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:377:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:386: failure: p match with sas-mreg_linear_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["conditional_cde"]].
+1/1 mismatches
+[1] 0.784 - 0.432 == 0.353
+
+test-09_cross_check_with_sas_macro.R:387: failure: p match with sas-mreg_linear_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
+1/1 mismatches
+[1] 0.748 - 0.504 == 0.244
+
+test-09_cross_check_with_sas_macro.R:388: failure: p match with sas-mreg_linear_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
+1/1 mismatches
+[1] 0.136 - 0.272 == -0.136
+
+test-09_cross_check_with_sas_macro.R:389: failure: p match with sas-mreg_linear_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
+1/1 mismatches
+[1] 0.758 - 0.484 == 0.275
+
+test-09_cross_check_with_sas_macro.R:390: failure: p match with sas-mreg_linear_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.14 - 0.279 == -0.14
+
+test-09_cross_check_with_sas_macro.R:391: failure: p match with sas-mreg_linear_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["conditional_te"]].
+1/1 mismatches
+[1] 0.649 - 0.702 == -0.0525
+
+test-09_cross_check_with_sas_macro.R:395: error: lower confint match with sas-mreg_linear_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:395:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:404: error: upper confint match with sas-mreg_linear_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:404:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:456: error: coef match with sas-mreg_linear_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:456:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:465: failure: p match with sas-mreg_linear_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.827 - 0.346 == 0.482
+
+test-09_cross_check_with_sas_macro.R:466: failure: p match with sas-mreg_linear_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.827 - 0.346 == 0.482
+
+test-09_cross_check_with_sas_macro.R:467: failure: p match with sas-mreg_linear_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.135 - 0.269 == -0.135
+
+test-09_cross_check_with_sas_macro.R:468: failure: p match with sas-mreg_linear_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.827 - 0.346 == 0.482
+
+test-09_cross_check_with_sas_macro.R:469: failure: p match with sas-mreg_linear_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.135 - 0.269 == -0.135
+
+test-09_cross_check_with_sas_macro.R:470: failure: p match with sas-mreg_linear_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["te"]].
+1/1 mismatches
+[1] 0.667 - 0.665 == 0.00228
+
+test-09_cross_check_with_sas_macro.R:474: error: lower confint match with sas-mreg_linear_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:474:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:483: error: upper confint match with sas-mreg_linear_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:483:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:377: error: coef match with sas-mreg_linear_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:377:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:386: failure: p match with sas-mreg_linear_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["conditional_cde"]].
+1/1 mismatches
+[1] 0.851 - 0.298 == 0.552
+
+test-09_cross_check_with_sas_macro.R:387: failure: p match with sas-mreg_linear_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
+1/1 mismatches
+[1] 0.843 - 0.315 == 0.528
+
+test-09_cross_check_with_sas_macro.R:388: failure: p match with sas-mreg_linear_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
+1/1 mismatches
+[1] 0.135 - 0.27 == -0.135
+
+test-09_cross_check_with_sas_macro.R:389: failure: p match with sas-mreg_linear_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
+1/1 mismatches
+[1] 0.846 - 0.308 == 0.538
+
+test-09_cross_check_with_sas_macro.R:390: failure: p match with sas-mreg_linear_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.138 - 0.277 == -0.138
+
+test-09_cross_check_with_sas_macro.R:391: failure: p match with sas-mreg_linear_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["conditional_te"]].
+1/1 mismatches
+[1] 0.733 - 0.534 == 0.199
+
+test-09_cross_check_with_sas_macro.R:395: error: lower confint match with sas-mreg_linear_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:395:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:404: error: upper confint match with sas-mreg_linear_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:404:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:456: error: coef match with sas-mreg_linear_yreg_survCox_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:456:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:465: failure: p match with sas-mreg_linear_yreg_survCox_int_f_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.143 - 0.288 == -0.145
+
+test-09_cross_check_with_sas_macro.R:466: failure: p match with sas-mreg_linear_yreg_survCox_int_f_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.143 - 0.288 == -0.145
+
+test-09_cross_check_with_sas_macro.R:467: failure: p match with sas-mreg_linear_yreg_survCox_int_f_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.865 - 0.27 == 0.596
+
+test-09_cross_check_with_sas_macro.R:468: failure: p match with sas-mreg_linear_yreg_survCox_int_f_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["cde=nde"]].
+1/1 mismatches
+[1] 0.143 - 0.288 == -0.145
+
+test-09_cross_check_with_sas_macro.R:469: failure: p match with sas-mreg_linear_yreg_survCox_int_f_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.865 - 0.27 == 0.596
+
+test-09_cross_check_with_sas_macro.R:470: failure: p match with sas-mreg_linear_yreg_survCox_int_f_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["te"]].
+1/1 mismatches
+[1] 0.291 - 0.586 == -0.294
+
+test-09_cross_check_with_sas_macro.R:474: error: lower confint match with sas-mreg_linear_yreg_survCox_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:474:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:483: error: upper confint match with sas-mreg_linear_yreg_survCox_int_f_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["cde=nde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:483:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:317: warning: (unknown)
+the condition has length > 1 and only the first element will be used
+
+test-09_cross_check_with_sas_macro.R:377: error: coef match with sas-mreg_linear_yreg_survCox_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(coef["cde"])], sas_estimate[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:377:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:386: failure: p match with sas-mreg_linear_yreg_survCox_int_t_caco_f_ncvar3.sas
+p[["cde"]] not equal to sas_p[["conditional_cde"]].
+1/1 mismatches
+[1] 0.128 - 0.256 == -0.128
+
+test-09_cross_check_with_sas_macro.R:387: failure: p match with sas-mreg_linear_yreg_survCox_int_t_caco_f_ncvar3.sas
+p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
+1/1 mismatches
+[1] 0.131 - 0.264 == -0.133
+
+test-09_cross_check_with_sas_macro.R:388: failure: p match with sas-mreg_linear_yreg_survCox_int_t_caco_f_ncvar3.sas
+p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
+1/1 mismatches
+[1] 0.865 - 0.27 == 0.594
+
+test-09_cross_check_with_sas_macro.R:389: failure: p match with sas-mreg_linear_yreg_survCox_int_t_caco_f_ncvar3.sas
+p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
+1/1 mismatches
+[1] 0.137 - 0.277 == -0.14
+
+test-09_cross_check_with_sas_macro.R:390: failure: p match with sas-mreg_linear_yreg_survCox_int_t_caco_f_ncvar3.sas
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.862 - 0.277 == 0.585
+
+test-09_cross_check_with_sas_macro.R:391: failure: p match with sas-mreg_linear_yreg_survCox_int_t_caco_f_ncvar3.sas
+p[["te"]] not equal to sas_p[["conditional_te"]].
+1/1 mismatches
+[1] 0.274 - 0.551 == -0.277
+
+test-09_cross_check_with_sas_macro.R:395: error: lower confint match with sas-mreg_linear_yreg_survCox_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(lower["cde"])], sas_lower[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:395:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
+test-09_cross_check_with_sas_macro.R:404: error: upper confint match with sas-mreg_linear_yreg_survCox_int_t_caco_f_ncvar3.sas
+object of type 'builtin' is not subsettable
+Backtrace:
+ 1. testthat::expect_equal(exp[(upper["cde"])], sas_upper[["conditional_cde"]]) tests/testthat/test-09_cross_check_with_sas_macro.R:404:32
+ 2. testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. rlang::eval_bare(expr, quo_get_env(quo))
+
 test-09_cross_check_with_sas_macro.R:317: error: (unknown)
-R fit for sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sasgave an try-error object
+R fit for sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sasgave an try-error object
 Backtrace:
   1. dplyr::mutate(...)
  12. regmedint:::.f(...)
@@ -904,9 +1822,11 @@ Backtrace:
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 5.4 s
+Duration: 6.8 s
 
-OK:       743
-Failed:   93
-Warnings: 127
+OK:       747
+Failed:   242
+Warnings: 152
 Skipped:  6
+
+Keep trying!
