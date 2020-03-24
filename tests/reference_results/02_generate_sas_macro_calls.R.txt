@@ -1,0 +1,392 @@
+### Running: /usr/local/Cellar/r/3.6.3_1/lib/R/bin/exec/R --slave --no-restore --file=02_generate_sas_macro_calls.R 
+> 
+> cat("
++ ###
++ ### Prepare environment
++ ################################################################################\n")
+
+###
+### Prepare environment
+################################################################################
+> 
+> ## Record start time
+> start_time <- Sys.time()
+> cat("### Started ", as.character(start_time), "\n")
+### Started  2020-03-24 05:06:29 
+> 
+> 
+> ## Load packages
+> library(tidyverse)
+── Attaching packages ─────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+✔ ggplot2 3.2.1     ✔ purrr   0.3.3
+✔ tibble  2.1.3     ✔ dplyr   0.8.3
+✔ tidyr   1.0.0     ✔ stringr 1.4.0
+✔ readr   1.3.1     ✔ forcats 0.4.0
+── Conflicts ────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+> 
+> 
+> cat("
++ ###
++ ### Construct macro call templates
++ ################################################################################\n")
+
+###
+### Construct macro call templates
+################################################################################
+> 
+> common_string <- "
++ /** Set libname */
++ libname w './';
++ 
++ /* Load SAS macro */
++ %include './mediation.sas';
++ 
++ /* Load data */
++ proc import datafile = './data-pbc_cc.csv'
++     out = pbc_cc
++     dbms = csv
++     replace;
++ run;
++ "
+> 
+> macro_call_string_fmt <- "
++ %%mediation(
++     data = pbc_cc,
++     yvar = %s,
++     avar = %s,
++     mvar = %s,
++     cvar = %s,
++     a0 = %s,
++     a1 = %s,
++     m = %s,
++     yreg = %s,
++     mreg = %s,
++     interaction = %s,
++     casecontrol = %s,
++     output = full,
++     c = %s,
++     boot = ,
++     cens = %s);
++ run;"
+> 
+> 
+> cat("
++ ###
++ ### Generate all relevant patterns of %mediation() calls
++ ################################################################################\n")
+
+###
+### Generate all relevant patterns of %mediation() calls
+################################################################################
+> 
+> macro_args <-
++     crossing(mreg = c("linear",
++                       "logistic"),
++              yreg = c("linear",
++                       "logistic",
++                       "loglinear",
++                       "poisson",
++                       "negbin",
++                       "survCox",
++                       "survAFT_exp",
++                       "survAFT_weibull"),
++              interaction = c("false","true"),
++              casecontrol = c("false","true"),
++              ncvar = c(0,3)) %>%
++     ## casecontrol is only relevant for binary yreg
++     filter(casecontrol == "false" |
++            (casecontrol == "true" & (yreg == "logistic" | yreg == "loglinear"))) %>%
++     ## Choose appropriate variable names
++     mutate(avar = "trt",
++            ##
++            mvar = case_when(mreg == "linear" ~ "bili",
++                             mreg == "logistic" ~ "bili_bin"),
++            ##
++            yvar = case_when(yreg == "linear" ~ "alk_phos",
++                             ##
++                             yreg == "logistic" ~ "spiders",
++                             yreg == "loglinear" ~ "spiders",
++                             ##
++                             yreg == "poisson" ~ "edema",
++                             yreg == "negbin" ~ "edema",
++                             ##
++                             yreg == "survCox" ~ "time",
++                             yreg == "survAFT_exp" ~ "time",
++                             yreg == "survAFT_weibull" ~ "time"),
++            ##
++            eventvar = case_when(yreg == "survCox" ~ "status",
++                                 yreg == "survAFT_exp" ~ "status",
++                                 yreg == "survAFT_weibull" ~ "status",
++                                 TRUE ~ ""),
++            cens = "cens",
++            ##
++            cvar = case_when(ncvar == 0 ~ "",
++                             ncvar == 3 ~ "age male stage"),
++            ##
++            c_cond = case_when(ncvar == 0 ~ "",
++                               ncvar == 3 ~ "50 1 2"),
++            a0 = "1",
++            a1 = "2",
++            m_cde = "1") %>%
++     ## Contruct macro text
++     mutate(macro_call = sprintf(macro_call_string_fmt,
++                                 yvar,
++                                 avar,
++                                 mvar,
++                                 cvar,
++                                 a0,
++                                 a1,
++                                 m_cde,
++                                 yreg,
++                                 mreg,
++                                 interaction,
++                                 casecontrol,
++                                 c_cond,
++                                 cens)) %>%
++     ## Construct the entire sas script
++     mutate(sas_script = paste0(common_string,
++                                macro_call)) %>%
++     ## File name
++     mutate(filename = sprintf("sas-mreg_%s_yreg_%s_int_%s_caco_%s_ncvar%s.sas",
++                               ## All variables in crossing() should appear hear.
++                               mreg,
++                               yreg,
++                               str_sub(interaction, start = 1, end = 1),
++                               str_sub(casecontrol, start = 1, end = 1),
++                               ncvar))
+> macro_args %>%
++     print(n = Inf)
+# A tibble: 80 x 18
+   mreg  yreg  interaction casecontrol ncvar avar  mvar  yvar  eventvar cens  cvar  c_cond a0   
+   <chr> <chr> <chr>       <chr>       <dbl> <chr> <chr> <chr> <chr>    <chr> <chr> <chr>  <chr>
+ 1 line… line… false       false           0 trt   bili  alk_… ""       cens  ""    ""     1    
+ 2 line… line… false       false           3 trt   bili  alk_… ""       cens  age … 50 1 2 1    
+ 3 line… line… true        false           0 trt   bili  alk_… ""       cens  ""    ""     1    
+ 4 line… line… true        false           3 trt   bili  alk_… ""       cens  age … 50 1 2 1    
+ 5 line… logi… false       false           0 trt   bili  spid… ""       cens  ""    ""     1    
+ 6 line… logi… false       false           3 trt   bili  spid… ""       cens  age … 50 1 2 1    
+ 7 line… logi… false       true            0 trt   bili  spid… ""       cens  ""    ""     1    
+ 8 line… logi… false       true            3 trt   bili  spid… ""       cens  age … 50 1 2 1    
+ 9 line… logi… true        false           0 trt   bili  spid… ""       cens  ""    ""     1    
+10 line… logi… true        false           3 trt   bili  spid… ""       cens  age … 50 1 2 1    
+11 line… logi… true        true            0 trt   bili  spid… ""       cens  ""    ""     1    
+12 line… logi… true        true            3 trt   bili  spid… ""       cens  age … 50 1 2 1    
+13 line… logl… false       false           0 trt   bili  spid… ""       cens  ""    ""     1    
+14 line… logl… false       false           3 trt   bili  spid… ""       cens  age … 50 1 2 1    
+15 line… logl… false       true            0 trt   bili  spid… ""       cens  ""    ""     1    
+16 line… logl… false       true            3 trt   bili  spid… ""       cens  age … 50 1 2 1    
+17 line… logl… true        false           0 trt   bili  spid… ""       cens  ""    ""     1    
+18 line… logl… true        false           3 trt   bili  spid… ""       cens  age … 50 1 2 1    
+19 line… logl… true        true            0 trt   bili  spid… ""       cens  ""    ""     1    
+20 line… logl… true        true            3 trt   bili  spid… ""       cens  age … 50 1 2 1    
+21 line… negb… false       false           0 trt   bili  edema ""       cens  ""    ""     1    
+22 line… negb… false       false           3 trt   bili  edema ""       cens  age … 50 1 2 1    
+23 line… negb… true        false           0 trt   bili  edema ""       cens  ""    ""     1    
+24 line… negb… true        false           3 trt   bili  edema ""       cens  age … 50 1 2 1    
+25 line… pois… false       false           0 trt   bili  edema ""       cens  ""    ""     1    
+26 line… pois… false       false           3 trt   bili  edema ""       cens  age … 50 1 2 1    
+27 line… pois… true        false           0 trt   bili  edema ""       cens  ""    ""     1    
+28 line… pois… true        false           3 trt   bili  edema ""       cens  age … 50 1 2 1    
+29 line… surv… false       false           0 trt   bili  time  status   cens  ""    ""     1    
+30 line… surv… false       false           3 trt   bili  time  status   cens  age … 50 1 2 1    
+31 line… surv… true        false           0 trt   bili  time  status   cens  ""    ""     1    
+32 line… surv… true        false           3 trt   bili  time  status   cens  age … 50 1 2 1    
+33 line… surv… false       false           0 trt   bili  time  status   cens  ""    ""     1    
+34 line… surv… false       false           3 trt   bili  time  status   cens  age … 50 1 2 1    
+35 line… surv… true        false           0 trt   bili  time  status   cens  ""    ""     1    
+36 line… surv… true        false           3 trt   bili  time  status   cens  age … 50 1 2 1    
+37 line… surv… false       false           0 trt   bili  time  status   cens  ""    ""     1    
+38 line… surv… false       false           3 trt   bili  time  status   cens  age … 50 1 2 1    
+39 line… surv… true        false           0 trt   bili  time  status   cens  ""    ""     1    
+40 line… surv… true        false           3 trt   bili  time  status   cens  age … 50 1 2 1    
+41 logi… line… false       false           0 trt   bili… alk_… ""       cens  ""    ""     1    
+42 logi… line… false       false           3 trt   bili… alk_… ""       cens  age … 50 1 2 1    
+43 logi… line… true        false           0 trt   bili… alk_… ""       cens  ""    ""     1    
+44 logi… line… true        false           3 trt   bili… alk_… ""       cens  age … 50 1 2 1    
+45 logi… logi… false       false           0 trt   bili… spid… ""       cens  ""    ""     1    
+46 logi… logi… false       false           3 trt   bili… spid… ""       cens  age … 50 1 2 1    
+47 logi… logi… false       true            0 trt   bili… spid… ""       cens  ""    ""     1    
+48 logi… logi… false       true            3 trt   bili… spid… ""       cens  age … 50 1 2 1    
+49 logi… logi… true        false           0 trt   bili… spid… ""       cens  ""    ""     1    
+50 logi… logi… true        false           3 trt   bili… spid… ""       cens  age … 50 1 2 1    
+51 logi… logi… true        true            0 trt   bili… spid… ""       cens  ""    ""     1    
+52 logi… logi… true        true            3 trt   bili… spid… ""       cens  age … 50 1 2 1    
+53 logi… logl… false       false           0 trt   bili… spid… ""       cens  ""    ""     1    
+54 logi… logl… false       false           3 trt   bili… spid… ""       cens  age … 50 1 2 1    
+55 logi… logl… false       true            0 trt   bili… spid… ""       cens  ""    ""     1    
+56 logi… logl… false       true            3 trt   bili… spid… ""       cens  age … 50 1 2 1    
+57 logi… logl… true        false           0 trt   bili… spid… ""       cens  ""    ""     1    
+58 logi… logl… true        false           3 trt   bili… spid… ""       cens  age … 50 1 2 1    
+59 logi… logl… true        true            0 trt   bili… spid… ""       cens  ""    ""     1    
+60 logi… logl… true        true            3 trt   bili… spid… ""       cens  age … 50 1 2 1    
+61 logi… negb… false       false           0 trt   bili… edema ""       cens  ""    ""     1    
+62 logi… negb… false       false           3 trt   bili… edema ""       cens  age … 50 1 2 1    
+63 logi… negb… true        false           0 trt   bili… edema ""       cens  ""    ""     1    
+64 logi… negb… true        false           3 trt   bili… edema ""       cens  age … 50 1 2 1    
+65 logi… pois… false       false           0 trt   bili… edema ""       cens  ""    ""     1    
+66 logi… pois… false       false           3 trt   bili… edema ""       cens  age … 50 1 2 1    
+67 logi… pois… true        false           0 trt   bili… edema ""       cens  ""    ""     1    
+68 logi… pois… true        false           3 trt   bili… edema ""       cens  age … 50 1 2 1    
+69 logi… surv… false       false           0 trt   bili… time  status   cens  ""    ""     1    
+70 logi… surv… false       false           3 trt   bili… time  status   cens  age … 50 1 2 1    
+71 logi… surv… true        false           0 trt   bili… time  status   cens  ""    ""     1    
+72 logi… surv… true        false           3 trt   bili… time  status   cens  age … 50 1 2 1    
+73 logi… surv… false       false           0 trt   bili… time  status   cens  ""    ""     1    
+74 logi… surv… false       false           3 trt   bili… time  status   cens  age … 50 1 2 1    
+75 logi… surv… true        false           0 trt   bili… time  status   cens  ""    ""     1    
+76 logi… surv… true        false           3 trt   bili… time  status   cens  age … 50 1 2 1    
+77 logi… surv… false       false           0 trt   bili… time  status   cens  ""    ""     1    
+78 logi… surv… false       false           3 trt   bili… time  status   cens  age … 50 1 2 1    
+79 logi… surv… true        false           0 trt   bili… time  status   cens  ""    ""     1    
+80 logi… surv… true        false           3 trt   bili… time  status   cens  age … 50 1 2 1    
+# … with 5 more variables: a1 <chr>, m_cde <chr>, macro_call <chr>, sas_script <chr>,
+#   filename <chr>
+> 
+> macro_args %>%
++     select(filename) %>%
++     print(n = Inf)
+# A tibble: 80 x 1
+   filename                                                      
+   <chr>                                                         
+ 1 sas-mreg_linear_yreg_linear_int_f_caco_f_ncvar0.sas           
+ 2 sas-mreg_linear_yreg_linear_int_f_caco_f_ncvar3.sas           
+ 3 sas-mreg_linear_yreg_linear_int_t_caco_f_ncvar0.sas           
+ 4 sas-mreg_linear_yreg_linear_int_t_caco_f_ncvar3.sas           
+ 5 sas-mreg_linear_yreg_logistic_int_f_caco_f_ncvar0.sas         
+ 6 sas-mreg_linear_yreg_logistic_int_f_caco_f_ncvar3.sas         
+ 7 sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar0.sas         
+ 8 sas-mreg_linear_yreg_logistic_int_f_caco_t_ncvar3.sas         
+ 9 sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar0.sas         
+10 sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar3.sas         
+11 sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar0.sas         
+12 sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas         
+13 sas-mreg_linear_yreg_loglinear_int_f_caco_f_ncvar0.sas        
+14 sas-mreg_linear_yreg_loglinear_int_f_caco_f_ncvar3.sas        
+15 sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar0.sas        
+16 sas-mreg_linear_yreg_loglinear_int_f_caco_t_ncvar3.sas        
+17 sas-mreg_linear_yreg_loglinear_int_t_caco_f_ncvar0.sas        
+18 sas-mreg_linear_yreg_loglinear_int_t_caco_f_ncvar3.sas        
+19 sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar0.sas        
+20 sas-mreg_linear_yreg_loglinear_int_t_caco_t_ncvar3.sas        
+21 sas-mreg_linear_yreg_negbin_int_f_caco_f_ncvar0.sas           
+22 sas-mreg_linear_yreg_negbin_int_f_caco_f_ncvar3.sas           
+23 sas-mreg_linear_yreg_negbin_int_t_caco_f_ncvar0.sas           
+24 sas-mreg_linear_yreg_negbin_int_t_caco_f_ncvar3.sas           
+25 sas-mreg_linear_yreg_poisson_int_f_caco_f_ncvar0.sas          
+26 sas-mreg_linear_yreg_poisson_int_f_caco_f_ncvar3.sas          
+27 sas-mreg_linear_yreg_poisson_int_t_caco_f_ncvar0.sas          
+28 sas-mreg_linear_yreg_poisson_int_t_caco_f_ncvar3.sas          
+29 sas-mreg_linear_yreg_survAFT_exp_int_f_caco_f_ncvar0.sas      
+30 sas-mreg_linear_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas      
+31 sas-mreg_linear_yreg_survAFT_exp_int_t_caco_f_ncvar0.sas      
+32 sas-mreg_linear_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas      
+33 sas-mreg_linear_yreg_survAFT_weibull_int_f_caco_f_ncvar0.sas  
+34 sas-mreg_linear_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas  
+35 sas-mreg_linear_yreg_survAFT_weibull_int_t_caco_f_ncvar0.sas  
+36 sas-mreg_linear_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas  
+37 sas-mreg_linear_yreg_survCox_int_f_caco_f_ncvar0.sas          
+38 sas-mreg_linear_yreg_survCox_int_f_caco_f_ncvar3.sas          
+39 sas-mreg_linear_yreg_survCox_int_t_caco_f_ncvar0.sas          
+40 sas-mreg_linear_yreg_survCox_int_t_caco_f_ncvar3.sas          
+41 sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar0.sas         
+42 sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas         
+43 sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas         
+44 sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas         
+45 sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar0.sas       
+46 sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas       
+47 sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar0.sas       
+48 sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas       
+49 sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar0.sas       
+50 sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas       
+51 sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar0.sas       
+52 sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas       
+53 sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar0.sas      
+54 sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas      
+55 sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar0.sas      
+56 sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas      
+57 sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar0.sas      
+58 sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas      
+59 sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar0.sas      
+60 sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas      
+61 sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar0.sas         
+62 sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas         
+63 sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar0.sas         
+64 sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas         
+65 sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar0.sas        
+66 sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas        
+67 sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar0.sas        
+68 sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas        
+69 sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar0.sas    
+70 sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas    
+71 sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar0.sas    
+72 sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas    
+73 sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar0.sas
+74 sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
+75 sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar0.sas
+76 sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
+77 sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar0.sas        
+78 sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas        
+79 sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar0.sas        
+80 sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas        
+> 
+> 
+> cat("
++ ###
++ ### Write to sas scripts
++ ################################################################################\n")
+
+###
+### Write to sas scripts
+################################################################################
+> 
+> junk <- macro_args %>%
++     mutate(junk = map2(sas_script, filename,
++                        function(sas_script, filename) {
++                            write_lines(x = sas_script, path = filename)
++                        }))
+> 
+> 
+> ################################################################################
+> cat("
++ ###
++ ### Record package versions etc
++ ################################################################################\n")
+
+###
+### Record package versions etc
+################################################################################
+> print(sessionInfo())
+R version 3.6.3 (2020-02-29)
+Platform: x86_64-apple-darwin19.3.0 (64-bit)
+Running under: macOS Catalina 10.15.3
+
+Matrix products: default
+BLAS/LAPACK: /usr/local/Cellar/openblas/0.3.9/lib/libopenblasp-r0.3.9.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] forcats_0.4.0   stringr_1.4.0   dplyr_0.8.3     purrr_0.3.3     readr_1.3.1     tidyr_1.0.0    
+[7] tibble_2.1.3    ggplot2_3.2.1   tidyverse_1.3.0
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.3       cellranger_1.1.0 pillar_1.4.2     compiler_3.6.3   dbplyr_1.4.2    
+ [6] tools_3.6.3      zeallot_0.1.0    jsonlite_1.6     lubridate_1.7.4  lifecycle_0.1.0 
+[11] nlme_3.1-144     gtable_0.3.0     lattice_0.20-38  pkgconfig_2.0.3  rlang_0.4.2     
+[16] reprex_0.3.0     cli_1.1.0        rstudioapi_0.10  DBI_1.0.0        haven_2.2.0     
+[21] withr_2.1.2      xml2_1.2.2       httr_1.4.1       fs_1.3.1         generics_0.0.2  
+[26] vctrs_0.2.0      hms_0.5.2        grid_3.6.3       tidyselect_0.2.5 glue_1.3.1      
+[31] R6_2.4.1         fansi_0.4.0      readxl_1.3.1     modelr_0.1.5     magrittr_1.5    
+[36] backports_1.1.5  scales_1.1.0     rvest_0.3.5      assertthat_0.2.1 colorspace_1.4-1
+[41] utf8_1.1.4       stringi_1.4.3    lazyeval_0.2.2   munsell_0.5.0    broom_0.5.2     
+[46] crayon_1.3.4    
+> ## Record execution time and multicore use
+> end_time <- Sys.time()
+> diff_time <- difftime(end_time, start_time, units = "auto")
+> 
