@@ -4,26 +4,15 @@
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  23       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
 ⠏ |   0       | 04_fit_yreg_logistic✔ |  24       | 04_fit_yreg_logistic
-⠏ |   0       | 04_fit_yreg_negbin⠋ |  21       | 04_fit_yreg_negbin✔ |  24       | 04_fit_yreg_negbin [0.1 s]
+⠏ |   0       | 04_fit_yreg_negbin⠸ |  24       | 04_fit_yreg_negbin✔ |  24       | 04_fit_yreg_negbin [0.1 s]
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
 ⠏ |   0       | 04_fit_yreg_survCox✔ |  24       | 04_fit_yreg_survCox
-⠏ |   0       | 06_calc_myreg_helpers_coef⠧ |  38       | 06_calc_myreg_helpers_coef⠧ |  78       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠹ |  33       | 06_calc_myreg_helpers_vcov⠋ |  61       | 06_calc_myreg_helpers_vcov⠏ |  90       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear⠇ |  39       | 07_calc_myreg_mreg_linear_yreg_linear⠸ |  83 1     | 07_calc_myreg_mreg_linear_yreg_linear⠧ | 116 2     | 07_calc_myreg_mreg_linear_yreg_linear⠦ | 165 2     | 07_calc_myreg_mreg_linear_yreg_linear⠏ | 218 2     | 07_calc_myreg_mreg_linear_yreg_linear✖ | 223 2     | 07_calc_myreg_mreg_linear_yreg_linear [0.5 s]
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-07_calc_myreg_mreg_linear_yreg_linear.R:268: failure: calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly
-unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pm"]) not equal to (...).
-1/1 mismatches
-[1] -0.725 - -2.04e-25 == -0.725
-
-test-07_calc_myreg_mreg_linear_yreg_linear.R:586: failure: calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly
-unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pm"]) not equal to (...).
-1/1 mismatches
-[1] -0.666 - -7.81e-33 == -0.666
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠴ |  36       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  73       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ | 100       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ | 157       | 07_calc_myreg_mreg_linear_yreg_logistic⠙ | 192       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠙ |  42       | 06_calc_myreg_helpers_coef⠴ |  86       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠴ |  36       | 06_calc_myreg_helpers_vcov⠸ |  64       | 06_calc_myreg_helpers_vcov⠋ |  91       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear⠦ |  37       | 07_calc_myreg_mreg_linear_yreg_linear⠦ |  77       | 07_calc_myreg_mreg_linear_yreg_linear⠦ | 117       | 07_calc_myreg_mreg_linear_yreg_linear⠴ | 166       | 07_calc_myreg_mreg_linear_yreg_linear⠋ | 221       | 07_calc_myreg_mreg_linear_yreg_linear✔ | 225       | 07_calc_myreg_mreg_linear_yreg_linear [0.5 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  31       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  71       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ |  97       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ | 151       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ | 178       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_logistic.R:1177: failure: calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar): returns a function that gives a numeric vector without NA
 all(!is.na(res)) isn't true.
@@ -50,7 +39,7 @@ Reason: empty test
 test-07_calc_myreg_mreg_logistic_yreg_logistic.R:26: skip: calc_myreg_mreg_logistic_yreg_logistic_se works given coef and vcov
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 08_regmedint_class_user_methods⠴ |  16       | 08_regmedint_class_user_methods⠇ |  25 4     | 08_regmedint_class_user_methods✖ |  28 8     | 08_regmedint_class_user_methods [0.3 s]
+⠏ |   0       | 08_regmedint_class_user_methods⠸ |  14       | 08_regmedint_class_user_methods⠴ |  25 1     | 08_regmedint_class_user_methods✖ |  28 8     | 08_regmedint_class_user_methods [0.3 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-08_regmedint_class_user_methods.R:106: failure: summary.regmedint: prints evaluation information
 `summary\(fit_regmedint\)` does not match "^Evaluated at:".
@@ -83,7 +72,7 @@ Actual value: "### Mediator model\\n\\nCall:\\nlm\(formula = bili ~ trt, data = 
 test-08_regmedint_class_user_methods.R:138: failure: confint.regmedint: creates the lower column less than the upper column
 all(...) isn't true.
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 09_cross_check_with_sas_macro⠸ |  14       | 09_cross_check_with_sas_macro⠙ |  81   1   | 09_cross_check_with_sas_macro⠹ |  81   32   | 09_cross_check_with_sas_macro⠹ |  81   72   | 09_cross_check_with_sas_macro⠸ | 101 80 83   | 09_cross_check_with_sas_macro⠇ | 101 190 88   | 09_cross_check_with_sas_macro⠸ | 101 301 92   | 09_cross_check_with_sas_macro⠼ | 102 435 98   | 09_cross_check_with_sas_macro✖ | 102 500 100   | 09_cross_check_with_sas_macro [1.7 s]
+⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  81   1   | 09_cross_check_with_sas_macro⠋ |  81   30   | 09_cross_check_with_sas_macro⠴ |  81   55   | 09_cross_check_with_sas_macro⠦ | 101 54 82   | 09_cross_check_with_sas_macro⠏ | 101 153 86   | 09_cross_check_with_sas_macro⠹ | 101 261 91   | 09_cross_check_with_sas_macro⠼ | 101 359 95   | 09_cross_check_with_sas_macro⠧ | 102 467 99   | 09_cross_check_with_sas_macro✖ | 102 500 100   | 09_cross_check_with_sas_macro [1.8 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-09_cross_check_with_sas_macro.R:268: warning: (unknown)
 the condition has length > 1 and only the first element will be used
@@ -2909,9 +2898,9 @@ Backtrace:
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 10.3 s
+Duration: 10.6 s
 
-OK:       1019
-Failed:   513
+OK:       1021
+Failed:   511
 Warnings: 100
 Skipped:  4
