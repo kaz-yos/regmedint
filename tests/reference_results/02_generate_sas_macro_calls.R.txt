@@ -12,7 +12,7 @@
 > ## Record start time
 > start_time <- Sys.time()
 > cat("### Started ", as.character(start_time), "\n")
-### Started  2020-03-24 05:23:52 
+### Started  2020-03-24 22:31:59 
 > 
 > 
 > ## Load packages
@@ -118,8 +118,8 @@ Registered S3 method overwritten by 'rvest':
 +                             yreg == "logistic" ~ "spiders",
 +                             yreg == "loglinear" ~ "spiders",
 +                             ##
-+                             yreg == "poisson" ~ "edema",
-+                             yreg == "negbin" ~ "edema",
++                             yreg == "poisson" ~ "platelet",
++                             yreg == "negbin" ~ "platelet",
 +                             ##
 +                             yreg == "survCox" ~ "time",
 +                             yreg == "survAFT_exp" ~ "time",
@@ -180,10 +180,10 @@ Registered S3 method overwritten by 'rvest':
  8 line… logl… false       true            3 trt   bili  spid… ""       cens  age … 50 1 2 1    
  9 line… logl… true        false           3 trt   bili  spid… ""       cens  age … 50 1 2 1    
 10 line… logl… true        true            3 trt   bili  spid… ""       cens  age … 50 1 2 1    
-11 line… negb… false       false           3 trt   bili  edema ""       cens  age … 50 1 2 1    
-12 line… negb… true        false           3 trt   bili  edema ""       cens  age … 50 1 2 1    
-13 line… pois… false       false           3 trt   bili  edema ""       cens  age … 50 1 2 1    
-14 line… pois… true        false           3 trt   bili  edema ""       cens  age … 50 1 2 1    
+11 line… negb… false       false           3 trt   bili  plat… ""       cens  age … 50 1 2 1    
+12 line… negb… true        false           3 trt   bili  plat… ""       cens  age … 50 1 2 1    
+13 line… pois… false       false           3 trt   bili  plat… ""       cens  age … 50 1 2 1    
+14 line… pois… true        false           3 trt   bili  plat… ""       cens  age … 50 1 2 1    
 15 line… surv… false       false           3 trt   bili  time  status   cens  age … 50 1 2 1    
 16 line… surv… true        false           3 trt   bili  time  status   cens  age … 50 1 2 1    
 17 line… surv… false       false           3 trt   bili  time  status   cens  age … 50 1 2 1    
@@ -200,10 +200,10 @@ Registered S3 method overwritten by 'rvest':
 28 logi… logl… false       true            3 trt   bili… spid… ""       cens  age … 50 1 2 1    
 29 logi… logl… true        false           3 trt   bili… spid… ""       cens  age … 50 1 2 1    
 30 logi… logl… true        true            3 trt   bili… spid… ""       cens  age … 50 1 2 1    
-31 logi… negb… false       false           3 trt   bili… edema ""       cens  age … 50 1 2 1    
-32 logi… negb… true        false           3 trt   bili… edema ""       cens  age … 50 1 2 1    
-33 logi… pois… false       false           3 trt   bili… edema ""       cens  age … 50 1 2 1    
-34 logi… pois… true        false           3 trt   bili… edema ""       cens  age … 50 1 2 1    
+31 logi… negb… false       false           3 trt   bili… plat… ""       cens  age … 50 1 2 1    
+32 logi… negb… true        false           3 trt   bili… plat… ""       cens  age … 50 1 2 1    
+33 logi… pois… false       false           3 trt   bili… plat… ""       cens  age … 50 1 2 1    
+34 logi… pois… true        false           3 trt   bili… plat… ""       cens  age … 50 1 2 1    
 35 logi… surv… false       false           3 trt   bili… time  status   cens  age … 50 1 2 1    
 36 logi… surv… true        false           3 trt   bili… time  status   cens  age … 50 1 2 1    
 37 logi… surv… false       false           3 trt   bili… time  status   cens  age … 50 1 2 1    

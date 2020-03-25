@@ -14,7 +14,7 @@ run;
 
 %mediation(
     data = pbc_cc,
-    yvar = edema,
+    yvar = platelet,
     avar = trt,
     mvar = bili,
     cvar = age male stage,
