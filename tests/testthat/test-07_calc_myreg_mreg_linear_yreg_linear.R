@@ -263,12 +263,11 @@ describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
                          unname(myreg_funs[[2]](1,2,3,c(4,5,6))["pnie"]))
         })
         it("returns functions where pm is calculated from natural effects correctly", {
-            log_nde <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"])
-            log_nie <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"])
+            nde <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"])
+            nie <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"])
             expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pm"]),
                          ## VanderWeele 2015. p48.
-            ((exp(log_nde) * (exp(log_nie) - 1)) /
-             ((exp(log_nde) * exp(log_nie)) - 1)))
+                         nie / (nie + nde))
         })
     })
 })
@@ -581,12 +580,11 @@ describe("calc_myreg_mreg_linear_yreg_linear linear interaction", {
                          unname(myreg_funs[[2]](1,2,3,c(4,5,6))["pnie"]))
         })
         it("returns functions where pm is calculated from natural effects correctly", {
-            log_nde <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"])
-            log_nie <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"])
+            nde <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"])
+            nie <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"])
             expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pm"]),
                          ## VanderWeele 2015. p48.
-            ((exp(log_nde) * (exp(log_nie) - 1)) /
-             ((exp(log_nde) * exp(log_nie)) - 1)))
+                         nie / (nie + nde))
         })
     })
 })
