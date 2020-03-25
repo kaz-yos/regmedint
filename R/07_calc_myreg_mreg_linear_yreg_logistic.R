@@ -324,3 +324,50 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
 
     return(fun_se)
 }
+
+
+## FIXME: Use to
+## To be symbolically differentiated by Deriv::Deriv
+## https://github.com/sgsokol/Deriv
+## https://math.libretexts.org/Bookshelves/Calculus/Book%3A_Calculus_(OpenStax)/14%3A_Differentiation_of_Functions_of_Several_Variables/14.5%3A_The_Chain_Rule_for_Multivariable_Functions)
+calc_myreg_mreg_linear_yreg_logistic_pm_helper <- function(beta0, beta1,
+                                                           ## Vector vlued
+                                                           beta2,
+                                                           theta1,
+                                                           theta2,
+                                                           theta3,
+                                                           sigma_sq) {
+    beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
+    ## Note the a0 in the first line.                      vv
+    pnde <- (theta1 + (theta3 * beta0) + (theta3 * beta1 * a0) +
+             (theta3 * beta2_c) + (theta3 * theta2 * sigma_sq)) * (a1 - a0) +
+        ((1/2) * theta3^2 * sigma_sq) * (a1^2 - a0^2)
+    ## Note the a1.                              vv
+    tnie <- ((theta2 * beta1) + theta3 * beta1 * a1) * (a1 - a0)
+    ## It is the sum of NDE and NIE on the log scale.
+    te <- pnde + tnie
+    ## VanderWeele 2015 p48.
+    pm <- (exp(pnde) * (exp(tnie) - 1)) / (exp(te) - 1)
+    return(pm)
+}
+
+calc_myreg_mreg_linear_yreg_logistic_pm_helper <- function(pnde, tnie) {
+    (exp(pnde) * (exp(tnie) - 1)) / (exp(pnde) * exp(tnie) - 1)
+}
+
+## Deriv::Deriv(calc_myreg_mreg_linear_yreg_logistic_pm_helper)
+function (pnde, tnie)
+{
+    .e1 <- exp(pnde)
+    .e2 <- exp(tnie)
+    .e3 <- .e1 * .e2
+    .e4 <- .e3 - 1
+    .e5 <- .e2 - 1
+    ## Vector valued output
+    c(pnde = (1 - .e3/.e4) * .e1 * .e5/.e4,
+      tnie = (1 - .e1 * .e5/.e4) * .e1 * .e2/.e4)
+}
+## Use this vector to linearly combine Gamma_pnde and Gamma_tnie.
+## Expanded
+c(pnde = (1 - (exp(pnde) * exp(tnie)) / (exp(pnde) * exp(tnie) - 1)) * exp(pnde) * (exp(tnie) - 1) / (exp(pnde) * exp(tnie) - 1),
+  tnie = (1 - exp(pnde) * (exp(tnie) - 1) / (exp(pnde) * exp(tnie) - 1)) * exp(pnde) * exp(tnie) / (exp(pnde) * exp(tnie) - 1))
