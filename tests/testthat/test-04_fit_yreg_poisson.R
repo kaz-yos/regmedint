@@ -27,13 +27,13 @@ describe("fit_yreg poisson (no interaction)", {
         ## No covariates
         yreg_fit0 <- fit_yreg(yreg = "poisson",
                               data = pbc_cc,
-                              yvar = "spiders",
+                              yvar = "platelet",
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
-        ref_fit0 <- glm(formula = spiders ~ trt + bili,
+        ref_fit0 <- glm(formula = platelet ~ trt + bili,
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
@@ -54,13 +54,13 @@ describe("fit_yreg poisson (no interaction)", {
         ## One covariates
         yreg_fit1 <- fit_yreg(yreg = "poisson",
                               data = pbc_cc,
-                              yvar = "spiders",
+                              yvar = "platelet",
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
                               interaction = FALSE,
                               eventvar = NULL)
-        ref_fit1 <- glm(formula = spiders ~ trt + bili + age,
+        ref_fit1 <- glm(formula = platelet ~ trt + bili + age,
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
@@ -81,13 +81,13 @@ describe("fit_yreg poisson (no interaction)", {
         ## Three covariates
         yreg_fit3 <- fit_yreg(yreg = "poisson",
                               data = pbc_cc,
-                              yvar = "spiders",
+                              yvar = "platelet",
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
                               interaction = FALSE,
                               eventvar = NULL)
-        ref_fit3 <- glm(formula = spiders ~ trt + bili + age + male + stage,
+        ref_fit3 <- glm(formula = platelet ~ trt + bili + age + male + stage,
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
@@ -119,13 +119,13 @@ describe("fit_yreg poisson (interaction)", {
         ## No covariates
         yreg_fit0 <- fit_yreg(yreg = "poisson",
                               data = pbc_cc,
-                              yvar = "spiders",
+                              yvar = "platelet",
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit0 <- glm(formula = spiders ~ trt*bili,
+        ref_fit0 <- glm(formula = platelet ~ trt*bili,
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
@@ -146,13 +146,13 @@ describe("fit_yreg poisson (interaction)", {
         ## One covariates
         yreg_fit1 <- fit_yreg(yreg = "poisson",
                               data = pbc_cc,
-                              yvar = "spiders",
+                              yvar = "platelet",
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit1 <- glm(formula = spiders ~ trt*bili + age,
+        ref_fit1 <- glm(formula = platelet ~ trt*bili + age,
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
@@ -173,13 +173,13 @@ describe("fit_yreg poisson (interaction)", {
         ## Three covariates
         yreg_fit3 <- fit_yreg(yreg = "poisson",
                               data = pbc_cc,
-                              yvar = "spiders",
+                              yvar = "platelet",
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit3 <- glm(formula = spiders ~ trt*bili + age + male + stage,
+        ref_fit3 <- glm(formula = platelet ~ trt*bili + age + male + stage,
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
