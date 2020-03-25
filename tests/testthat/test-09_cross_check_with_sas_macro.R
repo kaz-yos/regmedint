@@ -328,7 +328,7 @@ junk <- macro_args_sas_r %>%
             function(filename, sas, res, coef, p, lower, upper) {
 
                 if (class(res) == "try-error") {
-                    stop(paste0("R fit for ", filename, "gave an try-error object"))
+                    stop(paste0("R fit for ", filename, " gave an try-error object!"))
                 } else {
 
                     ## Create named vectors
