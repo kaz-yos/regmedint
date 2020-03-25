@@ -15,7 +15,7 @@ library(tidyverse)
 ### Internal function for yreg model fitting (logistic)
 ################################################################################
 
-test_that("fit_yreg fit Weibull AFT models with survreg correctly", {
+describe("fit_yreg Weibull AFT (no interaction)", {
 
     data(pbc)
 
@@ -25,56 +25,61 @@ test_that("fit_yreg fit Weibull AFT models with survreg correctly", {
                ## Combine transplant and death for testing purpose
                status = if_else(status == 0, 0L, 1L))
 
-    ## No covariates
-    yreg_fit0 <- fit_yreg(yreg = "survAFT_weibull",
-                          data = pbc_cc,
-                          yvar = "time",
-                          avar = "trt",
-                          mvar = "bili",
-                          cvar = NULL,
-                          interaction = FALSE,
-                          eventvar = "status")
-    ref_fit0 <- survreg(formula = Surv(time,status) ~ trt + bili,
-                        dist = "weibull",
-                        data = pbc_cc)
-    ## Same classes
-    expect_equal(class(yreg_fit0),
-                 class(ref_fit0))
-    ## Same formula
-    expect_equal(as.character(yreg_fit0$call$formula),
-                 as.character(ref_fit0$call$formula))
-    ## Same coef
-    expect_equal(coef(yreg_fit0),
-                 coef(ref_fit0))
-    ## Same vcov
-    expect_equal(vcov(yreg_fit0),
-                 vcov(ref_fit0))
+    it("fits a correct model with no covariates", {
+        ## No covariates
+        yreg_fit0 <- fit_yreg(yreg = "survAFT_weibull",
+                              data = pbc_cc,
+                              yvar = "time",
+                              avar = "trt",
+                              mvar = "bili",
+                              cvar = NULL,
+                              interaction = FALSE,
+                              eventvar = "status")
+        ref_fit0 <- survreg(formula = Surv(time,status) ~ trt + bili,
+                            dist = "weibull",
+                            data = pbc_cc)
+        ## Same classes
+        expect_equal(class(yreg_fit0),
+                     class(ref_fit0))
+        ## Same formula
+        expect_equal(as.character(yreg_fit0$call$formula),
+                     as.character(ref_fit0$call$formula))
+        ## Same coef
+        expect_equal(coef(yreg_fit0),
+                     coef(ref_fit0))
+        ## Same vcov
+        expect_equal(vcov(yreg_fit0),
+                     vcov(ref_fit0))
+    })
 
-    ## One covariates
-    yreg_fit1 <- fit_yreg(yreg = "survAFT_weibull",
-                          data = pbc_cc,
-                          yvar = "time",
-                          avar = "trt",
-                          mvar = "bili",
-                          cvar = c("age"),
-                          interaction = FALSE,
-                          eventvar = "status")
-    ref_fit1 <- survreg(formula = Surv(time,status) ~ trt + bili + age,
-                        dist = "weibull",
-                        data = pbc_cc)
-    ## Same classes
-    expect_equal(class(yreg_fit1),
-                 class(ref_fit1))
-    ## Same formula
-    expect_equal(as.character(yreg_fit1$call$formula),
-                 as.character(ref_fit1$call$formula))
-    ## Same coef
-    expect_equal(coef(yreg_fit1),
-                 coef(ref_fit1))
-    ## Same vcov
-    expect_equal(vcov(yreg_fit1),
-                 vcov(ref_fit1))
+    it("fits a correct model with one covariate", {
+        ## One covariates
+        yreg_fit1 <- fit_yreg(yreg = "survAFT_weibull",
+                              data = pbc_cc,
+                              yvar = "time",
+                              avar = "trt",
+                              mvar = "bili",
+                              cvar = c("age"),
+                              interaction = FALSE,
+                              eventvar = "status")
+        ref_fit1 <- survreg(formula = Surv(time,status) ~ trt + bili + age,
+                            dist = "weibull",
+                            data = pbc_cc)
+        ## Same classes
+        expect_equal(class(yreg_fit1),
+                     class(ref_fit1))
+        ## Same formula
+        expect_equal(as.character(yreg_fit1$call$formula),
+                     as.character(ref_fit1$call$formula))
+        ## Same coef
+        expect_equal(coef(yreg_fit1),
+                     coef(ref_fit1))
+        ## Same vcov
+        expect_equal(vcov(yreg_fit1),
+                     vcov(ref_fit1))
+    })
 
+    it("fits a correct model with three covariates", {
     ## Three covariates
     yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
                           data = pbc_cc,
@@ -99,11 +104,12 @@ test_that("fit_yreg fit Weibull AFT models with survreg correctly", {
     ## Same vcov
     expect_equal(vcov(yreg_fit3),
                  vcov(ref_fit3))
+    })
 
 })
 
 
-test_that("fit_yreg fit Weibull AFT models with survreg correctly with interaction", {
+describe("fit_yreg Weibull AFT (interaction)", {
 
     data(pbc)
 
@@ -113,56 +119,61 @@ test_that("fit_yreg fit Weibull AFT models with survreg correctly with interacti
                ## Combine transplant and death for testing purpose
                status = if_else(status == 0, 0L, 1L))
 
-    ## No covariates
-    yreg_fit0 <- fit_yreg(yreg = "survAFT_weibull",
-                          data = pbc_cc,
-                          yvar = "time",
-                          avar = "trt",
-                          mvar = "bili",
-                          cvar = NULL,
-                          interaction = TRUE,
-                          eventvar = "status")
-    ref_fit0 <- survreg(formula = Surv(time,status) ~ trt*bili,
-                        dist = "weibull",
-                        data = pbc_cc)
-    ## Same classes
-    expect_equal(class(yreg_fit0),
-                 class(ref_fit0))
-    ## Same formula
-    expect_equal(as.character(yreg_fit0$call$formula),
-                 as.character(ref_fit0$call$formula))
-    ## Same coef
-    expect_equal(coef(yreg_fit0),
-                 coef(ref_fit0))
-    ## Same vcov
-    expect_equal(vcov(yreg_fit0),
-                 vcov(ref_fit0))
+    it("fits a correct model with no covariates", {
+        ## No covariates
+        yreg_fit0 <- fit_yreg(yreg = "survAFT_weibull",
+                              data = pbc_cc,
+                              yvar = "time",
+                              avar = "trt",
+                              mvar = "bili",
+                              cvar = NULL,
+                              interaction = TRUE,
+                              eventvar = "status")
+        ref_fit0 <- survreg(formula = Surv(time,status) ~ trt*bili,
+                            dist = "weibull",
+                            data = pbc_cc)
+        ## Same classes
+        expect_equal(class(yreg_fit0),
+                     class(ref_fit0))
+        ## Same formula
+        expect_equal(as.character(yreg_fit0$call$formula),
+                     as.character(ref_fit0$call$formula))
+        ## Same coef
+        expect_equal(coef(yreg_fit0),
+                     coef(ref_fit0))
+        ## Same vcov
+        expect_equal(vcov(yreg_fit0),
+                     vcov(ref_fit0))
+    })
 
-    ## One covariates
-    yreg_fit1 <- fit_yreg(yreg = "survAFT_weibull",
-                          data = pbc_cc,
-                          yvar = "time",
-                          avar = "trt",
-                          mvar = "bili",
-                          cvar = c("age"),
-                          interaction = TRUE,
-                          eventvar = "status")
-    ref_fit1 <- survreg(formula = Surv(time,status) ~ trt*bili + age,
-                        dist = "weibull",
-                        data = pbc_cc)
-    ## Same classes
-    expect_equal(class(yreg_fit1),
-                 class(ref_fit1))
-    ## Same formula
-    expect_equal(as.character(yreg_fit1$call$formula),
-                 as.character(ref_fit1$call$formula))
-    ## Same coef
-    expect_equal(coef(yreg_fit1),
-                 coef(ref_fit1))
-    ## Same vcov
-    expect_equal(vcov(yreg_fit1),
-                 vcov(ref_fit1))
+    it("fits a correct model with one covariate", {
+        ## One covariates
+        yreg_fit1 <- fit_yreg(yreg = "survAFT_weibull",
+                              data = pbc_cc,
+                              yvar = "time",
+                              avar = "trt",
+                              mvar = "bili",
+                              cvar = c("age"),
+                              interaction = TRUE,
+                              eventvar = "status")
+        ref_fit1 <- survreg(formula = Surv(time,status) ~ trt*bili + age,
+                            dist = "weibull",
+                            data = pbc_cc)
+        ## Same classes
+        expect_equal(class(yreg_fit1),
+                     class(ref_fit1))
+        ## Same formula
+        expect_equal(as.character(yreg_fit1$call$formula),
+                     as.character(ref_fit1$call$formula))
+        ## Same coef
+        expect_equal(coef(yreg_fit1),
+                     coef(ref_fit1))
+        ## Same vcov
+        expect_equal(vcov(yreg_fit1),
+                     vcov(ref_fit1))
+    })
 
+    it("fits a correct model with three covariates", {
     ## Three covariates
     yreg_fit3 <- fit_yreg(yreg = "survAFT_weibull",
                           data = pbc_cc,
@@ -187,5 +198,6 @@ test_that("fit_yreg fit Weibull AFT models with survreg correctly with interacti
     ## Same vcov
     expect_equal(vcov(yreg_fit3),
                  vcov(ref_fit3))
+    })
 
 })
