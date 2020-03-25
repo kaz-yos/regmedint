@@ -611,8 +611,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = NULL,
-                                                       sigma_sq = 8))
+                                                       theta4 = NULL))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
                                                        beta1 = 2,
@@ -621,8 +620,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = NULL,
-                                                       sigma_sq = 8))
+                                                       theta4 = NULL))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
                                                        beta1 = 2,
@@ -631,8 +629,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8))
+                                                       theta4 = 7))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
                                                        beta1 = 2,
@@ -641,8 +638,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = 7:8,
-                                                       sigma_sq = 8))
+                                                       theta4 = 7:8))
         })
         it("errors given vector inputs in arguments other than beta2 and theta4", {
             expect_error(
@@ -653,8 +649,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8))
+                                                       theta4 = 7))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
                                                        beta1 = 2:3,
@@ -663,8 +658,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8))
+                                                       theta4 = 7))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
                                                        beta1 = 2,
@@ -673,8 +667,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4:5,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8))
+                                                       theta4 = 7))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
                                                        beta1 = 2,
@@ -683,8 +676,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4,
                                                        theta2 = 5:6,
                                                        theta3 = 6,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8))
+                                                       theta4 = 7))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
                                                        beta1 = 2,
@@ -693,18 +685,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = 6:7,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8))
-            expect_error(
-                calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
-                                                       beta1 = 2,
-                                                       beta2 = 3,
-                                                       theta0 = 0,
-                                                       theta1 = 4,
-                                                       theta2 = 5,
-                                                       theta3 = 6:7,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8:9))
+                                                       theta4 = 7))
         })
         it("errors given NULL inputs in arguments other than beta2 and theta4", {
             expect_error(
@@ -715,8 +696,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8))
+                                                       theta4 = 7))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
                                                        beta1 = NULL,
@@ -725,8 +705,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8))
+                                                       theta4 = 7))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
                                                        beta1 = 2,
@@ -735,8 +714,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = NULL,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8))
+                                                       theta4 = 7))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
                                                        beta1 = 2,
@@ -745,8 +723,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4,
                                                        theta2 = NULL,
                                                        theta3 = 6,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8))
+                                                       theta4 = 7))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
                                                        beta1 = 2,
@@ -755,18 +732,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = NULL,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8))
-            expect_error(
-                calc_myreg_mreg_linear_yreg_linear_est(beta0 = 1,
-                                                       beta1 = 2,
-                                                       beta2 = 3,
-                                                       theta0 = 0,
-                                                       theta1 = 4,
-                                                       theta2 = 5,
-                                                       theta3 = NULL,
-                                                       theta4 = 7,
-                                                       sigma_sq = 8:9))
+                                                       theta4 = 7))
         })
     })
     ## Note that this function does not require a model object and easy to test.
@@ -779,8 +745,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                    theta1 = 4,
                                                    theta2 = 5,
                                                    theta3 = 6,
-                                                   theta4 = NULL,
-                                                   sigma_sq = 8)
+                                                   theta4 = NULL)
         it("returns a function", {
             expect_equal(class(est_fun),
                          "function")
@@ -798,7 +763,6 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta2"), 5)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta3"), 6)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta4"), NULL)
-            expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "sigma_sq"), 8)
         })
         it("returns a function that errors given inconsistent c_cond", {
             expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
@@ -824,8 +788,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                    theta1 = 4,
                                                    theta2 = 5,
                                                    theta3 = 6,
-                                                   theta4 = 7,
-                                                   sigma_sq = 8)
+                                                   theta4 = 7)
         it("returns a function", {
             expect_equal(class(est_fun),
                          "function")
@@ -843,7 +806,6 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta2"), 5)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta3"), 6)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta4"), 7)
-            expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "sigma_sq"), 8)
         })
         it("returns a function that errors given inconsistent c_cond", {
             expect_error(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
@@ -869,8 +831,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
                                                    theta1 = 4,
                                                    theta2 = 5,
                                                    theta3 = 6,
-                                                   theta4 = 7:9,
-                                                   sigma_sq = 8)
+                                                   theta4 = 7:9)
         it("returns a function", {
             expect_equal(class(est_fun),
                          "function")
@@ -888,7 +849,6 @@ describe("calc_myreg_mreg_linear_yreg_linear_est function factory", {
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta2"), 5)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta3"), 6)
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "theta4"), 7:9)
-            expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "sigma_sq"), 8)
         })
         it("returns a function that errors given inconsistent c_cond", {
             expect_error(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
@@ -925,10 +885,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5,
                                                       theta3 = 6,
                                                       theta4 = NULL,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
                                                       beta1 = 2,
@@ -938,10 +896,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5,
                                                       theta3 = 6,
                                                       theta4 = NULL,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
                                                       beta1 = 2,
@@ -951,10 +907,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5,
                                                       theta3 = 6,
                                                       theta4 = 7,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
                                                       beta1 = 2,
@@ -964,10 +918,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5,
                                                       theta3 = 6,
                                                       theta4 = 7:8,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
         })
         it("errors given vector inputs in arguments other than beta2 and theta4", {
             expect_error(
@@ -979,10 +931,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5,
                                                       theta3 = 6,
                                                       theta4 = 7,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
                                                       beta1 = 2:3,
@@ -992,10 +942,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5,
                                                       theta3 = 6,
                                                       theta4 = 7,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
                                                       beta1 = 2,
@@ -1005,10 +953,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5,
                                                       theta3 = 6,
                                                       theta4 = 7,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
                                                       beta1 = 2,
@@ -1018,10 +964,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5:6,
                                                       theta3 = 6,
                                                       theta4 = 7,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
                                                       beta1 = 2,
@@ -1031,23 +975,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5,
                                                       theta3 = 6:7,
                                                       theta4 = 7,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-            expect_error(
-                calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
-                                                      beta1 = 2,
-                                                      beta2 = 3,
-                                                      theta0 = 0,
-                                                      theta1 = 4,
-                                                      theta2 = 5,
-                                                      theta3 = 6:7,
-                                                      theta4 = 7,
-                                                      sigma_sq = 8:9,
-                                                      Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
         })
         it("errors given NULL inputs in arguments other than beta2 and theta4", {
             expect_error(
@@ -1059,10 +988,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5,
                                                       theta3 = 6,
                                                       theta4 = 7,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
                                                       beta1 = NULL,
@@ -1072,10 +999,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5,
                                                       theta3 = 6,
                                                       theta4 = 7,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
                                                       beta1 = 2,
@@ -1085,10 +1010,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5,
                                                       theta3 = 6,
                                                       theta4 = 7,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
                                                       beta1 = 2,
@@ -1098,10 +1021,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = NULL,
                                                       theta3 = 6,
                                                       theta4 = 7,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
                                                       beta1 = 2,
@@ -1111,23 +1032,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                       theta2 = 5,
                                                       theta3 = NULL,
                                                       theta4 = 7,
-                                                      sigma_sq = 8,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
-            expect_error(
-                calc_myreg_mreg_linear_yreg_linear_se(beta0 = 1,
-                                                      beta1 = 2,
-                                                      beta2 = 3,
-                                                      theta0 = 0,
-                                                      theta1 = 4,
-                                                      theta2 = 5,
-                                                      theta3 = NULL,
-                                                      theta4 = 7,
-                                                      sigma_sq = 8:9,
-                                                      Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                      Sigma_sigma = diag(3, nrow = 1, ncol = 1)))
+                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4)))
         })
     })
     ## Note that this function does not require a model object and easy to tse.
@@ -1141,10 +1047,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                   theta2 = 5,
                                                   theta3 = 6,
                                                   theta4 = NULL,
-                                                  sigma_sq = 8,
                                                   Sigma_beta = diag(1, nrow = 2, ncol = 2),
-                                                  Sigma_theta = diag(2, nrow = 4, ncol = 4),
-                                                  Sigma_sigma = diag(3, nrow = 1, ncol = 1))
+                                                  Sigma_theta = diag(2, nrow = 4, ncol = 4))
         it("returns a function", {
             expect_equal(class(se_fun),
                          "function")
@@ -1162,7 +1066,6 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), NULL)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "sigma_sq"), 8)
         })
         it("returns a function that errors given inconsistent c_cond", {
             expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
@@ -1189,10 +1092,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                   theta2 = 5,
                                                   theta3 = 6,
                                                   theta4 = 7,
-                                                  sigma_sq = 8,
                                                   Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                  Sigma_theta = diag(2, nrow = 5, ncol = 5),
-                                                  Sigma_sigma = diag(3, nrow = 1, ncol = 1))
+                                                  Sigma_theta = diag(2, nrow = 5, ncol = 5))
         it("returns a function", {
             expect_equal(class(se_fun),
                          "function")
@@ -1210,7 +1111,6 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), 7)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "sigma_sq"), 8)
         })
         it("returns a function that errors given inconsistent c_cond", {
             expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
@@ -1237,10 +1137,8 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
                                                   theta2 = 5,
                                                   theta3 = 6,
                                                   theta4 = 7:9,
-                                                  sigma_sq = 8,
                                                   Sigma_beta = diag(1, nrow = 5, ncol = 5),
-                                                  Sigma_theta = diag(2, nrow = 7, ncol = 7),
-                                                  Sigma_sigma = diag(3, nrow = 1, ncol = 1))
+                                                  Sigma_theta = diag(2, nrow = 7, ncol = 7))
         it("returns a function", {
             expect_equal(class(se_fun),
                          "function")
@@ -1258,7 +1156,6 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), 7:9)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "sigma_sq"), 8)
         })
         it("returns a function that errors given inconsistent c_cond", {
             expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
