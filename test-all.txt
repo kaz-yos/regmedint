@@ -7,8 +7,9 @@
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 06_calc_myreg_helpers_coef⠦ |  37       | 06_calc_myreg_helpers_coef⠦ |  77       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠼ |  35       | 06_calc_myreg_helpers_vcov⠹ |  63       | 06_calc_myreg_helpers_vcov⠏ |  90       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 04_fit_yreg_survCox✔ |  24       | 04_fit_yreg_survCox
+⠏ |   0       | 06_calc_myreg_helpers_coef⠴ |  36       | 06_calc_myreg_helpers_coef⠸ |  74       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠦ |  27       | 06_calc_myreg_helpers_vcov⠼ |  55       | 06_calc_myreg_helpers_vcov⠋ |  81       | 06_calc_myreg_helpers_vcov⠇ | 109       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -17,7 +18,7 @@ Reason: empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ |  40       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  81       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ | 119       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ | 170       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ | 212 1     | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.5 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  31       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ |  68       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ | 100       | 07_calc_myreg_mreg_linear_yreg_logistic⠼ | 155       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ | 178       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_logistic.R:1184: failure: calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar): returns a function that gives a numeric vector without NA
 all(!is.na(res)) isn't true.
@@ -44,7 +45,7 @@ Reason: empty test
 test-07_calc_myreg_mreg_logistic_yreg_logistic.R:26: skip: calc_myreg_mreg_logistic_yreg_logistic_se works given coef and vcov
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 08_regmedint_class_user_methods⠸ |  14       | 08_regmedint_class_user_methods⠴ |  25 1     | 08_regmedint_class_user_methods✖ |  28 8     | 08_regmedint_class_user_methods [0.3 s]
+⠏ |   0       | 08_regmedint_class_user_methods⠹ |  13       | 08_regmedint_class_user_methods⠼ |  25       | 08_regmedint_class_user_methods✖ |  28 8     | 08_regmedint_class_user_methods [0.3 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-08_regmedint_class_user_methods.R:106: failure: summary.regmedint: prints evaluation information
 `summary\(fit_regmedint\)` does not match "^Evaluated at:".
@@ -77,7 +78,7 @@ Actual value: "### Mediator model\\n\\nCall:\\nlm\(formula = bili ~ trt, data = 
 test-08_regmedint_class_user_methods.R:138: failure: confint.regmedint: creates the lower column less than the upper column
 all(...) isn't true.
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  81   1   | 09_cross_check_with_sas_macro⠦ |  81   26   | 09_cross_check_with_sas_macro⠋ |  81   50   | 09_cross_check_with_sas_macro⠸ |  81   53   | 09_cross_check_with_sas_macro⠹ |  81   82   | 09_cross_check_with_sas_macro⠋ |  81   130   | 09_cross_check_with_sas_macro⠋ | 101 123 137   | 09_cross_check_with_sas_macro⠧ | 101 264 143   | 09_cross_check_with_sas_macro⠸ | 102 403 149   | 09_cross_check_with_sas_macro✖ | 103 499 152   | 09_cross_check_with_sas_macro [1.8 s]
+⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  81   1   | 09_cross_check_with_sas_macro⠦ |  81   26   | 09_cross_check_with_sas_macro⠸ |  81   53   | 09_cross_check_with_sas_macro⠹ |  81   82   | 09_cross_check_with_sas_macro⠦ |  81   106   | 09_cross_check_with_sas_macro⠸ | 101 49 134   | 09_cross_check_with_sas_macro⠹ | 101 164 138   | 09_cross_check_with_sas_macro⠼ | 101 261 143   | 09_cross_check_with_sas_macro⠴ | 102 367 147   | 09_cross_check_with_sas_macro⠇ | 103 474 152   | 09_cross_check_with_sas_macro✖ | 103 499 152   | 09_cross_check_with_sas_macro [1.9 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
 iteration limit reached
@@ -3054,9 +3055,9 @@ Backtrace:
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 9.6 s
+Duration: 10.4 s
 
-OK:       749
+OK:       773
 Failed:   510
 Warnings: 152
 Skipped:  6
