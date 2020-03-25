@@ -15,14 +15,15 @@ library(tidyverse)
 ### Tests for calc_myreg_mreg_linear_yreg_linear
 ################################################################################
 
-describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
+data(pbc)
+## Missing data should be warned in validate_args()
+pbc_cc <- pbc[complete.cases(pbc),] %>%
+    mutate(male = if_else(sex == "m", 1L, 0L),
+           ## Combine transplant and death for testing purpose
+           status = if_else(status == 0, 0L, 1L),
+           alk_phos = alk.phos)
 
-    data(pbc)
-    ## Missing data should be warned in validate_args()
-    pbc_cc <- pbc[complete.cases(pbc),] %>%
-        mutate(male = if_else(sex == "m", 1L, 0L),
-               ## Combine transplant and death for testing purpose
-               status = if_else(status == 0, 0L, 1L))
+describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
 
     describe("calc_myreg_mreg_linear_yreg_linear linear no interaction (NULL cvar)", {
         mreg_fit <- fit_mreg(mreg = "linear",
@@ -273,13 +274,6 @@ describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
 })
 ##
 describe("calc_myreg_mreg_linear_yreg_linear linear interaction", {
-
-    data(pbc)
-    ## Missing data should be warned in validate_args()
-    pbc_cc <- pbc[complete.cases(pbc),] %>%
-        mutate(male = if_else(sex == "m", 1L, 0L),
-               ## Combine transplant and death for testing purpose
-               status = if_else(status == 0, 0L, 1L))
 
     describe("calc_myreg_mreg_linear_yreg_linear linear interaction (NULL cvar)", {
         mreg_fit <- fit_mreg(mreg = "linear",
