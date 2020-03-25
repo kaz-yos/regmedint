@@ -1,4 +1,4 @@
-                                                           The SAS System                          05:31 Tuesday, March 24, 2020   1
+                                                           The SAS System                          22:33 Tuesday, March 24, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -7,7 +7,7 @@
                                                   Data Set              WORK.DATA1
                                                   Distribution             Poisson
                                                   Link Function                Log
-                                                  Dependent Variable         edema
+                                                  Dependent Variable      platelet
 
 
                                               Number of Observations Read         276
@@ -30,15 +30,15 @@
  
                                   Criterion                     DF           Value        Value/DF
 
-                                  Deviance                     270        170.9182          0.6330
-                                  Scaled Deviance              270        170.9182          0.6330
-                                  Pearson Chi-Square           270        300.4188          1.1127
-                                  Scaled Pearson X2            270        300.4188          1.1127
-                                  Log Likelihood                         -120.8921                
-                                  Full Log Likelihood                    -132.6756                
-                                  AIC (smaller is better)                 277.3512                
-                                  AICC (smaller is better)                277.6635                
-                                  BIC (smaller is better)                 299.0736                
+                                  Deviance                     270       8548.4657         31.6610
+                                  Scaled Deviance              270       8548.4657         31.6610
+                                  Pearson Chi-Square           270       8518.4326         31.5498
+                                  Scaled Pearson X2            270       8518.4326         31.5498
+                                  Log Likelihood                       330364.4539                
+                                  Full Log Likelihood                   -5286.5477                
+                                  AIC (smaller is better)               10585.0954                
+                                  AICC (smaller is better)              10585.4076                
+                                  BIC (smaller is better)               10606.8178                
 
 
                             Algorithm converged.                                                       
@@ -48,13 +48,13 @@
  
                                   Prm1           Prm2           Prm3           Prm4           Prm5           Prm6
 
-                   Prm1        1.19423       -0.12260       -0.02242      -0.009114        0.07253       -0.13181
-                   Prm2       -0.12260        0.07115      0.0005191      0.0006459      -0.003395      -0.004508
-                   Prm3       -0.02242      0.0005191        0.09891      0.0000613      -0.008819       -0.01545
-                   Prm4      -0.009114      0.0006459      0.0000613      0.0001887      -0.001835      -0.000629
-                   Prm5        0.07253      -0.003395      -0.008819      -0.001835        0.16331       0.005697
-                   Prm6       -0.13181      -0.004508       -0.01545      -0.000629       0.005697        0.05097
-                                                           The SAS System                          05:31 Tuesday, March 24, 2020   2
+                   Prm1      0.0005856      -0.000094      -9.273E-6      -6.537E-6      0.0000279      -0.000036
+                   Prm2      -0.000094      0.0000572      2.6237E-6      3.7107E-7       3.065E-6      -4.148E-6
+                   Prm3      -9.273E-6      2.6237E-6      0.0000632      2.0553E-7      -0.000019      -0.000011
+                   Prm4      -6.537E-6      3.7107E-7      2.0553E-7      1.4142E-7      -1.031E-6      -3.253E-7
+                   Prm5      0.0000279       3.065E-6      -0.000019      -1.031E-6      0.0001524      3.3404E-6
+                   Prm6      -0.000036      -4.148E-6      -0.000011      -3.253E-7      3.3404E-6      0.0000210
+                                                           The SAS System                          22:33 Tuesday, March 24, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -63,16 +63,16 @@
                                                    Standard     Wald 95% Confidence          Wald
                     Parameter    DF    Estimate       Error           Limits           Chi-Square    Pr > ChiSq
 
-                    Intercept     1     -7.1507      1.0928     -9.2926     -5.0089         42.82        <.0001
-                    trt           1     -0.1723      0.2667     -0.6951      0.3505          0.42        0.5183
-                    bili_bin      1      0.8803      0.3145      0.2639      1.4967          7.84        0.0051
-                    age           1      0.0511      0.0137      0.0241      0.0780         13.82        0.0002
-                    male          1     -0.5870      0.4041     -1.3790      0.2051          2.11        0.1464
-                    stage         1      0.7916      0.2258      0.3491      1.2341         12.29        0.0005
+                    Intercept     1      5.9601      0.0242      5.9127      6.0076       60666.0        <.0001
+                    trt           1      0.0249      0.0076      0.0101      0.0398         10.87        0.0010
+                    bili_bin      1     -0.0892      0.0080     -0.1048     -0.0736        125.85        <.0001
+                    age           1     -0.0035      0.0004     -0.0042     -0.0028         86.72        <.0001
+                    male          1     -0.0460      0.0123     -0.0702     -0.0218         13.89        0.0002
+                    stage         1     -0.0696      0.0046     -0.0786     -0.0606        230.60        <.0001
                     Scale         0      1.0000      0.0000      1.0000      1.0000                            
 
 NOTE: The scale parameter was held fixed.
-                                                           The SAS System                          05:31 Tuesday, March 24, 2020   3
+                                                           The SAS System                          22:33 Tuesday, March 24, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -125,7 +125,7 @@ NOTE: The scale parameter was held fixed.
                                       Wald                    27.5947        4         <.0001
 
 
-                                                           The SAS System                          05:31 Tuesday, March 24, 2020   4
+                                                           The SAS System                          22:33 Tuesday, March 24, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -158,20 +158,20 @@ NOTE: The scale parameter was held fixed.
                                          Percent Discordant     29.6    Gamma        0.407
                                          Percent Tied            0.0    Tau-a        0.204
                                          Pairs                 19035    c            0.704
-                                                           The SAS System                          05:31 Tuesday, March 24, 2020   5
+                                                           The SAS System                          22:33 Tuesday, March 24, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
 
-                             1    marginal cde                 0.84172    0.51828     0.49902     1.41976
-                             2    marginal pnde                0.84172    0.51828     0.49902     1.41976
-                             3    marginal pnie                0.96492    0.51882     0.86573     1.07548
-                             4    marginal tnde                0.84172    0.51828     0.49902     1.41976
-                             5    marginal tnie                0.96492    0.51856     0.86579     1.07541
-                             6    marginal total effect        0.81219    0.44498     0.47626     1.38509
-                             7    conditional cde              0.84172    0.51828     0.49902     1.41976
-                             8    conditional pnde             0.84172    0.51828     0.49902     1.41976
-                             9    conditional pnie             0.96839    0.51734     0.87866     1.06728
-                            10    conditional tnde             0.84172    0.51828     0.49902     1.41976
-                            11    conditional tnie             0.96839    0.52182     0.87774     1.06840
-                            12    conditional total effect     0.81511    0.45122     0.47890     1.38737
+                             1    marginal cde                 1.02525    0.00098     1.01017     1.04056
+                             2    marginal pnde                1.02525    0.00098     1.01017     1.04056
+                             3    marginal pnie                1.00381    0.51021     0.99251     1.01525
+                             4    marginal tnde                1.02525    0.00098     1.01017     1.04056
+                             5    marginal tnie                1.00381    0.51028     0.99250     1.01525
+                             6    marginal total effect        1.02916    0.00250     1.01016     1.04852
+                             7    conditional cde              1.02525    0.00098     1.01017     1.04056
+                             8    conditional pnde             1.02525    0.00098     1.01017     1.04056
+                             9    conditional pnie             1.00374    0.50968     0.99267     1.01493
+                            10    conditional tnde             1.02525    0.00098     1.01017     1.04056
+                            11    conditional tnie             1.00374    0.51164     0.99262     1.01498
+                            12    conditional total effect     1.02908    0.00241     1.01020     1.04832

@@ -1,4 +1,4 @@
-                                                           The SAS System                          05:31 Tuesday, March 24, 2020   1
+                                                           The SAS System                          22:33 Tuesday, March 24, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -7,7 +7,7 @@
                                               Data Set                     WORK.DATA1
                                               Distribution          Negative Binomial
                                               Link Function                       Log
-                                              Dependent Variable                edema
+                                              Dependent Variable             platelet
 
 
                                               Number of Observations Read         276
@@ -26,37 +26,36 @@
                                                      Prm6            stage    
 
 
-
                                                Criteria For Assessing Goodness Of Fit
  
                                   Criterion                     DF           Value        Value/DF
 
-                                  Deviance                     270        155.8732          0.5773
-                                  Scaled Deviance              270        155.8732          0.5773
-                                  Pearson Chi-Square           270        296.9770          1.0999
-                                  Scaled Pearson X2            270        296.9770          1.0999
-                                  Log Likelihood                         -113.3919                
-                                  Full Log Likelihood                    -125.1754                
-                                  AIC (smaller is better)                 264.3508                
-                                  AICC (smaller is better)                264.7687                
-                                  BIC (smaller is better)                 289.6936                
+                                  Deviance                     270        282.2579          1.0454
+                                  Scaled Deviance              270        282.2579          1.0454
+                                  Pearson Chi-Square           270        261.4096          0.9682
+                                  Scaled Pearson X2            270        261.4096          0.9682
+                                  Log Likelihood                       334018.7743                
+                                  Full Log Likelihood                   -1632.2272                
+                                  AIC (smaller is better)                3278.4545                
+                                  AICC (smaller is better)               3278.8724                
+                                  BIC (smaller is better)                3303.7973                
 
 
-                            WARNING: Negative of Hessian not positive definite.                        
+                            Algorithm converged.                                                       
 
 
                                                     Estimated Covariance Matrix
  
                              Prm1           Prm2           Prm3           Prm4           Prm5           Prm6      Dispersion
 
-        Prm1              1.26342       -0.14997       0.001128      -0.009877        0.07210       -0.13584        -0.04047
-        Prm2             -0.14997        0.07514      -0.000831      0.0007507      -0.003110       0.001883        0.008657
-        Prm3             0.001128      -0.000831      0.0003554      -0.000020       0.002239      -0.000518        0.002172
-        Prm4            -0.009877      0.0007507      -0.000020      0.0002057      -0.001979      -0.000662       -0.000012
-        Prm5              0.07210      -0.003110       0.002239      -0.001979        0.17980      0.0008320         0.03234
-        Prm6             -0.13584       0.001883      -0.000518      -0.000662      0.0008320        0.04820        0.003302
-        Dispersion       -0.04047       0.008657       0.002172      -0.000012        0.03234       0.003302         0.12487
-                                                           The SAS System                          05:31 Tuesday, March 24, 2020   2
+        Prm1              0.01979      -0.003029      0.0000512      -0.000214       0.001050      -0.001452       1.0336E-7
+        Prm2            -0.003029       0.001917      -0.000013      0.0000104      0.0001058      -0.000115       1.4467E-7
+        Prm3            0.0000512      -0.000013      0.0000237      -2.561E-7       7.721E-6      -0.000032       3.9841E-9
+        Prm4            -0.000214      0.0000104      -2.561E-7      4.7348E-6      -0.000036      -0.000011       5.979E-10
+        Prm5             0.001050      0.0001058       7.721E-6      -0.000036       0.004625      2.6756E-6       5.3705E-8
+        Prm6            -0.001452      -0.000115      -0.000032      -0.000011      2.6756E-6      0.0007446        -1.23E-7
+        Dispersion      1.0336E-7      1.4467E-7      3.9841E-9      5.979E-10      5.3705E-8       -1.23E-7       0.0001159
+                                                           The SAS System                          22:33 Tuesday, March 24, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -65,16 +64,16 @@
                                                     Standard     Wald 95% Confidence          Wald
                     Parameter     DF    Estimate       Error           Limits           Chi-Square    Pr > ChiSq
 
-                    Intercept      1     -6.5105      1.1240     -8.7135     -4.3074         33.55        <.0001
-                    trt            1     -0.3026      0.2741     -0.8399      0.2346          1.22        0.2696
-                    bili           1      0.0969      0.0189      0.0600      0.1339         26.42        <.0001
-                    age            1      0.0456      0.0143      0.0175      0.0737         10.09        0.0015
-                    male           1     -0.1845      0.4240     -1.0156      0.6466          0.19        0.6635
-                    stage          1      0.7403      0.2195      0.3099      1.1706         11.37        0.0007
-                    Dispersion     1      0.0008      0.3534       .           .                                
+                    Intercept      1      5.9454      0.1407      5.6697      6.2211       1786.50        <.0001
+                    trt            1      0.0341      0.0438     -0.0517      0.1199          0.61        0.4360
+                    bili           1     -0.0017      0.0049     -0.0112      0.0079          0.12        0.7294
+                    age            1     -0.0031      0.0022     -0.0074      0.0011          2.05        0.1518
+                    male           1     -0.0720      0.0680     -0.2053      0.0613          1.12        0.2896
+                    stage          1     -0.0868      0.0273     -0.1403     -0.0333         10.12        0.0015
+                    Dispersion     1      0.1246      0.0108      0.1052      0.1476                            
 
 NOTE: The negative binomial dispersion parameter was estimated by maximum likelihood.
-                                                           The SAS System                          05:31 Tuesday, March 24, 2020   3
+                                                           The SAS System                          22:33 Tuesday, March 24, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -109,7 +108,7 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
                                 age           1        0.02419        0.02706       0.89      0.3720
                                 male          1       -0.61583        0.84467      -0.73      0.4666
                                 stage         1        1.26164        0.32279       3.91      0.0001
-                                                           The SAS System                          05:31 Tuesday, March 24, 2020   4
+                                                           The SAS System                          22:33 Tuesday, March 24, 2020   4
 
                             Obs     _RMSE_    Intercept       trt         age         male        stage
 
@@ -119,11 +118,11 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
                              4     4.47232     -0.03377     0.00195     0.000732    -0.00527    -0.00164
                              5     4.47232      0.14180     0.01920    -0.005274     0.71347     0.00132
                              6     4.47232     -0.20740    -0.01857    -0.001637     0.00132     0.10419
-                                                           The SAS System                          05:31 Tuesday, March 24, 2020   5
+                                                           The SAS System                          22:33 Tuesday, March 24, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    Effect          Estimate    p_value      lower       upper
 
-                                  1     cde=nde          0.73888    0.26958     0.43176     1.26444
-                                  2     nie              1.06061    0.27743     0.95376     1.17944
-                                  3     total effect     0.78366    0.37986     0.45481     1.35029
+                                  1     cde=nde          1.03470    0.43595     0.94961     1.12741
+                                  2     nie              0.99898    0.74114     0.99293     1.00506
+                                  3     total effect     1.03364    0.44905     0.94878     1.12608
