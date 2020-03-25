@@ -202,3 +202,33 @@ validate_myreg_vcovs <- function(beta0,
         assertthat::assert_that(dim(Sigma_sigma_sq)[2] == 1)
     }
 }
+
+
+###
+### Proportion mediated helpers
+################################################################################
+
+##' Calculate the proportion mediated for yreg linear.
+##'
+##' Calculate the approximate proportion mediated on the mean difference scale.
+##'
+##' @param pnde Pure natural direct effect.
+##' @param tnie Total natural indirect effect.
+##'
+##' @return Proportion mediated value.
+prop_med_yreg_linear <- function(pnde, tnie) {
+    tnie / (pnde + tnie)
+}
+
+##' Calculate the proportion mediated for yreg logistic.
+##'
+##' Calculate the approximate proportion mediated on the risk difference scale.
+##'
+##' @param pnde Pure natural direct effect on the log scale.
+##' @param tnie Total natural indirect effect on the log scale.
+##'
+##' @return Proportion mediated value.
+prop_med_yreg_logistic <- function(pnde, tnie) {
+    ## VanderWeele 2015. p48.
+    (exp(pnde) * (exp(tnie) - 1)) / (exp(pnde) * exp(tnie) - 1)
+}
