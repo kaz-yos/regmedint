@@ -220,6 +220,14 @@ prop_med_yreg_linear <- function(pnde, tnie) {
     tnie / (pnde + tnie)
 }
 
+## Corresponding gradient: R^2 -> R^2
+grad_prop_med_yreg_linear <- Deriv::Deriv(prop_med_yreg_linear)
+## function (pnde, tnie)
+## {
+##     .e1 <- pnde + tnie
+##     c(pnde = -(tnie/.e1^2), tnie = (1 - tnie/.e1)/.e1)
+## }
+
 ##' Calculate the proportion mediated for yreg logistic.
 ##'
 ##' Calculate the approximate proportion mediated on the risk difference scale.
@@ -232,3 +240,23 @@ prop_med_yreg_logistic <- function(pnde, tnie) {
     ## VanderWeele 2015. p48.
     (exp(pnde) * (exp(tnie) - 1)) / (exp(pnde) * exp(tnie) - 1)
 }
+
+## Corresponding gradient: R^2 -> R^2
+grad_prop_med_yreg_logistic <- Deriv::Deriv(prop_med_yreg_logistic)
+## function (pnde, tnie)
+## {
+##     .e1 <- exp(pnde)
+##     .e2 <- exp(tnie)
+##     .e3 <- .e1 * .e2
+##     .e4 <- .e3 - 1
+##     .e5 <- .e2 - 1
+##     c(pnde = (1 - .e3/.e4) * .e1 * .e5/.e4, tnie = (1 - .e1 *
+##         .e5/.e4) * .e1 * .e2/.e4)
+## }
+## Use this vector to linearly combine Gamma_pnde and Gamma_tnie.
+## Expanded
+## c(pnde = (1 - (exp(pnde) * exp(tnie)) / (exp(pnde) * exp(tnie) - 1)) * exp(pnde) * (exp(tnie) - 1) / (exp(pnde) * exp(tnie) - 1),
+##   tnie = (1 - exp(pnde) * (exp(tnie) - 1) / (exp(pnde) * exp(tnie) - 1)) * exp(pnde) * exp(tnie) / (exp(pnde) * exp(tnie) - 1))
+
+## Symbolic differentiation by Deriv::Deriv
+## https://github.com/sgsokol/Deriv
