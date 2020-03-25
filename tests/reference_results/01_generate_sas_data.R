@@ -53,8 +53,6 @@ pbc_cc <- pbc %>%
            cens = if_else(status == 1L, 0L, 1L),
            ## Binary mvar
            bili_bin = if_else(bili > median(bili), 1L, 0L),
-           ## Fake count yvar
-           edema = 2 * edema,
            alk_phos = alk.phos) %>%
     select(
         ## avar
@@ -69,8 +67,8 @@ pbc_cc <- pbc %>%
         alk_phos,
         ## yvar (binary)
         spiders,
-        ## yvar (fake count)
-        edema,
+        ## yvar (count)
+        platelet,
         ## yvar (survival)
         time,
         ## eventvar (survival)
@@ -90,7 +88,7 @@ cat("
 
 tab1 <- CreateTableOne(data = pbc_cc,
                        vars = c("bili","bili_bin",
-                                "alk_phos","spiders","edema","time","status","cens",
+                                "alk_phos","spiders","platelet","time","status","cens",
                                 "age","male","stage"),
                        strata = c("trt"),
                        test = FALSE)

@@ -102,8 +102,8 @@ macro_args <-
                             yreg == "logistic" ~ "spiders",
                             yreg == "loglinear" ~ "spiders",
                             ##
-                            yreg == "poisson" ~ "edema",
-                            yreg == "negbin" ~ "edema",
+                            yreg == "poisson" ~ "platelet",
+                            yreg == "negbin" ~ "platelet",
                             ##
                             yreg == "survCox" ~ "time",
                             yreg == "survAFT_exp" ~ "time",
