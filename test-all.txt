@@ -4,12 +4,13 @@
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  23       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
 ⠏ |   0       | 04_fit_yreg_logistic✔ |  24       | 04_fit_yreg_logistic
+⠏ |   0       | 04_fit_yreg_negbin⠋ |  21       | 04_fit_yreg_negbin✔ |  24       | 04_fit_yreg_negbin [0.1 s]
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
 ⠏ |   0       | 04_fit_yreg_survCox✔ |  24       | 04_fit_yreg_survCox
-⠏ |   0       | 06_calc_myreg_helpers_coef⠴ |  36       | 06_calc_myreg_helpers_coef⠸ |  74       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠦ |  27       | 06_calc_myreg_helpers_vcov⠼ |  55       | 06_calc_myreg_helpers_vcov⠋ |  81       | 06_calc_myreg_helpers_vcov⠇ | 109       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠦ |  47       | 06_calc_myreg_helpers_coef⠼ |  95       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.2 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠧ |  28       | 06_calc_myreg_helpers_vcov⠼ |  55       | 06_calc_myreg_helpers_vcov⠇ |  79       | 06_calc_myreg_helpers_vcov⠹ | 103       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear✔ |   0     2 | 07_calc_myreg_mreg_linear_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_linear.R:17: skip: calc_myreg_mreg_linear_yreg_linear_est works given coef
@@ -18,7 +19,7 @@ Reason: empty test
 test-07_calc_myreg_mreg_linear_yreg_linear.R:26: skip: calc_myreg_mreg_linear_yreg_linear_se works given coef and vcov
 Reason: empty test
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  31       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ |  68       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ | 100       | 07_calc_myreg_mreg_linear_yreg_logistic⠼ | 155       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ | 178       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  33       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ |  69       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ | 100       | 07_calc_myreg_mreg_linear_yreg_logistic⠴ | 156       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ | 181       | 07_calc_myreg_mreg_linear_yreg_logistic✖ | 232 3     | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_linear_yreg_logistic.R:1184: failure: calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar): returns a function that gives a numeric vector without NA
 all(!is.na(res)) isn't true.
@@ -78,7 +79,7 @@ Actual value: "### Mediator model\\n\\nCall:\\nlm\(formula = bili ~ trt, data = 
 test-08_regmedint_class_user_methods.R:138: failure: confint.regmedint: creates the lower column less than the upper column
 all(...) isn't true.
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  81   1   | 09_cross_check_with_sas_macro⠦ |  81   26   | 09_cross_check_with_sas_macro⠸ |  81   53   | 09_cross_check_with_sas_macro⠹ |  81   82   | 09_cross_check_with_sas_macro⠦ |  81   106   | 09_cross_check_with_sas_macro⠸ | 101 49 134   | 09_cross_check_with_sas_macro⠹ | 101 164 138   | 09_cross_check_with_sas_macro⠼ | 101 261 143   | 09_cross_check_with_sas_macro⠴ | 102 367 147   | 09_cross_check_with_sas_macro⠇ | 103 474 152   | 09_cross_check_with_sas_macro✖ | 103 499 152   | 09_cross_check_with_sas_macro [1.9 s]
+⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  81   1   | 09_cross_check_with_sas_macro⠼ |  81   24   | 09_cross_check_with_sas_macro⠹ |  81   42   | 09_cross_check_with_sas_macro⠸ |  81   53   | 09_cross_check_with_sas_macro⠹ |  81   82   | 09_cross_check_with_sas_macro⠼ |  81   104   | 09_cross_check_with_sas_macro⠏ | 101 65 134   | 09_cross_check_with_sas_macro⠼ | 101 204 140   | 09_cross_check_with_sas_macro⠏ | 102 352 146   | 09_cross_check_with_sas_macro✖ | 103 499 152   | 09_cross_check_with_sas_macro [1.8 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-09_cross_check_with_sas_macro.R:165: warning: (unknown)
 iteration limit reached
@@ -3055,9 +3056,9 @@ Backtrace:
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 10.4 s
+Duration: 10.2 s
 
-OK:       773
+OK:       797
 Failed:   510
 Warnings: 152
 Skipped:  6
