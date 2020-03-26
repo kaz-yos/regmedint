@@ -319,7 +319,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
 
 
         ## SEs
-        a1_sub_a0 <- (a1 - a0)
+        a1_sub_a0 <- abs(a1 - a0)
         se_cde  <- sqrt(as.numeric(t(Gamma_cde)  %*% Sigma %*% Gamma_cde)) * a1_sub_a0
         se_pnde <- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% Gamma_pnde)) * a1_sub_a0
         se_tnie <- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% Gamma_tnie)) * a1_sub_a0
