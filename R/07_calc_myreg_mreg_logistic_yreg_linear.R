@@ -122,24 +122,24 @@ calc_myreg_mreg_logistic_yreg_linear_est <- function(beta0,
         ## Pearl decomposition (Regular NDE and NIE)
         ## Note the a0 in the second term.
         pnde <- (theta1 * (a1 - a0)) + (theta3 * (a1 - a0)) *
-            (exp(beta0 + (beta1 * a0) + beta2_c) /
+            (     exp(beta0 + (beta1 * a0) + beta2_c) /
              (1 + exp(beta0 + (beta1 * a0) + beta2_c)))
         ## Note the a1 in the first term.
         tnie <- (theta2 + (theta3 * a1)) *
-            ((exp(beta0 + (beta1 * a1) + beta2_c) /
+            ((     exp(beta0 + (beta1 * a1) + beta2_c) /
               (1 + exp(beta0 + (beta1 * a1) + beta2_c))) -
-             (exp(beta0 + (beta1 * a0) + beta2_c) /
+             (     exp(beta0 + (beta1 * a0) + beta2_c) /
               (1 + exp(beta0 + (beta1 * a0) + beta2_c))))
         ## Another decomposition
         ## Note the a0 -> a1 change in the second term.
         tnde <- (theta1 * (a1 - a0)) + (theta3 * (a1 - a0)) *
-            (exp(beta0 + (beta1 * a1) + beta2_c) /
+            (     exp(beta0 + (beta1 * a1) + beta2_c) /
              (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
         ## Note the a1 -> a0 change in the first term.
         pnie <- (theta2 + (theta3 * a0)) *
-            ((exp(beta0 + (beta1 * a1) + beta2_c) /
+            ((     exp(beta0 + (beta1 * a1) + beta2_c) /
               (1 + exp(beta0 + (beta1 * a1) + beta2_c))) -
-             (exp(beta0 + (beta1 * a0) + beta2_c) /
+             (     exp(beta0 + (beta1 * a0) + beta2_c) /
               (1 + exp(beta0 + (beta1 * a0) + beta2_c))))
         ## It is the sum of NDE and NIE on the log scale.
         te <- pnde + tnie
@@ -225,7 +225,7 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
         ##
         ## d2 and d3 in VanderWeele 2015 p471 and VV 2013 Appendix p12 have typos.
         ## a0 and c_cond and theta3 are outside the fraction.
-        pnde_d1 <- theta3 * (exp(beta0 + (beta1 * a0) + beta2_c) /
+        pnde_d1 <- theta3 * (     exp(beta0 + (beta1 * a0) + beta2_c) /
                              (1 + exp(beta0 + (beta1 * a0) + beta2_c))^2)
         pnde_d2 <- a0 * pnde_d1
         pnde_d3 <- c_cond * pnde_d1
@@ -247,14 +247,14 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                 pnde_d7,   # theta3
                 pnde_d8))  # theta4 vector
         ##
-        tnie_Q <- (exp(beta0 + (beta1 * a1) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a1) + beta2_c))^2)
-        tnie_B <- (exp(beta0 + (beta1 * a0) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a0) + beta2_c))^2)
-        tnie_K <- (exp(beta0 + (beta1 * a1) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
-        tnie_D <- (exp(beta0 + (beta1 * a0) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a0) + beta2_c)))
+        tnie_Q <- exp(beta0 + (beta1 * a1) + beta2_c) /
+            (1 +  exp(beta0 + (beta1 * a1) + beta2_c))^2
+        tnie_B <- exp(beta0 + (beta1 * a0) + beta2_c) /
+            (1 +  exp(beta0 + (beta1 * a0) + beta2_c))^2
+        tnie_K <- exp(beta0 + (beta1 * a1) + beta2_c) /
+            (1 +  exp(beta0 + (beta1 * a1) + beta2_c))
+        tnie_D <- exp(beta0 + (beta1 * a0) + beta2_c) /
+            (1 +  exp(beta0 + (beta1 * a0) + beta2_c))
         tnie_d1 <- (theta2 + (theta3 * a1)) * (tnie_Q- tnie_B)
         tnie_d2 <- (theta2 + (theta3 * a1)) * ((a1 * tnie_Q) - (a0 * tnie_B))
         tnie_d3 <- (theta2 + (theta3 * a1)) * c_cond * (tnie_Q - tnie_B)
@@ -275,7 +275,7 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                 tnie_d7,   # theta3
                 tnie_d8))  # theta4 vector
         ##
-        tnde_d1 <- theta3 * (exp(beta0 + (beta1 * a1) + beta2_c) /
+        tnde_d1 <- theta3 * (     exp(beta0 + (beta1 * a1) + beta2_c) /
                              (1 + exp(beta0 + (beta1 * a1) + beta2_c))^2)
         tnde_d2 <- a1 * tnde_d1
         tnde_d3 <- c_cond * tnde_d1
@@ -297,14 +297,14 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                 tnde_d7,   # theta3
                 tnde_d8))  # theta4 vector
         ##
-        pnie_Q <- (exp(beta0 + (beta1 * a1) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a1) + beta2_c))^2)
-        pnie_B <- (exp(beta0 + (beta1 * a0) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a0) + beta2_c))^2)
-        pnie_K <- (exp(beta0 + (beta1 * a1) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
-        pnie_D <- (exp(beta0 + (beta1 * a0) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a0) + beta2_c)))
+        pnie_Q <- exp(beta0 + (beta1 * a1) + beta2_c) /
+            (1 +  exp(beta0 + (beta1 * a1) + beta2_c))^2
+        pnie_B <- exp(beta0 + (beta1 * a0) + beta2_c) /
+            (1 +  exp(beta0 + (beta1 * a0) + beta2_c))^2
+        pnie_K <- exp(beta0 + (beta1 * a1) + beta2_c) /
+            (1 +  exp(beta0 + (beta1 * a1) + beta2_c))
+        pnie_D <- exp(beta0 + (beta1 * a0) + beta2_c) /
+            (1 +  exp(beta0 + (beta1 * a0) + beta2_c))
         pnie_d1 <- (theta2 + (theta3 * a0)) * (pnie_Q- pnie_B)
         pnie_d2 <- (theta2 + (theta3 * a0)) * ((a1 * pnie_Q) - (a0 * pnie_B))
         pnie_d3 <- (theta2 + (theta3 * a0)) * c_cond * (pnie_Q - pnie_B)
@@ -334,12 +334,12 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
         ## Gradient of pm wrt pnde and tnie. A vector of two.
         ## Copied from calc_myreg_mreg_logistic_yreg_linear_est
         pnde <- (theta1 * (a1 - a0)) + (theta3 * (a1 - a0)) *
-            (exp(beta0 + (beta1 * a0) + beta2_c) /
+            (     exp(beta0 + (beta1 * a0) + beta2_c) /
              (1 + exp(beta0 + (beta1 * a0) + beta2_c)))
         tnie <- (theta2 + (theta3 * a1)) *
-            ((exp(beta0 + (beta1 * a1) + beta2_c) /
+            ((     exp(beta0 + (beta1 * a1) + beta2_c) /
               (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
-                - (exp(beta0 + (beta1 * a0) + beta2_c) /
+                - (     exp(beta0 + (beta1 * a0) + beta2_c) /
                    (1 + exp(beta0 + (beta1 * a0) + beta2_c))))
         ## Need to unname argument vectors to get c(pnde = , tnie = ).
         d_pm <- grad_prop_med_yreg_linear(pnde = unname(pnde), tnie = unname(tnie))
