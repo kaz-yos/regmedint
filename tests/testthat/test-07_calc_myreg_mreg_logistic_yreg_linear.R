@@ -21,31 +21,32 @@ pbc_cc <- pbc[complete.cases(pbc),] %>%
     mutate(male = if_else(sex == "m", 1L, 0L),
            ## Combine transplant and death for testing purpose
            status = if_else(status == 0, 0L, 1L),
+           bili_bin = if_else(bili > median(bili), 1L, 0L),
            alk_phos = alk.phos)
 
 describe("calc_myreg_mreg_logistic_yreg_linear linear no interaction", {
 
     describe("calc_myreg_mreg_logistic_yreg_linear linear no interaction (NULL cvar)", {
-        mreg_fit <- fit_mreg(mreg = "linear",
+        mreg_fit <- fit_mreg(mreg = "logistic",
                              data = pbc_cc,
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = NULL)
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
                              yvar = "alk_phos",
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = NULL,
                              interaction = FALSE,
                              eventvar = NULL)
         myreg_funs <-
-            calc_myreg_mreg_logistic_yreg_linear(mreg = "linear",
+            calc_myreg_mreg_logistic_yreg_linear(mreg = "logistic",
                                                  mreg_fit = mreg_fit,
                                                  yreg = "linear",
                                                  yreg_fit = yreg_fit,
                                                  avar = "trt",
-                                                 mvar = "bili",
+                                                 mvar = "bili_bin",
                                                  cvar = NULL,
                                                  interaction = FALSE)
         ##
@@ -84,26 +85,26 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear no interaction", {
     })
     ##
     describe("calc_myreg_mreg_logistic_yreg_linear linear no interaction (1 cvar)", {
-        mreg_fit <- fit_mreg(mreg = "linear",
+        mreg_fit <- fit_mreg(mreg = "logistic",
                              data = pbc_cc,
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = c("age"))
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
                              yvar = "alk_phos",
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = c("age"),
                              interaction = FALSE,
                              eventvar = NULL)
         myreg_funs <-
-            calc_myreg_mreg_logistic_yreg_linear(mreg = "linear",
+            calc_myreg_mreg_logistic_yreg_linear(mreg = "logistic",
                                                  mreg_fit = mreg_fit,
                                                  yreg = "linear",
                                                  yreg_fit = yreg_fit,
                                                  avar = "trt",
-                                                 mvar = "bili",
+                                                 mvar = "bili_bin",
                                                  cvar = c("age"),
                                                  interaction = FALSE)
         ##
@@ -142,26 +143,26 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear no interaction", {
     })
     ##
     describe("calc_myreg_mreg_logistic_yreg_linear linear no interaction (3 cvar)", {
-        mreg_fit <- fit_mreg(mreg = "linear",
+        mreg_fit <- fit_mreg(mreg = "logistic",
                              data = pbc_cc,
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = c("age","male","stage"))
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
                              yvar = "alk_phos",
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = c("age","male","stage"),
                              interaction = FALSE,
                              eventvar = NULL)
         myreg_funs <-
-            calc_myreg_mreg_logistic_yreg_linear(mreg = "linear",
+            calc_myreg_mreg_logistic_yreg_linear(mreg = "logistic",
                                                  mreg_fit = mreg_fit,
                                                  yreg = "linear",
                                                  yreg_fit = yreg_fit,
                                                  avar = "trt",
-                                                 mvar = "bili",
+                                                 mvar = "bili_bin",
                                                  cvar = c("age","male","stage"),
                                                  interaction = FALSE)
         ##
@@ -199,26 +200,26 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear no interaction", {
         })
     })
     describe("calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness)", {
-        mreg_fit <- fit_mreg(mreg = "linear",
+        mreg_fit <- fit_mreg(mreg = "logistic",
                              data = pbc_cc,
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = c("age","male","stage"))
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
                              yvar = "alk_phos",
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = c("age","male","stage"),
                              interaction = FALSE,
                              eventvar = NULL)
         myreg_funs <-
-            calc_myreg_mreg_logistic_yreg_linear(mreg = "linear",
+            calc_myreg_mreg_logistic_yreg_linear(mreg = "logistic",
                                                  mreg_fit = mreg_fit,
                                                  yreg = "linear",
                                                  yreg_fit = yreg_fit,
                                                  avar = "trt",
-                                                 mvar = "bili",
+                                                 mvar = "bili_bin",
                                                  cvar = c("age","male","stage"),
                                                  interaction = FALSE)
         it("returns functions where cde does not depend on m_cde", {
@@ -275,26 +276,26 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear no interaction", {
 describe("calc_myreg_mreg_logistic_yreg_linear linear interaction", {
 
     describe("calc_myreg_mreg_logistic_yreg_linear linear interaction (NULL cvar)", {
-        mreg_fit <- fit_mreg(mreg = "linear",
+        mreg_fit <- fit_mreg(mreg = "logistic",
                              data = pbc_cc,
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = NULL)
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
                              yvar = "alk_phos",
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = NULL,
                              interaction = TRUE,
                              eventvar = NULL)
         myreg_funs <-
-            calc_myreg_mreg_logistic_yreg_linear(mreg = "linear",
+            calc_myreg_mreg_logistic_yreg_linear(mreg = "logistic",
                                                  mreg_fit = mreg_fit,
                                                  yreg = "linear",
                                                  yreg_fit = yreg_fit,
                                                  avar = "trt",
-                                                 mvar = "bili",
+                                                 mvar = "bili_bin",
                                                  cvar = NULL,
                                                  interaction = TRUE)
         ##
@@ -333,26 +334,26 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear interaction", {
     })
     ##
     describe("calc_myreg_mreg_logistic_yreg_linear linear interaction (1 cvar)", {
-        mreg_fit <- fit_mreg(mreg = "linear",
+        mreg_fit <- fit_mreg(mreg = "logistic",
                              data = pbc_cc,
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = c("age"))
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
                              yvar = "alk_phos",
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = c("age"),
                              interaction = TRUE,
                              eventvar = NULL)
         myreg_funs <-
-            calc_myreg_mreg_logistic_yreg_linear(mreg = "linear",
+            calc_myreg_mreg_logistic_yreg_linear(mreg = "logistic",
                                                  mreg_fit = mreg_fit,
                                                  yreg = "linear",
                                                  yreg_fit = yreg_fit,
                                                  avar = "trt",
-                                                 mvar = "bili",
+                                                 mvar = "bili_bin",
                                                  cvar = c("age"),
                                                  interaction = TRUE)
         ##
@@ -391,26 +392,26 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear interaction", {
     })
     ##
     describe("calc_myreg_mreg_logistic_yreg_linear linear interaction (3 cvar)", {
-        mreg_fit <- fit_mreg(mreg = "linear",
+        mreg_fit <- fit_mreg(mreg = "logistic",
                              data = pbc_cc,
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = c("age","male","stage"))
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
                              yvar = "alk_phos",
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = c("age","male","stage"),
                              interaction = TRUE,
                              eventvar = NULL)
         myreg_funs <-
-            calc_myreg_mreg_logistic_yreg_linear(mreg = "linear",
+            calc_myreg_mreg_logistic_yreg_linear(mreg = "logistic",
                                                  mreg_fit = mreg_fit,
                                                  yreg = "linear",
                                                  yreg_fit = yreg_fit,
                                                  avar = "trt",
-                                                 mvar = "bili",
+                                                 mvar = "bili_bin",
                                                  cvar = c("age","male","stage"),
                                                  interaction = TRUE)
         ##
@@ -448,16 +449,16 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear interaction", {
         })
     })
     describe("calc_myreg_mreg_logistic_yreg_linear linear interaction (methodological correctness)", {
-        mreg_fit <- fit_mreg(mreg = "linear",
+        mreg_fit <- fit_mreg(mreg = "logistic",
                              data = pbc_cc,
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = c("age","male","stage"))
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
                              yvar = "alk_phos",
                              avar = "trt",
-                             mvar = "bili",
+                             mvar = "bili_bin",
                              cvar = c("age","male","stage"),
                              interaction = TRUE,
                              eventvar = NULL)
@@ -466,12 +467,12 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear interaction", {
         beta1 <- coef(mreg_fit)[c("trt")]
         beta2 <- coef(mreg_fit)[c("age","male","stage")]
         myreg_funs <-
-            calc_myreg_mreg_logistic_yreg_linear(mreg = "linear",
+            calc_myreg_mreg_logistic_yreg_linear(mreg = "logistic",
                                                  mreg_fit = mreg_fit,
                                                  yreg = "linear",
                                                  yreg_fit = yreg_fit,
                                                  avar = "trt",
-                                                 mvar = "bili",
+                                                 mvar = "bili_bin",
                                                  cvar = c("age","male","stage"),
                                                  interaction = TRUE)
         it("returns functions where cde depends on m_cde", {
