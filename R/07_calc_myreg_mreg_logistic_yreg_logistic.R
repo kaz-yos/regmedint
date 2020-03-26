@@ -293,21 +293,22 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
                 tnde_d7,   # theta3
                 tnde_d8))  # theta4 vector
         ##
-        pnie_Q <- (exp(beta0 + (beta1 * a1) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a1) + beta2_c))^2)
-        pnie_B <- (exp(beta0 + (beta1 * a0) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a0) + beta2_c))^2)
-        pnie_K <- (exp(beta0 + (beta1 * a1) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
-        pnie_D <- (exp(beta0 + (beta1 * a0) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a0) + beta2_c)))
-        pnie_d1 <- (theta2 + (theta3 * a0)) * (pnie_Q- pnie_B)
-        pnie_d2 <- (theta2 + (theta3 * a0)) * ((a1 * pnie_Q) - (a0 * pnie_B))
-        pnie_d3 <- (theta2 + (theta3 * a0)) * c_cond * (pnie_Q - pnie_B)
+        ## a's from yreg theta3 should be a0.
+        pnie_Q <- exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a1) + beta2_c) /
+            (1  + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a1) + beta2_c))
+        pnie_B <- exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a0) + beta2_c) /
+            (1  + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a0) + beta2_c))
+        pnie_K <- exp(beta0 + (beta1 * a1) + beta2_c) /
+            (1 +  exp(beta0 + (beta1 * a1) + beta2_c))
+        pnie_D <- exp(beta0 + (beta1 * a0) + beta2_c) /
+            (1 +  exp(beta0 + (beta1 * a0) + beta2_c))
+        pnie_d1 <- (pnie_D + pnie_Q) - (pnie_K + pnie_B)
+        pnie_d2 <- (a0 * (pnie_D - pnie_B)) + (a1 * (pnie_Q - pnie_K))
+        pnie_d3 <- c_cond * ((pnie_D + pnie_Q) - (pnie_K + pnie_B))
         pnie_d4 <- 0
         pnie_d5 <- 0
-        pnie_d6 <- pnie_K - pnie_D
-        pnie_d7 <- a0 * (pnie_K - pnie_D)
+        pnie_d6 <- pnie_Q - pnie_B
+        pnie_d7 <- a0 * (pnie_Q - pnie_B)
         pnie_d8 <- rep(0, length(theta4))
         Gamma_pnie <-
             matrix(c(
