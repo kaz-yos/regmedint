@@ -321,10 +321,9 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
                 pnie_d6,   # theta2
                 pnie_d7,   # theta3
                 pnie_d8))  # theta4 vector
-        ## (a1 - a0) without abs must enter here for pnde
         ## because Gamma_pnie does not have a common factor.
         Gamma_te <-
-            ((a1 - a0) * Gamma_pnde) + Gamma_tnie # By linearity of differentiation
+            Gamma_pnde + Gamma_tnie # By linearity of differentiation
         ##
         ## Not implemented in mediation.sas.
         ## Not mentioned in VV2013, VV2015, or VanderWeele 2015.
