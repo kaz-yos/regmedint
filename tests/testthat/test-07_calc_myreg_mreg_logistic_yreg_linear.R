@@ -228,11 +228,11 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear no interaction", {
             expect_equal(myreg_funs[[2]](1,2,-3,c(4,5,6))["cde"],
                          myreg_funs[[2]](1,2,+3,c(4,5,6))["cde"])
         })
-        it("returns functions where natural effects do no depend on c_cond", {
-            expect_equal(myreg_funs[[1]](1,2,-3,-1 * c(4,5,6)),
-                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6)))
-            expect_equal(myreg_funs[[2]](1,2,-3,-1 * c(4,5,6)),
-                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6)))
+        it("returns functions where cde and nde do no depend on c_cond (V2015 p471)", {
+            expect_equal(myreg_funs[[1]](1,2,-3,-1 * c(4,5,6))[c("cde","pnde","tnde")],
+                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6))[c("cde","pnde","tnde")])
+            expect_equal(myreg_funs[[2]](1,2,-3,-1 * c(4,5,6))[c("cde","pnde","tnde")],
+                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))[c("cde","pnde","tnde")])
         })
         it("returns functions where direct effects match up", {
             expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["cde"]),
