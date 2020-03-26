@@ -144,7 +144,7 @@ summary.regmedint <- function(x,
 
     assertthat::assert_that(length(res_est) == length(res_se))
     res_Z <- res_est / res_se
-    res_p <- pnorm(q = res_Z)
+    res_p <- 2 * (1 - pnorm(q = abs(res_Z)))
 
     if (exponentiate & x$args$yreg != "linear") {
         ## Note only the point estimates are are exponentiated.
