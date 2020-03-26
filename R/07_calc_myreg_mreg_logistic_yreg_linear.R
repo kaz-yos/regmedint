@@ -324,39 +324,35 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                 pnie_d6,   # theta2
                 pnie_d7,   # theta3
                 pnie_d8))  # theta4 vector
-        ## (a1 - a0) without abs must enter here for pnde.
+        ## (a1 - a0) without abs must enter here for pnde
+        ## because Gamma_pnie does not have a common factor.
         Gamma_te <-
-            Gamma_pnde * (a1 - a0) + Gamma_tnie # By linearity of differentiation
+            ((a1 - a0) * Gamma_pnd) + Gamma_tnie # By linearity of differentiation
         ##
-        ## PM part. VV2013 Appendix p5-6.
-        d1_numer <- -theta3 * ((theta2 * beta1) + (theta3 * beta1 * a1))
-        d1_denom_sqrt <- (theta1 + (theta3 * beta0) + (theta3 * beta1 * a0) + (theta3 * beta2_c) + (theta2 * beta1) + (theta3 * beta1 * a1))
-        ##
-        d1 <- d1_numer / d1_denom_sqrt^2
-        ##
-        d2 <- ((theta2 + (theta3 * a1) * (-1 * ((theta2 * beta1) + (theta3 * beta1 * a1)) + d1_denom_sqrt)) - (theta3 * a0)) / d1_denom_sqrt^2
-        ## Vector valued
-        d3 <- c_cond * (d1_numer / d1_denom_sqrt^2)
-        ##
-        d4 <- 0
-        ##
-        d5 <- ((theta2 * beta1) + (theta3 * beta1 * a1)) / d1_denom_sqrt^2
-        ##
-        d6 <- beta1 * (-1 * ((theta2 * beta1) + (theta3 * beta1 * a1)) + d1_denom_sqrt) / d1_denom_sqrt^2
-        ##
-        d7 <- ((beta1 * a1 * d1_denom_sqrt) - ((beta0 + (beta1 * (a1 + a0)) + beta2_c) * ((theta2 * beta1) + (theta3 * beta1 * a1)))) / d1_denom_sqrt^2
-        ##
-        d8 <- rep(0, length(theta4))
-        ##
-        Gamma_pm <- c(d1, # beta0
-                      d2, # beta1
-                      d3, # beta2 vector
-                      ##
-                      d4, # theta0
-                      d5, # theta1
-                      d6, # theta2
-                      d7, # theta3
-                      d8) # theta4 vector
+        ## Not implemented in mediation.sas.
+        ## Not mentioned in VV2013, VV2015, or VanderWeele 2015.
+        ## Gradient of pm wrt pnde and tnie. A vector of two.
+        ## Copied from calc_myreg_mreg_logistic_yreg_linear_est
+        pnde <- (theta1 * (a1 - a0)) + (theta3 * (a1 - a0)) *
+            (exp(beta0 + (beta1 * a0) + beta2_c) /
+             (1 + exp(beta0 + (beta1 * a0) + beta2_c)))
+        tnie <- (theta2 + (theta3 * a1)) *
+            ((exp(beta0 + (beta1 * a1) + beta2_c) /
+              (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
+                - (exp(beta0 + (beta1 * a0) + beta2_c) /
+                   (1 + exp(beta0 + (beta1 * a0) + beta2_c))))
+        ## Need to unname argument vectors to get c(pnde = , tnie = ).
+        d_pm <- grad_prop_med_yreg_linear(pnde = unname(pnde), tnie = unname(tnie))
+        ## Multivariate chain rule.
+        ## https://math.libretexts.org/Bookshelves/Calculus/Book%3A_Calculus_(OpenStax)/14%3A_Differentiation_of_Functions_of_Several_Variables/14.5%3A_The_Chain_Rule_for_Multivariable_Functions)
+        ## d_pm / d_params = (d_pm / d_(pnde, tnie)) %*% (d_(pnde, tnie) / d_params)
+        ##                 = (d_pm / d_pnde) * (d_pnde / d_params) +
+        ##                   (d_pm / d_tnie) * (d_tnie / d_params)
+        ## where (d_pnde / d_params) is (a1 - a0) * Gamma_pnde and
+        ##       (d_tnie / d_params) is Gamma_tnie.
+        ## FIXME: This is not tested aginst a reference standard.
+        Gamma_pm <-
+            (d_pm[["pnde"]] * (a1 - a0) * Gamma_pnde) + (d_pm[["tnie"]] * Gamma_tnie)
 
         ## SE calcuation via multivariate delta method
         ## https://en.wikipedia.org/wiki/Delta_method# Multivariate_delta_method
@@ -368,7 +364,7 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
         se_tnde <- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% Gamma_tnde)) * a1_sub_a0
         se_pnie <- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% Gamma_pnie))
         se_te <- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te))
-        se_pm <- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm)) * a1_sub_a0 # FIXME
+        se_pm <- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm))
 
         ## Return a vector
         c(se_cde  = unname(se_cde),
