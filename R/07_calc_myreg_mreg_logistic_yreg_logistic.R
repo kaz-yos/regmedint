@@ -331,14 +331,12 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
         ## Not mentioned in VV2013, VV2015, or VanderWeele 2015.
         ## Gradient of pm wrt pnde and tnie. A vector of two.
         ## Copied from calc_myreg_mreg_logistic_yreg_logistic_est
-        pnde <- (theta1 * (a1 - a0)) + (theta3 * (a1 - a0)) *
-            (exp(beta0 + (beta1 * a0) + beta2_c) /
-             (1 + exp(beta0 + (beta1 * a0) + beta2_c)))
-        tnie <- (theta2 + (theta3 * a1)) *
-            ((exp(beta0 + (beta1 * a1) + beta2_c) /
-              (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
-                - (exp(beta0 + (beta1 * a0) + beta2_c) /
-                   (1 + exp(beta0 + (beta1 * a0) + beta2_c))))
+        pnde <-
+            (exp(theta1 * a1) * (1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a0) + beta2_c))) /
+            (exp(theta1 * a0) * (1 + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a0) + beta2_c)))
+        tnie <-
+            ((1 + exp(beta0 + (beta1 * a0) + beta2_c)) * (1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a1) + beta2_c))) /
+            ((1 + exp(beta0 + (beta1 * a1) + beta2_c)) * (1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a0) + beta2_c)))
         ## Need to unname argument vectors to get c(pnde = , tnie = ).
         d_pm <- grad_prop_med_yreg_logistic(pnde = unname(pnde), tnie = unname(tnie))
         ## Multivariate chain rule.
@@ -346,16 +344,14 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
         ## d_pm / d_params = (d_pm / d_(pnde, tnie)) %*% (d_(pnde, tnie) / d_params)
         ##                 = (d_pm / d_pnde) * (d_pnde / d_params) +
         ##                   (d_pm / d_tnie) * (d_tnie / d_params)
-        ## where (d_pnde / d_params) is (a1 - a0) * Gamma_pnde and
+        ## where (d_pnde / d_params) is Gamma_pnde and
         ##       (d_tnie / d_params) is Gamma_tnie.
         ## FIXME: This is not tested aginst a reference standard.
         Gamma_pm <-
-            (d_pm[["pnde"]] * (a1 - a0) * Gamma_pnde) + (d_pm[["tnie"]] * Gamma_tnie)
+            (d_pm[["pnde"]] * Gamma_pnde) + (d_pm[["tnie"]] * Gamma_tnie)
 
         ## SE calcuation via multivariate delta method
         ## https://en.wikipedia.org/wiki/Delta_method# Multivariate_delta_method
-        ## NIEs do not have common factor abs(a1 - a0), thus, it does not show up
-        ## in se_te and se_pm.
         se_cde <- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% Gamma_cde))
         se_pnde <- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% Gamma_pnde))
         se_tnie <- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% Gamma_tnie))
