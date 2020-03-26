@@ -16,14 +16,14 @@
 ##' @param yreg_fit Model fit from \code{\link{fit_yreg}}
 ##'
 ##' @return A list contraining a function for effect estimates and a function for corresponding standard errors.
-calc_myreg_mreg_linear_yreg_linear <- function(mreg,
-                                               mreg_fit,
-                                               yreg,
-                                               yreg_fit,
-                                               avar,
-                                               mvar,
-                                               cvar, # This can be NULL.
-                                               interaction) {
+calc_myreg_mreg_logistic_yreg_linear <- function(mreg,
+                                                 mreg_fit,
+                                                 yreg,
+                                                 yreg_fit,
+                                                 avar,
+                                                 mvar,
+                                                 cvar, # This can be NULL.
+                                                 interaction) {
 
     ## mreg coefficients
     beta_hat <- beta_hat_helper(mreg = mreg,
@@ -40,14 +40,14 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
     ## Construct a function of (a1, a0, m_cde, c_cond) that returns
     ## a vector of point estimates for quantities of interest.
     est_fun <-
-        calc_myreg_mreg_linear_yreg_linear_est(beta0 = beta_hat$beta0,
-                                               beta1 = beta_hat$beta1,
-                                               beta2 = beta_hat$beta2,
-                                               theta0 = theta_hat$theta0,
-                                               theta1 = theta_hat$theta1,
-                                               theta2 = theta_hat$theta2,
-                                               theta3 = theta_hat$theta3,
-                                               theta4 = theta_hat$theta4)
+        calc_myreg_mreg_logistic_yreg_linear_est(beta0 = beta_hat$beta0,
+                                                 beta1 = beta_hat$beta1,
+                                                 beta2 = beta_hat$beta2,
+                                                 theta0 = theta_hat$theta0,
+                                                 theta1 = theta_hat$theta1,
+                                                 theta2 = theta_hat$theta2,
+                                                 theta3 = theta_hat$theta3,
+                                                 theta4 = theta_hat$theta4)
 
     ## vcovs
     Sigma_beta_hat <- Sigma_beta_hat(mreg = mreg,
@@ -63,16 +63,16 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
     ## Construct a function of (a0, a1, m_cde, c_cond) that returns
     ## a vector of estimates.
     se_fun <-
-        calc_myreg_mreg_linear_yreg_linear_se(beta0 = beta_hat$beta0,
-                                              beta1 = beta_hat$beta1,
-                                              beta2 = beta_hat$beta2,
-                                              theta0 = theta_hat$theta0,
-                                              theta1 = theta_hat$theta1,
-                                              theta2 = theta_hat$theta2,
-                                              theta3 = theta_hat$theta3,
-                                              theta4 = theta_hat$theta4,
-                                              Sigma_beta = Sigma_beta_hat,
-                                              Sigma_theta = Sigma_theta_hat)
+        calc_myreg_mreg_logistic_yreg_linear_se(beta0 = beta_hat$beta0,
+                                                beta1 = beta_hat$beta1,
+                                                beta2 = beta_hat$beta2,
+                                                theta0 = theta_hat$theta0,
+                                                theta1 = theta_hat$theta1,
+                                                theta2 = theta_hat$theta2,
+                                                theta3 = theta_hat$theta3,
+                                                theta4 = theta_hat$theta4,
+                                                Sigma_beta = Sigma_beta_hat,
+                                                Sigma_theta = Sigma_theta_hat)
 
     ## Return a list of functions.
     list(
@@ -85,14 +85,14 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
 }
 
 
-calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
-                                                   beta1,
-                                                   beta2,
-                                                   theta0,
-                                                   theta1,
-                                                   theta2,
-                                                   theta3,
-                                                   theta4) {
+calc_myreg_mreg_logistic_yreg_linear_est <- function(beta0,
+                                                     beta1,
+                                                     beta2,
+                                                     theta0,
+                                                     theta1,
+                                                     theta2,
+                                                     theta3,
+                                                     theta4) {
 
     validate_myreg_coefs(beta0 = beta0,
                          beta1 = beta1,
@@ -153,16 +153,16 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
 }
 
 
-calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
-                                                  beta1,
-                                                  beta2,
-                                                  theta0,
-                                                  theta1,
-                                                  theta2,
-                                                  theta3,
-                                                  theta4,
-                                                  Sigma_beta,
-                                                  Sigma_theta) {
+calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
+                                                    beta1,
+                                                    beta2,
+                                                    theta0,
+                                                    theta1,
+                                                    theta2,
+                                                    theta3,
+                                                    theta4,
+                                                    Sigma_beta,
+                                                    Sigma_theta) {
 
     validate_myreg_coefs(beta0 = beta0,
                          beta1 = beta1,
