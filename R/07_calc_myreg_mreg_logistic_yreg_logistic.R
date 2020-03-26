@@ -206,27 +206,27 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
         ## These are the gradient vector of each scalar quantity of interest.
         ## Obtain the first partial derivative wrt to each parameter.
         Gamma_cde <-
-            matrix(c(0,                       # beta0
-                     0,                       # beta1
-                     rep(0, length(beta2)),   # beta2 vector
+            matrix(c(0,                        # beta0
+                     0,                        # beta1
+                     rep(0, length(beta2)),    # beta2 vector
                      ##
-                     0,                       # theta0
-                     1,                       # theta1
-                     0,                       # theta2
-                     m_cde,                   # theta3
-                     rep(0, length(theta4)))) # theta4 vector
+                     0,                        # theta0
+                     (a1 - a0),                # theta1
+                     0,                        # theta2
+                     (a1 - a0) * m_cde,        # theta3
+                     rep(0, length(theta4))))  # theta4 vector
         ##
-        ## d2 and d3 in VanderWeele 2015 p471 and VV 2013 Appendix p12 have typos.
-        ## a0 and c_cond and theta3 are outside the fraction.
-        pnde_d1 <- theta3 * (exp(beta0 + (beta1 * a0) + beta2_c) /
-                             (1 + exp(beta0 + (beta1 * a0) + beta2_c))^2)
+        pnde_Q <- exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a0) + beta2_c) /
+            (1  + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a0) + beta2_c))
+        pnde_B <- exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a0) + beta2_c) /
+            (1  + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a0) + beta2_c))
+        pnde_d1 <- pnde_Q - pnde_B
         pnde_d2 <- a0 * pnde_d1
         pnde_d3 <- c_cond * pnde_d1
         pnde_d4 <- 0
-        pnde_d5 <- 1 # (a1 - a0) is factored out.
-        pnde_d6 <- 0
-        pnde_d7 <- exp(beta0 + (beta1 * a0) + beta2_c) /
-            (1 + exp(beta0 + (beta1 * a0) + beta2_c))
+        pnde_d5 <- (a1 - a0)
+        pnde_d6 <- pnde_Q - pnde_B
+        pnde_d7 <- (a1 * pnde_Q) - (a0 * pnde_B)
         pnde_d8 <- rep(0, length(theta4))
         Gamma_pnde <-
             matrix(c(
