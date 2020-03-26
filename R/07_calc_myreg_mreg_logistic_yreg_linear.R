@@ -223,16 +223,16 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                      m_cde,                   # theta3
                      rep(0, length(theta4)))) # theta4 vector
         ##
-        pnde_d1 <- ((theta3 * exp(beta0 + (beta1 * a0) + beta2_c) * (1 + exp(beta0 + (beta1 * a0) + beta2_c))) - theta3 * exp(beta0 + (beta1 * a0) + beta2_c)^2) / (1 + exp(beta0 + (beta1 * a0) + beta2_c))^2
-        ## FIXME: d2 and d3 in VanderWeele 2015 p471 and VV 2013 Appendix p12
-        ## appears suspicious. Double check if the following two are correct.
-        pnde_d2 <- a0 * d1
-        pnde_d3 <- c_cond * d1
+        pnde_d1 <- theta3 * (exp(beta0 + (beta1 * a0) + beta2_c) / (1 + exp(beta0 + (beta1 * a0) + beta2_c))^2)
+        ## d2 and d3 in VanderWeele 2015 p471 and VV 2013 Appendix p12 have typos.
+        ## a0 and c_cond and theta3 are outside the fraction.
+        pnde_d2 <- a0 * pnde_d1
+        pnde_d3 <- c_cond * pnde_d1
         pnde_d4 <- 0
-        pnde_d5 <- 1 # FIXME: It may be (a1 - a0).
+        pnde_d5 <- 1 # (a1 - a0) is factored out.
         pnde_d6 <- 0
         pnde_d7 <- exp(beta0 + (beta1 * a0) + beta2_c) /
-            (1 + exp(beta0 + (beta1 * a0) + beta2_c)) # FIXME: It may be multiplied by (a1 - a0).
+            (1 + exp(beta0 + (beta1 * a0) + beta2_c)) #
         pnde_d8 <- rep(0, length(theta4))
         Gamma_pnde <-
             matrix(c(
