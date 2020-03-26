@@ -493,18 +493,7 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear interaction", {
             expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["cde"],
                          myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))["cde"])
         })
-        it("returns functions where nie does not depend on c_cond", {
-            expect_equal(myreg_funs[[1]](1,2,+3,-1 * c(4,5,6))["tnie"],
-                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6))["tnie"])
-            expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["tnie"],
-                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))["tnie"])
-            ##
-            expect_equal(myreg_funs[[1]](1,2,+3,-1 * c(4,5,6))["pnie"],
-                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6))["pnie"])
-            expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["pnie"],
-                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))["pnie"])
-        })
-        it("returns functions where nde and te depend on c_cond", {
+        it("returns functions where ndes depend on c_cond", {
             c_cond <- c(4,5,6)
             beta2_c1 <- sum(-1 * beta2 * c_cond)
             beta2_c2 <- sum(+2 * beta2 * c_cond)
@@ -516,15 +505,11 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear interaction", {
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["pnde"])
                     expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["tnde"],
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["tnde"])
-                    expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["te"],
-                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["te"])
                 } else if (beta2_c1 - beta2_c2 < 0) {
                     expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["pnde"],
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["pnde"])
                     expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["tnde"],
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["tnde"])
-                    expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["te"],
-                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["te"])
                 }
             } else if (theta3 < 0) {
                 ## Decreasing in beta2_c
@@ -533,15 +518,11 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear interaction", {
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["pnde"])
                     expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["tnde"],
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["tnde"])
-                    expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["te"],
-                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["te"])
                 } else if (beta2_c1 - beta2_c2 < 0) {
                     expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["pnde"],
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["pnde"])
                     expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["tnde"],
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["tnde"])
-                    expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["te"],
-                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["te"])
                 }
             }
         })
