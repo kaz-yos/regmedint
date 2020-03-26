@@ -121,7 +121,9 @@ calc_myreg_mreg_logistic_yreg_logistic_est <- function(beta0,
         cde <- (theta1 + (theta3 * m_cde)) * (a1 - a0)
         ## Pearl decomposition (Regular NDE and NIE)
         ## Note the a0 in the second term.
-        pnde <- (exp(theta1 * a1) * (1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a0) + beta2_c))) / (exp(theta1 * a0) * (1 + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a0) + beta2_c)))
+        pnde <-
+            (exp(theta1 * a1) * (1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a0) + beta2_c))) /
+            (exp(theta1 * a0) * (1 + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a0) + beta2_c)))
         ## Note the a1 in the first term.
         tnie <-
             ((1 + exp(beta0 + (beta1 * a0) + beta2_c)) * (1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a1) + beta2_c))) /
