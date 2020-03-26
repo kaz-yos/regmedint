@@ -268,15 +268,18 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
                 tnie_d7,   # theta3
                 tnie_d8))  # theta4 vector
         ##
-        tnde_d1 <- theta3 * (exp(beta0 + (beta1 * a1) + beta2_c) /
-                             (1 + exp(beta0 + (beta1 * a1) + beta2_c))^2)
+        ## a's from mreg beta1 should be a1.
+        tnde_Q <- exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a1) + beta2_c) /
+            (1  + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a1) + beta2_c))
+        tnde_B <- exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a1) + beta2_c) /
+            (1  + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a1) + beta2_c))
+        tnde_d1 <- tnde_Q - tnde_B
         tnde_d2 <- a1 * tnde_d1
         tnde_d3 <- c_cond * tnde_d1
         tnde_d4 <- 0
-        tnde_d5 <- 1 # (a1 - a0) is factored out.
-        tnde_d6 <- 0
-        tnde_d7 <- exp(beta0 + (beta1 * a1) + beta2_c) /
-            (1 + exp(beta0 + (beta1 * a1) + beta2_c))
+        tnde_d5 <- (a1 - a0)
+        tnde_d6 <- tnde_Q - tnde_B
+        tnde_d7 <- (a1 * tnde_Q) - (a0 * tnde_B)
         tnde_d8 <- rep(0, length(theta4))
         Gamma_tnde <-
             matrix(c(
