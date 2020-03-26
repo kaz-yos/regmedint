@@ -463,7 +463,7 @@ describe("calc_myreg_mreg_logistic_yreg_linear linear interaction", {
                              interaction = TRUE,
                              eventvar = NULL)
         ## Sign of the interaction coefficient is important.
-        theta3 <- coef(yreg_fit)["trt:bili"]
+        theta3 <- coef(yreg_fit)["trt:bili_bin"]
         beta1 <- coef(mreg_fit)[c("trt")]
         beta2 <- coef(mreg_fit)[c("age","male","stage")]
         myreg_funs <-
