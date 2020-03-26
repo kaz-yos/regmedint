@@ -223,9 +223,10 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                      m_cde,                   # theta3
                      rep(0, length(theta4)))) # theta4 vector
         ##
-        pnde_d1 <- theta3 * (exp(beta0 + (beta1 * a0) + beta2_c) / (1 + exp(beta0 + (beta1 * a0) + beta2_c))^2)
         ## d2 and d3 in VanderWeele 2015 p471 and VV 2013 Appendix p12 have typos.
         ## a0 and c_cond and theta3 are outside the fraction.
+        pnde_d1 <- theta3 * (exp(beta0 + (beta1 * a0) + beta2_c) /
+                             (1 + exp(beta0 + (beta1 * a0) + beta2_c))^2)
         pnde_d2 <- a0 * pnde_d1
         pnde_d3 <- c_cond * pnde_d1
         pnde_d4 <- 0
