@@ -293,9 +293,9 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                 beta1,                     # theta2
                 (beta1 * a0),              # theta3 a1 -> a0
                 rep(0, length(theta4))))   # theta4 vector
-        ##
+        ## (a1 - a0) without abs must enter here for pnde.
         Gamma_te <-
-            Gamma_pnde + Gamma_tnie # By linearity of differentiation
+            Gamma_pnde * (a1 - a0) + Gamma_tnie # By linearity of differentiation
         ##
         ## PM part. VV2013 Appendix p5-6.
         d1_numer <- -theta3 * ((theta2 * beta1) + (theta3 * beta1 * a1))
@@ -329,14 +329,15 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
 
         ## SE calcuation via multivariate delta method
         ## https://en.wikipedia.org/wiki/Delta_method# Multivariate_delta_method
+        ## NIEs do not have common factor
         a1_sub_a0 <- abs(a1 - a0)
         se_cde <- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% Gamma_cde)) * a1_sub_a0
         se_pnde <- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% Gamma_pnde)) * a1_sub_a0
         se_tnie <- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% Gamma_tnie))
         se_tnde <- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% Gamma_tnde)) * a1_sub_a0
         se_pnie <- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% Gamma_pnie))
-        se_te <- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te)) * a1_sub_a0
-        se_pm <- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm)) * a1_sub_a0
+        se_te <- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te))
+        se_pm <- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm)) * a1_sub_a0 # FIXME
 
         ## Return a vector
         c(se_cde  = unname(se_cde),
