@@ -223,29 +223,52 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                      m_cde,                   # theta3
                      rep(0, length(theta4)))) # theta4 vector
         ##
+        pnde_d1 <- ((theta3 * exp(beta0 + (beta1 * a0) + beta2_c) * (1 + exp(beta0 + (beta1 * a0) + beta2_c))) - theta3 * exp(beta0 + (beta1 * a0) + beta2_c)^2) / (1 + exp(beta0 + (beta1 * a0) + beta2_c))^2
+        ## FIXME: d2 and d3 in VanderWeele 2015 p471 and VV 2013 Appendix p12
+        ## appears suspicious. Double check if the following two are correct.
+        pnde_d2 <- a0 * d1
+        pnde_d3 <- c_cond * d1
+        pnde_d4 <- 0
+        pnde_d5 <- 1 # FIXME: It may be (a1 - a0).
+        pnde_d6 <- 0
+        pnde_d7 <- exp(beta0 + (beta1 * a0) + beta2_c) /
+            (1 + exp(beta0 + (beta1 * a0) + beta2_c)) # FIXME: It may be multiplied by (a1 - a0).
+        pnde_d8 <- rep(0, length(theta4))
         Gamma_pnde <-
             matrix(c(
-                theta3,                            # beta0
-                (theta3 * a0),                     # beta1
-                (theta3 * c_cond),                 # beta2 vector
+                pnde_d1,   # beta0
+                pnde_d2,   # beta1
+                pnde_d3,   # beta2 vector
                 ##
-                0,                                 # theta0
-                1,                                 # theta1
-                0,                                 # theta2
-                (beta0 + (beta1 * a0) + beta2_c),  # theta3
-                rep(0, length(theta4))))           # theta4 vector
+                pnde_d4,   # theta0
+                pnde_d5,   # theta1
+                pnde_d6,   # theta2
+                pnde_d7,   # theta3
+                pnde_d8))  # theta4 vector
         ##
+        tnie_A <- NA
+        tnie_B <- NA
+        tnie_K <- NA
+        tnie_D <- NA
+        tnie_d1 <- (theta2 + (theta3 * a1)) * (tnie_A - tnie_B)
+        tnie_d2 <- (theta2 + (theta3 * a1)) * ((a1 * tnie_A) - (a0 * tnie_B))
+        tnie_d3 <- (theta2 + (theta3 * a1)) * c_cond * (tnie_A - tnie_B)
+        tnie_d4 <- 0
+        tnie_d5 <- 0
+        tnie_d6 <- tnie_K - tnie_D
+        tnie_d7 <- a1 * (tnie_K - tnie_D)
+        tnie_d8 <- rep(0, length(theta4))
         Gamma_tnie <-
             matrix(c(
-                0,                         # beta0
-                (theta2 + (theta3 * a1)),  # beta1
-                rep(0, length(beta2)),     # beta2 vector
+                tnie_d1,   # beta0
+                tnie_d2,   # beta1
+                tnie_d3,   # beta2 vector
                 ##
-                0,                         # theta0
-                0,                         # theta1
-                beta1,                     # theta2
-                (beta1 * a1),              # theta3
-                rep(0, length(theta4))))   # theta4 vector
+                tnie_d4,   # theta0
+                tnie_d5,   # theta1
+                tnie_d6,   # theta2
+                tnie_d7,   # theta3
+                tnie_d8))  # theta4 vector
         ##
         Gamma_tnde <-
             matrix(c(
