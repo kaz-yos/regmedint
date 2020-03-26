@@ -150,7 +150,7 @@ junk <- macro_args_sas %>%
     mutate(junk = map2(filename, sas, function(filename, sas) {
         res_filename <- stringr::str_replace_all(filename, "sas$", "txt")
         test_that(paste0(res_filename, " was extracted successfully"), {
-            expect_equal(class(sas)[1], "tbl_df")
+            expect_equal(class(sas)[[1]], "tbl_df")
             expect_true(ncol(sas) %in% c(5,6))
         })
     }))
@@ -269,14 +269,14 @@ macro_args_sas_r <- macro_args_sas_r_prelim %>%
     ## Extract useful elements when available
     mutate(
         coef = map(res, function(res) {
-            if(class(res) == "try-error") {
+            if(class(res)[[1]] == "try-error") {
                 return(NULL)
             } else {
                 return(coef(res))
             }
         }),
         p = map(res, function(res) {
-            if(class(res) == "try-error") {
+            if(class(res)[[1]] == "try-error") {
                 return(NULL)
             } else {
                 capture_output(summary_mat <- summary(res))
@@ -285,14 +285,14 @@ macro_args_sas_r <- macro_args_sas_r_prelim %>%
         }),
         ## 2 * (1 - pnorm(1.96)) to get confint corresponding to 1.96 * se
         lower = map(res, function(res) {
-            if(class(res) == "try-error") {
+            if(class(res)[[1]] == "try-error") {
                 return(NULL)
             } else {
                 return(confint(res, alpha = 2 * (1 - pnorm(1.96)))[,"lower"])
             }
         }),
         upper = map(res, function(res) {
-            if(class(res) == "try-error") {
+            if(class(res)[[1]] == "try-error") {
                 return(NULL)
             } else {
                 return(confint(res, alpha = 2 * (1 - pnorm(1.96)))[,"upper"])
@@ -325,7 +325,7 @@ junk <- macro_args_sas_r %>%
             list(filename, sas, res, coef, p, lower, upper),
             function(filename, sas, res, coef, p, lower, upper) {
 
-                if (class(res) == "try-error") {
+                if (class(res)[[1]] == "try-error") {
                     stop(paste0("R fit for ", filename, " gave an try-error object!"))
                 } else {
 
