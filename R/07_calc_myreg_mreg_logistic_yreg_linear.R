@@ -124,7 +124,7 @@ calc_myreg_mreg_logistic_yreg_linear_est <- function(beta0,
         pnde <- (theta1 * (a1 - a0)) + (theta3 * (a1 - a0)) *
             (exp(beta0 + (beta1 * a0) + beta2_c) /
              (1 + exp(beta0 + (beta1 * a0) + beta2_c)))
-        ## Note the a1.                               vv
+        ## Note the a1 in the first term.
         tnie <- (theta2 + (theta3 * a1)) *
             ((exp(beta0 + (beta1 * a1) + beta2_c) /
               (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
@@ -135,7 +135,7 @@ calc_myreg_mreg_logistic_yreg_linear_est <- function(beta0,
         tnde <- (theta1 * (a1 - a0)) + (theta3 * (a1 - a0)) *
             (exp(beta0 + (beta1 * a1) + beta2_c) /
              (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
-        ## Note the a1 -> a0 change.                  vv
+        ## Note the a1 -> a0 change in the first term.
         pnie <- (theta2 + (theta3 * a0)) *
             ((exp(beta0 + (beta1 * a0) + beta2_c) /
               (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
