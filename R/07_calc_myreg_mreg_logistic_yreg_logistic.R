@@ -351,11 +351,10 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
         ## https://en.wikipedia.org/wiki/Delta_method# Multivariate_delta_method
         ## NIEs do not have common factor abs(a1 - a0), thus, it does not show up
         ## in se_te and se_pm.
-        a1_sub_a0 <- abs(a1 - a0)
-        se_cde <- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% Gamma_cde)) * a1_sub_a0
-        se_pnde <- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% Gamma_pnde)) * a1_sub_a0
+        se_cde <- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% Gamma_cde))
+        se_pnde <- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% Gamma_pnde))
         se_tnie <- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% Gamma_tnie))
-        se_tnde <- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% Gamma_tnde)) * a1_sub_a0
+        se_tnde <- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% Gamma_tnde))
         se_pnie <- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% Gamma_pnie))
         se_te <- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te))
         se_pm <- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm))
