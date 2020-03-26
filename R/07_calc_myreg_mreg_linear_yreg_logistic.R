@@ -312,8 +312,8 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         ## d_pm / d_params = (d_pm / d_(pnde, tnie)) %*% (d_(pnde, tnie) / d_params)
         ##                 = (d_pm / d_pnde) * (d_pnde / d_params) +
         ##                   (d_pm / d_tnie) * (d_tnie / d_params)
-        ## where (d_pnde / d_params) is Gamma_pnde and
-        ##       (d_tnie / d_params) is Gamma_tnie.
+        ## where (d_pnde / d_params) is (a1 - a0) * Gamma_pnde and
+        ##       (d_tnie / d_params) is (a1 - a0) * Gamma_tnie.
         ## FIXME: This is not tested aginst a reference standard.
         Gamma_pm <- d_pm[["pnde"]] * Gamma_pnde + d_pm[["tnie"]] * Gamma_tnie
 
