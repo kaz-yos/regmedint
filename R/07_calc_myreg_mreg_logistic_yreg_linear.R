@@ -117,23 +117,30 @@ calc_myreg_mreg_logistic_yreg_linear_est <- function(beta0,
             beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
         }
 
-        ## VanderWeele 2015 p466
-        ## Adopted from mediation.sas and modified.
-        ## Look up the third occurrence of the following:
-        ## %if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
+        ## VanderWeele 2015 p471
         cde <- (theta1 + (theta3 * m_cde)) * (a1 - a0)
         ## Pearl decomposition (Regular NDE and NIE)
-        ## Note the a0 in the first line.                      vv
-        pnde <- (theta1 + (theta3 * beta0) + (theta3 * beta1 * a0) +
-                 (theta3 * beta2_c)) * (a1 - a0)
+        ## Note the a0 in the second term.
+        pnde <- (theta1 * (a1 - a0)) + (theta3 * (a1 - a0)) *
+            (exp(beta0 + (beta1 * a0) + beta2_c) /
+             (1 + exp(beta0 + (beta1 * a0) + beta2_c)))
         ## Note the a1.                               vv
-        tnie <- ((theta2 * beta1) + (theta3 * beta1 * a1)) * (a1 - a0)
+        tnie <- (theta2 + (theta3 * a1)) *
+            ((exp(beta0 + (beta1 * a1) + beta2_c) /
+              (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
+                - (exp(beta0 + (beta1 * a0) + beta2_c) /
+                   (1 + exp(beta0 + (beta1 * a0) + beta2_c))))
         ## Another decomposition
-        ## Note the a0 -> a1 change in the first line.         vv
-        tnde <- (theta1 + (theta3 * beta0) + (theta3 * beta1 * a1) +
-                 (theta3 * beta2_c)) * (a1 - a0)
+        ## Note the a0 -> a1 change in the second term.
+        tnde <- (theta1 * (a1 - a0)) + (theta3 * (a1 - a0)) *
+            (exp(beta0 + (beta1 * a1) + beta2_c) /
+             (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
         ## Note the a1 -> a0 change.                  vv
-        pnie <- ((theta2 * beta1) + (theta3 * beta1 * a0)) * (a1 - a0)
+        pnie <- (theta2 + (theta3 * a0)) *
+            ((exp(beta0 + (beta1 * a0) + beta2_c) /
+              (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
+                - (exp(beta0 + (beta1 * a0) + beta2_c) /
+                   (1 + exp(beta0 + (beta1 * a0) + beta2_c))))
         ## It is the sum of NDE and NIE on the log scale.
         te <- pnde + tnie
         ## VanderWeele 2015 p47
