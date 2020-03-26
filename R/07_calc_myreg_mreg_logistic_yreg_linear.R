@@ -233,7 +233,7 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
         pnde_d5 <- 1 # (a1 - a0) is factored out.
         pnde_d6 <- 0
         pnde_d7 <- exp(beta0 + (beta1 * a0) + beta2_c) /
-            (1 + exp(beta0 + (beta1 * a0) + beta2_c)) #
+            (1 + exp(beta0 + (beta1 * a0) + beta2_c))
         pnde_d8 <- rep(0, length(theta4))
         Gamma_pnde <-
             matrix(c(
@@ -247,13 +247,17 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                 pnde_d7,   # theta3
                 pnde_d8))  # theta4 vector
         ##
-        tnie_A <- NA
-        tnie_B <- NA
-        tnie_K <- NA
-        tnie_D <- NA
-        tnie_d1 <- (theta2 + (theta3 * a1)) * (tnie_A - tnie_B)
-        tnie_d2 <- (theta2 + (theta3 * a1)) * ((a1 * tnie_A) - (a0 * tnie_B))
-        tnie_d3 <- (theta2 + (theta3 * a1)) * c_cond * (tnie_A - tnie_B)
+        tnie_Q <- (exp(beta0 + (beta1 * a1) + beta2_c) /
+                   (1 + exp(beta0 + (beta1 * a1) + beta2_c))^2)
+        tnie_B <- (exp(beta0 + (beta1 * a0) + beta2_c) /
+                   (1 + exp(beta0 + (beta1 * a0) + beta2_c))^2)
+        tnie_K <- (exp(beta0 + (beta1 * a1) + beta2_c) /
+                   (1 + exp(beta0 + (beta1 * a1) + beta2_c)))
+        tnie_D <- (exp(beta0 + (beta1 * a0) + beta2_c) /
+                   (1 + exp(beta0 + (beta1 * a0) + beta2_c)))
+        tnie_d1 <- (theta2 + (theta3 * a1)) * (tnie_Q- tnie_B)
+        tnie_d2 <- (theta2 + (theta3 * a1)) * ((a1 * tnie_Q) - (a0 * tnie_B))
+        tnie_d3 <- (theta2 + (theta3 * a1)) * c_cond * (tnie_Q - tnie_B)
         tnie_d4 <- 0
         tnie_d5 <- 0
         tnie_d6 <- tnie_K - tnie_D
