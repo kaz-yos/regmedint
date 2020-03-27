@@ -262,6 +262,23 @@ macro_args_sas_r_prelim <- macro_args_sas %>%
 
 
 ###
+### Write R results to files
+################################################################################
+
+junk <- macro_args_sas_r_prelim %>%
+    mutate(filename_r_res = stringr::str_replace_all(filename, "sas$", "r.txt")) %>%
+    mutate(junk = pmap(list(res, filename_r_res), function(res, filename_r_res) {
+        ## Create a textual representation of the results
+        res_char_vec <- capture.output(summary(res))
+        res_char <- paste0(paste0(res_char_vec, collapse = "\n"), "\n")
+        ## The working directory here is the enclosing folder ./tests/testthat/.
+        ## print(getwd())
+        relpath <- paste0("../reference_results/", filename_r_res)
+        cat(res_char, file = relpath)
+    }))
+
+
+###
 ### Extract R results for testing
 ################################################################################
 
