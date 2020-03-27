@@ -122,20 +122,26 @@ calc_myreg_mreg_logistic_yreg_logistic_est <- function(beta0,
         cde <- (theta1 + (theta3 * m_cde)) * (a1 - a0)
         ## Pearl decomposition (Regular NDE and NIE)
         ## Note the a0 in the second term.
-        pnde <-
-            (exp(theta1 * a1) * (1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a0) + beta2_c))) /
-            (exp(theta1 * a0) * (1 + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a0) + beta2_c)))
+        pnde <- (theta1 * (a1 - a0)) +
+            log(1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a0) + beta2_c)) -
+            log(1 + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a0) + beta2_c))
         ## Note the a1 in the first term.
         tnie <-
-            ((1 + exp(beta0 + (beta1 * a0) + beta2_c)) * (1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a1) + beta2_c))) /
-            ((1 + exp(beta0 + (beta1 * a1) + beta2_c)) * (1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a0) + beta2_c)))
+            log(1 + exp(beta0 + (beta1 * a0) + beta2_c)) -
+            log(1 + exp(beta0 + (beta1 * a1) + beta2_c)) +
+            log(1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a1) + beta2_c)) -
+            log(1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a0) + beta2_c))
         ## Another decomposition
-        ## Note the a0 -> a1 change in the second term.
-        tnde <- (exp(theta1 * a1) * (1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a1) + beta2_c))) / (exp(theta1 * a0) * (1 + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a1) + beta2_c)))
-        ## Note the a1 -> a0 change in the first term.
+        ## Note the a0 -> a1 changes associated with beta1.
+        tnde <- (theta1 * (a1 - a0)) +
+            log(1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a1) + beta2_c)) -
+            log(1 + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a1) + beta2_c))
+        ## Note the a1 -> a0 changes associated with theta3.
         pnie <-
-            ((1 + exp(beta0 + (beta1 * a0) + beta2_c)) * (1 + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a1) + beta2_c))) /
-            ((1 + exp(beta0 + (beta1 * a1) + beta2_c)) * (1 + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a0) + beta2_c)))
+            log(1 + exp(beta0 + (beta1 * a0) + beta2_c)) -
+            log(1 + exp(beta0 + (beta1 * a1) + beta2_c)) +
+            log(1 + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a1) + beta2_c)) -
+            log(1 + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a0) + beta2_c))
         ## It is the sum of NDE and NIE on the log scale.
         te <- pnde + tnie
         ## VanderWeele 2015 p48.
