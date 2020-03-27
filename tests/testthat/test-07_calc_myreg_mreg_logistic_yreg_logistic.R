@@ -34,7 +34,7 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                              cvar = NULL)
         yreg_fit <- fit_yreg(yreg = "logistic",
                              data = pbc_cc,
-                             yvar = "bili_bin",
+                             yvar = "spiders",
                              avar = "trt",
                              mvar = "bili_bin",
                              cvar = NULL,
@@ -92,7 +92,7 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                              cvar = c("age"))
         yreg_fit <- fit_yreg(yreg = "logistic",
                              data = pbc_cc,
-                             yvar = "bili_bin",
+                             yvar = "spiders",
                              avar = "trt",
                              mvar = "bili_bin",
                              cvar = c("age"),
@@ -150,7 +150,7 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                              cvar = c("age","male","stage"))
         yreg_fit <- fit_yreg(yreg = "logistic",
                              data = pbc_cc,
-                             yvar = "bili_bin",
+                             yvar = "spiders",
                              avar = "trt",
                              mvar = "bili_bin",
                              cvar = c("age","male","stage"),
@@ -207,7 +207,7 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                              cvar = c("age","male","stage"))
         yreg_fit <- fit_yreg(yreg = "logistic",
                              data = pbc_cc,
-                             yvar = "bili_bin",
+                             yvar = "spiders",
                              avar = "trt",
                              mvar = "bili_bin",
                              cvar = c("age","male","stage"),
@@ -283,7 +283,7 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                              cvar = NULL)
         yreg_fit <- fit_yreg(yreg = "logistic",
                              data = pbc_cc,
-                             yvar = "bili_bin",
+                             yvar = "spiders",
                              avar = "trt",
                              mvar = "bili_bin",
                              cvar = NULL,
@@ -341,7 +341,7 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                              cvar = c("age"))
         yreg_fit <- fit_yreg(yreg = "logistic",
                              data = pbc_cc,
-                             yvar = "bili_bin",
+                             yvar = "spiders",
                              avar = "trt",
                              mvar = "bili_bin",
                              cvar = c("age"),
@@ -399,7 +399,7 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                              cvar = c("age","male","stage"))
         yreg_fit <- fit_yreg(yreg = "logistic",
                              data = pbc_cc,
-                             yvar = "bili_bin",
+                             yvar = "spiders",
                              avar = "trt",
                              mvar = "bili_bin",
                              cvar = c("age","male","stage"),
@@ -456,7 +456,7 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                              cvar = c("age","male","stage"))
         yreg_fit <- fit_yreg(yreg = "logistic",
                              data = pbc_cc,
-                             yvar = "bili_bin",
+                             yvar = "spiders",
                              avar = "trt",
                              mvar = "bili_bin",
                              cvar = c("age","male","stage"),
