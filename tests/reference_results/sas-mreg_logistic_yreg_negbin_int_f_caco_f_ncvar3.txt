@@ -1,12 +1,12 @@
-                             1    marginal cde                 0.88220    0.67293     0.49299     1.57869
-                             2    marginal pnde                0.88220    0.67293     0.49299     1.57869
-                             3    marginal pnie                0.96449    0.51948     0.86400     1.07666
-                             4    marginal tnde                0.88220    0.67293     0.49299     1.57869
-                             5    marginal tnie                0.96449    0.51922     0.86406     1.07658
-                             6    marginal total effect        0.85087    0.59279     0.47078     1.53783
-                             7    conditional cde              0.88220    0.67293     0.49299     1.57869
-                             8    conditional pnde             0.88220    0.67293     0.49299     1.57869
-                             9    conditional pnie             0.96803    0.51791     0.87721     1.06824
-                            10    conditional tnde             0.88220    0.67293     0.49299     1.57869
-                            11    conditional tnie             0.96803    0.52240     0.87628     1.06938
-                            12    conditional total effect     0.85400    0.60011     0.47335     1.54073
+                             1    marginal cde                 1.02654    0.54771     0.94251     1.11808
+                             2    marginal pnde                1.02654    0.54771     0.94251     1.11808
+                             3    marginal pnie                1.00381    0.53202     0.99192     1.01584
+                             4    marginal tnde                1.02654    0.54771     0.94251     1.11808
+                             5    marginal tnie                1.00381    0.53208     0.99191     1.01584
+                             6    marginal total effect        1.03045    0.49380     0.94561     1.12291
+                             7    conditional cde              1.02654    0.54771     0.94251     1.11808
+                             8    conditional pnde             1.02654    0.54771     0.94251     1.11808
+                             9    conditional pnie             1.00373    0.53191     0.99208     1.01552
+                            10    conditional tnde             1.02654    0.54771     0.94251     1.11808
+                            11    conditional tnie             1.00373    0.53362     0.99203     1.01557
+                            12    conditional total effect     1.03037    0.49478     0.94556     1.12280
