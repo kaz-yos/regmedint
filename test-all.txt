@@ -4,17 +4,17 @@
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  23       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
 ⠏ |   0       | 04_fit_yreg_logistic✔ |  24       | 04_fit_yreg_logistic
-⠏ |   0       | 04_fit_yreg_negbin⠧ |  18       | 04_fit_yreg_negbin✔ |  24       | 04_fit_yreg_negbin [0.1 s]
+⠏ |   0       | 04_fit_yreg_negbin⠋ |  21       | 04_fit_yreg_negbin✔ |  24       | 04_fit_yreg_negbin [0.1 s]
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
 ⠏ |   0       | 04_fit_yreg_survCox✔ |  24       | 04_fit_yreg_survCox
-⠏ |   0       | 06_calc_myreg_helpers_coef⠴ |  46       | 06_calc_myreg_helpers_coef⠹ |  83       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠧ |  58       | 06_calc_myreg_helpers_vcov⠼ |  85       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear⠹ |  43       | 07_calc_myreg_mreg_linear_yreg_linear⠏ |  90       | 07_calc_myreg_mreg_linear_yreg_linear⠙ | 132       | 07_calc_myreg_mreg_linear_yreg_linear⠇ | 169       | 07_calc_myreg_mreg_linear_yreg_linear✔ | 225       | 07_calc_myreg_mreg_linear_yreg_linear [0.5 s]
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠼ |  35       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ |  77       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ | 109       | 07_calc_myreg_mreg_linear_yreg_logistic⠴ | 166       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ | 209       | 07_calc_myreg_mreg_linear_yreg_logistic✔ | 235       | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear⠙ |  52       | 07_calc_myreg_mreg_logistic_yreg_linear⠇ |  89       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ | 131       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ | 178       | 07_calc_myreg_mreg_logistic_yreg_linear✔ | 220       | 07_calc_myreg_mreg_logistic_yreg_linear [0.9 s]
-⠋ | 220   1   | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 08_regmedint_class_user_methods⠹ |  23       | 08_regmedint_class_user_methods✖ |  29 7     | 08_regmedint_class_user_methods [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠙ |  42       | 06_calc_myreg_helpers_coef⠙ |  82       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠦ |  57       | 06_calc_myreg_helpers_vcov⠹ |  83       | 06_calc_myreg_helpers_vcov⠦ | 107       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear⠋ |  51       | 07_calc_myreg_mreg_linear_yreg_linear⠴ |  96       | 07_calc_myreg_mreg_linear_yreg_linear⠸ | 154       | 07_calc_myreg_mreg_linear_yreg_linear⠼ | 185       | 07_calc_myreg_mreg_linear_yreg_linear✔ | 225       | 07_calc_myreg_mreg_linear_yreg_linear [0.5 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ |  37       | 07_calc_myreg_mreg_linear_yreg_logistic⠙ |  82       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ | 120       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ | 171       | 07_calc_myreg_mreg_linear_yreg_logistic⠙ | 222       | 07_calc_myreg_mreg_linear_yreg_logistic✔ | 235       | 07_calc_myreg_mreg_linear_yreg_logistic [0.5 s]
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear⠹ |  53       | 07_calc_myreg_mreg_logistic_yreg_linear⠏ |  90       | 07_calc_myreg_mreg_logistic_yreg_linear⠏ | 130       | 07_calc_myreg_mreg_logistic_yreg_linear⠇ | 169       | 07_calc_myreg_mreg_logistic_yreg_linear✔ | 220       | 07_calc_myreg_mreg_logistic_yreg_linear [0.8 s]
+⠋ | 220   1   | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 08_regmedint_class_user_methods⠸ |  24       | 08_regmedint_class_user_methods✖ |  29 7     | 08_regmedint_class_user_methods [0.3 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-08_regmedint_class_user_methods.R:106: failure: summary.regmedint: prints evaluation information
 `summary\(fit_regmedint\)` does not match "^Evaluated at:".
@@ -44,7 +44,7 @@ test-08_regmedint_class_user_methods.R:118: failure: summary.regmedint: prints e
 `summary\(fit_regmedint_int\)` does not match "^Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.".
 Actual value: "### Mediator model\\n\\nCall:\\nlm\(formula = bili ~ trt, data = data\)\\n\\nResiduals:\\n    Min      1Q  Median      3Q     Max \\n-3\.4000 -2\.5000 -1\.7000  0\.4434 24\.3000 \\n\\nCoefficients:\\n            Estimate Std\. Error t value Pr\(>\|t\|\)  \\n\(Intercept\)   2\.2132     0\.8784   2\.520   0\.0123 \*\\ntrt           0\.7434     0\.5532   1\.344   0\.1801  \\n---\\nSignif\. codes:  0 '\*\*\*' 0\.001 '\*\*' 0\.01 '\*' 0\.05 '\.' 0\.1 ' ' 1\\n\\nResidual standard error: 4\.594 on 274 degrees of freedom\\nMultiple R-squared:  0\.006548,\\tAdjusted R-squared:  0\.002923 \\nF-statistic: 1\.806 on 1 and 274 DF,  p-value: 0\.1801\\n\\n### Outcome model\\n\\nCall:\\nglm\(formula = spiders ~ trt \* bili, family = binomial\(link = "logit"\), \\n    data = data\)\\n\\nDeviance Residuals: \\n    Min       1Q   Median       3Q      Max  \\n-2\.0109  -0\.7534  -0\.7162   1\.0662   1\.7878  \\n\\nCoefficients:\\n            Estimate Std\. Error z value Pr\(>\|z\|\)   \\n\(Intercept\) -1\.65730    0\.58884  -2\.815  0\.00488 \*\*\\ntrt          0\.19162    0\.36010   0\.532  0\.59463   \\nbili         0\.28496    0\.12308   2\.315  0\.02060 \* \\ntrt:bili    -0\.09806    0\.06849  -1\.432  0\.15222   \\n---\\nSignif\. codes:  0 '\*\*\*' 0\.001 '\*\*' 0\.01 '\*' 0\.05 '\.' 0\.1 ' ' 1\\n\\n\(Dispersion parameter for binomial family taken to be 1\)\\n\\n    Null deviance: 332\.32  on 275  degrees of freedom\\nResidual deviance: 312\.50  on 272  degrees of freedom\\nAIC: 320\.5\\n\\nNumber of Fisher Scoring iterations: 4\\n\\n### Mediation analysis \\n             est    SE\(est\)          Z         p\\ncde   0\.19162128 0\.36009559  0\.5321400 0\.5946290\\npnde -0\.38366187 0\.36083299 -1\.0632672 0\.2876608\\ntnie  0\.06604168 0\.05550351  1\.1898650 0\.2340995\\ntnde -0\.45655665 0\.39228886 -1\.1638277 0\.2444938\\npnie  0\.13893646 0\.11231421  1\.2370336 0\.2160746\\nte   -0\.31762020 0\.37053496 -0\.8571936 0\.3913379\\npm   -0\.17094397 0\.29916733 -0\.5713992 0\.5677291"
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  82       | 09_cross_check_with_sas_macro⠦ | 121 66     | 09_cross_check_with_sas_macro⠏ | 121 169     | 09_cross_check_with_sas_macro⠙ | 121 281     | 09_cross_check_with_sas_macro⠴ | 123 383     | 09_cross_check_with_sas_macro⠦ | 124 493     | 09_cross_check_with_sas_macro⠏ | 124 596     | 09_cross_check_with_sas_macro⠸ | 124 700     | 09_cross_check_with_sas_macro⠼ | 125 810     | 09_cross_check_with_sas_macro⠦ | 125 892     | 09_cross_check_with_sas_macro✖ | 125 956     | 09_cross_check_with_sas_macro [2.4 s]
+⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  82       | 09_cross_check_with_sas_macro⠧ | 121 67     | 09_cross_check_with_sas_macro⠋ | 121 180     | 09_cross_check_with_sas_macro⠇ | 121 298     | 09_cross_check_with_sas_macro⠧ | 123 395     | 09_cross_check_with_sas_macro⠸ | 124 500     | 09_cross_check_with_sas_macro⠙ | 124 598     | 09_cross_check_with_sas_macro⠦ | 124 703     | 09_cross_check_with_sas_macro⠙ | 125 807     | 09_cross_check_with_sas_macro⠧ | 125 883     | 09_cross_check_with_sas_macro✖ | 125 956     | 09_cross_check_with_sas_macro [2.5 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-09_cross_check_with_sas_macro.R:441: failure: coef match with sas-mreg_linear_yreg_linear_int_f_caco_f_ncvar3.sas
 coef[["cde"]] not equal to sas_estimate[["cde=nde"]].
@@ -2679,27 +2679,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.808 - -0.214 == 1.02
+[1] -0.214 - -0.214 == -0.000000891
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.962 - -0.0383 == 1
+[1] -0.0383 - -0.0383 == -0.00000211
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.808 - -0.214 == 1.02
+[1] -0.214 - -0.214 == -0.000000891
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.962 - -0.0383 == 1
+[1] -0.0383 - -0.0383 == -0.00000211
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 1.77 - -0.252 == 2.02
+[1] -0.252 - -0.252 == 0.00000101
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -2709,27 +2709,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0.00691 - 0.475 == -0.468
+[1] 0.475 - 0.475 == 0.000000185
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.519 == -0.519
+[1] 0.519 - 0.519 == 0.00000277
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0.00691 - 0.475 == -0.468
+[1] 0.475 - 0.475 == 0.000000185
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.514 == -0.514
+[1] 0.519 - 0.514 == 0.00502
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0.00000000634 - 0.408 == -0.408
+[1] 0.408 - 0.408 == 0.000000469
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -2739,27 +2739,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.222 - -0.8 == 1.02
+[1] -0.8 - -0.8 == 0.00000334
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.846 - -0.155 == 1
+[1] -0.155 - -0.155 == 0.00000547
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.222 - -0.8 == 1.02
+[1] -0.8 - -0.8 == 0.00000334
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.846 - -0.153 == 0.999
+[1] -0.155 - -0.153 == -0.00138
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.17 - -0.849 == 2.02
+[1] -0.849 - -0.849 == -0.0000102
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -2769,27 +2769,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.39 - 0.372 == 1.02
+[1] 0.372 - 0.372 == -0.0000022
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.08 - 0.0781 == 1
+[1] 0.0781 - 0.0781 == -0.000000299
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.39 - 0.372 == 1.02
+[1] 0.372 - 0.372 == -0.0000022
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.08 - 0.0767 == 1
+[1] 0.0781 - 0.0767 == 0.00139
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.37 - 0.345 == 2.02
+[1] 0.345 - 0.345 == 0.00000234
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -2799,27 +2799,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.808 - -0.214 == 1.02
+[1] -0.214 - -0.214 == -0.000000891
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.953 - -0.0477 == 1
+[1] -0.0477 - -0.0477 == -0.00000367
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.808 - -0.214 == 1.02
+[1] -0.214 - -0.214 == -0.000000891
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.953 - -0.0477 == 1
+[1] -0.0477 - -0.0477 == -0.00000367
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 1.76 - -0.261 == 2.02
+[1] -0.261 - -0.261 == 0.0000017
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -2829,27 +2829,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0.00691 - 0.475 == -0.468
+[1] 0.475 - 0.475 == 0.000000185
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.491 == -0.491
+[1] 0.491 - 0.491 == -0.00000668
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0.00691 - 0.475 == -0.468
+[1] 0.475 - 0.475 == 0.000000185
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.484 == -0.484
+[1] 0.491 - 0.484 == 0.00677
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0.00000000949 - 0.394 == -0.394
+[1] 0.394 - 0.394 == 0.00000202
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -2859,27 +2859,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.222 - -0.8 == 1.02
+[1] -0.8 - -0.8 == 0.00000334
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.818 - -0.183 == 1
+[1] -0.183 - -0.183 == -0.00000309
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.222 - -0.8 == 1.02
+[1] -0.8 - -0.8 == 0.00000334
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.818 - -0.181 == 0.999
+[1] -0.183 - -0.181 == -0.0021
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.16 - -0.863 == 2.02
+[1] -0.863 - -0.863 == -0.0000032
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -2889,27 +2889,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.39 - 0.372 == 1.02
+[1] 0.372 - 0.372 == -0.0000022
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.09 - 0.0881 == 1
+[1] 0.0881 - 0.0881 == -0.00000338
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.39 - 0.372 == 1.02
+[1] 0.372 - 0.372 == -0.0000022
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.09 - 0.086 == 1
+[1] 0.0881 - 0.086 == 0.0021
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.36 - 0.34 == 2.02
+[1] 0.34 - 0.34 == -0.0000011
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -2919,27 +2919,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.818 - -0.201 == 1.02
+[1] -0.201 - -0.201 == -0.00000301
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.962 - -0.0391 == 1
+[1] -0.0391 - -0.0391 == 0.00000274
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.817 - -0.202 == 1.02
+[1] -0.202 - -0.202 == -0.00000533
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.963 - -0.0375 == 1
+[1] -0.0375 - -0.0375 == 0.000000114
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 1.78 - -0.24 == 2.02
+[1] -0.24 - -0.24 == 0.00000354
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -2949,27 +2949,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0.0123 - 0.539 == -0.526
+[1] 0.539 - 0.539 == 0.00000488
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.522 == -0.522
+[1] 0.522 - 0.522 == -0.00000173
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0.0108 - 0.528 == -0.517
+[1] 0.528 - 0.528 == -0.00000334
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.518 == -0.518
+[1] 0.523 - 0.518 == 0.00483
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0.0000000633 - 0.466 == -0.466
+[1] 0.466 - 0.466 == 0.0000000553
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -2979,27 +2979,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.178 - -0.841 == 1.02
+[1] -0.841 - -0.841 == -0.00000979
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.842 - -0.159 == 1
+[1] -0.159 - -0.159 == -0.00000252
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.189 - -0.831 == 1.02
+[1] -0.831 - -0.831 == 0.00000298
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.848 - -0.151 == 0.999
+[1] -0.153 - -0.151 == -0.00133
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.13 - -0.885 == 2.02
+[1] -0.885 - -0.885 == -0.00000887
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -3009,27 +3009,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.46 - 0.439 == 1.02
+[1] 0.439 - 0.439 == 0.00000085
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.08 - 0.0806 == 1
+[1] 0.0806 - 0.0806 == 0.000000651
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.45 - 0.426 == 1.02
+[1] 0.426 - 0.426 == 0.00000187
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.08 - 0.0764 == 1
+[1] 0.0777 - 0.0764 == 0.00133
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.42 - 0.405 == 2.02
+[1] 0.405 - 0.405 == -0.000000313
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -3039,27 +3039,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.819 - -0.199 == 1.02
+[1] -0.199 - -0.199 == 0.00000202
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.953 - -0.0486 == 1
+[1] -0.0486 - -0.0486 == 0.0000018
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.818 - -0.201 == 1.02
+[1] -0.201 - -0.201 == -0.00000258
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.954 - -0.0467 == 1
+[1] -0.0467 - -0.0467 == -0.00000166
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 1.77 - -0.248 == 2.02
+[1] -0.248 - -0.248 == 0.0000047
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -3069,27 +3069,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0.0138 - 0.549 == -0.535
+[1] 0.549 - 0.549 == -0.00000129
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.495 == -0.495
+[1] 0.495 - 0.495 == -0.00000814
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0.0118 - 0.536 == -0.524
+[1] 0.536 - 0.536 == 0.00000227
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.489 == -0.489
+[1] 0.496 - 0.489 == 0.00652
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0.000000136 - 0.461 == -0.461
+[1] 0.461 - 0.461 == -0.000000325
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -3099,27 +3099,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.167 - -0.852 == 1.02
+[1] -0.852 - -0.852 == 0.00000775
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.813 - -0.188 == 1
+[1] -0.188 - -0.188 == 0.00000384
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.181 - -0.838 == 1.02
+[1] -0.838 - -0.838 == 0.00000627
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.82 - -0.179 == 0.999
+[1] -0.181 - -0.179 == -0.00201
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.11 - -0.907 == 2.02
+[1] -0.907 - -0.907 == 0.00000315
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -3129,27 +3129,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.47 - 0.453 == 1.02
+[1] 0.453 - 0.453 == -0.00000037
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.09 - 0.0908 == 1
+[1] 0.0908 - 0.0908 == -0.00000262
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.45 - 0.436 == 1.02
+[1] 0.436 - 0.436 == -0.000000978
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.09 - 0.0858 == 1
+[1] 0.0878 - 0.0858 == 0.00201
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.43 - 0.411 == 2.02
+[1] 0.411 - 0.411 == -0.00000294
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -3159,27 +3159,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.885 - -0.0532 == 0.938
+[1] -0.122 - -0.0532 == -0.0691
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.974 - -0.0256 == 0.999
+[1] -0.0266 - -0.0256 == -0.00109
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.885 - -0.0532 == 0.938
+[1] -0.122 - -0.0532 == -0.0691
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.974 - -0.0256 == 0.999
+[1] -0.0266 - -0.0256 == -0.00109
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 1.86 - -0.0788 == 1.94
+[1] -0.149 - -0.0788 == -0.0701
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -3189,27 +3189,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0.0000942 - 0.743 == -0.743
+[1] 0.589 - 0.743 == -0.154
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.521 == -0.521
+[1] 0.522 - 0.521 == 0.00147
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0.0000942 - 0.743 == -0.743
+[1] 0.589 - 0.743 == -0.154
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.517 == -0.517
+[1] 0.522 - 0.517 == 0.00549
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 6.66e-16 - 0.636 == -0.636
+[1] 0.518 - 0.636 == -0.119
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -3219,27 +3219,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.441 - -0.371 == 0.812
+[1] -0.566 - -0.371 == -0.195
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.892 - -0.104 == 0.996
+[1] -0.108 - -0.104 == -0.0047
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.441 - -0.371 == 0.812
+[1] -0.566 - -0.371 == -0.195
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.892 - -0.103 == 0.995
+[1] -0.108 - -0.103 == -0.00544
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.41 - -0.405 == 1.81
+[1] -0.6 - -0.405 == -0.195
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -3249,27 +3249,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.33 - 0.265 == 1.06
+[1] 0.322 - 0.265 == 0.0568
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.06 - 0.0524 == 1
+[1] 0.0549 - 0.0524 == 0.00252
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.33 - 0.265 == 1.06
+[1] 0.322 - 0.265 == 0.0568
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.06 - 0.0517 == 1
+[1] 0.0549 - 0.0517 == 0.00327
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.31 - 0.248 == 2.06
+[1] 0.302 - 0.248 == 0.0546
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -3279,27 +3279,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.885 - -0.0532 == 0.938
+[1] -0.122 - -0.0532 == -0.0691
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.967 - -0.0321 == 0.999
+[1] -0.0335 - -0.0321 == -0.00134
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.885 - -0.0532 == 0.938
+[1] -0.122 - -0.0532 == -0.0691
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.967 - -0.0321 == 0.999
+[1] -0.0335 - -0.0321 == -0.00134
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 1.85 - -0.0854 == 1.94
+[1] -0.156 - -0.0854 == -0.0704
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -3309,27 +3309,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0.0000942 - 0.743 == -0.743
+[1] 0.589 - 0.743 == -0.154
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.493 == -0.493
+[1] 0.495 - 0.493 == 0.00167
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0.0000942 - 0.743 == -0.743
+[1] 0.589 - 0.743 == -0.154
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.487 == -0.487
+[1] 0.495 - 0.487 == 0.00734
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 1.33e-15 - 0.612 == -0.612
+[1] 0.501 - 0.612 == -0.111
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -3339,27 +3339,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.441 - -0.371 == 0.812
+[1] -0.566 - -0.371 == -0.195
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.871 - -0.124 == 0.995
+[1] -0.129 - -0.124 == -0.00553
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.441 - -0.371 == 0.812
+[1] -0.566 - -0.371 == -0.195
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.871 - -0.123 == 0.994
+[1] -0.129 - -0.123 == -0.00673
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.4 - -0.415 == 1.81
+[1] -0.61 - -0.415 == -0.195
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -3369,27 +3369,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.33 - 0.265 == 1.06
+[1] 0.322 - 0.265 == 0.0568
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.06 - 0.0597 == 1
+[1] 0.0626 - 0.0597 == 0.00286
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.33 - 0.265 == 1.06
+[1] 0.322 - 0.265 == 0.0568
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.06 - 0.0585 == 1
+[1] 0.0626 - 0.0585 == 0.00405
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_f_caco_t_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.31 - 0.244 == 2.06
+[1] 0.298 - 0.244 == 0.0538
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -3399,27 +3399,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.888 - -0.0668 == 0.955
+[1] -0.118 - -0.0668 == -0.0514
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.973 - -0.0291 == 1
+[1] -0.0278 - -0.0291 == 0.0013
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.886 - -0.0747 == 0.961
+[1] -0.121 - -0.0747 == -0.046
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.975 - -0.0213 == 0.996
+[1] -0.0254 - -0.0213 == -0.00414
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 1.86 - -0.0959 == 1.96
+[1] -0.146 - -0.0959 == -0.0501
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -3429,27 +3429,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0.0000997 - 0.685 == -0.685
+[1] 0.605 - 0.685 == -0.0806
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.523 == -0.523
+[1] 0.528 - 0.523 == 0.0051
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0.0000945 - 0.656 == -0.656
+[1] 0.595 - 0.656 == -0.0609
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.53 == -0.53
+[1] 0.532 - 0.53 == 0.00126
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 8.88e-16 - 0.574 == -0.574
+[1] 0.528 - 0.574 == -0.0463
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -3459,27 +3459,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.441 - -0.39 == 0.831
+[1] -0.566 - -0.39 == -0.176
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.886 - -0.118 == 1
+[1] -0.114 - -0.118 == 0.00424
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.441 - -0.403 == 0.845
+[1] -0.566 - -0.403 == -0.162
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.895 - -0.0877 == 0.983
+[1] -0.105 - -0.0877 == -0.0174
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.41 - -0.43 == 1.84
+[1] -0.599 - -0.43 == -0.169
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -3489,27 +3489,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.34 - 0.256 == 1.08
+[1] 0.329 - 0.256 == 0.0731
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.06 - 0.0602 == 0.999
+[1] 0.0586 - 0.0602 == -0.00163
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.33 - 0.254 == 1.08
+[1] 0.324 - 0.254 == 0.0704
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.05 - 0.0452 == 1.01
+[1] 0.0542 - 0.0452 == 0.00906
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.31 - 0.239 == 2.08
+[1] 0.307 - 0.239 == 0.0687
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -3519,27 +3519,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.891 - -0.0593 == 0.95
+[1] -0.116 - -0.0593 == -0.0566
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.966 - -0.0365 == 1
+[1] -0.0349 - -0.0365 == 0.0016
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.888 - -0.069 == 0.957
+[1] -0.119 - -0.069 == -0.0499
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.969 - -0.0268 == 0.995
+[1] -0.032 - -0.0268 == -0.00512
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 1.86 - -0.0958 == 1.95
+[1] -0.151 - -0.0958 == -0.055
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -3549,27 +3549,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0.000113 - 0.717 == -0.716
+[1] 0.615 - 0.717 == -0.101
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.496 == -0.496
+[1] 0.501 - 0.496 == 0.00573
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0.0000976 - 0.677 == -0.677
+[1] 0.602 - 0.677 == -0.0754
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.503 == -0.503
+[1] 0.505 - 0.503 == 0.00239
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 2.22e-15 - 0.575 == -0.575
+[1] 0.52 - 0.575 == -0.0555
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -3579,27 +3579,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.438 - -0.38 == 0.818
+[1] -0.568 - -0.38 == -0.188
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.864 - -0.141 == 1.01
+[1] -0.137 - -0.141 == 0.00482
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.441 - -0.394 == 0.835
+[1] -0.566 - -0.394 == -0.172
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.875 - -0.105 == 0.98
+[1] -0.126 - -0.105 == -0.0206
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.4 - -0.431 == 1.83
+[1] -0.61 - -0.431 == -0.179
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -3609,27 +3609,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.34 - 0.261 == 1.08
+[1] 0.336 - 0.261 == 0.0752
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.07 - 0.0685 == 0.999
+[1] 0.0668 - 0.0685 == -0.00164
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.33 - 0.256 == 1.08
+[1] 0.328 - 0.256 == 0.0718
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.06 - 0.0517 == 1.01
+[1] 0.0621 - 0.0517 == 0.0104
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_loglinear_int_t_caco_t_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.32 - 0.239 == 2.08
+[1] 0.308 - 0.239 == 0.069
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -3639,27 +3639,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.03 - 0.0262 == 1
+[1] 0.0262 - 0.0262 == 0.00000474
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1 - 0.00372 == 1
+[1] 0.00372 - 0.00372 == 0.000000655
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.03 - 0.0262 == 1
+[1] 0.0262 - 0.0262 == 0.00000474
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1 - 0.00372 == 1
+[1] 0.00372 - 0.00372 == 0.000000655
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 2.03 - 0.0299 == 2
+[1] 0.0299 - 0.0299 == 0.00000442
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -3669,27 +3669,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0 - 0.548 == -0.548
+[1] 0.547 - 0.548 == -0.000256
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.534 == -0.534
+[1] 0.533 - 0.534 == -0.00019
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0 - 0.548 == -0.548
+[1] 0.547 - 0.548 == -0.000256
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.532 == -0.532
+[1] 0.533 - 0.532 == 0.00152
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0 - 0.495 == -0.495
+[1] 0.495 - 0.495 == 0.000517
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -3699,27 +3699,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.941 - -0.0592 == 1
+[1] -0.0592 - -0.0592 == 0.0000498
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.992 - -0.008 == 1
+[1] -0.008 - -0.008 == 0.00000642
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.941 - -0.0592 == 1
+[1] -0.0592 - -0.0592 == 0.0000498
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.992 - -0.00795 == 1
+[1] -0.008 - -0.00795 == -0.000044
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.94 - -0.056 == 2
+[1] -0.0561 - -0.056 == -0.000105
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -3729,27 +3729,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.11 - 0.112 == 1
+[1] 0.112 - 0.112 == -0.0000566
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.02 - 0.0155 == 1
+[1] 0.0154 - 0.0155 == -0.00000709
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.11 - 0.112 == 1
+[1] 0.112 - 0.112 == -0.0000566
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.02 - 0.0154 == 1
+[1] 0.0154 - 0.0154 == 0.0000421
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.12 - 0.116 == 2
+[1] 0.116 - 0.116 == 0.000102
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -3759,27 +3759,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.01 - 0.0119 == 1
+[1] 0.0119 - 0.0119 == -0.00000463
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.01 - 0.00679 == 1
+[1] 0.00678 - 0.00679 == -0.00000213
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.02 - 0.0181 == 1
+[1] 0.0181 - 0.0181 == -0.00000443
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1 - 0.00059 == 1
+[1] 0.000588 - 0.00059 == -0.00000165
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 2.02 - 0.0187 == 2
+[1] 0.0187 - 0.0187 == 0.00000448
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -3789,27 +3789,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0 - 0.8 == -0.8
+[1] 0.8 - 0.8 == 0.000149
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.524 == -0.524
+[1] 0.524 - 0.524 == -0.0000981
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0 - 0.698 == -0.698
+[1] 0.698 - 0.698 == 0.00024
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.832 == -0.832
+[1] 0.832 - 0.832 == 0.0000623
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0 - 0.691 == -0.691
+[1] 0.692 - 0.691 == 0.000333
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -3819,27 +3819,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.92 - -0.0799 == 1
+[1] -0.08 - -0.0799 == -0.0000733
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.986 - -0.0141 == 1
+[1] -0.0141 - -0.0141 == 0.00000691
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.927 - -0.0733 == 1
+[1] -0.0734 - -0.0733 == -0.0000752
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.995 - -0.00483 == 1
+[1] -0.00483 - -0.00483 == -0.00000244
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.93 - -0.0734 == 2
+[1] -0.0735 - -0.0734 == -0.000102
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -3849,27 +3849,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.1 - 0.104 == 1
+[1] 0.104 - 0.104 == 0.0000674
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.03 - 0.0276 == 1
+[1] 0.0276 - 0.0276 == -0.00000304
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.11 - 0.109 == 1
+[1] 0.11 - 0.109 == 0.0000772
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.01 - 0.00601 == 1
+[1] 0.00601 - 0.00601 == -0.00000146
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.11 - 0.111 == 2
+[1] 0.111 - 0.111 == 0.000101
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -3879,27 +3879,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.03 - 0.0249 == 1
+[1] 0.0249 - 0.0249 == 0.000000368
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1 - 0.00373 == 1
+[1] 0.00373 - 0.00373 == -0.00000253
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.03 - 0.0249 == 1
+[1] 0.0249 - 0.0249 == 0.000000368
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1 - 0.00373 == 1
+[1] 0.00373 - 0.00373 == -0.00000253
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 2.03 - 0.0287 == 2
+[1] 0.0287 - 0.0287 == 0.00000215
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -3909,27 +3909,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0 - 0.00098 == -0.00098
+[1] 0.000975 - 0.00098 == -0.00000505
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.512 == -0.512
+[1] 0.512 - 0.512 == -0.00000555
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0 - 0.00098 == -0.00098
+[1] 0.000975 - 0.00098 == -0.00000505
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.51 == -0.51
+[1] 0.512 - 0.51 == 0.00195
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0 - 0.00241 == -0.00241
+[1] 0.00241 - 0.00241 == 0.00000264
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -3939,27 +3939,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.01 - 0.0101 == 1
+[1] 0.0101 - 0.0101 == -0.00000328
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.993 - -0.00741 == 1
+[1] -0.00741 - -0.00741 == -0.00000312
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.01 - 0.0101 == 1
+[1] 0.0101 - 0.0101 == -0.00000328
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.993 - -0.00736 == 1
+[1] -0.00741 - -0.00736 == -0.0000535
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 2.01 - 0.0101 == 2
+[1] 0.0101 - 0.0101 == 0.00000011
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -3969,27 +3969,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.04 - 0.0398 == 1
+[1] 0.0398 - 0.0398 == -0.000000678
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.01 - 0.0149 == 1
+[1] 0.0149 - 0.0149 == 0.00000256
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.04 - 0.0398 == 1
+[1] 0.0398 - 0.0398 == -0.000000678
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.01 - 0.0148 == 1
+[1] 0.0149 - 0.0148 == 0.0000518
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.05 - 0.0472 == 2
+[1] 0.0472 - 0.0472 == -0.00000263
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -3999,27 +3999,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1 - 0.00492 == 1
+[1] 0.00492 - 0.00492 == 0.0000029
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.01 - 0.00692 == 1
+[1] 0.00692 - 0.00692 == 0.00000415
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.01 - 0.0115 == 1
+[1] 0.0115 - 0.0115 == 0.00000189
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1 - 0.00036 == 1
+[1] 0.000355 - 0.00036 == -0.00000466
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 2.01 - 0.0118 == 2
+[1] 0.0118 - 0.0118 == 0.00000133
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -4029,27 +4029,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0 - 0.791 == -0.791
+[1] 0.791 - 0.791 == 0.00000348
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.511 == -0.511
+[1] 0.511 - 0.511 == 0.00000158
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0 - 0.553 == -0.553
+[1] 0.553 - 0.553 == 0.00000368
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.616 == -0.616
+[1] 0.617 - 0.616 == 0.00106
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0 - 0.545 == -0.545
+[1] 0.545 - 0.545 == 0.00000944
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -4059,52 +4059,52 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.968 - -0.0315 == 1
+[1] -0.0315 - -0.0315 == -0.00000531
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.986 - -0.0137 == 1
+[1] -0.0137 - -0.0137 == 0.00000409
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.974 - -0.0265 == 1
+[1] -0.0265 - -0.0265 == -0.00000541
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.999 - -0.00103 == 1
+[1] -0.00104 - -0.00103 == -0.00000725
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.97 - -0.0265 == 2
+[1] -0.0265 - -0.0265 == -0.00000279
 
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.04 - 0.0414 == 1
+[1] 0.0414 - 0.0414 == -0.00000374
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.03 - 0.0276 == 1
+[1] 0.0276 - 0.0276 == 0.00000322
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.05 - 0.0494 == 1
+[1] 0.0494 - 0.0494 == -0.0000031
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1 - 0.00175 == 1
+[1] 0.00175 - 0.00175 == -0.000000146
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.05 - 0.0502 == 2
+[1] 0.0502 - 0.0502 == -0.00000344
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -4114,27 +4114,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.11 - 0.101 == 1.01
+[1] 0.101 - 0.101 == 0.00000221
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.06 - 0.0565 == 1
+[1] 0.0565 - 0.0565 == -0.00000362
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.11 - 0.101 == 1.01
+[1] 0.101 - 0.101 == 0.00000221
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.06 - 0.0565 == 1
+[1] 0.0565 - 0.0565 == -0.00000362
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 2.16 - 0.157 == 2.01
+[1] 0.157 - 0.157 == -0.00000164
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -4144,27 +4144,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 7.19e-10 - 0.574 == -0.574
+[1] 0.574 - 0.574 == -0.0000012
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.51 == -0.51
+[1] 0.51 - 0.51 == -0.00000272
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 7.19e-10 - 0.574 == -0.574
+[1] 0.574 - 0.574 == -0.0000012
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.512 == -0.512
+[1] 0.51 - 0.512 == -0.0021
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0 - 0.428 == -0.428
+[1] 0.428 - 0.428 == 0.00000335
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -4174,27 +4174,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.754 - -0.251 == 1.01
+[1] -0.251 - -0.251 == 0.000000362
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.89 - -0.112 == 1
+[1] -0.112 - -0.112 == 0.00000527
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.754 - -0.251 == 1.01
+[1] -0.251 - -0.251 == 0.000000362
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.89 - -0.112 == 1
+[1] -0.112 - -0.112 == 0.000844
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.77 - -0.232 == 2.01
+[1] -0.232 - -0.232 == 0.00000524
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -4204,27 +4204,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.46 - 0.453 == 1.01
+[1] 0.453 - 0.453 == 0.00000289
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.23 - 0.225 == 1
+[1] 0.225 - 0.225 == 0.00000343
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.46 - 0.453 == 1.01
+[1] 0.453 - 0.453 == 0.00000289
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.23 - 0.225 == 1
+[1] 0.225 - 0.225 == -0.000843
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.55 - 0.547 == 2.01
+[1] 0.547 - 0.547 == 0.000000941
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -4234,27 +4234,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.05 - 0.052 == 1
+[1] 0.052 - 0.052 == -0.0000037
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.06 - 0.0547 == 1
+[1] 0.0547 - 0.0547 == -0.0000000673
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.05 - 0.0486 == 1
+[1] 0.0486 - 0.0486 == -0.00000361
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.06 - 0.0581 == 1
+[1] 0.0581 - 0.0581 == 0.00000164
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 2.11 - 0.107 == 2
+[1] 0.107 - 0.107 == -0.00000239
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -4264,27 +4264,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0.0000565 - 0.842 == -0.842
+[1] 0.842 - 0.842 == -0.00000209
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.512 == -0.512
+[1] 0.512 - 0.512 == -0.00000161
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0.000109 - 0.858 == -0.858
+[1] 0.858 - 0.858 == 0.00000221
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.513 == -0.513
+[1] 0.511 - 0.513 == -0.00222
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 4.49e-14 - 0.703 == -0.703
+[1] 0.703 - 0.703 == 0.0000023
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -4294,27 +4294,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.541 - -0.461 == 1
+[1] -0.461 - -0.461 == -0.00000249
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.893 - -0.109 == 1
+[1] -0.109 - -0.109 == -0.00000316
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.518 - -0.483 == 1
+[1] -0.483 - -0.483 == -0.00000506
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.886 - -0.116 == 1
+[1] -0.115 - -0.116 == 0.00091
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.56 - -0.441 == 2
+[1] -0.441 - -0.441 == -0.00000083
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -4324,27 +4324,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.57 - 0.565 == 1
+[1] 0.565 - 0.565 == -0.000000201
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.22 - 0.218 == 1
+[1] 0.218 - 0.218 == -0.000000061
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.58 - 0.58 == 1
+[1] 0.58 - 0.58 == 0.0000000751
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.23 - 0.232 == 1
+[1] 0.232 - 0.232 == -0.000914
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.66 - 0.655 == 2
+[1] 0.655 - 0.655 == 0.0000000286
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -4354,27 +4354,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.11 - 0.109 == 1.01
+[1] 0.109 - 0.109 == 0.0000017
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.05 - 0.0454 == 1
+[1] 0.0454 - 0.0454 == 0.000000609
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.11 - 0.109 == 1.01
+[1] 0.109 - 0.109 == 0.0000017
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.05 - 0.0454 == 1
+[1] 0.0454 - 0.0454 == 0.000000609
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 2.16 - 0.154 == 2.01
+[1] 0.154 - 0.154 == -0.00000289
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -4384,27 +4384,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0 - 0.398 == -0.398
+[1] 0.398 - 0.398 == 0.00000399
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.511 == -0.511
+[1] 0.511 - 0.511 == 0.000000429
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0 - 0.398 == -0.398
+[1] 0.398 - 0.398 == 0.00000399
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.512 == -0.512
+[1] 0.511 - 0.512 == -0.00125
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0 - 0.29 == -0.29
+[1] 0.29 - 0.29 == -0.00000152
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -4414,27 +4414,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.863 - -0.143 == 1.01
+[1] -0.143 - -0.143 == -0.00000211
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.911 - -0.0898 == 1
+[1] -0.0898 - -0.0898 == -0.000000999
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.863 - -0.143 == 1.01
+[1] -0.143 - -0.143 == -0.00000211
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.911 - -0.0902 == 1
+[1] -0.0898 - -0.0902 == 0.000404
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.88 - -0.132 == 2.01
+[1] -0.132 - -0.132 == -0.000004
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -4444,27 +4444,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.37 - 0.361 == 1.01
+[1] 0.361 - 0.361 == 0.0000031
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.18 - 0.18 == 1
+[1] 0.18 - 0.18 == 0.00000122
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.37 - 0.361 == 1.01
+[1] 0.361 - 0.361 == 0.0000031
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.18 - 0.181 == 1
+[1] 0.18 - 0.181 == -0.000399
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.45 - 0.439 == 2.01
+[1] 0.439 - 0.439 == 0.00000291
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -4474,27 +4474,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.06 - 0.0588 == 1
+[1] 0.0588 - 0.0588 == -0.00000172
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.04 - 0.0429 == 1
+[1] 0.0429 - 0.0429 == 0.000000968
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.06 - 0.0541 == 1
+[1] 0.0541 - 0.0541 == 0.00000082
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.05 - 0.0475 == 1
+[1] 0.0475 - 0.0475 == 0.00000286
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 2.1 - 0.102 == 2
+[1] 0.102 - 0.102 == 0.00000287
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -4504,27 +4504,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 8.27e-10 - 0.734 == -0.733
+[1] 0.733 - 0.734 == -0.00000419
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.512 == -0.512
+[1] 0.512 - 0.512 == -0.00000359
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0.00000000448 - 0.764 == -0.764
+[1] 0.764 - 0.764 == -0.00000521
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.513 == -0.513
+[1] 0.511 - 0.513 == -0.00141
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0 - 0.59 == -0.59
+[1] 0.59 - 0.59 == -0.00000316
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -4534,27 +4534,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.722 - -0.28 == 1
+[1] -0.28 - -0.28 == -0.00000181
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.915 - -0.0854 == 1
+[1] -0.0854 - -0.0854 == -0.00000023
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.703 - -0.299 == 1
+[1] -0.299 - -0.299 == -0.00000324
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.907 - -0.0949 == 1
+[1] -0.0944 - -0.0949 == 0.000475
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.73 - -0.268 == 2
+[1] -0.268 - -0.268 == 0.00000203
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -4564,27 +4564,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.4 - 0.397 == 1
+[1] 0.397 - 0.397 == -0.00000207
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.17 - 0.171 == 1
+[1] 0.171 - 0.171 == 0.000002
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.41 - 0.407 == 1
+[1] 0.407 - 0.407 == -0.00000336
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.19 - 0.19 == 1
+[1] 0.189 - 0.19 == -0.000474
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.47 - 0.472 == 2
+[1] 0.472 - 0.472 == 0.00000185
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -4594,27 +4594,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.826 - -0.19 == 1.02
+[1] -0.191 - -0.19 == -0.000619
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.952 - -0.0489 == 1
+[1] -0.0489 - -0.0489 == -0.0000128
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.826 - -0.19 == 1.02
+[1] -0.191 - -0.19 == -0.000619
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.952 - -0.0489 == 1
+[1] -0.0489 - -0.0489 == -0.0000128
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 1.78 - -0.239 == 2.02
+[1] -0.24 - -0.239 == -0.000627
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -4624,27 +4624,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0.00000679 - 0.3 == -0.3
+[1] 0.299 - 0.3 == -0.00155
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.517 == -0.517
+[1] 0.517 - 0.517 == -0.000000316
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0.00000679 - 0.3 == -0.3
+[1] 0.299 - 0.3 == -0.00155
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.511 == -0.511
+[1] 0.517 - 0.511 == 0.0059
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0 - 0.228 == -0.228
+[1] 0.227 - 0.228 == -0.0012
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -4654,27 +4654,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.466 - -0.55 == 1.02
+[1] -0.551 - -0.55 == -0.000627
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.804 - -0.197 == 1
+[1] -0.197 - -0.197 == -0.000035
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.466 - -0.55 == 1.02
+[1] -0.551 - -0.55 == -0.000627
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.804 - -0.195 == 0.999
+[1] -0.197 - -0.195 == -0.00209
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.39 - -0.628 == 2.02
+[1] -0.629 - -0.628 == -0.000644
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -4684,27 +4684,27 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.19 - 0.17 == 1.02
+[1] 0.169 - 0.17 == -0.00061
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.1 - 0.099 == 1
+[1] 0.099 - 0.099 == 0.0000192
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.19 - 0.17 == 1.02
+[1] 0.169 - 0.17 == -0.00061
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.1 - 0.0969 == 1
+[1] 0.099 - 0.0969 == 0.00208
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.17 - 0.15 == 2.02
+[1] 0.149 - 0.15 == -0.000607
 
 test-09_cross_check_with_sas_macro.R:399: failure: coef match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
@@ -4714,27 +4714,27 @@ coef[["cde"]] not equal to log(sas_estimate[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:400: failure: coef match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 coef[["pnde"]] not equal to log(sas_estimate[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.799 - -0.224 == 1.02
+[1] -0.225 - -0.224 == -0.000737
 
 test-09_cross_check_with_sas_macro.R:401: failure: coef match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 coef[["tnie"]] not equal to log(sas_estimate[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.954 - -0.0466 == 1
+[1] -0.0466 - -0.0466 == -0.00000516
 
 test-09_cross_check_with_sas_macro.R:402: failure: coef match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 coef[["tnde"]] not equal to log(sas_estimate[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.802 - -0.22 == 1.02
+[1] -0.22 - -0.22 == -0.000726
 
 test-09_cross_check_with_sas_macro.R:403: failure: coef match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 coef[["pnie"]] not equal to log(sas_estimate[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.95 - -0.0509 == 1
+[1] -0.0509 - -0.0509 == -0.0000134
 
 test-09_cross_check_with_sas_macro.R:404: failure: coef match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 coef[["te"]] not equal to log(sas_estimate[["conditional_te"]]).
 1/1 mismatches
-[1] 1.75 - -0.271 == 2.02
+[1] -0.271 - -0.271 == -0.000737
 
 test-09_cross_check_with_sas_macro.R:408: failure: p match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 p[["cde"]] not equal to sas_p[["conditional_cde"]].
@@ -4744,27 +4744,27 @@ p[["cde"]] not equal to sas_p[["conditional_cde"]].
 test-09_cross_check_with_sas_macro.R:409: failure: p match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 p[["pnde"]] not equal to sas_p[["conditional_pnde"]].
 1/1 mismatches
-[1] 0.0000377 - 0.248 == -0.248
+[1] 0.246 - 0.248 == -0.00153
 
 test-09_cross_check_with_sas_macro.R:410: failure: p match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
 1/1 mismatches
-[1] 0 - 0.518 == -0.518
+[1] 0.518 - 0.518 == 0.00000206
 
 test-09_cross_check_with_sas_macro.R:411: failure: p match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 p[["tnde"]] not equal to sas_p[["conditional_tnde"]].
 1/1 mismatches
-[1] 0.0000282 - 0.252 == -0.252
+[1] 0.25 - 0.252 == -0.00154
 
 test-09_cross_check_with_sas_macro.R:412: failure: p match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
 1/1 mismatches
-[1] 0 - 0.512 == -0.512
+[1] 0.518 - 0.512 == 0.00604
 
 test-09_cross_check_with_sas_macro.R:413: failure: p match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 p[["te"]] not equal to sas_p[["conditional_te"]].
 1/1 mismatches
-[1] 0 - 0.189 == -0.189
+[1] 0.188 - 0.189 == -0.00118
 
 test-09_cross_check_with_sas_macro.R:417: failure: lower confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
@@ -4774,27 +4774,27 @@ lower[["cde"]] not equal to log(sas_lower[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:418: failure: lower confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 lower[["pnde"]] not equal to log(sas_lower[["conditional_pnde"]]).
 1/1 mismatches
-[1] 0.419 - -0.604 == 1.02
+[1] -0.605 - -0.604 == -0.000756
 
 test-09_cross_check_with_sas_macro.R:419: failure: lower confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 lower[["tnie"]] not equal to log(sas_lower[["conditional_tnie"]]).
 1/1 mismatches
-[1] 0.813 - -0.188 == 1
+[1] -0.188 - -0.188 == -0.00000365
 
 test-09_cross_check_with_sas_macro.R:420: failure: lower confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 lower[["tnde"]] not equal to log(sas_lower[["conditional_tnde"]]).
 1/1 mismatches
-[1] 0.427 - -0.595 == 1.02
+[1] -0.596 - -0.595 == -0.000749
 
 test-09_cross_check_with_sas_macro.R:421: failure: lower confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
 1/1 mismatches
-[1] 0.796 - -0.203 == 0.999
+[1] -0.205 - -0.203 == -0.00225
 
 test-09_cross_check_with_sas_macro.R:422: failure: lower confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 lower[["te"]] not equal to log(sas_lower[["conditional_te"]]).
 1/1 mismatches
-[1] 1.35 - -0.674 == 2.02
+[1] -0.675 - -0.674 == -0.000773
 
 test-09_cross_check_with_sas_macro.R:426: failure: upper confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
@@ -4804,31 +4804,31 @@ upper[["cde"]] not equal to log(sas_upper[["conditional_cde"]]).
 test-09_cross_check_with_sas_macro.R:427: failure: upper confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 upper[["pnde"]] not equal to log(sas_upper[["conditional_pnde"]]).
 1/1 mismatches
-[1] 1.18 - 0.156 == 1.02
+[1] 0.155 - 0.156 == -0.000722
 
 test-09_cross_check_with_sas_macro.R:428: failure: upper confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 upper[["tnie"]] not equal to log(sas_upper[["conditional_tnie"]]).
 1/1 mismatches
-[1] 1.1 - 0.0945 == 1
+[1] 0.0945 - 0.0945 == 0.00000417
 
 test-09_cross_check_with_sas_macro.R:429: failure: upper confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 upper[["tnde"]] not equal to log(sas_upper[["conditional_tnde"]]).
 1/1 mismatches
-[1] 1.18 - 0.156 == 1.02
+[1] 0.155 - 0.156 == -0.000701
 
 test-09_cross_check_with_sas_macro.R:430: failure: upper confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
 1/1 mismatches
-[1] 1.1 - 0.101 == 1
+[1] 0.103 - 0.101 == 0.00223
 
 test-09_cross_check_with_sas_macro.R:431: failure: upper confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
 upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 1/1 mismatches
-[1] 2.16 - 0.133 == 2.02
+[1] 0.132 - 0.133 == -0.000722
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 12.4 s
+Duration: 10.2 s
 
 OK:       1268
 Failed:   964
