@@ -22,6 +22,13 @@ test_that("placeholder", {
 
 
 ###
+### Adjust tolerance by masking the original expect_equal
+################################################################################
+
+expect_equal <- purrr::partial(expect_equal, tolerance = 0.1)
+
+
+###
 ### Prepare data
 ################################################################################
 
