@@ -9,12 +9,58 @@
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
 ⠏ |   0       | 04_fit_yreg_survCox✔ |  24       | 04_fit_yreg_survCox
-⠏ |   0       | 06_calc_myreg_helpers_coef⠙ |  42       | 06_calc_myreg_helpers_coef⠙ |  82       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠦ |  57       | 06_calc_myreg_helpers_vcov⠹ |  83       | 06_calc_myreg_helpers_vcov⠦ | 107       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear⠋ |  51       | 07_calc_myreg_mreg_linear_yreg_linear⠴ |  96       | 07_calc_myreg_mreg_linear_yreg_linear⠸ | 154       | 07_calc_myreg_mreg_linear_yreg_linear⠼ | 185       | 07_calc_myreg_mreg_linear_yreg_linear✔ | 225       | 07_calc_myreg_mreg_linear_yreg_linear [0.5 s]
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ |  37       | 07_calc_myreg_mreg_linear_yreg_logistic⠙ |  82       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ | 120       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ | 171       | 07_calc_myreg_mreg_linear_yreg_logistic⠙ | 222       | 07_calc_myreg_mreg_linear_yreg_logistic✔ | 235       | 07_calc_myreg_mreg_linear_yreg_logistic [0.5 s]
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear⠹ |  53       | 07_calc_myreg_mreg_logistic_yreg_linear⠏ |  90       | 07_calc_myreg_mreg_logistic_yreg_linear⠏ | 130       | 07_calc_myreg_mreg_logistic_yreg_linear⠇ | 169       | 07_calc_myreg_mreg_logistic_yreg_linear✔ | 220       | 07_calc_myreg_mreg_logistic_yreg_linear [0.8 s]
-⠋ | 220   1   | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 08_regmedint_class_user_methods⠸ |  24       | 08_regmedint_class_user_methods✖ |  29 7     | 08_regmedint_class_user_methods [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠹ |  43       | 06_calc_myreg_helpers_coef⠴ |  86       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠹ |  33       | 06_calc_myreg_helpers_vcov⠋ |  61       | 06_calc_myreg_helpers_vcov⠇ |  89       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear⠼ |  35       | 07_calc_myreg_mreg_linear_yreg_linear⠹ |  73       | 07_calc_myreg_mreg_linear_yreg_linear⠸ | 104       | 07_calc_myreg_mreg_linear_yreg_linear⠇ | 159       | 07_calc_myreg_mreg_linear_yreg_linear⠦ | 197       | 07_calc_myreg_mreg_linear_yreg_linear✔ | 225       | 07_calc_myreg_mreg_linear_yreg_linear [0.6 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  33       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  73       | 07_calc_myreg_mreg_linear_yreg_logistic⠸ | 104       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ | 163       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ | 198       | 07_calc_myreg_mreg_linear_yreg_logistic✔ | 235       | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear⠙ |  52       | 07_calc_myreg_mreg_logistic_yreg_linear⠙ |  92       | 07_calc_myreg_mreg_logistic_yreg_linear⠇ | 149       | 07_calc_myreg_mreg_logistic_yreg_linear⠏ | 180       | 07_calc_myreg_mreg_logistic_yreg_linear✔ | 220       | 07_calc_myreg_mreg_logistic_yreg_linear [0.8 s]
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic⠏ |  47 3     | 07_calc_myreg_mreg_logistic_yreg_logistic⠧ |  83 5     | 07_calc_myreg_mreg_logistic_yreg_logistic⠇ | 113 6     | 07_calc_myreg_mreg_logistic_yreg_logistic⠧ | 162 6     | 07_calc_myreg_mreg_logistic_yreg_logistic⠙ | 214 8     | 07_calc_myreg_mreg_logistic_yreg_logistic✖ | 216 9     | 07_calc_myreg_mreg_logistic_yreg_logistic [0.9 s]
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+test-07_calc_myreg_mreg_logistic_yreg_logistic.R:232: failure: calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where natural effects do no depend on c_cond
+myreg_funs[[1]](1, 2, -3, -1 * c(4, 5, 6)) not equal to myreg_funs[[1]](1, 2, +3, +2 * c(4, 5, 6)).
+4/7 mismatches (average diff: 0.0000016)
+[3] -0.000000891 - -1.64e-10 == -0.000000891
+[5] -0.000000891 - -1.64e-10 == -0.000000891
+[6] -0.213653028 - -2.14e-01 == -0.000000891
+[7]  0.000003741 -  6.88e-10 ==  0.000003740
+
+test-07_calc_myreg_mreg_logistic_yreg_logistic.R:234: failure: calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where natural effects do no depend on c_cond
+myreg_funs[[2]](1, 2, -3, -1 * c(4, 5, 6)) not equal to myreg_funs[[2]](1, 2, +3, +2 * c(4, 5, 6)).
+3/7 mismatches (average diff: 0.00000187)
+[3] 0.00000279 - 8.35e-10 == 0.0000027912
+[5] 0.00000279 - 8.35e-10 == 0.0000027912
+[7] 0.04436963 - 4.44e-02 == 0.0000000333
+
+test-07_calc_myreg_mreg_logistic_yreg_logistic.R:269: failure: calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly
+unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pm"]) not equal to nie/(nie + nde).
+1/1 mismatches
+[1] 0.0000444 - 0.0000495 == -0.0000051
+
+test-07_calc_myreg_mreg_logistic_yreg_logistic.R:497: failure: calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where nie does not depend on c_cond
+myreg_funs[[1]](1, 2, +3, -1 * c(4, 5, 6))["tnie"] not equal to myreg_funs[[1]](1, 2, +3, +2 * c(4, 5, 6))["tnie"].
+1/1 mismatches
+[1] -0.00000093 - -1.66e-10 == -0.00000093
+
+test-07_calc_myreg_mreg_logistic_yreg_logistic.R:502: failure: calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where nie does not depend on c_cond
+myreg_funs[[1]](1, 2, +3, -1 * c(4, 5, 6))["pnie"] not equal to myreg_funs[[1]](1, 2, +3, +2 * c(4, 5, 6))["pnie"].
+1/1 mismatches
+[1] -0.000000851 - -1.61e-10 == -0.000000851
+
+test-07_calc_myreg_mreg_logistic_yreg_logistic.R:586: failure: calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly
+unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pm"]) not equal to nie/(nie + nde).
+1/1 mismatches
+[1] 0.0000512 - 0.0000563 == -0.00000519
+
+test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1080: failure: calc_myreg_mreg_logistic_yreg_logistic_se (NULL cvar): returns a function that gives a numeric vector without NA
+all(!is.na(res)) isn't true.
+
+test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1125: failure: calc_myreg_mreg_logistic_yreg_logistic_se (one cvar): returns a function that gives a numeric vector without NA
+all(!is.na(res)) isn't true.
+
+test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1170: failure: calc_myreg_mreg_logistic_yreg_logistic_se (three cvar): returns a function that gives a numeric vector without NA
+all(!is.na(res)) isn't true.
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 08_regmedint_class_user_methods⠙ |  12       | 08_regmedint_class_user_methods⠼ |  25       | 08_regmedint_class_user_methods✖ |  29 7     | 08_regmedint_class_user_methods [0.3 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-08_regmedint_class_user_methods.R:106: failure: summary.regmedint: prints evaluation information
 `summary\(fit_regmedint\)` does not match "^Evaluated at:".
@@ -44,7 +90,7 @@ test-08_regmedint_class_user_methods.R:118: failure: summary.regmedint: prints e
 `summary\(fit_regmedint_int\)` does not match "^Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.".
 Actual value: "### Mediator model\\n\\nCall:\\nlm\(formula = bili ~ trt, data = data\)\\n\\nResiduals:\\n    Min      1Q  Median      3Q     Max \\n-3\.4000 -2\.5000 -1\.7000  0\.4434 24\.3000 \\n\\nCoefficients:\\n            Estimate Std\. Error t value Pr\(>\|t\|\)  \\n\(Intercept\)   2\.2132     0\.8784   2\.520   0\.0123 \*\\ntrt           0\.7434     0\.5532   1\.344   0\.1801  \\n---\\nSignif\. codes:  0 '\*\*\*' 0\.001 '\*\*' 0\.01 '\*' 0\.05 '\.' 0\.1 ' ' 1\\n\\nResidual standard error: 4\.594 on 274 degrees of freedom\\nMultiple R-squared:  0\.006548,\\tAdjusted R-squared:  0\.002923 \\nF-statistic: 1\.806 on 1 and 274 DF,  p-value: 0\.1801\\n\\n### Outcome model\\n\\nCall:\\nglm\(formula = spiders ~ trt \* bili, family = binomial\(link = "logit"\), \\n    data = data\)\\n\\nDeviance Residuals: \\n    Min       1Q   Median       3Q      Max  \\n-2\.0109  -0\.7534  -0\.7162   1\.0662   1\.7878  \\n\\nCoefficients:\\n            Estimate Std\. Error z value Pr\(>\|z\|\)   \\n\(Intercept\) -1\.65730    0\.58884  -2\.815  0\.00488 \*\*\\ntrt          0\.19162    0\.36010   0\.532  0\.59463   \\nbili         0\.28496    0\.12308   2\.315  0\.02060 \* \\ntrt:bili    -0\.09806    0\.06849  -1\.432  0\.15222   \\n---\\nSignif\. codes:  0 '\*\*\*' 0\.001 '\*\*' 0\.01 '\*' 0\.05 '\.' 0\.1 ' ' 1\\n\\n\(Dispersion parameter for binomial family taken to be 1\)\\n\\n    Null deviance: 332\.32  on 275  degrees of freedom\\nResidual deviance: 312\.50  on 272  degrees of freedom\\nAIC: 320\.5\\n\\nNumber of Fisher Scoring iterations: 4\\n\\n### Mediation analysis \\n             est    SE\(est\)          Z         p\\ncde   0\.19162128 0\.36009559  0\.5321400 0\.5946290\\npnde -0\.38366187 0\.36083299 -1\.0632672 0\.2876608\\ntnie  0\.06604168 0\.05550351  1\.1898650 0\.2340995\\ntnde -0\.45655665 0\.39228886 -1\.1638277 0\.2444938\\npnie  0\.13893646 0\.11231421  1\.2370336 0\.2160746\\nte   -0\.31762020 0\.37053496 -0\.8571936 0\.3913379\\npm   -0\.17094397 0\.29916733 -0\.5713992 0\.5677291"
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  82       | 09_cross_check_with_sas_macro⠧ | 121 67     | 09_cross_check_with_sas_macro⠋ | 121 180     | 09_cross_check_with_sas_macro⠇ | 121 298     | 09_cross_check_with_sas_macro⠧ | 123 395     | 09_cross_check_with_sas_macro⠸ | 124 500     | 09_cross_check_with_sas_macro⠙ | 124 598     | 09_cross_check_with_sas_macro⠦ | 124 703     | 09_cross_check_with_sas_macro⠙ | 125 807     | 09_cross_check_with_sas_macro⠧ | 125 883     | 09_cross_check_with_sas_macro✖ | 125 956     | 09_cross_check_with_sas_macro [2.5 s]
+⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  82       | 09_cross_check_with_sas_macro⠸ | 121 73     | 09_cross_check_with_sas_macro⠼ | 121 174     | 09_cross_check_with_sas_macro⠸ | 121 283     | 09_cross_check_with_sas_macro⠧ | 123 385     | 09_cross_check_with_sas_macro⠴ | 124 502     | 09_cross_check_with_sas_macro⠴ | 124 602     | 09_cross_check_with_sas_macro⠇ | 124 705     | 09_cross_check_with_sas_macro⠹ | 125 808     | 09_cross_check_with_sas_macro⠙ | 125 907     | 09_cross_check_with_sas_macro✖ | 125 956     | 09_cross_check_with_sas_macro [2.1 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-09_cross_check_with_sas_macro.R:441: failure: coef match with sas-mreg_linear_yreg_linear_int_f_caco_f_ncvar3.sas
 coef[["cde"]] not equal to sas_estimate[["cde=nde"]].
@@ -4828,9 +4874,11 @@ upper[["te"]] not equal to log(sas_upper[["conditional_te"]]).
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 10.2 s
+Duration: 11.1 s
 
-OK:       1268
-Failed:   964
-Warnings: 2
+OK:       1484
+Failed:   972
+Warnings: 0
 Skipped:  0
+
+No one is perfect!
