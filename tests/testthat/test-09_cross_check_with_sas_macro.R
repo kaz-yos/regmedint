@@ -299,6 +299,14 @@ macro_args_sas_r <- macro_args_sas_r_prelim %>%
                 return(coef(res))
             }
         }),
+        se = map(res, function(res) {
+            if(class(res)[[1]] == "try-error") {
+                return(NULL)
+            } else {
+                capture_output(summary_mat <- summary(res))
+                return(summary_mat[,"SE(est)"])
+            }
+        }),
         p = map(res, function(res) {
             if(class(res)[[1]] == "try-error") {
                 return(NULL)
@@ -350,8 +358,8 @@ junk <- macro_args_sas_r %>%
     ##
     mutate(
         junk = pmap(
-            list(filename, sas, res, coef, p, lower, upper),
-            function(filename, sas, res, coef, p, lower, upper) {
+            list(filename, sas, res, coef, se, p, lower, upper),
+            function(filename, sas, res, coef, se, p, lower, upper) {
 
                 if (class(res)[[1]] == "try-error") {
                     stop(paste0("R fit for ", filename, " gave an try-error object!"))
