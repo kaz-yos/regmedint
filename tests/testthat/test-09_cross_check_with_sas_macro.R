@@ -358,6 +358,8 @@ junk <- macro_args_sas_r %>%
                         ## Full result case with interaction
                         if (ncol(sas) == 6) {
                             ## yreg linear with se column
+                            sas_se <- sas$se %>% `names<-`(sas$effect)
+
                             test_that(paste0("coef match with ", filename), {
                                 expect_equal(coef[["cde"]], sas_estimate[["conditional_cde"]])
                                 expect_equal(coef[["pnde"]], sas_estimate[["conditional_pnde"]])
@@ -365,6 +367,15 @@ junk <- macro_args_sas_r %>%
                                 expect_equal(coef[["tnde"]], sas_estimate[["conditional_tnde"]])
                                 expect_equal(coef[["pnie"]], sas_estimate[["conditional_pnie"]])
                                 expect_equal(coef[["te"]], sas_estimate[["conditional_te"]])
+                            })
+
+                            test_that(paste0("se match with ", filename), {
+                                expect_equal(coef[["cde"]], sas_se[["conditional_cde"]])
+                                expect_equal(coef[["pnde"]], sas_se[["conditional_pnde"]])
+                                expect_equal(coef[["tnie"]], sas_se[["conditional_tnie"]])
+                                expect_equal(coef[["tnde"]], sas_se[["conditional_tnde"]])
+                                expect_equal(coef[["pnie"]], sas_se[["conditional_pnie"]])
+                                expect_equal(coef[["te"]], sas_se[["conditional_te"]])
                             })
 
                             test_that(paste0("p match with ", filename), {
@@ -437,6 +448,8 @@ junk <- macro_args_sas_r %>%
                         ## Reduced result case with no interaction
                         if (ncol(sas) == 6) {
                             ## yreg linear with se column
+                            sas_se <- sas$se %>% `names<-`(sas$effect)
+
                             test_that(paste0("coef match with ", filename), {
                                 expect_equal(coef[["cde"]], sas_estimate[["cde=nde"]])
                                 expect_equal(coef[["pnde"]], sas_estimate[["cde=nde"]])
@@ -444,6 +457,15 @@ junk <- macro_args_sas_r %>%
                                 expect_equal(coef[["tnde"]], sas_estimate[["cde=nde"]])
                                 expect_equal(coef[["pnie"]], sas_estimate[["nie"]])
                                 expect_equal(coef[["te"]], sas_estimate[["te"]])
+                            })
+
+                            test_that(paste0("se match with ", filename), {
+                                expect_equal(coef[["cde"]], sas_se[["cde=nde"]])
+                                expect_equal(coef[["pnde"]], sas_se[["cde=nde"]])
+                                expect_equal(coef[["tnie"]], sas_se[["nie"]])
+                                expect_equal(coef[["tnde"]], sas_se[["cde=nde"]])
+                                expect_equal(coef[["pnie"]], sas_se[["nie"]])
+                                expect_equal(coef[["te"]], sas_se[["te"]])
                             })
 
                             test_that(paste0("p match with ", filename), {
