@@ -117,7 +117,8 @@ calc_myreg_mreg_logistic_yreg_logistic_est <- function(beta0,
             beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
         }
 
-        ## VanderWeele 2015 p471
+        ## VanderWeele 2015 p473
+        ## Note that only cde is presented on the log scale.
         cde <- (theta1 + (theta3 * m_cde)) * (a1 - a0)
         ## Pearl decomposition (Regular NDE and NIE)
         ## Note the a0 in the second term.
@@ -203,7 +204,8 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
             beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
         }
 
-        ## VanderWeele 2015. p468
+        ## VanderWeele 2015. p473
+        ## Note that Gammas are all for log effects.
         ## Valeri & VanderWeele 2013. Appendix p6-9
         ## These are the gradient vector of each scalar quantity of interest.
         ## Obtain the first partial derivative wrt to each parameter.
