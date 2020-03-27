@@ -1,0 +1,67 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+Call:
+survival::coxph(formula = Surv(time, status) ~ trt * bili_bin + 
+    age + male + stage, data = data, ties = "efron")
+
+  n= 276, number of events= 129 
+
+                  coef exp(coef)  se(coef)      z   Pr(>|z|)    
+trt          -0.026402  0.973944  0.349565 -0.076    0.93979    
+bili_bin      1.900175  6.687068  0.649277  2.927    0.00343 ** 
+age           0.017670  1.017827  0.009092  1.943    0.05197 .  
+male         -0.007798  0.992233  0.241523 -0.032    0.97424    
+stage         0.590715  1.805278  0.130943  4.511 0.00000645 ***
+trt:bili_bin -0.225433  0.798170  0.407892 -0.553    0.58048    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+             exp(coef) exp(-coef) lower .95 upper .95
+trt             0.9739     1.0268    0.4909     1.932
+bili_bin        6.6871     0.1495    1.8731    23.873
+age             1.0178     0.9825    0.9998     1.036
+male            0.9922     1.0078    0.6181     1.593
+stage           1.8053     0.5539    1.3966     2.333
+trt:bili_bin    0.7982     1.2529    0.3588     1.775
+
+Concordance= 0.793  (se = 0.019 )
+Likelihood ratio test= 117  on 6 df,   p=<2e-16
+Wald test            = 99.74  on 6 df,   p=<2e-16
+Score (logrank) test = 118.3  on 6 df,   p=<2e-16
+
+### Mediation analysis 
+            est    SE(est)         Z             p
+cde  -0.2518350 0.21437895 -1.174719 0.24010713667
+pnde  0.7987508 0.19381012  4.121306 0.00003767312
+tnie  0.9544751 0.07200305 13.256037 0.00000000000
+tnde  0.8022370 0.19155966  4.187922 0.00002815199
+pnie  0.9503273 0.07873189 12.070424 0.00000000000
+te    1.7532258 0.20584933  8.517035 0.00000000000
+pm    0.7438273 0.03778750 19.684482 0.00000000000

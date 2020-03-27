@@ -1,0 +1,62 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt + age + male + stage, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.1854 -2.5979 -1.2638  0.5727 24.2813 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -2.54577    1.76354  -1.444 0.150018    
+trt          0.60723    0.54646   1.111 0.267464    
+age          0.02419    0.02706   0.894 0.372025    
+male        -0.61583    0.84467  -0.729 0.466584    
+stage        1.26164    0.32279   3.909 0.000117 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.472 on 271 degrees of freedom
+Multiple R-squared:  0.06893,	Adjusted R-squared:  0.05518 
+F-statistic: 5.016 on 4 and 271 DF,  p-value: 0.0006483
+
+### Outcome model
+Call:
+survival::coxph(formula = Surv(time, status) ~ trt * bili + age + 
+    male + stage, data = data, ties = "efron")
+
+  n= 276, number of events= 129 
+
+              coef exp(coef)  se(coef)      z   Pr(>|z|)    
+trt      -0.255954  0.774178  0.230550 -1.110     0.2669    
+bili      0.118784  1.126126  0.050981  2.330     0.0198 *  
+age       0.007608  1.007637  0.009542  0.797     0.4253    
+male      0.501644  1.651435  0.240706  2.084     0.0372 *  
+stage     0.688608  1.990941  0.130786  5.265 0.00000014 ***
+trt:bili  0.012698  1.012779  0.028922  0.439     0.6606    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+         exp(coef) exp(-coef) lower .95 upper .95
+trt         0.7742     1.2917    0.4927     1.216
+bili        1.1261     0.8880    1.0190     1.244
+age         1.0076     0.9924    0.9890     1.027
+male        1.6514     0.6055    1.0303     2.647
+stage       1.9909     0.5023    1.5408     2.573
+trt:bili    1.0128     0.9874    0.9570     1.072
+
+Concordance= 0.802  (se = 0.017 )
+Likelihood ratio test= 118.1  on 6 df,   p=<2e-16
+Wald test            = 136.8  on 6 df,   p=<2e-16
+Score (logrank) test = 185.8  on 6 df,   p=<2e-16
+
+### Mediation analysis 
+             est    SE(est)          Z         p
+cde  -0.24325559 0.21383568 -1.1375818 0.2552951
+pnde -0.20598082 0.18348806 -1.1225843 0.2616141
+tnie  0.08754957 0.07944391  1.1020300 0.2704486
+tnde -0.19827025 0.18143195 -1.0928078 0.2744782
+pnie  0.07983900 0.07338195  1.0879923 0.2765985
+te   -0.11843124 0.19732324 -0.6001890 0.5483803
+pm   -0.66672154 1.49209927 -0.4468346 0.6549945

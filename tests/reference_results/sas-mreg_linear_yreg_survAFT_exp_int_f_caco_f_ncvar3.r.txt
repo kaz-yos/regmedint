@@ -1,0 +1,53 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt + age + male + stage, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.1854 -2.5979 -1.2638  0.5727 24.2813 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -2.54577    1.76354  -1.444 0.150018    
+trt          0.60723    0.54646   1.111 0.267464    
+age          0.02419    0.02706   0.894 0.372025    
+male        -0.61583    0.84467  -0.729 0.466584    
+stage        1.26164    0.32279   3.909 0.000117 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.472 on 271 degrees of freedom
+Multiple R-squared:  0.06893,	Adjusted R-squared:  0.05518 
+F-statistic: 5.016 on 4 and 271 DF,  p-value: 0.0006483
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(time, status) ~ trt + bili + 
+    age + male + stage, data = data, dist = "exponential")
+               Value Std. Error     z         p
+(Intercept) 10.85527    0.63897 16.99   < 2e-16
+trt          0.16639    0.17941  0.93     0.354
+bili        -0.11637    0.01322 -8.80   < 2e-16
+age         -0.00885    0.00929 -0.95     0.340
+male        -0.48484    0.24202 -2.00     0.045
+stage       -0.59017    0.12324 -4.79 0.0000017
+
+Scale fixed at 1 
+
+Exponential distribution
+Loglik(model)= -1156.8   Loglik(intercept only)= -1206.3
+	Chisq= 98.9 on 5 degrees of freedom, p= 9e-20 
+Number of Newton-Raphson Iterations: 5 
+n= 276 
+
+### Mediation analysis 
+             est    SE(est)          Z         p
+cde   0.16638950 0.17941254  0.9274128 0.3537122
+pnde  0.16638950 0.17941254  0.9274128 0.3537122
+tnie -0.07066236 0.06409507 -1.1024618 0.2702610
+tnde  0.16638950 0.17941254  0.9274128 0.3537122
+pnie -0.07066236 0.06409507 -1.1024618 0.2702610
+te    0.09572714 0.18965650  0.5047395 0.6137418
+pm   -0.80206327 1.89766669 -0.4226576 0.6725451

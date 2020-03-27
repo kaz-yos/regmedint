@@ -1,0 +1,59 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(time, status) ~ trt + bili_bin + 
+    age + male + stage, data = data, dist = "weibull")
+                Value Std. Error     z       p
+(Intercept) 10.577076   0.476246 22.21 < 2e-16
+trt          0.108623   0.128565  0.84   0.398
+bili_bin    -1.097700   0.159144 -6.90 5.3e-12
+age         -0.013558   0.006467 -2.10   0.036
+male         0.000915   0.172044  0.01   0.996
+stage       -0.408418   0.093846 -4.35 1.3e-05
+Log(scale)  -0.340606   0.071754 -4.75 2.1e-06
+
+Scale= 0.711 
+
+Weibull distribution
+Loglik(model)= -1145.8   Loglik(intercept only)= -1203.8
+	Chisq= 115.89 on 5 degrees of freedom, p= 2.3e-23 
+Number of Newton-Raphson Iterations: 6 
+n= 276 
+
+### Mediation analysis 
+           est    SE(est)          Z        p
+cde  0.1086229 0.12856501  0.8448869 0.398174
+pnde 1.1147419 0.12856501  8.6706478 0.000000
+tnie 1.0464006 0.06894888 15.1764715 0.000000
+tnde 1.1147419 0.12856501  8.6706478 0.000000
+pnie 1.0464006 0.06894888 15.1764715 0.000000
+te   2.1611425 0.14567173 14.8357032 0.000000
+pm   0.7332681 0.02417568 30.3308215 0.000000

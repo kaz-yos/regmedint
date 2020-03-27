@@ -1,0 +1,55 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt + age + male + stage, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.1854 -2.5979 -1.2638  0.5727 24.2813 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -2.54577    1.76354  -1.444 0.150018    
+trt          0.60723    0.54646   1.111 0.267464    
+age          0.02419    0.02706   0.894 0.372025    
+male        -0.61583    0.84467  -0.729 0.466584    
+stage        1.26164    0.32279   3.909 0.000117 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.472 on 271 degrees of freedom
+Multiple R-squared:  0.06893,	Adjusted R-squared:  0.05518 
+F-statistic: 5.016 on 4 and 271 DF,  p-value: 0.0006483
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(time, status) ~ trt * bili + 
+    age + male + stage, data = data, dist = "weibull")
+               Value Std. Error     z           p
+(Intercept)  9.97519    0.45912 21.73     < 2e-16
+trt          0.15705    0.15386  1.02       0.307
+bili        -0.07941    0.03454 -2.30       0.021
+age         -0.00564    0.00634 -0.89       0.374
+male        -0.34136    0.16281 -2.10       0.036
+stage       -0.45524    0.08900 -5.12 0.000000313
+trt:bili    -0.00866    0.01931 -0.45       0.654
+Log(scale)  -0.40002    0.07290 -5.49 0.000000041
+
+Scale= 0.67 
+
+Weibull distribution
+Loglik(model)= -1144.2   Loglik(intercept only)= -1203.8
+	Chisq= 119.08 on 6 degrees of freedom, p= 2.5e-23 
+Number of Newton-Raphson Iterations: 6 
+n= 276 
+
+### Mediation analysis 
+             est    SE(est)          Z         p
+cde   0.14839415 0.14268709  1.0399971 0.2983413
+pnde  0.16285127 0.16204852  1.0049538 0.3149191
+tnie -0.05873729 0.05325783 -1.1028854 0.2700769
+tnde  0.15759305 0.15452751  1.0198381 0.3078052
+pnie -0.05347907 0.04919093 -1.0871733 0.2769602
+te    0.10411398 0.16734422  0.6221546 0.5338402
+pm   -0.61183431 1.21281420 -0.5044749 0.6139277

@@ -1,0 +1,61 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt + age + male + stage, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.1854 -2.5979 -1.2638  0.5727 24.2813 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -2.54577    1.76354  -1.444 0.150018    
+trt          0.60723    0.54646   1.111 0.267464    
+age          0.02419    0.02706   0.894 0.372025    
+male        -0.61583    0.84467  -0.729 0.466584    
+stage        1.26164    0.32279   3.909 0.000117 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.472 on 271 degrees of freedom
+Multiple R-squared:  0.06893,	Adjusted R-squared:  0.05518 
+F-statistic: 5.016 on 4 and 271 DF,  p-value: 0.0006483
+
+### Outcome model
+
+Call:
+glm(formula = spiders ~ trt + bili + age + male + stage, family = poisson(link = "log"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.3171  -0.6942  -0.5049   0.4505   1.7380  
+
+Coefficients:
+             Estimate Std. Error z value  Pr(>|z|)    
+(Intercept) -2.838721   0.837087  -3.391  0.000696 ***
+trt         -0.175892   0.228104  -0.771  0.440644    
+bili         0.041911   0.018648   2.247  0.024609 *  
+age         -0.008272   0.011570  -0.715  0.474607    
+male        -0.933968   0.525717  -1.777  0.075641 .  
+stage        0.666773   0.168376   3.960 0.0000749 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 198.14  on 275  degrees of freedom
+Residual deviance: 165.34  on 270  degrees of freedom
+AIC: 337.34
+
+Number of Fisher Scoring iterations: 5
+
+### Mediation analysis 
+             est    SE(est)          Z         p
+cde  -0.17589198 0.22810356 -0.7711058 0.4406442
+pnde -0.17589198 0.22810356 -0.7711058 0.4406442
+tnie  0.02544961 0.02554908  0.9961066 0.3191983
+tnde -0.17589198 0.22810356 -0.7711058 0.4406442
+pnie  0.02544961 0.02554908  0.9961066 0.3191983
+te   -0.15044237 0.22827199 -0.6590488 0.5098645
+pm   -0.15478139 0.30394608 -0.5092396 0.6105843

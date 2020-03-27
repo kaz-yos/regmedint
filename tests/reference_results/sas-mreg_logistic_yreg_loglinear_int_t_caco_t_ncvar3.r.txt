@@ -1,0 +1,67 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0072  -0.9198  -0.6511   1.1623   1.8965  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -1.09095    1.02743  -1.062 0.288315    
+trt         -0.22689    0.32051  -0.708 0.479009    
+age         -0.02366    0.01586  -1.492 0.135744    
+male         1.77461    0.47253   3.756 0.000173 ***
+stage        0.66646    0.19644   3.393 0.000692 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 264.30  on 195  degrees of freedom
+Residual deviance: 234.79  on 191  degrees of freedom
+AIC: 244.79
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+glm(formula = spiders ~ trt * bili_bin + age + male + stage, 
+    family = poisson(link = "log"), data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.2343  -0.6478  -0.4723   0.3789   1.7449  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  -3.063320   0.969564  -3.159 0.001581 ** 
+trt          -0.173563   0.410398  -0.423 0.672357    
+bili_bin      0.596285   0.774409   0.770 0.441307    
+age          -0.004541   0.011352  -0.400 0.689182    
+male         -1.119448   0.524193  -2.136 0.032715 *  
+stage         0.607366   0.172221   3.527 0.000421 ***
+trt:bili_bin  0.073132   0.488015   0.150 0.880878    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 198.14  on 275  degrees of freedom
+Residual deviance: 161.32  on 269  degrees of freedom
+AIC: 335.32
+
+Number of Fisher Scoring iterations: 6
+
+### Mediation analysis 
+            est    SE(est)          Z            p
+cde  -0.1004313 0.26944780 -0.3727301 7.093493e-01
+pnde  0.8905301 0.23062843  3.8613199 1.127761e-04
+tnie  0.9656913 0.05191178 18.6025454 0.000000e+00
+tnde  0.8879049 0.22787562  3.8964452 9.761488e-05
+pnie  0.9685465 0.04797890 20.1869266 0.000000e+00
+te    1.8562214 0.23421013  7.9254530 2.220446e-15
+pm    0.7339720 0.03598424 20.3970423 0.000000e+00

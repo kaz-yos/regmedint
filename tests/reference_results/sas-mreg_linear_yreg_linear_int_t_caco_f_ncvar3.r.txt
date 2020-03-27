@@ -1,0 +1,57 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt + age + male + stage, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.1854 -2.5979 -1.2638  0.5727 24.2813 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -2.54577    1.76354  -1.444 0.150018    
+trt          0.60723    0.54646   1.111 0.267464    
+age          0.02419    0.02706   0.894 0.372025    
+male        -0.61583    0.84467  -0.729 0.466584    
+stage        1.26164    0.32279   3.909 0.000117 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.472 on 271 degrees of freedom
+Multiple R-squared:  0.06893,	Adjusted R-squared:  0.05518 
+F-statistic: 5.016 on 4 and 271 DF,  p-value: 0.0006483
+
+### Outcome model
+
+Call:
+lm(formula = alk_phos ~ trt * bili + age + male + stage, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1732.6 -1014.9  -585.4   -16.4 11992.7 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)   
+(Intercept) 2542.963    864.253   2.942  0.00354 **
+trt         -243.320    324.138  -0.751  0.45351   
+bili          -9.643    108.017  -0.089  0.92893   
+age           -7.590     12.817  -0.592  0.55421   
+male         207.641    399.528   0.520  0.60369   
+stage        -10.331    158.835  -0.065  0.94819   
+trt:bili      45.361     60.946   0.744  0.45736   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2113 on 269 degrees of freedom
+Multiple R-squared:  0.02392,	Adjusted R-squared:  0.002149 
+F-statistic: 1.099 on 6 and 269 DF,  p-value: 0.3634
+
+### Mediation analysis 
+              est    SE(est)          Z         p
+cde  -197.9587586 291.530366 -0.6790331 0.4971169
+pnde -189.8554336 289.430158 -0.6559629 0.5118480
+tnie   49.2330648  48.816732  1.0085285 0.3132008
+tnde -162.3110678 275.956167 -0.5881770 0.5564135
+pnie   21.6886989  37.046650  0.5854429 0.5582499
+te   -140.6223689 286.426004 -0.4909553 0.6234581
+pm     -0.3501083   1.100404 -0.3181634 0.7503610

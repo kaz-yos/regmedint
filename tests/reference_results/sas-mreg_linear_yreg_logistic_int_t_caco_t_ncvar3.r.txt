@@ -1,0 +1,62 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt + age + male + stage, data = data)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-2.963 -1.808 -1.136  0.187 25.096 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)  
+(Intercept) -0.736248   1.705548  -0.432   0.6665  
+trt          0.568502   0.537608   1.057   0.2916  
+age          0.006127   0.026304   0.233   0.8161  
+male         0.337307   0.753642   0.448   0.6550  
+stage        0.727713   0.312232   2.331   0.0208 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.704 on 191 degrees of freedom
+Multiple R-squared:  0.04002,	Adjusted R-squared:  0.01992 
+F-statistic: 1.991 on 4 and 191 DF,  p-value: 0.09755
+
+### Outcome model
+
+Call:
+glm(formula = spiders ~ trt * bili + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.9076  -0.7596  -0.5007   0.9171   2.2592  
+
+Coefficients:
+            Estimate Std. Error z value  Pr(>|z|)    
+(Intercept) -3.26554    1.05861  -3.085   0.00204 ** 
+trt         -0.16094    0.38343  -0.420   0.67468    
+bili         0.15965    0.12465   1.281   0.20026    
+age         -0.01226    0.01488  -0.824   0.40986    
+male        -1.30553    0.58575  -2.229   0.02583 *  
+stage        0.94331    0.21367   4.415 0.0000101 ***
+trt:bili    -0.04212    0.06929  -0.608   0.54323    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 332.32  on 275  degrees of freedom
+Residual deviance: 283.20  on 269  degrees of freedom
+AIC: 297.2
+
+Number of Fisher Scoring iterations: 4
+
+### Mediation analysis 
+             est    SE(est)          Z         p
+cde  -0.20306445 0.34418499 -0.5899864 0.5551998
+pnde -0.29803178 0.30291817 -0.9838690 0.3251800
+tnie  0.04286618 0.04523957  0.9475372 0.3433651
+tnde -0.32197911 0.30497541 -1.0557543 0.2910805
+pnie  0.06681350 0.07178310  0.9307692 0.3519730
+te   -0.25516561 0.30423187 -0.8387208 0.4016260
+pm   -0.14435490 0.25742569 -0.5607634 0.5749589

@@ -1,0 +1,67 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+glm(formula = platelet ~ trt * bili_bin + age + male + stage, 
+    family = poisson(link = "log"), data = data)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-14.4279   -4.1437   -0.5009    3.1686   17.8282  
+
+Coefficients:
+               Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   5.8506864  0.0264742 220.996  < 2e-16 ***
+trt           0.0962003  0.0102096   9.423  < 2e-16 ***
+bili_bin      0.1475711  0.0240611   6.133 8.61e-10 ***
+age          -0.0034731  0.0003757  -9.245  < 2e-16 ***
+male         -0.0525958  0.0123636  -4.254 2.10e-05 ***
+stage        -0.0699231  0.0045909 -15.231  < 2e-16 ***
+trt:bili_bin -0.1561189  0.0149868 -10.417  < 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 9286.7  on 275  degrees of freedom
+Residual deviance: 8439.8  on 269  degrees of freedom
+AIC: 10478
+
+Number of Fisher Scoring iterations: 4
+
+### Mediation analysis 
+             est      SE(est)           Z                p
+cde  -0.05991857 0.0111177929   -5.389431 0.00000007068122
+pnde  1.00493291 0.0185957733   54.040931 0.00000000000000
+tnie  1.00694418 0.0105305274   95.621439 0.00000000000000
+tnde  1.01155191 0.0193664768   52.232108 0.00000000000000
+pnie  1.00035533 0.0007107413 1407.481691 0.00000000000000
+te    2.01187709 0.0195830703  102.735529 0.00000000000000
+pm    0.73264889 0.0041882957  174.927690 0.00000000000000

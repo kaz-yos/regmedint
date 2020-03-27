@@ -1,0 +1,60 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(time, status) ~ trt * bili_bin + 
+    age + male + stage, data = data, dist = "weibull")
+                Value Std. Error     z         p
+(Intercept)  10.71512    0.57782 18.54   < 2e-16
+trt           0.01629    0.24802  0.07    0.9476
+bili_bin     -1.28237    0.45770 -2.80    0.0051
+age          -0.01345    0.00645 -2.09    0.0370
+male         -0.00304    0.17204 -0.02    0.9859
+stage        -0.41048    0.09388 -4.37 0.0000123
+trt:bili_bin  0.12524    0.28772  0.44    0.6634
+Log(scale)   -0.34227    0.07190 -4.76 0.0000019
+
+Scale= 0.71 
+
+Weibull distribution
+Loglik(model)= -1145.7   Loglik(intercept only)= -1203.8
+	Chisq= 116.08 on 6 degrees of freedom, p= 1.1e-22 
+Number of Newton-Raphson Iterations: 6 
+n= 276 
+
+### Mediation analysis 
+           est    SE(est)          Z            p
+cde  0.1415348 0.14895598  0.9501788 3.420214e-01
+pnde 1.0605782 0.17273960  6.1397514 8.265073e-10
+tnie 1.0438110 0.06546773 15.9439014 0.000000e+00
+tnde 1.0556409 0.17997246  5.8655690 4.475950e-09
+pnie 1.0486930 0.07241877 14.4809560 0.000000e+00
+te   2.1043892 0.18881633 11.1451651 0.000000e+00
+pm   0.7378483 0.02546598 28.9738804 0.000000e+00

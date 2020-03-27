@@ -1,0 +1,72 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+MASS::glm.nb(formula = platelet ~ trt * bili_bin + age + male + 
+    stage, data = data, init.theta = 8.220644756, link = log)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-3.07377  -0.72633  -0.09645   0.53936   2.84728  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   5.855365   0.153743  38.085  < 2e-16 ***
+trt           0.097983   0.060088   1.631  0.10296    
+bili_bin      0.133186   0.136763   0.974  0.33014    
+age          -0.003413   0.002148  -1.589  0.11216    
+male         -0.047873   0.068284  -0.701  0.48325    
+stage        -0.073352   0.026659  -2.752  0.00593 ** 
+trt:bili_bin -0.147330   0.085427  -1.725  0.08459 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for Negative Binomial(8.2206) family taken to be 1)
+
+    Null deviance: 308.25  on 275  degrees of freedom
+Residual deviance: 282.18  on 269  degrees of freedom
+AIC: 3273.9
+
+Number of Fisher Scoring iterations: 1
+
+
+              Theta:  8.221 
+          Std. Err.:  0.712 
+
+ 2 x log-likelihood:  -3257.853 
+### Mediation analysis 
+             est     SE(est)           Z         p
+cde  -0.04934719 0.061602346  -0.8010602 0.4230968
+pnde  1.01195532 0.046870989  21.5902277 0.0000000
+tnie  1.00680786 0.010641081  94.6151844 0.0000000
+tnde  1.01824548 0.046667950  21.8189461 0.0000000
+pnie  1.00058835 0.002766460 361.6853975 0.0000000
+te    2.01876318 0.047047486  42.9090550 0.0000000
+pm    0.73181607 0.006463806 113.2175205 0.0000000

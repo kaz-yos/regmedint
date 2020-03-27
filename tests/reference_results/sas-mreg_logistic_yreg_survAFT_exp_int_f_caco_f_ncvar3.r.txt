@@ -1,0 +1,58 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(time, status) ~ trt + bili_bin + 
+    age + male + stage, data = data, dist = "exponential")
+               Value Std. Error     z       p
+(Intercept) 11.50056    0.62359 18.44 < 2e-16
+trt          0.10094    0.17952  0.56   0.574
+bili_bin    -1.41562    0.20843 -6.79 1.1e-11
+age         -0.01785    0.00894 -2.00   0.046
+male        -0.02263    0.24269 -0.09   0.926
+stage       -0.51456    0.12771 -4.03 5.6e-05
+
+Scale fixed at 1 
+
+Exponential distribution
+Loglik(model)= -1155.4   Loglik(intercept only)= -1206.3
+	Chisq= 101.72 on 5 degrees of freedom, p= 2.3e-20 
+Number of Newton-Raphson Iterations: 5 
+n= 276 
+
+### Mediation analysis 
+           est    SE(est)          Z            p
+cde  0.1009420 0.17952425  0.5622748 5.739288e-01
+pnde 1.1062124 0.17952425  6.1619109 7.187231e-10
+tnie 1.0580862 0.08576133 12.3375664 0.000000e+00
+tnde 1.1062124 0.17952425  6.1619109 7.187231e-10
+pnie 1.0580862 0.08576133 12.3375664 0.000000e+00
+te   2.1642986 0.19870882 10.8918097 0.000000e+00
+pm   0.7375768 0.03072978 24.0020201 0.000000e+00

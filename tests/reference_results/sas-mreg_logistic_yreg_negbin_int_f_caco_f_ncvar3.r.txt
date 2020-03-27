@@ -1,0 +1,71 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+MASS::glm.nb(formula = platelet ~ trt + bili_bin + age + male + 
+    stage, data = data, init.theta = 8.132711228, link = log)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.9999  -0.7220  -0.1242   0.5472   2.6973  
+
+Coefficients:
+             Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  5.971661   0.140575  42.480   <2e-16 ***
+trt          0.026199   0.043550   0.602   0.5475    
+bili_bin    -0.089038   0.045520  -1.956   0.0505 .  
+age         -0.003495   0.002159  -1.618   0.1056    
+male        -0.042146   0.068578  -0.615   0.5388    
+stage       -0.074391   0.026797  -2.776   0.0055 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for Negative Binomial(8.1327) family taken to be 1)
+
+    Null deviance: 305.07  on 275  degrees of freedom
+Residual deviance: 282.21  on 270  degrees of freedom
+AIC: 3274.8
+
+Number of Fisher Scoring iterations: 1
+
+
+              Theta:  8.133 
+          Std. Err.:  0.703 
+
+ 2 x log-likelihood:  -3260.806 
+### Mediation analysis 
+            est     SE(est)           Z         p
+cde  0.02619867 0.043549806   0.6015795 0.5474541
+pnde 1.02654487 0.043549806  23.5717440 0.0000000
+tnie 1.00373066 0.005979199 167.8704302 0.0000000
+tnde 1.02654487 0.043549806  23.5717440 0.0000000
+pnie 1.00373066 0.005979199 167.8704302 0.0000000
+te   2.03027553 0.043880408  46.2683833 0.0000000
+pm   0.72923904 0.005171950 140.9988445 0.0000000

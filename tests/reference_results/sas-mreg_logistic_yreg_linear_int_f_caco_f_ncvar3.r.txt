@@ -1,0 +1,62 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+lm(formula = alk_phos ~ trt + bili_bin + age + male + stage, 
+    data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2014.2 -1073.6  -602.5    45.7 12064.5 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept) 2109.343    833.939   2.529   0.0120 *
+trt          -32.202    258.287  -0.125   0.9009  
+bili_bin     628.986    269.943   2.330   0.0205 *
+age           -4.426     12.806  -0.346   0.7299  
+male         -16.795    406.278  -0.041   0.9671  
+stage        -49.136    159.007  -0.309   0.7575  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2112 on 270 degrees of freedom
+Multiple R-squared:  0.02131,	Adjusted R-squared:  0.003184 
+F-statistic: 1.176 on 5 and 270 DF,  p-value: 0.3214
+
+### Mediation analysis 
+             est    SE(est)          Z         p
+cde  -32.2020957 258.287284 -0.1246755 0.9007805
+pnde -32.2020957 258.287284 -0.1246755 0.9007805
+tnie -26.1238029  41.312036 -0.6323533 0.5271560
+tnde -32.2020957 258.287284 -0.1246755 0.9007805
+pnie -26.1238029  41.312036 -0.6323533 0.5271560
+te   -58.3258986 261.116465 -0.2233712 0.8232466
+pm     0.4478937   2.025871  0.2210870 0.8250247
