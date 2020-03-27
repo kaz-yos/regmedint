@@ -98,13 +98,15 @@ sas_scripts_clean:
 	rm $$f ; \
 	done;
 
+# This one can only run on a linux server with sas.
 sas: $(SAS_FILES)
 	-cd tests/reference_results/ ; \
 	for f in $(subst tests/reference_results/,,$(SAS_FILES)) ; do \
 	sas $$f ; \
 	done;
 
-sas_extract: sas
+# It should not depend on sas as it may be run on a system without sas.
+sas_extract:
 	for f in $(subst .sas,.lst,$(SAS_FILES)); do \
 	cat $${f} | grep " cde \| nde \| cde=nde \| [pt]nde \| nie \| [pt]nie \| total effect " > $${f%lst}txt ; \
 	done;
