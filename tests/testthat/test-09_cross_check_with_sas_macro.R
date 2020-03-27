@@ -389,12 +389,12 @@ junk <- macro_args_sas_r %>%
                             })
 
                             test_that(paste0("se match with ", filename), {
-                                expect_equal(coef[["cde"]], sas_se[["conditional_cde"]])
-                                expect_equal(coef[["pnde"]], sas_se[["conditional_pnde"]])
-                                expect_equal(coef[["tnie"]], sas_se[["conditional_tnie"]])
-                                expect_equal(coef[["tnde"]], sas_se[["conditional_tnde"]])
-                                expect_equal(coef[["pnie"]], sas_se[["conditional_pnie"]])
-                                expect_equal(coef[["te"]], sas_se[["conditional_te"]])
+                                expect_equal(se[["cde"]], sas_se[["conditional_cde"]])
+                                expect_equal(se[["pnde"]], sas_se[["conditional_pnde"]])
+                                expect_equal(se[["tnie"]], sas_se[["conditional_tnie"]])
+                                expect_equal(se[["tnde"]], sas_se[["conditional_tnde"]])
+                                expect_equal(se[["pnie"]], sas_se[["conditional_pnie"]])
+                                expect_equal(se[["te"]], sas_se[["conditional_te"]])
                             })
 
                             test_that(paste0("p match with ", filename), {
@@ -479,12 +479,12 @@ junk <- macro_args_sas_r %>%
                             })
 
                             test_that(paste0("se match with ", filename), {
-                                expect_equal(coef[["cde"]], sas_se[["cde=nde"]])
-                                expect_equal(coef[["pnde"]], sas_se[["cde=nde"]])
-                                expect_equal(coef[["tnie"]], sas_se[["nie"]])
-                                expect_equal(coef[["tnde"]], sas_se[["cde=nde"]])
-                                expect_equal(coef[["pnie"]], sas_se[["nie"]])
-                                expect_equal(coef[["te"]], sas_se[["te"]])
+                                expect_equal(se[["cde"]], sas_se[["cde=nde"]])
+                                expect_equal(se[["pnde"]], sas_se[["cde=nde"]])
+                                expect_equal(se[["tnie"]], sas_se[["nie"]])
+                                expect_equal(se[["tnde"]], sas_se[["cde=nde"]])
+                                expect_equal(se[["pnie"]], sas_se[["nie"]])
+                                expect_equal(se[["te"]], sas_se[["te"]])
                             })
 
                             test_that(paste0("p match with ", filename), {
