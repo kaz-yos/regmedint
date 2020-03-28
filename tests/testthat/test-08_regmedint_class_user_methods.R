@@ -72,7 +72,7 @@ describe("methods for regmedint", {
         })
         describe("summary.regmedint", {
             it("returns an object of summary_regmedint class", {
-                expect_equal(class(summary(fit_regmedint)),
+                expect_equal(class(summary(fit_regmedint))[[1]],
                              "summary_regmedint")
             })
             it("returns an object containing the mreg summary", {
@@ -90,31 +90,33 @@ describe("methods for regmedint", {
             it("returns an object with appropriate columns", {
                 expect_equal(colnames(summary(fit_regmedint)$summary_myreg),
                              c("est","se","Z","p","lower","upper"))
-                expect_equal(summary(fit_regmedint)$summary_myreg[,"coef"],
-                             coef(fit_regmedint))
-                expect_equal(summary(fit_regmedint)$summary_myreg[,"se"],
-                             sqrt(diag(vcov(fit_regmedint))))
-                expect_equal(summary(fit_regmedint)$summary_myreg[,"lower"],
-                             confint(fit_regmedint)[,"lower"])
-                expect_equal(summary(fit_regmedint)$summary_myreg[,"upper"],
-                             confint(fit_regmedint)[,"upper"])
+                ## expect_equivalent ignores attributes
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"est"],
+                                  coef(fit_regmedint))
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"se"],
+                                  sqrt(diag(vcov(fit_regmedint))))
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"lower"],
+                                  confint(fit_regmedint)[,"lower"])
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"upper"],
+                                  confint(fit_regmedint)[,"upper"])
             })
             it("returns an object with appropriate columns (exponentiated)", {
                 expect_equal(colnames(summary(fit_regmedint)$summary_myreg),
                              c("est","se","Z","p","lower","upper",
                                "exp(est)","exp(lower)","exp(upper)"))
-                expect_equal(summary(fit_regmedint)$summary_myreg[,"est"],
-                             coef(fit_regmedint))
-                expect_equal(summary(fit_regmedint)$summary_myreg[,"se"],
-                             sqrt(diag(vcov(fit_regmedint))))
-                expect_equal(summary(fit_regmedint)$summary_myreg[,"lower"],
-                             confint(fit_regmedint)[,"lower"])
-                expect_equal(summary(fit_regmedint)$summary_myreg[,"upper"],
-                             confint(fit_regmedint)[,"upper"])
-                expect_equal(summary(fit_regmedint)$summary_myreg[,"lower"],
-                             exp(confint(fit_regmedint)[,"lower"]))
-                expect_equal(summary(fit_regmedint)$summary_myreg[,"upper"],
-                             exp(confint(fit_regmedint)[,"upper"]))
+                ## expect_equivalent ignores attributes
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"est"],
+                                  coef(fit_regmedint))
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"se"],
+                                  sqrt(diag(vcov(fit_regmedint))))
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"lower"],
+                                  confint(fit_regmedint)[,"lower"])
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"upper"],
+                                  confint(fit_regmedint)[,"upper"])
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"lower"],
+                                  exp(confint(fit_regmedint)[,"lower"]))
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"upper"],
+                                  exp(confint(fit_regmedint)[,"upper"]))
             })
         })
         ##
