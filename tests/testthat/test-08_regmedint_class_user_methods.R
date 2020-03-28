@@ -118,90 +118,101 @@ describe("methods for regmedint", {
             })
         })
         ##
-        describe("summary.summary_regmedint", {
-            ## Explicit printing within the function.
-            ## No need to print the return value.
-            it("prints the mreg results", {
-                expect_output(summary(fit_regmedint),
-                              deparse(fit_regmedint$mreg$call)[1],
-                              fixed = TRUE)
+        describe("methods for summary_regmedint", {
+            describe("print.summary_regmedint", {
+                ## Explicit printing within the function.
+                ## No need to print the return value.
+                it("prints the mreg results", {
+                    expect_output(print(summary(fit_regmedint)),
+                                  deparse(fit_regmedint$mreg$call)[1],
+                                  fixed = TRUE)
+                })
+                it("prints the yreg results", {
+                    expect_output(print(summary(fit_regmedint)),
+                                  deparse(fit_regmedint$yreg$call)[1],
+                                  fixed = TRUE)
+                })
+                it("prints mediation analysis results with expected elements", {
+                    expect_output(print(summary(fit_regmedint)), "cde")
+                    expect_output(print(summary(fit_regmedint)), "pnde")
+                    expect_output(print(summary(fit_regmedint)), "tnie")
+                    expect_output(print(summary(fit_regmedint)), "tnde")
+                    expect_output(print(summary(fit_regmedint)), "pnie")
+                    expect_output(print(summary(fit_regmedint)), "te")
+                    expect_output(print(summary(fit_regmedint)), "pm")
+                })
+                it("prints mediation analysis results with expected elements exponentiated", {
+                    expect_output(print(summary(fit_regmedint, exponentiate = TRUE)), "cde")
+                    expect_output(print(summary(fit_regmedint, exponentiate = TRUE)), "pnde")
+                    expect_output(print(summary(fit_regmedint, exponentiate = TRUE)), "tnie")
+                    expect_output(print(summary(fit_regmedint, exponentiate = TRUE)), "tnde")
+                    expect_output(print(summary(fit_regmedint, exponentiate = TRUE)), "pnie")
+                    expect_output(print(summary(fit_regmedint, exponentiate = TRUE)), "te")
+                    expect_output(print(summary(fit_regmedint, exponentiate = TRUE)), "pm")
+                })
+                it("prints evaluation information", {
+                    expect_output(print(summary(fit_regmedint)),
+                                  "Evaluated at:",
+                                  fixed = TRUE)
+                    expect_output(print(summary(fit_regmedint)),
+                                  "a1 (intervened value of avar) = ",
+                                  fixed = TRUE)
+                    expect_output(print(summary(fit_regmedint)),
+                                  "a0 (reference value of avar)  = ",
+                                  fixed = TRUE)
+                    expect_output(print(summary(fit_regmedint)),
+                                  "m_cde (intervend value of mvar for cde) = ",
+                                  fixed = TRUE)
+                    expect_output(print(summary(fit_regmedint)),
+                                  "c_cond (covariate vector value) =",
+                                  fixed = TRUE)
+                    expect_output(print(summary(fit_regmedint)),
+                                  "Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.",
+                                  fixed = TRUE)
+                    expect_output(print(summary(fit_regmedint_int)),
+                                  "Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.",
+                                  fixed = TRUE)
+                })
+                it("returns an object with appropriate columns", {
+                    capture_output(summary_out <- summary(fit_regmedint))
+                    expect_equal(colnames(summary_out),
+                                 c("est","se","Z","p","lower","upper"))
+                    expect_equal(summary_out$est,
+                                 coef(fit_regmedint))
+                    expect_equal(summary_out$se,
+                                 sqrt(diag(vcov(fit_regmedint))))
+                    expect_equal(summary_out$lower,
+                                 confint(fit_regmedint)[,"lower"])
+                    expect_equal(summary_out$upper,
+                                 confint(fit_regmedint)[,"upper"])
+                })
+                it("returns an object with appropriate columns (exponentiated)", {
+                    capture_output(summary_out <- summary(fit_regmedint, exponentiate = TRUE))
+                    expect_equal(colnames(summary_out),
+                                 c("est","se","Z","p","lower","upper",
+                                   "exp(est)","exp(lower)","exp(upper)"))
+                    expect_equal(summary_out$est,
+                                 coef(fit_regmedint))
+                    expect_equal(summary_out$se,
+                                 sqrt(diag(vcov(fit_regmedint))))
+                    expect_equal(summary_out$lower,
+                                 confint(fit_regmedint)[,"lower"])
+                    expect_equal(summary_out$upper,
+                                 confint(fit_regmedint)[,"upper"])
+                    expect_equal(summary_out$lower,
+                                 exp(confint(fit_regmedint)[,"lower"]))
+                    expect_equal(summary_out$upper,
+                                 exp(confint(fit_regmedint)[,"upper"]))
+                })
             })
-            it("prints the yreg results", {
-                expect_output(summary(fit_regmedint),
-                              deparse(fit_regmedint$yreg$call)[1],
-                              fixed = TRUE)
-            })
-            it("prints mediation analysis results with expected elements", {
-                expect_output(summary(fit_regmedint), "cde")
-                expect_output(summary(fit_regmedint), "pnde")
-                expect_output(summary(fit_regmedint), "tnie")
-                expect_output(summary(fit_regmedint), "tnde")
-                expect_output(summary(fit_regmedint), "pnie")
-                expect_output(summary(fit_regmedint), "te")
-                expect_output(summary(fit_regmedint), "pm")
-            })
-            it("prints mediation analysis results with expected elements exponentiated", {
-                expect_output(summary(fit_regmedint, exponentiate = TRUE), "cde")
-                expect_output(summary(fit_regmedint, exponentiate = TRUE), "pnde")
-                expect_output(summary(fit_regmedint, exponentiate = TRUE), "tnie")
-                expect_output(summary(fit_regmedint, exponentiate = TRUE), "tnde")
-                expect_output(summary(fit_regmedint, exponentiate = TRUE), "pnie")
-                expect_output(summary(fit_regmedint, exponentiate = TRUE), "te")
-                expect_output(summary(fit_regmedint, exponentiate = TRUE), "pm")
-            })
-            it("prints evaluation information", {
-                expect_output(summary(fit_regmedint),
-                              "Evaluated at:",
-                              fixed = TRUE)
-                expect_output(summary(fit_regmedint),
-                              "a1 (intervened value of avar) = ",
-                              fixed = TRUE)
-                expect_output(summary(fit_regmedint),
-                              "a0 (reference value of avar)  = ",
-                              fixed = TRUE)
-                expect_output(summary(fit_regmedint),
-                              "m_cde (intervend value of mvar for cde) = ",
-                              fixed = TRUE)
-                expect_output(summary(fit_regmedint),
-                              "c_cond (covariate vector value) =",
-                              fixed = TRUE)
-                expect_output(summary(fit_regmedint),
-                              "Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.",
-                              fixed = TRUE)
-                expect_output(summary(fit_regmedint_int),
-                              "Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.",
-                              fixed = TRUE)
-            })
-            it("returns an object with appropriate columns", {
-                capture_output(summary_out <- summary(fit_regmedint))
-                expect_equal(colnames(summary_out),
-                             c("est","se","Z","p","lower","upper"))
-                expect_equal(summary_out$est,
-                             coef(fit_regmedint))
-                expect_equal(summary_out$se,
-                             sqrt(diag(vcov(fit_regmedint))))
-                expect_equal(summary_out$lower,
-                             confint(fit_regmedint)[,"lower"])
-                expect_equal(summary_out$upper,
-                             confint(fit_regmedint)[,"upper"])
-            })
-            it("returns an object with appropriate columns (exponentiated)", {
-                capture_output(summary_out <- summary(fit_regmedint, exponentiate = TRUE))
-                expect_equal(colnames(summary_out),
-                             c("est","se","Z","p","lower","upper",
-                               "exp(est)","exp(lower)","exp(upper)"))
-                expect_equal(summary_out$est,
-                             coef(fit_regmedint))
-                expect_equal(summary_out$se,
-                             sqrt(diag(vcov(fit_regmedint))))
-                expect_equal(summary_out$lower,
-                             confint(fit_regmedint)[,"lower"])
-                expect_equal(summary_out$upper,
-                             confint(fit_regmedint)[,"upper"])
-                expect_equal(summary_out$lower,
-                             exp(confint(fit_regmedint)[,"lower"]))
-                expect_equal(summary_out$upper,
-                             exp(confint(fit_regmedint)[,"upper"]))
+            ##
+            describe("coef.summary_regmedint", {
+                it("extract the matrix object", {
+                    expect_equal(coef(summary(fit_regmedint)),
+                                 summary(fit_regmedint)$myreg_summary)
+                    expect_equal(coef(summary(fit_regmedint_int)),
+                                 summary(fit_regmedint_int)$myreg_summary)
+                })
             })
         })
         ##
