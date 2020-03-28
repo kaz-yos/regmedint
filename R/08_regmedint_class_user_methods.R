@@ -176,7 +176,7 @@ summary.regmedint <- function(x,
 
     res <- list(summary_mreg_fit = summary_mreg_fit,
                 summary_yreg_fit = summary_yreg_fit,
-                myreg = res_mat,
+                summary_myreg = res_mat,
                 eval_at = list(a0 = a0,
                                a1 = a1,
                                m_cde = m_cde,
