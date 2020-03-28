@@ -113,10 +113,18 @@ describe("methods for regmedint", {
                                   confint(fit_regmedint)[,"lower"])
                 expect_equivalent(summary(fit_regmedint)$summary_myreg[,"upper"],
                                   confint(fit_regmedint)[,"upper"])
-                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"lower"],
-                                  exp(confint(fit_regmedint)[,"lower"]))
-                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"upper"],
-                                  exp(confint(fit_regmedint)[,"upper"]))
+                exp_coefs <- exp(coef(fit_regmedint))
+                exp_coefs["pm"] <- NA
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"exp(est)"],
+                                  exp_coefs)
+                exp_lower <- exp(confint(fit_regmedint)[,"lower"])
+                exp_lower["pm"] <- NA
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"exp(lower)"],
+                                  exp_lower)
+                exp_upper <- exp(confint(fit_regmedint)[,"upper"])
+                exp_upper["pm"] <- NA
+                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"exp(upper)"],
+                                  exp_upper)
             })
         })
         ##
