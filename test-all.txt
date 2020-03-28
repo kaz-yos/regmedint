@@ -4,17 +4,17 @@
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  23       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
 ⠏ |   0       | 04_fit_yreg_logistic✔ |  24       | 04_fit_yreg_logistic
-⠏ |   0       | 04_fit_yreg_negbin✔ |  24       | 04_fit_yreg_negbin
+⠏ |   0       | 04_fit_yreg_negbin⠦ |  17       | 04_fit_yreg_negbin✔ |  24       | 04_fit_yreg_negbin [0.1 s]
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
 ⠏ |   0       | 04_fit_yreg_survCox✔ |  24       | 04_fit_yreg_survCox
-⠏ |   0       | 06_calc_myreg_helpers_coef⠸ |  64       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.2 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠹ |  43       | 06_calc_myreg_helpers_vcov⠇ |  79       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.3 s]
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear⠇ |  49       | 07_calc_myreg_mreg_linear_yreg_linear⠦ |  97       | 07_calc_myreg_mreg_linear_yreg_linear⠋ | 161       | 07_calc_myreg_mreg_linear_yreg_linear⠏ | 220       | 07_calc_myreg_mreg_linear_yreg_linear✔ | 225       | 07_calc_myreg_mreg_linear_yreg_linear [0.4 s]
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  43       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  93       | 07_calc_myreg_mreg_linear_yreg_logistic⠼ | 155       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ | 193       | 07_calc_myreg_mreg_linear_yreg_logistic✔ | 235       | 07_calc_myreg_mreg_linear_yreg_logistic [0.5 s]
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear⠏ |  60       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ |  98       | 07_calc_myreg_mreg_logistic_yreg_linear⠏ | 160       | 07_calc_myreg_mreg_logistic_yreg_linear⠦ | 217       | 07_calc_myreg_mreg_logistic_yreg_linear✔ | 220       | 07_calc_myreg_mreg_logistic_yreg_linear [0.7 s]
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic⠹ |  50 3     | 07_calc_myreg_mreg_logistic_yreg_logistic⠧ |  92 6     | 07_calc_myreg_mreg_logistic_yreg_logistic⠋ | 155 6     | 07_calc_myreg_mreg_logistic_yreg_logistic⠧ | 210 8     | 07_calc_myreg_mreg_logistic_yreg_logistic✖ | 216 9     | 07_calc_myreg_mreg_logistic_yreg_logistic [0.8 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠏ |  40       | 06_calc_myreg_helpers_coef⠇ |  79       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠋ |  31       | 06_calc_myreg_helpers_vcov⠦ |  57       | 06_calc_myreg_helpers_vcov⠹ |  83       | 06_calc_myreg_helpers_vcov⠦ | 107       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear⠹ |  33       | 07_calc_myreg_mreg_linear_yreg_linear⠹ |  73       | 07_calc_myreg_mreg_linear_yreg_linear⠦ | 107       | 07_calc_myreg_mreg_linear_yreg_linear⠏ | 160       | 07_calc_myreg_mreg_linear_yreg_linear⠏ | 200       | 07_calc_myreg_mreg_linear_yreg_linear✔ | 225       | 07_calc_myreg_mreg_linear_yreg_linear [0.6 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  31       | 07_calc_myreg_mreg_linear_yreg_logistic⠋ |  71       | 07_calc_myreg_mreg_linear_yreg_logistic⠙ | 102       | 07_calc_myreg_mreg_linear_yreg_logistic⠴ | 156       | 07_calc_myreg_mreg_linear_yreg_logistic⠧ | 178       | 07_calc_myreg_mreg_linear_yreg_logistic⠸ | 234       | 07_calc_myreg_mreg_linear_yreg_logistic✔ | 235       | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  51       | 07_calc_myreg_mreg_logistic_yreg_linear⠴ |  86       | 07_calc_myreg_mreg_logistic_yreg_linear⠏ | 120       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ | 158       | 07_calc_myreg_mreg_logistic_yreg_linear⠦ | 197       | 07_calc_myreg_mreg_logistic_yreg_linear✔ | 220       | 07_calc_myreg_mreg_logistic_yreg_linear [1.0 s]
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic⠏ |  47 3     | 07_calc_myreg_mreg_logistic_yreg_logistic⠇ |  83 6     | 07_calc_myreg_mreg_logistic_yreg_logistic⠦ | 111 6     | 07_calc_myreg_mreg_logistic_yreg_logistic⠹ | 157 6     | 07_calc_myreg_mreg_logistic_yreg_logistic⠙ | 195 7     | 07_calc_myreg_mreg_logistic_yreg_logistic✖ | 216 9     | 07_calc_myreg_mreg_logistic_yreg_logistic [1.0 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-07_calc_myreg_mreg_logistic_yreg_logistic.R:232: failure: calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where natural effects do no depend on c_cond
 myreg_funs[[1]](1, 2, -3, -1 * c(4, 5, 6)) not equal to myreg_funs[[1]](1, 2, +3, +2 * c(4, 5, 6)).
@@ -60,7 +60,7 @@ all(!is.na(res)) isn't true.
 test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1170: failure: calc_myreg_mreg_logistic_yreg_logistic_se (three cvar): returns a function that gives a numeric vector without NA
 all(!is.na(res)) isn't true.
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 08_regmedint_class_user_methods⠹ |  13       | 08_regmedint_class_user_methods⠼ |  25       | 08_regmedint_class_user_methods✖ |  29 7     | 08_regmedint_class_user_methods [0.3 s]
+⠏ |   0       | 08_regmedint_class_user_methods⠋ |  11       | 08_regmedint_class_user_methods⠹ |  23       | 08_regmedint_class_user_methods✖ |  29 7     | 08_regmedint_class_user_methods [0.3 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 test-08_regmedint_class_user_methods.R:106: failure: summary.regmedint: prints evaluation information
 `summary\(fit_regmedint\)` does not match "^Evaluated at:".
@@ -90,13 +90,8 @@ test-08_regmedint_class_user_methods.R:118: failure: summary.regmedint: prints e
 `summary\(fit_regmedint_int\)` does not match "^Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.".
 Actual value: "### Mediator model\\n\\nCall:\\nlm\(formula = bili ~ trt, data = data\)\\n\\nResiduals:\\n    Min      1Q  Median      3Q     Max \\n-3\.4000 -2\.5000 -1\.7000  0\.4434 24\.3000 \\n\\nCoefficients:\\n            Estimate Std\. Error t value Pr\(>\|t\|\)  \\n\(Intercept\)   2\.2132     0\.8784   2\.520   0\.0123 \*\\ntrt           0\.7434     0\.5532   1\.344   0\.1801  \\n---\\nSignif\. codes:  0 '\*\*\*' 0\.001 '\*\*' 0\.01 '\*' 0\.05 '\.' 0\.1 ' ' 1\\n\\nResidual standard error: 4\.594 on 274 degrees of freedom\\nMultiple R-squared:  0\.006548,\\tAdjusted R-squared:  0\.002923 \\nF-statistic: 1\.806 on 1 and 274 DF,  p-value: 0\.1801\\n\\n### Outcome model\\n\\nCall:\\nglm\(formula = spiders ~ trt \* bili, family = binomial\(link = "logit"\), \\n    data = data\)\\n\\nDeviance Residuals: \\n    Min       1Q   Median       3Q      Max  \\n-2\.0109  -0\.7534  -0\.7162   1\.0662   1\.7878  \\n\\nCoefficients:\\n            Estimate Std\. Error z value Pr\(>\|z\|\)   \\n\(Intercept\) -1\.65730    0\.58884  -2\.815  0\.00488 \*\*\\ntrt          0\.19162    0\.36010   0\.532  0\.59463   \\nbili         0\.28496    0\.12308   2\.315  0\.02060 \* \\ntrt:bili    -0\.09806    0\.06849  -1\.432  0\.15222   \\n---\\nSignif\. codes:  0 '\*\*\*' 0\.001 '\*\*' 0\.01 '\*' 0\.05 '\.' 0\.1 ' ' 1\\n\\n\(Dispersion parameter for binomial family taken to be 1\)\\n\\n    Null deviance: 332\.32  on 275  degrees of freedom\\nResidual deviance: 312\.50  on 272  degrees of freedom\\nAIC: 320\.5\\n\\nNumber of Fisher Scoring iterations: 4\\n\\n### Mediation analysis \\n             est    SE\(est\)          Z         p\\ncde   0\.19162128 0\.36009559  0\.5321400 0\.5946290\\npnde -0\.38366187 0\.36083299 -1\.0632672 0\.2876608\\ntnie  0\.06604168 0\.05550351  1\.1898650 0\.2340995\\ntnde -0\.45655665 0\.39228886 -1\.1638277 0\.2444938\\npnie  0\.13893646 0\.11231421  1\.2370336 0\.2160746\\nte   -0\.31762020 0\.37053496 -0\.8571936 0\.3913379\\npm   -0\.17094397 0\.29916733 -0\.5713992 0\.5677291"
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  82       | 09_cross_check_with_sas_macro⠇ | 198 1     | 09_cross_check_with_sas_macro⠼ | 314 1     | 09_cross_check_with_sas_macro⠼ | 444 1     | 09_cross_check_with_sas_macro⠴ | 564 2     | 09_cross_check_with_sas_macro⠸ | 690 4     | 09_cross_check_with_sas_macro⠙ | 818 4     | 09_cross_check_with_sas_macro✖ | 909 4     | 09_cross_check_with_sas_macro [2.1 s]
+⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ |  82       | 09_cross_check_with_sas_macro⠼ | 195       | 09_cross_check_with_sas_macro⠸ | 314       | 09_cross_check_with_sas_macro⠴ | 446       | 09_cross_check_with_sas_macro⠦ | 566 1     | 09_cross_check_with_sas_macro⠴ | 693 3     | 09_cross_check_with_sas_macro⠦ | 824 3     | 09_cross_check_with_sas_macro✖ | 910 3     | 09_cross_check_with_sas_macro [2.2 s]
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-09_cross_check_with_sas_macro.R:412: failure: lower confint match with sas-mreg_linear_yreg_linear_int_t_caco_f_ncvar3.sas
-lower[["tnie"]] not equal to sas_lower[["conditional_tnie"]].
-1/1 mismatches
-[1] -46.4 - -55.9 == 9.46
-
 test-09_cross_check_with_sas_macro.R:397: failure: se match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas
 se[["te"]] not equal to sas_se[["conditional_te"]].
 1/1 mismatches
@@ -114,9 +109,9 @@ upper[["te"]] not equal to sas_upper[["conditional_te"]].
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 7.8 s
+Duration: 9.5 s
 
-OK:       2268
-Failed:   20
+OK:       2269
+Failed:   19
 Warnings: 0
 Skipped:  0
