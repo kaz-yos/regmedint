@@ -70,8 +70,55 @@ describe("methods for regmedint", {
                 expect_output(print(fit_regmedint), "pm")
             })
         })
-        ##
         describe("summary.regmedint", {
+            it("returns an object of summary_regmedint class", {
+                expect_equal(class(summary(fit_regmedint)),
+                             "summary_regmedint")
+            })
+            it("returns an object containing the mreg summary", {
+                expect_equal(summary(fit_regmedint)$summary_mreg_fit,
+                             summary(fit_regmedint$mreg_fit))
+            })
+            it("returns an object containing the yreg summary", {
+                expect_equal(summary(fit_regmedint)$summary_yreg_fit,
+                             summary(fit_regmedint$yreg_fit))
+            })
+            it("returns an object containing the myreg summary matrix", {
+                expect_equal(class(summary(fit_regmedint)$summary_myreg)[[1]],
+                             "matrix")
+            })
+            it("returns an object with appropriate columns", {
+                expect_equal(colnames(summary(fit_regmedint)$summary_myreg),
+                             c("est","se","Z","p","lower","upper"))
+                expect_equal(summary(fit_regmedint)$summary_myreg[,"coef"],
+                             coef(fit_regmedint))
+                expect_equal(summary(fit_regmedint)$summary_myreg[,"se"],
+                             sqrt(diag(vcov(fit_regmedint))))
+                expect_equal(summary(fit_regmedint)$summary_myreg[,"lower"],
+                             confint(fit_regmedint)[,"lower"])
+                expect_equal(summary(fit_regmedint)$summary_myreg[,"upper"],
+                             confint(fit_regmedint)[,"upper"])
+            })
+            it("returns an object with appropriate columns (exponentiated)", {
+                expect_equal(colnames(summary(fit_regmedint)$summary_myreg),
+                             c("est","se","Z","p","lower","upper",
+                               "exp(est)","exp(lower)","exp(upper)"))
+                expect_equal(summary(fit_regmedint)$summary_myreg[,"est"],
+                             coef(fit_regmedint))
+                expect_equal(summary(fit_regmedint)$summary_myreg[,"se"],
+                             sqrt(diag(vcov(fit_regmedint))))
+                expect_equal(summary(fit_regmedint)$summary_myreg[,"lower"],
+                             confint(fit_regmedint)[,"lower"])
+                expect_equal(summary(fit_regmedint)$summary_myreg[,"upper"],
+                             confint(fit_regmedint)[,"upper"])
+                expect_equal(summary(fit_regmedint)$summary_myreg[,"lower"],
+                             exp(confint(fit_regmedint)[,"lower"]))
+                expect_equal(summary(fit_regmedint)$summary_myreg[,"upper"],
+                             exp(confint(fit_regmedint)[,"upper"]))
+            })
+        })
+        ##
+        describe("summary.summary_regmedint", {
             ## Explicit printing within the function.
             ## No need to print the return value.
             it("prints the mreg results", {
