@@ -104,19 +104,26 @@ describe("methods for regmedint", {
             })
             it("prints evaluation information", {
                 expect_output(summary(fit_regmedint),
-                              "Evaluated at:")
+                              "Evaluated at:",
+                              fixed = TRUE)
                 expect_output(summary(fit_regmedint),
-                              "a1 (intervened value of avar) = ")
+                              "a1 (intervened value of avar) = ",
+                              fixed = TRUE)
                 expect_output(summary(fit_regmedint),
-                              "a0 (reference value of avar)  = ")
+                              "a0 (reference value of avar)  = ",
+                              fixed = TRUE)
                 expect_output(summary(fit_regmedint),
-                              "m_cde (intervend value of mvar for cde) = ")
+                              "m_cde (intervend value of mvar for cde) = ",
+                              fixed = TRUE)
                 expect_output(summary(fit_regmedint),
-                              "c_cond (covariate vector value) =")
+                              "c_cond (covariate vector value) =",
+                              fixed = TRUE)
                 expect_output(summary(fit_regmedint),
-                              "Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.")
+                              "Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.",
+                              fixed = TRUE)
                 expect_output(summary(fit_regmedint_int),
-                              "Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.")
+                              "Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.",
+                              fixed = TRUE)
             })
             it("returns an object with appropriate columns", {
                 capture_output(summary_out <- summary(fit_regmedint))
