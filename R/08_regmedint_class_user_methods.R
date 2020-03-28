@@ -198,14 +198,17 @@ print.summary_regmedint <- function(x, ...) {
     print(x$yreg_summary)
 
     cat("### Mediation analysis \n")
-    ## Print before assignment of attributes
+    res_mat <- x$myreg
+
+    ## Print before assignment of attributes for cleaness.
     print(res_mat, quote = FALSE)
 
     ## Print helpful information here
-    print_eval_info_helper(a0 = a0,
-                           a1 = a1,
-                           m_cde = m_cde,
-                           c_cond = c_cond,
+    print_eval_info_helper(a0 = x$eval_at$a0,
+                           a1 = x$eval_at$a1,
+                           m_cde = x$eval_at$m_cde,
+                           c_cond = x$eval_at$c_cond,
+                           ## Orignal arguments
                            avar = x$args$avar,
                            mvar = x$args$mvar,
                            cvar = x$args$cvar,
@@ -215,10 +218,10 @@ print.summary_regmedint <- function(x, ...) {
                            casecontrol = x$args$casecontrol)
 
     ## Return invisibly with meta data
-    attr(res_mat, which = "args") <- list(a0 = a0,
-                                          a1 = a1,
-                                          m_cde = m_cde,
-                                          c_cond = c_cond)
+    attr(res_mat, which = "args") <- list(a0 = x$eval_at$a0,
+                                          a1 = x$eval_at$a1,
+                                          m_cde = x$eval_at$m_cde,
+                                          c_cond = x$eval_at$c_cond)
     invisible(res_mat)
 }
 
@@ -227,6 +230,7 @@ print_eval_info_helper <- function(a0, a1, m_cde, c_cond,
                                    avar, mvar, cvar,
                                    yreg, mreg, interaction, casecontrol) {
 
+    cat("\n")
     cat("Evaluated at:\n")
 
     ## avar
