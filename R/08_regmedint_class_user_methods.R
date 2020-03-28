@@ -91,7 +91,7 @@ print.regmedint <- function(x,
 ##' @inheritParams print.regmedint
 ##' @param exponentiate Whether to add exponentiated point and confidence limit estimates. When \code{yreg = "linear"}, it is ignored.
 ##'
-##' @return A numeric matrix corresponding to what is displayed.
+##' @return A \code{summary_regmedint} object, which is a list containing the summary object of the
 summary.regmedint <- function(x,
                               a0 = NULL,
                               a1 = NULL,
@@ -111,15 +111,15 @@ summary.regmedint <- function(x,
     assertthat::assert_that(is.list(args_mreg_fit))
     assertthat::assert_that(is.list(args_yreg_fit))
 
-    cat("### Mediator model\n")
-    print(do.call(summary, c(list(x$mreg),
-                             args_mreg_fit)))
+    ## Mediator model
+    mreg_summary <- do.call(summary, c(list(x$mreg),
+                                       args_mreg_fit))
 
-    cat("### Outcome model\n")
-    print(do.call(summary, c(list(x$yreg),
-                             args_yreg_fit)))
+    ## Outcome model
+    yreg_summary <- do.call(summary, c(list(x$yreg),
+                                       args_yreg_fit))
 
-    cat("### Mediation analysis \n")
+    ## Mediation analysis result matrix construction
     if (is.null(a0)) {
         a0 <- x$args$a0
     }
@@ -174,6 +174,30 @@ summary.regmedint <- function(x,
                          upper = res_ci[,"upper"])
     }
 
+    res <- list(mreg_summary = mreg_summary,
+                yreg_summary = yreg_summary,
+                myreg = res_mat,
+                eval_at = list(a0 = a0,
+                               a1 = a1,
+                               m_cde = m_cde,
+                               c_cond = c_cond),
+                args = x$args)
+
+    class(res) <- c("summary_regmedint", class(res))
+    return(res)
+}
+
+
+print.summary_regmedint <- function(x, ...) {
+
+
+    cat("### Mediator model\n")
+    print(x$mreg_summary)
+
+    cat("### Outcome model\n")
+    print(x$yreg_summary)
+
+    cat("### Mediation analysis \n")
     ## Print before assignment of attributes
     print(res_mat, quote = FALSE)
 
@@ -197,6 +221,7 @@ summary.regmedint <- function(x,
                                           c_cond = c_cond)
     invisible(res_mat)
 }
+
 
 print_eval_info_helper <- function(a0, a1, m_cde, c_cond,
                                    avar, mvar, cvar,
