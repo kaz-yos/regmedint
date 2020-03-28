@@ -71,8 +71,8 @@ new_regmedint <- function(data,
                              interaction = interaction)
 
     ## Construct the result object
-    res <- list(mreg = mreg_fit,
-                yreg = yreg_fit,
+    res <- list(mreg_fit = mreg_fit,
+                yreg_fit = yreg_fit,
                 myreg = myreg_funs,
                 ## Remember arguments
                 args = list(yvar = yvar,
