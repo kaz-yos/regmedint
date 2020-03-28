@@ -167,9 +167,29 @@ summary.regmedint <- function(x,
                                           m_cde = m_cde,
                                           c_cond = c_cond)
 
+
     ## FIXME: Need to print attributes nicely with explanation.
 
     invisible(res_mat)
+}
+
+print_eval_info_helper <- function(a0, a1, m_cde, c_cond, yreg, mreg, interaction, casecontrol) {
+
+    cat("Evaluated at:\n")
+    cat("a1 (intervened value of avar) = ")
+    print(a1)
+    cat("a0 (intervened value of avar) = ")
+    print(a0)
+    cat("m_cde (intervend value of mvar for cde) = ")
+    print(m_cde)
+    cat("c_cond (covariate vector value) =")
+    print(c_cond)
+
+    if (interaction) {
+        "Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE."
+    } else {
+        cat("Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.")
+    }
 }
 
 
