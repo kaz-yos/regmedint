@@ -89,7 +89,7 @@ print.regmedint <- function(x,
 ##' Summarize the \code{mreg_fit}, \code{yreg_fit}, and the mediation analysis effect estimates.
 ##'
 ##' @inheritParams print.regmedint
-##' @param exponentiate Whether to show exponentiated point estimates.
+##' @param exponentiate Whether to add exponentiated point and confidence limit estimates. When \code{yreg = "linear"}, it is ignored.
 ##'
 ##' @return A numeric matrix corresponding to what is displayed.
 summary.regmedint <- function(x,
