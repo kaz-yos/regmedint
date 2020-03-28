@@ -555,3 +555,10 @@ junk <- macro_args_sas_r %>%
                     }
                 }
             }))
+
+
+###
+### Remove the modified version of expect_equal.
+################################################################################
+
+rm(expect_equal)
