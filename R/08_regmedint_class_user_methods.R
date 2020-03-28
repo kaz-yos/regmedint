@@ -183,19 +183,27 @@ summary.regmedint <- function(x,
 print_eval_info_helper <- function(a0, a1, m_cde, c_cond, yreg, mreg, interaction, casecontrol) {
 
     cat("Evaluated at:\n")
+
     cat("a1 (intervened value of avar) = ")
-    print(a1)
-    cat("a0 (intervened value of avar) = ")
-    print(a0)
+    cat(a1)
+    cat("\n")
+
+    cat("a0 (reference value of avar)  = ")
+    cat(a0)
+    cat("\n")
+
     cat("m_cde (intervend value of mvar for cde) = ")
-    print(m_cde)
+    cat(m_cde)
+    cat("\n")
+
     cat("c_cond (covariate vector value) =")
-    print(c_cond)
+    cat(c_cond)
+    cat("\n")
 
     if (interaction) {
-        "Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE."
+        cat("Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.=n")
     } else {
-        cat("Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.")
+        cat("Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.\n")
     }
 }
 
