@@ -222,7 +222,7 @@ print_eval_info_helper <- function(a0, a1, m_cde, c_cond,
     cat("\n")
 
     if (interaction) {
-        cat("Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.=n")
+        cat("Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.\n")
     } else {
         cat("Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.\n")
     }
