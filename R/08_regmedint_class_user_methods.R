@@ -279,6 +279,60 @@ coef.regmedint <- function(x,
     res_est
 }
 
+##' Extract variance estimates in the vcov form.
+##'
+##' Extract variance estimates evaluated at \code{a0}, \code{a1}, \code{m_cde}, and \code{c_cond}.
+##'
+##' @inheritParams print.regmedint
+##'
+##' @return A numeric matrix with the diagonals populated with variance estimates. Off-diagnonals are NA since these are not estimated.
+vcov.regmedint <- function(x,
+                           a0 = NULL,
+                           a1 = NULL,
+                           m_cde = NULL,
+                           c_cond = NULL,
+                           ...) {
+
+    ## This is a user function. Check arguments heavily.
+    assertthat::assert_that(is.null(a0) | (length(a0) == 1))
+    assertthat::assert_that(is.null(a1) | (length(a1) == 1))
+    assertthat::assert_that(is.null(m_cde) | (length(m_cde) == 1))
+    assertthat::assert_that(is.null(c_cond) | (length(c_cond) == length(x$args$cvar)))
+
+    if (is.null(a0)) {
+        a0 <- x$args$a0
+    }
+    if (is.null(a1)) {
+        a1 <- x$args$a1
+    }
+    if (is.null(m_cde)) {
+        m_cde <- x$args$m_cde
+    }
+    if (is.null(c_cond)) {
+        c_cond <- x$args$c_cond
+    }
+
+    ## Compute SE estimates
+    res_se <- x$myreg$se_fun(a0 = a0,
+                             a1 = a1,
+                             m_cde = m_cde,
+                             c_cond = c_cond)
+
+    ## Construct matrix with the diagonals as variances.
+    res_vcov <- diag(res_se^2)
+
+    ## NA out off diagonals as the are not zeros.
+    res_vcov[upper.tri(res_vcov)] <- NA
+    res_vcov[lower.tri(res_vcov)] <- NA
+
+
+    attr(res_vcov, which = "args") <- list(a0 = a0,
+                                           a1 = a1,
+                                           m_cde = m_cde,
+                                           c_cond = c_cond)
+    res_vcov
+}
+
 ##' Confidence intervals for mediation prameter estimates.
 ##'
 ##' .. content for \details{} ..
