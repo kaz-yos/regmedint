@@ -104,19 +104,19 @@ describe("methods for regmedint", {
             })
             it("prints evaluation information", {
                 expect_output(summary(fit_regmedint),
-                              "^Evaluated at:")
+                              "Evaluated at:")
                 expect_output(summary(fit_regmedint),
-                              "^a1 (intervened value of avar) = ")
+                              "a1 (intervened value of avar) = ")
                 expect_output(summary(fit_regmedint),
-                              "^a0 (reference value of avar)  = ")
+                              "a0 (reference value of avar)  = ")
                 expect_output(summary(fit_regmedint),
-                              "^m_cde (intervend value of mvar for cde) = ")
+                              "m_cde (intervend value of mvar for cde) = ")
                 expect_output(summary(fit_regmedint),
-                              "^c_cond (covariate vector value) =")
+                              "c_cond (covariate vector value) =")
                 expect_output(summary(fit_regmedint),
-                              "^Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.")
+                              "Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.")
                 expect_output(summary(fit_regmedint_int),
-                              "^Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.")
+                              "Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.")
             })
         })
         ##
