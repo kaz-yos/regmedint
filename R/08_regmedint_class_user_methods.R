@@ -162,14 +162,21 @@ summary.regmedint <- function(x,
     ## Print before assignment of attributes
     print(res_mat, quote = FALSE)
 
+    ## Print helpful information here
+    print_eval_info_helper(a0 = a0,
+                           a1 = a1,
+                           m_cde = m_cde,
+                           c_cond = c_cond,
+                           yreg = x$args$yreg,
+                           mreg = x$args$mreg,
+                           interaction = x$args$interaction,
+                           casecontrol = x$args$casecontrol)
+
+    ## Return invisibly with meta data
     attr(res_mat, which = "args") <- list(a0 = a0,
                                           a1 = a1,
                                           m_cde = m_cde,
                                           c_cond = c_cond)
-
-
-    ## FIXME: Need to print attributes nicely with explanation.
-
     invisible(res_mat)
 }
 
