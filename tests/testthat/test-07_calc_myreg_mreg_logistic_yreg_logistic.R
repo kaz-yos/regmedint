@@ -12,13 +12,6 @@ library(tidyverse)
 
 
 ###
-### Adjust tolerance by masking the original expect_equal
-################################################################################
-
-expect_equal <- purrr::partial(expect_equal, tolerance = 0.000001)
-
-
-###
 ### Tests for calc_myreg_mreg_logistic_yreg_logistic
 ################################################################################
 
@@ -1178,10 +1171,3 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
         })
     })
 })
-
-
-###
-### Remove the modified version of expect_equal.
-################################################################################
-
-rm(expect_equal)
