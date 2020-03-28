@@ -112,12 +112,12 @@ summary.regmedint <- function(x,
     assertthat::assert_that(is.list(args_yreg_fit))
 
     ## Mediator model
-    mreg_summary <- do.call(summary, c(list(x$mreg),
-                                       args_mreg_fit))
+    summary_mreg_fit <- do.call(summary, c(list(x$mreg),
+                                           args_mreg_fit))
 
     ## Outcome model
-    yreg_summary <- do.call(summary, c(list(x$yreg),
-                                       args_yreg_fit))
+    summary_yreg_fit <- do.call(summary, c(list(x$yreg),
+                                           args_yreg_fit))
 
     ## Mediation analysis result matrix construction
     if (is.null(a0)) {
@@ -174,8 +174,8 @@ summary.regmedint <- function(x,
                          upper = res_ci[,"upper"])
     }
 
-    res <- list(mreg_summary = mreg_summary,
-                yreg_summary = yreg_summary,
+    res <- list(summary_mreg_fit = summary_mreg_fit,
+                summary_yreg_fit = summary_yreg_fit,
                 myreg = res_mat,
                 eval_at = list(a0 = a0,
                                a1 = a1,
