@@ -290,6 +290,10 @@ junk <- macro_args_sas_r_prelim %>%
 ################################################################################
 
 macro_args_sas_r <- macro_args_sas_r_prelim %>%
+    filter(yreg != "loglinear") %>%
+    filter(mreg == "logistic",
+           yreg == "linear",
+           interaction == "true") %>%
     ## Extract useful elements when available
     mutate(
         coef = map(res, function(res) {
@@ -355,6 +359,9 @@ junk <- macro_args_sas_r %>%
     ##
     ## FIXME: yreg loglinear must be implemented or dropped.
     filter(yreg != "loglinear") %>%
+    filter(mreg == "logistic",
+           yreg == "linear",
+           interaction == "true") %>%
     ##
     mutate(
         junk = pmap(
