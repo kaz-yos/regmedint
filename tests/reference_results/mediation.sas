@@ -2858,7 +2858,9 @@ D=exp(beta0+beta1*&a1+beta2*t(c));
 E=(1+D);
 x=theta3*(&a1-&a0)*(A*B-B**2)/(B**2)+(theta2+theta3*&a1)*(((D*E-D**2)/(E**2))-((A*B-B**2)/(B**2)));
 w=&a0*theta3*(&a1-&a0)*(A*B-B**2)/(B**2)+(theta2+theta3*&a1)*(&a1*((D*E-D**2)/(E**2))-&a0*((A*B-B**2)/(B**2)));
-y=theta3*c*(&a1-&a0)*((A*B-B**2)/(B**2))+(theta2+theta3*&a1)*(((D*E-D**2)/(E**2))-((A*B-B**2)/(B**2)));
+/* gamma[12,] for c-te. The second c was added by @kaz-yos on 2020-03-28. */
+/* It should exist as the second term is a contribution from gamma[11,] for c-tnie. */
+y=theta3*c*(&a1-&a0)*((A*B-B**2)/(B**2))+(theta2+theta3*&a1)*c*(((D*E-D**2)/(E**2))-((A*B-B**2)/(B**2)));
 s=(&a1-&a0);
 t=t(D/E-A/B);
 r=(&a1-&a0)*t(A/B)+&a1*t;
