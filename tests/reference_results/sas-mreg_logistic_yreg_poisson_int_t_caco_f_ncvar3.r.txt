@@ -74,4 +74,4 @@ mvar: bili_bin
 cvar: age male stage
  c_cond (covariate vector value) = 50 1 2
 
-Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.=n
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
