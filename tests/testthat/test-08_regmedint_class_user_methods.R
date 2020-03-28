@@ -118,6 +118,37 @@ describe("methods for regmedint", {
                 expect_output(summary(fit_regmedint_int),
                               "Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.")
             })
+            it("returns an object with appropriate columns", {
+                capture_output(summary_out <- summary(fit_regmedint))
+                expect_equal(colnames(summary_out),
+                             c("est","se","Z","p","lower","upper"))
+                expect_equal(summary_out$est,
+                             coef(fit_regmedint))
+                expect_equal(summary_out$se,
+                             sqrt(diag(vcov(fit_regmedint))))
+                expect_equal(summary_out$lower,
+                             confint(fit_regmedint)[,"lower"])
+                expect_equal(summary_out$upper,
+                             confint(fit_regmedint)[,"upper"])
+            })
+            it("returns an object with appropriate columns (exponentiated)", {
+                capture_output(summary_out <- summary(fit_regmedint, exponentiate = TRUE))
+                expect_equal(colnames(summary_out),
+                             c("est","se","Z","p","lower","upper",
+                               "exp(est)","exp(lower)","exp(upper)"))
+                expect_equal(summary_out$est,
+                             coef(fit_regmedint))
+                expect_equal(summary_out$se,
+                             sqrt(diag(vcov(fit_regmedint))))
+                expect_equal(summary_out$lower,
+                             confint(fit_regmedint)[,"lower"])
+                expect_equal(summary_out$upper,
+                             confint(fit_regmedint)[,"upper"])
+                expect_equal(summary_out$lower,
+                             exp(confint(fit_regmedint)[,"lower"]))
+                expect_equal(summary_out$upper,
+                             exp(confint(fit_regmedint)[,"upper"]))
+            })
         })
         ##
         describe("coef.regmedint", {
