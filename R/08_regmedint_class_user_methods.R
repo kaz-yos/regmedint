@@ -167,6 +167,9 @@ summary.regmedint <- function(x,
                            a1 = a1,
                            m_cde = m_cde,
                            c_cond = c_cond,
+                           avar = x$args$avar,
+                           mvar = x$args$mvar,
+                           cvar = x$args$cvar,
                            yreg = x$args$yreg,
                            mreg = x$args$mreg,
                            interaction = x$args$interaction,
@@ -180,24 +183,42 @@ summary.regmedint <- function(x,
     invisible(res_mat)
 }
 
-print_eval_info_helper <- function(a0, a1, m_cde, c_cond, yreg, mreg, interaction, casecontrol) {
+print_eval_info_helper <- function(a0, a1, m_cde, c_cond,
+                                   avar, mvar, cvar,
+                                   yreg, mreg, interaction, casecontrol) {
 
     cat("Evaluated at:\n")
 
-    cat("a1 (intervened value of avar) = ")
+    ## avar
+    cat("avar: ")
+    cat(avar)
+    cat("\n")
+
+    cat(" a1 (intervened value of avar) = ")
     cat(a1)
     cat("\n")
 
-    cat("a0 (reference value of avar)  = ")
+    cat(" a0 (reference value of avar)  = ")
     cat(a0)
     cat("\n")
 
-    cat("m_cde (intervend value of mvar for cde) = ")
+    ## mvar
+    cat("mvar: ")
+    cat(mvar)
+    cat("\n")
+
+    cat(" m_cde (intervend value of mvar for cde) = ")
     cat(m_cde)
     cat("\n")
 
-    cat("c_cond (covariate vector value) =")
+    ## cvar
+    cat("cvar: ")
+    cat(paste(cvar, collapse = " "))
+    cat("\n")
+
+    cat(" c_cond (covariate vector value) = ")
     cat(c_cond)
+    cat("\n")
     cat("\n")
 
     if (interaction) {
