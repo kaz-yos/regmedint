@@ -100,6 +100,7 @@ summary.regmedint <- function(x,
                               args_mreg_fit = list(),
                               args_yreg_fit = list(),
                               exponentiate = FALSE,
+                              alpha = 0.05,
                               ...) {
 
     ## This is a user function. Check arguments heavily.
@@ -146,17 +147,31 @@ summary.regmedint <- function(x,
     res_Z <- res_est / res_se
     res_p <- 2 * (1 - pnorm(q = abs(res_Z)))
 
+    ## Compute CI estimates
+    res_ci <- confint(x = x,
+                      a0 = a0,
+                      a1 = a1,
+                      m_cde = m_cde,
+                      c_cond = c_cond,
+                      alpha = alpha)
+
     if (exponentiate & x$args$yreg != "linear") {
-        ## Note only the point estimates are are exponentiated.
-        res_mat <- cbind(`exp(est)` = exp(res_est),
-                         `SE(est)` = res_se,
+        res_mat <- cbind(est = res_est,
+                         se = res_se,
                          Z = res_Z,
-                         p = res_p)
+                         p = res_p,
+                         lower = res_ci[,"lower"],
+                         upper = res_ci[,"upper"],
+                         `exp(est)` = exp(res_est),
+                         `exp(lower)` = exp(res_ci[,"lower"]),
+                         `exp(upper)` = exp(res_ci[,"upper"]))
     } else {
         res_mat <- cbind(est = res_est,
-                         `SE(est)` = res_se,
+                         se = res_se,
                          Z = res_Z,
-                         p = res_p)
+                         p = res_p,
+                         lower = res_ci[,"lower"],
+                         upper = res_ci[,"upper"])
     }
 
     ## Print before assignment of attributes
