@@ -326,6 +326,13 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                 pnie_d8))  # theta4 vector
         ## (a1 - a0) without abs must enter here for pnde
         ## because Gamma_pnie does not have a common factor.
+        ## d_te/d_params = d_(pnde + tnie)/d_params
+        ##               = d_pnde/d_params + d_tnie/d_params
+        ##               = (a1-a0) * Gamma_pnde + Gamma_tnie
+        ## Do not use abs(a1 - a0 in the se_te derivation below.
+        ## VV2013 Appendix p14 for Gamma_te has an error in d3 where
+        ## Gamma_tnie's contribution misses c'. Otherwise, it has
+        ## the following linear combination form.
         Gamma_te <-
             ((a1 - a0) * Gamma_pnde) + Gamma_tnie # By linearity of differentiation
         ##
