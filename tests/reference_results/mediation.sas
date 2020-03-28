@@ -2869,8 +2869,6 @@ s=(&a1-&a0);
 t=t(D/E-A/B);
 r=(&a1-&a0)*t(A/B)+&a1*t;
 gamma[12,]=x||w||y||zero||s||t||r||z1;
-%put gamma matrix printed by kaz-yos;
-print gamma;
 					%end;
 				%end;
 				%if &yreg=linear & &mreg=logistic & &interaction=false %then %do;
