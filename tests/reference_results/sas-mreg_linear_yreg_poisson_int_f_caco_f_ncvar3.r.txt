@@ -59,3 +59,13 @@ tnde  0.029847123 0.007574936  3.9402475 0.00008139758
 pnie -0.001117004 0.001131916 -0.9868257 0.32372807185
 te    0.028730119 0.007623014  3.7688661 0.00016399080
 pm   -0.039462408 0.042470418 -0.9291740 0.35279892208
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2
+ a0 (reference value of avar)  = 1
+mvar: bili
+ m_cde (intervend value of mvar for cde) = 1
+cvar: age male stage
+ c_cond (covariate vector value) = 50 1 2
+
+Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.
