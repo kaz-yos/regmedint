@@ -1,5 +1,5 @@
 # regmedint (developmental repo)
-[![Travis-CI Build Status](https://travis-ci.org/kaz-yos/tableone.svg?branch=master)](https://travis-ci.org/kaz-yos/regmedint)
+[![Travis-CI Build Status](https://travis-ci.org/kaz-yos/regmedint.svg?branch=master)](https://travis-ci.org/kaz-yos/regmedint)
 [![](http://www.r-pkg.org/badges/version/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 
