@@ -21,6 +21,7 @@
 ##' FIXME: Document once implemented.
 ##'
 ##' @importFrom stats coef confint pnorm qnorm sigma vcov
+##' @importFrom survival Surv
 ##'
 ##' @docType package
 ##' @name regmedint
