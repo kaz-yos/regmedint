@@ -24,7 +24,7 @@ fit_yreg(yreg, data, yvar, avar, mvar, cvar, interaction, eventvar)
 \item{eventvar}{An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.}
 }
 \value{
-
+Model fit object from on of the above regression functions.
 }
 \description{
 The outcome model type \code{yreg} can be one of the following \code{"linear"}, \code{"logistic"}, \code{"loglinear"}, \code{"poisson"}, \code{"negbin"}, \code{"survCox"}, \code{"survAFT_exp"}, or \code{"survAFT_weibull"}.

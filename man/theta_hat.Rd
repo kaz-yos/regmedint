@@ -9,6 +9,8 @@ theta_hat(yreg, yreg_fit, avar, mvar, cvar, interaction)
 \arguments{
 \item{yreg}{A character vector of length 1. Outcome regression type. One of}
 
+\item{yreg_fit}{Model fit object for yreg (outcome model).}
+
 \item{avar}{A character vector of length 1. Treatment variable name.}
 
 \item{mvar}{A character vector of length 1. Mediator variable name.}
