@@ -48,6 +48,11 @@ winbuild:
 vignettes:
 	Rscript -e "devtools::build_vignettes()"
 
+## Build website
+## https://pkgdown.r-lib.org
+pkgdown:
+	Rscript -e "pkgdown::build_site()"
+
 ## build depends on the *.tar.gz file, i.e., its own product.
 ## *.tar.gz file is defined seprately to prevent build execution on every invocation.
 build: $(PKG_NAME)_$(PKG_VERSION).tar.gz
