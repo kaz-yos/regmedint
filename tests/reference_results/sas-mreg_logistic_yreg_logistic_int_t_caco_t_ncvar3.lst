@@ -1,4 +1,4 @@
-                                                           The SAS System                         05:12 Saturday, March 28, 2020   1
+                                                           The SAS System                         22:08 Saturday, March 28, 2020   1
 
                                                        The LOGISTIC Procedure
 
@@ -51,7 +51,7 @@
                                       Wald                    41.2151        6         <.0001
 
 
-                                                           The SAS System                         05:12 Saturday, March 28, 2020   2
+                                                           The SAS System                         22:08 Saturday, March 28, 2020   2
 
                                                        The LOGISTIC Procedure
 
@@ -88,7 +88,7 @@
                                          Percent Discordant     23.0    Gamma        0.541
                                          Percent Tied            0.0    Tau-a        0.223
                                          Pairs                 15680    c            0.770
-                                                           The SAS System                         05:12 Saturday, March 28, 2020   3
+                                                           The SAS System                         22:08 Saturday, March 28, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -141,7 +141,7 @@
                                       Wald                    23.7024        4         <.0001
 
 
-                                                           The SAS System                         05:12 Saturday, March 28, 2020   4
+                                                           The SAS System                         22:08 Saturday, March 28, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -174,7 +174,7 @@
                                          Percent Discordant     26.8    Gamma        0.464
                                          Percent Tied            0.0    Tau-a        0.224
                                          Pairs                  9243    c            0.732
-                                                           The SAS System                         05:12 Saturday, March 28, 2020   5
+                                                           The SAS System                         22:08 Saturday, March 28, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
