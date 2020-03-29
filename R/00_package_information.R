@@ -10,7 +10,7 @@
 ##' The package is a simple R implementation of the SAS macro as described in Valeri & VanderWeele 2013 and Valeri & VanderWeele 2015 \url{https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/}.
 ##'
 ##' @section Fitting models
-##' Use the regmedint function to fit models and conduct regression-based causal mediation analysis.
+##' Use the regmedint function to fit models and set up regression-based causal mediation analysis.
 ##'
 ##' @section Examining results
 ##' Several methods are available to examine the regmedint object.
@@ -19,6 +19,8 @@
 ##' coef
 ##' confint
 ##' FIXME: Document once implemented.
+##'
+##' @importFrom stats coef confint pnorm qnorm sigma vcov
 ##'
 ##' @docType package
 ##' @name regmedint
