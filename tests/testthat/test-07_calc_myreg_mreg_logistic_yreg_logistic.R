@@ -228,11 +228,11 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
             expect_equal(myreg_funs[[2]](1,2,-3,c(4,5,6))["cde"],
                          myreg_funs[[2]](1,2,+3,c(4,5,6))["cde"])
         })
-        it("returns functions where natural effects do no depend on c_cond", {
-            expect_equal(myreg_funs[[1]](1,2,-3,-1 * c(4,5,6)),
-                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6)))
-            expect_equal(myreg_funs[[2]](1,2,-3,-1 * c(4,5,6)),
-                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6)))
+        it("returns functions where nde do no depend on c_cond", {
+            expect_equal(myreg_funs[[1]](1,2,-3,-1 * c(4,5,6))[c("pnde","tnde")],
+                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6))[c("pnde","tnde")])
+            expect_equal(myreg_funs[[2]](1,2,-3,-1 * c(4,5,6))[c("pnde","tnde")],
+                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))[c("pnde","tnde")])
         })
         it("returns functions where direct effects match up", {
             expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["cde"]),
@@ -264,11 +264,12 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                          unname(myreg_funs[[2]](1,2,3,c(4,5,6))["pnie"]))
         })
         it("returns functions where pm is calculated from natural effects correctly", {
-            nde <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"])
-            nie <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"])
+            log_nde <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"])
+            log_nie <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"])
             expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pm"]),
                          ## VanderWeele 2015. p48.
-                         nie / (nie + nde))
+            ((exp(log_nde) * (exp(log_nie) - 1)) /
+             ((exp(log_nde) * exp(log_nie)) - 1)))
         })
     })
 })
@@ -493,18 +494,8 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
             expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["cde"],
                          myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))["cde"])
         })
-        it("returns functions where nie does not depend on c_cond", {
-            expect_equal(myreg_funs[[1]](1,2,+3,-1 * c(4,5,6))["tnie"],
-                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6))["tnie"])
-            expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["tnie"],
-                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))["tnie"])
-            ##
-            expect_equal(myreg_funs[[1]](1,2,+3,-1 * c(4,5,6))["pnie"],
-                         myreg_funs[[1]](1,2,+3,+2 * c(4,5,6))["pnie"])
-            expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["pnie"],
-                         myreg_funs[[2]](1,2,+3,+2 * c(4,5,6))["pnie"])
-        })
-        it("returns functions where nde and te depend on c_cond", {
+        it("returns functions where natural effects depend on c_cond", {
+            ## NDE is seems monotone. NIE may be conincidental.
             c_cond <- c(4,5,6)
             beta2_c1 <- sum(-1 * beta2 * c_cond)
             beta2_c2 <- sum(+2 * beta2 * c_cond)
@@ -516,6 +507,10 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["pnde"])
                     expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["tnde"],
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["tnde"])
+                    expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["pnie"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["pnie"])
+                    expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["tnie"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["tnie"])
                     expect_gt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["te"],
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["te"])
                 } else if (beta2_c1 - beta2_c2 < 0) {
@@ -523,6 +518,10 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["pnde"])
                     expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["tnde"],
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["tnde"])
+                    expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["pnie"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["pnie"])
+                    expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["tnie"],
+                              myreg_funs[[1]](1,2,+3,+2 * c_cond)["tnie"])
                     expect_lt(myreg_funs[[1]](1,2,+3,-1 * c_cond)["te"],
                               myreg_funs[[1]](1,2,+3,+2 * c_cond)["te"])
                 }
@@ -581,11 +580,12 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                          unname(myreg_funs[[2]](1,2,3,c(4,5,6))["pnie"]))
         })
         it("returns functions where pm is calculated from natural effects correctly", {
-            nde <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"])
-            nie <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"])
+            log_nde <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pnde"])
+            log_nie <- unname(myreg_funs[[1]](1,2,3,c(4,5,6))["tnie"])
             expect_equal(unname(myreg_funs[[1]](1,2,3,c(4,5,6))["pm"]),
                          ## VanderWeele 2015. p48.
-                         nie / (nie + nde))
+            ((exp(log_nde) * (exp(log_nie) - 1)) /
+             ((exp(log_nde) * exp(log_nie)) - 1)))
         })
     })
 })
