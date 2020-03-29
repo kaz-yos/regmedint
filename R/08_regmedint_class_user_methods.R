@@ -399,6 +399,9 @@ vcov.regmedint <- function(x,
     res_vcov[upper.tri(res_vcov)] <- NA
     res_vcov[lower.tri(res_vcov)] <- NA
 
+    ## Name
+    colnames(res_vcov) <- names(coef(x))
+    rownames(res_vcov) <- names(coef(x))
 
     attr(res_vcov, which = "args") <- list(a0 = a0,
                                            a1 = a1,
