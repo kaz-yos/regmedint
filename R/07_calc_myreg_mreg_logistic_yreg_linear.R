@@ -7,9 +7,9 @@
 
 
 ## VanderWeele 2015 p471 Proposition 2.5
-##' Create calculators for effects and se (mreg linear / yreg linear)
+##' Create calculators for effects and se (mreg logistic / yreg linear)
 ##'
-##' Construct functions for the conditional effect estimates and their standard errors in the mreg linear / yreg linear setting.
+##' Construct functions for the conditional effect estimates and their standard errors in the mreg logistic / yreg linear setting. Internally, this function deconstruct model objects and feed parameter estiamtes to the internal worker functions \code{calc_myreg_mreg_logistic_yreg_linear_est} and \code{calc_myreg_mreg_logistic_yreg_linear_se}.
 ##'
 ##' @inheritParams regmedint
 ##' @param mreg_fit Model fit from \code{\link{fit_mreg}}

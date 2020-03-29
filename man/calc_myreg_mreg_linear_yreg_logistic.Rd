@@ -36,5 +36,5 @@ calc_myreg_mreg_linear_yreg_logistic(
 A list contraining a function for effect estimates and a function for corresponding standard errors.
 }
 \description{
-Construct functions for the conditional effect estimates and their standard errors in the mreg linear / yreg logistic setting. Internally, this function deconstruct model objects and feed parameter estiamtes to the internal worker functions \code{\link{calc_myreg_mreg_linear_yreg_logistic_est}} and \code{\link{calc_myreg_mreg_linear_yreg_logistic_se}}.
+Construct functions for the conditional effect estimates and their standard errors in the mreg linear / yreg logistic setting. Internally, this function deconstruct model objects and feed parameter estiamtes to the internal worker functions \code{calc_myreg_mreg_linear_yreg_logistic_est} and \code{calc_myreg_mreg_linear_yreg_logistic_se}.
 }
