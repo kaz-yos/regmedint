@@ -1,4 +1,4 @@
-1                                                          The SAS System                               14:32 Sunday, March 29, 2020
+1                                                          The SAS System                               14:40 Sunday, March 29, 2020
 
 NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
 NOTE: SAS (r) Proprietary Software 9.4 (TS1M5) 
@@ -40,7 +40,7 @@ The command line option "-nonews" will prevent this display.
 
 NOTE: SAS initialization used:
       real time           0.05 seconds
-      cpu time            0.02 seconds
+      cpu time            0.03 seconds
       
 1          
 2          /** Set libname */
@@ -58,7 +58,7 @@ NOTE: Libref W was successfully assigned as follows:
 4254           dbms = csv
 4255           replace;
 4256       run;
-2                                                          The SAS System                               14:32 Sunday, March 29, 2020
+2                                                          The SAS System                               14:40 Sunday, March 29, 2020
 
 
 4257        /**********************************************************************
@@ -118,7 +118,7 @@ NOTE: The infile './data-pbc_cc.csv' is:
       Owner Name=kyoshida,Group Name=analyst,
       Access Permission=-rw-rw-r--,
       Last Modified=24Mar2020:22:32:39,
-3                                                          The SAS System                               14:32 Sunday, March 29, 2020
+3                                                          The SAS System                               14:40 Sunday, March 29, 2020
 
       File Size (bytes)=13771
 
@@ -128,7 +128,7 @@ NOTE: 276 records were read from the infile './data-pbc_cc.csv'.
 NOTE: The data set WORK.PBC_CC has 276 observations and 12 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 276 rows created in WORK.PBC_CC from ./data-pbc_cc.csv.
@@ -138,8 +138,8 @@ NOTE: DATA statement used (Total process time):
 NOTE: WORK.PBC_CC data set was successfully created.
 NOTE: The data set WORK.PBC_CC has 276 observations and 12 variables.
 NOTE: PROCEDURE IMPORT used (Total process time):
-      real time           0.06 seconds
-      cpu time            0.05 seconds
+      real time           0.08 seconds
+      cpu time            0.06 seconds
       
 
 4308       
@@ -166,7 +166,7 @@ NOTE: There were 276 observations read from the data set WORK.PBC_CC.
 NOTE: The data set WORK.DATA1 has 276 observations and 7 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 
@@ -174,11 +174,11 @@ NOTE: There were 276 observations read from the data set WORK.DATA1.
 NOTE: The data set WORK.DATA1 has 276 observations and 8 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 
-4                                                          The SAS System                               14:32 Sunday, March 29, 2020
+4                                                          The SAS System                               14:40 Sunday, March 29, 2020
 
 NOTE: There were 276 observations read from the data set WORK.DATA1.
 NOTE: The data set WORK.DATA21 has 1 observations and 3 variables.
@@ -199,8 +199,8 @@ NOTE: IML Ready
 NOTE: Exiting IML.
 NOTE: The data set WORK.DATA2NEW1 has 1 observations and 1 variables.
 NOTE: PROCEDURE IML used (Total process time):
-      real time           0.03 seconds
-      cpu time            0.03 seconds
+      real time           0.02 seconds
+      cpu time            0.02 seconds
       
 
 
@@ -210,7 +210,7 @@ NOTE: There were 1 observations read from the data set WORK.DATA2NEW1.
 NOTE: The data set WORK.DATA3 has 1 observations and 1 variables.
 NOTE: PROCEDURE APPEND used (Total process time):
       real time           0.00 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 NOTE: PROCEDURE SQL used (Total process time):
@@ -223,7 +223,7 @@ NOTE: There were 276 observations read from the data set WORK.DATA1.
 NOTE: The data set WORK.DATA22 has 1 observations and 3 variables.
 NOTE: PROCEDURE MEANS used (Total process time):
       real time           0.01 seconds
-      cpu time            0.00 seconds
+      cpu time            0.02 seconds
       
 
 
@@ -238,7 +238,7 @@ NOTE: IML Ready
 NOTE: Exiting IML.
 NOTE: The data set WORK.DATA2NEW2 has 1 observations and 1 variables.
 NOTE: PROCEDURE IML used (Total process time):
-5                                                          The SAS System                               14:32 Sunday, March 29, 2020
+5                                                          The SAS System                               14:40 Sunday, March 29, 2020
 
       real time           0.00 seconds
       cpu time            0.00 seconds
@@ -263,7 +263,7 @@ NOTE: PROCEDURE SQL used (Total process time):
 NOTE: There were 276 observations read from the data set WORK.DATA1.
 NOTE: The data set WORK.DATA23 has 1 observations and 3 variables.
 NOTE: PROCEDURE MEANS used (Total process time):
-      real time           0.01 seconds
+      real time           0.00 seconds
       cpu time            0.01 seconds
       
 
@@ -272,7 +272,7 @@ NOTE: There were 1 observations read from the data set WORK.DATA23.
 NOTE: The data set WORK.DATA23 has 1 observations and 1 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 NOTE: IML Ready
@@ -280,7 +280,7 @@ NOTE: Exiting IML.
 NOTE: The data set WORK.DATA2NEW3 has 1 observations and 1 variables.
 NOTE: PROCEDURE IML used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 
@@ -298,7 +298,7 @@ NOTE: PROCEDURE SQL used (Total process time):
       cpu time            0.00 seconds
       
 
-6                                                          The SAS System                               14:32 Sunday, March 29, 2020
+6                                                          The SAS System                               14:40 Sunday, March 29, 2020
 
 NOTE: IML Ready
 NOTE: Exiting IML.
@@ -315,7 +315,7 @@ NOTE: Table WORK.DATA2 created, with 1 rows and 4 columns.
 
 NOTE: PROCEDURE SQL used (Total process time):
       real time           0.01 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 NOTE: The query requires remerging summary statistics back with the original data.
@@ -344,7 +344,7 @@ NOTE: The data set WORK.GMPARMS has 9 observations and 8 variables.
 NOTE: The PROCEDURE LIFEREG printed pages 1-2.
 NOTE: PROCEDURE LIFEREG used (Total process time):
       real time           0.02 seconds
-      cpu time            0.02 seconds
+      cpu time            0.01 seconds
       
 
 NOTE: IML Ready
@@ -358,13 +358,13 @@ NOTE: PROCEDURE IML used (Total process time):
 
 NOTE: PROC LOGISTIC is modeling the probability that bili_bin='1'.
 NOTE: Convergence criterion (GCONV=1E-8) satisfied.
-7                                                          The SAS System                               14:32 Sunday, March 29, 2020
+7                                                          The SAS System                               14:40 Sunday, March 29, 2020
 
 NOTE: There were 276 observations read from the data set WORK.DATA1.
 NOTE: The data set WORK.OUT2 has 6 observations and 6 variables.
 NOTE: The PROCEDURE LOGISTIC printed pages 3-4.
 NOTE: PROCEDURE LOGISTIC used (Total process time):
-      real time           0.02 seconds
+      real time           0.03 seconds
       cpu time            0.02 seconds
       
 
@@ -376,8 +376,8 @@ NOTE: The data set WORK.CIL has 1 observations and 12 variables.
 NOTE: The data set WORK.CIU has 1 observations and 12 variables.
 NOTE: The data set WORK.PVALUE has 1 observations and 12 variables.
 NOTE: PROCEDURE IML used (Total process time):
-      real time           0.04 seconds
-      cpu time            0.03 seconds
+      real time           0.03 seconds
+      cpu time            0.01 seconds
       
 
 NOTE: IML Ready
@@ -386,7 +386,7 @@ NOTE: The data set WORK.X4 has 12 observations and 1 variables.
 NOTE: The data set WORK.X3 has 12 observations and 4 variables.
 NOTE: PROCEDURE IML used (Total process time):
       real time           0.01 seconds
-      cpu time            0.01 seconds
+      cpu time            0.02 seconds
       
 
 
@@ -418,9 +418,9 @@ NOTE: Deleting WORK.X5 (memtype=DATA).
 
 NOTE: PROCEDURE DATASETS used (Total process time):
       real time           0.00 seconds
-8                                                          The SAS System                               14:32 Sunday, March 29, 2020
+8                                                          The SAS System                               14:40 Sunday, March 29, 2020
 
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 
@@ -432,7 +432,7 @@ NOTE: Deleting WORK.SE (memtype=DATA).
 
 NOTE: PROCEDURE DATASETS used (Total process time):
       real time           0.00 seconds
-      cpu time            0.02 seconds
+      cpu time            0.00 seconds
       
 
 
@@ -459,7 +459,7 @@ NOTE: Deleting WORK.DATA2NEW3 (memtype=DATA).
 
 NOTE: PROCEDURE DATASETS used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 
@@ -474,6 +474,6 @@ NOTE: PROCEDURE DATASETS used (Total process time):
 
 NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
 NOTE: The SAS System used:
-      real time           0.52 seconds
-      cpu time            0.33 seconds
+      real time           0.50 seconds
+      cpu time            0.32 seconds
       

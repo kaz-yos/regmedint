@@ -1,4 +1,4 @@
-1                                                          The SAS System                               14:31 Sunday, March 29, 2020
+1                                                          The SAS System                               14:40 Sunday, March 29, 2020
 
 NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
 NOTE: SAS (r) Proprietary Software 9.4 (TS1M5) 
@@ -39,8 +39,8 @@ The command line option "-nonews" will prevent this display.
 
 
 NOTE: SAS initialization used:
-      real time           0.05 seconds
-      cpu time            0.02 seconds
+      real time           0.04 seconds
+      cpu time            0.03 seconds
       
 1          /**/
 2          /** */
@@ -58,7 +58,7 @@ NOTE: Libref W was successfully assigned as follows:
 11         %include './mediation.sas';
 4255       
 4256       /* Load data */
-2                                                          The SAS System                               14:31 Sunday, March 29, 2020
+2                                                          The SAS System                               14:40 Sunday, March 29, 2020
 
 4257       %include './data-valeri-vanderweele-2015.sas';
 
@@ -78,13 +78,13 @@ NOTE: DATA statement used (Total process time):
 4369           cvar = c,
 4370           a0 = 0,
 4371           a1 = 1,
-4372           m = 0,
+4372           m = 1,
 4373           yreg = survAFT_exp,
 4374           mreg = linear,
 4375           interaction = true,
 4376           casecontrol = ,
-4377           output = ,
-4378           c = ,
+4377           output = full,
+4378           c = 0.5,
 4379           boot = ,
 4380           cens = cens);
 There are 1 confounders in the string "c"
@@ -101,7 +101,7 @@ NOTE: There were 100 observations read from the data set WORK.DATA1.
 NOTE: The data set WORK.DATA1 has 100 observations and 6 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 
@@ -109,7 +109,7 @@ NOTE: There were 100 observations read from the data set WORK.DATA1.
 NOTE: The data set WORK.DATA21 has 1 observations and 3 variables.
 NOTE: PROCEDURE MEANS used (Total process time):
       real time           0.01 seconds
-      cpu time            0.01 seconds
+      cpu time            0.03 seconds
       
 
 
@@ -118,7 +118,7 @@ NOTE: The data set WORK.DATA21 has 1 observations and 1 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
       cpu time            0.00 seconds
-3                                                          The SAS System                               14:31 Sunday, March 29, 2020
+3                                                          The SAS System                               14:40 Sunday, March 29, 2020
 
       
 
@@ -127,7 +127,7 @@ NOTE: Exiting IML.
 NOTE: The data set WORK.DATA2NEW1 has 1 observations and 1 variables.
 NOTE: PROCEDURE IML used (Total process time):
       real time           0.02 seconds
-      cpu time            0.03 seconds
+      cpu time            0.02 seconds
       
 
 
@@ -137,7 +137,7 @@ NOTE: There were 1 observations read from the data set WORK.DATA2NEW1.
 NOTE: The data set WORK.DATA3 has 1 observations and 1 variables.
 NOTE: PROCEDURE APPEND used (Total process time):
       real time           0.00 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 NOTE: PROCEDURE SQL used (Total process time):
@@ -153,11 +153,33 @@ NOTE: PROCEDURE IML used (Total process time):
       cpu time            0.00 seconds
       
 
+NOTE: The query requires remerging summary statistics back with the original data.
+WARNING: This CREATE TABLE statement recursively references the target table. A consequence of this is a possible data integrity 
+         problem.
+NOTE: Table WORK.DATA2 created, with 1 rows and 2 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: The query requires remerging summary statistics back with the original data.
+WARNING: This CREATE TABLE statement recursively references the target table. A consequence of this is a possible data integrity 
+         problem.
+NOTE: Table WORK.DATA2 created, with 1 rows and 3 columns.
+
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
 NOTE: Algorithm converged.
 NOTE: The data set WORK.GMCOVB has 6 observations and 7 variables.
 NOTE: The data set WORK.GMPARMS has 7 observations and 8 variables.
 NOTE: The PROCEDURE LIFEREG printed pages 1-2.
 NOTE: PROCEDURE LIFEREG used (Total process time):
+4                                                          The SAS System                               14:40 Sunday, March 29, 2020
+
       real time           0.02 seconds
       cpu time            0.01 seconds
       
@@ -167,7 +189,7 @@ NOTE: Exiting IML.
 NOTE: The data set WORK.OUT1 has 6 observations and 5 variables.
 NOTE: PROCEDURE IML used (Total process time):
       real time           0.00 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 NOTE: The data set WORK.OUT2 has 4 observations and 4 variables.
@@ -178,8 +200,6 @@ NOTE: PROCEDURE REG used (Total process time):
       
 
 NOTE: There were 4 observations read from the data set WORK.OUT2.
-4                                                          The SAS System                               14:31 Sunday, March 29, 2020
-
 NOTE: The PROCEDURE PRINT printed page 4.
 NOTE: PROCEDURE PRINT used (Total process time):
       real time           0.00 seconds
@@ -187,82 +207,180 @@ NOTE: PROCEDURE PRINT used (Total process time):
       
 
 NOTE: IML Ready
+ERROR: (execution) Matrices do not conform to the operation.
+
+ operation : || at line 4364 column 1
+ operands  : _TEM1001, _TEM1002, zero, one, ts, h, z1, f
+
+_TEM1001      1 row       2 cols    (numeric)
+
+ 0.0980753         0
+
+_TEM1002      1 row       2 cols    (numeric)
+
+ 0.0894706         0
+
+zero      1 row       1 col     (numeric)
+
+         0
+
+one      1 row       1 col     (numeric)
+
+         1
+
+ts      1 row       1 col     (numeric)
+
+ 0.0246401
+
+h      2 rows      1 col     (numeric)
+
+ 0.5212718
+ 0.4613568
+
+z1      1 row       1 col     (numeric)
+5                                                          The SAS System                               14:40 Sunday, March 29, 2020
+
+
+         0
+
+f      1 row       1 col     (numeric)
+
+ 0.0139175
+
+ statement : ASSIGN at line 4364 column 1
+ERROR: (execution) Matrices do not conform to the operation.
+
+ operation : || at line 4364 column 1
+ operands  : _TEM1001, _TEM1002, zero, one, ts, h, z1, f
+
+_TEM1001      1 row       2 cols    (numeric)
+
+ 0.0980753 0.0980753
+
+_TEM1002      1 row       2 cols    (numeric)
+
+ 0.0894706         0
+
+zero      1 row       1 col     (numeric)
+
+         0
+
+one      1 row       1 col     (numeric)
+
+         1
+
+ts      1 row       1 col     (numeric)
+
+ 0.0246401
+
+h      2 rows      1 col     (numeric)
+
+ 0.6153752
+ 0.5554602
+
+z1      1 row       1 col     (numeric)
+
+         0
+
+f      1 row       1 col     (numeric)
+
+ 0.0139175
+
+ statement : ASSIGN at line 4364 column 1
+ERROR: (execution) Matrices do not conform to the operation.
+
+ operation : || at line 4364 column 1
+ operands  : theta3, d2, d3, zero, one, d6, d7, z1, d9
+
+theta3      1 row       1 col     (numeric)
+
+ 0.0980753
+
+d2      1 row       1 col     (numeric)
+
+6                                                          The SAS System                               14:40 Sunday, March 29, 2020
+
+ 0.1909441
+
+d3      1 row       2 cols    (numeric)
+
+ 0.0894706         0
+
+zero      1 row       1 col     (numeric)
+
+         0
+
+one      1 row       1 col     (numeric)
+
+         1
+
+d6      1 row       1 col     (numeric)
+
+ 0.1187435
+
+d7      2 rows      1 col     (numeric)
+
+ 0.6153752
+ 0.5554602
+
+z1      1 row       1 col     (numeric)
+
+         0
+
+d9      1 row       1 col     (numeric)
+
+ 0.0139175
+
+ statement : ASSIGN at line 4364 column 1
 NOTE: Exiting IML.
-NOTE: The data set WORK.EFFECT has 1 observations and 6 variables.
-NOTE: The data set WORK.SE has 1 observations and 6 variables.
-NOTE: The data set WORK.CIL has 1 observations and 6 variables.
-NOTE: The data set WORK.CIU has 1 observations and 6 variables.
-NOTE: The data set WORK.PVALUE has 1 observations and 6 variables.
+NOTE: The data set WORK.EFFECT has 1 observations and 12 variables.
+NOTE: The data set WORK.SE has 1 observations and 12 variables.
+NOTE: The data set WORK.CIL has 1 observations and 12 variables.
+NOTE: The data set WORK.CIU has 1 observations and 12 variables.
+NOTE: The data set WORK.PVALUE has 1 observations and 12 variables.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: SAS set option OBS=0 and will continue to check statements. This might cause NOTE: No observations in data set.
 NOTE: PROCEDURE IML used (Total process time):
-      real time           0.03 seconds
-      cpu time            0.02 seconds
+      real time           0.04 seconds
+      cpu time            0.03 seconds
       
 
+
 NOTE: IML Ready
-NOTE: Module MAIN is undefined in IML; cannot be RUN.
+WARNING: IML is now in syntax-check-only mode due to errors in previous steps. No statements will be executed.
 NOTE: Exiting IML.
-NOTE: The data set WORK.X3 has 4 observations and 4 variables.
-NOTE: The data set WORK.X4 has 4 observations and 1 variables.
 NOTE: PROCEDURE IML used (Total process time):
-      real time           0.01 seconds
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+ERROR: File WORK.X4.DATA does not exist.
+ERROR: File WORK.X3.DATA does not exist.
+
+NOTE: The SAS System stopped processing this step because of errors.
+7                                                          The SAS System                               14:40 Sunday, March 29, 2020
+
+WARNING: The data set WORK.X5 may be incomplete.  When this step was stopped there were 0 observations and 0 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
       cpu time            0.00 seconds
       
 
 
-NOTE: There were 4 observations read from the data set WORK.X4.
-NOTE: There were 4 observations read from the data set WORK.X3.
-NOTE: The data set WORK.X5 has 4 observations and 5 variables.
-NOTE: DATA statement used (Total process time):
-      real time           0.00 seconds
-      cpu time            0.01 seconds
-      
 
-
-NOTE: There were 4 observations read from the data set WORK.X5.
-NOTE: The PROCEDURE PRINT printed page 5.
 NOTE: PROCEDURE PRINT used (Total process time):
       real time           0.00 seconds
       cpu time            0.00 seconds
       
 
-NOTE: IML Ready
-NOTE: Module MAIN is undefined in IML; cannot be RUN.
-NOTE: Exiting IML.
-NOTE: The data set WORK.XBIS has 1 observations and 1 variables.
-NOTE: The data set WORK.XTRIS has 1 observations and 1 variables.
-NOTE: PROCEDURE IML used (Total process time):
-      real time           0.01 seconds
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
       cpu time            0.01 seconds
       
 
 
-NOTE: There were 1 observations read from the data set WORK.XBIS.
-NOTE: There were 1 observations read from the data set WORK.XTRIS.
-5                                                          The SAS System                               14:31 Sunday, March 29, 2020
-
-NOTE: The data set WORK.X6 has 1 observations and 2 variables.
-NOTE: DATA statement used (Total process time):
-      real time           0.00 seconds
-      cpu time            0.00 seconds
-      
-
-
-NOTE: There were 1 observations read from the data set WORK.X6.
-NOTE: The PROCEDURE PRINT printed page 6.
-NOTE: PROCEDURE PRINT used (Total process time):
-      real time           0.00 seconds
-      cpu time            0.00 seconds
-      
-
-
-NOTE: Deleting WORK.DATA1 (memtype=DATA).
-NOTE: Deleting WORK.DATA2 (memtype=DATA).
-NOTE: Deleting WORK.DATA3 (memtype=DATA).
-NOTE: Deleting WORK.OUT1 (memtype=DATA).
-NOTE: Deleting WORK.OUT2 (memtype=DATA).
-NOTE: Deleting WORK.X3 (memtype=DATA).
-NOTE: Deleting WORK.X4 (memtype=DATA).
-NOTE: Deleting WORK.X5 (memtype=DATA).
 
 NOTE: PROCEDURE DATASETS used (Total process time):
       real time           0.00 seconds
@@ -270,9 +388,6 @@ NOTE: PROCEDURE DATASETS used (Total process time):
       
 
 
-NOTE: Deleting WORK.X6 (memtype=DATA).
-NOTE: Deleting WORK.XBIS (memtype=DATA).
-NOTE: Deleting WORK.XTRIS (memtype=DATA).
 
 NOTE: PROCEDURE DATASETS used (Total process time):
       real time           0.00 seconds
@@ -280,31 +395,6 @@ NOTE: PROCEDURE DATASETS used (Total process time):
       
 
 
-NOTE: Deleting WORK.CIL (memtype=DATA).
-NOTE: Deleting WORK.CIU (memtype=DATA).
-NOTE: Deleting WORK.EFFECT (memtype=DATA).
-NOTE: Deleting WORK.PVALUE (memtype=DATA).
-NOTE: Deleting WORK.SE (memtype=DATA).
-
-NOTE: PROCEDURE DATASETS used (Total process time):
-      real time           0.00 seconds
-      cpu time            0.00 seconds
-      
-
-
-NOTE: Deleting WORK.DATA21 (memtype=DATA).
-NOTE: Deleting WORK.DATA2NEW1 (memtype=DATA).
-
-NOTE: PROCEDURE DATASETS used (Total process time):
-      real time           0.00 seconds
-      cpu time            0.00 seconds
-6                                                          The SAS System                               14:31 Sunday, March 29, 2020
-
-      
-
-
-NOTE: Deleting WORK.GMCOVB (memtype=DATA).
-NOTE: Deleting WORK.GMPARMS (memtype=DATA).
 4381       run;
 
 NOTE: PROCEDURE DATASETS used (Total process time):
@@ -312,8 +402,10 @@ NOTE: PROCEDURE DATASETS used (Total process time):
       cpu time            0.00 seconds
       
 
+ERROR: Errors printed on pages 4,5,6.
+
 NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
 NOTE: The SAS System used:
-      real time           0.38 seconds
-      cpu time            0.23 seconds
+      real time           0.34 seconds
+      cpu time            0.22 seconds
       
