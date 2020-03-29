@@ -26,7 +26,7 @@ libname w './';
     yreg = survAFT_exp,
     mreg = linear,
     interaction = true,
-    casecontrol = ,
+    casecontrol = false,
     output = full,
     c = 0.5,
     boot = ,
