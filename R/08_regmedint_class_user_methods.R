@@ -194,13 +194,13 @@ print.summary_regmedint <- function(x, ...) {
 
 
     cat("### Mediator model\n")
-    print(x$mreg_summary)
+    print(x$summary_mreg_fit)
 
     cat("### Outcome model\n")
-    print(x$yreg_summary)
+    print(x$summary_yreg_fit)
 
     cat("### Mediation analysis \n")
-    res_mat <- x$myreg
+    res_mat <- x$summary_myreg
 
     ## Print before assignment of attributes for cleaness.
     print(res_mat, quote = FALSE)
