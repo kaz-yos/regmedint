@@ -1038,16 +1038,16 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
     ## Note that this function does not require a model object and easy to tse.
     describe("calc_myreg_mreg_logistic_yreg_logistic_se (NULL cvar)", {
         se_fun <-
-            calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
-                                                      beta1 = 2,
+            calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 0.1,
+                                                      beta1 = 0.2,
                                                       beta2 = NULL,
                                                       theta0 = 0,
-                                                      theta1 = 4,
-                                                      theta2 = 5,
-                                                      theta3 = 6,
+                                                      theta1 = 0.4,
+                                                      theta2 = 0.5,
+                                                      theta3 = 0.6,
                                                       theta4 = NULL,
                                                       Sigma_beta = diag(1, nrow = 2, ncol = 2),
-                                                      Sigma_theta = diag(2, nrow = 4, ncol = 4))
+                                                      Sigma_theta = diag(1.2, nrow = 4, ncol = 4))
         it("returns a function", {
             expect_equal(class(se_fun),
                          "function")
@@ -1057,13 +1057,13 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
                          c("a0","a1","m_cde","c_cond"))
         })
         it("returns a function with parameters in the enslosing environment", {
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 0.1)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 0.2)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), NULL)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0.0)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 0.4)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 0.5)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 0.6)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), NULL)
         })
         it("returns a function that errors given inconsistent c_cond", {
@@ -1083,16 +1083,16 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
     ##
     describe("calc_myreg_mreg_logistic_yreg_logistic_se (one cvar)", {
         se_fun <-
-            calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
-                                                      beta1 = 2,
-                                                      beta2 = 3,
+            calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 0.1,
+                                                      beta1 = 0.2,
+                                                      beta2 = 0.3,
                                                       theta0 = 0,
-                                                      theta1 = 4,
-                                                      theta2 = 5,
-                                                      theta3 = 6,
-                                                      theta4 = 7,
+                                                      theta1 = 0.4,
+                                                      theta2 = 0.5,
+                                                      theta3 = 0.6,
+                                                      theta4 = 0.7,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
-                                                      Sigma_theta = diag(2, nrow = 5, ncol = 5))
+                                                      Sigma_theta = diag(1.1, nrow = 5, ncol = 5))
         it("returns a function", {
             expect_equal(class(se_fun),
                          "function")
@@ -1102,14 +1102,14 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
                          c("a0","a1","m_cde","c_cond"))
         })
         it("returns a function with parameters in the enslosing environment", {
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), 3)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 0.1)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 0.2)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), 0.3)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), 7)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 0.4)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 0.5)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 0.6)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), 0.7)
         })
         it("returns a function that errors given inconsistent c_cond", {
             expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
@@ -1128,16 +1128,16 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
     ##
     describe("calc_myreg_mreg_logistic_yreg_logistic_se (three cvar)", {
         se_fun <-
-            calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
-                                                      beta1 = 2,
-                                                      beta2 = 3:5,
+            calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 0.1,
+                                                      beta1 = 0.2,
+                                                      beta2 = 3:5/10,
                                                       theta0 = 0,
-                                                      theta1 = 4,
-                                                      theta2 = 5,
-                                                      theta3 = 6,
-                                                      theta4 = 7:9,
+                                                      theta1 = 0.4,
+                                                      theta2 = 0.5,
+                                                      theta3 = 0.6,
+                                                      theta4 = 7:9/10,
                                                       Sigma_beta = diag(1, nrow = 5, ncol = 5),
-                                                      Sigma_theta = diag(2, nrow = 7, ncol = 7))
+                                                      Sigma_theta = diag(1.1, nrow = 7, ncol = 7))
         it("returns a function", {
             expect_equal(class(se_fun),
                          "function")
@@ -1147,14 +1147,14 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
                          c("a0","a1","m_cde","c_cond"))
         })
         it("returns a function with parameters in the enslosing environment", {
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 1)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 2)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), 3:5)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 0.1)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta1"), 0.2)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta2"), 3:5/10)
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta0"), 0)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 4)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 5)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 6)
-            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), 7:9)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta1"), 0.4)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta2"), 0.5)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta3"), 0.6)
+            expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "theta4"), 7:9/10)
         })
         it("returns a function that errors given inconsistent c_cond", {
             expect_error(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL))
