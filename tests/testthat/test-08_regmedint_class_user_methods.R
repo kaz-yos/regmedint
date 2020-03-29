@@ -189,6 +189,16 @@ describe("methods for regmedint", {
                              c("cde","pnde","tnie","tnde","pnie","te","pm"))
             })
         })
+        describe("vcov.regmedint", {
+            it("creates a matrix with correct dimension names", {
+                expect_equal(class(vcov(fit_regmedint))[[1]],
+                             "matrix")
+                expect_equal(colnames(vcov(fit_regmedint)),
+                             c("cde","pnde","tnie","tnde","pnie","te","pm"))
+                expect_equal(rownames(vcov(fit_regmedint)),
+                             c("cde","pnde","tnie","tnde","pnie","te","pm"))
+            })
+        })
         ##
         describe("confint.regmedint", {
             it("creates a matrix of estimates", {
@@ -388,6 +398,17 @@ describe("methods for regmedint", {
             })
         })
         ##
+        describe("vcov.regmedint", {
+            it("creates a matrix with correct dimension names", {
+                expect_equal(class(vcov(fit_regmedint))[[1]],
+                             "matrix")
+                expect_equal(colnames(vcov(fit_regmedint)),
+                             c("cde","pnde","tnie","tnde","pnie","te","pm"))
+                expect_equal(rownames(vcov(fit_regmedint)),
+                             c("cde","pnde","tnie","tnde","pnie","te","pm"))
+            })
+        })
+        ##
         describe("confint.regmedint", {
             it("creates a matrix of estimates", {
                 expect_equal(colnames(confint(fit_regmedint)),
@@ -569,6 +590,17 @@ describe("methods for regmedint", {
         describe("coef.regmedint", {
             it("creates a vector of estimates", {
                 expect_equal(names(coef(fit_regmedint)),
+                             c("cde","pnde","tnie","tnde","pnie","te","pm"))
+            })
+        })
+        ##
+        describe("vcov.regmedint", {
+            it("creates a matrix with correct dimension names", {
+                expect_equal(class(vcov(fit_regmedint))[[1]],
+                             "matrix")
+                expect_equal(colnames(vcov(fit_regmedint)),
+                             c("cde","pnde","tnie","tnde","pnie","te","pm"))
+                expect_equal(rownames(vcov(fit_regmedint)),
                              c("cde","pnde","tnie","tnde","pnie","te","pm"))
             })
         })
@@ -767,6 +799,17 @@ describe("methods for regmedint", {
         describe("coef.regmedint", {
             it("creates a vector of estimates", {
                 expect_equal(names(coef(fit_regmedint)),
+                             c("cde","pnde","tnie","tnde","pnie","te","pm"))
+            })
+        })
+        ##
+        describe("vcov.regmedint", {
+            it("creates a matrix with correct dimension names", {
+                expect_equal(class(vcov(fit_regmedint))[[1]],
+                             "matrix")
+                expect_equal(colnames(vcov(fit_regmedint)),
+                             c("cde","pnde","tnie","tnde","pnie","te","pm"))
+                expect_equal(rownames(vcov(fit_regmedint)),
                              c("cde","pnde","tnie","tnde","pnie","te","pm"))
             })
         })
