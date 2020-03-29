@@ -9,4 +9,4 @@
                        9    conditional pnie            -26.1238     41.312    0.52716    -107.095      54.848
                       10    conditional tnde            -32.2021    258.287    0.90078    -538.445     474.041
                       11    conditional tnie            -26.1238     41.312    0.52716    -107.095      54.848
-                      12    conditional total effect    -58.3259    267.240    0.82723    -582.116     465.465
+                      12    conditional total effect    -58.3259    261.116    0.82325    -570.114     453.462
