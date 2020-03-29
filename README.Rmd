@@ -1,8 +1,8 @@
 ---
-title: ""
+title: "regmedint: "
 author: "Kazuki Yoshida"
 date: "`r format(Sys.time(), '%Y-%m-%d')`"
-output: md_document
+output: github_document
 ---
 
 ```{r, message = FALSE, tidy = FALSE, echo = F}
@@ -13,7 +13,8 @@ showWarning <- TRUE
 set_alias(w = "fig.width", h = "fig.height", res = "results")
 opts_chunk$set(comment = "##", error= TRUE, warning = showWarning, message = showMessage,
                tidy = FALSE, cache = FALSE, echo = TRUE,
-               fig.width = 7, fig.height = 7, dev.args = list(family = "sans"))
+               fig.width = 7, fig.height = 7, dev.args = list(family = "sans"),
+               fig.path = "man/figures")
 ## for rgl
 ## knit_hooks$set(rgl = hook_rgl, webgl = hook_webgl)
 ## for animation
@@ -22,7 +23,8 @@ opts_knit$set(animation.fun = hook_ffmpeg_html)
 options(width = 116, scipen = 5)
 ```
 
-# regmedint (developmental repo) <img src="hex.png" align="right" height="139"/>
+# regmedint (developmental repo) <img src="man/figures/hex.png" align="right" height="140"/>
+
 [![Travis-CI Build Status](https://travis-ci.org/kaz-yos/regmedint.svg?branch=master)](https://travis-ci.org/kaz-yos/regmedint)
 [![](http://www.r-pkg.org/badges/version/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/regmedint)](http://www.r-pkg.org/pkg/regmedint)
