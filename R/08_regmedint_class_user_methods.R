@@ -165,6 +165,8 @@ summary.regmedint <- function(x,
                          `exp(est)` = exp(res_est),
                          `exp(lower)` = exp(res_ci[,"lower"]),
                          `exp(upper)` = exp(res_ci[,"upper"]))
+        ## exp columns for pm should be NA.
+        res_mat["pm",c("exp(est)","exp(lower)","exp(upper)")] <- NA
     } else {
         res_mat <- cbind(est = res_est,
                          se = res_se,
