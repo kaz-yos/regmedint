@@ -412,23 +412,19 @@ vcov.regmedint <- function(x,
 
 ##' Confidence intervals for mediation prameter estimates.
 ##'
-##' .. content for \details{} ..
+##' Construct Wald approximate confidence intervals for the quantities of interest.
 ##'
-##' @param x
-##' @param a0
-##' @param a1
-##' @param m_cde
-##' @param c_cond
-##' @param alpha
-##' @param ...
+##' @inheritParams print.regmedint
+##' @param level A numeric vector of length one. Requested confidence level. Defaults to 0.95.
+##' @param ... For compatibility with generic.
 ##'
-##' @return A numeric matrix
+##' @return A numeric matrix of the lower limit and upper limit.
 confint.regmedint <- function(x,
                               a0 = NULL,
                               a1 = NULL,
                               m_cde = NULL,
                               c_cond = NULL,
-                              alpha = 0.05,
+                              level = 0.95,
                               ...) {
 
     ## This is a user function. Check arguments heavily.
@@ -461,6 +457,7 @@ confint.regmedint <- function(x,
                              m_cde = m_cde,
                              c_cond = c_cond)
 
+    alpha <- 1 - level
     res_mat <- cbind(lower = res_est - qnorm(p = (1 - (alpha / 2))) * res_se,
                      upper = res_est + qnorm(p = (1 - (alpha / 2))) * res_se)
 
