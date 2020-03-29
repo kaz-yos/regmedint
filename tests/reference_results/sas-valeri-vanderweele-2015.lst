@@ -1,4 +1,4 @@
-                                                           The SAS System                           14:40 Sunday, March 29, 2020   1
+                                                           The SAS System                           14:53 Sunday, March 29, 2020   1
 
                                                        The LIFEREG Procedure
 
@@ -52,7 +52,7 @@
                             Algorithm converged.                                                       
 
 
-                                                           The SAS System                           14:40 Sunday, March 29, 2020   2
+                                                           The SAS System                           14:53 Sunday, March 29, 2020   2
 
                                                        The LIFEREG Procedure
 
@@ -98,44 +98,85 @@
                    int            0.034170     -0.096981     -0.074745      0.189642      0.000500             0
                    c             -0.005644   0.000036536     -0.004724      0.000500      0.009013             0
                    Scale                 0             0             0             0             0             0
-                                                           The SAS System                           14:40 Sunday, March 29, 2020   3
+                                                           The SAS System                           14:53 Sunday, March 29, 2020   3
 
-                                                         The REG Procedure
-                                                           Model: MODEL1
-                                                       Dependent Variable: m 
+                                                       The LOGISTIC Procedure
+
+                                                         Model Information
+
+                                           Data Set                      WORK.DATA1      
+                                           Response Variable             m               
+                                           Number of Response Levels     2               
+                                           Model                         binary logit    
+                                           Optimization Technique        Fisher's scoring
+
 
                                               Number of Observations Read         100
                                               Number of Observations Used         100
 
 
-                                                        Analysis of Variance
+                                                          Response Profile
  
-                                                               Sum of           Mean
-                           Source                   DF        Squares         Square    F Value    Pr > F
+                                                 Ordered                      Total
+                                                   Value            m     Frequency
 
-                           Model                     2        0.62007        0.31003       1.23    0.2956
-                           Error                    97       24.36993        0.25124                     
-                           Corrected Total          99       24.99000                                    
+                                                       1            1            51
+                                                       2            0            49
 
-
-                                        Root MSE              0.50123    R-Square     0.0248
-                                        Dependent Mean        0.51000    Adj R-Sq     0.0047
-                                        Coeff Var            98.28135                       
+                                                    Probability modeled is m=1.
 
 
-                                                        Parameter Estimates
+                                                      Model Convergence Status
+
+                                           Convergence criterion (GCONV=1E-8) satisfied.          
+
+
+                                                        Model Fit Statistics
  
-                                                     Parameter       Standard
-                                Variable     DF       Estimate          Error    t Value    Pr > |t|
+                                                                            Intercept
+                                                             Intercept            and
+                                               Criterion          Only     Covariates
 
-                                Intercept     1        0.41338        0.07969       5.19      <.0001
-                                x             1        0.09410        0.10285       0.91      0.3625
-                                c             1        0.06568        0.05003       1.31      0.1924
-                                                           The SAS System                           14:40 Sunday, March 29, 2020   4
+                                               AIC             140.589        142.079
+                                               SC              143.195        149.895
+                                               -2 Log L        138.589        136.079
 
-                                       Obs     _RMSE_    Intercept        x            c
 
-                                        1     0.50123      0.41338     0.094103     0.065677
-                                        2     0.50123      0.00635    -0.004313    -0.002364
-                                        3     0.50123     -0.00431     0.010578     0.000206
-                                        4     0.50123     -0.00236     0.000206     0.002503
+                                              Testing Global Null Hypothesis: BETA=0
+ 
+                                      Test                 Chi-Square       DF     Pr > ChiSq
+
+                                      Likelihood Ratio         2.5101        2         0.2851
+                                      Score                    2.4813        2         0.2892
+                                      Wald                     2.4246        2         0.2975
+
+
+                                                           The SAS System                           14:53 Sunday, March 29, 2020   4
+
+                                                       The LOGISTIC Procedure
+
+                                             Analysis of Maximum Likelihood Estimates
+ 
+                                                               Standard          Wald
+                                Parameter    DF    Estimate       Error    Chi-Square    Pr > ChiSq
+
+                                Intercept     1     -0.3545      0.3252        1.1887        0.2756
+                                x             1      0.3842      0.4165        0.8509        0.3563
+                                c             1      0.2694      0.2058        1.7131        0.1906
+
+
+                                                        Odds Ratio Estimates
+                                                                  
+                                                          Point          95% Wald
+                                             Effect    Estimate      Confidence Limits
+
+                                             x            1.468       0.649       3.322
+                                             c            1.309       0.875       1.960
+
+
+                                   Association of Predicted Probabilities and Observed Responses
+
+                                         Percent Concordant     59.6    Somers' D    0.192
+                                         Percent Discordant     40.4    Gamma        0.192
+                                         Percent Tied            0.0    Tau-a        0.097
+                                         Pairs                  2499    c            0.596
