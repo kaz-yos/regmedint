@@ -100,30 +100,30 @@ describe("methods for regmedint", {
                 expect_equivalent(summary(fit_regmedint)$summary_myreg[,"upper"],
                                   confint(fit_regmedint)[,"upper"])
             })
-            it("returns an object with appropriate columns (exponentiated)", {
-                expect_equal(colnames(summary(fit_regmedint)$summary_myreg),
+            it("returns an object with appropriate columns (exponentiated, exp(pm) is NA)", {
+                expect_equal(colnames(summary(fit_regmedint, exponentiate = TRUE)$summary_myreg),
                              c("est","se","Z","p","lower","upper",
                                "exp(est)","exp(lower)","exp(upper)"))
                 ## expect_equivalent ignores attributes
-                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"est"],
+                expect_equivalent(summary(fit_regmedint, exponentiate = TRUE)$summary_myreg[,"est"],
                                   coef(fit_regmedint))
-                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"se"],
+                expect_equivalent(summary(fit_regmedint, exponentiate = TRUE)$summary_myreg[,"se"],
                                   sqrt(diag(vcov(fit_regmedint))))
-                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"lower"],
+                expect_equivalent(summary(fit_regmedint, exponentiate = TRUE)$summary_myreg[,"lower"],
                                   confint(fit_regmedint)[,"lower"])
-                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"upper"],
+                expect_equivalent(summary(fit_regmedint, exponentiate = TRUE)$summary_myreg[,"upper"],
                                   confint(fit_regmedint)[,"upper"])
                 exp_coefs <- exp(coef(fit_regmedint))
                 exp_coefs["pm"] <- NA
-                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"exp(est)"],
+                expect_equivalent(summary(fit_regmedint, exponentiate = TRUE)$summary_myreg[,"exp(est)"],
                                   exp_coefs)
                 exp_lower <- exp(confint(fit_regmedint)[,"lower"])
                 exp_lower["pm"] <- NA
-                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"exp(lower)"],
+                expect_equivalent(summary(fit_regmedint, exponentiate = TRUE)$summary_myreg[,"exp(lower)"],
                                   exp_lower)
                 exp_upper <- exp(confint(fit_regmedint)[,"upper"])
                 exp_upper["pm"] <- NA
-                expect_equivalent(summary(fit_regmedint)$summary_myreg[,"exp(upper)"],
+                expect_equivalent(summary(fit_regmedint, exponentiate = TRUE)$summary_myreg[,"exp(upper)"],
                                   exp_upper)
             })
         })
