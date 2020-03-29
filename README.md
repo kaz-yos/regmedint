@@ -280,7 +280,7 @@ The software design is outlined here for those who may be interested.
     -   coef.regmedint: regmedint → vector
         (cde,pnde,tnie,tnde,pnie,te,pm)
     -   vcov.regmedint: regmedint → matrix
-        (cde,pnde,tnie,tnde,pnie,te,pm). Off-diagnonalsa
+        (cde,pnde,tnie,tnde,pnie,te,pm). Off-diagonals are NA.
     -   confint.regmedint: regmedint → matrix of (lower,upper)
 
 Similar or related R projects

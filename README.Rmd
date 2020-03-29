@@ -138,8 +138,8 @@ The software design is outlined here for those who may be interested.
 
 
 # Similar or related R projects
-- mediation: https:/cran.r-project.org/web/packages/mediation/index.html/
-- medflex: https:/cran.r-project.org/web/packages/medflex/index.html/
-- intmed: https:/cran.r-project.org/web/packages/intmed/index.html/
-- mediator: https:/github.com/GerkeLab/mediator/
-- causalMediation: https:/github.com/harvard-P01/causalMediation
+- mediation: <https:/cran.r-project.org/web/packages/mediation/index.html/>
+- medflex: <https:/cran.r-project.org/web/packages/medflex/index.html/>
+- intmed: <https:/cran.r-project.org/web/packages/intmed/index.html/>
+- mediator: <https:/github.com/GerkeLab/mediator/>
+- causalMediation: <https:/github.com/harvard-P01/causalMediation>
