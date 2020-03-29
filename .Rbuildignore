@@ -3,7 +3,11 @@
 
 ## Avoid git(hub) related files
 \.git/*
+README.org
+README.Rmd
 README.md
+hex.png
+.*.gif
 
 ## Avoid Makefile, testing-related files, and archives
 Makefile
@@ -11,7 +15,6 @@ revdep
 revdep_check.txt
 regmedint.Rcheck
 .*.tar.gz
-.*.gif
 
 ## unit testing
 test-all.txt
