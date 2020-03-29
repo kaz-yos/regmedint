@@ -24,7 +24,7 @@ libname w './';
     a1 = 1,
     m = 1,
     yreg = survAFT_exp,
-    mreg = linear,
+    mreg = logistic,
     interaction = true,
     casecontrol = false,
     output = full,
