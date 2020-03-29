@@ -12,6 +12,17 @@
 
 
 ###
+### Helper
+################################################################################
+
+validate_eval_at_values <- function(x, a0, a1, m_cde, c_cond) {
+    assertthat::assert_that(is.null(a0) | (length(a0) == 1))
+    assertthat::assert_that(is.null(a1) | (length(a1) == 1))
+    assertthat::assert_that(is.null(m_cde) | (length(m_cde) == 1))
+    assertthat::assert_that(is.null(c_cond) | (length(c_cond) == length(x$args$cvar)))
+}
+
+###
 ### print method
 ################################################################################
 
@@ -39,10 +50,11 @@ print.regmedint <- function(x,
                             ...) {
 
     ## This is a user function. Check arguments heavily.
-    assertthat::assert_that(is.null(a0) | (length(a0) == 1))
-    assertthat::assert_that(is.null(a1) | (length(a1) == 1))
-    assertthat::assert_that(is.null(m_cde) | (length(m_cde) == 1))
-    assertthat::assert_that(is.null(c_cond) | (length(c_cond) == length(x$args$cvar)))
+    validate_eval_at_values(x = x,
+                            a0 = a0,
+                            a1 = a1,
+                            m_cde = m_cde,
+                            c_cond = c_cond)
     assertthat::assert_that(is.list(args_mreg_fit))
     assertthat::assert_that(is.list(args_yreg_fit))
 
@@ -104,10 +116,11 @@ summary.regmedint <- function(x,
                               ...) {
 
     ## This is a user function. Check arguments heavily.
-    assertthat::assert_that(is.null(a0) | (length(a0) == 1))
-    assertthat::assert_that(is.null(a1) | (length(a1) == 1))
-    assertthat::assert_that(is.null(m_cde) | (length(m_cde) == 1))
-    assertthat::assert_that(is.null(c_cond) | (length(c_cond) == length(x$args$cvar)))
+    validate_eval_at_values(x = x,
+                            a0 = a0,
+                            a1 = a1,
+                            m_cde = m_cde,
+                            c_cond = c_cond)
     assertthat::assert_that(is.list(args_mreg_fit))
     assertthat::assert_that(is.list(args_yreg_fit))
 
@@ -294,10 +307,11 @@ coef.regmedint <- function(x,
                            ...) {
 
     ## This is a user function. Check arguments heavily.
-    assertthat::assert_that(is.null(a0) | (length(a0) == 1))
-    assertthat::assert_that(is.null(a1) | (length(a1) == 1))
-    assertthat::assert_that(is.null(m_cde) | (length(m_cde) == 1))
-    assertthat::assert_that(is.null(c_cond) | (length(c_cond) == length(x$args$cvar)))
+    validate_eval_at_values(x = x,
+                            a0 = a0,
+                            a1 = a1,
+                            m_cde = m_cde,
+                            c_cond = c_cond)
 
     if (is.null(a0)) {
         a0 <- x$args$a0
@@ -340,10 +354,11 @@ vcov.regmedint <- function(x,
                            ...) {
 
     ## This is a user function. Check arguments heavily.
-    assertthat::assert_that(is.null(a0) | (length(a0) == 1))
-    assertthat::assert_that(is.null(a1) | (length(a1) == 1))
-    assertthat::assert_that(is.null(m_cde) | (length(m_cde) == 1))
-    assertthat::assert_that(is.null(c_cond) | (length(c_cond) == length(x$args$cvar)))
+    validate_eval_at_values(x = x,
+                            a0 = a0,
+                            a1 = a1,
+                            m_cde = m_cde,
+                            c_cond = c_cond)
 
     if (is.null(a0)) {
         a0 <- x$args$a0
@@ -401,10 +416,11 @@ confint.regmedint <- function(x,
                               ...) {
 
     ## This is a user function. Check arguments heavily.
-    assertthat::assert_that(is.null(a0) | (length(a0) == 1))
-    assertthat::assert_that(is.null(a1) | (length(a1) == 1))
-    assertthat::assert_that(is.null(m_cde) | (length(m_cde) == 1))
-    assertthat::assert_that(is.null(c_cond) | (length(c_cond) == length(x$args$cvar)))
+    validate_eval_at_values(x = x,
+                            a0 = a0,
+                            a1 = a1,
+                            m_cde = m_cde,
+                            c_cond = c_cond)
 
     if (is.null(a0)) {
         a0 <- x$args$a0
