@@ -6,126 +6,28 @@
 * checking for file ‘regmedint/DESCRIPTION’ ... OK
 * this is package ‘regmedint’ version ‘0.0.0.9000’
 * package encoding: UTF-8
-* checking CRAN incoming feasibility ... NOTE
+* checking CRAN incoming feasibility ... WARNING
 Maintainer: ‘Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>’
 
 New submission
 
 Version contains large components (0.0.0.9000)
 
+Strong dependencies not in mainstream repositories:
+  rlangg
+
 The Title field should be in title case. Current version is:
 ‘Regression-based causal mediation analysis’
 In title case that is:
 ‘Regression-Based Causal Mediation Analysis’
+
+The Description field should not start with the package name,
+  'This package' or similar.
 * checking package namespace information ... OK
-* checking package dependencies ... OK
-* checking if this is a source package ... OK
-* checking if there is a namespace ... OK
-* checking for executable files ... OK
-* checking for hidden files and directories ... OK
-* checking for portable file names ... OK
-* checking for sufficient/correct file permissions ... OK
-* checking serialization versions ... OK
-* checking whether package ‘regmedint’ can be installed ... OK
-* checking installed package size ... OK
-* checking package directory ... OK
-* checking for future file timestamps ... OK
-* checking DESCRIPTION meta-information ... OK
-* checking top-level files ... NOTE
-Non-standard files/directories found at top level:
-  ‘README.Rmd’ ‘README.org’ ‘hex.png’
-* checking for left-over files ... OK
-* checking index information ... OK
-* checking package subdirectories ... OK
-* checking R files for non-ASCII characters ... OK
-* checking R files for syntax errors ... OK
-* checking whether the package can be loaded ... OK
-* checking whether the package can be loaded with stated dependencies ... OK
-* checking whether the package can be unloaded cleanly ... OK
-* checking whether the namespace can be loaded with stated dependencies ... OK
-* checking whether the namespace can be unloaded cleanly ... OK
-* checking loading without being on the library search path ... OK
-* checking use of S3 registration ... OK
-* checking dependencies in R code ... WARNING
-'::' or ':::' imports not declared from:
-  ‘MASS’ ‘Matrix’ ‘assertthat’ ‘survival’
-* checking S3 generic/method consistency ... OK
-* checking replacement functions ... OK
-* checking foreign function calls ... OK
-* checking R code for possible problems ... NOTE
-Sigma_beta_hat: no visible global function definition for ‘vcov’
-Sigma_sigma_sq_hat: no visible global function definition for ‘sigma’
-Sigma_theta_hat: no visible global function definition for ‘vcov’
-Sigma_theta_hat: no visible global function definition for ‘coef’
-beta_hat: no visible global function definition for ‘coef’
-confint.regmedint: no visible global function definition for ‘qnorm’
-sigma_hat_sq: no visible global function definition for ‘sigma’
-summary.regmedint: no visible global function definition for ‘pnorm’
-summary.regmedint: no visible global function definition for ‘confint’
-theta_hat: no visible global function definition for ‘coef’
-vcov.regmedint: no visible global function definition for ‘coef’
-Undefined global functions or variables:
-  coef confint pnorm qnorm sigma vcov
-Consider adding
-  importFrom("stats", "coef", "confint", "pnorm", "qnorm", "sigma",
-             "vcov")
-to your NAMESPACE file.
-* checking Rd files ... NOTE
-prepare_Rd: fit_yreg.Rd:26-28: Dropping empty section \value
-* checking Rd metadata ... OK
-* checking Rd line widths ... OK
-* checking Rd cross-references ... WARNING
-Missing link or links in documentation object 'calc_myreg_mreg_linear_yreg_logistic.Rd':
-  ‘calc_myreg_mreg_linear_yreg_logistic_est’
-  ‘calc_myreg_mreg_linear_yreg_logistic_se’
+* checking package dependencies ... ERROR
+Package required but not available: ‘rlangg’
 
-See section 'Cross-references' in the 'Writing R Extensions' manual.
-
-* checking for missing documentation entries ... OK
-* checking for code/documentation mismatches ... OK
-* checking Rd \usage sections ... WARNING
-Undocumented arguments in documentation object 'beta_hat'
-  ‘mreg_fit’
-
-Undocumented arguments in documentation object 'summary.regmedint'
-  ‘alpha’
-
-Undocumented arguments in documentation object 'theta_hat'
-  ‘yreg_fit’
-
-Functions with \usage entries need to have the appropriate \alias
-entries, and all their arguments documented.
-The \usage entries must correspond to syntactically valid R code.
-See chapter ‘Writing R documentation files’ in the ‘Writing R
-Extensions’ manual.
-* checking Rd contents ... OK
-* checking for unstated dependencies in examples ... OK
-* checking examples ... NONE
-* checking for unstated dependencies in ‘tests’ ... WARNING
-'::' or ':::' imports not declared from:
-  ‘MASS’ ‘Matrix’ ‘purrr’ ‘rlang’ ‘stringr’
-'library' or 'require' calls not declared from:
-  ‘stringr’ ‘survival’ ‘tidyverse’
-* checking tests ...
- ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  ══ testthat results  ═══════════════════════════════════════════════════════════
-  [ OK: 23 | SKIPPED: 0 | WARNINGS: 1 | FAILED: 17 ]
-  1. Error: (unknown) (@test-01_regmedint_class_ui.R#9) 
-  2. Error: (unknown) (@test-03_fit_mreg.R#10) 
-  3. Error: (unknown) (@test-04_fit_yreg_linear.R#10) 
-  4. Error: (unknown) (@test-04_fit_yreg_logistic.R#10) 
-  5. Error: (unknown) (@test-04_fit_yreg_negbin.R#10) 
-  6. Error: (unknown) (@test-04_fit_yreg_poisson.R#10) 
-  7. Error: (unknown) (@test-04_fit_yreg_survAFT_exp.R#10) 
-  8. Error: (unknown) (@test-04_fit_yreg_survAFT_weibull.R#10) 
-  9. Error: (unknown) (@test-04_fit_yreg_survCox.R#10) 
-  1. ...
-  
-  Error: testthat unit tests failed
-  Execution halted
-* checking PDF version of manual ... OK
-* checking for detritus in the temp directory ... OK
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 * DONE
-Status: 1 ERROR, 4 WARNINGs, 4 NOTEs
+Status: 1 ERROR, 1 WARNING

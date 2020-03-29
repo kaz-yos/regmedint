@@ -1,5 +1,5 @@
 Package: regmedint
-Title: Regression-based causal mediation analysis
+Title: Regression-Based Causal Mediation Analysis
 Version: 0.0.0.9000
 Authors@R: c(
     # http://r-pkgs.had.co.nz/description.html#author
@@ -8,12 +8,19 @@ Authors@R: c(
     role = c('cre','aut'),
     comment = c(ORCID = '0000-0002-2030-3549'))
     )
-Description: What the package does (one paragraph).
+Description: R re-implementation of the SAS macro developped by Valeri and VanderWeele.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Imports:
-    Deriv
+    Deriv,
+    MASS,
+    Matrix,
+    purrr,
+    rlang,
+    survival
 Suggests:
-    testthat
+    stringr,
+    testthat,
+    tidyverse
 RoxygenNote: 7.1.0
