@@ -30,7 +30,7 @@ if (rlang::env_has(rlang::global_env(), "expect_equal")) {
     rlang::env_unbind(rlang::global_env(), "expect_equal")
 }
 
-expect_equal <- purrr::partial(expect_equal, tolerance = 0.1)
+expect_equal <- purrr::partial(expect_equal, tolerance = 0.01)
 
 
 ###
