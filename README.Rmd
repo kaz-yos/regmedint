@@ -33,31 +33,36 @@ This package is meant to be an educational tool. Thanks to R's expressibility, t
 
 # Example
 
-```{r, eval = FALSE}
+```{r, eval = TRUE}
 ## install.packages("devtools") # If you do not have it.
 ## devtools::install_github("kaz-yos/regmedint") # If you have not installed it, yet.
 library(regmedint)
 library(tidyverse)
 
+vv2015 <- read_delim(file = "./tests/reference_results/data-valeri-vanderweele-2015.txt",
+                     delim = " ") %>%
+    ## Following R convention, an event indicator is used.
+    mutate(event = if_else(cens == 0, 1L, 0L))
+
 ## FIXME: Find a meaningful data example within R.
-regmedint_obj <- regmedint(data,
+regmedint_obj <- regmedint(data = vv2015,
                            ##
-                           yvar,
-                           avar,
-                           mvar,
-                           cvar,
+                           yvar = "y",
+                           avar = "x",
+                           mvar = "m",
+                           cvar = "c",
                            ##
-                           a0,
-                           a1,
-                           m_cde,
-                           c_cond,
+                           a0 = 0,
+                           a1 = 1,
+                           m_cde = 1,
+                           c_cond = 0.5,
                            ##
-                           mreg,
-                           yreg,
+                           mreg = "logistic",
+                           yreg = "survAFT_weibull",
                            ##
                            interaction = TRUE,
                            casecontrol = FALSE,
-                           eventvar = NULL)
+                           eventvar = "event")
 
 ## Implicit printing prints mreg, yreg, and mediation analysis point estimates.
 regmedint_obj
@@ -66,9 +71,9 @@ summary(regmedint_obj)
 ## Add exponentiated results.
 summary(regmedint_obj, exponentiate = TRUE)
 ## The estimates can be re-evaluated without model refitting at a different mvar value.
-summary(regmedint_obj, m_cde = )
+summary(regmedint_obj, exponentiate = TRUE, m_cde = 0)
 ## The estimates can be re-evaluated without model refitting at a different c_cond value.
-summary(regmedint_obj, c_cond = )
+summary(regmedint_obj, exponentiate = TRUE, c_cond = 5)
 ```
 
 # Implementation status
