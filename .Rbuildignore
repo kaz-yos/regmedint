@@ -26,3 +26,6 @@ tests/testthat/data-*
 cran-check.txt
 ## Travis-CI
 ^\.travis\.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
