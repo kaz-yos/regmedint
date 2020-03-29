@@ -22,13 +22,13 @@ libname w './';
     cvar = c,
     a0 = 0,
     a1 = 1,
-    m = 0,
+    m = 1,
     yreg = survAFT_exp,
     mreg = linear,
     interaction = true,
     casecontrol = ,
-    output = ,
-    c = ,
+    output = full,
+    c = 0.5,
     boot = ,
     cens = cens);
 run;
