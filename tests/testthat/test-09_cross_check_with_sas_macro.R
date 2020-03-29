@@ -286,7 +286,7 @@ junk <- macro_args_sas_r_prelim %>%
 
 
 ###
-### Extract R results for testing
+### Extract R results for testing against SAS macro results
 ################################################################################
 
 macro_args_sas_r <- macro_args_sas_r_prelim %>%
@@ -303,16 +303,14 @@ macro_args_sas_r <- macro_args_sas_r_prelim %>%
             if(class(res)[[1]] == "try-error") {
                 return(NULL)
             } else {
-                capture_output(summary_mat <- summary(res))
-                return(summary_mat[,"SE(est)"])
+                return(sqrt(diag(vcov(res))))
             }
         }),
         p = map(res, function(res) {
             if(class(res)[[1]] == "try-error") {
                 return(NULL)
             } else {
-                capture_output(summary_mat <- summary(res))
-                return(summary_mat[,"p"])
+                return(coef(summary(res))[,"p"])
             }
         }),
         ## 2 * (1 - pnorm(1.96)) to get confint corresponding to 1.96 * se
