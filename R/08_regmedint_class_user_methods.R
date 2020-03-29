@@ -241,6 +241,11 @@ print.summary_regmedint <- function(x, ...) {
 }
 
 
+coef.summary_regmedint <- function(x, ...) {
+    x$summary_myreg
+}
+
+
 print_eval_info_helper <- function(a0, a1, m_cde, c_cond,
                                    avar, mvar, cvar,
                                    yreg, mreg, interaction, casecontrol) {
