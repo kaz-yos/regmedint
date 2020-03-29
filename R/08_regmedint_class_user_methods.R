@@ -241,6 +241,14 @@ print.summary_regmedint <- function(x, ...) {
 }
 
 
+##' Extract the result matrix from a summary_regmedint object.
+##'
+##' Extract the result matrix from a summary_regmedint object.
+##'
+##' @param x An object with a class of \code{summary_regmedint}.
+##' @param ... For compatibility with the \code{coef} generic.
+##'
+##' @return  A matrix populated with results.
 coef.summary_regmedint <- function(x, ...) {
     x$summary_myreg
 }
