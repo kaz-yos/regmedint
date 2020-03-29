@@ -18,6 +18,7 @@
 ##' \code{cvar}: This part is eliminated when \code{cvar = NULL}.
 ##'
 ##' @inheritParams regmedint
+##' @param mreg_fit Model fit object for mreg (mediator model).
 ##'
 ##' @return A named numeric vector of coefficients.
 beta_hat <- function(mreg, mreg_fit, avar, cvar) {
@@ -57,6 +58,7 @@ beta_hat_helper <- function(mreg, mreg_fit, avar, cvar) {
 ##' \code{cvar}: This part is eliminated when \code{cvar = NULL}.
 ##'
 ##' @inheritParams regmedint
+##' @param yreg_fit Model fit object for yreg (outcome model).
 ##'
 ##' @return A named numeric vector of coefficients.
 theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
