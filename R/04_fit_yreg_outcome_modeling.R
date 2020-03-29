@@ -31,7 +31,7 @@
 ##'
 ##' @inheritParams regmedint
 ##'
-##' @return
+##' @return Model fit object from on of the above regression functions.
 fit_yreg <- function(yreg,
                      data,
                      yvar,
