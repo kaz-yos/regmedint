@@ -28,6 +28,35 @@ Example
     library(tidyverse)
 
     ## FIXME: Find a meaningful data example within R.
+    regmedint_obj <- regmedint(data,
+                               ##
+                               yvar,
+                               avar,
+                               mvar,
+                               cvar,
+                               ##
+                               a0,
+                               a1,
+                               m_cde,
+                               c_cond,
+                               ##
+                               mreg,
+                               yreg,
+                               ##
+                               interaction = TRUE,
+                               casecontrol = FALSE,
+                               eventvar = NULL)
+
+    ## Implicit printing prints mreg, yreg, and mediation analysis point estimates.
+    regmedint_obj
+    ## A fuller result is obtained.
+    summary(regmedint_obj)
+    ## Add exponentiated results.
+    summary(regmedint_obj, exponentiate = TRUE)
+    ## The estimates can be re-evaluated without model refitting at a different mvar value.
+    summary(regmedint_obj, m_cde = )
+    ## The estimates can be re-evaluated without model refitting at a different c_cond value.
+    summary(regmedint_obj, c_cond = )
 
 Implementation status
 =====================
