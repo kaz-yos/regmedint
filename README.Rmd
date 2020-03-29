@@ -1,0 +1,145 @@
+---
+title: ""
+author: "Kazuki Yoshida"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+output: md_document
+---
+
+```{r, message = FALSE, tidy = FALSE, echo = F}
+## knitr configuration: http://yihui.name/knitr/options#chunk_options
+library(knitr)
+showMessage <- FALSE
+showWarning <- TRUE
+set_alias(w = "fig.width", h = "fig.height", res = "results")
+opts_chunk$set(comment = "##", error= TRUE, warning = showWarning, message = showMessage,
+               tidy = FALSE, cache = FALSE, echo = TRUE,
+               fig.width = 7, fig.height = 7, dev.args = list(family = "sans"))
+## for rgl
+## knit_hooks$set(rgl = hook_rgl, webgl = hook_webgl)
+## for animation
+opts_knit$set(animation.fun = hook_ffmpeg_html)
+## R configuration
+options(width = 116, scipen = 5)
+```
+
+# regmedint (developmental repo) <img src="hex.png" align="right" height="139"/>
+[![Travis-CI Build Status](https://travis-ci.org/kaz-yos/regmedint.svg?branch=master)](https://travis-ci.org/kaz-yos/regmedint)
+[![](http://www.r-pkg.org/badges/version/regmedint)](http://www.r-pkg.org/pkg/regmedint)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/regmedint)](http://www.r-pkg.org/pkg/regmedint)
+
+This is an R reimplementation of the regression-based causal mediation analysis methods as implemented in the SAS macro by Valeri and VanderWeele (2013 and 2015). The original is found at Dr. VanderWeele's [Tools and Tutorials](https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/).
+
+This package is meant to be an educational tool. Thanks to R's expressibility, the code is likely easier to read than SAS IML. Thus, the correspondence between the formulas presented in the Appendix of Explanation in Causal Inference (VanderWeele 2015) and the code should be easier to grasp.
+
+
+# Example
+
+```{r}
+## install.packages("devtools") # If you do not have it.
+## devtools::install_github("kaz-yos/regmedint") # If you have not installed it, yet.
+library(regmedint)
+```
+
+# Implementation status
+
+This package is currently under development. The eAppendix for SAS macro for causal mediation analysis with survival data (Valeri & VanderWeele 2015) describes the following grid of models.
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+| yreg \ mreg     | linear | logistic |
+|:----------------|:------:|:--------:|
+| linear          | 3      | 3        |
+| logistic        | 3      | 3        |
+| loglinear       | 1      | 1        |
+| poisson         | 3      | 3        |
+| negbin          | 3      | 3        |
+| survCox         | 3      | 3        |
+| survAFT exp     | 3      | 3        |
+| survAFT weibull | 3      | 3        |
+
+The current implementation status:
+0. None (left blank)
+1. SAS reference results created
+2. R implementation ongoing
+3. R implementation complete
+
+
+# Formulas
+The point estimate and standard error formulas (multivariate delta method) were taken from the following references.
+
+- V2015: VanderWeele (2015) Explanation in Causal Inference.
+- VV2013A: Valeri & VanderWeele (2013) Appendix
+- VV2015A: Valeri & VanderWeele (2015) Appendix
+
+As seen below, there are only four patterns.
+
+## Effect formulas
+| yreg \ mreg     | linear                               | logistic                             |
+|-----------------+--------------------------------------+--------------------------------------|
+| linear          | V2015 p466 Proposition 2.3           | V2015 p471 Proposition 2.5           |
+|                 |                                      |                                      |
+| logistic        | V2015 p468 Proposition 2.4           | V2015 p473 Proposition 2.6           |
+| loglinear       | VV2013A p8 Use Proposition 2.4       | VV2013A p8 Use Proposition 2.6       |
+| poisson         | VV2013A p8 Use Proposition 2.4       | VV2013A p8 Use Proposition 2.6       |
+| negbin          | VV2013A p8 Use Proposition 2.4       | VV2013A p8 Use Proposition 2.6       |
+|                 |                                      |                                      |
+| survCox         | V2015 p496 Proposition 4.4 (Use 2.4) | V2015 p499 Proposition 4.6 (Use 2.6) |
+| survAFT exp     | V2015 p494 Proposition 4.1 (Use 2.4) | V2015 p495 Proposition 4.3 (Use 2.6) |
+| survAFT weibull | V2015 p494 Proposition 4.1 (Use 2.4) | V2015 p495 Proposition 4.3 (Use 2.6) |
+
+Note the loglinear outcome model means log link with binomial error.
+
+## Standard error formulas
+| yreg \ mreg     | linear                         | logistic                       |
+|-----------------+--------------------------------+--------------------------------|
+| linear          | V2015 p466 Proposition 2.3     | V2015 p471 Proposition 2.5     |
+|                 |                                |                                |
+| logistic        | V2015 p468 Proposition 2.4     | V2015 p473 Proposition 2.6     |
+| loglinear       | VV2013A p8 Use Proposition 2.4 | VV2013A p8 Use Proposition 2.6 |
+| poisson         | VV2013A p8 Use Proposition 2.4 | VV2013A p8 Use Proposition 2.6 |
+| negbin          | VV2013A p8 Use Proposition 2.4 | VV2013A p8 Use Proposition 2.6 |
+|                 |                                |                                |
+| survCox         | V2015 p496 Use Proposition 2.4 | V2015 p499 Use Proposition 2.6 |
+| survAFT exp     | V2015 p494 Use Proposition 2.4 | V2015 p495 Use Proposition 2.6 |
+| survAFT weibull | V2015 p494 Use Proposition 2.4 | V2015 p495 Use Proposition 2.6 |
+
+
+# Design
+
+The software design is outlined here for those who may be interested.
+
+- Call structure
+  - regmedint UI function
+    - new_regmedint internal constructor
+      - fit_mreg
+      - fit_yreg
+      - calc_myreg calls a specialized worker function, which return two functions, one for point estimates and the other for standard error estimate.
+        - calc_myreg_mreg_linear_yreg_linear
+        - calc_myreg_mreg_linear_yreg_logistic
+        - calc_myreg_mreg_logistic_yreg_linear
+        - calc_myreg_mreg_logistic_yreg_logistic
+
+- regmedint object structure
+  - mreg_fit mediator regression model object as is
+  - yreg_fit outcome regression model object as is
+  - myreg_funs list
+    - est_fun: (a0,a1,m_cde,c_cond) → (cde,pnde,tnie,tnde,pnie,te,pm)
+    - se_fun: (a0,a1,m_cde,c_cond) → se for (cde,pnde,tnie,tnde,pnie,te,pm)
+    - args preserves arguments given to the UI
+
+- User methods for the regmedint object
+  - print.regmedint: prints coefficients for mreg, yreg, and mediation analysis
+  - summary.regmedint: regmedint → summary_regmedint
+    - print.summary_regmedint: prints summary objects for mreg, yreg, and mediation analysis
+    - coef.summary_regmedint:
+  - coef.regmedint: regmedint → vector (cde,pnde,tnie,tnde,pnie,te,pm)
+  - vcov.regmedint: regmedint → matrix (cde,pnde,tnie,tnde,pnie,te,pm). Off-diagonals are NA.
+  - confint.regmedint: regmedint → matrix of (lower,upper)
+
+
+# Similar or related R projects
+- mediation: https:/cran.r-project.org/web/packages/mediation/index.html/
+- medflex: https:/cran.r-project.org/web/packages/medflex/index.html/
+- intmed: https:/cran.r-project.org/web/packages/intmed/index.html/
+- mediator: https:/github.com/GerkeLab/mediator/
+- causalMediation: https:/github.com/harvard-P01/causalMediation
