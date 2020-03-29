@@ -1,42 +1,9 @@
-
-# Table of Contents
-
-1.  [regmedint (developmental repo)](#org6537dbb)
-2.  [Status](#orgf0f7f7c)
-3.  [Formulas](#org30ff663)
-    1.  [Effect formulas](#orgff32dd5)
-    2.  [Standard error formulas](#org1aaad20)
-4.  [Implementation progress](#org49f67de)
-5.  [TODOs](#org17e78e0)
-    1.  [2020-03-15](#orge2bce86)
-        1.  [Complete implementation of calc<sub>myreg</sub><sub>mreg</sub><sub>linear</sub><sub>yreg</sub><sub>logistic</sub>](#org86422e2)
-        2.  [Copy test for calc<sub>myreg</sub><sub>mreg</sub><sub>linear</sub><sub>yreg</sub><sub>linear</sub>](#orgc913806)
-6.  [Design](#orgba95ac0)
-    1.  [regmedint UI function](#org48490a3)
-        1.  [new<sub>regmedint</sub> internal constructor](#org7c6c2bf)
-    2.  [regmedint object](#org604fe8d)
-        1.  [mreg<sub>fit</sub> mediator regression model object as is](#orga90f9cf)
-        2.  [yreg<sub>fit</sub> outcome regression model object as is](#orgcf08e09)
-        3.  [myreg<sub>funs</sub> list](#orgb7cad40)
-        4.  [args preserves arguments given to the UI](#orgc33f581)
-    3.  [methods for regmedint](#org937fed6)
-        1.  [print.regmedint](#org480b94f)
-        2.  [summary.regmedint: regmedint -> regmedint<sub>summary</sub>](#orge2d951d)
-        3.  [coef.regmedint: regmedint -> vector (cde,pnde,tnie,tnde,pnie,te,pm)](#org7c91457)
-        4.  [confint.regmedint: regmedint -> matrix of (lower,upper)](#orge68fa47)
-7.  [Similar or related R projects](#org44ae55c)
-
-
-<a id="org6537dbb"></a>
-
 # regmedint (developmental repo)
+[![Travis-CI Build Status](https://travis-ci.org/kaz-yos/tableone.svg?branch=master)](https://travis-ci.org/kaz-yos/regmedint)
+[![](http://www.r-pkg.org/badges/version/regmedint)](http://www.r-pkg.org/pkg/regmedint)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 
-<https://travis-ci.org/kaz-yos/medregint.svg?branch=develop>
-<http://www.r-pkg.org/badges/version/regmedint>
-<http://cranlogs.r-pkg.org/badges/regmedint>
-
-
-<a id="orgf0f7f7c"></a>
+This is an R reimplementation of the regression-based causal mediation analysis methods as implemented in the SAS macro by Valeri and VanderWeele (2013 and 2015). The original is found at
 
 # Status
 
