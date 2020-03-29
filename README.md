@@ -25,6 +25,9 @@ Example
     ## install.packages("devtools") # If you do not have it.
     ## devtools::install_github("kaz-yos/regmedint") # If you have not installed it, yet.
     library(regmedint)
+    library(tidyverse)
+
+    ## FIXME: Find a meaningful data example within R.
 
 Implementation status
 =====================
