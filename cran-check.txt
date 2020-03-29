@@ -6,28 +6,58 @@
 * checking for file ‘regmedint/DESCRIPTION’ ... OK
 * this is package ‘regmedint’ version ‘0.0.0.9000’
 * package encoding: UTF-8
-* checking CRAN incoming feasibility ... WARNING
+* checking CRAN incoming feasibility ... NOTE
 Maintainer: ‘Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>’
 
 New submission
 
 Version contains large components (0.0.0.9000)
-
-Strong dependencies not in mainstream repositories:
-  rlangg
-
-The Title field should be in title case. Current version is:
-‘Regression-based causal mediation analysis’
-In title case that is:
-‘Regression-Based Causal Mediation Analysis’
-
-The Description field should not start with the package name,
-  'This package' or similar.
 * checking package namespace information ... OK
-* checking package dependencies ... ERROR
-Package required but not available: ‘rlangg’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking serialization versions ... OK
+* checking whether package ‘regmedint’ can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking for future file timestamps ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking use of S3 registration ... OK
+* checking dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... OK
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd line widths ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking examples ... NONE
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ...
+ OK
+* checking PDF version of manual ... OK
+* checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 ERROR, 1 WARNING
+Status: 1 NOTE
