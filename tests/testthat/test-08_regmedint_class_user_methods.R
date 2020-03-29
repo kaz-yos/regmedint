@@ -176,9 +176,9 @@ describe("methods for regmedint", {
             describe("coef.summary_regmedint", {
                 it("extract the matrix object", {
                     expect_equal(coef(summary(fit_regmedint)),
-                                 summary(fit_regmedint)$myreg_summary)
+                                 summary(fit_regmedint)$summary_myreg)
                     expect_equal(coef(summary(fit_regmedint_int)),
-                                 summary(fit_regmedint_int)$myreg_summary)
+                                 summary(fit_regmedint_int)$summary_myreg)
                 })
             })
         })
@@ -374,9 +374,9 @@ describe("methods for regmedint", {
             describe("coef.summary_regmedint", {
                 it("extract the matrix object", {
                     expect_equal(coef(summary(fit_regmedint)),
-                                 summary(fit_regmedint)$myreg_summary)
+                                 summary(fit_regmedint)$summary_myreg)
                     expect_equal(coef(summary(fit_regmedint_int)),
-                                 summary(fit_regmedint_int)$myreg_summary)
+                                 summary(fit_regmedint_int)$summary_myreg)
                 })
             })
         })
@@ -559,9 +559,9 @@ describe("methods for regmedint", {
             describe("coef.summary_regmedint", {
                 it("extract the matrix object", {
                     expect_equal(coef(summary(fit_regmedint)),
-                                 summary(fit_regmedint)$myreg_summary)
+                                 summary(fit_regmedint)$summary_myreg)
                     expect_equal(coef(summary(fit_regmedint_int)),
-                                 summary(fit_regmedint_int)$myreg_summary)
+                                 summary(fit_regmedint_int)$summary_myreg)
                 })
             })
         })
@@ -757,9 +757,9 @@ describe("methods for regmedint", {
             describe("coef.summary_regmedint", {
                 it("extract the matrix object", {
                     expect_equal(coef(summary(fit_regmedint)),
-                                 summary(fit_regmedint)$myreg_summary)
+                                 summary(fit_regmedint)$summary_myreg)
                     expect_equal(coef(summary(fit_regmedint_int)),
-                                 summary(fit_regmedint_int)$myreg_summary)
+                                 summary(fit_regmedint_int)$summary_myreg)
                 })
             })
         })
