@@ -25,6 +25,11 @@ test_that("placeholder", {
 ### Adjust tolerance by masking the original expect_equal
 ################################################################################
 
+## Need to remove from global_env() to make sure we are not overwriting.
+if (rlang::env_has(rlang::global_env(), "expect_equal")) {
+    rlang::env_unbind(rlang::global_env(), "expect_equal")
+}
+
 expect_equal <- purrr::partial(expect_equal, tolerance = 0.1)
 
 
@@ -559,4 +564,7 @@ junk <- macro_args_sas_r %>%
 ### Remove the modified version of expect_equal.
 ################################################################################
 
-rm(expect_equal)
+## Need to remove from global_env() to make sure we are not overwriting.
+if (rlang::env_has(rlang::global_env(), "expect_equal")) {
+    rlang::env_unbind(rlang::global_env(), "expect_equal")
+}
