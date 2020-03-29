@@ -1,19 +1,22 @@
-* using log directory ‘/inv/kyoshida/cantos_stats/regmedint/regmedint.Rcheck’
-* using R version 3.6.1 (2019-07-05)
-* using platform: x86_64-conda_cos6-linux-gnu (64-bit)
+* using log directory ‘/Users/kazuki/Dropbox/documents/programming/r/regmedint/regmedint.Rcheck’
+* using R version 3.6.3 (2020-02-29)
+* using platform: x86_64-apple-darwin19.3.0 (64-bit)
 * using session charset: UTF-8
 * using option ‘--as-cran’
 * checking for file ‘regmedint/DESCRIPTION’ ... OK
 * this is package ‘regmedint’ version ‘0.0.0.9000’
 * package encoding: UTF-8
 * checking CRAN incoming feasibility ... NOTE
-Maintainer: ‘First Last <first.last@example.com>’
+Maintainer: ‘Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>’
 
 New submission
 
 Version contains large components (0.0.0.9000)
 
-Non-FOSS package license (What license it uses)
+The Title field should be in title case. Current version is:
+‘Regression-based causal mediation analysis’
+In title case that is:
+‘Regression-Based Causal Mediation Analysis’
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -23,26 +26,14 @@ Non-FOSS package license (What license it uses)
 * checking for portable file names ... OK
 * checking for sufficient/correct file permissions ... OK
 * checking serialization versions ... OK
-* checking whether package ‘regmedint’ can be installed ... WARNING
-Found the following significant warnings:
-  Note: possible error in 'new_regmedint(data, yvar, ': unused arguments (boot, eventvar) 
-  Warning: /inv/kyoshida/cantos_stats/regmedint/regmedint.Rcheck/00_pkg_src/regmedint/man/print.regmedint.Rd:16: unexpected section header '\description'
-  Warning: /inv/kyoshida/cantos_stats/regmedint/regmedint.Rcheck/00_pkg_src/regmedint/man/print.regmedint.Rd:19: unexpected section header '\details'
-  Warning: /inv/kyoshida/cantos_stats/regmedint/regmedint.Rcheck/00_pkg_src/regmedint/man/summary.regmedint.Rd:19: unexpected section header '\details'
-See ‘/inv/kyoshida/cantos_stats/regmedint/regmedint.Rcheck/00install.out’ for details.
-Information on the location(s) of code generating the ‘Note’s can be
-obtained by re-running with environment variable R_KEEP_PKG_SOURCE set
-to ‘yes’.
+* checking whether package ‘regmedint’ can be installed ... OK
 * checking installed package size ... OK
 * checking package directory ... OK
 * checking for future file timestamps ... OK
-* checking DESCRIPTION meta-information ... WARNING
-Non-standard license specification:
-  What license it uses
-Standardizable: FALSE
+* checking DESCRIPTION meta-information ... OK
 * checking top-level files ... NOTE
-Non-standard file/directory found at top level:
-  ‘README.org’
+Non-standard files/directories found at top level:
+  ‘README.Rmd’ ‘README.org’ ‘hex.png’
 * checking for left-over files ... OK
 * checking index information ... OK
 * checking package subdirectories ... OK
@@ -67,57 +58,20 @@ Sigma_sigma_sq_hat: no visible global function definition for ‘sigma’
 Sigma_theta_hat: no visible global function definition for ‘vcov’
 Sigma_theta_hat: no visible global function definition for ‘coef’
 beta_hat: no visible global function definition for ‘coef’
-calc_myreg_mreg_linear_yreg_linear_se : fun_se: no visible binding for
-  global variable ‘sigma_sq’
-calc_myreg_mreg_linear_yreg_linear_se : fun_se: no visible binding for
-  global variable ‘best1’
-calc_myreg_mreg_linear_yreg_linear_se : fun_se: no visible binding for
-  global variable ‘pnde’
-calc_myreg_mreg_linear_yreg_linear_se : fun_se: no visible binding for
-  global variable ‘tnie’
-calc_myreg_mreg_linear_yreg_linear_se : fun_se: no visible binding for
-  global variable ‘tnde’
-calc_myreg_mreg_linear_yreg_linear_se : fun_se: no visible binding for
-  global variable ‘pnie’
-calc_myreg_mreg_linear_yreg_linear_se : fun_se: no visible binding for
-  global variable ‘te’
-calc_myreg_mreg_linear_yreg_linear_se : fun_se: no visible binding for
-  global variable ‘pm’
-calc_myreg_mreg_linear_yreg_logistic: no visible binding for global
-  variable ‘Sigma_beta’
-calc_myreg_mreg_linear_yreg_logistic: no visible binding for global
-  variable ‘Sigma_theta’
-calc_myreg_mreg_linear_yreg_logistic: no visible binding for global
-  variable ‘Sigma_sigma’
-calc_myreg_mreg_linear_yreg_logistic_se: no visible global function
-  definition for ‘lenth’
-calc_myreg_mreg_logistic_yreg_linear: no visible binding for global
-  variable ‘cvar’
-calc_myreg_mreg_logistic_yreg_logistic: no visible binding for global
-  variable ‘cvar’
-regmedint: possible error in new_regmedint(data, yvar, avar, mvar,
-  cvar, a0, a1, m_cde, yreg, mreg, interaction, casecontrol,
-  full_output, c_cond, boot, eventvar): unused arguments (boot,
-  eventvar)
-regmedint: no visible global function definition for
-  ‘validate_regmedint’
+confint.regmedint: no visible global function definition for ‘qnorm’
 sigma_hat_sq: no visible global function definition for ‘sigma’
+summary.regmedint: no visible global function definition for ‘pnorm’
+summary.regmedint: no visible global function definition for ‘confint’
 theta_hat: no visible global function definition for ‘coef’
+vcov.regmedint: no visible global function definition for ‘coef’
 Undefined global functions or variables:
-  Sigma_beta Sigma_sigma Sigma_theta best1 coef cvar lenth pm pnde pnie
-  sigma sigma_sq te tnde tnie validate_regmedint vcov
+  coef confint pnorm qnorm sigma vcov
 Consider adding
-  importFrom("stats", "coef", "sigma", "vcov")
+  importFrom("stats", "coef", "confint", "pnorm", "qnorm", "sigma",
+             "vcov")
 to your NAMESPACE file.
-* checking Rd files ... WARNING
-prepare_Rd: calc_myreg_mreg_logistic_yreg_linear.Rd:38-40: Dropping empty section \value
-prepare_Rd: calc_myreg_mreg_logistic_yreg_logistic.Rd:38-40: Dropping empty section \value
+* checking Rd files ... NOTE
 prepare_Rd: fit_yreg.Rd:26-28: Dropping empty section \value
-prepare_Rd: man/print.regmedint.Rd:16: unexpected section header '\description'
-prepare_Rd: man/print.regmedint.Rd:19: unexpected section header '\details'
-prepare_Rd: print.regmedint.Rd:12-14: Dropping empty section \value
-prepare_Rd: man/summary.regmedint.Rd:19: unexpected section header '\details'
-prepare_Rd: summary.regmedint.Rd:12-14: Dropping empty section \value
 * checking Rd metadata ... OK
 * checking Rd line widths ... OK
 * checking Rd cross-references ... WARNING
@@ -133,11 +87,8 @@ See section 'Cross-references' in the 'Writing R Extensions' manual.
 Undocumented arguments in documentation object 'beta_hat'
   ‘mreg_fit’
 
-Undocumented arguments in documentation object 'print.regmedint'
-  ‘x’
-
 Undocumented arguments in documentation object 'summary.regmedint'
-  ‘x’
+  ‘alpha’
 
 Undocumented arguments in documentation object 'theta_hat'
   ‘yreg_fit’
@@ -147,18 +98,12 @@ entries, and all their arguments documented.
 The \usage entries must correspond to syntactically valid R code.
 See chapter ‘Writing R documentation files’ in the ‘Writing R
 Extensions’ manual.
-* checking Rd contents ... WARNING
-Argument items with no description in Rd object 'print.regmedint':
-  ‘...’
-
-Argument items with no description in Rd object 'summary.regmedint':
-  ‘...’
-
+* checking Rd contents ... OK
 * checking for unstated dependencies in examples ... OK
 * checking examples ... NONE
 * checking for unstated dependencies in ‘tests’ ... WARNING
 '::' or ':::' imports not declared from:
-  ‘Matrix’ ‘rlang’ ‘stringr’
+  ‘MASS’ ‘Matrix’ ‘purrr’ ‘rlang’ ‘stringr’
 'library' or 'require' calls not declared from:
   ‘stringr’ ‘survival’ ‘tidyverse’
 * checking tests ...
@@ -166,20 +111,21 @@ Argument items with no description in Rd object 'summary.regmedint':
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
   ══ testthat results  ═══════════════════════════════════════════════════════════
-  OK: 23 SKIPPED: 0 WARNINGS: 0 FAILED: 12
-  1. Error: (unknown) (@test-03_fit_mreg.R#10) 
-  2. Error: (unknown) (@test-04_fit_yreg_linear.R#10) 
-  3. Error: (unknown) (@test-04_fit_yreg_logistic.R#10) 
-  4. Error: (unknown) (@test-04_fit_yreg_poisson.R#10) 
-  5. Error: (unknown) (@test-04_fit_yreg_survAFT_exp.R#10) 
-  6. Error: (unknown) (@test-04_fit_yreg_survAFT_weibull.R#10) 
-  7. Error: (unknown) (@test-06_calc_myreg_helpers_coef.R#10) 
-  8. Error: (unknown) (@test-06_calc_myreg_helpers_vcov.R#10) 
-  9. Error: (unknown) (@test-07_calc_myreg_mreg_linear_yreg_linear.R#10) 
+  [ OK: 23 | SKIPPED: 0 | WARNINGS: 1 | FAILED: 17 ]
+  1. Error: (unknown) (@test-01_regmedint_class_ui.R#9) 
+  2. Error: (unknown) (@test-03_fit_mreg.R#10) 
+  3. Error: (unknown) (@test-04_fit_yreg_linear.R#10) 
+  4. Error: (unknown) (@test-04_fit_yreg_logistic.R#10) 
+  5. Error: (unknown) (@test-04_fit_yreg_negbin.R#10) 
+  6. Error: (unknown) (@test-04_fit_yreg_poisson.R#10) 
+  7. Error: (unknown) (@test-04_fit_yreg_survAFT_exp.R#10) 
+  8. Error: (unknown) (@test-04_fit_yreg_survAFT_weibull.R#10) 
+  9. Error: (unknown) (@test-04_fit_yreg_survCox.R#10) 
   1. ...
   
   Error: testthat unit tests failed
   Execution halted
 * checking PDF version of manual ... OK
+* checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 ERROR, 8 WARNINGs, 3 NOTEs
+Status: 1 ERROR, 4 WARNINGs, 4 NOTEs
