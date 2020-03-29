@@ -102,6 +102,7 @@ print.regmedint <- function(x,
 ##'
 ##' @inheritParams print.regmedint
 ##' @param exponentiate Whether to add exponentiated point and confidence limit estimates. When \code{yreg = "linear"}, it is ignored.
+##' @param level Confidence level for the confidence intervals.
 ##'
 ##' @return A \code{summary_regmedint} object, which is a list containing the summary object of the
 summary.regmedint <- function(x,
@@ -112,7 +113,7 @@ summary.regmedint <- function(x,
                               args_mreg_fit = list(),
                               args_yreg_fit = list(),
                               exponentiate = FALSE,
-                              alpha = 0.05,
+                              level = 0.95,
                               ...) {
 
     ## This is a user function. Check arguments heavily.
@@ -166,7 +167,7 @@ summary.regmedint <- function(x,
                       a1 = a1,
                       m_cde = m_cde,
                       c_cond = c_cond,
-                      alpha = alpha)
+                      level = level)
 
     if (exponentiate & x$args$yreg != "linear") {
         res_mat <- cbind(est = res_est,
