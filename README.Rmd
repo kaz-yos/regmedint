@@ -1,7 +1,4 @@
 ---
-title: "regmedint: "
-author: "Kazuki Yoshida"
-date: "`r format(Sys.time(), '%Y-%m-%d')`"
 output: github_document
 ---
 

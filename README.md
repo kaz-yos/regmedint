@@ -1,7 +1,3 @@
-regmedint:
-================
-Kazuki Yoshida
-2020-03-29
 
 # regmedint (developmental repo) <img src="man/figures/hex.png" align="right" height="140"/>
 
