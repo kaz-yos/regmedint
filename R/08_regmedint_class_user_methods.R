@@ -246,12 +246,7 @@ print.summary_regmedint <- function(x, ...) {
                            interaction = x$args$interaction,
                            casecontrol = x$args$casecontrol)
 
-    ## Return invisibly with meta data
-    attr(res_mat, which = "args") <- list(a0 = x$eval_at$a0,
-                                          a1 = x$eval_at$a1,
-                                          m_cde = x$eval_at$m_cde,
-                                          c_cond = x$eval_at$c_cond)
-    invisible(res_mat)
+    invisible(x)
 }
 
 
