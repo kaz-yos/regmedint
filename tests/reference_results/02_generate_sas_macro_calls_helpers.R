@@ -85,7 +85,7 @@ run;"
                cvar = case_when(ncvar == 0 ~ "",
                                 ncvar == 3 ~ "age male stage"),
                ##
-               output = case_when(ncvar == 0 ~ "",
+               output = case_when(ncvar == 0 ~ "full",
                                   ncvar == 3 ~ "full"),
                ##
                c_cond = case_when(ncvar == 0 ~ "",
