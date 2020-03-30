@@ -39,7 +39,7 @@
 \item{...}{For compatibility with the generic. Ignored.}
 }
 \value{
-A \code{summary_regmedint} object, which is a list containing the summary object of the
+A \code{summary_regmedint} object, which is a list containing the summary objects of the \code{mreg_fit} and the \code{yreg_fit} as well as the mediation analysis results.
 }
 \description{
 Summarize the \code{mreg_fit}, \code{yreg_fit}, and the mediation analysis effect estimates.

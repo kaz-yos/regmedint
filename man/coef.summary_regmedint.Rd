@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{An object with a class of \code{summary_regmedint}.}
 
-\item{...}{For compatibility with the \code{coef} generic.}
+\item{...}{For compatibility with the generic.}
 }
 \value{
 A matrix populated with results.
