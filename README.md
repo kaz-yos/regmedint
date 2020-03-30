@@ -108,7 +108,9 @@ regmedint_obj
 The `summary` method gives the summary for `mreg`, `yreg`, and mediation
 analysis results. The `exponentiate` option will add the exponentiated
 estimate and confidence limits if the outcome model is not a linear
-model.
+model. The pure natural direct effect (`pnde`) is what is typically
+called the natural direct effect (NDE). The total natural indirect
+effect (`tnie`) is the corresponding natural indirect effect (NIE).
 
 ``` r
 summary(regmedint_obj, exponentiate = TRUE)
