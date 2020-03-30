@@ -129,7 +129,9 @@ validate_args <- function(data,
                           casecontrol,
                           eventvar) {
 
+    ## Dataset
     assertthat::assert_that(is.data.frame(data))
+
     ##
     assertthat::assert_that(is.character(yvar))
     assertthat::assert_that(length(yvar) == 1)
@@ -172,6 +174,23 @@ validate_args <- function(data,
     ##
     assertthat::assert_that(is.null(eventvar) | is.character(eventvar))
     assertthat::assert_that(length(eventvar) <= 1)
+
+    ## Do not allow missing data in variables of interest
+    ## because they may differ unexpected differences in sample sizes
+    ## between yreg and mreg.
+    vars_interest <- c(yvar, avar, mvar, cvar, eventvar)
+    data_vars_interest <- data[, vars_interest, drop = FALSE]
+    assertthat::assert_that(nrow(all(complete.cases(data_vars_interest))),
+                            msg = "Missing is not allowed in variables of intrest! Consider multiple imputation.")
+
+    ## Do not allow factors as they can result in multiple
+    ## dummy variables and coef results in different names
+    ## from the original variable names.
+    assertthat::assert_that(all(!vapply(X = data_vars_interest,
+                                        FUN = is.factor,
+                                        ## template value
+                                        FUN.VALUE = TRUE)),
+                            msg = "Factors are not allowed! Use numeric variables only. Create multiple dichotomous variables for multi-category variables.")
 
     NULL
 }
