@@ -90,11 +90,13 @@ install: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 
 ## run sas analyses
 # https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile
-sas_data:
+# It should only run when 01_generate_sas_data.R is updated.
+sas_data: tests/reference_results/01_generate_sas_data.R
 	cd tests/reference_results/ ; \
 	Rscript 01_generate_sas_data.R 2>&1 | tee 01_generate_sas_data.R.txt
 
-sas_scripts:
+# It should only run when either one of these are updated.
+sas_scripts: tests/reference_results/02_generate_sas_macro_calls.R tests/reference_results/02_generate_sas_macro_calls_helpers.R
 	cd tests/reference_results/ ; \
 	Rscript 02_generate_sas_macro_calls.R 2>&1 | tee 02_generate_sas_macro_calls.R.txt
 
@@ -104,7 +106,9 @@ sas_scripts_clean:
 	done;
 
 # This one can only run on a linux server with sas.
-sas: $(SAS_FILES)
+# This depends on up-to-date sas_data and sas_scripts.
+# These two must depend on files so that they do not run every time.
+sas: sas_data sas_scripts
 	-cd tests/reference_results/ ; \
 	for f in $(subst tests/reference_results/,,$(SAS_FILES)) ; do \
 	sas $$f ; \
