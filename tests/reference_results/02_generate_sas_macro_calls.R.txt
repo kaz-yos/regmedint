@@ -12,7 +12,7 @@
 > ## Record start time
 > start_time <- Sys.time()
 > cat("### Started ", as.character(start_time), "\n")
-### Started  2020-03-30 06:42:15 
+### Started  2020-03-30 06:52:48 
 > 
 > 
 > ## Load packages
@@ -53,85 +53,85 @@ Registered S3 method overwritten by 'rvest':
 # A tibble: 80 x 19
    mreg  yreg  interaction casecontrol ncvar avar  mvar  yvar  eventvar cens  cvar  output c_cond
    <chr> <chr> <chr>       <chr>       <dbl> <chr> <chr> <chr> <chr>    <chr> <chr> <chr>  <chr> 
- 1 line… line… false       false           0 trt   bili  alk_… ""       cens  ""    ""     ""    
+ 1 line… line… false       false           0 trt   bili  alk_… ""       cens  ""    full   ""    
  2 line… line… false       false           3 trt   bili  alk_… ""       cens  age … full   50 1 2
- 3 line… line… true        false           0 trt   bili  alk_… ""       cens  ""    ""     ""    
+ 3 line… line… true        false           0 trt   bili  alk_… ""       cens  ""    full   ""    
  4 line… line… true        false           3 trt   bili  alk_… ""       cens  age … full   50 1 2
- 5 line… logi… false       false           0 trt   bili  spid… ""       cens  ""    ""     ""    
+ 5 line… logi… false       false           0 trt   bili  spid… ""       cens  ""    full   ""    
  6 line… logi… false       false           3 trt   bili  spid… ""       cens  age … full   50 1 2
- 7 line… logi… false       true            0 trt   bili  spid… ""       cens  ""    ""     ""    
+ 7 line… logi… false       true            0 trt   bili  spid… ""       cens  ""    full   ""    
  8 line… logi… false       true            3 trt   bili  spid… ""       cens  age … full   50 1 2
- 9 line… logi… true        false           0 trt   bili  spid… ""       cens  ""    ""     ""    
+ 9 line… logi… true        false           0 trt   bili  spid… ""       cens  ""    full   ""    
 10 line… logi… true        false           3 trt   bili  spid… ""       cens  age … full   50 1 2
-11 line… logi… true        true            0 trt   bili  spid… ""       cens  ""    ""     ""    
+11 line… logi… true        true            0 trt   bili  spid… ""       cens  ""    full   ""    
 12 line… logi… true        true            3 trt   bili  spid… ""       cens  age … full   50 1 2
-13 line… logl… false       false           0 trt   bili  spid… ""       cens  ""    ""     ""    
+13 line… logl… false       false           0 trt   bili  spid… ""       cens  ""    full   ""    
 14 line… logl… false       false           3 trt   bili  spid… ""       cens  age … full   50 1 2
-15 line… logl… false       true            0 trt   bili  spid… ""       cens  ""    ""     ""    
+15 line… logl… false       true            0 trt   bili  spid… ""       cens  ""    full   ""    
 16 line… logl… false       true            3 trt   bili  spid… ""       cens  age … full   50 1 2
-17 line… logl… true        false           0 trt   bili  spid… ""       cens  ""    ""     ""    
+17 line… logl… true        false           0 trt   bili  spid… ""       cens  ""    full   ""    
 18 line… logl… true        false           3 trt   bili  spid… ""       cens  age … full   50 1 2
-19 line… logl… true        true            0 trt   bili  spid… ""       cens  ""    ""     ""    
+19 line… logl… true        true            0 trt   bili  spid… ""       cens  ""    full   ""    
 20 line… logl… true        true            3 trt   bili  spid… ""       cens  age … full   50 1 2
-21 line… negb… false       false           0 trt   bili  plat… ""       cens  ""    ""     ""    
+21 line… negb… false       false           0 trt   bili  plat… ""       cens  ""    full   ""    
 22 line… negb… false       false           3 trt   bili  plat… ""       cens  age … full   50 1 2
-23 line… negb… true        false           0 trt   bili  plat… ""       cens  ""    ""     ""    
+23 line… negb… true        false           0 trt   bili  plat… ""       cens  ""    full   ""    
 24 line… negb… true        false           3 trt   bili  plat… ""       cens  age … full   50 1 2
-25 line… pois… false       false           0 trt   bili  plat… ""       cens  ""    ""     ""    
+25 line… pois… false       false           0 trt   bili  plat… ""       cens  ""    full   ""    
 26 line… pois… false       false           3 trt   bili  plat… ""       cens  age … full   50 1 2
-27 line… pois… true        false           0 trt   bili  plat… ""       cens  ""    ""     ""    
+27 line… pois… true        false           0 trt   bili  plat… ""       cens  ""    full   ""    
 28 line… pois… true        false           3 trt   bili  plat… ""       cens  age … full   50 1 2
-29 line… surv… false       false           0 trt   bili  time  status   cens  ""    ""     ""    
+29 line… surv… false       false           0 trt   bili  time  status   cens  ""    full   ""    
 30 line… surv… false       false           3 trt   bili  time  status   cens  age … full   50 1 2
-31 line… surv… true        false           0 trt   bili  time  status   cens  ""    ""     ""    
+31 line… surv… true        false           0 trt   bili  time  status   cens  ""    full   ""    
 32 line… surv… true        false           3 trt   bili  time  status   cens  age … full   50 1 2
-33 line… surv… false       false           0 trt   bili  time  status   cens  ""    ""     ""    
+33 line… surv… false       false           0 trt   bili  time  status   cens  ""    full   ""    
 34 line… surv… false       false           3 trt   bili  time  status   cens  age … full   50 1 2
-35 line… surv… true        false           0 trt   bili  time  status   cens  ""    ""     ""    
+35 line… surv… true        false           0 trt   bili  time  status   cens  ""    full   ""    
 36 line… surv… true        false           3 trt   bili  time  status   cens  age … full   50 1 2
-37 line… surv… false       false           0 trt   bili  time  status   cens  ""    ""     ""    
+37 line… surv… false       false           0 trt   bili  time  status   cens  ""    full   ""    
 38 line… surv… false       false           3 trt   bili  time  status   cens  age … full   50 1 2
-39 line… surv… true        false           0 trt   bili  time  status   cens  ""    ""     ""    
+39 line… surv… true        false           0 trt   bili  time  status   cens  ""    full   ""    
 40 line… surv… true        false           3 trt   bili  time  status   cens  age … full   50 1 2
-41 logi… line… false       false           0 trt   bili… alk_… ""       cens  ""    ""     ""    
+41 logi… line… false       false           0 trt   bili… alk_… ""       cens  ""    full   ""    
 42 logi… line… false       false           3 trt   bili… alk_… ""       cens  age … full   50 1 2
-43 logi… line… true        false           0 trt   bili… alk_… ""       cens  ""    ""     ""    
+43 logi… line… true        false           0 trt   bili… alk_… ""       cens  ""    full   ""    
 44 logi… line… true        false           3 trt   bili… alk_… ""       cens  age … full   50 1 2
-45 logi… logi… false       false           0 trt   bili… spid… ""       cens  ""    ""     ""    
+45 logi… logi… false       false           0 trt   bili… spid… ""       cens  ""    full   ""    
 46 logi… logi… false       false           3 trt   bili… spid… ""       cens  age … full   50 1 2
-47 logi… logi… false       true            0 trt   bili… spid… ""       cens  ""    ""     ""    
+47 logi… logi… false       true            0 trt   bili… spid… ""       cens  ""    full   ""    
 48 logi… logi… false       true            3 trt   bili… spid… ""       cens  age … full   50 1 2
-49 logi… logi… true        false           0 trt   bili… spid… ""       cens  ""    ""     ""    
+49 logi… logi… true        false           0 trt   bili… spid… ""       cens  ""    full   ""    
 50 logi… logi… true        false           3 trt   bili… spid… ""       cens  age … full   50 1 2
-51 logi… logi… true        true            0 trt   bili… spid… ""       cens  ""    ""     ""    
+51 logi… logi… true        true            0 trt   bili… spid… ""       cens  ""    full   ""    
 52 logi… logi… true        true            3 trt   bili… spid… ""       cens  age … full   50 1 2
-53 logi… logl… false       false           0 trt   bili… spid… ""       cens  ""    ""     ""    
+53 logi… logl… false       false           0 trt   bili… spid… ""       cens  ""    full   ""    
 54 logi… logl… false       false           3 trt   bili… spid… ""       cens  age … full   50 1 2
-55 logi… logl… false       true            0 trt   bili… spid… ""       cens  ""    ""     ""    
+55 logi… logl… false       true            0 trt   bili… spid… ""       cens  ""    full   ""    
 56 logi… logl… false       true            3 trt   bili… spid… ""       cens  age … full   50 1 2
-57 logi… logl… true        false           0 trt   bili… spid… ""       cens  ""    ""     ""    
+57 logi… logl… true        false           0 trt   bili… spid… ""       cens  ""    full   ""    
 58 logi… logl… true        false           3 trt   bili… spid… ""       cens  age … full   50 1 2
-59 logi… logl… true        true            0 trt   bili… spid… ""       cens  ""    ""     ""    
+59 logi… logl… true        true            0 trt   bili… spid… ""       cens  ""    full   ""    
 60 logi… logl… true        true            3 trt   bili… spid… ""       cens  age … full   50 1 2
-61 logi… negb… false       false           0 trt   bili… plat… ""       cens  ""    ""     ""    
+61 logi… negb… false       false           0 trt   bili… plat… ""       cens  ""    full   ""    
 62 logi… negb… false       false           3 trt   bili… plat… ""       cens  age … full   50 1 2
-63 logi… negb… true        false           0 trt   bili… plat… ""       cens  ""    ""     ""    
+63 logi… negb… true        false           0 trt   bili… plat… ""       cens  ""    full   ""    
 64 logi… negb… true        false           3 trt   bili… plat… ""       cens  age … full   50 1 2
-65 logi… pois… false       false           0 trt   bili… plat… ""       cens  ""    ""     ""    
+65 logi… pois… false       false           0 trt   bili… plat… ""       cens  ""    full   ""    
 66 logi… pois… false       false           3 trt   bili… plat… ""       cens  age … full   50 1 2
-67 logi… pois… true        false           0 trt   bili… plat… ""       cens  ""    ""     ""    
+67 logi… pois… true        false           0 trt   bili… plat… ""       cens  ""    full   ""    
 68 logi… pois… true        false           3 trt   bili… plat… ""       cens  age … full   50 1 2
-69 logi… surv… false       false           0 trt   bili… time  status   cens  ""    ""     ""    
+69 logi… surv… false       false           0 trt   bili… time  status   cens  ""    full   ""    
 70 logi… surv… false       false           3 trt   bili… time  status   cens  age … full   50 1 2
-71 logi… surv… true        false           0 trt   bili… time  status   cens  ""    ""     ""    
+71 logi… surv… true        false           0 trt   bili… time  status   cens  ""    full   ""    
 72 logi… surv… true        false           3 trt   bili… time  status   cens  age … full   50 1 2
-73 logi… surv… false       false           0 trt   bili… time  status   cens  ""    ""     ""    
+73 logi… surv… false       false           0 trt   bili… time  status   cens  ""    full   ""    
 74 logi… surv… false       false           3 trt   bili… time  status   cens  age … full   50 1 2
-75 logi… surv… true        false           0 trt   bili… time  status   cens  ""    ""     ""    
+75 logi… surv… true        false           0 trt   bili… time  status   cens  ""    full   ""    
 76 logi… surv… true        false           3 trt   bili… time  status   cens  age … full   50 1 2
-77 logi… surv… false       false           0 trt   bili… time  status   cens  ""    ""     ""    
+77 logi… surv… false       false           0 trt   bili… time  status   cens  ""    full   ""    
 78 logi… surv… false       false           3 trt   bili… time  status   cens  age … full   50 1 2
-79 logi… surv… true        false           0 trt   bili… time  status   cens  ""    ""     ""    
+79 logi… surv… true        false           0 trt   bili… time  status   cens  ""    full   ""    
 80 logi… surv… true        false           3 trt   bili… time  status   cens  age … full   50 1 2
 # … with 6 more variables: a0 <chr>, a1 <chr>, m_cde <chr>, macro_call <chr>, sas_script <chr>,
 #   filename <chr>
