@@ -18,18 +18,18 @@ describe("regmedint", {
 
     data(pbc)
     ## Missing data should be warned in validate_args()
-pbc_cc <- pbc %>%
-    as_tibble() %>%
-    ## Missing data should be warned in validate_args()
-    drop_na() %>%
-    mutate(male = if_else(sex == "m", 1L, 0L),
-           ## Combine transplant and death for testing purpose
-           status = if_else(status == 0, 0L, 1L),
-           ##
-           event = if_else(status == 1L, 1L, 0L),
-           ## Binary mvar
-           bili_bin = if_else(bili > median(bili), 1L, 0L),
-           alk_phos = alk.phos)
+    pbc_cc <- pbc %>%
+        as_tibble() %>%
+        ## Missing data should be warned in validate_args()
+        drop_na() %>%
+        mutate(male = if_else(sex == "m", 1L, 0L),
+               ## Combine transplant and death for testing purpose
+               status = if_else(status == 0, 0L, 1L),
+               ##
+               event = if_else(status == 1L, 1L, 0L),
+               ## Binary mvar
+               bili_bin = if_else(bili > median(bili), 1L, 0L),
+               alk_phos = alk.phos)
 
     describe("validate_args (regmedint argument validation)", {
         it("rejects missing data in the variales of interest", {
@@ -51,7 +51,7 @@ pbc_cc <- pbc %>%
                                    casecontrol = FALSE,
                                    eventvar = NULL),
                          msg_missing)
-                        expect_error(pbc_cc %>%
+            expect_error(pbc_cc %>%
                          mutate(trt = NA) %>%
                          regmedint(data = .,
                                    yvar = "alk_phos",
@@ -138,7 +138,7 @@ pbc_cc <- pbc %>%
         })
         ##
         it("rejects factor variables", {
-            msg_factor <- "Factor variables are not allowed! Use numeric variables only."
+            msg_factor <- "Factors are not allowed! Use numeric variables only."
             expect_error(pbc_cc %>%
                          mutate(alk_phos = factor(alk_phos)) %>%
                          regmedint(data = ,
