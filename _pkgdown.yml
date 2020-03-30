@@ -1,1 +1,5 @@
 destination: docs
+navbar:
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/kaz-yos/regmedint
