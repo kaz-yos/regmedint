@@ -19,7 +19,8 @@ proc import datafile = './data-pbc_cc.csv'
     out = pbc_cc
     dbms = csv
     replace;
-run;"
+run;
+"
 
     sas_macro_call_string_fmt <- "
 %%mediation(
