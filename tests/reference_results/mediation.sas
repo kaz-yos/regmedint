@@ -17,8 +17,17 @@ interaction=,casecontrol=false,output=reduced,c=,boot=,cens=);
 
 */data house keeping*/;
 
+/* 2020-03-30 Modified by @kaz-yos */
+/* https://communities.sas.com/t5/SAS-Programming/Applying-countw-to-an-empty-string/td-p/15285 */
+%if (&cvar^=) %then %do;
+/* This only works with an non-empty &cvar. */
+%let nc=%sysfunc(countw(&cvar));
+%end;
+%else %do;
+/* Empty case */
+%let nc=0;
+%end;
 
- %let nc=%sysfunc(countw(&cvar));
  %put There are &nc confounders in the string "&cvar";
 
 
