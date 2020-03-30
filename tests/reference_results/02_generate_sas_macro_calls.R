@@ -34,7 +34,7 @@ cat("
 ### Generate all relevant patterns of %mediation() calls
 ################################################################################\n")
 
-macro_args <- generate_macro_args()
+macro_args <- generate_sas_macro_args()
 
 macro_args %>%
     print(n = Inf)
