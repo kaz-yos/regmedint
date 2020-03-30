@@ -97,7 +97,7 @@ generate_sas_macro_args <-
                    a1 = "2",
                    m_cde = "1") %>%
             ## Contruct macro text
-            mutate(macro_call = sprintf(macro_call_string_fmt,
+            mutate(macro_call = sprintf(sas_macro_call_string_fmt,
                                         yvar,
                                         avar,
                                         mvar,
@@ -113,7 +113,7 @@ generate_sas_macro_args <-
                                         c_cond,
                                         cens)) %>%
             ## Construct the entire sas script
-            mutate(sas_script = paste0(common_string,
+            mutate(sas_script = paste0(sas_common_string,
                                        macro_call)) %>%
             ## File name
             mutate(filename = sprintf("sas-mreg_%s_yreg_%s_int_%s_caco_%s_ncvar%s.sas",

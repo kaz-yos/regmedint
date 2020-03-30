@@ -26,13 +26,13 @@ cat("### Started ", as.character(start_time), "\n")
 ## Load packages
 library(tidyverse)
 
-source("./02_generate_sas_macro_calls_helpers.R")
-
 
 cat("
 ###
 ### Generate all relevant patterns of %mediation() calls
 ################################################################################\n")
+
+source("./02_generate_sas_macro_calls_helpers.R")
 
 macro_args <- generate_sas_macro_args()
 
