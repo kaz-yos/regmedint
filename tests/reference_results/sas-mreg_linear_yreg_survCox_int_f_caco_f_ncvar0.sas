@@ -11,6 +11,7 @@ proc import datafile = './data-pbc_cc.csv'
     dbms = csv
     replace;
 run;
+
 %mediation(
     data = pbc_cc,
     yvar = time,
@@ -24,7 +25,7 @@ run;
     mreg = linear,
     interaction = false,
     casecontrol = false,
-    output = ,
+    output = full,
     c = ,
     boot = ,
     cens = cens);
