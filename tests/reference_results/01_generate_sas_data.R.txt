@@ -12,7 +12,7 @@
 > ## Record start time
 > start_time <- Sys.time()
 > cat("### Started ", as.character(start_time), "\n")
-### Started  2020-03-24 22:32:37 
+### Started  2020-03-30 06:42:13 
 > 
 > ## Load packages
 > library(survival)
@@ -177,7 +177,7 @@ other attached packages:
 loaded via a namespace (and not attached):
  [1] Rcpp_1.0.1       cellranger_1.1.0 pillar_1.3.1     compiler_3.6.1   plyr_1.8.4      
  [6] class_7.3-15     tools_3.6.1      lubridate_1.7.4  jsonlite_1.6     nlme_3.1-139    
-[11] gtable_0.3.0     lattice_0.20-38  pkgconfig_2.0.2  rlang_0.4.4      Matrix_1.2-17   
+[11] gtable_0.3.0     lattice_0.20-40  pkgconfig_2.0.2  rlang_0.4.5      Matrix_1.2-18   
 [16] cli_1.1.0        rstudioapi_0.10  DBI_1.0.0        haven_2.1.0      e1071_1.7-1     
 [21] withr_2.1.2      xml2_1.2.0       httr_1.4.0       generics_0.0.2   mitools_2.4     
 [26] hms_0.4.2        grid_3.6.1       tidyselect_0.2.5 glue_1.3.1       R6_2.4.0        
