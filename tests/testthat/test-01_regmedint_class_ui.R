@@ -18,14 +18,96 @@ describe("regmedint", {
 
     data(pbc)
     ## Missing data should be warned in validate_args()
-    pbc_cc <- pbc[complete.cases(pbc),] %>%
-        mutate(male = if_else(sex == "m", 1L, 0L),
-               ## Combine transplant and death for testing purpose
-               status = if_else(status == 0, 0L, 1L))
+pbc_cc <- pbc %>%
+    as_tibble() %>%
+    ## Missing data should be warned in validate_args()
+    drop_na() %>%
+    mutate(male = if_else(sex == "m", 1L, 0L),
+           ## Combine transplant and death for testing purpose
+           status = if_else(status == 0, 0L, 1L),
+           ##
+           event = if_else(status == 1L, 1L, 0L),
+           ## Binary mvar
+           bili_bin = if_else(bili > median(bili), 1L, 0L),
+           alk_phos = alk.phos)
 
-    describe("regmedint argument validation", {
+    describe("validate_args (regmedint argument validation)", {
         it("rejects missing data in the variales of interest", {
-            expect_error(regmedint(data = pbc,
+            msg_missing <- "Missing is not allowed in variables of intrest! Consider multiple imputation."
+            expect_error(pbc_cc %>%
+                         mutate(alk_phos = NA) %>%
+                         regmedint(data = .,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = 1,
+                                   a1 = 2,
+                                   m_cde = 0,
+                                   c_cond = c(50,2,4),
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = NULL),
+                         msg_missing)
+                        expect_error(pbc_cc %>%
+                         mutate(trt = NA) %>%
+                         regmedint(data = .,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = 1,
+                                   a1 = 2,
+                                   m_cde = 0,
+                                   c_cond = c(50,2,4),
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = NULL),
+                         msg_missing)
+            expect_error(pbc_cc %>%
+                         mutate(bili = NA) %>%
+                         regmedint(data = .,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = 1,
+                                   a1 = 2,
+                                   m_cde = 0,
+                                   c_cond = c(50,2,4),
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = NULL),
+                         msg_missing)
+            expect_error(pbc_cc %>%
+                         mutate(age = NA) %>%
+                         regmedint(data = .,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = 1,
+                                   a1 = 2,
+                                   m_cde = 0,
+                                   c_cond = c(50,2,4),
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = NULL),
+                         msg_missing)
+        })
+        ##
+        it("allows missing data in unused variables", {
+            expect_equal(pbc_cc %>%
+                         mutate(sex = NA) %>%
+                         regmedint(data = .,
                                    yvar = "alk.phos",
                                    avar = "trt",
                                    mvar = "bili",
@@ -39,24 +121,92 @@ describe("regmedint", {
                                    interaction = FALSE,
                                    casecontrol = FALSE,
                                    eventvar = NULL),
-                         "Missing is not allowed! Consider multiple imputation.")
-        })
-        it("rejects factor variables on the right hand side", {
-            expect_error(regmedint(data = pbc,
+                         regmedint(data = pbc_cc,
                                    yvar = "alk.phos",
                                    avar = "trt",
                                    mvar = "bili",
-                                   cvar = "sex",
+                                   cvar = NULL,
                                    a0 = 1,
                                    a1 = 2,
                                    m_cde = 0,
-                                   c_cond = "f",
+                                   c_cond = NULL,
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = NULL))
+        })
+        ##
+        it("rejects factor variables", {
+            msg_factor <- "Factor variables are not allowed! Use numeric variables only."
+            expect_error(pbc_cc %>%
+                         mutate(alk_phos = factor(alk_phos)) %>%
+                         regmedint(data = ,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = 1,
+                                   a1 = 2,
+                                   m_cde = 0,
+                                   c_cond = c(50,2,4),
                                    mreg = "linear",
                                    yreg = "linear",
                                    interaction = FALSE,
                                    casecontrol = FALSE,
                                    eventvar = NULL),
-                         "Factor variables are not allowed! Use numeric variables only.")
+                         msg_factor)
+            expect_error(pbc_cc %>%
+                         mutate(trt = factor(trt)) %>%
+                         regmedint(data = .,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = 1,
+                                   a1 = 2,
+                                   m_cde = 0,
+                                   c_cond = c(50,2,4),
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = NULL),
+                         msg_factor)
+            expect_error(pbc_cc %>%
+                         mutate(bili = factor(bili)) %>%
+                         regmedint(data = .,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = 1,
+                                   a1 = 2,
+                                   m_cde = 0,
+                                   c_cond = c(50,2,4),
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = NULL),
+                         msg_factor)
+            expect_error(pbc_cc %>%
+                         mutate(status = factor(status)) %>%
+                         regmedint(data = .,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = 1,
+                                   a1 = 2,
+                                   m_cde = 0,
+                                   c_cond = c(50,2,4),
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = "status"),
+                         msg_factor)
         })
     })
 
