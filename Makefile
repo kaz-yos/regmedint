@@ -108,14 +108,15 @@ sas_scripts_clean:
 # This one can only run on a linux server with sas.
 # This depends on up-to-date sas_data and sas_scripts.
 # These two must depend on files so that they do not run every time.
+# This fails without harm on a system without the sas command.
 sas: sas_data sas_scripts
 	-cd tests/reference_results/ ; \
 	for f in $(subst tests/reference_results/,,$(SAS_FILES)) ; do \
 	sas $$f ; \
 	done;
 
-# It should not depend on sas as it may be run on a system without sas.
-sas_extract:
+# It depends on sas which should be ok on an environment without sas.
+sas_extract: sas
 	for f in $(subst .sas,.lst,$(SAS_FILES)); do \
 	cat $${f} | grep " cde \| nde \| cde=nde \| [pt]nde \| nie \| [pt]nie \| total effect " > $${f%lst}txt ; \
 	done;
