@@ -319,7 +319,7 @@ junk <- macro_args_sas_r %>%
                     sas_lower <- sas$lower %>% `names<-`(sas$effect)
                     sas_upper <- sas$upper %>% `names<-`(sas$effect)
 
-                    ## [["cde"]] to unname it.
+                    ## Use [["cde"]] etc to unname it.
                     if (nrow(sas) == 12) {
 
                         ## Full result case with interaction
@@ -407,6 +407,97 @@ junk <- macro_args_sas_r %>%
                                 expect_equal(upper[["tnde"]], log(sas_upper[["conditional_tnde"]]))
                                 expect_equal(upper[["pnie"]], log(sas_upper[["conditional_pnie"]]))
                                 expect_equal(upper[["te"]], log(sas_upper[["conditional_te"]]))
+                            })
+                        }
+
+                    } else if (nrow(sas) == 6) {
+                        ## output = full gives 6 rows if cvar is empty.
+
+                        ## Full result case with interaction
+                        if (ncol(sas) == 6) {
+                            ## yreg linear with se column
+                            sas_se <- sas$se %>% `names<-`(sas$effect)
+
+                            test_that(paste0("coef match with ", filename), {
+                                expect_equal(coef[["cde"]], sas_estimate[["cde"]])
+                                expect_equal(coef[["pnde"]], sas_estimate[["pnde"]])
+                                expect_equal(coef[["tnie"]], sas_estimate[["tnie"]])
+                                expect_equal(coef[["tnde"]], sas_estimate[["tnde"]])
+                                expect_equal(coef[["pnie"]], sas_estimate[["pnie"]])
+                                expect_equal(coef[["te"]], sas_estimate[["te"]])
+                            })
+
+                            test_that(paste0("se match with ", filename), {
+                                expect_equal(se[["cde"]], sas_se[["cde"]])
+                                expect_equal(se[["pnde"]], sas_se[["pnde"]])
+                                expect_equal(se[["tnie"]], sas_se[["tnie"]])
+                                expect_equal(se[["tnde"]], sas_se[["tnde"]])
+                                expect_equal(se[["pnie"]], sas_se[["pnie"]])
+                                expect_equal(se[["te"]], sas_se[["te"]])
+                            })
+
+                            test_that(paste0("p match with ", filename), {
+                                expect_equal(p[["cde"]], sas_p[["cde"]])
+                                expect_equal(p[["pnde"]], sas_p[["pnde"]])
+                                expect_equal(p[["tnie"]], sas_p[["tnie"]])
+                                expect_equal(p[["tnde"]], sas_p[["tnde"]])
+                                expect_equal(p[["pnie"]], sas_p[["pnie"]])
+                                expect_equal(p[["te"]], sas_p[["te"]])
+                            })
+
+                            test_that(paste0("lower confint match with ", filename), {
+                                expect_equal(lower[["cde"]], sas_lower[["cde"]])
+                                expect_equal(lower[["pnde"]], sas_lower[["pnde"]])
+                                expect_equal(lower[["tnie"]], sas_lower[["tnie"]])
+                                expect_equal(lower[["tnde"]], sas_lower[["tnde"]])
+                                expect_equal(lower[["pnie"]], sas_lower[["pnie"]])
+                                expect_equal(lower[["te"]], sas_lower[["te"]])
+                            })
+
+                            test_that(paste0("upper confint match with ", filename), {
+                                expect_equal(upper[["cde"]], sas_upper[["cde"]])
+                                expect_equal(upper[["pnde"]], sas_upper[["pnde"]])
+                                expect_equal(upper[["tnie"]], sas_upper[["tnie"]])
+                                expect_equal(upper[["tnde"]], sas_upper[["tnde"]])
+                                expect_equal(upper[["pnie"]], sas_upper[["pnie"]])
+                                expect_equal(upper[["te"]], sas_upper[["te"]])
+                            })
+                        } else {
+                            ## yreg non-linear with exp(coef), p, exp(lower), exp(upper) in SAS results.
+                            test_that(paste0("coef match with ", filename), {
+                                expect_equal(coef[["cde"]], log(sas_estimate[["cde"]]))
+                                expect_equal(coef[["pnde"]], log(sas_estimate[["pnde"]]))
+                                expect_equal(coef[["tnie"]], log(sas_estimate[["tnie"]]))
+                                expect_equal(coef[["tnde"]], log(sas_estimate[["tnde"]]))
+                                expect_equal(coef[["pnie"]], log(sas_estimate[["pnie"]]))
+                                expect_equal(coef[["te"]], log(sas_estimate[["te"]]))
+                            })
+
+                            test_that(paste0("p match with ", filename), {
+                                expect_equal(p[["cde"]], sas_p[["cde"]])
+                                expect_equal(p[["pnde"]], sas_p[["pnde"]])
+                                expect_equal(p[["tnie"]], sas_p[["tnie"]])
+                                expect_equal(p[["tnde"]], sas_p[["tnde"]])
+                                expect_equal(p[["pnie"]], sas_p[["pnie"]])
+                                expect_equal(p[["te"]], sas_p[["te"]])
+                            })
+
+                            test_that(paste0("lower confint match with ", filename), {
+                                expect_equal(lower[["cde"]], log(sas_lower[["cde"]]))
+                                expect_equal(lower[["pnde"]], log(sas_lower[["pnde"]]))
+                                expect_equal(lower[["tnie"]], log(sas_lower[["tnie"]]))
+                                expect_equal(lower[["tnde"]], log(sas_lower[["tnde"]]))
+                                expect_equal(lower[["pnie"]], log(sas_lower[["pnie"]]))
+                                expect_equal(lower[["te"]], log(sas_lower[["te"]]))
+                            })
+
+                            test_that(paste0("upper confint match with ", filename), {
+                                expect_equal(upper[["cde"]], log(sas_upper[["cde"]]))
+                                expect_equal(upper[["pnde"]], log(sas_upper[["pnde"]]))
+                                expect_equal(upper[["tnie"]], log(sas_upper[["tnie"]]))
+                                expect_equal(upper[["tnde"]], log(sas_upper[["tnde"]]))
+                                expect_equal(upper[["pnie"]], log(sas_upper[["pnie"]]))
+                                expect_equal(upper[["te"]], log(sas_upper[["te"]]))
                             })
                         }
 
