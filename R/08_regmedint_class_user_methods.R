@@ -207,11 +207,11 @@ summary.regmedint <- function(x,
     return(res)
 }
 
-##' Print a summary object from \code{\link{summary.regmedint}}
+##' Print method for summary objects from \code{\link{summary.regmedint}}
 ##'
-##' .. content for \details{} ..
+##' Print results contained in a \code{summary_regmedint} object with additional explanation regarding the evaluation settings.
 ##'
-##' @param x An object of the class summary_regmedint.
+##' @param x An object of the class \code{summary_regmedint}.
 ##' @param ... For compatibility with the generic function.
 ##'
 ##' @return Invisibly return the first argument.
