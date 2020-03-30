@@ -40,6 +40,8 @@ validate_eval_at_values <- function(x, a0, a1, m_cde, c_cond) {
 ##' @param ... For compatibility with the generic. Ignored.
 ##'
 ##' @return Invisibly return the \code{regmedint} class object as is.
+##'
+##' @export
 print.regmedint <- function(x,
                             a0 = NULL,
                             a1 = NULL,
@@ -104,7 +106,9 @@ print.regmedint <- function(x,
 ##' @param exponentiate Whether to add exponentiated point and confidence limit estimates. When \code{yreg = "linear"}, it is ignored.
 ##' @param level Confidence level for the confidence intervals.
 ##'
-##' @return A \code{summary_regmedint} object, which is a list containing the summary object of the
+##' @return A \code{summary_regmedint} object, which is a list containing the summary objects of the \code{mreg_fit} and the \code{yreg_fit} as well as the mediation analysis results.
+##'
+##' @export
 summary.regmedint <- function(x,
                               a0 = NULL,
                               a1 = NULL,
@@ -203,7 +207,16 @@ summary.regmedint <- function(x,
     return(res)
 }
 
-
+##' Print a summary object from \code{\link{summary.regmedint}}
+##'
+##' .. content for \details{} ..
+##'
+##' @param x An object of the class summary_regmedint.
+##' @param ... For compatibility with the generic function.
+##'
+##' @return Invisibly return the first argument.
+##'
+##' @export
 print.summary_regmedint <- function(x, ...) {
 
 
@@ -247,9 +260,11 @@ print.summary_regmedint <- function(x, ...) {
 ##' Extract the result matrix from a summary_regmedint object.
 ##'
 ##' @param x An object with a class of \code{summary_regmedint}.
-##' @param ... For compatibility with the \code{coef} generic.
+##' @param ... For compatibility with the generic.
 ##'
 ##' @return  A matrix populated with results.
+##'
+##' @export
 coef.summary_regmedint <- function(x, ...) {
     x$summary_myreg
 }
@@ -313,6 +328,8 @@ print_eval_info_helper <- function(a0, a1, m_cde, c_cond,
 ##' @inheritParams print.regmedint
 ##'
 ##' @return A numeric vector of point estimates.
+##'
+##' @export
 coef.regmedint <- function(x,
                            a0 = NULL,
                            a1 = NULL,
@@ -360,6 +377,8 @@ coef.regmedint <- function(x,
 ##' @inheritParams print.regmedint
 ##'
 ##' @return A numeric matrix with the diagonals populated with variance estimates. Off-diagnonals are NA since these are not estimated.
+##'
+##' @export
 vcov.regmedint <- function(x,
                            a0 = NULL,
                            a1 = NULL,
@@ -420,6 +439,8 @@ vcov.regmedint <- function(x,
 ##' @param ... For compatibility with generic.
 ##'
 ##' @return A numeric matrix of the lower limit and upper limit.
+##'
+##' @export
 confint.regmedint <- function(x,
                               a0 = NULL,
                               a1 = NULL,
