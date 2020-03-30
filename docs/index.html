@@ -150,7 +150,7 @@
 <div id="summary-to-examine-extended-results" class="section level2">
 <h2 class="hasAnchor">
 <a href="#summary-to-examine-extended-results" class="anchor"></a>summary to examine extended results</h2>
-<p>The <code>summary</code> method gives the summary for <code>mreg</code>, <code>yreg</code>, and mediation analysis results. The <code>exponentiate</code> option will add the exponentiated estimate and confidence limits if the outcome model is not a linear model.</p>
+<p>The <code>summary</code> method gives the summary for <code>mreg</code>, <code>yreg</code>, and mediation analysis results. The <code>exponentiate</code> option will add the exponentiated estimate and confidence limits if the outcome model is not a linear model. The pure natural direct effect (<code>pnde</code>) is what is typically called the natural direct effect (NDE). The total natural indirect effect (<code>tnie</code>) is the corresponding natural indirect effect (NIE).</p>
 <div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">regmedint_obj</span>, <span class="kw">exponentiate</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co">## </span><span class="al">###</span><span class="co"> Mediator model</span></a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="co">## </span></a>
