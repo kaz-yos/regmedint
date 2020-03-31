@@ -46,3 +46,8 @@ xdescribe <- function(description, ...) {
 xit <- function(description, ...) {
     cat("Skipping", description, "\n")
 }
+
+## http://adv-r.had.co.nz/Exceptions-Debugging.html
+is.error <- function(x) {
+    inherits(x, "try-error")
+}
