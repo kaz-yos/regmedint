@@ -118,6 +118,16 @@ junk <- macro_args_sas %>%
 ################################################################################
 
 macro_args_sas_r_prelim <- macro_args_sas %>%
+    ## Add cmean vectors (R re-evaluation results can be validated agains "marginals").
+    mutate(cmean = map(cvar, function(cvar) {
+        if (cvar == "") {
+            return(NULL)
+        } else {
+            ## We need a character vector.
+            cvar_vec <- str_split(cvar, " ")[[1]]
+            return(colMeans(pbc_cc[,cvar_vec]))
+        }
+    })) %>%
     ## Run R analyses
     mutate(res = pmap(
                list(yvar,
@@ -223,16 +233,6 @@ macro_args_sas_r_prelim <- macro_args_sas %>%
 ################################################################################
 
 junk <- macro_args_sas_r_prelim %>%
-    ## Add cmean vectors (R re-evaluation results can be validated agains "marginals").
-    mutate(cmean = map(cvar, function(cvar) {
-        if (cvar == "") {
-            return(NULL)
-        } else {
-            ## We need a character vector.
-            cvar_vec <- str_split(cvar, " ")[[1]]
-            return(colMeans(pbc_cc[,cvar_vec]))
-        }
-    })) %>%
     mutate(filename_r_res = stringr::str_replace_all(filename, "sas$", "r.txt")) %>%
     mutate(junk = pmap(list(res, filename_r_res, cmean), function(res, filename_r_res, cmean) {
         ## Create a textual representation of the results
