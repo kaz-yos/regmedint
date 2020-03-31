@@ -290,6 +290,45 @@ macro_args_sas_r <- macro_args_sas_r_prelim %>%
             } else {
                 return(confint(res, alpha = 2 * (1 - pnorm(1.96)))[,"upper"])
             }
+        }),
+        ##
+        ## Re-evaluated at mean cvar vector values.
+        ## Check against SAS macro's "marginal" results
+        coef_cmean = pmap(list(res, cmean), function(res, cmean) {
+            if(is.error(res) | is.null(cmean)) {
+                return(NULL)
+            } else {
+                return(coef(res, c_cond = cmean))
+            }
+        }),
+        se_cmean = pmap(list(res, cmean), function(res, cmean) {
+            if(is.error(res)  | is.null(cmean)) {
+                return(NULL)
+            } else {
+                return(sqrt(diag(vcov(res, c_cond = cmean))))
+            }
+        }),
+        p_cmean = pmap(list(res, cmean), function(res, cmean) {
+            if(is.error(res)  | is.null(cmean)) {
+                return(NULL)
+            } else {
+                return(coef(summary(res, c_cond = cmean))[,"p"])
+            }
+        }),
+        ## 2 * (1 - pnorm(1.96)) to get confint corresponding to 1.96 * se
+        lower_cmean = pmap(list(res, cmean), function(res, cmean) {
+            if(is.error(res)  | is.null(cmean)) {
+                return(NULL)
+            } else {
+                return(confint(res, level = pnorm(1.96), c_cond = cmean)[,"lower"])
+            }
+        }),
+        upper_cmean = pmap(list(res, cmean), function(res, cmean) {
+            if(is.error(res)  | is.null(cmean)) {
+                return(NULL)
+            } else {
+                return(confint(res, level = pnorm(1.96), c_cond = cmean)[,"upper"])
+            }
         })
     )
 
