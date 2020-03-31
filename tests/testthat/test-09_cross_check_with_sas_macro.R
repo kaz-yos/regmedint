@@ -239,6 +239,7 @@ junk <- macro_args_sas_r_prelim %>%
 ### Extract R results for testing against SAS macro results
 ################################################################################
 
+
 macro_args_sas_r <- macro_args_sas_r_prelim %>%
     ## Add cmean vectors (R re-evaluation results can be validated agains "marginals").
     mutate(cmean = map(cvar, function(cvar) {
@@ -252,22 +253,24 @@ macro_args_sas_r <- macro_args_sas_r_prelim %>%
     })) %>%
     ## Extract useful elements when available
     mutate(
+        ## Evaluated at the specified c_cond values
+        ## Check against SAS macro's "conditional" results
         coef = map(res, function(res) {
-            if(class(res)[[1]] == "try-error") {
+            if(is.error(res)) {
                 return(NULL)
             } else {
                 return(coef(res))
             }
         }),
         se = map(res, function(res) {
-            if(class(res)[[1]] == "try-error") {
+            if(is.error(res)) {
                 return(NULL)
             } else {
                 return(sqrt(diag(vcov(res))))
             }
         }),
         p = map(res, function(res) {
-            if(class(res)[[1]] == "try-error") {
+            if(is.error(res)) {
                 return(NULL)
             } else {
                 return(coef(summary(res))[,"p"])
@@ -275,14 +278,14 @@ macro_args_sas_r <- macro_args_sas_r_prelim %>%
         }),
         ## 2 * (1 - pnorm(1.96)) to get confint corresponding to 1.96 * se
         lower = map(res, function(res) {
-            if(class(res)[[1]] == "try-error") {
+            if(is.error(res)) {
                 return(NULL)
             } else {
                 return(confint(res, alpha = 2 * (1 - pnorm(1.96)))[,"lower"])
             }
         }),
         upper = map(res, function(res) {
-            if(class(res)[[1]] == "try-error") {
+            if(is.error(res)) {
                 return(NULL)
             } else {
                 return(confint(res, alpha = 2 * (1 - pnorm(1.96)))[,"upper"])
@@ -319,7 +322,8 @@ junk <- macro_args_sas_r %>%
             list(filename, sas, res, coef, se, p, lower, upper),
             function(filename, sas, res, coef, se, p, lower, upper) {
 
-                if (class(res)[[1]] == "try-error") {
+                ## First rule out error.
+                if (is.error(res)) {
                     stop(paste0("R fit for ", filename, " gave an try-error object!"))
                 } else {
 
