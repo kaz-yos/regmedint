@@ -223,11 +223,29 @@ macro_args_sas_r_prelim <- macro_args_sas %>%
 ################################################################################
 
 junk <- macro_args_sas_r_prelim %>%
+    ## Add cmean vectors (R re-evaluation results can be validated agains "marginals").
+    mutate(cmean = map(cvar, function(cvar) {
+        if (cvar == "") {
+            return(NULL)
+        } else {
+            ## We need a character vector.
+            cvar_vec <- str_split(cvar, " ")[[1]]
+            return(colMeans(pbc_cc[,cvar_vec]))
+        }
+    })) %>%
     mutate(filename_r_res = stringr::str_replace_all(filename, "sas$", "r.txt")) %>%
-    mutate(junk = pmap(list(res, filename_r_res), function(res, filename_r_res) {
+    mutate(junk = pmap(list(res, filename_r_res, cmean), function(res, filename_r_res, cmean) {
         ## Create a textual representation of the results
         res_char_vec <- capture.output(summary(res))
         res_char <- paste0(paste0(res_char_vec, collapse = "\n"), "\n")
+        ## Create a textual representation of the results at cmean when avaialble
+        if (!is.null(cmean)) {
+            res_char_vec_cmean <- capture.output(coef(summary(res, c_cond = cmean)))
+            res_char_cmean <- paste0(paste0(res_char_vec_cmean, collapse = "\n"), "\n")
+            res_char <- paste0(res_char,
+                               "\n### Re-evaluation at c_cond = cmean\n",
+                               res_char_cmean)
+        }
         ## The working directory here is the enclosing folder ./tests/testthat/.
         ## print(getwd())
         relpath <- paste0("../reference_results/", filename_r_res)
@@ -241,16 +259,6 @@ junk <- macro_args_sas_r_prelim %>%
 
 
 macro_args_sas_r <- macro_args_sas_r_prelim %>%
-    ## Add cmean vectors (R re-evaluation results can be validated agains "marginals").
-    mutate(cmean = map(cvar, function(cvar) {
-        if (cvar == "") {
-            return(NULL)
-        } else {
-            ## We need a character vector.
-            cvar_vec <- str_split(cvar, " ")[[1]]
-            return(colMeans(pbc_cc[,cvar_vec]))
-        }
-    })) %>%
     ## Extract useful elements when available
     mutate(
         ## Evaluated at the specified c_cond values
