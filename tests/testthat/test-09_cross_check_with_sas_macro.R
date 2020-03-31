@@ -240,6 +240,16 @@ junk <- macro_args_sas_r_prelim %>%
 ################################################################################
 
 macro_args_sas_r <- macro_args_sas_r_prelim %>%
+    ## Add cmean vectors (R re-evaluation results can be validated agains "marginals").
+    mutate(cmean = map(cvar, function(cvar) {
+        if (cvar == "") {
+            return(NULL)
+        } else {
+            ## We need a character vector.
+            cvar_vec <- str_split(cvar, " ")[[1]]
+            return(colMeans(pbc_cc[,cvar_vec]))
+        }
+    })) %>%
     ## Extract useful elements when available
     mutate(
         coef = map(res, function(res) {
