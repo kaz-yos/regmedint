@@ -358,8 +358,10 @@ junk <- macro_args_sas_r %>%
     ##
     mutate(
         junk = pmap(
-            list(filename, sas, res, coef, se, p, lower, upper),
-            function(filename, sas, res, coef, se, p, lower, upper) {
+            list(filename, sas, res, coef, se, p, lower, upper,
+                 coef_cmean, se_cmean, p_cmean, lower_cmean, upper_cmean),
+            function(filename, sas, res, coef, se, p, lower, upper,
+                     coef_cmean, se_cmean, p_cmean, lower_cmean, upper_cmean) {
 
                 ## First rule out error.
                 if (is.error(res)) {
@@ -424,6 +426,52 @@ junk <- macro_args_sas_r %>%
                                 expect_equal(upper[["pnie"]], sas_upper[["conditional_pnie"]])
                                 expect_equal(upper[["te"]], sas_upper[["conditional_te"]])
                             })
+
+                            test_that(paste0("coef_cmean match with ", filename), {
+                                expect_equal(coef_cmean[["cde"]], sas_estimate[["marginal_cde"]])
+                                expect_equal(coef_cmean[["pnde"]], sas_estimate[["marginal_pnde"]])
+                                expect_equal(coef_cmean[["tnie"]], sas_estimate[["marginal_tnie"]])
+                                expect_equal(coef_cmean[["tnde"]], sas_estimate[["marginal_tnde"]])
+                                expect_equal(coef_cmean[["pnie"]], sas_estimate[["marginal_pnie"]])
+                                expect_equal(coef_cmean[["te"]], sas_estimate[["marginal_te"]])
+                            })
+
+                            test_that(paste0("se_cmean match with ", filename), {
+                                expect_equal(se_cmean[["cde"]], sas_se[["marginal_cde"]])
+                                expect_equal(se_cmean[["pnde"]], sas_se[["marginal_pnde"]])
+                                expect_equal(se_cmean[["tnie"]], sas_se[["marginal_tnie"]])
+                                expect_equal(se_cmean[["tnde"]], sas_se[["marginal_tnde"]])
+                                expect_equal(se_cmean[["pnie"]], sas_se[["marginal_pnie"]])
+                                expect_equal(se_cmean[["te"]], sas_se[["marginal_te"]])
+                            })
+
+                            test_that(paste0("p_cmean match with ", filename), {
+                                expect_equal(p_cmean[["cde"]], sas_p[["marginal_cde"]])
+                                expect_equal(p_cmean[["pnde"]], sas_p[["marginal_pnde"]])
+                                expect_equal(p_cmean[["tnie"]], sas_p[["marginal_tnie"]])
+                                expect_equal(p_cmean[["tnde"]], sas_p[["marginal_tnde"]])
+                                expect_equal(p_cmean[["pnie"]], sas_p[["marginal_pnie"]])
+                                expect_equal(p_cmean[["te"]], sas_p[["marginal_te"]])
+                            })
+
+                            test_that(paste0("lower_cmean confint match with ", filename), {
+                                expect_equal(lower_cmean[["cde"]], sas_lower[["marginal_cde"]])
+                                expect_equal(lower_cmean[["pnde"]], sas_lower[["marginal_pnde"]])
+                                expect_equal(lower_cmean[["tnie"]], sas_lower[["marginal_tnie"]])
+                                expect_equal(lower_cmean[["tnde"]], sas_lower[["marginal_tnde"]])
+                                expect_equal(lower_cmean[["pnie"]], sas_lower[["marginal_pnie"]])
+                                expect_equal(lower_cmean[["te"]], sas_lower[["marginal_te"]])
+                            })
+
+                            test_that(paste0("upper_cmean confint match with ", filename), {
+                                expect_equal(upper_cmean[["cde"]], sas_upper[["marginal_cde"]])
+                                expect_equal(upper_cmean[["pnde"]], sas_upper[["marginal_pnde"]])
+                                expect_equal(upper_cmean[["tnie"]], sas_upper[["marginal_tnie"]])
+                                expect_equal(upper_cmean[["tnde"]], sas_upper[["marginal_tnde"]])
+                                expect_equal(upper_cmean[["pnie"]], sas_upper[["marginal_pnie"]])
+                                expect_equal(upper_cmean[["te"]], sas_upper[["marginal_te"]])
+                            })
+
                         } else {
                             ## yreg non-linear with exp(coef), p, exp(lower), exp(upper) in SAS results.
                             test_that(paste0("coef match with ", filename), {
@@ -460,6 +508,42 @@ junk <- macro_args_sas_r %>%
                                 expect_equal(upper[["tnde"]], log(sas_upper[["conditional_tnde"]]))
                                 expect_equal(upper[["pnie"]], log(sas_upper[["conditional_pnie"]]))
                                 expect_equal(upper[["te"]], log(sas_upper[["conditional_te"]]))
+                            })
+
+                            test_that(paste0("coef_cmean match with ", filename), {
+                                expect_equal(coef_cmean[["cde"]], log(sas_estimate[["marginal_cde"]]))
+                                expect_equal(coef_cmean[["pnde"]], log(sas_estimate[["marginal_pnde"]]))
+                                expect_equal(coef_cmean[["tnie"]], log(sas_estimate[["marginal_tnie"]]))
+                                expect_equal(coef_cmean[["tnde"]], log(sas_estimate[["marginal_tnde"]]))
+                                expect_equal(coef_cmean[["pnie"]], log(sas_estimate[["marginal_pnie"]]))
+                                expect_equal(coef_cmean[["te"]], log(sas_estimate[["marginal_te"]]))
+                            })
+
+                            test_that(paste0("p_cmean match with ", filename), {
+                                expect_equal(p_cmean[["cde"]], sas_p[["marginal_cde"]])
+                                expect_equal(p_cmean[["pnde"]], sas_p[["marginal_pnde"]])
+                                expect_equal(p_cmean[["tnie"]], sas_p[["marginal_tnie"]])
+                                expect_equal(p_cmean[["tnde"]], sas_p[["marginal_tnde"]])
+                                expect_equal(p_cmean[["pnie"]], sas_p[["marginal_pnie"]])
+                                expect_equal(p_cmean[["te"]], sas_p[["marginal_te"]])
+                            })
+
+                            test_that(paste0("lower_cmean confint match with ", filename), {
+                                expect_equal(lower_cmean[["cde"]], log(sas_lower[["marginal_cde"]]))
+                                expect_equal(lower_cmean[["pnde"]], log(sas_lower[["marginal_pnde"]]))
+                                expect_equal(lower_cmean[["tnie"]], log(sas_lower[["marginal_tnie"]]))
+                                expect_equal(lower_cmean[["tnde"]], log(sas_lower[["marginal_tnde"]]))
+                                expect_equal(lower_cmean[["pnie"]], log(sas_lower[["marginal_pnie"]]))
+                                expect_equal(lower_cmean[["te"]], log(sas_lower[["marginal_te"]]))
+                            })
+
+                            test_that(paste0("upper_cmean confint match with ", filename), {
+                                expect_equal(upper_cmean[["cde"]], log(sas_upper[["marginal_cde"]]))
+                                expect_equal(upper_cmean[["pnde"]], log(sas_upper[["marginal_pnde"]]))
+                                expect_equal(upper_cmean[["tnie"]], log(sas_upper[["marginal_tnie"]]))
+                                expect_equal(upper_cmean[["tnde"]], log(sas_upper[["marginal_tnde"]]))
+                                expect_equal(upper_cmean[["pnie"]], log(sas_upper[["marginal_pnie"]]))
+                                expect_equal(upper_cmean[["te"]], log(sas_upper[["marginal_te"]]))
                             })
                         }
 
