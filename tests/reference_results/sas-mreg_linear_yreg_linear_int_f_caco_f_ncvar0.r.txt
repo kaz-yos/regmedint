@@ -1,0 +1,61 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.4000 -2.5000 -1.7000  0.4434 24.3000 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   2.2132     0.8784   2.520   0.0123 *
+trt           0.7434     0.5532   1.344   0.1801  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.594 on 274 degrees of freedom
+Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
+F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
+
+### Outcome model
+
+Call:
+lm(formula = alk_phos ~ trt + bili, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2276.8 -1030.7  -655.3   -12.5 12053.3 
+
+Coefficients:
+            Estimate Std. Error t value   Pr(>|t|)    
+(Intercept)  1913.49     406.56   4.707 0.00000401 ***
+trt           -87.70     253.94  -0.345     0.7301    
+bili           64.58      27.64   2.336     0.0202 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2102 on 273 degrees of freedom
+Multiple R-squared:  0.01969,	Adjusted R-squared:  0.01251 
+F-statistic: 2.742 on 2 and 273 DF,  p-value: 0.06624
+
+### Mediation analysis 
+            est         se          Z         p      lower     upper
+cde  -87.700481 253.935185 -0.3453656 0.7298195 -585.40430 410.00334
+pnde -87.700481 253.935185 -0.3453656 0.7298195 -585.40430 410.00334
+tnie  48.010649  41.213102  1.1649366 0.2440447  -32.76555 128.78684
+tnde -87.700481 253.935185 -0.3453656 0.7298195 -585.40430 410.00334
+pnie  48.010649  41.213102  1.1649366 0.2440447  -32.76555 128.78684
+te   -39.689832 255.611196 -0.1552742 0.8766051 -540.67857 461.29891
+pm    -1.209646   7.914485 -0.1528395 0.8785248  -16.72175  14.30246
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2
+ a0 (reference value of avar)  = 1
+mvar: bili
+ m_cde (intervend value of mvar for cde) = 1
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.

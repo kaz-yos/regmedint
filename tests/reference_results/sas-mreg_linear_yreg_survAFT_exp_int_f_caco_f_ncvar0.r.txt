@@ -1,0 +1,58 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.4000 -2.5000 -1.7000  0.4434 24.3000 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   2.2132     0.8784   2.520   0.0123 *
+trt           0.7434     0.5532   1.344   0.1801  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.594 on 274 degrees of freedom
+Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
+F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(time, status) ~ trt + bili, 
+    data = data, dist = "exponential")
+              Value Std. Error      z      p
+(Intercept)  8.4293     0.2768  30.45 <2e-16
+trt          0.2217     0.1797   1.23   0.22
+bili        -0.1220     0.0122 -10.02 <2e-16
+
+Scale fixed at 1 
+
+Exponential distribution
+Loglik(model)= -1174.9   Loglik(intercept only)= -1206.3
+	Chisq= 62.73 on 2 degrees of freedom, p= 2.4e-14 
+Number of Newton-Raphson Iterations: 5 
+n= 276 
+
+### Mediation analysis 
+             est         se          Z         p      lower      upper
+cde   0.22167735 0.17965364  1.2339151 0.2172345 -0.1304373 0.57379202
+pnde  0.22167735 0.17965364  1.2339151 0.2172345 -0.1304373 0.57379202
+tnie -0.09071942 0.06810841 -1.3319855 0.1828650 -0.2242095 0.04277062
+tnde  0.22167735 0.17965364  1.2339151 0.2172345 -0.1304373 0.57379202
+pnie -0.09071942 0.06810841 -1.3319855 0.1828650 -0.2242095 0.04277062
+te    0.13095793 0.19045745  0.6875968 0.4917067 -0.2423318 0.50424766
+pm   -0.77364853 1.37990978 -0.5606515 0.5750351 -3.4782220 1.93092494
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2
+ a0 (reference value of avar)  = 1
+mvar: bili
+ m_cde (intervend value of mvar for cde) = 1
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.

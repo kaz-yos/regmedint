@@ -1,0 +1,63 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-1.177  -1.141  -1.141   1.177   1.214  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  0.08577    0.38245   0.224    0.823
+trt         -0.08577    0.24091  -0.356    0.722
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 382.36  on 274  degrees of freedom
+AIC: 386.36
+
+Number of Fisher Scoring iterations: 3
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(time, status) ~ trt * bili_bin, 
+    data = data, dist = "weibull")
+               Value Std. Error     z        p
+(Intercept)   8.8862     0.4204 21.14  < 2e-16
+trt           0.0166     0.2601  0.06   0.9491
+bili_bin     -1.3617     0.4825 -2.82   0.0048
+trt:bili_bin  0.0612     0.3015  0.20   0.8392
+Log(scale)   -0.2922     0.0736 -3.97 0.000072
+
+Scale= 0.747 
+
+Weibull distribution
+Loglik(model)= -1162.4   Loglik(intercept only)= -1203.8
+	Chisq= 82.81 on 3 degrees of freedom, p= 7.7e-18 
+Number of Newton-Raphson Iterations: 5 
+n= 276 
+
+### Mediation analysis 
+            est         se          Z         p      lower     upper
+cde  0.07779395 0.15256494  0.5099071 0.6101165 -0.2212278 0.3768157
+pnde 0.03001182 0.20582037  0.1458156 0.8840670 -0.3733887 0.4334123
+tnie 0.02333488 0.06562890  0.3555580 0.7221716 -0.1052954 0.1519652
+tnde 0.02913484 0.20915614  0.1392971 0.8892154 -0.3808037 0.4390733
+pnie 0.02421186 0.06808567  0.3556087 0.7221336 -0.1092336 0.1576573
+te   0.05334670 0.21795070  0.2447650 0.8066384 -0.3738288 0.4805222
+pm   0.44399017 0.02942244 15.0901878 0.0000000  0.3863232 0.5016571
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2
+ a0 (reference value of avar)  = 1
+mvar: bili_bin
+ m_cde (intervend value of mvar for cde) = 1
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.

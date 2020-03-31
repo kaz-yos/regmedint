@@ -1,0 +1,61 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-1.177  -1.141  -1.141   1.177   1.214  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  0.08577    0.38245   0.224    0.823
+trt         -0.08577    0.24091  -0.356    0.722
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 382.36  on 274  degrees of freedom
+AIC: 386.36
+
+Number of Fisher Scoring iterations: 3
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(time, status) ~ trt + bili_bin, 
+    data = data, dist = "exponential")
+              Value Std. Error     z       p
+(Intercept)  9.1586     0.3175 28.85 < 2e-16
+trt          0.0599     0.1762  0.34    0.73
+bili_bin    -1.5907     0.2018 -7.88 3.3e-15
+
+Scale fixed at 1 
+
+Exponential distribution
+Loglik(model)= -1169.3   Loglik(intercept only)= -1206.3
+	Chisq= 74.04 on 2 degrees of freedom, p= 8.4e-17 
+Number of Newton-Raphson Iterations: 5 
+n= 276 
+
+### Mediation analysis 
+            est         se          Z         p      lower     upper
+cde  0.05990123 0.17617999  0.3400002 0.7338564 -0.2854052 0.4052077
+pnde 0.05990123 0.17617999  0.3400002 0.7338564 -0.2854052 0.4052077
+tnie 0.02795206 0.07856054  0.3558028 0.7219883 -0.1260238 0.1819279
+tnde 0.05990123 0.17617999  0.3400002 0.7338564 -0.2854052 0.4052077
+pnie 0.02795206 0.07856054  0.3558028 0.7219883 -0.1260238 0.1819279
+te   0.08785328 0.19285463  0.4555415 0.6487197 -0.2901348 0.4658414
+pm   0.32774618 0.03009094 10.8918548 0.0000000  0.2687690 0.3867233
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2
+ a0 (reference value of avar)  = 1
+mvar: bili_bin
+ m_cde (intervend value of mvar for cde) = 1
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.

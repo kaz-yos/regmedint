@@ -1,0 +1,59 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.4000 -2.5000 -1.7000  0.4434 24.3000 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   2.2132     0.8784   2.520   0.0123 *
+trt           0.7434     0.5532   1.344   0.1801  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.594 on 274 degrees of freedom
+Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
+F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(time, status) ~ trt * bili, 
+    data = data, dist = "exponential")
+              Value Std. Error     z        p
+(Intercept)  8.7034     0.3535 24.62  < 2e-16
+trt          0.0528     0.2222  0.24     0.81
+bili        -0.1813     0.0458 -3.96 0.000076
+trt:bili     0.0346     0.0263  1.31     0.19
+
+Scale fixed at 1 
+
+Exponential distribution
+Loglik(model)= -1174.1   Loglik(intercept only)= -1206.3
+	Chisq= 64.39 on 3 degrees of freedom, p= 6.8e-14 
+Number of Newton-Raphson Iterations: 5 
+n= 276 
+
+### Mediation analysis 
+             est          se          Z         p       lower       upper
+cde   0.08737037  0.20734323  0.4213804 0.6734773  -0.3190149  0.49375564
+pnde  0.06053920  0.22069998  0.2743054 0.7838499  -0.3720248  0.49310321
+tnie -0.08337688  0.06303320 -1.3227456 0.1859200  -0.2069197  0.04016591
+tnde  0.08624822  0.20959340  0.4115026 0.6807041  -0.3245473  0.49704374
+pnie -0.10908591  0.08275085 -1.3182451 0.1874216  -0.2712746  0.05310279
+te   -0.02283768  0.22815132 -0.1000988 0.9202659  -0.4700061  0.42433069
+pm    3.76405413 37.38998170  0.1006701 0.9198123 -69.5189634 77.04707165
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2
+ a0 (reference value of avar)  = 1
+mvar: bili
+ m_cde (intervend value of mvar for cde) = 1
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.

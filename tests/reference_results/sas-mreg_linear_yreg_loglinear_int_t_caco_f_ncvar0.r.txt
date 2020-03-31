@@ -1,0 +1,67 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.4000 -2.5000 -1.7000  0.4434 24.3000 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   2.2132     0.8784   2.520   0.0123 *
+trt           0.7434     0.5532   1.344   0.1801  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.594 on 274 degrees of freedom
+Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
+F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
+
+### Outcome model
+
+Call:
+glm(formula = spiders ~ trt * bili, family = poisson(link = "log"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.4222  -0.7062  -0.6850   0.5694   1.2061  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -1.62134    0.46457  -3.490 0.000483 ***
+trt          0.07229    0.28921   0.250 0.802612    
+bili         0.12547    0.06198   2.024 0.042936 *  
+trt:bili    -0.03830    0.03604  -1.063 0.287860    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 198.14  on 275  degrees of freedom
+Residual deviance: 186.76  on 272  degrees of freedom
+AIC: 354.76
+
+Number of Fisher Scoring iterations: 5
+
+### Mediation analysis 
+             est         se          Z         p       lower      upper
+cde   0.03399431 0.26790753  0.1268882 0.8990289 -0.49109480 0.55908341
+pnde -0.09593113 0.22704626 -0.4225180 0.6726470 -0.54093363 0.34907136
+tnie  0.03632605 0.03130280  1.1604727 0.2458564 -0.02502632 0.09767841
+tnde -0.12440276 0.22625245 -0.5498405 0.5824288 -0.56784942 0.31904390
+pnie  0.06479768 0.05285063  1.2260530 0.2201787 -0.03878766 0.16838301
+te   -0.05960508 0.22797263 -0.2614572 0.7937400 -0.50642322 0.38721305
+pm   -0.58084900 2.38735068 -0.2433028 0.8077709 -5.25997035 4.09827235
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2
+ a0 (reference value of avar)  = 1
+mvar: bili
+ m_cde (intervend value of mvar for cde) = 1
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.

@@ -1,0 +1,62 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.4000 -2.5000 -1.7000  0.4434 24.3000 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   2.2132     0.8784   2.520   0.0123 *
+trt           0.7434     0.5532   1.344   0.1801  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.594 on 274 degrees of freedom
+Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
+F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
+
+### Outcome model
+Call:
+survival::coxph(formula = Surv(time, status) ~ trt + bili, data = data, 
+    ties = "efron")
+
+  n= 276, number of events= 129 
+
+         coef exp(coef) se(coef)      z Pr(>|z|)    
+trt  -0.23318   0.79201  0.17984 -1.297    0.195    
+bili  0.14225   1.15287  0.01335 10.659   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+     exp(coef) exp(-coef) lower .95 upper .95
+trt      0.792     1.2626    0.5567     1.127
+bili     1.153     0.8674    1.1231     1.183
+
+Concordance= 0.77  (se = 0.02 )
+Likelihood ratio test= 75.15  on 2 df,   p=<2e-16
+Wald test            = 113.8  on 2 df,   p=<2e-16
+Score (logrank) test = 157.9  on 2 df,   p=<2e-16
+
+### Mediation analysis 
+            est         se          Z         p       lower     upper
+cde  -0.2331756 0.17983583 -1.2966023 0.1947681 -0.58564730 0.1192962
+pnde -0.2331756 0.17983583 -1.2966023 0.1947681 -0.58564730 0.1192962
+tnie  0.1057464 0.07930902  1.3333460 0.1824183 -0.04969645 0.2611892
+tnde -0.2331756 0.17983583 -1.2966023 0.1947681 -0.58564730 0.1192962
+pnie  0.1057464 0.07930902  1.3333460 0.1824183 -0.04969645 0.2611892
+te   -0.1274292 0.19503437 -0.6533679 0.5135192 -0.50968954 0.2548312
+pm   -0.7383658 1.48797181 -0.4962230 0.6197371 -3.65473699 2.1780053
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2
+ a0 (reference value of avar)  = 1
+mvar: bili
+ m_cde (intervend value of mvar for cde) = 1
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.

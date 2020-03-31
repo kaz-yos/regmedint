@@ -1,0 +1,59 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.4000 -2.5000 -1.7000  0.4434 24.3000 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   2.2132     0.8784   2.520   0.0123 *
+trt           0.7434     0.5532   1.344   0.1801  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.594 on 274 degrees of freedom
+Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
+F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(time, status) ~ trt + bili, 
+    data = data, dist = "weibull")
+               Value Std. Error      z        p
+(Intercept)  8.26928    0.19748  41.87  < 2e-16
+trt          0.15845    0.12738   1.24     0.21
+bili        -0.10040    0.00934 -10.75  < 2e-16
+Log(scale)  -0.34643    0.07511  -4.61 0.000004
+
+Scale= 0.707 
+
+Weibull distribution
+Loglik(model)= -1165.7   Loglik(intercept only)= -1203.8
+	Chisq= 76.03 on 2 degrees of freedom, p= 3.1e-17 
+Number of Newton-Raphson Iterations: 6 
+n= 276 
+
+### Mediation analysis 
+             est         se          Z         p       lower      upper
+cde   0.15845380 0.12738011  1.2439446 0.2135200 -0.09120663 0.40811423
+pnde  0.15845380 0.12738011  1.2439446 0.2135200 -0.09120663 0.40811423
+tnie -0.07463538 0.05596883 -1.3335168 0.1823623 -0.18433228 0.03506152
+tnde  0.15845380 0.12738011  1.2439446 0.2135200 -0.09120663 0.40811423
+pnie -0.07463538 0.05596883 -1.3335168 0.1823623 -0.18433228 0.03506152
+te    0.08381842 0.13779859  0.6082676 0.5430100 -0.18626186 0.35389870
+pm   -0.96379970 1.93414550 -0.4983078 0.6182671 -4.75465522 2.82705582
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2
+ a0 (reference value of avar)  = 1
+mvar: bili
+ m_cde (intervend value of mvar for cde) = 1
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.
