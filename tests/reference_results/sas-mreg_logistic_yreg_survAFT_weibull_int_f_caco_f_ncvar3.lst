@@ -1,4 +1,4 @@
-                                                           The SAS System                         17:43 Wednesday, April 1, 2020   1
+                                                           The SAS System                         17:56 Wednesday, April 1, 2020   1
 
                                                        The LIFEREG Procedure
 
@@ -53,7 +53,7 @@
                             Algorithm converged.                                                       
 
 
-                                                           The SAS System                         17:43 Wednesday, April 1, 2020   2
+                                                           The SAS System                         17:56 Wednesday, April 1, 2020   2
 
                                                        The LIFEREG Procedure
 
@@ -95,7 +95,7 @@
             male           0.012084     -0.002000     -0.004358     -0.000349      0.029599      0.001978     -0.000132
             stage         -0.019216     -0.001863     -0.001399     -0.000135      0.001978      0.008807     -0.001000
             Scale          0.008718     -0.000160     -0.002986  -0.000043408     -0.000132     -0.001000      0.002605
-                                                           The SAS System                         17:43 Wednesday, April 1, 2020   3
+                                                           The SAS System                         17:56 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -148,7 +148,7 @@
                                       Wald                    27.5947        4         <.0001
 
 
-                                                           The SAS System                         17:43 Wednesday, April 1, 2020   4
+                                                           The SAS System                         17:56 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -181,7 +181,7 @@
                                          Percent Discordant     29.6    Gamma        0.407
                                          Percent Tied            0.0    Tau-a        0.204
                                          Pairs                 19035    c            0.704
-                                                           The SAS System                         17:43 Wednesday, April 1, 2020   5
+                                                           The SAS System                         17:56 Wednesday, April 1, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper

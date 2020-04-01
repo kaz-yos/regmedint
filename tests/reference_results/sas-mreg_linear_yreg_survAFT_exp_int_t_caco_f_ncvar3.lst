@@ -1,4 +1,4 @@
-                                                           The SAS System                         17:43 Wednesday, April 1, 2020   1
+                                                           The SAS System                         17:57 Wednesday, April 1, 2020   1
 
                                                        The LIFEREG Procedure
 
@@ -54,7 +54,7 @@
                             Algorithm converged.                                                       
 
 
-                                                           The SAS System                         17:43 Wednesday, April 1, 2020   2
+                                                           The SAS System                         17:57 Wednesday, April 1, 2020   2
 
                                                        The LIFEREG Procedure
 
@@ -106,7 +106,7 @@
      male           0.023085      0.000673      0.000847     -0.000202     -0.000726      0.058623     -0.000114             0
      stage         -0.033263     -0.004179     -0.001480      0.000809     -0.000243     -0.000114      0.015964             0
      Scale                 0             0             0             0             0             0             0             0
-                                                           The SAS System                         17:43 Wednesday, April 1, 2020   3
+                                                           The SAS System                         17:57 Wednesday, April 1, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -141,7 +141,7 @@
                                 age           1        0.02419        0.02706       0.89      0.3720
                                 male          1       -0.61583        0.84467      -0.73      0.4666
                                 stage         1        1.26164        0.32279       3.91      0.0001
-                                                           The SAS System                         17:43 Wednesday, April 1, 2020   4
+                                                           The SAS System                         17:57 Wednesday, April 1, 2020   4
 
                             Obs     _RMSE_    Intercept       trt         age         male        stage
 
@@ -151,7 +151,7 @@
                              4     4.47232     -0.03377     0.00195     0.000732    -0.00527    -0.00164
                              5     4.47232      0.14180     0.01920    -0.005274     0.71347     0.00132
                              6     4.47232     -0.20740    -0.01857    -0.001637     0.00132     0.10419
-                                                           The SAS System                         17:43 Wednesday, April 1, 2020   5
+                                                           The SAS System                         17:57 Wednesday, April 1, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
