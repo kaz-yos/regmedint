@@ -289,14 +289,16 @@ macro_args_sas_r <- macro_args_sas_r_prelim %>%
             if(is.error(res)) {
                 return(NULL)
             } else {
-                return(confint(res, alpha = 2 * (1 - pnorm(1.96)))[,"lower"])
+                ## confidence level 0.9500042 corresponding to +/- 1.96 * se
+                return(confint(res, level = 1 - (2 * (1 - pnorm(1.96))))[,"lower"])
             }
         }),
         upper = map(res, function(res) {
             if(is.error(res)) {
                 return(NULL)
             } else {
-                return(confint(res, alpha = 2 * (1 - pnorm(1.96)))[,"upper"])
+                ## confidence level 0.9500042 corresponding to +/- 1.96 * se
+                return(confint(res, level = 1 - (2 * (1 - pnorm(1.96))))[,"upper"])
             }
         }),
         ##
@@ -328,14 +330,16 @@ macro_args_sas_r <- macro_args_sas_r_prelim %>%
             if(is.error(res)  | is.null(cmean)) {
                 return(NULL)
             } else {
-                return(confint(res, level = pnorm(1.96), c_cond = cmean)[,"lower"])
+                ## confidence level 0.9500042 corresponding to +/- 1.96 * se
+                return(confint(res, level = 1 - (2 * (1 - pnorm(1.96))), c_cond = cmean)[,"lower"])
             }
         }),
         upper_cmean = pmap(list(res, cmean), function(res, cmean) {
             if(is.error(res)  | is.null(cmean)) {
                 return(NULL)
             } else {
-                return(confint(res, level = pnorm(1.96), c_cond = cmean)[,"upper"])
+                ## confidence level 0.9500042 corresponding to +/- 1.96 * se
+                return(confint(res, level = 1 - (2 * (1 - pnorm(1.96))), c_cond = cmean)[,"upper"])
             }
         })
     )
