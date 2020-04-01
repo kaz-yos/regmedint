@@ -430,6 +430,7 @@ vcov.regmedint <- function(x,
 ##' Construct Wald approximate confidence intervals for the quantities of interest.
 ##'
 ##' @inheritParams print.regmedint
+##' @param parm For compatibility with generic. Ignored.
 ##' @param level A numeric vector of length one. Requested confidence level. Defaults to 0.95.
 ##' @param ... For compatibility with generic.
 ##'
@@ -437,11 +438,12 @@ vcov.regmedint <- function(x,
 ##'
 ##' @export
 confint.regmedint <- function(x,
+                              parm = NULL,
+                              level = 0.95,
                               a0 = NULL,
                               a1 = NULL,
                               m_cde = NULL,
                               c_cond = NULL,
-                              level = 0.95,
                               ...) {
 
     ## This is a user function. Check arguments heavily.
