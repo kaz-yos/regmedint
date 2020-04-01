@@ -371,6 +371,9 @@ junk <- macro_args_sas_r %>%
             function(filename, sas, res, coef, se, p, lower, upper,
                      coef_cmean, se_cmean, p_cmean, lower_cmean, upper_cmean) {
 
+                if (filename == "sas-mreg_linear_yreg_linear_int_t_caco_f_ncvar0.sas") {
+                    browser()
+                }
                 ## First rule out error.
                 if (is.error(res)) {
                     stop(paste0("R fit for ", filename, " gave an try-error object!"))
