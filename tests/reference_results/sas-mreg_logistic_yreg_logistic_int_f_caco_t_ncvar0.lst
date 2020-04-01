@@ -1,4 +1,4 @@
-                                                           The SAS System                         17:36 Wednesday, April 1, 2020   1
+                                                           The SAS System                         17:43 Wednesday, April 1, 2020   1
 
                                                        The LOGISTIC Procedure
 
@@ -51,7 +51,7 @@
                                       Wald                    19.0499        2         <.0001
 
 
-                                                           The SAS System                         17:36 Wednesday, April 1, 2020   2
+                                                           The SAS System                         17:43 Wednesday, April 1, 2020   2
 
                                                        The LOGISTIC Procedure
 
@@ -80,7 +80,7 @@
                                          Percent Discordant     23.5    Gamma        0.389
                                          Percent Tied           23.1    Tau-a        0.124
                                          Pairs                 15680    c            0.649
-                                                           The SAS System                         17:36 Wednesday, April 1, 2020   3
+                                                           The SAS System                         17:43 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -133,7 +133,7 @@
                                       Wald                     0.1447        1         0.7036
 
 
-                                                           The SAS System                         17:36 Wednesday, April 1, 2020   4
+                                                           The SAS System                         17:43 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -160,7 +160,7 @@
                                          Percent Discordant     23.6    Gamma        0.055
                                          Percent Tied           50.0    Tau-a        0.013
                                          Pairs                  9243    c            0.514
-                                                           The SAS System                         17:36 Wednesday, April 1, 2020   5
+                                                           The SAS System                         17:43 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper

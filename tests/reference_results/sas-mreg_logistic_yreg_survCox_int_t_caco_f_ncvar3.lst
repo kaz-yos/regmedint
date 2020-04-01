@@ -1,4 +1,4 @@
-                                                           The SAS System                         17:35 Wednesday, April 1, 2020   1
+                                                           The SAS System                         17:43 Wednesday, April 1, 2020   1
 
                                                         The PHREG Procedure
 
@@ -58,7 +58,7 @@
                         age           1       0.01768       0.00909        3.7820        0.0518       1.018
                         male          1      -0.00757       0.24153        0.0010        0.9750       0.992
                         stage         1       0.59035       0.13093       20.3292        <.0001       1.805
-                                                           The SAS System                         17:35 Wednesday, April 1, 2020   2
+                                                           The SAS System                         17:43 Wednesday, April 1, 2020   2
 
                                                         The PHREG Procedure
 
@@ -72,7 +72,7 @@
        age            0.0002154822      -.0000536861      0.0001382128      0.0000826902      -.0006571023      -.0003156327
        male           -.0002778655      -.0021780472      -.0046615180      -.0006571023      0.0583371208      0.0045537121
        stage          -.0015724657      0.0012000827      -.0038423115      -.0003156327      0.0045537121      0.0171432367
-                                                           The SAS System                         17:35 Wednesday, April 1, 2020   3
+                                                           The SAS System                         17:43 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -125,7 +125,7 @@
                                       Wald                    27.5947        4         <.0001
 
 
-                                                           The SAS System                         17:35 Wednesday, April 1, 2020   4
+                                                           The SAS System                         17:43 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -158,7 +158,7 @@
                                          Percent Discordant     29.6    Gamma        0.407
                                          Percent Tied            0.0    Tau-a        0.204
                                          Pairs                 19035    c            0.704
-                                                           The SAS System                         17:35 Wednesday, April 1, 2020   5
+                                                           The SAS System                         17:43 Wednesday, April 1, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
