@@ -2968,7 +2968,8 @@ A=exp(beta0+beta1*&a0+beta2*t(c));
 B=(1+A);
 D=exp(beta0+beta1*&a1+beta2*t(c));
 E=(1+D);
-/* Several corrections. Note ?**2 terms must be different from the one in the denominator. */
+/* Several corrections by @kaz-yos on 2020-03-28 */g
+/* Note ?**2 terms must be different from the one in the denominator. */
 /* Corrected from x=(theta2)*((D*E-E**2)/(E**2)-(A*B-B**2)/(B**2)); */
 x=(theta2)*((D*E-D**2)/(E**2)-(A*B-A**2)/(B**2));
 /* Corrected from w=((theta2)*(&a1*(D*E-E**2)/(E**2)-&a0*(A*B-B**2)/(B**2))); */
