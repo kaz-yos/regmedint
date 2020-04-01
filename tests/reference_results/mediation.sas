@@ -2790,9 +2790,16 @@ A=exp(beta0+beta1*&a0+beta2*t(cmean));
 B=(1+A);
 D=exp(beta0+beta1*&a1+beta2*t(cmean));
 E=(1+D);
-x=theta3*(&a1-&a0)*(A*B-B**2)/(B**2)+(theta2+theta3*&a1)*((D*E-D**2)/(E**2)-(A*B-B**2)/(B**2));
-w=&a0*theta3*(&a1-&a0)*(A*B-B**2)/(B**2)+(theta2+theta3*&a1)*(&a1*((D*E-D**2)/(E**2))-&a0*((A*B-B**2)/(B**2)));
-y=theta3*cmean*(&a1-&a0)*((A*B-B**2)/(B**2))+(theta2+theta3*&a1)*(((D*E-D**2)/(E**2))-((A*B-B**2)/(B**2)));
+/* Gamma_te corrected by @kaz-yos on 2020-04-01 based on VV2013 Appendix p14. */
+/* The squared terms in the numerator should be different from the denominator. */
+/* Corrected from x=theta3*(&a1-&a0)*(A*B-B**2)/(B**2)+(theta2+theta3*&a1)*((D*E-D**2)/(E**2)-(A*B-B**2)/(B**2)); */
+x=theta3*(&a1-&a0)*(A*B-A**2)/(B**2)+(theta2+theta3*&a1)*((D*E-D**2)/(E**2)-(A*B-A**2)/(B**2));
+/* Corrected from w=&a0*theta3*(&a1-&a0)*(A*B-B**2)/(B**2)+(theta2+theta3*&a1)*(&a1*((D*E-D**2)/(E**2))-&a0*((A*B-B**2)/(B**2))); */
+w=&a0*theta3*(&a1-&a0)*(A*B-A**2)/(B**2)+(theta2+theta3*&a1)*(&a1*((D*E-D**2)/(E**2))-&a0*((A*B-A**2)/(B**2)));
+/* Corrected from y=theta3*cmean*(&a1-&a0)*((A*B-B**2)/(B**2))+(theta2+theta3*&a1)*(((D*E-D**2)/(E**2))-((A*B-B**2)/(B**2))); */
+/* Also cmean was added to the second term of d3. VV2013 Appendix p14 lacks this, but this */
+/* should be there as it is present in the Gamma_tnie d3 in p13. */
+y=theta3*cmean*(&a1-&a0)*((A*B-A**2)/(B**2))+(theta2+theta3*&a1)*cmean*(((D*E-D**2)/(E**2))-((A*B-A**2)/(B**2)));
 s=(&a1-&a0);
 t=t(D/E-A/B);
 r=(&a1-&a0)*t(A/B)+&a1*t;
