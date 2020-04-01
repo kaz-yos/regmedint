@@ -2915,13 +2915,18 @@ h=t(D/E-A/B);
 gamma[5,]=x|| w|| y|| zero||zero|| h||  z1;
 gamma[3,]=x|| w|| y||zero||zero|| h||  z1;
 
+/* Fixed Gamma_te by @kaz-yos on 2020-04-01 following VV2013 Appendix p14. */
 A=exp(beta0+beta1*&a0+beta2*t(Cmean));
 B=(1+A);
 D=exp(beta0+beta1*&a1+beta2*t(Cmean));
 E=(1+D);
-x=(theta2)*((D*E-E**2)/(E**2)-(A*B-B**2)/(B**2));
-w=((theta2)*(&a1*(D*E-E**2)/(E**2)-&a0*(A*B-B**2)/(B**2)));
-y=(theta2)*Cmean*((D*E-E**2)/(E**2)-(A*B-B**2)/(B**2));
+/* Corrected from x=(theta2)*((D*E-E**2)/(E**2)-(A*B-B**2)/(B**2)); */
+x=(theta2)*((D*E-D**2)/(E**2)-(A*B-A**2)/(B**2));
+/* The squared term in the numerator is different from the denominator. */
+/* Corrected from w=((theta2)*(&a1*(D*E-E**2)/(E**2)-&a0*(A*B-B**2)/(B**2))); */
+w=((theta2)*(&a1*(D*E-D**2)/(E**2)-&a0*(A*B-A**2)/(B**2)));
+/* Corrected from y=(theta2)*Cmean*((D*E-E**2)/(E**2)-(A*B-B**2)/(B**2)); */
+y=(theta2)*Cmean*((D*E-D**2)/(E**2)-(A*B-A**2)/(B**2));
 t=t(D/E-A/B);
 s=(&a1-&a0);
 gamma[6,]=x||w||y||zero||s||t||z1;
@@ -2968,7 +2973,7 @@ A=exp(beta0+beta1*&a0+beta2*t(c));
 B=(1+A);
 D=exp(beta0+beta1*&a1+beta2*t(c));
 E=(1+D);
-/* Several corrections by @kaz-yos on 2020-03-28 */
+/* Several corrections by @kaz-yos on 2020-03-28 based on VV2013 Appendix p14 */
 /* Note ?**2 terms must be different from the one in the denominator. */
 /* Corrected from x=(theta2)*((D*E-E**2)/(E**2)-(A*B-B**2)/(B**2)); */
 x=(theta2)*((D*E-D**2)/(E**2)-(A*B-A**2)/(B**2));
