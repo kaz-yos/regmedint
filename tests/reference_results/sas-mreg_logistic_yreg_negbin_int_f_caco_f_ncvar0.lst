@@ -1,4 +1,4 @@
-                                                           The SAS System                         16:18 Wednesday, April 1, 2020   1
+                                                           The SAS System                         16:29 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -58,7 +58,7 @@
 
                     Intercept      1      5.5981      0.0741      5.4529      5.7434       5705.13        <.0001
                     trt            1      0.0204      0.0439     -0.0657      0.1065          0.22        0.6424
-                                                           The SAS System                         16:18 Wednesday, April 1, 2020   2
+                                                           The SAS System                         16:29 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -71,7 +71,7 @@
                     Dispersion     1      0.1289      0.0111      0.1088      0.1526                            
 
 NOTE: The negative binomial dispersion parameter was estimated by maximum likelihood.
-                                                           The SAS System                         16:18 Wednesday, April 1, 2020   3
+                                                           The SAS System                         16:29 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -124,7 +124,7 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                         16:18 Wednesday, April 1, 2020   4
+                                                           The SAS System                         16:29 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -151,7 +151,7 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                         16:18 Wednesday, April 1, 2020   5
+                                                           The SAS System                         16:29 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper
