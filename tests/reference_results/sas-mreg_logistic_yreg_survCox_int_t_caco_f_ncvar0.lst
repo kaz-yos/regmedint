@@ -1,4 +1,4 @@
-                                                           The SAS System                         16:29 Wednesday, April 1, 2020   1
+                                                           The SAS System                         17:26 Wednesday, April 1, 2020   1
 
                                                         The PHREG Procedure
 
@@ -55,7 +55,7 @@
                         trt           1      -0.01844       0.34854        0.0028        0.9578       0.982
                         bili_bin      1       1.91032       0.64717        8.7131        0.0032       6.755
                         int           1      -0.12669       0.40579        0.0975        0.7549       0.881
-                                                           The SAS System                         16:29 Wednesday, April 1, 2020   2
+                                                           The SAS System                         17:26 Wednesday, April 1, 2020   2
 
                                                         The PHREG Procedure
 
@@ -66,7 +66,7 @@
                                   trt            0.1214793833      0.1845609644      -.1216755697
                                   bili_bin       0.1845609644      0.4188332524      -.2490367241
                                   int            -.1216755697      -.2490367241      0.1646647390
-                                                           The SAS System                         16:29 Wednesday, April 1, 2020   3
+                                                           The SAS System                         17:26 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -119,7 +119,7 @@
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                         16:29 Wednesday, April 1, 2020   4
+                                                           The SAS System                         17:26 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -146,7 +146,7 @@
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                         16:29 Wednesday, April 1, 2020   5
+                                                           The SAS System                         17:26 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper

@@ -1,4 +1,4 @@
-1                                                          The SAS System                             16:28 Wednesday, April 1, 2020
+1                                                          The SAS System                             17:25 Wednesday, April 1, 2020
 
 NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
 NOTE: SAS (r) Proprietary Software 9.4 (TS1M5) 
@@ -51,74 +51,74 @@ NOTE: Libref W was successfully assigned as follows:
 4          
 5          /* Load SAS macro */
 6          %include './mediation.sas';
-4262       
-4263       /* Load data */
-4264       proc import datafile = './data-pbc_cc.csv'
-4265           out = pbc_cc
-4266           dbms = csv
-4267           replace;
-4268       run;
-2                                                          The SAS System                             16:28 Wednesday, April 1, 2020
+4267       
+4268       /* Load data */
+4269       proc import datafile = './data-pbc_cc.csv'
+4270           out = pbc_cc
+4271           dbms = csv
+4272           replace;
+4273       run;
+2                                                          The SAS System                             17:25 Wednesday, April 1, 2020
 
 
-4269        /**********************************************************************
-4270        *   PRODUCT:   SAS
-4271        *   VERSION:   9.4
-4272        *   CREATOR:   External File Interface
-4273        *   DATE:      01APR20
-4274        *   DESC:      Generated SAS Datastep Code
-4275        *   TEMPLATE SOURCE:  (None Specified.)
-4276        ***********************************************************************/
-4277           data WORK.PBC_CC    ;
-4278           %let _EFIERR_ = 0; /* set the ERROR detection macro variable */
-4279           infile './data-pbc_cc.csv' delimiter = ',' MISSOVER DSD lrecl=32767 firstobs=2 ;
-4280              informat trt best32. ;
-4281              informat bili best32. ;
-4282              informat bili_bin best32. ;
-4283              informat alk_phos best32. ;
-4284              informat spiders best32. ;
-4285              informat platelet best32. ;
-4286              informat time best32. ;
-4287              informat status best32. ;
-4288              informat cens best32. ;
-4289              informat age best32. ;
-4290              informat male best32. ;
-4291              informat stage best32. ;
-4292              format trt best12. ;
-4293              format bili best12. ;
-4294              format bili_bin best12. ;
-4295              format alk_phos best12. ;
-4296              format spiders best12. ;
-4297              format platelet best12. ;
-4298              format time best12. ;
-4299              format status best12. ;
-4300              format cens best12. ;
-4301              format age best12. ;
-4302              format male best12. ;
-4303              format stage best12. ;
-4304           input
-4305                       trt
-4306                       bili
-4307                       bili_bin
-4308                       alk_phos
-4309                       spiders
-4310                       platelet
-4311                       time
-4312                       status
-4313                       cens
-4314                       age
-4315                       male
-4316                       stage
-4317           ;
-4318           if _ERROR_ then call symputx('_EFIERR_',1);  /* set ERROR detection macro variable */
-4319           run;
+4274        /**********************************************************************
+4275        *   PRODUCT:   SAS
+4276        *   VERSION:   9.4
+4277        *   CREATOR:   External File Interface
+4278        *   DATE:      01APR20
+4279        *   DESC:      Generated SAS Datastep Code
+4280        *   TEMPLATE SOURCE:  (None Specified.)
+4281        ***********************************************************************/
+4282           data WORK.PBC_CC    ;
+4283           %let _EFIERR_ = 0; /* set the ERROR detection macro variable */
+4284           infile './data-pbc_cc.csv' delimiter = ',' MISSOVER DSD lrecl=32767 firstobs=2 ;
+4285              informat trt best32. ;
+4286              informat bili best32. ;
+4287              informat bili_bin best32. ;
+4288              informat alk_phos best32. ;
+4289              informat spiders best32. ;
+4290              informat platelet best32. ;
+4291              informat time best32. ;
+4292              informat status best32. ;
+4293              informat cens best32. ;
+4294              informat age best32. ;
+4295              informat male best32. ;
+4296              informat stage best32. ;
+4297              format trt best12. ;
+4298              format bili best12. ;
+4299              format bili_bin best12. ;
+4300              format alk_phos best12. ;
+4301              format spiders best12. ;
+4302              format platelet best12. ;
+4303              format time best12. ;
+4304              format status best12. ;
+4305              format cens best12. ;
+4306              format age best12. ;
+4307              format male best12. ;
+4308              format stage best12. ;
+4309           input
+4310                       trt
+4311                       bili
+4312                       bili_bin
+4313                       alk_phos
+4314                       spiders
+4315                       platelet
+4316                       time
+4317                       status
+4318                       cens
+4319                       age
+4320                       male
+4321                       stage
+4322           ;
+4323           if _ERROR_ then call symputx('_EFIERR_',1);  /* set ERROR detection macro variable */
+4324           run;
 
 NOTE: The infile './data-pbc_cc.csv' is:
       Filename=/inv/kyoshida/cantos_stats/regmedint/tests/reference_results/data-pbc_cc.csv,
       Owner Name=kyoshida,Group Name=analyst,
       Access Permission=-rw-rw-r--,
-      Last Modified=01Apr2020:16:28:51,
-3                                                          The SAS System                             16:28 Wednesday, April 1, 2020
+      Last Modified=01Apr2020:17:25:52,
+3                                                          The SAS System                             17:25 Wednesday, April 1, 2020
 
       File Size (bytes)=13771
 
@@ -128,7 +128,7 @@ NOTE: 276 records were read from the infile './data-pbc_cc.csv'.
 NOTE: The data set WORK.PBC_CC has 276 observations and 12 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.01 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 276 rows created in WORK.PBC_CC from ./data-pbc_cc.csv.
@@ -138,35 +138,35 @@ NOTE: DATA statement used (Total process time):
 NOTE: WORK.PBC_CC data set was successfully created.
 NOTE: The data set WORK.PBC_CC has 276 observations and 12 variables.
 NOTE: PROCEDURE IMPORT used (Total process time):
-      real time           0.08 seconds
-      cpu time            0.07 seconds
+      real time           0.09 seconds
+      cpu time            0.08 seconds
       
 
-4320       
-4321       %mediation(
-4322           data = pbc_cc,
-4323           yvar = time,
-4324           avar = trt,
-4325           mvar = bili_bin,
-4326           cvar = age male stage,
-4327           a0 = 1,
-4328           a1 = 2,
-4329           m = 1,
-4330           yreg = survAFT_exp,
-4331           mreg = logistic,
-4332           interaction = false,
-4333           casecontrol = false,
-4334           output = full,
-4335           c = 50 1 2,
-4336           boot = ,
-4337           cens = cens);
+4325       
+4326       %mediation(
+4327           data = pbc_cc,
+4328           yvar = time,
+4329           avar = trt,
+4330           mvar = bili_bin,
+4331           cvar = age male stage,
+4332           a0 = 1,
+4333           a1 = 2,
+4334           m = 1,
+4335           yreg = survAFT_exp,
+4336           mreg = logistic,
+4337           interaction = false,
+4338           casecontrol = false,
+4339           output = full,
+4340           c = 50 1 2,
+4341           boot = ,
+4342           cens = cens);
 There are 3 confounders in the string "age male stage"
 
 NOTE: There were 276 observations read from the data set WORK.PBC_CC.
 NOTE: The data set WORK.DATA1 has 276 observations and 7 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 
@@ -174,25 +174,25 @@ NOTE: There were 276 observations read from the data set WORK.DATA1.
 NOTE: The data set WORK.DATA21 has 1 observations and 3 variables.
 NOTE: PROCEDURE MEANS used (Total process time):
       real time           0.01 seconds
-      cpu time            0.02 seconds
+      cpu time            0.00 seconds
       
 
 
-4                                                          The SAS System                             16:28 Wednesday, April 1, 2020
+4                                                          The SAS System                             17:25 Wednesday, April 1, 2020
 
 NOTE: There were 1 observations read from the data set WORK.DATA21.
 NOTE: The data set WORK.DATA21 has 1 observations and 1 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 NOTE: IML Ready
 NOTE: Exiting IML.
 NOTE: The data set WORK.DATA2NEW1 has 1 observations and 1 variables.
 NOTE: PROCEDURE IML used (Total process time):
-      real time           0.03 seconds
-      cpu time            0.03 seconds
+      real time           0.02 seconds
+      cpu time            0.02 seconds
       
 
 
@@ -215,7 +215,7 @@ NOTE: There were 276 observations read from the data set WORK.DATA1.
 NOTE: The data set WORK.DATA22 has 1 observations and 3 variables.
 NOTE: PROCEDURE MEANS used (Total process time):
       real time           0.01 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 
@@ -223,7 +223,7 @@ NOTE: There were 1 observations read from the data set WORK.DATA22.
 NOTE: The data set WORK.DATA22 has 1 observations and 1 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 NOTE: IML Ready
@@ -231,19 +231,19 @@ NOTE: Exiting IML.
 NOTE: The data set WORK.DATA2NEW2 has 1 observations and 1 variables.
 NOTE: PROCEDURE IML used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 
 NOTE: Appending WORK.DATA2NEW2 to WORK.DATA3.
 NOTE: There were 1 observations read from the data set WORK.DATA2NEW2.
 NOTE: 1 observations added.
-5                                                          The SAS System                             16:28 Wednesday, April 1, 2020
+5                                                          The SAS System                             17:25 Wednesday, April 1, 2020
 
 NOTE: The data set WORK.DATA3 has 2 observations and 1 variables.
 NOTE: PROCEDURE APPEND used (Total process time):
       real time           0.00 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 NOTE: PROCEDURE SQL used (Total process time):
@@ -264,7 +264,7 @@ NOTE: There were 1 observations read from the data set WORK.DATA23.
 NOTE: The data set WORK.DATA23 has 1 observations and 1 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 NOTE: IML Ready
@@ -272,7 +272,7 @@ NOTE: Exiting IML.
 NOTE: The data set WORK.DATA2NEW3 has 1 observations and 1 variables.
 NOTE: PROCEDURE IML used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 
@@ -298,7 +298,7 @@ NOTE: PROCEDURE IML used (Total process time):
       cpu time            0.00 seconds
       
 
-6                                                          The SAS System                             16:28 Wednesday, April 1, 2020
+6                                                          The SAS System                             17:25 Wednesday, April 1, 2020
 
 NOTE: The query requires remerging summary statistics back with the original data.
 WARNING: This CREATE TABLE statement recursively references the target table. A consequence of this is a possible data integrity 
@@ -307,7 +307,7 @@ NOTE: Table WORK.DATA2 created, with 1 rows and 4 columns.
 
 NOTE: PROCEDURE SQL used (Total process time):
       real time           0.01 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 NOTE: The query requires remerging summary statistics back with the original data.
@@ -317,7 +317,7 @@ NOTE: Table WORK.DATA2 created, with 1 rows and 5 columns.
 
 NOTE: PROCEDURE SQL used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 NOTE: The query requires remerging summary statistics back with the original data.
@@ -326,7 +326,7 @@ WARNING: This CREATE TABLE statement recursively references the target table. A 
 NOTE: Table WORK.DATA2 created, with 1 rows and 6 columns.
 
 NOTE: PROCEDURE SQL used (Total process time):
-      real time           0.01 seconds
+      real time           0.00 seconds
       cpu time            0.00 seconds
       
 
@@ -336,7 +336,7 @@ NOTE: The data set WORK.GMPARMS has 8 observations and 8 variables.
 NOTE: The PROCEDURE LIFEREG printed pages 1-2.
 NOTE: PROCEDURE LIFEREG used (Total process time):
       real time           0.02 seconds
-      cpu time            0.03 seconds
+      cpu time            0.02 seconds
       
 
 NOTE: IML Ready
@@ -354,11 +354,11 @@ NOTE: There were 276 observations read from the data set WORK.DATA1.
 NOTE: The data set WORK.OUT2 has 6 observations and 6 variables.
 NOTE: The PROCEDURE LOGISTIC printed pages 3-4.
 NOTE: PROCEDURE LOGISTIC used (Total process time):
-      real time           0.03 seconds
+      real time           0.02 seconds
       cpu time            0.01 seconds
       
 
-7                                                          The SAS System                             16:28 Wednesday, April 1, 2020
+7                                                          The SAS System                             17:25 Wednesday, April 1, 2020
 
 NOTE: IML Ready
 NOTE: Exiting IML.
@@ -368,8 +368,8 @@ NOTE: The data set WORK.CIL has 1 observations and 12 variables.
 NOTE: The data set WORK.CIU has 1 observations and 12 variables.
 NOTE: The data set WORK.PVALUE has 1 observations and 12 variables.
 NOTE: PROCEDURE IML used (Total process time):
-      real time           0.04 seconds
-      cpu time            0.03 seconds
+      real time           0.05 seconds
+      cpu time            0.04 seconds
       
 
 NOTE: IML Ready
@@ -378,7 +378,7 @@ NOTE: The data set WORK.X4 has 12 observations and 1 variables.
 NOTE: The data set WORK.X3 has 12 observations and 4 variables.
 NOTE: PROCEDURE IML used (Total process time):
       real time           0.01 seconds
-      cpu time            0.02 seconds
+      cpu time            0.00 seconds
       
 
 
@@ -418,7 +418,7 @@ NOTE: Deleting WORK.CIL (memtype=DATA).
 NOTE: Deleting WORK.CIU (memtype=DATA).
 NOTE: Deleting WORK.EFFECT (memtype=DATA).
 NOTE: Deleting WORK.PVALUE (memtype=DATA).
-8                                                          The SAS System                             16:28 Wednesday, April 1, 2020
+8                                                          The SAS System                             17:25 Wednesday, April 1, 2020
 
 NOTE: Deleting WORK.SE (memtype=DATA).
 
@@ -442,7 +442,7 @@ NOTE: Deleting WORK.DATA2NEW2 (memtype=DATA).
 
 NOTE: PROCEDURE DATASETS used (Total process time):
       real time           0.00 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 
@@ -457,7 +457,7 @@ NOTE: PROCEDURE DATASETS used (Total process time):
 
 NOTE: Deleting WORK.GMCOVB (memtype=DATA).
 NOTE: Deleting WORK.GMPARMS (memtype=DATA).
-4338       run;
+4343       run;
 
 NOTE: PROCEDURE DATASETS used (Total process time):
       real time           0.00 seconds
@@ -466,6 +466,6 @@ NOTE: PROCEDURE DATASETS used (Total process time):
 
 NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
 NOTE: The SAS System used:
-      real time           0.53 seconds
-      cpu time            0.35 seconds
+      real time           0.54 seconds
+      cpu time            0.36 seconds
       
