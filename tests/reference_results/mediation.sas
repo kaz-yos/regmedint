@@ -3614,8 +3614,11 @@ A=exp(beta0+beta1*&a0);
 B=(1+A);
 D=exp(beta0+beta1*&a1);
 E=(1+D);
-x=theta3*(&a1-&a0)*(A*B-B**2)/(B**2)+(theta2+theta3*&a1)*(((D*E-D**2)/(E**2))-((A*B-B**2)/(B**2)));
-w=&a0*theta3*(&a1-&a0)*(A*B-B**2)/(B**2)+(theta2+theta3*&a1)*(&a0*((D*E-D**2)/(E**2))-&a0*((A*B-B**2)/(B**2)));
+/* Fixed by @kaz-yos. Gamma_te expression based on VV2013 Appendix p14. */
+/* Corrected from x=theta3*(&a1-&a0)*(A*B-B**2)/(B**2)+(theta2+theta3*&a1)*(((D*E-D**2)/(E**2))-((A*B-B**2)/(B**2))); */
+x=theta3*(&a1-&a0)*(A*B-A**2)/(B**2)+(theta2+theta3*&a1)*(((D*E-D**2)/(E**2))-((A*B-A**2)/(B**2)));
+/* Corrected from w=&a0*theta3*(&a1-&a0)*(A*B-B**2)/(B**2)+(theta2+theta3*&a1)*(&a0*((D*E-D**2)/(E**2))-&a0*((A*B-B**2)/(B**2))); */
+w=&a0*theta3*(&a1-&a0)*(A*B-A**2)/(B**2)+(theta2+theta3*&a1)*(&a0*((D*E-D**2)/(E**2))-&a0*((A*B-A**2)/(B**2)));
 s=(&a1-&a0);
 t=t(D/E-A/B);
 r=(&a1-&a0)*t(A/B)+&a1*t;
