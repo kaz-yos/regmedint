@@ -1,4 +1,4 @@
-                                                           The SAS System                           06:56 Monday, March 30, 2020   1
+                                                           The SAS System                         16:18 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -51,7 +51,7 @@ PROC GENMOD is modeling the probability that spiders='1'.
                             Algorithm converged.                                                       
 
 
-                                                           The SAS System                           06:56 Monday, March 30, 2020   2
+                                                           The SAS System                         16:18 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -77,7 +77,7 @@ PROC GENMOD is modeling the probability that spiders='1'.
                     Scale         0      1.0000      0.0000      1.0000      1.0000                            
 
 NOTE: The scale parameter was held fixed.
-                                                           The SAS System                           06:56 Monday, March 30, 2020   3
+                                                           The SAS System                         16:18 Wednesday, April 1, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -109,14 +109,14 @@ NOTE: The scale parameter was held fixed.
 
                                 Intercept     1        1.52000        0.84887       1.79      0.0749
                                 trt           1        0.69250        0.53361       1.30      0.1959
-                                                           The SAS System                           06:56 Monday, March 30, 2020   4
+                                                           The SAS System                         16:18 Wednesday, April 1, 2020   4
 
                                               Obs     _RMSE_    Intercept       trt
 
                                                1     3.73452      1.52000     0.69250
                                                2     3.73452      0.72058    -0.43002
                                                3     3.73452     -0.43002     0.28474
-                                                           The SAS System                           06:56 Monday, March 30, 2020   5
+                                                           The SAS System                         16:18 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper

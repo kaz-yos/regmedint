@@ -1,4 +1,4 @@
-                                                           The SAS System                           06:56 Monday, March 30, 2020   1
+                                                           The SAS System                         16:18 Wednesday, April 1, 2020   1
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -35,7 +35,7 @@
                                 age           1       -7.59017       12.81664      -0.59      0.5542
                                 male          1      207.64067      399.52827       0.52      0.6037
                                 stage         1      -10.33135      158.83504      -0.07      0.9482
-                                                           The SAS System                           06:56 Monday, March 30, 2020   2
+                                                           The SAS System                         16:18 Wednesday, April 1, 2020   2
 
                   Obs     Intercept           trt         bili          int         age          male        stage
 
@@ -47,7 +47,7 @@
                    6       -7467.44        336.24       -78.74        34.42      164.27      -1187.43      -325.78
                    7       33870.98       3153.23        66.70       257.90    -1187.43     159622.84      -236.90
                    8      -43389.93      -8509.60     -3704.39      1559.74     -325.78       -236.90     25228.57
-                                                           The SAS System                           06:56 Monday, March 30, 2020   3
+                                                           The SAS System                         16:18 Wednesday, April 1, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -82,7 +82,7 @@
                                 age           1        0.02419        0.02706       0.89      0.3720
                                 male          1       -0.61583        0.84467      -0.73      0.4666
                                 stage         1        1.26164        0.32279       3.91      0.0001
-                                                           The SAS System                           06:56 Monday, March 30, 2020   4
+                                                           The SAS System                         16:18 Wednesday, April 1, 2020   4
 
                                  Obs    Intercept       trt         age         male        stage
 
@@ -92,7 +92,7 @@
                                   4      -0.03377     0.00195     0.000732    -0.00527    -0.00164
                                   5       0.14180     0.01920    -0.005274     0.71347     0.00132
                                   6      -0.20740    -0.01857    -0.001637     0.00132     0.10419
-                                                           The SAS System                           06:56 Monday, March 30, 2020   5
+                                                           The SAS System                         16:18 Wednesday, April 1, 2020   5
 
                                                                  x1
 
@@ -109,7 +109,7 @@
                                                                  h1
 
                                                              3.0256826
-                                                           The SAS System                           06:56 Monday, March 30, 2020   6
+                                                           The SAS System                         16:18 Wednesday, April 1, 2020   6
 
                                                                                           _95__CI_    _95__CI_
                      Obs    effect                      Estimate      s_e_     p_value      lower       upper
