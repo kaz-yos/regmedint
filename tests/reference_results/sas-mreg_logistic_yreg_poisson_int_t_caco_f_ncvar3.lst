@@ -1,4 +1,4 @@
-                                                           The SAS System                         23:00 Wednesday, April 1, 2020   1
+                                                           The SAS System                         23:23 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -56,7 +56,7 @@
            Prm5      -6.555E-6      3.8962E-7      2.6694E-7       -4.12E-8      1.4113E-7      -1.026E-6       -3.24E-7
            Prm6      0.0000334      -1.308E-6      -0.000034       9.455E-6      -1.026E-6      0.0001529      3.6566E-6
            Prm7      -0.000036       -4.34E-6      -0.000011      4.3103E-7       -3.24E-7      3.6566E-6      0.0000211
-                                                           The SAS System                         23:00 Wednesday, April 1, 2020   2
+                                                           The SAS System                         23:23 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -75,7 +75,7 @@
                     Scale         0      1.0000      0.0000      1.0000      1.0000                            
 
 NOTE: The scale parameter was held fixed.
-                                                           The SAS System                         23:00 Wednesday, April 1, 2020   3
+                                                           The SAS System                         23:23 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -128,7 +128,7 @@ NOTE: The scale parameter was held fixed.
                                       Wald                    27.5947        4         <.0001
 
 
-                                                           The SAS System                         23:00 Wednesday, April 1, 2020   4
+                                                           The SAS System                         23:23 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -161,7 +161,7 @@ NOTE: The scale parameter was held fixed.
                                          Percent Discordant     29.6    Gamma        0.407
                                          Percent Tied            0.0    Tau-a        0.204
                                          Pairs                 19035    c            0.704
-                                                           The SAS System                         23:00 Wednesday, April 1, 2020   5
+                                                           The SAS System                         23:23 Wednesday, April 1, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
