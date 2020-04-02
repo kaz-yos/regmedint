@@ -1,5 +1,5 @@
 ✔ |  OK F W S | Context
-⠋ |   0   1   | ⠏ |   0       | 01_regmedint_class_ui⠼ |   5       | 01_regmedint_class_ui✔ |   9       | 01_regmedint_class_ui [0.2 s]
+⠋ |   0   1   | ⠏ |   0       | 01_regmedint_class_ui⠼ |   5       | 01_regmedint_class_ui✔ |   9       | 01_regmedint_class_ui [0.3 s]
 ⠏ |   0       | 03_fit_mreg✔ |  24       | 03_fit_mreg
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  23       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
@@ -9,35 +9,19 @@
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
 ⠏ |   0       | 04_fit_yreg_survCox✔ |  24       | 04_fit_yreg_survCox
-⠏ |   0       | 06_calc_myreg_helpers_coef⠏ |  50       | 06_calc_myreg_helpers_coef⠸ |  94       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.2 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠼ |  35       | 06_calc_myreg_helpers_vcov⠼ |  65       | 06_calc_myreg_helpers_vcov⠼ |  95       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear⠴ |  76       | 07_calc_myreg_mreg_linear_yreg_linear⠇ | 169       | 07_calc_myreg_mreg_linear_yreg_linear✔ | 225       | 07_calc_myreg_mreg_linear_yreg_linear [0.2 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠏ |  50       | 06_calc_myreg_helpers_coef⠙ |  92       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.2 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠼ |  35       | 06_calc_myreg_helpers_vcov⠸ |  64       | 06_calc_myreg_helpers_vcov⠹ |  93       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear⠴ |  76       | 07_calc_myreg_mreg_linear_yreg_linear⠙ | 172       | 07_calc_myreg_mreg_linear_yreg_linear✔ | 225       | 07_calc_myreg_mreg_linear_yreg_linear [0.2 s]
 ⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  73       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ | 189       | 07_calc_myreg_mreg_linear_yreg_logistic✔ | 235       | 07_calc_myreg_mreg_linear_yreg_logistic [0.2 s]
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear⠙ |  82       | 07_calc_myreg_mreg_logistic_yreg_linear⠦ | 207       | 07_calc_myreg_mreg_logistic_yreg_linear✔ | 220       | 07_calc_myreg_mreg_logistic_yreg_linear [0.6 s]
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic⠦ |   7       | 07_calc_myreg_mreg_logistic_yreg_logistic⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic⠙ |  82       | 07_calc_myreg_mreg_logistic_yreg_logistic⠏ | 200       | 07_calc_myreg_mreg_logistic_yreg_logistic✔ | 223       | 07_calc_myreg_mreg_logistic_yreg_logistic [0.7 s]
-⠏ |   0       | 08_regmedint_class_user_methods⠧ |  18       | 08_regmedint_class_user_methods⠋ |  31       | 08_regmedint_class_user_methods⠴ |  46       | 08_regmedint_class_user_methods⠧ |  78       | 08_regmedint_class_user_methods⠸ |  94       | 08_regmedint_class_user_methods⠸ | 114       | 08_regmedint_class_user_methods⠙ | 142       | 08_regmedint_class_user_methods⠦ | 157       | 08_regmedint_class_user_methods⠴ | 186       | 08_regmedint_class_user_methods⠼ | 205       | 08_regmedint_class_user_methods✔ | 226       | 08_regmedint_class_user_methods [1.1 s]
-⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠋ | 131       | 09_cross_check_with_sas_macro⠙ | 162       | 09_cross_check_with_sas_macro⠧ | 268       | 09_cross_check_with_sas_macro⠙ | 392       | 09_cross_check_with_sas_macro⠴ | 516       | 09_cross_check_with_sas_macro⠴ | 646       | 09_cross_check_with_sas_macro⠏ | 770       | 09_cross_check_with_sas_macro⠏ | 900       | 09_cross_check_with_sas_macro⠸ | 1024       | 09_cross_check_with_sas_macro⠼ | 1155       | 09_cross_check_with_sas_macro⠇ | 1279       | 09_cross_check_with_sas_macro⠏ | 1410       | 09_cross_check_with_sas_macro⠹ | 1533       | 09_cross_check_with_sas_macro⠙ | 1660 2     | 09_cross_check_with_sas_macro⠼ | 1783 2     | 09_cross_check_with_sas_macro⠙ | 1910 2     | 09_cross_check_with_sas_macro⠋ | 2029 2     | 09_cross_check_with_sas_macro⠧ | 2156 2     | 09_cross_check_with_sas_macro⠦ | 2275 2     | 09_cross_check_with_sas_macro⠙ | 2399 3     | 09_cross_check_with_sas_macro✖ | 2416 3     | 09_cross_check_with_sas_macro [4.7 s]
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-09_cross_check_with_sas_macro.R:504: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas
-p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
-1/1 mismatches
-[1] 0.527 - 0.512 == 0.015
-
-test-09_cross_check_with_sas_macro.R:504: failure: p match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas
-p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
-1/1 mismatches
-[1] 0.502 - 0.479 == 0.0224
-
-test-09_cross_check_with_sas_macro.R:504: failure: p match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas
-p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
-1/1 mismatches
-[1] 0.523 - 0.505 == 0.0186
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  81       | 07_calc_myreg_mreg_logistic_yreg_linear⠴ | 206       | 07_calc_myreg_mreg_logistic_yreg_linear✔ | 220       | 07_calc_myreg_mreg_logistic_yreg_linear [0.6 s]
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic⠦ |   7       | 07_calc_myreg_mreg_logistic_yreg_logistic⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic⠋ |  81       | 07_calc_myreg_mreg_logistic_yreg_logistic⠧ | 198       | 07_calc_myreg_mreg_logistic_yreg_logistic✔ | 223       | 07_calc_myreg_mreg_logistic_yreg_logistic [0.8 s]
+⠏ |   0       | 08_regmedint_class_user_methods⠧ |  18       | 08_regmedint_class_user_methods⠋ |  31       | 08_regmedint_class_user_methods⠴ |  46       | 08_regmedint_class_user_methods⠦ |  77       | 08_regmedint_class_user_methods⠸ |  94       | 08_regmedint_class_user_methods⠸ | 114       | 08_regmedint_class_user_methods⠙ | 142       | 08_regmedint_class_user_methods⠧ | 158       | 08_regmedint_class_user_methods⠧ | 188       | 08_regmedint_class_user_methods⠴ | 206       | 08_regmedint_class_user_methods✔ | 226       | 08_regmedint_class_user_methods [1.1 s]
+⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠋ | 131       | 09_cross_check_with_sas_macro⠙ | 162       | 09_cross_check_with_sas_macro⠹ | 273       | 09_cross_check_with_sas_macro⠼ | 405       | 09_cross_check_with_sas_macro⠏ | 530       | 09_cross_check_with_sas_macro⠹ | 663       | 09_cross_check_with_sas_macro⠏ | 790       | 09_cross_check_with_sas_macro⠹ | 923       | 09_cross_check_with_sas_macro⠇ | 1049       | 09_cross_check_with_sas_macro⠙ | 1182       | 09_cross_check_with_sas_macro⠇ | 1309       | 09_cross_check_with_sas_macro⠙ | 1442       | 09_cross_check_with_sas_macro⠦ | 1567       | 09_cross_check_with_sas_macro⠇ | 1699       | 09_cross_check_with_sas_macro⠙ | 1822       | 09_cross_check_with_sas_macro⠏ | 1950       | 09_cross_check_with_sas_macro⠏ | 2070       | 09_cross_check_with_sas_macro⠸ | 2204       | 09_cross_check_with_sas_macro⠇ | 2329       | 09_cross_check_with_sas_macro✔ | 2419       | 09_cross_check_with_sas_macro [4.6 s]
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 10.0 s
+Duration: 9.9 s
 
-OK:       3988
-Failed:   3
+OK:       3991
+Failed:   0
 Warnings: 1
 Skipped:  0
