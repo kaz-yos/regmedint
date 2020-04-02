@@ -1,4 +1,4 @@
-                                                           The SAS System                         22:29 Wednesday, April 1, 2020   1
+                                                           The SAS System                         22:52 Wednesday, April 1, 2020   1
 
                                                        The LOGISTIC Procedure
 
@@ -51,7 +51,7 @@
                                       Wald                    41.1970        5         <.0001
 
 
-                                                           The SAS System                         22:29 Wednesday, April 1, 2020   2
+                                                           The SAS System                         22:52 Wednesday, April 1, 2020   2
 
                                                        The LOGISTIC Procedure
 
@@ -86,7 +86,7 @@
                                          Percent Discordant     23.0    Gamma        0.540
                                          Percent Tied            0.0    Tau-a        0.223
                                          Pairs                 15680    c            0.770
-                                                           The SAS System                         22:29 Wednesday, April 1, 2020   3
+                                                           The SAS System                         22:52 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -139,7 +139,7 @@
                                       Wald                    23.7024        4         <.0001
 
 
-                                                           The SAS System                         22:29 Wednesday, April 1, 2020   4
+                                                           The SAS System                         22:52 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -172,12 +172,12 @@
                                          Percent Discordant     26.8    Gamma        0.464
                                          Percent Tied            0.0    Tau-a        0.224
                                          Pairs                  9243    c            0.732
-                                                           The SAS System                         22:29 Wednesday, April 1, 2020   5
+                                                           The SAS System                         22:52 Wednesday, April 1, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
 
-                             1    marginal cde                 0.77385    0.39122     0.43065     1.39054
+                             1    marginal cde                 0.77385    0.47491     0.38302     1.56347
                              2    marginal pnde                0.77385    0.47491     0.38302     1.56347
                              3    marginal pnie                0.92975    0.48441     0.75805     1.14034
                              4    marginal tnde                0.77385    0.47491     0.38302     1.56347
