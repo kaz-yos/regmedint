@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:10 Wednesday, April 1, 2020   1
+                                                           The SAS System                         22:30 Wednesday, April 1, 2020   1
 
                                                        The LIFEREG Procedure
 
@@ -54,7 +54,7 @@
                             Algorithm converged.                                                       
 
 
-                                                           The SAS System                         21:10 Wednesday, April 1, 2020   2
+                                                           The SAS System                         22:30 Wednesday, April 1, 2020   2
 
                                                        The LIFEREG Procedure
 
@@ -106,7 +106,7 @@
      male           0.021009      0.000207     -0.003260     -0.003817     -0.000717      0.059011      0.003400             0
      stage         -0.034897     -0.001244     -0.001460     -0.002512     -0.000283      0.003400      0.016365             0
      Scale                 0             0             0             0             0             0             0             0
-                                                           The SAS System                         21:10 Wednesday, April 1, 2020   3
+                                                           The SAS System                         22:30 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -159,7 +159,7 @@
                                       Wald                    27.5947        4         <.0001
 
 
-                                                           The SAS System                         21:10 Wednesday, April 1, 2020   4
+                                                           The SAS System                         22:30 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -192,18 +192,18 @@
                                          Percent Discordant     29.6    Gamma        0.407
                                          Percent Tied            0.0    Tau-a        0.204
                                          Pairs                 19035    c            0.704
-                                                           The SAS System                         21:10 Wednesday, April 1, 2020   5
+                                                           The SAS System                         22:30 Wednesday, April 1, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
 
-                             1    marginal cde                 1.22597    0.52633     0.65280     2.30236
+                             1    marginal cde                 1.22597    0.59749     0.57550     2.61164
                              2    marginal pnde                1.05521    0.87348     0.54459     2.04461
                              3    marginal pnie                1.06421    0.51588     0.88206     1.28397
                              4    marginal tnde                1.05110    0.88658     0.52995     2.08475
                              5    marginal tnie                1.06006    0.50954     0.89137     1.26067
                              6    marginal total effect        1.11858    0.75347     0.55583     2.25112
-                             7    conditional cde              1.22597    0.52633     0.65280     2.30236
+                             7    conditional cde              1.22597    0.59749     0.57550     2.61164
                              8    conditional pnde             1.06448    0.84134     0.57734     1.96266
                              9    conditional pnie             1.07133    0.51567     0.87035     1.31873
                             10    conditional tnde             1.05932    0.85973     0.55904     2.00730

@@ -1,10 +1,10 @@
-                             1    marginal cde                 0.66427    0.21456     0.34817     1.26736
+                             1    marginal cde                 0.66427    0.30101     0.30597     1.44216
                              2    marginal pnde                0.77603    0.25852     0.49986     1.20477
                              3    marginal pnie                0.93108    0.50660     0.75416     1.14951
                              4    marginal tnde                0.78272    0.26999     0.50648     1.20962
                              5    marginal tnie                0.93911    0.51728     0.77649     1.13579
                              6    marginal total effect        0.72877    0.19488     0.45168     1.17586
-                             7    conditional cde              0.66427    0.21456     0.34817     1.26736
+                             7    conditional cde              0.66427    0.30101     0.30597     1.44216
                              8    conditional pnde             0.76573    0.24746     0.48710     1.20374
                              9    conditional pnie             0.94026    0.50466     0.78463     1.12677
                             10    conditional tnde             0.77082    0.25298     0.49332     1.20442

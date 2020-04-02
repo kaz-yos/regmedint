@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:09 Wednesday, April 1, 2020   1
+                                                           The SAS System                         22:29 Wednesday, April 1, 2020   1
 
                                                         The PHREG Procedure
 
@@ -57,7 +57,7 @@
                         age           1       0.00750       0.00954        0.6186        0.4316       1.008
                         male          1       0.50411       0.24073        4.3852        0.0363       1.656
                         stage         1       0.67388       0.12648       28.3853        <.0001       1.962
-                                                           The SAS System                         21:09 Wednesday, April 1, 2020   2
+                                                           The SAS System                         22:29 Wednesday, April 1, 2020   2
 
                                                         The PHREG Procedure
 
@@ -70,7 +70,7 @@
                 age            0.0002910758      -.0000161333      0.0000909610      -.0006834844      -.0003022210
                 male           -.0013420402      0.0005957556      -.0006834844      0.0579511857      0.0010433286
                 stage          -.0005731774      0.0000105044      -.0003022210      0.0010433286      0.0159980051
-                                                           The SAS System                         21:09 Wednesday, April 1, 2020   3
+                                                           The SAS System                         22:29 Wednesday, April 1, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -105,7 +105,7 @@
                                 age           1        0.02419        0.02706       0.89      0.3720
                                 male          1       -0.61583        0.84467      -0.73      0.4666
                                 stage         1        1.26164        0.32279       3.91      0.0001
-                                                           The SAS System                         21:09 Wednesday, April 1, 2020   4
+                                                           The SAS System                         22:29 Wednesday, April 1, 2020   4
 
                             Obs     _RMSE_    Intercept       trt         age         male        stage
 
@@ -115,7 +115,7 @@
                              4     4.47232     -0.03377     0.00195     0.000732    -0.00527    -0.00164
                              5     4.47232      0.14180     0.01920    -0.005274     0.71347     0.00132
                              6     4.47232     -0.20740    -0.01857    -0.001637     0.00132     0.10419
-                                                           The SAS System                         21:09 Wednesday, April 1, 2020   5
+                                                           The SAS System                         22:29 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    Effect          Estimate    p_value      lower       upper
