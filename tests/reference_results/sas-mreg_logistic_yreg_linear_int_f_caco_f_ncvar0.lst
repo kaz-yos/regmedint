@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   1
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -31,7 +31,7 @@
                                 Intercept     1     1743.34887      422.92606       4.12      <.0001
                                 trt           1      -26.82332      253.08403      -0.11      0.9157
                                 bili_bin      1      600.43714      253.11727       2.37      0.0184
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   2
 
                                             Obs     Intercept          trt     bili_bin
 
@@ -39,7 +39,7 @@
                                              2      178866.46    -97212.96    -33407.07
                                              3      -97212.96     64051.53      1372.89
                                              4      -33407.07      1372.89     64068.35
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -92,7 +92,7 @@
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -119,11 +119,11 @@
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   5
 
                                                                                     _95__CI_    _95__CI_
                            Obs    Effect          Estimate      s_e_     p_value      lower       upper
 
-                            1     cde=nde         -26.8233    253.084    0.91559    -522.868     469.221
-                            2     nie             -12.8647     36.534    0.72474     -84.472      58.742
-                            3     total effect    -39.6880    255.592    0.87660    -540.649     461.273
+                            1     cde=nde         -32.1880    303.701    0.91559    -627.442     563.066
+                            2     nie             -15.4298     43.791    0.72458    -101.261      70.401
+                            3     total effect    -47.6178    306.704    0.87662    -648.757     553.522

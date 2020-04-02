@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -53,7 +53,7 @@
                        Dispersion      1.6899E-9      -6.03E-10      -3.33E-10      5.176E-10       0.0001210
 
 
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -69,7 +69,7 @@
                     Dispersion     1      0.1275      0.0110      0.1076      0.1510                            
 
 NOTE: The negative binomial dispersion parameter was estimated by maximum likelihood.
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -122,7 +122,7 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -149,14 +149,14 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper
 
-                                  1     cde              0.94406    0.35650     0.83532     1.06695
-                                  2     pnde             1.02388    0.59306     0.93900     1.11643
-                                  3     pnie             1.00113    0.74258     0.99440     1.00790
-                                  4     tnde             1.02720    0.54413     0.94187     1.12026
-                                  5     tnie             1.00438    0.72327     0.98036     1.02899
-                                  6     total effect     1.02836    0.53092     0.94222     1.12238
+                                  1     cde              0.86737    0.11692     0.72603     1.03623
+                                  2     pnde             1.03055    0.57007     0.92890     1.14331
+                                  3     pnie             1.00175    0.73279     0.99176     1.01184
+                                  4     tnde             1.03535    0.51801     0.93184     1.15035
+                                  5     tnie             1.00641    0.72308     0.97144     1.04264
+                                  6     total effect     1.03716    0.50447     0.93179     1.15444

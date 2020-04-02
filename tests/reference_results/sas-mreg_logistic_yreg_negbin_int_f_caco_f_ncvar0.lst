@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -58,7 +58,7 @@
 
                     Intercept      1      5.5981      0.0741      5.4529      5.7434       5705.13        <.0001
                     trt            1      0.0204      0.0439     -0.0657      0.1065          0.22        0.6424
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -71,7 +71,7 @@
                     Dispersion     1      0.1289      0.0111      0.1088      0.1526                            
 
 NOTE: The negative binomial dispersion parameter was estimated by maximum likelihood.
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -124,7 +124,7 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -151,14 +151,14 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper
 
-                                  1     cde              1.02061    0.64240     0.93640     1.11239
-                                  2     pnde             1.02061    0.64240     0.93640     1.11239
-                                  3     pnie             1.00278    0.72367     0.98746     1.01835
-                                  4     tnde             1.02061    0.64240     0.93640     1.11239
-                                  5     tnie             1.00278    0.72369     0.98746     1.01835
-                                  6     total effect     1.02345    0.60309     0.93782     1.11689
+                                  1     cde              1.02478    0.57738     0.94023     1.11694
+                                  2     pnde             1.02478    0.64240     0.92418     1.13634
+                                  3     pnie             1.00334    0.72391     0.98497     1.02205
+                                  4     tnde             1.02478    0.64240     0.92418     1.13634
+                                  5     tnie             1.00334    0.72337     0.98500     1.02201
+                                  6     total effect     1.02820    0.60311     0.92586     1.14185

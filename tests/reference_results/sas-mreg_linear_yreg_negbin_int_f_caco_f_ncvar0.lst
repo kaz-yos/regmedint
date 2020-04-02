@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -58,7 +58,7 @@
 
                     Intercept      1      5.5375      0.0712      5.3980      5.6770       6054.84        <.0001
                     trt            1      0.0330      0.0446     -0.0544      0.1204          0.55        0.4589
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -71,7 +71,7 @@
                     Dispersion     1      0.1322      0.0114      0.1116      0.1565                            
 
 NOTE: The negative binomial dispersion parameter was estimated by maximum likelihood.
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -103,18 +103,18 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
 
                                 Intercept     1        2.21324        0.87840       2.52      0.0123
                                 trt           1        0.74338        0.55315       1.34      0.1801
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   4
 
                                               Obs     _RMSE_    Intercept       trt
 
                                                1     4.59435      2.21324     0.74338
                                                2     4.59435      0.77160    -0.46118
                                                3     4.59435     -0.46118     0.30598
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    Effect          Estimate    p_value      lower       upper
 
-                                  1     cde=nde          1.03358    0.45891     0.94707     1.12800
-                                  2     nie              0.99548    0.35490     0.98596     1.00508
-                                  3     total effect     1.02891    0.52219     0.94291     1.12276
+                                  1     cde=nde          1.04044    0.45891     0.93682     1.15551
+                                  2     nie              0.99458    0.35490     0.98318     1.00610
+                                  3     total effect     1.03479    0.52219     0.93189     1.14906

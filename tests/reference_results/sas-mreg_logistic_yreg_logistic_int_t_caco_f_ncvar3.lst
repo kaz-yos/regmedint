@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   1
 
                                                        The LOGISTIC Procedure
 
@@ -51,7 +51,7 @@
                                       Wald                    41.2151        6         <.0001
 
 
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   2
 
                                                        The LOGISTIC Procedure
 
@@ -88,7 +88,7 @@
                                          Percent Discordant     23.0    Gamma        0.541
                                          Percent Tied            0.0    Tau-a        0.223
                                          Pairs                 15680    c            0.770
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -141,7 +141,7 @@
                                       Wald                    27.5947        4         <.0001
 
 
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -174,20 +174,20 @@
                                          Percent Discordant     29.6    Gamma        0.407
                                          Percent Tied            0.0    Tau-a        0.204
                                          Pairs                 19035    c            0.704
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
 
-                             1    marginal cde                 0.82670    0.61883     0.39059     1.74974
-                             2    marginal pnde                0.81501    0.51357     0.44119     1.50555
-                             3    marginal pnie                0.95860    0.52019     0.84268     1.09046
-                             4    marginal tnde                0.81344    0.50239     0.44491     1.48721
-                             5    marginal tnie                0.95675    0.51820     0.83667     1.09407
-                             6    marginal total effect        0.77976    0.43300     0.41868     1.45223
-                             7    conditional cde              0.82670    0.61883     0.39059     1.74974
-                             8    conditional pnde             0.81808    0.53869     0.43130     1.55172
-                             9    conditional pnie             0.96317    0.51846     0.85948     1.07937
-                            10    conditional tnde             0.81681    0.52787     0.43577     1.53101
-                            11    conditional tnie             0.96167    0.52204     0.85323     1.08390
-                            12    conditional total effect     0.78672    0.46597     0.41281     1.49933
+                             1    marginal cde                 0.81860    0.72305     0.27058     2.47655
+                             2    marginal pnde                0.78228    0.51373     0.37438     1.63461
+                             3    marginal pnie                0.94995    0.51532     0.81380     1.10888
+                             4    marginal tnde                0.78009    0.50034     0.37886     1.60625
+                             5    marginal tnie                0.94729    0.52699     0.80097     1.12033
+                             6    marginal total effect        0.74105    0.42992     0.35209     1.55967
+                             7    conditional cde              0.81860    0.72305     0.27058     2.47655
+                             8    conditional pnde             0.78583    0.53888     0.36432     1.69504
+                             9    conditional pnie             0.95522    0.51151     0.83312     1.09522
+                            10    conditional tnde             0.78405    0.52582     0.36975     1.66256
+                            11    conditional tnie             0.95306    0.53158     0.81978     1.10800
+                            12    conditional total effect     0.74894    0.46253     0.34634     1.61955

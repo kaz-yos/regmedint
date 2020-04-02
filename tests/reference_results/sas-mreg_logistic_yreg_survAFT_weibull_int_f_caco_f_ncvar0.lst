@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   1
 
                                                        The LIFEREG Procedure
 
@@ -57,7 +57,7 @@
 
                                           trt               1        0.2228        0.6369
                                           bili_bin          1       57.9846        <.0001
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   2
 
                                                        The LIFEREG Procedure
 
@@ -81,7 +81,7 @@
                                  trt           -0.026088      0.017317      0.000382  -0.000087066
                                  bili_bin      -0.022586      0.000382      0.027830     -0.003924
                                  Scale          0.004055  -0.000087066     -0.003924      0.003017
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -134,7 +134,7 @@
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -161,14 +161,14 @@
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper
 
-                                  1     cde              1.06408    0.63692     0.82217     1.37718
-                                  2     pnde             1.06408    0.63692     0.82217     1.37718
-                                  3     pnie             1.02407    0.72196     0.89834     1.16738
-                                  4     tnde             1.06408    0.63692     0.82217     1.37718
-                                  5     tnie             1.02407    0.72205     0.89830     1.16743
-                                  6     total effect     1.08969    0.56051     0.81601     1.45517
+                                  1     cde              1.07739    0.57111     0.83244     1.39440
+                                  2     pnde             1.07739    0.63692     0.79059     1.46822
+                                  3     pnie             1.02879    0.72332     0.87917     1.20388
+                                  4     tnde             1.07739    0.63692     0.79059     1.46822
+                                  5     tnie             1.02879    0.72063     0.88056     1.20198
+                                  6     total effect     1.10841    0.56024     0.78396     1.56714

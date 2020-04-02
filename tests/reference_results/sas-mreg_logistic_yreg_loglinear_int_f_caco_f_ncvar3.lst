@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -51,7 +51,7 @@ PROC GENMOD is modeling the probability that spiders='1'.
 
 
                             Algorithm converged.                                                       
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -81,7 +81,7 @@ PROC GENMOD is modeling the probability that spiders='1'.
                     Scale         0      1.0000      0.0000      1.0000      1.0000                            
 
 NOTE: The scale parameter was held fixed.
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -134,7 +134,7 @@ NOTE: The scale parameter was held fixed.
                                       Wald                    27.5947        4         <.0001
 
 
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -167,20 +167,20 @@ NOTE: The scale parameter was held fixed.
                                          Percent Discordant     29.6    Gamma        0.407
                                          Percent Tied            0.0    Tau-a        0.204
                                          Pairs                 19035    c            0.704
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
 
-                             1    marginal cde                 0.94817    0.74308     0.68970     1.30349
-                             2    marginal pnde                0.94817    0.74308     0.68970     1.30349
-                             3    marginal pnie                0.97244    0.51793     0.89345     1.05842
-                             4    marginal tnde                0.94817    0.74308     0.68970     1.30349
-                             5    marginal tnie                0.97244    0.51773     0.89348     1.05837
-                             6    marginal total effect        0.92203    0.62742     0.66434     1.27969
-                             7    conditional cde              0.94817    0.74308     0.68970     1.30349
-                             8    conditional pnde             0.94817    0.74308     0.68970     1.30349
-                             9    conditional pnie             0.97477    0.51664     0.90233     1.05303
-                            10    conditional tnde             0.94817    0.74308     0.68970     1.30349
-                            11    conditional tnie             0.97477    0.52066     0.90166     1.05382
-                            12    conditional total effect     0.92424    0.63611     0.66690     1.28090
+                             1    marginal cde                 0.93813    0.69407     0.68240     1.28969
+                             2    marginal pnde                0.93813    0.74308     0.64031     1.37445
+                             3    marginal pnie                0.96688    0.51607     0.87343     1.07033
+                             4    marginal tnde                0.93813    0.74308     0.64031     1.37445
+                             5    marginal tnie                0.96688    0.51933     0.87273     1.07118
+                             6    marginal total effect        0.90706    0.62708     0.61195     1.34446
+                             7    conditional cde              0.93813    0.69407     0.68240     1.28969
+                             8    conditional pnde             0.93813    0.74308     0.64031     1.37445
+                             9    conditional pnie             0.96949    0.51226     0.88368     1.06363
+                            10    conditional tnde             0.93813    0.74308     0.64031     1.37445
+                            11    conditional tnie             0.96949    0.52443     0.88127     1.06655
+                            12    conditional total effect     0.90950    0.63532     0.61454     1.34605

@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -52,7 +52,7 @@
                                   Prm4      0.0001581      -0.000103      -0.000338      0.0002240
 
 
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -68,7 +68,7 @@
                     Scale         0      1.0000      0.0000      1.0000      1.0000                            
 
 NOTE: The scale parameter was held fixed.
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -121,7 +121,7 @@ NOTE: The scale parameter was held fixed.
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -148,14 +148,14 @@ NOTE: The scale parameter was held fixed.
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper
 
-                                  1     cde              0.94406    0.00000     0.92388     0.96467
-                                  2     pnde             1.02387    0.01705     1.00422     1.04392
-                                  3     pnie             1.00113    0.72247     0.99491     1.00739
-                                  4     tnde             1.02720    0.00618     1.00765     1.04713
-                                  5     tnie             1.00438    0.72184     0.98049     1.02886
-                                  6     total effect     1.02836    0.01588     1.00525     1.05200
+                                  1     cde              0.86737    0.00000     0.84067     0.89492
+                                  2     pnde             1.03055    0.00820     1.00781     1.05379
+                                  3     pnie             1.00175    0.72229     0.99215     1.01144
+                                  4     tnde             1.03535    0.01023     1.00826     1.06316
+                                  5     tnie             1.00641    0.72140     0.97166     1.04241
+                                  6     total effect     1.03716    0.03239     1.00307     1.07240

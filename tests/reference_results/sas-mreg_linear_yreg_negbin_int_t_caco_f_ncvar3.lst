@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -57,7 +57,7 @@ Prm5            -0.000211      8.4255E-6      -1.334E-6      6.2686E-7      4.73
 Prm6             0.001091      0.0000694      -0.000012      0.0000113      -0.000036       0.004626      7.8278E-6       5.5908E-8
 Prm7            -0.001288      -0.000251      -0.000106      0.0000426      -0.000010      7.8278E-6      0.0007613       -1.105E-7
 Dispersion      2.5138E-7      3.2407E-8      -5.282E-8      3.3072E-8      5.909E-10      5.5908E-8      -1.105E-7       0.0001159
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -76,7 +76,7 @@ Dispersion      2.5138E-7      3.2407E-8      -5.282E-8      3.3072E-8      5.90
                     Dispersion     1      0.1246      0.0108      0.1052      0.1476                            
 
 NOTE: The negative binomial dispersion parameter was estimated by maximum likelihood.
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -111,7 +111,7 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
                                 age           1        0.02419        0.02706       0.89      0.3720
                                 male          1       -0.61583        0.84467      -0.73      0.4666
                                 stage         1        1.26164        0.32279       3.91      0.0001
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   4
 
                             Obs     _RMSE_    Intercept       trt         age         male        stage
 
@@ -121,20 +121,20 @@ NOTE: The negative binomial dispersion parameter was estimated by maximum likeli
                              4     4.47232     -0.03377     0.00195     0.000732    -0.00527    -0.00164
                              5     4.47232      0.14180     0.01920    -0.005274     0.71347     0.00132
                              6     4.47232     -0.20740    -0.01857    -0.001637     0.00132     0.10419
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
 
-                             1    marginal cde                 1.03110    0.53571     0.93586     1.13603
-                             2    marginal pnde                1.03434    0.44108     0.94920     1.12712
-                             3    marginal pnie                0.99829    0.76126     0.98730     1.00940
-                             4    marginal tnde                1.03534    0.42939     0.94989     1.12846
-                             5    marginal tnie                0.99925    0.83017     0.99237     1.00616
-                             6    marginal total effect        1.03356    0.45016     0.94870     1.12602
-                             7    conditional cde              1.03110    0.53571     0.93586     1.13603
-                             8    conditional pnde             1.03132    0.52771     0.93718     1.13492
-                             9    conditional pnie             0.99829    0.76126     0.98730     1.00940
-                            10    conditional tnde             1.03231    0.49293     0.94261     1.13056
-                            11    conditional tnie             0.99925    0.83017     0.99237     1.00616
-                            12    conditional total effect     1.03054    0.53099     0.93797     1.13226
+                             1    marginal cde                 1.03822    0.51185     0.92815     1.16135
+                             2    marginal pnde                1.04148    0.43928     0.93955     1.15448
+                             3    marginal pnie                0.99806    0.75197     0.98610     1.01016
+                             4    marginal tnde                1.04292    0.42788     0.94000     1.15712
+                             5    marginal tnie                0.99944    0.92157     0.98836     1.01065
+                             6    marginal total effect        1.04090    0.44516     0.93912     1.15371
+                             7    conditional cde              1.03822    0.51185     0.92815     1.16135
+                             8    conditional pnde             1.03784    0.52344     0.92594     1.16325
+                             9    conditional pnie             0.99806    0.75197     0.98610     1.01016
+                            10    conditional tnde             1.03927    0.48295     0.93324     1.15736
+                            11    conditional tnie             0.99944    0.92157     0.98836     1.01065
+                            12    conditional total effect     1.03725    0.51645     0.92875     1.15844

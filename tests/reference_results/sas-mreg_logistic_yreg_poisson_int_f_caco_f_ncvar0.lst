@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -58,7 +58,7 @@
                     Intercept     1      5.5912      0.0124      5.5669      5.6156        202714        <.0001
                     trt           1      0.0252      0.0074      0.0106      0.0398         11.43        0.0007
                     bili_bin      1     -0.1307      0.0075     -0.1453     -0.1160        305.94        <.0001
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -70,7 +70,7 @@
                     Scale         0      1.0000      0.0000      1.0000      1.0000                            
 
 NOTE: The scale parameter was held fixed.
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -123,7 +123,7 @@ NOTE: The scale parameter was held fixed.
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -150,14 +150,14 @@ NOTE: The scale parameter was held fixed.
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper
 
-                                  1     cde              1.02549    0.00072     1.01064     1.04057
-                                  2     pnde             1.02549    0.00072     1.01064     1.04057
-                                  3     pnie             1.00280    0.72183     0.98750     1.01833
-                                  4     tnde             1.02549    0.00072     1.01064     1.04057
-                                  5     tnie             1.00280    0.72185     0.98750     1.01833
-                                  6     total effect     1.02836    0.00969     1.00680     1.05039
+                                  1     cde              1.03067    0.00005     1.01574     1.04582
+                                  2     pnde             1.03067    0.00072     1.01278     1.04888
+                                  3     pnie             1.00335    0.72208     0.98502     1.02203
+                                  4     tnde             1.03067    0.00072     1.01278     1.04888
+                                  5     tnie             1.00335    0.72153     0.98506     1.02199
+                                  6     total effect     1.03413    0.00961     1.00819     1.06073

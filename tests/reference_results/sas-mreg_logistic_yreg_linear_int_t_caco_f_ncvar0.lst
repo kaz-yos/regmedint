@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   1
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -32,7 +32,7 @@
                                 trt           1      -47.75355      354.83690      -0.13      0.8930
                                 bili_bin      1      536.00032      805.21957       0.67      0.5062
                                 int           1       42.76439      507.20436       0.08      0.9329
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   2
 
                                     Obs     Intercept           trt      bili_bin           int
 
@@ -41,7 +41,7 @@
                                      3     -191096.28     125909.23     191096.28    -125909.23
                                      4     -321470.37     191096.28     648378.55    -387630.36
                                      5      191096.28    -125909.23    -387630.36     257256.27
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -94,7 +94,7 @@
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -121,14 +121,14 @@
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   5
 
                                                                                     _95__CI_    _95__CI_
                            Obs    effect          Estimate      s_e_     p_value      lower       upper
 
-                            1     cde              -4.9892    362.418    0.98902    -715.329     705.351
-                            2     pnde            -26.3712    253.609    0.91718    -523.445     470.702
-                            3     pnie            -12.4004     35.674    0.72814     -82.322      57.521
-                            4     tnde            -27.2875    253.612    0.91432    -524.366     469.791
-                            5     tnie            -13.3166     38.169    0.72718     -88.129      61.495
-                            6     total effect    -39.6878    256.047    0.87682    -541.540     462.164
+                            1     cde              14.5399    632.237    0.98165    -1224.64     1253.72
+                            2     pnde            -31.7555    304.304    0.91689     -628.19      564.68
+                            3     pnie            -14.9828     42.882    0.72679      -99.03       69.07
+                            4     tnde            -33.0742    304.450    0.91349     -629.80      563.65
+                            5     tnie            -16.3015     47.356    0.73067     -109.12       76.52
+                            6     total effect    -48.0570    307.469    0.87580     -650.70      554.58

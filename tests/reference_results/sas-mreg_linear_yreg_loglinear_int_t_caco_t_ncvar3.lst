@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -53,7 +53,7 @@ PROC GENMOD is modeling the probability that spiders='1'.
 
                             WARNING: The relative Hessian convergence criterion of 0.01281813 is       
                             greater than the limit of 0.0001. The convergence is questionable.         
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -85,7 +85,7 @@ PROC GENMOD is modeling the probability that spiders='1'.
                     Scale         0      1.0000      0.0000      1.0000      1.0000                            
 
 NOTE: The scale parameter was held fixed.
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -120,7 +120,7 @@ NOTE: The scale parameter was held fixed.
                                 age           1        0.00613        0.02630       0.23      0.8161
                                 male          1        0.33731        0.75364       0.45      0.6550
                                 stage         1        0.72771        0.31223       2.33      0.0208
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   4
 
                             Obs     _RMSE_    Intercept       trt         age         male        stage
 
@@ -130,20 +130,20 @@ NOTE: The scale parameter was held fixed.
                              4     3.70363     -0.03299     0.00147     0.000692    -0.00384    -0.00109
                              5     3.70363      0.11341     0.02188    -0.003842     0.56798    -0.01463
                              6     3.70363     -0.18774    -0.02337    -0.001089    -0.01463     0.09749
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:10 Wednesday, April 1, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
 
-                             1    marginal cde                 0.86674    0.47614     0.58484     1.28452
-                             2    marginal pnde                0.87065    0.44141     0.61190     1.23882
-                             3    marginal pnie                1.02039    0.35690     0.97750     1.06516
-                             4    marginal tnde                0.87190    0.43332     0.61879     1.22854
-                             5    marginal tnie                1.02186    0.32661     0.97865     1.06697
-                             6    marginal total effect        0.88968    0.51303     0.62678     1.26284
-                             7    conditional cde              0.86674    0.47614     0.58484     1.28452
-                             8    conditional pnde             0.86989    0.44721     0.60724     1.24614
-                             9    conditional pnie             1.02039    0.35690     0.97750     1.06516
-                            10    conditional tnde             0.87114    0.43801     0.61472     1.23452
-                            11    conditional tnie             1.02186    0.32661     0.97865     1.06697
-                            12    conditional total effect     0.88890    0.51753     0.62224     1.26985
+                             1    marginal cde                 0.84332    0.46745     0.53256     1.33542
+                             2    marginal pnde                0.84702    0.44024     0.55562     1.29125
+                             3    marginal pnie                1.02470    0.34522     0.97408     1.07794
+                             4    marginal tnde                0.84878    0.43108     0.56433     1.27660
+                             5    marginal tnie                1.02682    0.35149     0.97122     1.08560
+                             6    marginal total effect        0.86974    0.51039     0.57399     1.31786
+                             7    conditional cde              0.84332    0.46745     0.53256     1.33542
+                             8    conditional pnde             0.84614    0.44592     0.55064     1.30022
+                             9    conditional pnie             1.02470    0.34522     0.97408     1.07794
+                            10    conditional tnde             0.84789    0.43537     0.56012     1.28351
+                            11    conditional tnie             1.02682    0.35149     0.97122     1.08560
+                            12    conditional total effect     0.86883    0.51444     0.56931     1.32594

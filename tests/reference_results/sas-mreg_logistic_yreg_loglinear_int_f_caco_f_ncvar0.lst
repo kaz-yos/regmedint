@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -57,7 +57,7 @@ PROC GENMOD is modeling the probability that spiders='1'.
                                          Prm1        0.10874       -0.04881       -0.03599
                                          Prm2       -0.04881        0.03212      0.0009308
                                          Prm3       -0.03599      0.0009308        0.04505
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -72,7 +72,7 @@ PROC GENMOD is modeling the probability that spiders='1'.
                     Scale         0      1.0000      0.0000      1.0000      1.0000                            
 
 NOTE: The scale parameter was held fixed.
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -125,7 +125,7 @@ NOTE: The scale parameter was held fixed.
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -152,14 +152,14 @@ NOTE: The scale parameter was held fixed.
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                         21:04 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper
 
-                                  1     cde              0.99493    0.97736     0.70023     1.41365
-                                  2     pnde             0.99493    0.97736     0.70023     1.41365
-                                  3     pnie             0.98209    0.72259     0.88881     1.08515
-                                  4     tnde             0.99493    0.97736     0.70023     1.41365
-                                  5     tnie             0.98209    0.72253     0.88883     1.08513
-                                  6     total effect     0.97710    0.90101     0.67832     1.40750
+                                  1     cde              0.99391    0.97283     0.69952     1.41221
+                                  2     pnde             0.99391    0.97736     0.65206     1.51499
+                                  3     pnie             0.97848    0.72173     0.86805     1.10295
+                                  4     tnde             0.99391    0.97736     0.65206     1.51499
+                                  5     tnie             0.97848    0.72332     0.86743     1.10374
+                                  6     total effect     0.97252    0.90081     0.62748     1.50729

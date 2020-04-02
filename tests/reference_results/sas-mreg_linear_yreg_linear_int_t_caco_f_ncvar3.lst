@@ -1,4 +1,4 @@
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   1
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -35,7 +35,7 @@
                                 age           1       -7.59017       12.81664      -0.59      0.5542
                                 male          1      207.64067      399.52827       0.52      0.6037
                                 stage         1      -10.33135      158.83504      -0.07      0.9482
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   2
 
                   Obs     Intercept           trt         bili          int         age          male        stage
 
@@ -47,7 +47,7 @@
                    6       -7467.44        336.24       -78.74        34.42      164.27      -1187.43      -325.78
                    7       33870.98       3153.23        66.70       257.90    -1187.43     159622.84      -236.90
                    8      -43389.93      -8509.60     -3704.39      1559.74     -325.78       -236.90     25228.57
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -82,7 +82,7 @@
                                 age           1        0.02419        0.02706       0.89      0.3720
                                 male          1       -0.61583        0.84467      -0.73      0.4666
                                 stage         1        1.26164        0.32279       3.91      0.0001
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   4
 
                                  Obs    Intercept       trt         age         male        stage
 
@@ -92,11 +92,11 @@
                                   4      -0.03377     0.00195     0.000732    -0.00527    -0.00164
                                   5       0.14180     0.01920    -0.005274     0.71347     0.00132
                                   6      -0.20740    -0.01857    -0.001637     0.00132     0.10419
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   5
 
                                                                  x1
 
-                                                             45.360999
+                                                             49.897099
 
 
                                                                  w
@@ -108,21 +108,21 @@
 
                                                                  h1
 
-                                                             3.0256826
-                                                           The SAS System                         21:05 Wednesday, April 1, 2020   6
+                                                             3.0864052
+                                                           The SAS System                         21:09 Wednesday, April 1, 2020   6
 
                                                                                           _95__CI_    _95__CI_
                      Obs    effect                      Estimate      s_e_     p_value      lower       upper
 
-                       1    marginal cde                -197.959    291.530    0.49712    -769.358     373.441
-                       2    marginal pnde               -106.072    259.608    0.68285    -614.904     402.760
-                       3    marginal pnie                 21.689     37.047    0.55825     -50.923      94.300
-                       4    marginal tnde                -78.527    260.692    0.76324    -589.483     432.428
-                       5    marginal tnie                 49.233     48.817    0.31320     -46.448     144.914
-                       6    marginal total effect        -56.839    260.433    0.82724    -567.288     453.611
-                       7    conditional cde             -197.959    291.530    0.49712    -769.358     373.441
-                       8    conditional pnde            -189.855    289.430    0.51185    -757.139     377.428
-                       9    conditional pnie              21.689     37.047    0.55825     -50.923      94.300
-                      10    conditional tnde            -162.311    275.956    0.55641    -703.185     378.563
-                      11    conditional tnie              49.233     48.817    0.31320     -46.448     144.914
-                      12    conditional total effect    -140.622    286.426    0.62346    -702.017     420.773
+                       1    marginal cde                -215.777    337.368    0.52244    -877.019     445.464
+                       2    marginal pnde               -123.981    311.247    0.69038    -734.026     486.064
+                       3    marginal pnie                 29.332     43.183    0.49698     -55.306     113.970
+                       4    marginal tnde                -84.317    314.993    0.78895    -701.702     533.069
+                       5    marginal tnie                 68.996     70.586    0.32834     -69.354     207.345
+                       6    marginal total effect        -54.985    314.695    0.86130    -671.787     561.816
+                       7    conditional cde             -215.777    337.368    0.52244    -877.019     445.464
+                       8    conditional pnde            -224.521    345.361    0.51562    -901.429     452.387
+                       9    conditional pnie              29.332     43.183    0.49698     -55.306     113.970
+                      10    conditional tnde            -184.857    327.844    0.57285    -827.432     457.717
+                      11    conditional tnie              68.996     70.586    0.32834     -69.354     207.345
+                      12    conditional total effect    -155.526    338.805    0.64620    -819.583     508.532
