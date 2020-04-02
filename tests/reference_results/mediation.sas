@@ -3183,8 +3183,14 @@ F=exp(beta0+beta1*&a0+beta2*t(Cmean));
 G=(1+exp(beta0+beta1*&a0+beta2*t(Cmean)));
 H=exp(beta0+beta1*&a1+beta2*t(Cmean));
 I=(1+exp(beta0+beta1*&a1+beta2*t(Cmean)));
-s=F/G-H/I+A/B-D/E;
-x=&a1*F/G-&a0*H/I+&a0*A/B-&a1*D/E;
+/* Added by @kaz-yos on 2020-04-01 based on V2015 p474. */
+/* Q' = A/B; B' = D/E; K' = H/I; D' = F/G */
+/* (D'+Q') - (K'+B') = (F/G + A/B) - (H/I + D/E)  */
+/* Changed from s=F/G-H/I+A/B-D/E; */
+s=(F/G + A/B) - (H/I + D/E);
+/* a0(D'-B') + a(Q'-K') = &a0 * (F/G - D/E) + &a1 * (A/B - H/I) */
+/* Changed from x=&a1*F/G-&a0*H/I+&a0*A/B-&a1*D/E; */
+x=&a0 * (F/G - D/E) + &a1 * (A/B - H/I);
 w=Cmean*(s);
 k=(A/B-D/E);
 gamma[3,]=s|| x|| w || zero||zero||k||z1;
@@ -3279,8 +3285,14 @@ F=exp(beta0+beta1*&a0+beta2*t(c));
 G=(1+exp(beta0+beta1*&a0+beta2*t(c)));
 H=exp(beta0+beta1*&a1+beta2*t(c));
 I=(1+exp(beta0+beta1*&a1+beta2*t(c)));
-s=F/G-H/I+A/B-D/E;
-x=&a1*F/G-&a0*H/I+&a0*A/B-&a1*D/E;
+/* Added by @kaz-yos on 2020-04-01 based on V2015 p474. */
+/* Q' = A/B; B' = D/E; K' = H/I; D' = F/G */
+/* (D'+Q') - (K'+B') = (F/G + A/B) - (H/I + D/E)  */
+/* Changed from s=F/G-H/I+A/B-D/E; */
+s=(F/G + A/B) - (H/I + D/E);
+/* a0(D'-B') + a(Q'-K') = &a0 * (F/G - D/E) + &a1 * (A/B - H/I) */
+/* Changed from x=&a1*F/G-&a0*H/I+&a0*A/B-&a1*D/E; */
+x=&a0 * (F/G - D/E) + &a1 * (A/B - H/I);
 w=c*(s);
 k=(A/B-D/E);
 gamma[9,]=s|| x|| w || zero||zero||k||z1;
