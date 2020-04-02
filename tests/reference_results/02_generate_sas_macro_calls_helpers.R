@@ -91,9 +91,10 @@ run;"
                ##
                c_cond = case_when(ncvar == 0 ~ "",
                                   ncvar == 3 ~ "50 1 2"),
-               a0 = "1",
-               a1 = "2",
-               m_cde = "1") %>%
+               ## Stress test with nonsensical tricky values
+               a0 = "1.1",
+               a1 = "2.3",
+               m_cde = "1.4") %>%
         ## Contruct macro text
         mutate(macro_call = sprintf(sas_macro_call_string_fmt,
                                     yvar,
