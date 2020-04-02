@@ -335,6 +335,7 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
         ## the following linear combination form.
         Gamma_te <-
             ((a1 - a0) * Gamma_pnde) + Gamma_tnie # By linearity of differentiation
+        print(Gamma_te)
         ##
         ## Not implemented in mediation.sas.
         ## Not mentioned in VV2013, VV2015, or VanderWeele 2015.

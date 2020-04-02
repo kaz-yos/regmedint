@@ -3630,6 +3630,8 @@ s=(&a1-&a0);
 t=t(D/E-A/B);
 r=(&a1-&a0)*t(A/B)+&a1*t;
 gamma[6,]=x||w||zero||s||t||r;
+%put "test";
+print gamma;
 				%end;
 				%if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
 			 */MARGINAL=CONDITIONAL CDE*/;
