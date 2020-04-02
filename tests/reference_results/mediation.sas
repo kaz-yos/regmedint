@@ -3227,7 +3227,13 @@ effect[,11]=(
 (1+exp(theta2+beta0+beta1*&a0+sum(beta2*t(c))))
 );
 effect[,12]=effect[,8]*effect[,11];
-gamma[7,]=z||z1;
+/* Modified by @kaz-yos on 2020-04-01 based on V2015 p475 on Gamma_cde. */
+/* z is defined as z=zero||zero||z1||zero||one||zero; above without common factor (a1-a0).*/
+/* In the case of &yreg^=linear & &mreg=logistic no common factor multiplication is done. */
+/* Confirm looking for "%if (&mreg=logistic & &yreg^=linear) %then %do;" */
+/* So it must be included in Gamma_cde. */
+/* Changed from gamma[7,]=z||z1; */
+gamma[7,]=(z||z1) * (&a1-&a0);
 A=exp(theta2+beta0+beta1*&a0+beta2*t(c));
 B=(1+exp(theta2+beta0+beta1*&a0+beta2*t(c)));
 D=exp(theta2+beta0+beta1*&a0+beta2*t(c));
