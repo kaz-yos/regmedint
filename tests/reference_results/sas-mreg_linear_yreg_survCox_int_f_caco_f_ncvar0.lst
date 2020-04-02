@@ -1,4 +1,4 @@
-                                                           The SAS System                         22:52 Wednesday, April 1, 2020   1
+                                                           The SAS System                         22:59 Wednesday, April 1, 2020   1
 
                                                         The PHREG Procedure
 
@@ -56,7 +56,7 @@
                         bili          1       0.14219       0.01334      113.5475        <.0001       1.153
 
 
-                                                           The SAS System                         22:52 Wednesday, April 1, 2020   2
+                                                           The SAS System                         22:59 Wednesday, April 1, 2020   2
 
                                                         The PHREG Procedure
 
@@ -66,7 +66,7 @@
 
                                            trt            0.0323369086      -.0003973114
                                            bili           -.0003973114      0.0001780535
-                                                           The SAS System                         22:52 Wednesday, April 1, 2020   3
+                                                           The SAS System                         22:59 Wednesday, April 1, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -98,14 +98,14 @@
 
                                 Intercept     1        2.21324        0.87840       2.52      0.0123
                                 trt           1        0.74338        0.55315       1.34      0.1801
-                                                           The SAS System                         22:52 Wednesday, April 1, 2020   4
+                                                           The SAS System                         22:59 Wednesday, April 1, 2020   4
 
                                               Obs     _RMSE_    Intercept       trt
 
                                                1     4.59435      2.21324     0.74338
                                                2     4.59435      0.77160    -0.46118
                                                3     4.59435     -0.46118     0.30598
-                                                           The SAS System                         22:52 Wednesday, April 1, 2020   5
+                                                           The SAS System                         22:59 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    Effect          Estimate    p_value      lower       upper

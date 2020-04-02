@@ -1,4 +1,4 @@
-                                                           The SAS System                         22:52 Wednesday, April 1, 2020   1
+                                                           The SAS System                         23:00 Wednesday, April 1, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -51,7 +51,7 @@ PROC GENMOD is modeling the probability that spiders='1'.
 
 
                             Algorithm converged.                                                       
-                                                           The SAS System                         22:52 Wednesday, April 1, 2020   2
+                                                           The SAS System                         23:00 Wednesday, April 1, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -81,7 +81,7 @@ PROC GENMOD is modeling the probability that spiders='1'.
                     Scale         0      1.0000      0.0000      1.0000      1.0000                            
 
 NOTE: The scale parameter was held fixed.
-                                                           The SAS System                         22:52 Wednesday, April 1, 2020   3
+                                                           The SAS System                         23:00 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -134,7 +134,7 @@ NOTE: The scale parameter was held fixed.
                                       Wald                    27.5947        4         <.0001
 
 
-                                                           The SAS System                         22:52 Wednesday, April 1, 2020   4
+                                                           The SAS System                         23:00 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -167,7 +167,7 @@ NOTE: The scale parameter was held fixed.
                                          Percent Discordant     29.6    Gamma        0.407
                                          Percent Tied            0.0    Tau-a        0.204
                                          Pairs                 19035    c            0.704
-                                                           The SAS System                         22:52 Wednesday, April 1, 2020   5
+                                                           The SAS System                         23:00 Wednesday, April 1, 2020   5
 
                                                                                      _95__CI_    _95__CI_
                            Obs    effect                      Estimate    p_value      lower       upper
@@ -178,7 +178,7 @@ NOTE: The scale parameter was held fixed.
                              4    marginal tnde                0.93813    0.74308     0.64031     1.37445
                              5    marginal tnie                0.96688    0.51933     0.87273     1.07118
                              6    marginal total effect        0.90706    0.62708     0.61195     1.34446
-                             7    conditional cde              0.93813    0.69407     0.68240     1.28969
+                             7    conditional cde              0.93813    0.74308     0.64031     1.37445
                              8    conditional pnde             0.93813    0.74308     0.64031     1.37445
                              9    conditional pnie             0.96949    0.51226     0.88368     1.06363
                             10    conditional tnde             0.93813    0.74308     0.64031     1.37445
