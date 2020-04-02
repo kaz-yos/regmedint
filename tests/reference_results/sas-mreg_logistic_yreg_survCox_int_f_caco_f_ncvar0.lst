@@ -1,4 +1,4 @@
-                                                           The SAS System                         23:23 Wednesday, April 1, 2020   1
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   1
 
                                                         The PHREG Procedure
 
@@ -56,7 +56,7 @@
                         bili_bin      1       1.71956       0.20537       70.1079        <.0001       5.582
 
 
-                                                           The SAS System                         23:23 Wednesday, April 1, 2020   2
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   2
 
                                                         The PHREG Procedure
 
@@ -66,7 +66,7 @@
 
                                            trt            0.0315347532      -.0004397112
                                            bili_bin       -.0004397112      0.0421760325
-                                                           The SAS System                         23:23 Wednesday, April 1, 2020   3
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -119,7 +119,7 @@
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                         23:23 Wednesday, April 1, 2020   4
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -146,7 +146,7 @@
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                         23:23 Wednesday, April 1, 2020   5
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper

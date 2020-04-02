@@ -12,7 +12,7 @@
 > ## Record start time
 > start_time <- Sys.time()
 > cat("### Started ", as.character(start_time), "\n")
-### Started  2020-04-01 23:22:41 
+### Started  2020-04-01 23:47:59 
 > 
 > ## Load packages
 > library(survival)
