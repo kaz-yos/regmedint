@@ -3190,6 +3190,7 @@ I=(1+exp(beta0+beta1*&a1+beta2*t(Cmean)));
 s=(F/G + A/B) - (H/I + D/E);
 /* a0(D'-B') + a(Q'-K') = &a0 * (F/G - D/E) + &a1 * (A/B - H/I) */
 /* Changed from x=&a1*F/G-&a0*H/I+&a0*A/B-&a1*D/E; */
+/* This change needs verification. VV2013 and V2015 only cover Gamma_tnie. */
 x=&a0 * (F/G - D/E) + &a1 * (A/B - H/I);
 w=Cmean*(s);
 k=(A/B-D/E);
@@ -3292,6 +3293,7 @@ I=(1+exp(beta0+beta1*&a1+beta2*t(c)));
 s=(F/G + A/B) - (H/I + D/E);
 /* a0(D'-B') + a(Q'-K') = &a0 * (F/G - D/E) + &a1 * (A/B - H/I) */
 /* Changed from x=&a1*F/G-&a0*H/I+&a0*A/B-&a1*D/E; */
+/* This change needs verification. VV2013 and V2015 only cover Gamma_tnie. */
 x=&a0 * (F/G - D/E) + &a1 * (A/B - H/I);
 w=c*(s);
 k=(A/B-D/E);
@@ -3399,6 +3401,7 @@ I=(1+exp(beta0+beta1*&a1+beta2*t(Cmean)));
 s=F/G-H/I+A/B-D/E;
 /* a0(D'-B') + a(Q'-K') = &a0 * (F/G - D/E) + &a1 * (A/B - H/I) */
 /* Changed from x=&a1*F/G-&a0*H/I+&a0*A/B-&a1*D/E; */
+/* This change needs verification. VV2013 and V2015 only cover Gamma_tnie. */
 x=&a0 * (F/G - D/E) + &a1 * (A/B - H/I);
 w=Cmean*(s);
 l=A/B-D/E;
@@ -3509,6 +3512,7 @@ I=(1+exp(beta0+beta1*&a1+beta2*t(c)));
 d1=(F/G + A/B) - (H/I + D/E);
 /* a0(D'-B') + a(Q'-K') = &a0 * (F/G - D/E) + &a1 * (A/B - H/I) */
 /* Changed from d2=&a1*F/G-&a0*H/I+&a0*A/B-&a1*D/E; */
+/* This change needs verification. VV2013 and V2015 only cover Gamma_tnie. */
 d2=&a0 * (F/G - D/E) + &a1 * (A/B - H/I);
 d3=c*(d1);
 d4=0;
