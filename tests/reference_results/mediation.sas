@@ -3191,6 +3191,17 @@ s=(F/G + A/B) - (H/I + D/E);
 /* a0(D'-B') + a(Q'-K') = &a0 * (F/G - D/E) + &a1 * (A/B - H/I) */
 /* Changed from x=&a1*F/G-&a0*H/I+&a0*A/B-&a1*D/E; */
 /* This change needs verification. VV2013 and V2015 only cover Gamma_tnie. */
+/* Reasoning by @kaz-yos on 2020-04-02. */
+/* Based on Pearl's decomposition (V2015 p465), the treatment indexing the outcome model
+ * sum_m E[Y|a1 <- this one ,m,c] {P(m|a1,c) - P(m|a0,c)} is the "a1" that makes it
+ * _total_ NIE. Thus, this a1 in the outcome model is associated with theta1 and theta3.
+ * Thus, in the OR^TNIE expression in V2015 p473, a1 associated with theta3 are the ones
+ * that need to change to a0 to give the OR^PNIE expression. In the Gamma_tnie to Gamma_pnie
+ * change, the a1 -> a0 change should thus only occur for the terms involving theta3.
+ * In the d2 expression (V2015 p474), These are only in Q and B terms. a0 and a1 in front of
+ * [D-B] and [Q-K], respectively, come from the terms involving beta1 (d2 is a partial wrt beta1).
+ * Thus, these should not be changed and remain the same as the corresponding term in Gamma_tnie.
+ */
 x=&a0 * (F/G - D/E) + &a1 * (A/B - H/I);
 w=Cmean*(s);
 k=(A/B-D/E);
@@ -3294,6 +3305,17 @@ s=(F/G + A/B) - (H/I + D/E);
 /* a0(D'-B') + a(Q'-K') = &a0 * (F/G - D/E) + &a1 * (A/B - H/I) */
 /* Changed from x=&a1*F/G-&a0*H/I+&a0*A/B-&a1*D/E; */
 /* This change needs verification. VV2013 and V2015 only cover Gamma_tnie. */
+/* Reasoning by @kaz-yos on 2020-04-02. */
+/* Based on Pearl's decomposition (V2015 p465), the treatment indexing the outcome model
+ * sum_m E[Y|a1 <- this one ,m,c] {P(m|a1,c) - P(m|a0,c)} is the "a1" that makes it
+ * _total_ NIE. Thus, this a1 in the outcome model is associated with theta1 and theta3.
+ * Thus, in the OR^TNIE expression in V2015 p473, a1 associated with theta3 are the ones
+ * that need to change to a0 to give the OR^PNIE expression. In the Gamma_tnie to Gamma_pnie
+ * change, the a1 -> a0 change should thus only occur for the terms involving theta3.
+ * In the d2 expression (V2015 p474), These are only in Q and B terms. a0 and a1 in front of
+ * [D-B] and [Q-K], respectively, come from the terms involving beta1 (d2 is a partial wrt beta1).
+ * Thus, these should not be changed and remain the same as the corresponding term in Gamma_tnie.
+ */
 x=&a0 * (F/G - D/E) + &a1 * (A/B - H/I);
 w=c*(s);
 k=(A/B-D/E);
@@ -3402,6 +3424,17 @@ s=F/G-H/I+A/B-D/E;
 /* a0(D'-B') + a(Q'-K') = &a0 * (F/G - D/E) + &a1 * (A/B - H/I) */
 /* Changed from x=&a1*F/G-&a0*H/I+&a0*A/B-&a1*D/E; */
 /* This change needs verification. VV2013 and V2015 only cover Gamma_tnie. */
+/* Reasoning by @kaz-yos on 2020-04-02. */
+/* Based on Pearl's decomposition (V2015 p465), the treatment indexing the outcome model
+ * sum_m E[Y|a1 <- this one ,m,c] {P(m|a1,c) - P(m|a0,c)} is the "a1" that makes it
+ * _total_ NIE. Thus, this a1 in the outcome model is associated with theta1 and theta3.
+ * Thus, in the OR^TNIE expression in V2015 p473, a1 associated with theta3 are the ones
+ * that need to change to a0 to give the OR^PNIE expression. In the Gamma_tnie to Gamma_pnie
+ * change, the a1 -> a0 change should thus only occur for the terms involving theta3.
+ * In the d2 expression (V2015 p474), These are only in Q and B terms. a0 and a1 in front of
+ * [D-B] and [Q-K], respectively, come from the terms involving beta1 (d2 is a partial wrt beta1).
+ * Thus, these should not be changed and remain the same as the corresponding term in Gamma_tnie.
+ */
 x=&a0 * (F/G - D/E) + &a1 * (A/B - H/I);
 w=Cmean*(s);
 l=A/B-D/E;
@@ -3513,6 +3546,17 @@ d1=(F/G + A/B) - (H/I + D/E);
 /* a0(D'-B') + a(Q'-K') = &a0 * (F/G - D/E) + &a1 * (A/B - H/I) */
 /* Changed from d2=&a1*F/G-&a0*H/I+&a0*A/B-&a1*D/E; */
 /* This change needs verification. VV2013 and V2015 only cover Gamma_tnie. */
+/* Reasoning by @kaz-yos on 2020-04-02. */
+/* Based on Pearl's decomposition (V2015 p465), the treatment indexing the outcome model
+ * sum_m E[Y|a1 <- this one ,m,c] {P(m|a1,c) - P(m|a0,c)} is the "a1" that makes it
+ * _total_ NIE. Thus, this a1 in the outcome model is associated with theta1 and theta3.
+ * Thus, in the OR^TNIE expression in V2015 p473, a1 associated with theta3 are the ones
+ * that need to change to a0 to give the OR^PNIE expression. In the Gamma_tnie to Gamma_pnie
+ * change, the a1 -> a0 change should thus only occur for the terms involving theta3.
+ * In the d2 expression (V2015 p474), These are only in Q and B terms. a0 and a1 in front of
+ * [D-B] and [Q-K], respectively, come from the terms involving beta1 (d2 is a partial wrt beta1).
+ * Thus, these should not be changed and remain the same as the corresponding term in Gamma_tnie.
+ */
 d2=&a0 * (F/G - D/E) + &a1 * (A/B - H/I);
 d3=c*(d1);
 d4=0;
