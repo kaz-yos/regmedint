@@ -1,4 +1,4 @@
-                                                           The SAS System                         19:46 Wednesday, April 1, 2020   1
+                                                           The SAS System                         21:04 Wednesday, April 1, 2020   1
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -32,7 +32,7 @@
                                 trt           1     -240.61757      317.49006      -0.76      0.4492
                                 bili          1      -16.36245      104.48902      -0.16      0.8757
                                 int           1       47.95700       59.69639       0.80      0.4225
-                                                           The SAS System                         19:46 Wednesday, April 1, 2020   2
+                                                           The SAS System                         21:04 Wednesday, April 1, 2020   2
 
                                      Obs     Intercept           trt         bili          int
 
@@ -41,7 +41,7 @@
                                       3     -154766.23     100799.94     18611.13    -11363.19
                                       4      -33107.03      18611.13     10917.96     -6015.09
                                       5       18611.13     -11363.19     -6015.09      3563.66
-                                                           The SAS System                         19:46 Wednesday, April 1, 2020   3
+                                                           The SAS System                         21:04 Wednesday, April 1, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -73,14 +73,14 @@
 
                                 Intercept     1        2.21324        0.87840       2.52      0.0123
                                 trt           1        0.74338        0.55315       1.34      0.1801
-                                                           The SAS System                         19:46 Wednesday, April 1, 2020   4
+                                                           The SAS System                         21:04 Wednesday, April 1, 2020   4
 
                                                     Obs    Intercept       trt
 
                                                      1       2.21324     0.74338
                                                      2       0.77160    -0.46118
                                                      3      -0.46118     0.30598
-                                                           The SAS System                         19:46 Wednesday, April 1, 2020   5
+                                                           The SAS System                         21:04 Wednesday, April 1, 2020   5
 
                                                                                     _95__CI_    _95__CI_
                            Obs    effect          Estimate      s_e_     p_value      lower       upper
