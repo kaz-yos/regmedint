@@ -1,4 +1,5 @@
 ---
+title: "Introduction to user interface functions"
 output: github_document
 ---
 
@@ -25,12 +26,46 @@ options(width = 116, scipen = 5)
 ## `regemedint()`
 
 ```{r}
+library(regmedint)
+library(tidyverse)
+## Prepare dataset
+vv2015 <- read_delim(file = "../tests/reference_results/data-valeri-vanderweele-2015.txt",
+                     delim = " ") %>%
+    ## Following R convention, an event indicator is used.
+    mutate(event = if_else(cens == 0, 1L, 0L)) %>%
+    select(-cens)
 
+regmedint_obj <- regmedint(data = vv2015,
+                           ## Variables
+                           yvar = "y",
+                           avar = "x",
+                           mvar = "m",
+                           cvar = c("c"),
+                           eventvar = "event",
+                           ## Values at which effects are evaluated
+                           a0 = 0,
+                           a1 = 1,
+                           m_cde = 1,
+                           c_cond = 0.5,
+                           ## Model types
+                           mreg = "logistic",
+                           yreg = "survAFT_weibull",
+                           ## Additional specification
+                           interaction = TRUE,
+                           casecontrol = FALSE)
 ```
 
-## `print()` for `regmedint`
+## `print()` for `regmedint
+```{r}
+print(regmedint)
+print(regmedint, m_cde = 0, c_cond = 1)
+```
 
 ## `coef()` for `regmedint`
+```{r}
+coef(regmedint)
+coef(regmedint, m_cde = 0, c_cond = 1)
+```
 
 ## `confint()` for `regmedint`
 

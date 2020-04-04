@@ -1,4 +1,5 @@
 ---
+title: "Using bootstrapping with regemedint"
 output: github_document
 ---
 
@@ -20,7 +21,7 @@ opts_knit$set(animation.fun = hook_ffmpeg_html)
 options(width = 116, scipen = 5)
 ```
 
-# bootstrapping
+# Bootstrapping
 
 The `regmedint` function itself does not contain a bootstrap standard error option, which may be perferred in some settings. However, it is relatively easy to implmement in R using the `regmedint()` function and the corresponding `coef()` point estimate extraction method.
 

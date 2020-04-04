@@ -1,4 +1,5 @@
 ---
+title: "Using multiple imputation with regmedint"
 output: github_document
 ---
 
