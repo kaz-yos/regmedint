@@ -1,0 +1,139 @@
+---
+output: github_document
+---
+
+```{r, message = FALSE, tidy = FALSE, echo = F}
+## knitr configuration: http://yihui.name/knitr/options#chunk_options
+library(knitr)
+showMessage <- FALSE
+showWarning <- TRUE
+set_alias(w = "fig.width", h = "fig.height", res = "results")
+opts_chunk$set(comment = "##", error= TRUE, warning = showWarning, message = showMessage,
+               tidy = FALSE, cache = FALSE, echo = TRUE,
+               fig.width = 7, fig.height = 7, dev.args = list(family = "sans"),
+               fig.path = "man/figures")
+## for rgl
+## knit_hooks$set(rgl = hook_rgl, webgl = hook_webgl)
+## for animation
+opts_knit$set(animation.fun = hook_ffmpeg_html)
+## R configuration
+options(width = 116, scipen = 5)
+```
+
+# bootstrapping
+
+The `regmedint` function itself does not contain a bootstrap standard error option, which may be perferred in some settings. However, it is relatively easy to implmement in R using the `regmedint()` function and the corresponding `coef()` point estimate extraction method.
+
+```{r}
+library(regmedint)
+library(tidyverse)
+## Prepare dataset
+vv2015 <- read_delim(file = "../tests/reference_results/data-valeri-vanderweele-2015.txt",
+                     delim = " ") %>%
+    ## Following R convention, an event indicator is used.
+    mutate(event = if_else(cens == 0, 1L, 0L))
+## Main fit
+regmedint_obj <- regmedint(data = vv2015,
+                           ## Variables
+                           yvar = "y",
+                           avar = "x",
+                           mvar = "m",
+                           cvar = c("c"),
+                           eventvar = "event",
+                           ## Values at which effects are evaluated
+                           a0 = 0,
+                           a1 = 1,
+                           m_cde = 1,
+                           c_cond = 0.5,
+                           ## Model types
+                           mreg = "logistic",
+                           yreg = "survAFT_weibull",
+                           ## Additional specification
+                           interaction = TRUE,
+                           casecontrol = FALSE)
+coef(summary(regmedint_obj))
+```
+
+
+## `boot` package
+
+The `boot` package is the classical way to perform bootstrapping in R. It requires defining a wrapper function.
+
+```{r}
+library(boot)
+## Define a wrapper function
+regmedint_boot <- function(data, ind)  {
+    ## Note the change in the data argument.
+    regmedint_obj <- regmedint(data = data[ind,],
+                               ## Variables
+                               yvar = "y",
+                               avar = "x",
+                               mvar = "m",
+                               cvar = c("c"),
+                               eventvar = "event",
+                               ## Values at which effects are evaluated
+                               a0 = 0,
+                               a1 = 1,
+                               m_cde = 1,
+                               c_cond = 0.5,
+                               ## Model types
+                               mreg = "logistic",
+                               yreg = "survAFT_weibull",
+                               ## Additional specification
+                               interaction = TRUE,
+                               casecontrol = FALSE)
+    coef(regmedint_obj)
+}
+## Run bootstrapping
+boot_obj <- boot(data = vv2015, statistic = regmedint_boot, R = 1000,
+                 ## For palatalization
+                 ## See https://cran.r-project.org/package=boot
+                 parallel = "multicore",
+                 ncpus = parallel::detectCores())
+## Confidence interval for the
+boot.ci(boot_obj, type = "basic", index = 7)
+plot(boot_obj, index = 7)
+```
+
+
+## `modelr` package
+
+In the tidyverse ecosystem, the `modelr` package can be used to provide a potentially tidier workflow in some settings.
+
+```{r}
+library(modelr)
+## For parallization
+library(furrr)
+plan(multiprocess)
+## Bootstrapping
+tib_obj <- vv2015 %>%
+    modelr::bootstrap(n = 1000) %>%
+    ## Resampled data objects are in the list column named strap.
+    mutate(boot_fit = future_map(strap, function(strap) {
+        ## Note the change in the data argument.
+        regmedint_obj <- regmedint(data = as_tibble(strap),
+                                   ## Variables
+                                   yvar = "y",
+                                   avar = "x",
+                                   mvar = "m",
+                                   cvar = c("c"),
+                                   eventvar = "event",
+                                   ## Values at which effects are evaluated
+                                   a0 = 0,
+                                   a1 = 1,
+                                   m_cde = 1,
+                                   c_cond = 0.5,
+                                   ## Model types
+                                   mreg = "logistic",
+                                   yreg = "survAFT_weibull",
+                                   ## Additional specification
+                                   interaction = TRUE,
+                                   casecontrol = FALSE)
+        tib <- as_tibble(t(matrix(coef(regmedint_obj))),
+                         )
+        names(tib) <- names(coef(regmedint_obj))
+        tib
+    })) %>%
+    select(-strap) %>%
+    unnest()
+```
