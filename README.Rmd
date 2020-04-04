@@ -34,7 +34,7 @@ This package is meant to be an educational tool. Thanks to R's expressibility, t
 # Example
 Here we will analyze the simulated example that is included with the SAS macro.
 
-## Fitting
+## `regmedint()` to fit models
 The `regmedint` function is the user interface for constructing a result object of class `regmedint`. The interface is made similar to the original SAS macro. For survival outcomes, the indicator variable is an event indicator (1 for event, 0 for censoring). The `c_cond` vector is required. This vector is the vector of covariate values at which the conditional effects are evaluated at.
 ```{r, eval = TRUE}
 ## install.packages("devtools") # If you do not have it.
@@ -67,13 +67,13 @@ regmedint_obj <- regmedint(data = vv2015,
                            casecontrol = FALSE)
 ```
 
-## print to examine simplified results
+## `print()` to examine simplified results
 Implicit printing prints mreg, yreg, and mediation analysis point estimates. All effect estimates are on the scale of the link function.
 ```{r}
 regmedint_obj
 ```
 
-## summary to examine extended results
+## `summary()` to examine extended results
 The `summary` method gives the summary for `mreg`, `yreg`, and mediation analysis results. The `exponentiate` option will add the exponentiated estimate and confidence limits if the outcome model is not a linear model. The pure natural direct effect (`pnde`) is what is typically called the natural direct effect (NDE). The total natural indirect effect  (`tnie`) is the corresponding natural indirect effect (NIE).
 ```{r}
 summary(regmedint_obj, exponentiate = TRUE)
