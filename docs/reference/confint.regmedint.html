@@ -87,6 +87,9 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -120,11 +123,12 @@
     <pre class="usage"><span class='co'># S3 method for regmedint</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span>(
   <span class='no'>x</span>,
+  <span class='kw'>parm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>a0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>a1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>m_cde</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>c_cond</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='no'>...</span>
 )</pre>
 
@@ -134,6 +138,14 @@
     <tr>
       <th>x</th>
       <td><p>An object of the <code><a href='regmedint.html'>regmedint</a></code> class.</p></td>
+    </tr>
+    <tr>
+      <th>parm</th>
+      <td><p>For compatibility with generic. Ignored.</p></td>
+    </tr>
+    <tr>
+      <th>level</th>
+      <td><p>A numeric vector of length one. Requested confidence level. Defaults to 0.95.</p></td>
     </tr>
     <tr>
       <th>a0</th>
@@ -150,10 +162,6 @@
     <tr>
       <th>c_cond</th>
       <td><p>A numeric vector as long as the number of adjustment covariates. A set of covariate values at which the conditional natural effects are evaluated.</p></td>
-    </tr>
-    <tr>
-      <th>level</th>
-      <td><p>A numeric vector of length one. Requested confidence level. Defaults to 0.95.</p></td>
     </tr>
     <tr>
       <th>...</th>
