@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> • regmedint</title>
+<title>Using multiple imputation with regmedint • regmedint</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Using multiple imputation with regmedint">
 <meta property="og:description" content="regmedint">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -54,16 +54,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/01_introduction.html">UNKNOWN TITLE</a>
+      <a href="../articles/01_introduction.html">Introduction to user interface functions</a>
     </li>
     <li>
-      <a href="../articles/02_formulas.html">UNKNOWN TITLE</a>
+      <a href="../articles/02_formulas.html">Implementation of formulas</a>
     </li>
     <li>
-      <a href="../articles/03_bootstrap.html">UNKNOWN TITLE</a>
+      <a href="../articles/03_bootstrap.html">Using bootstrapping with regemedint</a>
     </li>
     <li>
-      <a href="../articles/04_mi.html">UNKNOWN TITLE</a>
+      <a href="../articles/04_mi.html">Using multiple imputation with regmedint</a>
     </li>
   </ul>
 </li>
@@ -91,7 +91,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip></h1>
+      <h1 data-toc-skip>Using multiple imputation with regmedint</h1>
             
       
       
@@ -109,7 +109,8 @@
 <h2 class="hasAnchor">
 <a href="#missing-data-generation" class="anchor"></a>Missing data generation</h2>
 <p>For demonstration purpose, missing data is introduced here.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">regmedint</span>)
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">138087069</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">regmedint</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
 <span class="co">## Prepare dataset</span>
 <span class="no">vv2015</span> <span class="kw">&lt;-</span> <span class="fu">read_delim</span>(<span class="kw">file</span> <span class="kw">=</span> <span class="st">"../tests/reference_results/data-valeri-vanderweele-2015.txt"</span>,
@@ -245,53 +246,53 @@
 ## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
 ## 
 ## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.6775  -1.1285   0.8055   1.1616   1.3582  
+##    Min      1Q  Median      3Q     Max  
+## -1.306  -1.133  -1.028   1.183   1.360  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)  -0.2267     0.3691  -0.614    0.539
-## x             0.8871     0.5683   1.561    0.119
-## c             0.1758     0.2815   0.625    0.532
+## (Intercept)  -0.2500     0.3880  -0.644    0.519
+## x             0.1278     0.4883   0.262    0.794
+## c             0.1587     0.2415   0.657    0.511
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 96.526  on 69  degrees of freedom
-## Residual deviance: 93.276  on 67  degrees of freedom
-## AIC: 99.276
+##     Null deviance: 99.758  on 71  degrees of freedom
+## Residual deviance: 99.287  on 69  degrees of freedom
+## AIC: 105.29
 ## 
-## Number of Fisher Scoring iterations: 4
+## Number of Fisher Scoring iterations: 3
 ## 
 ## ### Outcome model
 ## 
 ## Call:
 ## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
 ##     dist = "weibull")
-##               Value Std. Error     z       p
-## (Intercept) -0.7864     0.2124 -3.70 0.00021
-## x            0.6954     0.4497  1.55 0.12204
-## m           -0.2110     0.2742 -0.77 0.44162
-## c           -0.2393     0.1247 -1.92 0.05493
-## x:m          0.3250     0.5559  0.58 0.55886
-## Log(scale)  -0.0962     0.1003 -0.96 0.33722
+##               Value Std. Error     z           p
+## (Intercept) -1.2689     0.2229 -5.69 0.000000012
+## x            0.7213     0.3315  2.18        0.03
+## m            0.4517     0.2985  1.51        0.13
+## c           -0.0652     0.1110 -0.59        0.56
+## x:m         -0.2579     0.4750 -0.54        0.59
+## Log(scale)  -0.0581     0.0958 -0.61        0.54
 ## 
-## Scale= 0.908 
+## Scale= 0.944 
 ## 
 ## Weibull distribution
-## Loglik(model)= -7.8   Loglik(intercept only)= -13.8
-##  Chisq= 12.06 on 4 degrees of freedom, p= 0.017 
+## Loglik(model)= -6.1   Loglik(intercept only)= -10.5
+##  Chisq= 8.79 on 4 degrees of freedom, p= 0.066 
 ## Number of Newton-Raphson Iterations: 5 
-## n= 70 
+## n= 72 
 ## 
 ## ### Mediation analysis 
-##              est         se          Z            p       lower      upper
-## cde   1.02034762 0.33162280  3.0768319 0.0020921322  0.37037888 1.67031636
-## pnde  0.84273029 0.28338036  2.9738487 0.0029409009  0.28731500 1.39814558
-## tnie  0.02411006 0.10225777  0.2357773 0.8136054719 -0.17631148 0.22453161
-## tnde  0.91240127 0.26864456  3.3963140 0.0006829997  0.38586761 1.43893493
-## pnie -0.04556091 0.06579204 -0.6924989 0.4886241008 -0.17451094 0.08338912
-## te    0.86684035 0.26422057  3.2807451 0.0010353326  0.34897754 1.38470316
-## pm    0.04109161 0.03858938  1.0648425 0.2869472171 -0.03454218 0.11672541
+##              est         se         Z          p       lower      upper
+## cde  0.463323084 0.34636957 1.3376553 0.18100884 -0.21554880 1.14219497
+## pnde 0.582515084 0.24557485 2.3720470 0.01768984  0.10119722 1.06383295
+## tnie 0.006182822 0.02643657 0.2338738 0.81508294 -0.04563191 0.05799755
+## tnde 0.574385442 0.24784035 2.3175623 0.02047312  0.08862728 1.06014360
+## pnie 0.014312464 0.05541066 0.2582980 0.79617690 -0.09429043 0.12291536
+## te   0.588697906 0.24809627 2.3728608 0.01765092  0.10243816 1.07495766
+## pm   0.013852661 0.01383244 1.0014616 0.31660367 -0.01325843 0.04096375
 ## 
 ## Evaluated at:
 ## avar: x
@@ -384,14 +385,14 @@
 <span class="no">regmedint_mi_summary</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">regmedint_mi</span>)</pre></body></html></div>
 <pre><code>## Multiple imputation results:
 ##       MIcombine.default(results = vv2015_mice_regmedint$coef_fit, variances = vv2015_mice_regmedint$vcov_fit)
-##            results         se      (lower    upper) missInfo
-## cde   0.6381768885 0.28577024  0.07792504 1.1984287     11 %
-## pnde  0.5055163597 0.23705758  0.04086041 0.9701723      5 %
-## tnie -0.0001843983 0.10298077 -0.20233753 0.2019687     25 %
-## tnde  0.5552110349 0.21978299  0.12443125 0.9859908      4 %
-## pnie -0.0498790735 0.07645537 -0.19996326 0.1002051     25 %
-## te    0.5053319614 0.21178840  0.09023432 0.9204296      0 %
-## pm   -0.0032500081 0.13757502 -0.27870100 0.2722010     93 %</code></pre>
+##          results         se      (lower     upper) missInfo
+## cde  0.364444513 0.31285436 -0.24886705 0.97775608      9 %
+## pnde 0.490086249 0.21309992  0.07241792 0.90775458      0 %
+## tnie 0.003130126 0.03166385 -0.05896404 0.06522429     15 %
+## tnde 0.482592943 0.21622030  0.05880487 0.90638102      2 %
+## pnie 0.010623432 0.06015876 -0.10748936 0.12873622     27 %
+## te   0.493216375 0.21374378  0.07428624 0.91214651      0 %
+## pm   0.007737162 0.03500720 -0.06200195 0.07747628     81 %</code></pre>
 </div>
 <div id="comparison" class="section level2">
 <h2 class="hasAnchor">
@@ -400,14 +401,14 @@
 <div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="http://stefvanbuuren.github.io/mice/reference/cbind.html">cbind</a></span>(<span class="kw">true</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_true</span>),
       <span class="kw">cca</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_cca</span>),
       <span class="kw">mi</span> <span class="kw">=</span> <span class="no">regmedint_mi_summary</span>$<span class="no">results</span>)</pre></body></html></div>
-<pre><code>##             true         cca            mi
-## cde  0.541070807  1.02034762  0.6381768885
-## pnde 0.488930417  0.84273029  0.5055163597
-## tnie 0.018240025  0.02411006 -0.0001843983
-## tnde 0.498503455  0.91240127  0.5552110349
-## pnie 0.008666987 -0.04556091 -0.0498790735
-## te   0.507170442  0.86684035  0.5053319614
-## pm   0.045436278  0.04109161 -0.0032500081</code></pre>
+<pre><code>##             true         cca          mi
+## cde  0.541070807 0.463323084 0.364444513
+## pnde 0.488930417 0.582515084 0.490086249
+## tnie 0.018240025 0.006182822 0.003130126
+## tnde 0.498503455 0.574385442 0.482592943
+## pnie 0.008666987 0.014312464 0.010623432
+## te   0.507170442 0.588697906 0.493216375
+## pm   0.045436278 0.013852661 0.007737162</code></pre>
 </div>
 </div>
   </div>

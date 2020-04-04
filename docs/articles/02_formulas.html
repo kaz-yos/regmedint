@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> • regmedint</title>
+<title>Implementation of formulas • regmedint</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Implementation of formulas">
 <meta property="og:description" content="regmedint">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -54,16 +54,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/01_introduction.html">UNKNOWN TITLE</a>
+      <a href="../articles/01_introduction.html">Introduction to user interface functions</a>
     </li>
     <li>
-      <a href="../articles/02_formulas.html">UNKNOWN TITLE</a>
+      <a href="../articles/02_formulas.html">Implementation of formulas</a>
     </li>
     <li>
-      <a href="../articles/03_bootstrap.html">UNKNOWN TITLE</a>
+      <a href="../articles/03_bootstrap.html">Using bootstrapping with regemedint</a>
     </li>
     <li>
-      <a href="../articles/04_mi.html">UNKNOWN TITLE</a>
+      <a href="../articles/04_mi.html">Using multiple imputation with regmedint</a>
     </li>
   </ul>
 </li>
@@ -91,7 +91,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip></h1>
+      <h1 data-toc-skip>Implementation of formulas</h1>
             
       
       
@@ -104,7 +104,7 @@
 <div id="implementation-of-formulas" class="section level1">
 <h1 class="hasAnchor">
 <a href="#implementation-of-formulas" class="anchor"></a>Implementation of formulas</h1>
-<p>The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references.</p>
+<p>The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references. The code seen here is compacted and lacks the comments. Please refer to the Github repo for readability.</p>
 <div id="mreg-linear-yreg-linear-v2015-p466-proposition-2-3" class="section level2">
 <h2 class="hasAnchor">
 <a href="#mreg-linear-yreg-linear-v2015-p466-proposition-2-3" class="anchor"></a>mreg linear yreg linear (V2015 p466 Proposition 2.3)</h2>
@@ -146,7 +146,7 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7f947ecb4240&gt;
+## &lt;bytecode: 0x7fe87e165938&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 <div id="standard-error-estimate" class="section level3">
@@ -229,7 +229,7 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7f947e47a070&gt;
+## &lt;bytecode: 0x7fe87e2c3858&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
@@ -278,7 +278,7 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7f947e5d1f90&gt;
+## &lt;bytecode: 0x7fe87e419778&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 <div id="standard-error-estimate-1" class="section level3">
@@ -357,7 +357,7 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7f947e71c588&gt;
+## &lt;bytecode: 0x7fe87e569c80&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
@@ -408,7 +408,7 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7f947f07efd0&gt;
+## &lt;bytecode: 0x7fe87e6be7b8&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 <div id="standard-error-estimate-2" class="section level3">
@@ -533,7 +533,7 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7f947f1cb510&gt;
+## &lt;bytecode: 0x7fe87e814cf8&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
@@ -588,7 +588,7 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7f947f33b318&gt;
+## &lt;bytecode: 0x7fe87e984b00&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 <div id="standard-error-estimate-3" class="section level3">
@@ -724,7 +724,7 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7f947f48b8c8&gt;
+## &lt;bytecode: 0x7fe87ead50b0&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
