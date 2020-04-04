@@ -46,6 +46,27 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/01_introduction.html">UNKNOWN TITLE</a>
+    </li>
+    <li>
+      <a href="articles/02_formulas.html">UNKNOWN TITLE</a>
+    </li>
+    <li>
+      <a href="articles/03_bootstrap.html">UNKNOWN TITLE</a>
+    </li>
+    <li>
+      <a href="articles/04_mi.html">UNKNOWN TITLE</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="news/index.html">Changelog</a>
 </li>
@@ -82,9 +103,9 @@
 <h1 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h1>
 <p>Here we will analyze the simulated example that is included with the SAS macro.</p>
-<div id="fitting" class="section level2">
+<div id="regmedint-to-fit-models" class="section level2">
 <h2 class="hasAnchor">
-<a href="#fitting" class="anchor"></a>Fitting</h2>
+<a href="#regmedint-to-fit-models" class="anchor"></a><code>regmedint()</code> to fit models</h2>
 <p>The <code>regmedint</code> function is the user interface for constructing a result object of class <code>regmedint</code>. The interface is made similar to the original SAS macro. For survival outcomes, the indicator variable is an event indicator (1 for event, 0 for censoring). The <code>c_cond</code> vector is required. This vector is the vector of covariate values at which the conditional effects are evaluated at.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">## install.packages("devtools") # If you do not have it.</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="co">## devtools::install_github("kaz-yos/regmedint") # If you have not installed it, yet.</span></a>
@@ -117,7 +138,7 @@
 </div>
 <div id="print-to-examine-simplified-results" class="section level2">
 <h2 class="hasAnchor">
-<a href="#print-to-examine-simplified-results" class="anchor"></a>print to examine simplified results</h2>
+<a href="#print-to-examine-simplified-results" class="anchor"></a><code>print()</code> to examine simplified results</h2>
 <p>Implicit printing prints mreg, yreg, and mediation analysis point estimates. All effect estimates are on the scale of the link function.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">regmedint_obj</a>
 <a class="sourceLine" id="cb2-2" title="2"></a>
@@ -152,7 +173,7 @@
 </div>
 <div id="summary-to-examine-extended-results" class="section level2">
 <h2 class="hasAnchor">
-<a href="#summary-to-examine-extended-results" class="anchor"></a>summary to examine extended results</h2>
+<a href="#summary-to-examine-extended-results" class="anchor"></a><code>summary()</code> to examine extended results</h2>
 <p>The <code>summary</code> method gives the summary for <code>mreg</code>, <code>yreg</code>, and mediation analysis results. The <code>exponentiate</code> option will add the exponentiated estimate and confidence limits if the outcome model is not a linear model. The pure natural direct effect (<code>pnde</code>) is what is typically called the natural direct effect (NDE). The total natural indirect effect (<code>tnie</code>) is the corresponding natural indirect effect (NIE).</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">summary</span>(regmedint_obj, <span class="dt">exponentiate =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb3-2" title="2"></a>

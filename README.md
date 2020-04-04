@@ -25,8 +25,8 @@ Example
 Here we will analyze the simulated example that is included with the SAS
 macro.
 
-Fitting
--------
+`regmedint()` to fit models
+---------------------------
 
 The `regmedint` function is the user interface for constructing a result
 object of class `regmedint`. The interface is made similar to the
@@ -64,8 +64,8 @@ conditional effects are evaluated at.
                                interaction = TRUE,
                                casecontrol = FALSE)
 
-print to examine simplified results
------------------------------------
+`print()` to examine simplified results
+---------------------------------------
 
 Implicit printing prints mreg, yreg, and mediation analysis point
 estimates. All effect estimates are on the scale of the link function.
@@ -101,8 +101,8 @@ estimates. All effect estimates are on the scale of the link function.
     ##         cde        pnde        tnie        tnde        pnie          te          pm 
     ## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 0.045436278
 
-summary to examine extended results
------------------------------------
+`summary()` to examine extended results
+---------------------------------------
 
 The `summary` method gives the summary for `mreg`, `yreg`, and mediation
 analysis results. The `exponentiate` option will add the exponentiated
