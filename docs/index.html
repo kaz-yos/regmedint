@@ -70,9 +70,9 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="regmedint-developmental-repo" class="section level1">
+<div id="regmedint" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#regmedint-developmental-repo" class="anchor"></a>regmedint (developmental repo) <img src="reference/figures/hex.png" align="right" height="140">
+<a href="#regmedint" class="anchor"></a>regmedint <img src="reference/figures/hex.png" align="right" height="140">
 </h1></div>
 
 <p>This is an R reimplementation of the regression-based causal mediation analysis methods as implemented in the SAS macro by Valeri and VanderWeele (2013 and 2015). The original is found at Dr. VanderWeele’s <a href="https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/">Tools and Tutorials</a>.</p>
@@ -86,159 +86,162 @@
 <h2 class="hasAnchor">
 <a href="#fitting" class="anchor"></a>Fitting</h2>
 <p>The <code>regmedint</code> function is the user interface for constructing a result object of class <code>regmedint</code>. The interface is made similar to the original SAS macro. For survival outcomes, the indicator variable is an event indicator (1 for event, 0 for censoring). The <code>c_cond</code> vector is required. This vector is the vector of covariate values at which the conditional effects are evaluated at.</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co">## install.packages("devtools") # If you do not have it.</span>
-<span class="co">## devtools::install_github("kaz-yos/regmedint") # If you have not installed it, yet.</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">regmedint</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
-
-<span class="no">vv2015</span> <span class="kw">&lt;-</span> <span class="fu">read_delim</span>(<span class="kw">file</span> <span class="kw">=</span> <span class="st">"./tests/reference_results/data-valeri-vanderweele-2015.txt"</span>,
-                     <span class="kw">delim</span> <span class="kw">=</span> <span class="st">" "</span>) <span class="kw">%&gt;%</span>
-    <span class="co">## Following R convention, an event indicator is used.</span>
-    <span class="fu">mutate</span>(<span class="kw">event</span> <span class="kw">=</span> <span class="fu">if_else</span>(<span class="no">cens</span> <span class="kw">==</span> <span class="fl">0</span>, <span class="fl">1L</span>, <span class="fl">0L</span>))
-
-<span class="co">## FIXME: Find a meaningful data example within R.</span>
-<span class="no">regmedint_obj</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/regmedint.html">regmedint</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">vv2015</span>,
-                           <span class="co">##</span>
-                           <span class="kw">yvar</span> <span class="kw">=</span> <span class="st">"y"</span>,
-                           <span class="kw">avar</span> <span class="kw">=</span> <span class="st">"x"</span>,
-                           <span class="kw">mvar</span> <span class="kw">=</span> <span class="st">"m"</span>,
-                           <span class="kw">cvar</span> <span class="kw">=</span> <span class="st">"c"</span>,
-                           <span class="co">##</span>
-                           <span class="kw">a0</span> <span class="kw">=</span> <span class="fl">0</span>,
-                           <span class="kw">a1</span> <span class="kw">=</span> <span class="fl">1</span>,
-                           <span class="kw">m_cde</span> <span class="kw">=</span> <span class="fl">1</span>,
-                           <span class="kw">c_cond</span> <span class="kw">=</span> <span class="fl">0.5</span>,
-                           <span class="co">##</span>
-                           <span class="kw">mreg</span> <span class="kw">=</span> <span class="st">"logistic"</span>,
-                           <span class="kw">yreg</span> <span class="kw">=</span> <span class="st">"survAFT_weibull"</span>,
-                           <span class="co">##</span>
-                           <span class="kw">interaction</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                           <span class="kw">casecontrol</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-                           <span class="kw">eventvar</span> <span class="kw">=</span> <span class="st">"event"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">## install.packages("devtools") # If you do not have it.</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">## devtools::install_github("kaz-yos/regmedint") # If you have not installed it, yet.</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(regmedint)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-5" title="5"></a>
+<a class="sourceLine" id="cb1-6" title="6">vv2015 &lt;-<span class="st"> </span><span class="kw">read_delim</span>(<span class="dt">file =</span> <span class="st">"./tests/reference_results/data-valeri-vanderweele-2015.txt"</span>,</a>
+<a class="sourceLine" id="cb1-7" title="7">                     <span class="dt">delim =</span> <span class="st">" "</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="st">    </span><span class="co">## Following R convention, an event indicator is used.</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">event =</span> <span class="kw">if_else</span>(cens <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, 1L, 0L))</a>
+<a class="sourceLine" id="cb1-10" title="10"></a>
+<a class="sourceLine" id="cb1-11" title="11">regmedint_obj &lt;-<span class="st"> </span><span class="kw">regmedint</span>(<span class="dt">data =</span> vv2015,</a>
+<a class="sourceLine" id="cb1-12" title="12">                           <span class="co">## Variables</span></a>
+<a class="sourceLine" id="cb1-13" title="13">                           <span class="dt">yvar =</span> <span class="st">"y"</span>,</a>
+<a class="sourceLine" id="cb1-14" title="14">                           <span class="dt">avar =</span> <span class="st">"x"</span>,</a>
+<a class="sourceLine" id="cb1-15" title="15">                           <span class="dt">mvar =</span> <span class="st">"m"</span>,</a>
+<a class="sourceLine" id="cb1-16" title="16">                           <span class="dt">cvar =</span> <span class="kw">c</span>(<span class="st">"c"</span>),</a>
+<a class="sourceLine" id="cb1-17" title="17">                           <span class="dt">eventvar =</span> <span class="st">"event"</span>,</a>
+<a class="sourceLine" id="cb1-18" title="18">                           <span class="co">## Values at which effects are evaluated</span></a>
+<a class="sourceLine" id="cb1-19" title="19">                           <span class="dt">a0 =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb1-20" title="20">                           <span class="dt">a1 =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb1-21" title="21">                           <span class="dt">m_cde =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb1-22" title="22">                           <span class="dt">c_cond =</span> <span class="fl">0.5</span>,</a>
+<a class="sourceLine" id="cb1-23" title="23">                           <span class="co">## Model types</span></a>
+<a class="sourceLine" id="cb1-24" title="24">                           <span class="dt">mreg =</span> <span class="st">"logistic"</span>,</a>
+<a class="sourceLine" id="cb1-25" title="25">                           <span class="dt">yreg =</span> <span class="st">"survAFT_weibull"</span>,</a>
+<a class="sourceLine" id="cb1-26" title="26">                           <span class="co">## Additional specification</span></a>
+<a class="sourceLine" id="cb1-27" title="27">                           <span class="dt">interaction =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb1-28" title="28">                           <span class="dt">casecontrol =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 </div>
 <div id="print-to-examine-simplified-results" class="section level2">
 <h2 class="hasAnchor">
 <a href="#print-to-examine-simplified-results" class="anchor"></a>print to examine simplified results</h2>
 <p>Implicit printing prints mreg, yreg, and mediation analysis point estimates. All effect estimates are on the scale of the link function.</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="no">regmedint_obj</span></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co">## </span><span class="al">###</span><span class="co"> Mediator model</span></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co">##</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co">## Call:  glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="co">##</span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="co">## Coefficients:</span></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="co">## (Intercept)            x            c</span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="co">##     -0.3545       0.3842       0.2694</span></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="co">##</span></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="co">## Degrees of Freedom: 99 Total (i.e. Null);  97 Residual</span></a>
-<a class="sourceLine" id="cb3-10" title="10"><span class="co">## Null Deviance:       138.6</span></a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="co">## Residual Deviance: 136.1     AIC: 142.1</span></a>
-<a class="sourceLine" id="cb3-12" title="12"><span class="co">## </span><span class="al">###</span><span class="co"> Outcome model</span></a>
-<a class="sourceLine" id="cb3-13" title="13"><span class="co">## Call:</span></a>
-<a class="sourceLine" id="cb3-14" title="14"><span class="co">## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data,</span></a>
-<a class="sourceLine" id="cb3-15" title="15"><span class="co">##     dist = "weibull")</span></a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="co">##</span></a>
-<a class="sourceLine" id="cb3-17" title="17"><span class="co">## Coefficients:</span></a>
-<a class="sourceLine" id="cb3-18" title="18"><span class="co">## (Intercept)           x           m           c         x:m</span></a>
-<a class="sourceLine" id="cb3-19" title="19"><span class="co">## -1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424</span></a>
-<a class="sourceLine" id="cb3-20" title="20"><span class="co">##</span></a>
-<a class="sourceLine" id="cb3-21" title="21"><span class="co">## Scale= 0.9658808</span></a>
-<a class="sourceLine" id="cb3-22" title="22"><span class="co">##</span></a>
-<a class="sourceLine" id="cb3-23" title="23"><span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span></a>
-<a class="sourceLine" id="cb3-24" title="24"><span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177</span></a>
-<a class="sourceLine" id="cb3-25" title="25"><span class="co">## n= 100</span></a>
-<a class="sourceLine" id="cb3-26" title="26"><span class="co">## </span><span class="al">###</span><span class="co"> Mediation analysis</span></a>
-<a class="sourceLine" id="cb3-27" title="27"><span class="co">##         cde        pnde        tnie        tnde        pnie          te          pm</span></a>
-<a class="sourceLine" id="cb3-28" title="28"><span class="co">## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 0.045436278</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">regmedint_obj</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">## </span><span class="al">###</span><span class="co"> Mediator model</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">## </span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">## Call:  glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">## </span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">## Coefficients:</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">## (Intercept)            x            c  </span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">##     -0.3545       0.3842       0.2694  </span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">## </span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">## Degrees of Freedom: 99 Total (i.e. Null);  97 Residual</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">## Null Deviance:       138.6 </span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">## Residual Deviance: 136.1     AIC: 142.1</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">## </span><span class="al">###</span><span class="co"> Outcome model</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">## Call:</span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="co">## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, </span></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="co">##     dist = "weibull")</span></a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="co">## </span></a>
+<a class="sourceLine" id="cb2-19" title="19"><span class="co">## Coefficients:</span></a>
+<a class="sourceLine" id="cb2-20" title="20"><span class="co">## (Intercept)           x           m           c         x:m </span></a>
+<a class="sourceLine" id="cb2-21" title="21"><span class="co">## -1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424 </span></a>
+<a class="sourceLine" id="cb2-22" title="22"><span class="co">## </span></a>
+<a class="sourceLine" id="cb2-23" title="23"><span class="co">## Scale= 0.9658808 </span></a>
+<a class="sourceLine" id="cb2-24" title="24"><span class="co">## </span></a>
+<a class="sourceLine" id="cb2-25" title="25"><span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span></a>
+<a class="sourceLine" id="cb2-26" title="26"><span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177 </span></a>
+<a class="sourceLine" id="cb2-27" title="27"><span class="co">## n= 100 </span></a>
+<a class="sourceLine" id="cb2-28" title="28"><span class="co">## </span><span class="al">###</span><span class="co"> Mediation analysis </span></a>
+<a class="sourceLine" id="cb2-29" title="29"><span class="co">##         cde        pnde        tnie        tnde        pnie          te          pm </span></a>
+<a class="sourceLine" id="cb2-30" title="30"><span class="co">## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 0.045436278</span></a></code></pre></div>
 </div>
 <div id="summary-to-examine-extended-results" class="section level2">
 <h2 class="hasAnchor">
 <a href="#summary-to-examine-extended-results" class="anchor"></a>summary to examine extended results</h2>
 <p>The <code>summary</code> method gives the summary for <code>mreg</code>, <code>yreg</code>, and mediation analysis results. The <code>exponentiate</code> option will add the exponentiated estimate and confidence limits if the outcome model is not a linear model. The pure natural direct effect (<code>pnde</code>) is what is typically called the natural direct effect (NDE). The total natural indirect effect (<code>tnie</code>) is the corresponding natural indirect effect (NIE).</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">regmedint_obj</span>, <span class="kw">exponentiate</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co">## </span><span class="al">###</span><span class="co"> Mediator model</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="co">## Call:</span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="co">## Deviance Residuals:</span></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="co">##     Min       1Q   Median       3Q      Max</span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="co">## -1.5143  -1.1765   0.9177   1.1133   1.4602</span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="co">## Coefficients:</span></a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="co">##             Estimate Std. Error z value Pr(&gt;|z|)</span></a>
-<a class="sourceLine" id="cb5-12" title="12"><span class="co">## (Intercept)  -0.3545     0.3252  -1.090    0.276</span></a>
-<a class="sourceLine" id="cb5-13" title="13"><span class="co">## x             0.3842     0.4165   0.922    0.356</span></a>
-<a class="sourceLine" id="cb5-14" title="14"><span class="co">## c             0.2694     0.2058   1.309    0.191</span></a>
-<a class="sourceLine" id="cb5-15" title="15"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-16" title="16"><span class="co">## (Dispersion parameter for binomial family taken to be 1)</span></a>
-<a class="sourceLine" id="cb5-17" title="17"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-18" title="18"><span class="co">##     Null deviance: 138.59  on 99  degrees of freedom</span></a>
-<a class="sourceLine" id="cb5-19" title="19"><span class="co">## Residual deviance: 136.08  on 97  degrees of freedom</span></a>
-<a class="sourceLine" id="cb5-20" title="20"><span class="co">## AIC: 142.08</span></a>
-<a class="sourceLine" id="cb5-21" title="21"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-22" title="22"><span class="co">## Number of Fisher Scoring iterations: 4</span></a>
-<a class="sourceLine" id="cb5-23" title="23"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-24" title="24"><span class="co">## </span><span class="al">###</span><span class="co"> Outcome model</span></a>
-<a class="sourceLine" id="cb5-25" title="25"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-26" title="26"><span class="co">## Call:</span></a>
-<a class="sourceLine" id="cb5-27" title="27"><span class="co">## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data,</span></a>
-<a class="sourceLine" id="cb5-28" title="28"><span class="co">##     dist = "weibull")</span></a>
-<a class="sourceLine" id="cb5-29" title="29"><span class="co">##               Value Std. Error     z           p</span></a>
-<a class="sourceLine" id="cb5-30" title="30"><span class="co">## (Intercept) -1.0424     0.1903 -5.48 0.000000043</span></a>
-<a class="sourceLine" id="cb5-31" title="31"><span class="co">## x            0.4408     0.3008  1.47        0.14</span></a>
-<a class="sourceLine" id="cb5-32" title="32"><span class="co">## m            0.0905     0.2683  0.34        0.74</span></a>
-<a class="sourceLine" id="cb5-33" title="33"><span class="co">## c           -0.0669     0.0915 -0.73        0.46</span></a>
-<a class="sourceLine" id="cb5-34" title="34"><span class="co">## x:m          0.1003     0.4207  0.24        0.81</span></a>
-<a class="sourceLine" id="cb5-35" title="35"><span class="co">## Log(scale)  -0.0347     0.0810 -0.43        0.67</span></a>
-<a class="sourceLine" id="cb5-36" title="36"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-37" title="37"><span class="co">## Scale= 0.966</span></a>
-<a class="sourceLine" id="cb5-38" title="38"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-39" title="39"><span class="co">## Weibull distribution</span></a>
-<a class="sourceLine" id="cb5-40" title="40"><span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span></a>
-<a class="sourceLine" id="cb5-41" title="41"><span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18</span></a>
-<a class="sourceLine" id="cb5-42" title="42"><span class="co">## Number of Newton-Raphson Iterations: 5</span></a>
-<a class="sourceLine" id="cb5-43" title="43"><span class="co">## n= 100</span></a>
-<a class="sourceLine" id="cb5-44" title="44"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-45" title="45"><span class="co">## </span><span class="al">###</span><span class="co"> Mediation analysis</span></a>
-<a class="sourceLine" id="cb5-46" title="46"><span class="co">##              est         se         Z           p       lower      upper exp(est) exp(lower) exp(upper)</span></a>
-<a class="sourceLine" id="cb5-47" title="47"><span class="co">## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019 1.717845  0.9650179   3.057967</span></a>
-<a class="sourceLine" id="cb5-48" title="48"><span class="co">## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809 1.630571  1.0793648   2.463266</span></a>
-<a class="sourceLine" id="cb5-49" title="49"><span class="co">## tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846 1.018407  0.9470547   1.095136</span></a>
-<a class="sourceLine" id="cb5-50" title="50"><span class="co">## tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281 1.646256  1.0863290   2.494786</span></a>
-<a class="sourceLine" id="cb5-51" title="51"><span class="co">## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348 1.008705  0.9561318   1.064168</span></a>
-<a class="sourceLine" id="cb5-52" title="52"><span class="co">## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785 1.660586  1.0983544   2.510615</span></a>
-<a class="sourceLine" id="cb5-53" title="53"><span class="co">## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926       NA         NA         NA</span></a>
-<a class="sourceLine" id="cb5-54" title="54"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-55" title="55"><span class="co">## Evaluated at:</span></a>
-<a class="sourceLine" id="cb5-56" title="56"><span class="co">## avar: x</span></a>
-<a class="sourceLine" id="cb5-57" title="57"><span class="co">##  a1 (intervened value of avar) = 1</span></a>
-<a class="sourceLine" id="cb5-58" title="58"><span class="co">##  a0 (reference value of avar)  = 0</span></a>
-<a class="sourceLine" id="cb5-59" title="59"><span class="co">## mvar: m</span></a>
-<a class="sourceLine" id="cb5-60" title="60"><span class="co">##  m_cde (intervend value of mvar for cde) = 1</span></a>
-<a class="sourceLine" id="cb5-61" title="61"><span class="co">## cvar: c</span></a>
-<a class="sourceLine" id="cb5-62" title="62"><span class="co">##  c_cond (covariate vector value) = 0.5</span></a>
-<a class="sourceLine" id="cb5-63" title="63"><span class="co">##</span></a>
-<a class="sourceLine" id="cb5-64" title="64"><span class="co">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">summary</span>(regmedint_obj, <span class="dt">exponentiate =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">## </span><span class="al">###</span><span class="co"> Mediator model</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">## Call:</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">## Deviance Residuals: </span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">##     Min       1Q   Median       3Q      Max  </span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">## -1.5143  -1.1765   0.9177   1.1133   1.4602  </span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">## Coefficients:</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co">##             Estimate Std. Error z value Pr(&gt;|z|)</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="co">## (Intercept)  -0.3545     0.3252  -1.090    0.276</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">## x             0.3842     0.4165   0.922    0.356</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co">## c             0.2694     0.2058   1.309    0.191</span></a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="co">## (Dispersion parameter for binomial family taken to be 1)</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="co">##     Null deviance: 138.59  on 99  degrees of freedom</span></a>
+<a class="sourceLine" id="cb3-21" title="21"><span class="co">## Residual deviance: 136.08  on 97  degrees of freedom</span></a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="co">## AIC: 142.08</span></a>
+<a class="sourceLine" id="cb3-23" title="23"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-24" title="24"><span class="co">## Number of Fisher Scoring iterations: 4</span></a>
+<a class="sourceLine" id="cb3-25" title="25"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-26" title="26"><span class="co">## </span><span class="al">###</span><span class="co"> Outcome model</span></a>
+<a class="sourceLine" id="cb3-27" title="27"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-28" title="28"><span class="co">## Call:</span></a>
+<a class="sourceLine" id="cb3-29" title="29"><span class="co">## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, </span></a>
+<a class="sourceLine" id="cb3-30" title="30"><span class="co">##     dist = "weibull")</span></a>
+<a class="sourceLine" id="cb3-31" title="31"><span class="co">##               Value Std. Error     z           p</span></a>
+<a class="sourceLine" id="cb3-32" title="32"><span class="co">## (Intercept) -1.0424     0.1903 -5.48 0.000000043</span></a>
+<a class="sourceLine" id="cb3-33" title="33"><span class="co">## x            0.4408     0.3008  1.47        0.14</span></a>
+<a class="sourceLine" id="cb3-34" title="34"><span class="co">## m            0.0905     0.2683  0.34        0.74</span></a>
+<a class="sourceLine" id="cb3-35" title="35"><span class="co">## c           -0.0669     0.0915 -0.73        0.46</span></a>
+<a class="sourceLine" id="cb3-36" title="36"><span class="co">## x:m          0.1003     0.4207  0.24        0.81</span></a>
+<a class="sourceLine" id="cb3-37" title="37"><span class="co">## Log(scale)  -0.0347     0.0810 -0.43        0.67</span></a>
+<a class="sourceLine" id="cb3-38" title="38"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-39" title="39"><span class="co">## Scale= 0.966 </span></a>
+<a class="sourceLine" id="cb3-40" title="40"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-41" title="41"><span class="co">## Weibull distribution</span></a>
+<a class="sourceLine" id="cb3-42" title="42"><span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span></a>
+<a class="sourceLine" id="cb3-43" title="43"><span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 </span></a>
+<a class="sourceLine" id="cb3-44" title="44"><span class="co">## Number of Newton-Raphson Iterations: 5 </span></a>
+<a class="sourceLine" id="cb3-45" title="45"><span class="co">## n= 100 </span></a>
+<a class="sourceLine" id="cb3-46" title="46"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-47" title="47"><span class="co">## </span><span class="al">###</span><span class="co"> Mediation analysis </span></a>
+<a class="sourceLine" id="cb3-48" title="48"><span class="co">##              est         se         Z           p       lower      upper exp(est) exp(lower) exp(upper)</span></a>
+<a class="sourceLine" id="cb3-49" title="49"><span class="co">## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019 1.717845  0.9650179   3.057967</span></a>
+<a class="sourceLine" id="cb3-50" title="50"><span class="co">## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809 1.630571  1.0793648   2.463266</span></a>
+<a class="sourceLine" id="cb3-51" title="51"><span class="co">## tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846 1.018407  0.9470547   1.095136</span></a>
+<a class="sourceLine" id="cb3-52" title="52"><span class="co">## tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281 1.646256  1.0863290   2.494786</span></a>
+<a class="sourceLine" id="cb3-53" title="53"><span class="co">## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348 1.008705  0.9561318   1.064168</span></a>
+<a class="sourceLine" id="cb3-54" title="54"><span class="co">## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785 1.660586  1.0983544   2.510615</span></a>
+<a class="sourceLine" id="cb3-55" title="55"><span class="co">## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926       NA         NA         NA</span></a>
+<a class="sourceLine" id="cb3-56" title="56"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-57" title="57"><span class="co">## Evaluated at:</span></a>
+<a class="sourceLine" id="cb3-58" title="58"><span class="co">## avar: x</span></a>
+<a class="sourceLine" id="cb3-59" title="59"><span class="co">##  a1 (intervened value of avar) = 1</span></a>
+<a class="sourceLine" id="cb3-60" title="60"><span class="co">##  a0 (reference value of avar)  = 0</span></a>
+<a class="sourceLine" id="cb3-61" title="61"><span class="co">## mvar: m</span></a>
+<a class="sourceLine" id="cb3-62" title="62"><span class="co">##  m_cde (intervend value of mvar for cde) = 1</span></a>
+<a class="sourceLine" id="cb3-63" title="63"><span class="co">## cvar: c</span></a>
+<a class="sourceLine" id="cb3-64" title="64"><span class="co">##  c_cond (covariate vector value) = 0.5</span></a>
+<a class="sourceLine" id="cb3-65" title="65"><span class="co">## </span></a>
+<a class="sourceLine" id="cb3-66" title="66"><span class="co">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></a></code></pre></div>
 <p>Use <code>coef</code> to extract the mediation analysis results only.</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">regmedint_obj</span>, <span class="kw">exponentiate</span> <span class="kw">=</span> <span class="fl">TRUE</span>))</pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co">##              est         se         Z           p       lower      upper exp(est) exp(lower) exp(upper)</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="co">## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019 1.717845  0.9650179   3.057967</span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="co">## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809 1.630571  1.0793648   2.463266</span></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="co">## tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846 1.018407  0.9470547   1.095136</span></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="co">## tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281 1.646256  1.0863290   2.494786</span></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="co">## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348 1.008705  0.9561318   1.064168</span></a>
-<a class="sourceLine" id="cb7-7" title="7"><span class="co">## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785 1.660586  1.0983544   2.510615</span></a>
-<a class="sourceLine" id="cb7-8" title="8"><span class="co">## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926       NA         NA         NA</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">coef</span>(<span class="kw">summary</span>(regmedint_obj, <span class="dt">exponentiate =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">##              est         se         Z           p       lower      upper exp(est) exp(lower) exp(upper)</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019 1.717845  0.9650179   3.057967</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809 1.630571  1.0793648   2.463266</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">## tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846 1.018407  0.9470547   1.095136</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">## tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281 1.646256  1.0863290   2.494786</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348 1.008705  0.9561318   1.064168</span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co">## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785 1.660586  1.0983544   2.510615</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926       NA         NA         NA</span></a></code></pre></div>
 <p>Note that the estimates can be re-evaluated at different <code>m_cde</code> and <code>c_cond</code> without re-fitting the underlyng models.</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">regmedint_obj</span>, <span class="kw">exponentiate</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">m_cde</span> <span class="kw">=</span> <span class="fl">0</span>, <span class="kw">c_cond</span> <span class="kw">=</span> <span class="fl">5</span>))</pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co">##              est         se         Z          p        lower      upper exp(est) exp(lower) exp(upper)</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="co">## cde  0.440756562 0.30083077 1.4651313 0.14288511 -0.148860903 1.03037403 1.553882  0.8616890   2.802114</span></a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="co">## pnde 0.516631282 0.23499226 2.1985034 0.02791325  0.056054918 0.97720765 1.676371  1.0576558   2.657027</span></a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="co">## tnie 0.012479419 0.02489241 0.5013344 0.61613580 -0.036308799 0.06126764 1.012558  0.9643425   1.063183</span></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="co">## tnde 0.523024107 0.24782597 2.1104492 0.03481969  0.037294136 1.00875408 1.687122  1.0379983   2.742182</span></a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="co">## pnie 0.006086594 0.01889371 0.3221493 0.74733960 -0.030944391 0.04311758 1.006105  0.9695295   1.044061</span></a>
-<a class="sourceLine" id="cb9-7" title="7"><span class="co">## te   0.529110701 0.24194191 2.1869328 0.02874743  0.054913270 1.00330813 1.697422  1.0564490   2.727289</span></a>
-<a class="sourceLine" id="cb9-8" title="8"><span class="co">## pm   0.030184325 0.01276593 2.3644440 0.01805716  0.005163563 0.05520509       NA         NA         NA</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">coef</span>(<span class="kw">summary</span>(regmedint_obj, <span class="dt">exponentiate =</span> <span class="ot">TRUE</span>, <span class="dt">m_cde =</span> <span class="dv">0</span>, <span class="dt">c_cond =</span> <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="co">##              est         se         Z          p        lower      upper exp(est) exp(lower) exp(upper)</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">## cde  0.440756562 0.30083077 1.4651313 0.14288511 -0.148860903 1.03037403 1.553882  0.8616890   2.802114</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">## pnde 0.516631282 0.23499226 2.1985034 0.02791325  0.056054918 0.97720765 1.676371  1.0576558   2.657027</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">## tnie 0.012479419 0.02489241 0.5013344 0.61613580 -0.036308799 0.06126764 1.012558  0.9643425   1.063183</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co">## tnde 0.523024107 0.24782597 2.1104492 0.03481969  0.037294136 1.00875408 1.687122  1.0379983   2.742182</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="co">## pnie 0.006086594 0.01889371 0.3221493 0.74733960 -0.030944391 0.04311758 1.006105  0.9695295   1.044061</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="co">## te   0.529110701 0.24194191 2.1869328 0.02874743  0.054913270 1.00330813 1.697422  1.0564490   2.727289</span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="co">## pm   0.030184325 0.01276593 2.3644440 0.01805716  0.005163563 0.05520509       NA         NA         NA</span></a></code></pre></div>
 </div>
 </div>
 <div id="implementation-status" class="section level1">
@@ -248,50 +251,104 @@
 <table class="table">
 <table class="table">
 <thead><tr class="header">
-<th align="left">yreg  mreg</th>
-<th align="center">linear</th>
-<th align="center">logistic</th>
+<th style="text-align: left;">
+yreg  mreg
+</th>
+<th style="text-align: center;">
+linear
+</th>
+<th style="text-align: center;">
+logistic
+</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">linear</td>
-<td align="center">3</td>
-<td align="center">3</td>
+<td style="text-align: left;">
+linear
+</td>
+<td style="text-align: center;">
+3
+</td>
+<td style="text-align: center;">
+3
+</td>
 </tr>
 <tr class="even">
-<td align="left">logistic</td>
-<td align="center">3</td>
-<td align="center">3</td>
+<td style="text-align: left;">
+logistic
+</td>
+<td style="text-align: center;">
+3
+</td>
+<td style="text-align: center;">
+3
+</td>
 </tr>
 <tr class="odd">
-<td align="left">loglinear</td>
-<td align="center">1</td>
-<td align="center">1</td>
+<td style="text-align: left;">
+loglinear
+</td>
+<td style="text-align: center;">
+1
+</td>
+<td style="text-align: center;">
+1
+</td>
 </tr>
 <tr class="even">
-<td align="left">poisson</td>
-<td align="center">3</td>
-<td align="center">3</td>
+<td style="text-align: left;">
+poisson
+</td>
+<td style="text-align: center;">
+3
+</td>
+<td style="text-align: center;">
+3
+</td>
 </tr>
 <tr class="odd">
-<td align="left">negbin</td>
-<td align="center">3</td>
-<td align="center">3</td>
+<td style="text-align: left;">
+negbin
+</td>
+<td style="text-align: center;">
+3
+</td>
+<td style="text-align: center;">
+3
+</td>
 </tr>
 <tr class="even">
-<td align="left">survCox</td>
-<td align="center">3</td>
-<td align="center">3</td>
+<td style="text-align: left;">
+survCox
+</td>
+<td style="text-align: center;">
+3
+</td>
+<td style="text-align: center;">
+3
+</td>
 </tr>
 <tr class="odd">
-<td align="left">survAFT exp</td>
-<td align="center">3</td>
-<td align="center">3</td>
+<td style="text-align: left;">
+survAFT exp
+</td>
+<td style="text-align: center;">
+3
+</td>
+<td style="text-align: center;">
+3
+</td>
 </tr>
 <tr class="even">
-<td align="left">survAFT weibull</td>
-<td align="center">3</td>
-<td align="center">3</td>
+<td style="text-align: left;">
+survAFT weibull
+</td>
+<td style="text-align: center;">
+3
+</td>
+<td style="text-align: center;">
+3
+</td>
 </tr>
 </tbody>
 </table>
@@ -312,65 +369,125 @@
 <a href="#effect-formulas" class="anchor"></a>Effect formulas</h2>
 <table class="table">
 <colgroup>
-<col width="17%">
-<col width="41%">
-<col width="41%">
+<col style="width: 18%">
+<col style="width: 40%">
+<col style="width: 40%">
 </colgroup>
 <thead><tr class="header">
-<th>yreg \ mreg</th>
-<th>linear</th>
-<th>logistic</th>
+<th>
+yreg  mreg
+</th>
+<th>
+linear
+</th>
+<th>
+logistic
+</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>linear</td>
-<td>V2015 p466 Proposition 2.3</td>
-<td>V2015 p471 Proposition 2.5</td>
+<td>
+linear
+</td>
+<td>
+V2015 p466 Proposition 2.3
+</td>
+<td>
+V2015 p471 Proposition 2.5
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td>logistic</td>
-<td>V2015 p468 Proposition 2.4</td>
-<td>V2015 p473 Proposition 2.6</td>
+<td>
+logistic
+</td>
+<td>
+V2015 p468 Proposition 2.4
+</td>
+<td>
+V2015 p473 Proposition 2.6
+</td>
 </tr>
 <tr class="even">
-<td>loglinear</td>
-<td>VV2013A p8 Use Proposition 2.4</td>
-<td>VV2013A p8 Use Proposition 2.6</td>
+<td>
+loglinear
+</td>
+<td>
+VV2013A p8 Use Proposition 2.4
+</td>
+<td>
+VV2013A p8 Use Proposition 2.6
+</td>
 </tr>
 <tr class="odd">
-<td>poisson</td>
-<td>VV2013A p8 Use Proposition 2.4</td>
-<td>VV2013A p8 Use Proposition 2.6</td>
+<td>
+poisson
+</td>
+<td>
+VV2013A p8 Use Proposition 2.4
+</td>
+<td>
+VV2013A p8 Use Proposition 2.6
+</td>
 </tr>
 <tr class="even">
-<td>negbin</td>
-<td>VV2013A p8 Use Proposition 2.4</td>
-<td>VV2013A p8 Use Proposition 2.6</td>
+<td>
+negbin
+</td>
+<td>
+VV2013A p8 Use Proposition 2.4
+</td>
+<td>
+VV2013A p8 Use Proposition 2.6
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td>survCox</td>
-<td>V2015 p496 Proposition 4.4 (Use 2.4)</td>
-<td>V2015 p499 Proposition 4.6 (Use 2.6)</td>
+<td>
+survCox
+</td>
+<td>
+V2015 p496 Proposition 4.4 (Use 2.4)
+</td>
+<td>
+V2015 p499 Proposition 4.6 (Use 2.6)
+</td>
 </tr>
 <tr class="odd">
-<td>survAFT exp</td>
-<td>V2015 p494 Proposition 4.1 (Use 2.4)</td>
-<td>V2015 p495 Proposition 4.3 (Use 2.6)</td>
+<td>
+survAFT exp
+</td>
+<td>
+V2015 p494 Proposition 4.1 (Use 2.4)
+</td>
+<td>
+V2015 p495 Proposition 4.3 (Use 2.6)
+</td>
 </tr>
 <tr class="even">
-<td>survAFT weibull</td>
-<td>V2015 p494 Proposition 4.1 (Use 2.4)</td>
-<td>V2015 p495 Proposition 4.3 (Use 2.6)</td>
+<td>
+survAFT weibull
+</td>
+<td>
+V2015 p494 Proposition 4.1 (Use 2.4)
+</td>
+<td>
+V2015 p495 Proposition 4.3 (Use 2.6)
+</td>
 </tr>
 </tbody>
 </table>
@@ -381,65 +498,125 @@
 <a href="#standard-error-formulas" class="anchor"></a>Standard error formulas</h2>
 <table class="table">
 <colgroup>
-<col width="20%">
-<col width="40%">
-<col width="40%">
+<col style="width: 20%">
+<col style="width: 39%">
+<col style="width: 39%">
 </colgroup>
 <thead><tr class="header">
-<th>yreg \  mreg</th>
-<th>linear</th>
-<th>logistic</th>
+<th>
+yreg  mreg
+</th>
+<th>
+linear
+</th>
+<th>
+logistic
+</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>linear</td>
-<td>V2015 p466 Proposition 2.3</td>
-<td>V2015 p471 Proposition 2.5</td>
+<td>
+linear
+</td>
+<td>
+V2015 p466 Proposition 2.3
+</td>
+<td>
+V2015 p471 Proposition 2.5
+</td>
 </tr>
 <tr class="even">
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="odd">
-<td>logistic</td>
-<td>V2015 p468 Proposition 2.4</td>
-<td>V2015 p473 Proposition 2.6</td>
+<td>
+logistic
+</td>
+<td>
+V2015 p468 Proposition 2.4
+</td>
+<td>
+V2015 p473 Proposition 2.6
+</td>
 </tr>
 <tr class="even">
-<td>loglinear</td>
-<td>VV2013A p8 Use Proposition 2.4</td>
-<td>VV2013A p8 Use Proposition 2.6</td>
+<td>
+loglinear
+</td>
+<td>
+VV2013A p8 Use Proposition 2.4
+</td>
+<td>
+VV2013A p8 Use Proposition 2.6
+</td>
 </tr>
 <tr class="odd">
-<td>poisson</td>
-<td>VV2013A p8 Use Proposition 2.4</td>
-<td>VV2013A p8 Use Proposition 2.6</td>
+<td>
+poisson
+</td>
+<td>
+VV2013A p8 Use Proposition 2.4
+</td>
+<td>
+VV2013A p8 Use Proposition 2.6
+</td>
 </tr>
 <tr class="even">
-<td>negbin</td>
-<td>VV2013A p8 Use Proposition 2.4</td>
-<td>VV2013A p8 Use Proposition 2.6</td>
+<td>
+negbin
+</td>
+<td>
+VV2013A p8 Use Proposition 2.4
+</td>
+<td>
+VV2013A p8 Use Proposition 2.6
+</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td></td>
-<td></td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr class="even">
-<td>survCox</td>
-<td>V2015 p496 Use Proposition 2.4</td>
-<td>V2015 p499 Use Proposition 2.6</td>
+<td>
+survCox
+</td>
+<td>
+V2015 p496 Use Proposition 2.4
+</td>
+<td>
+V2015 p499 Use Proposition 2.6
+</td>
 </tr>
 <tr class="odd">
-<td>survAFT exp</td>
-<td>V2015 p494 Use Proposition 2.4</td>
-<td>V2015 p495 Use Proposition 2.6</td>
+<td>
+survAFT exp
+</td>
+<td>
+V2015 p494 Use Proposition 2.4
+</td>
+<td>
+V2015 p495 Use Proposition 2.6
+</td>
 </tr>
 <tr class="even">
-<td>survAFT weibull</td>
-<td>V2015 p494 Use Proposition 2.4</td>
-<td>V2015 p495 Use Proposition 2.6</td>
+<td>
+survAFT weibull
+</td>
+<td>
+V2015 p494 Use Proposition 2.4
+</td>
+<td>
+V2015 p495 Use Proposition 2.6
+</td>
 </tr>
 </tbody>
 </table>
@@ -509,10 +686,7 @@
 <h2 class="hasAnchor">
 <a href="#empty-cvar-handling" class="anchor"></a>Empty cvar handling</h2>
 <p>The original errored upon encountering an empty cvar argment. The version here guards against this error by not calling the countw() function when it is empty.</p>
-</div>
-<div id="mreg-logistic-yreg-linear-_te-the-gamma3-expression-gamma_te-for-the-total-effect-standard-error-was-corrected-based-on-vv2013-appendix-p14-" class="section level2">
-<h2 class="hasAnchor">
-<a href="#mreg-logistic-yreg-linear-_te-the-gamma3-expression-gamma_te-for-the-total-effect-standard-error-was-corrected-based-on-vv2013-appendix-p14-" class="anchor"></a>mreg logistic yreg linear _{TE} The gamma<br><span class="math display">3,</span><br> expression (<span class="math inline"><em>Γ</em><sub><em>T</em><em>E</em></sub></span>) for the total effect standard error was corrected based on VV2013 Appendix p14.</h2>
+<p>mreg logistic yreg linear _{TE} The gamma<br><span class="math display">3,</span><br> expression (<em>Γ</em><sub>*T**E*</sub>) for the total effect standard error was corrected based on VV2013 Appendix p14. ——————————————————————————————————————————————————————</p>
 </div>
 <div id="mreg-linear-yreg-linear-interacton-true-for-conditional-tnie" class="section level2">
 <h2 class="hasAnchor">
