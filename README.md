@@ -75,32 +75,32 @@ regmedint_obj
 ```
 
     ## ### Mediator model
-    ## 
+    ##
     ## Call:  glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
-    ## 
+    ##
     ## Coefficients:
-    ## (Intercept)            x            c  
-    ##     -0.3545       0.3842       0.2694  
-    ## 
+    ## (Intercept)            x            c
+    ##     -0.3545       0.3842       0.2694
+    ##
     ## Degrees of Freedom: 99 Total (i.e. Null);  97 Residual
-    ## Null Deviance:       138.6 
+    ## Null Deviance:       138.6
     ## Residual Deviance: 136.1     AIC: 142.1
     ## ### Outcome model
     ## Call:
-    ## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
+    ## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data,
     ##     dist = "weibull")
-    ## 
+    ##
     ## Coefficients:
-    ## (Intercept)           x           m           c         x:m 
-    ## -1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424 
-    ## 
-    ## Scale= 0.9658808 
-    ## 
+    ## (Intercept)           x           m           c         x:m
+    ## -1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424
+    ##
+    ## Scale= 0.9658808
+    ##
     ## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
-    ##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177 
-    ## n= 100 
-    ## ### Mediation analysis 
-    ##         cde        pnde        tnie        tnde        pnie          te          pm 
+    ##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177
+    ## n= 100
+    ## ### Mediation analysis
+    ##         cde        pnde        tnie        tnde        pnie          te          pm
     ## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 0.045436278
 
 ## summary to examine extended results
@@ -117,32 +117,32 @@ summary(regmedint_obj, exponentiate = TRUE)
 ```
 
     ## ### Mediator model
-    ## 
+    ##
     ## Call:
     ## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
-    ## 
-    ## Deviance Residuals: 
-    ##     Min       1Q   Median       3Q      Max  
-    ## -1.5143  -1.1765   0.9177   1.1133   1.4602  
-    ## 
+    ##
+    ## Deviance Residuals:
+    ##     Min       1Q   Median       3Q      Max
+    ## -1.5143  -1.1765   0.9177   1.1133   1.4602
+    ##
     ## Coefficients:
     ##             Estimate Std. Error z value Pr(>|z|)
     ## (Intercept)  -0.3545     0.3252  -1.090    0.276
     ## x             0.3842     0.4165   0.922    0.356
     ## c             0.2694     0.2058   1.309    0.191
-    ## 
+    ##
     ## (Dispersion parameter for binomial family taken to be 1)
-    ## 
+    ##
     ##     Null deviance: 138.59  on 99  degrees of freedom
     ## Residual deviance: 136.08  on 97  degrees of freedom
     ## AIC: 142.08
-    ## 
+    ##
     ## Number of Fisher Scoring iterations: 4
-    ## 
+    ##
     ## ### Outcome model
-    ## 
+    ##
     ## Call:
-    ## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
+    ## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data,
     ##     dist = "weibull")
     ##               Value Std. Error     z           p
     ## (Intercept) -1.0424     0.1903 -5.48 0.000000043
@@ -151,16 +151,16 @@ summary(regmedint_obj, exponentiate = TRUE)
     ## c           -0.0669     0.0915 -0.73        0.46
     ## x:m          0.1003     0.4207  0.24        0.81
     ## Log(scale)  -0.0347     0.0810 -0.43        0.67
-    ## 
-    ## Scale= 0.966 
-    ## 
+    ##
+    ## Scale= 0.966
+    ##
     ## Weibull distribution
     ## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
-    ##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
-    ## Number of Newton-Raphson Iterations: 5 
-    ## n= 100 
-    ## 
-    ## ### Mediation analysis 
+    ##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18
+    ## Number of Newton-Raphson Iterations: 5
+    ## n= 100
+    ##
+    ## ### Mediation analysis
     ##              est         se         Z           p       lower      upper exp(est) exp(lower) exp(upper)
     ## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019 1.717845  0.9650179   3.057967
     ## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809 1.630571  1.0793648   2.463266
@@ -169,7 +169,7 @@ summary(regmedint_obj, exponentiate = TRUE)
     ## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348 1.008705  0.9561318   1.064168
     ## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785 1.660586  1.0983544   2.510615
     ## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926       NA         NA         NA
-    ## 
+    ##
     ## Evaluated at:
     ## avar: x
     ##  a1 (intervened value of avar) = 1
@@ -178,7 +178,7 @@ summary(regmedint_obj, exponentiate = TRUE)
     ##  m_cde (intervend value of mvar for cde) = 1
     ## cvar: c
     ##  c_cond (covariate vector value) = 0.5
-    ## 
+    ##
     ## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
 
 Use `coef` to extract the mediation analysis results
@@ -251,7 +251,7 @@ patterns.
 
 ## Effect formulas
 
-| yreg  mreg      | linear                               | logistic                             |
+| yreg \\ mreg    | linear                               | logistic                             |
 | --------------- | ------------------------------------ | ------------------------------------ |
 | linear          | V2015 p466 Proposition 2.3           | V2015 p471 Proposition 2.5           |
 |                 |                                      |                                      |
@@ -269,7 +269,7 @@ error.
 
 ## Standard error formulas
 
-| yreg  mreg      | linear                         | logistic                       |
+| yreg \\  mreg   | linear                         | logistic                       |
 | --------------- | ------------------------------ | ------------------------------ |
 | linear          | V2015 p466 Proposition 2.3     | V2015 p471 Proposition 2.5     |
 |                 |                                |                                |
