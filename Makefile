@@ -45,12 +45,16 @@ winbuild:
 	Rscript -e "devtools::check_win_release()"
 
 ## Build vignettes in inst/doc
-vignettes:
+vignettes: ${VIG_FILES}
 	Rscript -e "devtools::build_vignettes()"
+
+## Build README.md
+readme: README.Rmd
+	Rscript -e "rmarkdown::render('README.Rmd', output_format = 'md_document', output_file = 'README.md')"
 
 ## Build website
 ## https://pkgdown.r-lib.org
-pkgdown:
+pkgdown: vignettes readme
 	Rscript -e "pkgdown::build_site()"
 
 ## build depends on the *.tar.gz file, i.e., its own product.
