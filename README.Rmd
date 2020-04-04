@@ -20,7 +20,7 @@ opts_knit$set(animation.fun = hook_ffmpeg_html)
 options(width = 116, scipen = 5)
 ```
 
-# regmedint (developmental repo) <img src="man/figures/hex.png" align="right" height="140"/>
+# regmedint <img src="man/figures/hex.png" align="right" height="140"/>
 
 [![Travis-CI Build Status](https://travis-ci.org/kaz-yos/regmedint.svg?branch=master)](https://travis-ci.org/kaz-yos/regmedint)
 [![](http://www.r-pkg.org/badges/version/regmedint)](http://www.r-pkg.org/pkg/regmedint)
@@ -47,25 +47,24 @@ vv2015 <- read_delim(file = "./tests/reference_results/data-valeri-vanderweele-2
     ## Following R convention, an event indicator is used.
     mutate(event = if_else(cens == 0, 1L, 0L))
 
-## FIXME: Find a meaningful data example within R.
 regmedint_obj <- regmedint(data = vv2015,
-                           ##
+                           ## Variables
                            yvar = "y",
                            avar = "x",
                            mvar = "m",
-                           cvar = "c",
-                           ##
+                           cvar = c("c"),
+                           eventvar = "event",
+                           ## Values at which effects are evaluated
                            a0 = 0,
                            a1 = 1,
                            m_cde = 1,
                            c_cond = 0.5,
-                           ##
+                           ## Model types
                            mreg = "logistic",
                            yreg = "survAFT_weibull",
-                           ##
+                           ## Additional specification
                            interaction = TRUE,
-                           casecontrol = FALSE,
-                           eventvar = "event")
+                           casecontrol = FALSE)
 ```
 
 ## print to examine simplified results
