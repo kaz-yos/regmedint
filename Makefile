@@ -24,7 +24,7 @@ PKG_FILES := DESCRIPTION NAMESPACE NEWS $(R_FILES) $(TST_FILES) $(SRC_FILES) $(V
 
 ## .PHONY to allow non-file targets (file targets should not be here)
 ## https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
-.PHONY: test winbuild vignettes build check check_devtools lint revdep install sas clean
+.PHONY: test lint winbuild vignettes readme pkgdown build check check_devtools revdep install sas clean
 
 
 ### Define targets
