@@ -28,6 +28,7 @@ Missing data is the norm in real-life data analysis. Multiple imputation via the
 For demonstration purpose, missing data is introduced here.
 
 ```{r}
+set.seed(138087069)
 library(regmedint)
 library(tidyverse)
 ## Prepare dataset

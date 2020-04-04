@@ -22,7 +22,7 @@ options(width = 116, scipen = 5)
 
 # Implementation of formulas
 
-The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references.
+The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references. The code seen here is compacted and lacks the comments. Please refer to the Github repo for readability.
 
 
 ## mreg linear yreg linear (V2015 p466 Proposition 2.3)
