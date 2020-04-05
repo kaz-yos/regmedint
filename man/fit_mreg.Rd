@@ -7,7 +7,7 @@
 fit_mreg(mreg, data, avar, mvar, cvar)
 }
 \arguments{
-\item{mreg}{A character vector of length 1. Outcome regression type. One of "linear"}
+\item{mreg}{A character vector of length 1. Mediator regression type: \code{"linear"} or \code{"logistic"}.}
 
 \item{data}{Data frame containing the relevant variables.}
 

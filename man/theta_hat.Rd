@@ -7,7 +7,7 @@
 theta_hat(yreg, yreg_fit, avar, mvar, cvar, interaction)
 }
 \arguments{
-\item{yreg}{A character vector of length 1. Outcome regression type. One of}
+\item{yreg}{A character vector of length 1. Outcome regression type: \code{"linear"}, \code{"logistic"}, \code{"loglinear"}, \code{"poisson"}, \code{"negbin"}, \code{"survCox"}, \code{"survAFT_exp"}, or \code{"survAFT_weibull"}.}
 
 \item{yreg_fit}{Model fit object for yreg (outcome model).}
 

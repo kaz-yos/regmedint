@@ -7,7 +7,7 @@
 beta_hat(mreg, mreg_fit, avar, cvar)
 }
 \arguments{
-\item{mreg}{A character vector of length 1. Outcome regression type. One of "linear"}
+\item{mreg}{A character vector of length 1. Mediator regression type: \code{"linear"} or \code{"logistic"}.}
 
 \item{mreg_fit}{Model fit object for mreg (mediator model).}
 

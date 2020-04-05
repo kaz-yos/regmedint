@@ -40,11 +40,11 @@ validate_args(
 
 \item{m_cde}{A numeric vector of length 1. Mediator level at which controlled direct effect is evaluated at.}
 
-\item{c_cond}{A numeric vector of the same length as cvar. Required for the ful output. The conditional effect}
+\item{c_cond}{A numeric vector of the same length as \code{cvar}. Covariate vector at which conditional effects are evaluated at.}
 
-\item{mreg}{A character vector of length 1. Outcome regression type. One of "linear"}
+\item{mreg}{A character vector of length 1. Mediator regression type: \code{"linear"} or \code{"logistic"}.}
 
-\item{yreg}{A character vector of length 1. Outcome regression type. One of}
+\item{yreg}{A character vector of length 1. Outcome regression type: \code{"linear"}, \code{"logistic"}, \code{"loglinear"}, \code{"poisson"}, \code{"negbin"}, \code{"survCox"}, \code{"survAFT_exp"}, or \code{"survAFT_weibull"}.}
 
 \item{interaction}{A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.}
 

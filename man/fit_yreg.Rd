@@ -7,7 +7,7 @@
 fit_yreg(yreg, data, yvar, avar, mvar, cvar, eventvar, interaction)
 }
 \arguments{
-\item{yreg}{A character vector of length 1. Outcome regression type. One of}
+\item{yreg}{A character vector of length 1. Outcome regression type: \code{"linear"}, \code{"logistic"}, \code{"loglinear"}, \code{"poisson"}, \code{"negbin"}, \code{"survCox"}, \code{"survAFT_exp"}, or \code{"survAFT_weibull"}.}
 
 \item{data}{Data frame containing the relevant variables.}
 

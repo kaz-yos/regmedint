@@ -7,11 +7,11 @@
 calc_myreg(mreg, mreg_fit, yreg, yreg_fit, avar, mvar, cvar, interaction)
 }
 \arguments{
-\item{mreg}{A character vector of length 1. Outcome regression type. One of "linear"}
+\item{mreg}{A character vector of length 1. Mediator regression type: \code{"linear"} or \code{"logistic"}.}
 
 \item{mreg_fit}{Model fit from \code{\link{fit_mreg}}}
 
-\item{yreg}{A character vector of length 1. Outcome regression type. One of}
+\item{yreg}{A character vector of length 1. Outcome regression type: \code{"linear"}, \code{"logistic"}, \code{"loglinear"}, \code{"poisson"}, \code{"negbin"}, \code{"survCox"}, \code{"survAFT_exp"}, or \code{"survAFT_weibull"}.}
 
 \item{yreg_fit}{Model fit from \code{\link{fit_yreg}}}
 
