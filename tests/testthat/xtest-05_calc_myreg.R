@@ -18,48 +18,46 @@ library(tidyverse)
 ## The only job of calc_myreg is to delegate the subsequent work to the correct
 ## specialized functions like calc_myreg_mreg_linear_yreg_logistic
 
+data(pbc)
+## Missing data should be warned in validate_args()
+pbc_cc <- pbc[complete.cases(pbc),] %>%
+    mutate(male = if_else(sex == "m", 1L, 0L),
+           ## Combine transplant and death for testing purpose
+           status = if_else(status == 0, 0L, 1L),
+           alk_phos = alk.phos)
+
 describe("calc_myreg", {
-    describe("calc_myreg mreg linear", {
-        it("calls calc_myreg_mreg_linear_yreg_linear when mreg linear/yreg linear", {
-            with_mock(
-                ## Mock
-                calc_myreg_mreg_linear_yreg_linear =
-                    function(...) {
-                        message("calc_myreg_mreg_linear_yreg_linear was called!")
-                    },
-                ## Body
-                {
-                    expect_message(calc_myreg(mreg,
-                                              mreg_fit,
-                                              yreg,
-                                              yreg_fit,
-                                              avar,
-                                              mvar,
-                                              cvar,
-                                              interaction),
-                                   "calc_myreg_mreg_linear_yreg_logistic was called!")
-                })
-        })
-        ##
-        it("calls calc_myreg_mreg_linear_yreg_logistic when mreg linear/yreg logistic", {
-            with_mock(
-                ## Mock
-                calc_myreg_mreg_linear_yreg_logistic =
-                    function(...) {
-                        message("calc_myreg_mreg_linear_yreg_logistic was called!")
-                    },
-                ## Body
-                {
-                    expect_message(calc_myreg(mreg,
-                                              mreg_fit,
-                                              yreg,
-                                              yreg_fit,
-                                              avar,
-                                              mvar,
-                                              cvar,
-                                              interaction),
-                                   "calc_myreg_mreg_linear_yreg_logistic was called!")
-                })
-        })
+    it("calls calc_myreg_mreg_linear_yreg_linear when mreg linear / yreg linear", {
+        mreg_fit <- fit_mreg(mreg = "linear",
+                             data = pbc_cc,
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = NULL)
+        yreg_fit <- fit_yreg(yreg = "linear",
+                             data = pbc_cc,
+                             yvar = "alk_phos",
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = NULL,
+                             interaction = TRUE,
+                             eventvar = NULL)
+        with_mock(
+            ## Mock
+            calc_myreg_mreg_linear_yreg_linear =
+                function(...) {
+                    message("calc_myreg_mreg_linear_yreg_linear was called!")
+                },
+            ## Body
+            {
+                expect_message(calc_myreg(mreg = "linear",
+                                          mreg_fit = mreg_fit,
+                                          yreg = "linear",
+                                          yreg_fit = yreg_fit,
+                                          avar = "trt",
+                                          mvar = "bili",
+                                          cvar = NULL,
+                                          interaction = TRUE),
+                               regexp = "calc_myreg_mreg_linear_yreg_linear was called!")
+            })
     })
 })
