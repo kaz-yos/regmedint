@@ -27,6 +27,57 @@ pbc_cc <- pbc[complete.cases(pbc),] %>%
            alk_phos = alk.phos)
 
 describe("calc_myreg", {
+    ##
+    it("errors informatively when mreg is unsupported", {
+        mreg_fit <- fit_mreg(mreg = "linear",
+                             data = pbc_cc,
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = NULL)
+        yreg_fit <- fit_yreg(yreg = "linear",
+                             data = pbc_cc,
+                             yvar = "alk_phos",
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = NULL,
+                             interaction = TRUE,
+                             eventvar = NULL)
+        expect_error(calc_myreg(mreg = "unsupported",
+                                mreg_fit = mreg_fit,
+                                yreg = "linear",
+                                yreg_fit = yreg_fit,
+                                avar = "trt",
+                                mvar = "bili",
+                                cvar = NULL,
+                                interaction = TRUE),
+                     regexp = "Unsupported mreg or yreg!")
+    })
+    ##
+    it("errors informatively when yreg is unsupported", {
+        mreg_fit <- fit_mreg(mreg = "linear",
+                             data = pbc_cc,
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = NULL)
+        yreg_fit <- fit_yreg(yreg = "linear",
+                             data = pbc_cc,
+                             yvar = "alk_phos",
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = NULL,
+                             interaction = TRUE,
+                             eventvar = NULL)
+        expect_error(calc_myreg(mreg = "linear",
+                                mreg_fit = mreg_fit,
+                                yreg = "unsupported",
+                                yreg_fit = yreg_fit,
+                                avar = "trt",
+                                mvar = "bili",
+                                cvar = NULL,
+                                interaction = TRUE),
+                     regexp = "Unsupported mreg or yreg!")
+    })
+    ##
     it("calls calc_myreg_mreg_linear_yreg_linear when mreg linear / yreg linear", {
         mreg_fit <- fit_mreg(mreg = "linear",
                              data = pbc_cc,
