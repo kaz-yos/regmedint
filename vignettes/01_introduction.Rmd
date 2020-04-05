@@ -17,9 +17,7 @@ opts_chunk$set(comment = "##", error= TRUE, warning = showWarning, message = sho
 options(width = 116, scipen = 5)
 ```
 
-# Introduction to user functions
-
-## Data preparation
+# Data preparation
 The package require all variables to be numerical. So a multi-category factor needs to be converted to multiple dichotomous indicators. For survival outcome models, the indicator variable is for event (1 = event, 0 = censored).
 
 ```{r}
@@ -34,10 +32,10 @@ vv2015 <- read_delim(file = "../tests/reference_results/data-valeri-vanderweele-
 ```
 
 
-## `regmedint` object
-Following typical modeling workflow in R (e.g., `lm` and `glm`), a constructor function is used to create a model fit object. The `summary` method is the main user function for examining the results in the object. Lower-level methods such as `coef`, `vcov`, and `confint` are also provided for flexibility. The `print` method is mainly for meaningful implicit printing when only the object name is evaluated.
+# `regmedint` object
+Following typical modeling workflow in R (e.g., `lm` and `glm`), a constructor function is used to create a model fit object. The `summary` method is the main user function for examining the results in the object. Lower-level methods such as `coef`, `vcov`, and `confint` are also provided for flexibility. The `print` method is mainly for meaningful implicit printing when only the object name is evaluated. All methods for the `regmedint` object has arguments `a0`, `a1`, `m_cde`, and `c_cond`. These are used to re-evaluate the results without re-fitting the underlying models.
 
-### `regemedint()` object constructor
+## `regemedint()` object constructor
 ```{r}
 regmedint_obj <- regmedint(data = vv2015,
                            ## Variables
@@ -58,10 +56,7 @@ regmedint_obj <- regmedint(data = vv2015,
                            interaction = TRUE,
                            casecontrol = FALSE)
 ```
-### Methods for for `regmedint`
-All methods for the `regmedint` object has arguments `a0`, `a1`, `m_cde`, and `c_cond`. These are used to re-evaluate the results without re-fitting the underlying models.
-
-#### `summary()` for `regmedint`
+## `summary()` for `regmedint`
 ```{r}
 summary(regmedint_obj)
 summary(regmedint_obj, exponentiate = TRUE)
@@ -69,41 +64,41 @@ summary(regmedint_obj, m_cde = 0, c_cond = 1)
 summary(regmedint_obj, m_cde = 0, c_cond = 1, level = 0.99)
 ```
 
-#### `coef()` for `regmedint`
+## `coef()` for `regmedint`
 ```{r}
 coef(regmedint_obj)
 coef(regmedint_obj, m_cde = 0, c_cond = 1)
 ```
 
-#### `vcov()` for `regmedint`
+## `vcov()` for `regmedint`
 ```{r}
 vcov(regmedint_obj)
 vcov(regmedint_obj, m_cde = 0, c_cond = 1)
 ```
 
-#### `confint()` for `regmedint`
+## `confint()` for `regmedint`
 ```{r}
 confint(regmedint_obj)
 confint(regmedint_obj, m_cde = 0, c_cond = 1)
 confint(regmedint_obj, m_cde = 0, c_cond = 1, level = 0.99)
 ```
 
-#### `print()` for `regmedint`
+## `print()` for `regmedint`
 ```{r}
 regmedint_obj # Implicit printing
 print(regmedint_obj)
 print(regmedint_obj, m_cde = 0, c_cond = 1)
 ```
 
-### Methods for `summary_regmedint`
+## Methods for `summary_regmedint`
 The `summary` method for the `regmedint` object returns an object of class `summary_regmedint`. To extract the mediation analysis result table as a matrix, use the `coef` method.
 
-#### `coef()` for `summary_regmedint`
+### `coef()` for `summary_regmedint`
 ```{r}
 coef(summary(regmedint_obj))
 ```
 
-#### `print()` for `summary_regmedint`
+### `print()` for `summary_regmedint`
 ```{r}
 regmedint_summary_obj <- summary(regmedint_obj)
 regmedint_summary_obj # Implicit printing
