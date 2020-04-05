@@ -10,15 +10,15 @@ new_regmedint(
   avar,
   mvar,
   cvar,
+  eventvar,
   a0,
   a1,
   m_cde,
+  c_cond,
   yreg,
   mreg,
   interaction,
-  casecontrol,
-  c_cond,
-  eventvar
+  casecontrol
 )
 }
 \arguments{
@@ -32,11 +32,15 @@ new_regmedint(
 
 \item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{avar} and \code{yvar}.}
 
+\item{eventvar}{An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.}
+
 \item{a0}{A numeric vector of length 1. Reference level of treatment variable that is considered "untreated" or "unexposed".}
 
 \item{a1}{A numeric vector of length 1.}
 
 \item{m_cde}{A numeric vector of length 1. Mediator level at which controlled direct effect is evaluated at.}
+
+\item{c_cond}{A numeric vector of the same length as cvar. Required for the ful output. The conditional effect}
 
 \item{yreg}{A character vector of length 1. Outcome regression type. One of}
 
@@ -45,10 +49,6 @@ new_regmedint(
 \item{interaction}{A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.}
 
 \item{casecontrol}{A logical vector of length 1. Default to FALSE. Whether data comes from a case-control study.}
-
-\item{c_cond}{A numeric vector of the same length as cvar. Required for the ful output. The conditional effect}
-
-\item{eventvar}{An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.}
 }
 \value{
 A regmedint object.

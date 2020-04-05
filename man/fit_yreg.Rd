@@ -4,7 +4,7 @@
 \alias{fit_yreg}
 \title{Fit a model for the outcome given the treatment, mediator, and covariates.}
 \usage{
-fit_yreg(yreg, data, yvar, avar, mvar, cvar, interaction, eventvar)
+fit_yreg(yreg, data, yvar, avar, mvar, cvar, eventvar, interaction)
 }
 \arguments{
 \item{yreg}{A character vector of length 1. Outcome regression type. One of}
@@ -19,9 +19,9 @@ fit_yreg(yreg, data, yvar, avar, mvar, cvar, interaction, eventvar)
 
 \item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{avar} and \code{yvar}.}
 
-\item{interaction}{A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.}
-
 \item{eventvar}{An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.}
+
+\item{interaction}{A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.}
 }
 \value{
 Model fit object from on of the above regression functions.

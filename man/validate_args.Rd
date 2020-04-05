@@ -10,6 +10,7 @@ validate_args(
   avar,
   mvar,
   cvar,
+  eventvar,
   a0,
   a1,
   m_cde,
@@ -17,8 +18,7 @@ validate_args(
   mreg,
   yreg,
   interaction,
-  casecontrol,
-  eventvar
+  casecontrol
 )
 }
 \arguments{
@@ -31,6 +31,8 @@ validate_args(
 \item{mvar}{A character vector of length 1. Mediator variable name.}
 
 \item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{avar} and \code{yvar}.}
+
+\item{eventvar}{An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.}
 
 \item{a0}{A numeric vector of length 1. Reference level of treatment variable that is considered "untreated" or "unexposed".}
 
@@ -47,8 +49,6 @@ validate_args(
 \item{interaction}{A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.}
 
 \item{casecontrol}{A logical vector of length 1. Default to FALSE. Whether data comes from a case-control study.}
-
-\item{eventvar}{An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.}
 }
 \description{
 Internal functions (usually) do not validate arguments, thus, we need to make sure informative errors are raised when the arguments are not safe for subsequent computation.
