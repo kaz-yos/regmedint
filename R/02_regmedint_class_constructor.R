@@ -21,15 +21,15 @@ new_regmedint <- function(data,
                           avar,
                           mvar,
                           cvar,
+                          eventvar,
                           a0,
                           a1,
                           m_cde,
+                          c_cond,
                           yreg,
                           mreg,
                           interaction,
-                          casecontrol,
-                          c_cond,
-                          eventvar) {
+                          casecontrol) {
 
     ## If the data is from a case-control study the mediator model
     ## should be fit in the controls. This requires that the outcome

@@ -38,8 +38,8 @@ fit_yreg <- function(yreg,
                      avar,
                      mvar,
                      cvar,
-                     interaction,
-                     eventvar) {
+                     eventvar,
+                     interaction) {
 
     ## Create a string representation of the formula
     string_formula <- string_yreg_formula(yvar,

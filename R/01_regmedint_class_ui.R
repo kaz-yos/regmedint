@@ -47,6 +47,7 @@ regmedint <- function(data,
                       avar,
                       mvar,
                       cvar,
+                      eventvar = NULL,
                       a0,
                       a1,
                       m_cde,
@@ -54,8 +55,7 @@ regmedint <- function(data,
                       mreg,
                       yreg,
                       interaction = TRUE,
-                      casecontrol = FALSE,
-                      eventvar = NULL) {
+                      casecontrol = FALSE) {
     ## This is the user-friendly helper function with a name that is the class name.
     ## https://adv-r.hadley.nz/s3.html#helpers
 
@@ -119,6 +119,7 @@ validate_args <- function(data,
                           avar,
                           mvar,
                           cvar,
+                          eventvar,
                           a0,
                           a1,
                           m_cde,
@@ -126,8 +127,7 @@ validate_args <- function(data,
                           mreg,
                           yreg,
                           interaction,
-                          casecontrol,
-                          eventvar) {
+                          casecontrol) {
 
     ## Dataset
     assertthat::assert_that(is.data.frame(data))
