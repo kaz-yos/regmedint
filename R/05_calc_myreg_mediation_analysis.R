@@ -24,6 +24,9 @@ calc_myreg <- function(mreg,
                        cvar,
                        interaction) {
 
+    supported_nonlinear_yreg <- c("logistic","loglinear","poisson","negbin",
+                                  "survCox","survAFT_exp","survAFT_weibull")
+
     ## FIXME: Use this to do.call()
     args <- list(mreg = mreg,
                  mreg_fit = mreg_fit,
@@ -53,7 +56,7 @@ calc_myreg <- function(mreg,
                                                cvar = cvar,
                                                interaction = interaction)
 
-    } else if (mreg == "linear" & yreg != "linear") {
+    } else if (mreg == "linear" & yreg %in% supported_nonlinear_yreg) {
 
         ## VanderWeele 2015 p468 Proposition 2.4
         list_est_fun_se_fun <-
@@ -80,7 +83,7 @@ calc_myreg <- function(mreg,
                                                  interaction = interaction)
 
 
-    } else if (mreg == "logistic" & yreg != "linear") {
+    } else if (mreg == "logistic" & yreg %in% supported_nonlinear_yreg) {
 
         ## VanderWeele 2015 p473 Proposition 2.6
         list_est_fun_se_fun <-
