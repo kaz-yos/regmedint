@@ -29,15 +29,15 @@
 ##' @param avar A character vector of length 1. Treatment variable name.
 ##' @param mvar A character vector of length 1. Mediator variable name.
 ##' @param cvar A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{avar} and \code{yvar}.
+##' @param eventvar An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.
 ##' @param a0 A numeric vector of length 1. Reference level of treatment variable that is considered "untreated" or "unexposed".
 ##' @param a1 A numeric vector of length 1.
 ##' @param m_cde A numeric vector of length 1. Mediator level at which controlled direct effect is evaluated at.
-##' @param c_cond A numeric vector of the same length as cvar. Required for the ful output. The conditional effect
-##' @param mreg A character vector of length 1. Outcome regression type. One of "linear"
-##' @param yreg A character vector of length 1. Outcome regression type. One of
+##' @param c_cond A numeric vector of the same length as \code{cvar}. Covariate vector at which conditional effects are evaluated at.
+##' @param mreg A character vector of length 1. Mediator regression type: \code{"linear"} or \code{"logistic"}.
+##' @param yreg A character vector of length 1. Outcome regression type: \code{"linear"}, \code{"logistic"}, \code{"loglinear"}, \code{"poisson"}, \code{"negbin"}, \code{"survCox"}, \code{"survAFT_exp"}, or \code{"survAFT_weibull"}.
 ##' @param interaction A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.
 ##' @param casecontrol A logical vector of length 1. Default to FALSE. Whether data comes from a case-control study.
-##' @param eventvar An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.
 ##'
 ##' @return regmedint object, which is a list containing the mediator regression object, the outcome regression object, and the regression-based mediation results.
 ##'
