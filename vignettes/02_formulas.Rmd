@@ -21,62 +21,60 @@ opts_knit$set(animation.fun = hook_ffmpeg_html)
 options(width = 116, scipen = 5)
 ```
 
-# Implementation of formulas
-
-The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references. The code seen here is compacted and lacks the comments. Please refer to the Github repo for readability.
+The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references. The code seen here is compacted and lacks the comments. For more redable code, please refer to the [Github repo](https://github.com/kaz-yos/regmedint) and search for the function names without the preceding `regmedint:::`.
 
 
-## mreg linear yreg linear (V2015 p466 Proposition 2.3)
+# mreg linear yreg linear (V2015 p466 Proposition 2.3)
 
 These functions are only used in the setting where both the mediator model and the outcome model are linear regression.
 
-### Point estimates
+## Point estimates
 ```{r}
 regmedint:::calc_myreg_mreg_linear_yreg_linear_est
 ```
-### Standard error estimate
+## Standard error estimates
 ```{r}
 regmedint:::calc_myreg_mreg_linear_yreg_linear_se
 ```
 
 
-## mreg linear yreg non-linear (V2015 p468 Proposition 2.4)
+# mreg linear yreg non-linear (V2015 p468 Proposition 2.4)
 
 These functions are used in all cases where the mediator model is linear regression and the outcome model is any one of the non-linear models.
 
-### Point estimates
+## Point estimates
 ```{r}
 regmedint:::calc_myreg_mreg_linear_yreg_logistic_est
 ```
-### Standard error estimate
+## Standard error estimates
 ```{r}
 regmedint:::calc_myreg_mreg_linear_yreg_logistic_se
 ```
 
 
-## mreg logistic yreg linear (V2015 p471 Proposition 2.5)
+# mreg logistic yreg linear (V2015 p471 Proposition 2.5)
 
 These functions are only used in the setting where the mediator model is logistic regression and the outcome model is non-linear regression.
 
-### Point estimates
+## Point estimates
 ```{r}
 regmedint:::calc_myreg_mreg_logistic_yreg_linear_est
 ```
-### Standard error estimate
+## Standard error estimates
 ```{r}
 regmedint:::calc_myreg_mreg_logistic_yreg_linear_se
 ```
 
 
-## mreg logistic yreg non-linear (V2015 p473 Proposition 2.6)
+# mreg logistic yreg non-linear (V2015 p473 Proposition 2.6)
 
 These functions are used in all cases where the mediator model is logistic regression and the outcome model is any one of the non-linear models.
 
-### Point estimates
+## Point estimates
 ```{r}
 regmedint:::calc_myreg_mreg_logistic_yreg_logistic_est
 ```
-### Standard error estimate
+## Standard error estimates
 ```{r}
 regmedint:::calc_myreg_mreg_logistic_yreg_logistic_se
 ```
