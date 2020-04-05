@@ -21,7 +21,7 @@ opts_knit$set(animation.fun = hook_ffmpeg_html)
 options(width = 116, scipen = 5)
 ```
 
-# Bootstrapping
+## Bootstrapping support
 
 The `regmedint` function itself does not contain a bootstrap standard error option, which may be perferred in some settings. However, it is relatively easy to implmement in R using the `regmedint()` function and the corresponding `coef()` point estimate extraction method.
 
@@ -92,21 +92,23 @@ boot_obj <- boot(data = vv2015, statistic = regmedint_boot, R = 1000,
                  ## See https://cran.r-project.org/package=boot
                  parallel = "multicore",
                  ncpus = parallel::detectCores())
-## Confidence interval for the
+## Confidence interval for the pm
 boot.ci(boot_obj, type = "basic", index = 7)
-plot(boot_obj, index = 7)
 ```
 
 
 ## `modelr` package
 
-In the tidyverse ecosystem, the `modelr` package can be used to provide a potentially tidier workflow in some settings.
+In the tidyverse ecosystem, the `modelr` package can be used to provide a potentially more flexible workflow in some settings.
 
 ```{r}
 library(modelr)
+
 ## For parallization
+library(future)
+future::plan(multiprocess)
 library(furrr)
-plan(multiprocess)
+
 ## Bootstrapping
 tib_obj <- vv2015 %>%
     modelr::bootstrap(n = 1000) %>%
@@ -131,11 +133,27 @@ tib_obj <- vv2015 %>%
                                    ## Additional specification
                                    interaction = TRUE,
                                    casecontrol = FALSE)
-        tib <- as_tibble(t(matrix(coef(regmedint_obj))),
-                         )
-        names(tib) <- names(coef(regmedint_obj))
-        tib
+        ## Trick to return a row tibble
+        mat <- t(matrix(coef(regmedint_obj)))
+        colnames(mat) <- names(coef(regmedint_obj))
+        as_tibble(mat)
     })) %>%
     select(-strap) %>%
-    unnest()
+    unnest(cols = c(boot_fit))
+
+tib_obj2 <- tib_obj %>%
+    pivot_longer(-.id) %>%
+    mutate(name = factor(name, levels = names(coef(regmedint_obj)))) %>%
+    group_by(name) %>%
+    summarize(lower_boot = quantile(value, probs = 0.025),
+              upper_boot = quantile(value, probs = 0.975))
+tib_obj2
+```
+
+## Comparison to the delta method confidence interval
+
+```{r}
+tib_obj2 %>%
+    mutate(lower_delta = confint(regmedint_obj)[,"lower"],
+           upper_delta = confint(regmedint_obj)[,"upper"])
 ```
