@@ -150,7 +150,7 @@ tib_obj2 <- tib_obj %>%
 tib_obj2
 ```
 
-## Comparison to the delta method confidence interval
+## Comparison to the delta method confidence intervals
 
 ```{r}
 tib_obj2 %>%
