@@ -21,8 +21,6 @@ opts_knit$set(animation.fun = hook_ffmpeg_html)
 options(width = 116, scipen = 5)
 ```
 
-# Multiple imputation
-
 Missing data is the norm in real-life data analysis. Multiple imputation via the `mice` package is a popular option in R. Here we introduce simple missingness and demonstrate use of `regmedint` along with `mice`.
 
 ## Missing data generation
