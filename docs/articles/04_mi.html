@@ -101,9 +101,6 @@
 
     
     
-<div id="multiple-imputation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#multiple-imputation" class="anchor"></a>Multiple imputation</h1>
 <p>Missing data is the norm in real-life data analysis. Multiple imputation via the <code>mice</code> package is a popular option in R. Here we introduce simple missingness and demonstrate use of <code>regmedint</code> along with <code>mice</code>.</p>
 <div id="missing-data-generation" class="section level2">
 <h2 class="hasAnchor">
@@ -305,9 +302,9 @@
 ## 
 ## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</code></pre>
 </div>
-<div id="multiple-imputation-1" class="section level2">
+<div id="multiple-imputation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#multiple-imputation-1" class="anchor"></a>Multiple imputation</h2>
+<a href="#multiple-imputation" class="anchor"></a>Multiple imputation</h2>
 <p>This specific data setting is a little tricky in that the outcome variable is a censored survival time variable. Here we will use a log transformed survival time.</p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">mice</span>)
 <span class="no">vv2015_mod</span> <span class="kw">&lt;-</span> <span class="no">vv2015</span> <span class="kw">%&gt;%</span>
@@ -409,7 +406,6 @@
 ## pnie 0.008666987 0.014312464 0.010623432
 ## te   0.507170442 0.588697906 0.493216375
 ## pm   0.045436278 0.013852661 0.007737162</code></pre>
-</div>
 </div>
   </div>
 

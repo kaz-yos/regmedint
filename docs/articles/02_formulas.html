@@ -101,17 +101,14 @@
 
     
     
-<div id="implementation-of-formulas" class="section level1">
+<p>The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references. The code seen here is compacted and lacks the comments. For more redable code, please refer to the <a href="https://github.com/kaz-yos/regmedint">Github repo</a> and search for the function names without the preceding <code>regmedint:::</code>.</p>
+<div id="mreg-linear-yreg-linear-v2015-p466-proposition-2-3" class="section level1">
 <h1 class="hasAnchor">
-<a href="#implementation-of-formulas" class="anchor"></a>Implementation of formulas</h1>
-<p>The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references. The code seen here is compacted and lacks the comments. Please refer to the Github repo for readability.</p>
-<div id="mreg-linear-yreg-linear-v2015-p466-proposition-2-3" class="section level2">
-<h2 class="hasAnchor">
-<a href="#mreg-linear-yreg-linear-v2015-p466-proposition-2-3" class="anchor"></a>mreg linear yreg linear (V2015 p466 Proposition 2.3)</h2>
+<a href="#mreg-linear-yreg-linear-v2015-p466-proposition-2-3" class="anchor"></a>mreg linear yreg linear (V2015 p466 Proposition 2.3)</h1>
 <p>These functions are only used in the setting where both the mediator model and the outcome model are linear regression.</p>
-<div id="point-estimates" class="section level3">
-<h3 class="hasAnchor">
-<a href="#point-estimates" class="anchor"></a>Point estimates</h3>
+<div id="point-estimates" class="section level2">
+<h2 class="hasAnchor">
+<a href="#point-estimates" class="anchor"></a>Point estimates</h2>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_linear_yreg_linear_est</span></pre></body></html></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4) 
@@ -146,12 +143,12 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7fde08fb88b0&gt;
+## &lt;bytecode: 0x7fbdf4301890&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
-<div id="standard-error-estimate" class="section level3">
-<h3 class="hasAnchor">
-<a href="#standard-error-estimate" class="anchor"></a>Standard error estimate</h3>
+<div id="standard-error-estimates" class="section level2">
+<h2 class="hasAnchor">
+<a href="#standard-error-estimates" class="anchor"></a>Standard error estimates</h2>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_linear_yreg_linear_se</span></pre></body></html></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4, Sigma_beta, Sigma_theta) 
@@ -229,17 +226,17 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7fde0b870fd0&gt;
+## &lt;bytecode: 0x7fbdf33417b0&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
-<div id="mreg-linear-yreg-non-linear-v2015-p468-proposition-2-4" class="section level2">
-<h2 class="hasAnchor">
-<a href="#mreg-linear-yreg-non-linear-v2015-p468-proposition-2-4" class="anchor"></a>mreg linear yreg non-linear (V2015 p468 Proposition 2.4)</h2>
+<div id="mreg-linear-yreg-non-linear-v2015-p468-proposition-2-4" class="section level1">
+<h1 class="hasAnchor">
+<a href="#mreg-linear-yreg-non-linear-v2015-p468-proposition-2-4" class="anchor"></a>mreg linear yreg non-linear (V2015 p468 Proposition 2.4)</h1>
 <p>These functions are used in all cases where the mediator model is linear regression and the outcome model is any one of the non-linear models.</p>
-<div id="point-estimates-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#point-estimates-1" class="anchor"></a>Point estimates</h3>
+<div id="point-estimates-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#point-estimates-1" class="anchor"></a>Point estimates</h2>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_linear_yreg_logistic_est</span></pre></body></html></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4, sigma_sq) 
@@ -278,12 +275,12 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7fde0a2c2ef0&gt;
+## &lt;bytecode: 0x7fbdf34976d0&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
-<div id="standard-error-estimate-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#standard-error-estimate-1" class="anchor"></a>Standard error estimate</h3>
+<div id="standard-error-estimates-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#standard-error-estimates-1" class="anchor"></a>Standard error estimates</h2>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_linear_yreg_logistic_se</span></pre></body></html></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4, sigma_sq, Sigma_beta, Sigma_theta, Sigma_sigma_sq) 
@@ -357,17 +354,17 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7fde09d073f8&gt;
+## &lt;bytecode: 0x7fbdf35e7bd8&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
-<div id="mreg-logistic-yreg-linear-v2015-p471-proposition-2-5" class="section level2">
-<h2 class="hasAnchor">
-<a href="#mreg-logistic-yreg-linear-v2015-p471-proposition-2-5" class="anchor"></a>mreg logistic yreg linear (V2015 p471 Proposition 2.5)</h2>
+<div id="mreg-logistic-yreg-linear-v2015-p471-proposition-2-5" class="section level1">
+<h1 class="hasAnchor">
+<a href="#mreg-logistic-yreg-linear-v2015-p471-proposition-2-5" class="anchor"></a>mreg logistic yreg linear (V2015 p471 Proposition 2.5)</h1>
 <p>These functions are only used in the setting where the mediator model is logistic regression and the outcome model is non-linear regression.</p>
-<div id="point-estimates-2" class="section level3">
-<h3 class="hasAnchor">
-<a href="#point-estimates-2" class="anchor"></a>Point estimates</h3>
+<div id="point-estimates-2" class="section level2">
+<h2 class="hasAnchor">
+<a href="#point-estimates-2" class="anchor"></a>Point estimates</h2>
 <div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_logistic_yreg_linear_est</span></pre></body></html></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4) 
@@ -408,12 +405,12 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7fde0aa91e40&gt;
+## &lt;bytecode: 0x7fbdf373c710&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
-<div id="standard-error-estimate-2" class="section level3">
-<h3 class="hasAnchor">
-<a href="#standard-error-estimate-2" class="anchor"></a>Standard error estimate</h3>
+<div id="standard-error-estimates-2" class="section level2">
+<h2 class="hasAnchor">
+<a href="#standard-error-estimates-2" class="anchor"></a>Standard error estimates</h2>
 <div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_logistic_yreg_linear_se</span></pre></body></html></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4, Sigma_beta, Sigma_theta) 
@@ -533,17 +530,17 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7fde0b900470&gt;
+## &lt;bytecode: 0x7fbdf4892c50&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
-<div id="mreg-logistic-yreg-non-linear-v2015-p473-proposition-2-6" class="section level2">
-<h2 class="hasAnchor">
-<a href="#mreg-logistic-yreg-non-linear-v2015-p473-proposition-2-6" class="anchor"></a>mreg logistic yreg non-linear (V2015 p473 Proposition 2.6)</h2>
+<div id="mreg-logistic-yreg-non-linear-v2015-p473-proposition-2-6" class="section level1">
+<h1 class="hasAnchor">
+<a href="#mreg-logistic-yreg-non-linear-v2015-p473-proposition-2-6" class="anchor"></a>mreg logistic yreg non-linear (V2015 p473 Proposition 2.6)</h1>
 <p>These functions are used in all cases where the mediator model is logistic regression and the outcome model is any one of the non-linear models.</p>
-<div id="point-estimates-3" class="section level3">
-<h3 class="hasAnchor">
-<a href="#point-estimates-3" class="anchor"></a>Point estimates</h3>
+<div id="point-estimates-3" class="section level2">
+<h2 class="hasAnchor">
+<a href="#point-estimates-3" class="anchor"></a>Point estimates</h2>
 <div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_logistic_yreg_logistic_est</span></pre></body></html></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4) 
@@ -588,12 +585,12 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7fde0a366278&gt;
+## &lt;bytecode: 0x7fbdf4a02a58&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
-<div id="standard-error-estimate-3" class="section level3">
-<h3 class="hasAnchor">
-<a href="#standard-error-estimate-3" class="anchor"></a>Standard error estimate</h3>
+<div id="standard-error-estimates-3" class="section level2">
+<h2 class="hasAnchor">
+<a href="#standard-error-estimates-3" class="anchor"></a>Standard error estimates</h2>
 <div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_logistic_yreg_logistic_se</span></pre></body></html></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4, Sigma_beta, Sigma_theta) 
@@ -724,9 +721,8 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7fde0b9ca828&gt;
+## &lt;bytecode: 0x7fbdf4b53008&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
-</div>
 </div>
 </div>
 <div id="bibliography" class="section level1">

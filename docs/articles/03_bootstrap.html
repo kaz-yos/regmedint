@@ -101,9 +101,9 @@
 
     
     
-<div id="bootstrapping" class="section level1">
-<h1 class="hasAnchor">
-<a href="#bootstrapping" class="anchor"></a>Bootstrapping</h1>
+<div id="bootstrapping-support" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bootstrapping-support" class="anchor"></a>Bootstrapping support</h2>
 <p>The <code>regmedint</code> function itself does not contain a bootstrap standard error option, which may be perferred in some settings. However, it is relatively easy to implmement in R using the <code><a href="../reference/regmedint.html">regmedint()</a></code> function and the corresponding <code><a href="https://rdrr.io/r/stats/coef.html">coef()</a></code> point estimate extraction method.</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">138087069</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">regmedint</span>)
@@ -141,6 +141,7 @@
 ## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
 ## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
 ## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926</code></pre>
+</div>
 <div id="boot-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#boot-package" class="anchor"></a><code>boot</code> package</h2>
@@ -175,7 +176,7 @@
                  <span class="co">## See https://cran.r-project.org/package=boot</span>
                  <span class="kw">parallel</span> <span class="kw">=</span> <span class="st">"multicore"</span>,
                  <span class="kw">ncpus</span> <span class="kw">=</span> <span class="kw pkg">parallel</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html">detectCores</a></span>())
-<span class="co">## Confidence interval for the</span>
+<span class="co">## Confidence interval for the pm</span>
 <span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.ci.html">boot.ci</a></span>(<span class="no">boot_obj</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"basic"</span>, <span class="kw">index</span> <span class="kw">=</span> <span class="fl">7</span>)</pre></body></html></div>
 <pre><code>## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
 ## Based on 1000 bootstrap replicates
@@ -187,17 +188,18 @@
 ## Level      Basic         
 ## 95%   (-0.4322,  0.4106 )  
 ## Calculations and Intervals on Original Scale</code></pre>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">boot_obj</span>, <span class="kw">index</span> <span class="kw">=</span> <span class="fl">7</span>)</pre></body></html></div>
-<p><img src="man/figuresunnamed-chunk-3-1.png" width="672"></p>
 </div>
 <div id="modelr-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#modelr-package" class="anchor"></a><code>modelr</code> package</h2>
-<p>In the tidyverse ecosystem, the <code>modelr</code> package can be used to provide a potentially tidier workflow in some settings.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">modelr</span>)
+<p>In the tidyverse ecosystem, the <code>modelr</code> package can be used to provide a potentially more flexible workflow in some settings.</p>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">modelr</span>)
+
 <span class="co">## For parallization</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">future</span>)
+<span class="kw pkg">future</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/future/man/plan.html">plan</a></span>(<span class="no">multiprocess</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">furrr</span>)
-<span class="fu">plan</span>(<span class="no">multiprocess</span>)
+
 <span class="co">## Bootstrapping</span>
 <span class="no">tib_obj</span> <span class="kw">&lt;-</span> <span class="no">vv2015</span> <span class="kw">%&gt;%</span>
     <span class="kw pkg">modelr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/modelr/man/bootstrap.html">bootstrap</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">1000</span>) <span class="kw">%&gt;%</span>
@@ -222,51 +224,48 @@
                                    <span class="co">## Additional specification</span>
                                    <span class="kw">interaction</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
                                    <span class="kw">casecontrol</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-        <span class="no">tib</span> <span class="kw">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>))),
-                         )
-        <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">tib</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>))
-        <span class="no">tib</span>
+        <span class="co">## Trick to return a row tibble</span>
+        <span class="no">mat</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>)))
+        <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">mat</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>))
+        <span class="fu">as_tibble</span>(<span class="no">mat</span>)
     })) <span class="kw">%&gt;%</span>
     <span class="fu">select</span>(-<span class="no">strap</span>) <span class="kw">%&gt;%</span>
-    <span class="fu">unnest</span>()</pre></body></html></div>
-<pre><code>## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
-## This warning is displayed once per session.
+    <span class="fu">unnest</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">boot_fit</span>))
 
-## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
-## This warning is displayed once per session.
-
-## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
-## This warning is displayed once per session.
-
-## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
-## This warning is displayed once per session.
-
-## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
-## This warning is displayed once per session.
-
-## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
-## This warning is displayed once per session.
-
-## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
-## This warning is displayed once per session.
-
-## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
-## This warning is displayed once per session.
-
-## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
-## This warning is displayed once per session.
-
-## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
-## This warning is displayed once per session.
-
-## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
-## This warning is displayed once per session.
-
-## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
-## This warning is displayed once per session.</code></pre>
-<pre><code>## Warning: `cols` is now required.
-## Please use `cols = c(boot_fit)`</code></pre>
+<span class="no">tib_obj2</span> <span class="kw">&lt;-</span> <span class="no">tib_obj</span> <span class="kw">%&gt;%</span>
+    <span class="fu">pivot_longer</span>(-<span class="no">.id</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">mutate</span>(<span class="kw">name</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="no">name</span>, <span class="kw">levels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>)))) <span class="kw">%&gt;%</span>
+    <span class="fu">group_by</span>(<span class="no">name</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">summarize</span>(<span class="kw">lower_boot</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span>(<span class="no">value</span>, <span class="kw">probs</span> <span class="kw">=</span> <span class="fl">0.025</span>),
+              <span class="kw">upper_boot</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span>(<span class="no">value</span>, <span class="kw">probs</span> <span class="kw">=</span> <span class="fl">0.975</span>))
+<span class="no">tib_obj2</span></pre></body></html></div>
+<pre><code>## # A tibble: 7 x 3
+##   name  lower_boot upper_boot
+##   &lt;fct&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1 cde      -0.0968     1.17  
+## 2 pnde      0.0339     0.962 
+## 3 tnie     -0.0800     0.144 
+## 4 tnde      0.0425     0.971 
+## 5 pnie     -0.0655     0.0936
+## 6 te        0.0519     0.984 
+## 7 pm       -0.298      0.413</code></pre>
 </div>
+<div id="comparison-to-the-delta-method-confidence-interval" class="section level2">
+<h2 class="hasAnchor">
+<a href="#comparison-to-the-delta-method-confidence-interval" class="anchor"></a>Comparison to the delta method confidence interval</h2>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">tib_obj2</span> <span class="kw">%&gt;%</span>
+    <span class="fu">mutate</span>(<span class="kw">lower_delta</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span>(<span class="no">regmedint_obj</span>)[,<span class="st">"lower"</span>],
+           <span class="kw">upper_delta</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span>(<span class="no">regmedint_obj</span>)[,<span class="st">"upper"</span>])</pre></body></html></div>
+<pre><code>## # A tibble: 7 x 5
+##   name  lower_boot upper_boot lower_delta upper_delta
+##   &lt;fct&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+## 1 cde      -0.0968     1.17       -0.0356      1.12  
+## 2 pnde      0.0339     0.962       0.0764      0.901 
+## 3 tnie     -0.0800     0.144      -0.0544      0.0909
+## 4 tnde      0.0425     0.971       0.0828      0.914 
+## 5 pnie     -0.0655     0.0936     -0.0449      0.0622
+## 6 te        0.0519     0.984       0.0938      0.921 
+## 7 pm       -0.298      0.413       0.0116      0.0793</code></pre>
 </div>
   </div>
 
