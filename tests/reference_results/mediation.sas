@@ -3160,7 +3160,8 @@ effect[,5]=(
 (1+exp(theta2+beta0+beta1*&a0+sum(beta2*t(cmean))))
 );
 effect[,6]=effect[,2]*effect[,5];
-/* Modified by @kaz-yos on 2020-04-01 based on V2015 p475 on Gamma_cde. */
+/* Modified by @kaz-yos on 2020-04-01 based on V2015 p474 on Gamma_cde. */
+/* This is the mreg logistic, yreg non-linear, int f case.*/
 /* z is defined as z=zero||zero||z1||zero||one||zero; above without common factor (a1-a0).*/
 /* In the case of &yreg^=linear & &mreg=logistic no common factor multiplication is done. */
 /* Confirm looking for "%if (&mreg=logistic & &yreg^=linear) %then %do;" */
@@ -3275,7 +3276,8 @@ effect[,11]=(
 (1+exp(theta2+beta0+beta1*&a0+sum(beta2*t(c))))
 );
 effect[,12]=effect[,8]*effect[,11];
-/* Modified by @kaz-yos on 2020-04-01 based on V2015 p475 on Gamma_cde. */
+/* Modified by @kaz-yos on 2020-04-01 based on V2015 p474 on Gamma_cde. */
+/* This is the mreg logistic, yreg non-linear, int f, cvar non-empty case.*/
 /* z is defined as z=zero||zero||z1||zero||one||zero; above without common factor (a1-a0).*/
 /* In the case of &yreg^=linear & &mreg=logistic no common factor multiplication is done. */
 /* Confirm looking for "%if (&mreg=logistic & &yreg^=linear) %then %do;" */
@@ -3391,7 +3393,8 @@ effect[,5]=(
 (1+exp(theta2+theta3*&a1+beta0+beta1*&a0+sum(beta2*t(cmean))))
 );
 effect[,6]=effect[,2]*effect[,5];
-/* Modified by @kaz-yos on 2020-04-01 based on V2015 p475 on Gamma_cde. */
+/* Modified by @kaz-yos on 2020-04-01 based on V2015 p474 on Gamma_cde. */
+/* This is the mreg logistic, yreg non-linear, int t case.*/
 /* z is defined as z=zero||zero||z1||zero||one||zero; above without common factor (a1-a0).*/
 /* In the case of &yreg^=linear & &mreg=logistic no common factor multiplication is done. */
 /* Confirm looking for "%if (&mreg=logistic & &yreg^=linear) %then %do;" */
@@ -3512,7 +3515,8 @@ effect[,11]=(
 (1+exp(theta2+theta3*&a1+beta0+beta1*&a0+sum(beta2*t(c))))
 );
 effect[,12]=effect[,8]*effect[,11];
-/* Modified by @kaz-yos on 2020-04-01 based on V2015 p475 on Gamma_cde. */
+/* Modified by @kaz-yos on 2020-04-01 based on V2015 p474 on Gamma_cde. */
+/* This is the mreg logistic, yreg non-linear, int t, cvar non-empty case.*/
 /* z is defined as z=zero||zero||z1||zero||one||zero; above without common factor (a1-a0).*/
 /* In the case of &yreg^=linear & &mreg=logistic no common factor multiplication is done. */
 /* Confirm looking for "%if (&mreg=logistic & &yreg^=linear) %then %do;" */
