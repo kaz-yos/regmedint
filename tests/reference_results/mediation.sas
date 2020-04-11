@@ -3166,7 +3166,8 @@ effect[,6]=effect[,2]*effect[,5];
 /* In the case of &yreg^=linear & &mreg=logistic no common factor multiplication is done. */
 /* Confirm looking for "%if (&mreg=logistic & &yreg^=linear) %then %do;" */
 /* So it must be included in Gamma_cde. */
-/* Changed from gamma[1,]=z|| z1 ; */
+/* Changed from
+gamma[1,]=z|| z1 ; */
 gamma[1,]=(z|| z1) * (&a1-&a0);
 A=exp(theta2+beta0+beta1*&a0+beta2*t(Cmean));
 B=(1+exp(theta2+beta0+beta1*&a0+beta2*t(Cmean)));
@@ -3283,7 +3284,8 @@ effect[,12]=effect[,8]*effect[,11];
 /* In the case of &yreg^=linear & &mreg=logistic no common factor multiplication is done. */
 /* Confirm looking for "%if (&mreg=logistic & &yreg^=linear) %then %do;" */
 /* So it must be included in Gamma_cde. */
-/* Changed from gamma[7,]=z||z1; */
+/* Changed from
+gamma[7,]=z||z1; */
 gamma[7,]=(z||z1) * (&a1-&a0);
 A=exp(theta2+beta0+beta1*&a0+beta2*t(c));
 B=(1+exp(theta2+beta0+beta1*&a0+beta2*t(c)));
@@ -3401,7 +3403,8 @@ effect[,6]=effect[,2]*effect[,5];
 /* In the case of &yreg^=linear & &mreg=logistic no common factor multiplication is done. */
 /* Confirm looking for "%if (&mreg=logistic & &yreg^=linear) %then %do;" */
 /* So it must be included in Gamma_cde. */
-/* Changed from gamma[1,]=z||&m || z1 ; */
+/* Changed from
+gamma[1,]=z||&m || z1 ; */
 gamma[1,]=(z||&m || z1) * (&a1-&a0);
 A=exp(theta2+theta3*&a1+beta0+beta1*&a0+beta2*t(cmean));
 B=(1+exp(theta2+theta3*&a1+beta0+beta1*&a0+beta2*t(cmean)));
@@ -3524,7 +3527,8 @@ effect[,12]=effect[,8]*effect[,11];
 /* In the case of &yreg^=linear & &mreg=logistic no common factor multiplication is done. */
 /* Confirm looking for "%if (&mreg=logistic & &yreg^=linear) %then %do;" */
 /* So it must be included in Gamma_cde. */
-/* Changed from gamma[7,]=z||&m || z1; */
+/* Changed from
+gamma[7,]=z||&m || z1; */
 gamma[7,]=(z||&m || z1) * (&a1-&a0);
 A=exp(theta2+theta3*&a1+beta0+beta1*&a0+beta2*t(c));
 B=(1+exp(theta2+theta3*&a1+beta0+beta1*&a0+beta2*t(c)));
@@ -3852,7 +3856,8 @@ effect[,6]=effect[,2]*effect[,5];
 /* In the case of &yreg^=linear & &mreg=logistic no common factor multiplication is done. */
 /* Confirm looking for "%if (&mreg=logistic & &yreg^=linear) %then %do;" */
 /* So it must be included in Gamma_cde. */
-/* Changed from gamma[1,]=z; */
+/* Changed from
+gamma[1,]=z; */
 gamma[1,]=z * (&a1-&a0);
 A=exp(theta2+beta0+beta1*&a0);
 B=(1+exp(theta2+beta0+beta1*&a0));
@@ -3942,7 +3947,8 @@ effect[,6]=effect[,2]*effect[,5];
 /* In the case of &yreg^=linear & &mreg=logistic no common factor multiplication is done. */
 /* Confirm looking for "%if (&mreg=logistic & &yreg^=linear) %then %do;" */
 /* So it must be included in Gamma_cde. */
-/* Changed from gamma[1,]=z||&m; */
+/* Changed from
+gamma[1,]=z||&m; */
 gamma[1,]=(z||&m) * (&a1-&a0);
 A=exp(theta2+theta3*&a1+beta0+beta1*&a0);
 B=(1+exp(theta2+theta3*&a1+beta0+beta1*&a0));
