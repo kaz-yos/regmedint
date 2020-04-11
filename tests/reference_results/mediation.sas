@@ -3709,9 +3709,19 @@ gamma[2,]= theta3|| x1||  zero|| one|| zero|| t(h1);
 x0=theta3*&a1;
 h0=beta0+beta1*&a1;
 gamma[4,]=theta3|| x0||zero|| one|| zero|| t(h0);
+/* gamma[5,] (Gamma for marg tnie)
+mreg linear yreg linear interaction t case.
+x0 expression was missing in the following, making gamma[5,] use x0 defined for gamma[4,]
+(Gamma for marg tnde). gamma[5,] is the partial derivative of effect[,5] wrt beta1, thus,
+it should be (theta2 + theta3 * a1). Note that (a1-a0) is factored out. */
 x0=theta2+theta3*&a1; /* Added by @kaz-yos on 2020-04-01 See V2015 p466 Gamma_tnie */
 w0=beta1*&a1;
 gamma[5,]=zero|| x0|| zero||zero|| beta1|| w0 ;
+/* gamma[3,] (Gamma for marg pnie)
+mreg linear yreg linear interaction t case.
+x1 expression was missing in the following, making gamma[3,] use x1 defined for gamma[2,]
+(Gamma for marg pnde). gamma[3,] is the partial derivative of effect[,3] wrt beta1, thus,
+it should be (theta2 + theta3 * a0). Note that (a1-a0) is factored out. */
 x1=theta2+theta3*&a0; /* Added by @kaz-yos on 2020-04-01 Same as x0 except for the a1 -> a0 change. */
 w1=beta1*&a0;
 gamma[3,]=zero|| x1|| zero||zero|| beta1|| w1 ;
