@@ -2947,7 +2947,8 @@ h=t(D/E-A/B);
 gamma[5,]=x|| w|| y|| zero||zero|| h||  z1;
 gamma[3,]=x|| w|| y||zero||zero|| h||  z1;
 
-/* Fixed Gamma_te by @kaz-yos on 2020-04-01 following VV2013 Appendix p14. */
+/* Fixed Gamma_te by @kaz-yos on 2020-04-01 following VV2013 Appendix p14.
+This is the mreg logistic, yreg linear, interaction f, cvar empty case. */
 A=exp(beta0+beta1*&a0+beta2*t(Cmean));
 B=(1+A);
 D=exp(beta0+beta1*&a1+beta2*t(Cmean));
@@ -3008,8 +3009,9 @@ A=exp(beta0+beta1*&a0+beta2*t(c));
 B=(1+A);
 D=exp(beta0+beta1*&a1+beta2*t(c));
 E=(1+D);
-/* Several corrections by @kaz-yos on 2020-03-28 based on VV2013 Appendix p14 */
-/* Note ?**2 terms must be different from the one in the denominator. */
+/* Several corrections by @kaz-yos on 2020-03-28 based on VV2013 Appendix p14
+This is the mreg logistic, yreg linear, interaction f, cvar non-empty case.
+Note ?**2 terms must be different from the one in the denominator. */
 /* Corrected from
 x=(theta2)*((D*E-E**2)/(E**2)-(A*B-B**2)/(B**2)); */
 x=(theta2)*((D*E-D**2)/(E**2)-(A*B-A**2)/(B**2));
