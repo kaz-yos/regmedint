@@ -2709,7 +2709,7 @@ effect[,9]=(theta2*beta1+theta3*beta1*&a0)*(&a1-&a0);
 */CONDITIONAL TNDE*/;
 effect[,10]=(theta1+theta3*beta0+theta3*beta1*&a1+(theta3*beta2*t(c)))*(&a1-&a0);
 */ CONDITIONAL TNIE*/;
-effect[,11]=(theta2*beta1+theta3*beta1*&a1)*(&a1-&a0); /* partial wrt beta1 should have theta2 and theta3 * a1 */
+effect[,11]=(theta2*beta1+theta3*beta1*&a1)*(&a1-&a0); /* cond tnie expression */
 */te conditional*/;
 effect[,12]=(theta1+theta3*beta0+theta3*beta1*&a0+(theta3*beta2*t(c))+theta2*beta1+theta3*beta1*&a1)*(&a1-&a0);
 *gamma=J(1,2*&nc+6);
@@ -2721,12 +2721,17 @@ gamma[8,]= theta3|| x1|| t(w) || zero|| one|| zero|| t(h1) || z1;
 x0=theta3*&a1;
 h0=beta0+beta1*&a1+(beta2)*t(c);
 gamma[10,]=theta3|| x0|| t(w)|| zero|| one|| zero|| t(h0)||z1;
-x0=theta2+theta3*&a1;                   /* This line was added by @kaz-yos on 2020-03-28 */
+/* The following line defining x0 was added by @kaz-yos on 2020-03-28 following V2015 p466.
+This is the mreg linear, yreg linear, interaction true, cvar non-empty case.
+This line was originally missing, causing gamma[11,] (Gamma for cond tnie) to refer to x0 defined
+for gamma[10,] (Gamma for cond tnde). The second slot for gamma[11,] is the partial derivative of
+effect[,11] expression above wrt beta1. So it should be (theta2 + theta3 * a1). */
+x0=theta2+theta3*&a1;
 w0=beta1*&a1;
-gamma[11,]=zero|| x0|| z1|| zero||zero|| beta1|| w0 || z1; /* c-tnie uses x0. */
+gamma[11,]=zero|| x0|| z1|| zero||zero|| beta1|| w0 || z1; /* Gamma for cond tnie uses x0. */
 x1=theta2+theta3*&a0;    /* This seems correct and the same as x1 for gamma[3,] */
 w1=beta1*&a0;
-gamma[9,]=zero|| x1|| z1|| zero||zero|| beta1|| w1 || z1;  /* c-pnie uses x1.*/
+gamma[9,]=zero|| x1|| z1|| zero||zero|| beta1|| w1 || z1;  /* Gamma for cond pnie uses x1.*/
 D=theta3*(c);
 A=(theta3*&a1+theta3*&a0+theta2);
 B=beta0+beta1*(&a1+&a0)+beta2*t(c);
