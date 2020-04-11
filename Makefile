@@ -19,7 +19,7 @@ TST_FILES := $(wildcard tests/testthat/*.R)
 SAS_FILES := $(wildcard tests/reference_results/sas-*.sas)
 SRC_FILES := $(wildcard src/*) $(addprefix src/, $(COPY_SRC))
 VIG_FILES := $(wildcard vignettes/*)
-PKG_FILES := DESCRIPTION NAMESPACE NEWS $(R_FILES) $(TST_FILES) $(SRC_FILES) $(VIG_FILES)
+PKG_FILES := DESCRIPTION NAMESPACE NEWS.md $(R_FILES) $(TST_FILES) $(SRC_FILES) $(VIG_FILES)
 
 
 ## .PHONY to allow non-file targets (file targets should not be here)
