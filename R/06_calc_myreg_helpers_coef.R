@@ -212,7 +212,7 @@ validate_myreg_vcovs <- function(beta0,
 
 ##' Calculate the proportion mediated for yreg linear.
 ##'
-##' Calculate the approximate proportion mediated on the mean difference scale.
+##' Calculate the proportion mediated on the mean difference scale.
 ##'
 ##' @param pnde Pure natural direct effect.
 ##' @param tnie Total natural indirect effect.
@@ -223,6 +223,14 @@ prop_med_yreg_linear <- function(pnde, tnie) {
 }
 
 ## Corresponding gradient: R^2 -> R^2
+##' Calculate the gradient of the proportion mediated for yreg linear.
+##'
+##' Calculate the gradient of the proportion mediated for yreg linear case.
+##'
+##' @param pnde Pure natural direct effect.
+##' @param tnie Total natural indirect effect.
+##'
+##' @return Proportion mediated value.
 grad_prop_med_yreg_linear <- Deriv::Deriv(prop_med_yreg_linear)
 ## function (pnde, tnie)
 ## {
