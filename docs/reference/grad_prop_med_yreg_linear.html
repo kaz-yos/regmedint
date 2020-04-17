@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Validate soundness of a regmedint object. — validate_regmedint • regmedint</title>
+<title>Calculate the gradient of the proportion mediated for yreg linear. — grad_prop_med_yreg_linear • regmedint</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Validate soundness of a regmedint object. — validate_regmedint" />
-<meta property="og:description" content="Check the structure of a proposed regmedint object for soundness." />
+<meta property="og:title" content="Calculate the gradient of the proportion mediated for yreg linear. — grad_prop_med_yreg_linear" />
+<meta property="og:description" content="Calculate the gradient of the proportion mediated for yreg linear case." />
 
 
 
@@ -132,26 +132,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Validate soundness of a regmedint object.</h1>
+    <h1>Calculate the gradient of the proportion mediated for yreg linear.</h1>
     
-    <div class="hidden name"><code>validate_regmedint.Rd</code></div>
+    <div class="hidden name"><code>grad_prop_med_yreg_linear.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Check the structure of a proposed regmedint object for soundness.</p>
+    <p>Calculate the gradient of the proportion mediated for yreg linear case.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>validate_regmedint</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>grad_prop_med_yreg_linear</span>(<span class='no'>pnde</span>, <span class='no'>tnie</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A <code>regmedint</code> object.</p></td>
+      <th>pnde</th>
+      <td><p>Pure natural direct effect.</p></td>
+    </tr>
+    <tr>
+      <th>tnie</th>
+      <td><p>Total natural indirect effect.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Proportion mediated value.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

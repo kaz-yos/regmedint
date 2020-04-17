@@ -306,32 +306,23 @@
 <h2 class="hasAnchor">
 <a href="#multiple-imputation" class="anchor"></a>Multiple imputation</h2>
 <p>This specific data setting is a little tricky in that the outcome variable is a censored survival time variable. Here we will use a log transformed survival time.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">mice</span>)
-<span class="no">vv2015_mod</span> <span class="kw">&lt;-</span> <span class="no">vv2015</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">mice</span>)</pre></body></html></div>
+<pre><code>## Error in library(mice): there is no package called 'mice'</code></pre>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">vv2015_mod</span> <span class="kw">&lt;-</span> <span class="no">vv2015</span> <span class="kw">%&gt;%</span>
     <span class="fu">mutate</span>(<span class="kw">log_y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(<span class="no">y</span>)) <span class="kw">%&gt;%</span>
     <span class="fu">select</span>(<span class="no">x</span>,<span class="no">m</span>,<span class="no">c</span>,<span class="no">log_y</span>,<span class="no">event</span>)
 <span class="co">## Run mice</span>
-<span class="no">vv2015_mice</span> <span class="kw">&lt;-</span> <span class="fu"><a href="http://stefvanbuuren.github.io/mice/reference/mice.html">mice</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">vv2015_mod</span>, <span class="kw">m</span> <span class="kw">=</span> <span class="fl">50</span>, <span class="kw">printFlag</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="co">## Object containig 50 imputed dataset</span>
+<span class="no">vv2015_mice</span> <span class="kw">&lt;-</span> <span class="fu">mice</span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">vv2015_mod</span>, <span class="kw">m</span> <span class="kw">=</span> <span class="fl">50</span>, <span class="kw">printFlag</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
+<pre><code>## Error in mice(data = vv2015_mod, m = 50, printFlag = FALSE): could not find function "mice"</code></pre>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="co">## Object containig 50 imputed dataset</span>
 <span class="no">vv2015_mice</span></pre></body></html></div>
-<pre><code>## Class: mids
-## Number of multiple imputations:  50 
-## Imputation methods:
-##     x     m     c log_y event 
-##    "" "pmm"    ""    ""    "" 
-## PredictorMatrix:
-##       x m c log_y event
-## x     0 1 1     1     1
-## m     1 0 1     1     1
-## c     1 1 0     1     1
-## log_y 1 1 1     0     1
-## event 1 1 1     1     0</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object 'vv2015_mice' not found</code></pre>
 <p>After creating such MI datasets, mediation analysis can be performed in each dataset.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="co">## Fit in each MI dataset</span>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="co">## Fit in each MI dataset</span>
 <span class="no">vv2015_mice_regmedint</span> <span class="kw">&lt;-</span>
     <span class="no">vv2015_mice</span> <span class="kw">%&gt;%</span>
     <span class="co">## Stacked up dataset</span>
-    <span class="kw pkg">mice</span><span class="kw ns">::</span><span class="fu"><a href="http://stefvanbuuren.github.io/mice/reference/complete.mids.html">complete</a></span>(<span class="st">"long"</span>) <span class="kw">%&gt;%</span>
+    <span class="kw pkg">mice</span><span class="kw ns">::</span><span class="fu">complete</span>(<span class="st">"long"</span>) <span class="kw">%&gt;%</span>
     <span class="fu">as_tibble</span>() <span class="kw">%&gt;%</span>
     <span class="fu">mutate</span>(<span class="kw">y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="no">log_y</span>)) <span class="kw">%&gt;%</span>
     <span class="fu">group_by</span>(<span class="no">.imp</span>) <span class="kw">%&gt;%</span>
@@ -359,53 +350,25 @@
     })) <span class="kw">%&gt;%</span>
     <span class="co">## Extract point estimates and variance estimates</span>
     <span class="fu">mutate</span>(<span class="kw">coef_fit</span> <span class="kw">=</span> <span class="fu">map</span>(<span class="no">fit</span>, <span class="no">coef</span>),
-           <span class="kw">vcov_fit</span> <span class="kw">=</span> <span class="fu">map</span>(<span class="no">fit</span>, <span class="no">vcov</span>))
-<span class="no">vv2015_mice_regmedint</span></pre></body></html></div>
-<pre><code>## # A tibble: 50 x 5
-## # Groups:   .imp [50]
-##     .imp data               fit        coef_fit  vcov_fit         
-##    &lt;int&gt; &lt;list&gt;             &lt;list&gt;     &lt;list&gt;    &lt;list&gt;           
-##  1     1 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  2     2 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  3     3 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  4     4 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  5     5 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  6     6 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  7     7 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  8     8 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  9     9 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-## 10    10 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-## # … with 40 more rows</code></pre>
+           <span class="kw">vcov_fit</span> <span class="kw">=</span> <span class="fu">map</span>(<span class="no">fit</span>, <span class="no">vcov</span>))</pre></body></html></div>
+<pre><code>## Error in eval(lhs, parent, parent): object 'vv2015_mice' not found</code></pre>
+<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">vv2015_mice_regmedint</span></pre></body></html></div>
+<pre><code>## Error in eval(expr, envir, enclos): object 'vv2015_mice_regmedint' not found</code></pre>
 <p>The results can be combined using the mitools package.</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">regmedint_mi</span> <span class="kw">&lt;-</span> <span class="kw pkg">mitools</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/mitools/man/MIcombine.html">MIcombine</a></span>(<span class="kw">results</span> <span class="kw">=</span> <span class="no">vv2015_mice_regmedint</span>$<span class="no">coef_fit</span>,
-                                   <span class="kw">variances</span> <span class="kw">=</span> <span class="no">vv2015_mice_regmedint</span>$<span class="no">vcov_fit</span>)
-<span class="no">regmedint_mi_summary</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">regmedint_mi</span>)</pre></body></html></div>
-<pre><code>## Multiple imputation results:
-##       MIcombine.default(results = vv2015_mice_regmedint$coef_fit, variances = vv2015_mice_regmedint$vcov_fit)
-##          results         se      (lower     upper) missInfo
-## cde  0.364444513 0.31285436 -0.24886705 0.97775608      9 %
-## pnde 0.490086249 0.21309992  0.07241792 0.90775458      0 %
-## tnie 0.003130126 0.03166385 -0.05896404 0.06522429     15 %
-## tnde 0.482592943 0.21622030  0.05880487 0.90638102      2 %
-## pnie 0.010623432 0.06015876 -0.10748936 0.12873622     27 %
-## te   0.493216375 0.21374378  0.07428624 0.91214651      0 %
-## pm   0.007737162 0.03500720 -0.06200195 0.07747628     81 %</code></pre>
+<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="no">regmedint_mi</span> <span class="kw">&lt;-</span> <span class="kw pkg">mitools</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/mitools/man/MIcombine.html">MIcombine</a></span>(<span class="kw">results</span> <span class="kw">=</span> <span class="no">vv2015_mice_regmedint</span>$<span class="no">coef_fit</span>,
+                                   <span class="kw">variances</span> <span class="kw">=</span> <span class="no">vv2015_mice_regmedint</span>$<span class="no">vcov_fit</span>)</pre></body></html></div>
+<pre><code>## Error in mitools::MIcombine(results = vv2015_mice_regmedint$coef_fit, : object 'vv2015_mice_regmedint' not found</code></pre>
+<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="no">regmedint_mi_summary</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">regmedint_mi</span>)</pre></body></html></div>
+<pre><code>## Error in summary(regmedint_mi): object 'regmedint_mi' not found</code></pre>
 </div>
 <div id="comparison" class="section level2">
 <h2 class="hasAnchor">
 <a href="#comparison" class="anchor"></a>Comparison</h2>
 <p>We can observe the MI estimtates are generally more in alignment with the true estimates than the complete-case analysis estimates.</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="http://stefvanbuuren.github.io/mice/reference/cbind.html">cbind</a></span>(<span class="kw">true</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_true</span>),
+<div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(<span class="kw">true</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_true</span>),
       <span class="kw">cca</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_cca</span>),
       <span class="kw">mi</span> <span class="kw">=</span> <span class="no">regmedint_mi_summary</span>$<span class="no">results</span>)</pre></body></html></div>
-<pre><code>##             true         cca          mi
-## cde  0.541070807 0.463323084 0.364444513
-## pnde 0.488930417 0.582515084 0.490086249
-## tnie 0.018240025 0.006182822 0.003130126
-## tnde 0.498503455 0.574385442 0.482592943
-## pnie 0.008666987 0.014312464 0.010623432
-## te   0.507170442 0.588697906 0.493216375
-## pm   0.045436278 0.013852661 0.007737162</code></pre>
+<pre><code>## Error in cbind(true = coef(regmedint_true), cca = coef(regmedint_cca), : object 'regmedint_mi_summary' not found</code></pre>
 </div>
   </div>
 
@@ -424,7 +387,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

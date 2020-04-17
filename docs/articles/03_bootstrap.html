@@ -250,9 +250,9 @@
 ## 6 te        0.0519     0.984 
 ## 7 pm       -0.298      0.413</code></pre>
 </div>
-<div id="comparison-to-the-delta-method-confidence-interval" class="section level2">
+<div id="comparison-to-the-delta-method-confidence-intervals" class="section level2">
 <h2 class="hasAnchor">
-<a href="#comparison-to-the-delta-method-confidence-interval" class="anchor"></a>Comparison to the delta method confidence interval</h2>
+<a href="#comparison-to-the-delta-method-confidence-intervals" class="anchor"></a>Comparison to the delta method confidence intervals</h2>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">tib_obj2</span> <span class="kw">%&gt;%</span>
     <span class="fu">mutate</span>(<span class="kw">lower_delta</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span>(<span class="no">regmedint_obj</span>)[,<span class="st">"lower"</span>],
            <span class="kw">upper_delta</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span>(<span class="no">regmedint_obj</span>)[,<span class="st">"upper"</span>])</pre></body></html></div>
@@ -284,7 +284,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

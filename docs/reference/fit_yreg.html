@@ -141,14 +141,14 @@
     <p>The outcome model type <code>yreg</code> can be one of the following <code>"linear"</code>, <code>"logistic"</code>, <code>"loglinear"</code>, <code>"poisson"</code>, <code>"negbin"</code>, <code>"survCox"</code>, <code>"survAFT_exp"</code>, or <code>"survAFT_weibull"</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fit_yreg</span>(<span class='no'>yreg</span>, <span class='no'>data</span>, <span class='no'>yvar</span>, <span class='no'>avar</span>, <span class='no'>mvar</span>, <span class='no'>cvar</span>, <span class='no'>interaction</span>, <span class='no'>eventvar</span>)</pre>
+    <pre class="usage"><span class='fu'>fit_yreg</span>(<span class='no'>yreg</span>, <span class='no'>data</span>, <span class='no'>yvar</span>, <span class='no'>avar</span>, <span class='no'>mvar</span>, <span class='no'>cvar</span>, <span class='no'>eventvar</span>, <span class='no'>interaction</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>yreg</th>
-      <td><p>A character vector of length 1. Outcome regression type. One of</p></td>
+      <td><p>A character vector of length 1. Outcome regression type: <code>"linear"</code>, <code>"logistic"</code>, <code>"loglinear"</code>, <code>"poisson"</code>, <code>"negbin"</code>, <code>"survCox"</code>, <code>"survAFT_exp"</code>, or <code>"survAFT_weibull"</code>.</p></td>
     </tr>
     <tr>
       <th>data</th>
@@ -171,12 +171,12 @@
       <td><p>A character vector of length &gt; 0. Covariate names. Use <code>NULL</code> if there is no covariate. However, this is a highly suspicious situation. Even if <code>avar</code> is randomized, <code>mvar</code> is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between <code>avar</code> and <code>yvar</code>.</p></td>
     </tr>
     <tr>
-      <th>interaction</th>
-      <td><p>A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.</p></td>
-    </tr>
-    <tr>
       <th>eventvar</th>
       <td><p>An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.</p></td>
+    </tr>
+    <tr>
+      <th>interaction</th>
+      <td><p>A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.</p></td>
     </tr>
     </table>
 
@@ -212,7 +212,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
