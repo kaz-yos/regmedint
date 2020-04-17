@@ -1,6 +1,6 @@
-* using log directory ‘/Users/kazuki/Dropbox/documents/programming/r/regmedint/regmedint.Rcheck’
-* using R version 3.6.3 (2020-02-29)
-* using platform: x86_64-apple-darwin19.3.0 (64-bit)
+* using log directory ‘/Users/kazuki/Dropbox (Personal)/documents/programming/r/regmedint/regmedint.Rcheck’
+* using R version 3.6.3 Patched (2020-02-29 r77878)
+* using platform: x86_64-apple-darwin15.6.0 (64-bit)
 * using session charset: UTF-8
 * using option ‘--as-cran’
 * checking for file ‘regmedint/DESCRIPTION’ ... OK
@@ -26,7 +26,9 @@ Version contains large components (0.0.0.9000)
 * checking package directory ... OK
 * checking for future file timestamps ... OK
 * checking DESCRIPTION meta-information ... OK
-* checking top-level files ... OK
+* checking top-level files ... NOTE
+Non-standard file/directory found at top level:
+  ‘diff.txt’
 * checking for left-over files ... OK
 * checking index information ... OK
 * checking package subdirectories ... OK
@@ -37,13 +39,47 @@ Version contains large components (0.0.0.9000)
 * checking whether the package can be unloaded cleanly ... OK
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
-* checking loading without being on the library search path ... OK
 * checking use of S3 registration ... OK
 * checking dependencies in R code ... OK
-* checking S3 generic/method consistency ... OK
+* checking S3 generic/method consistency ... WARNING
+summary:
+  function(object, ...)
+summary.regmedint:
+  function(x, a0, a1, m_cde, c_cond, args_mreg_fit, args_yreg_fit,
+           exponentiate, level, ...)
+
+coef:
+  function(object, ...)
+coef.regmedint:
+  function(x, a0, a1, m_cde, c_cond, ...)
+
+coef:
+  function(object, ...)
+coef.summary_regmedint:
+  function(x, ...)
+
+confint:
+  function(object, parm, level, ...)
+confint.regmedint:
+  function(x, parm, level, a0, a1, m_cde, c_cond, ...)
+
+vcov:
+  function(object, ...)
+vcov.regmedint:
+  function(x, a0, a1, m_cde, c_cond, ...)
+
+See section ‘Generic functions and methods’ in the ‘Writing R
+Extensions’ manual.
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
-* checking R code for possible problems ... OK
+* checking R code for possible problems ... NOTE
+validate_args: no visible global function definition for
+  ‘complete.cases’
+Undefined global functions or variables:
+  complete.cases
+Consider adding
+  importFrom("stats", "complete.cases")
+to your NAMESPACE file.
 * checking Rd files ... OK
 * checking Rd metadata ... OK
 * checking Rd line widths ... OK
@@ -53,11 +89,33 @@ Version contains large components (0.0.0.9000)
 * checking Rd \usage sections ... OK
 * checking Rd contents ... OK
 * checking for unstated dependencies in examples ... OK
+* checking files in ‘vignettes’ ... WARNING
+Files in the 'vignettes' directory but no files in 'inst/doc':
+  ‘01_introduction.Rmd’, ‘02_formulas.Rmd’, ‘03_bootstrap.Rmd’,
+    ‘04_mi.Rmd’, ‘man/figuresunnamed-chunk-3-1.png’
+Package has no Sweave vignette sources and no VignetteBuilder field.
 * checking examples ... NONE
 * checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ...
- OK
+ ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  > test_check("regmedint")
+  ── 1. Error: calc_myreg: calls calc_myreg_mreg_linear_yreg_linear when mreg line
+  Function calc_myreg_mreg_linear_yreg_linear not found in environment testthat.
+  Backtrace:
+   1. testthat::with_mock(...)
+   2. testthat:::extract_mocks(mock_funs, .env = .env)
+   3. base::lapply(...)
+   4. testthat:::FUN(X[[i]], ...)
+  
+  ══ testthat results  ═══════════════════════════════════════════════════════════
+  [ OK: 3993 | SKIPPED: 0 | WARNINGS: 0 | FAILED: 1 ]
+  1. Error: calc_myreg: calls calc_myreg_mreg_linear_yreg_linear when mreg linear / yreg linear (@test-05_calc_myreg.R#95) 
+  
+  Error: testthat unit tests failed
+  Execution halted
 * checking PDF version of manual ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 NOTE
+Status: 1 ERROR, 2 WARNINGs, 3 NOTEs
