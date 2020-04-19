@@ -260,8 +260,8 @@ grad_prop_med_yreg_logistic <- Deriv::Deriv(prop_med_yreg_logistic)
 ##     .e3 <- .e1 * .e2
 ##     .e4 <- .e3 - 1
 ##     .e5 <- .e2 - 1
-##     c(pnde = (1 - .e3/.e4) * .e1 * .e5/.e4, tnie = (1 - .e1 *
-##         .e5/.e4) * .e1 * .e2/.e4)
+##     c(pnde = (1 - .e3/.e4) * .e1 * .e5/.e4,
+##       tnie = (1 - .e1 * .e5/.e4) * .e1 * .e2/.e4)
 ## }
 ## Use this vector to linearly combine Gamma_pnde and Gamma_tnie.
 ## Expanded
