@@ -15,6 +15,17 @@ library(tidyverse)
 ### Internal function for yreg model fitting (loglinear)
 ################################################################################
 
+## Zou 2004
+## Am J Epidemiol. 2004 Apr 1;159(7):702-6.
+## A modified poisson regression approach to prospective studies with binary data.
+## https://www.ncbi.nlm.nih.gov/pubmed/15033648
+##
+## Zeileis 2006
+## J Stat Softw. 2006;16:1-16.
+## Object-oriented Computation of Sandwich Estimators
+## https://www.jstatsoft.org/article/view/v016i09
+
+
 describe("fit_yreg loglinear as modified poisson (no interaction)", {
 
     data(pbc)
