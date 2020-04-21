@@ -140,8 +140,8 @@ describe("fit_yreg loglinear as modified poisson (interaction)", {
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
-        c("regmedint_mod_poisson", expect_equal(class(yreg_fit0),
-                     class(ref_fit0)))
+        expect_equal(class(yreg_fit0),
+                     c("regmedint_mod_poisson", class(ref_fit0)))
         ## Same formula
         expect_equal(as.character(yreg_fit0$call$formula),
                      as.character(ref_fit0$call$formula))
@@ -167,8 +167,8 @@ describe("fit_yreg loglinear as modified poisson (interaction)", {
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
-        c("regmedint_mod_poisson", expect_equal(class(yreg_fit1),
-                     class(ref_fit1)))
+        expect_equal(class(yreg_fit1),
+                     c("regmedint_mod_poisson", class(ref_fit1)))
         ## Same formula
         expect_equal(as.character(yreg_fit1$call$formula),
                      as.character(ref_fit1$call$formula))
@@ -194,8 +194,8 @@ describe("fit_yreg loglinear as modified poisson (interaction)", {
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
-        c("regmedint_mod_poisson", expect_equal(class(yreg_fit3),
-                     class(ref_fit3)))
+        expect_equal(class(yreg_fit3),
+                     c("regmedint_mod_poisson", class(ref_fit3)))
         ## Same formula
         expect_equal(as.character(yreg_fit3$call$formula),
                      as.character(ref_fit3$call$formula))
