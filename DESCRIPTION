@@ -17,11 +17,11 @@ Imports:
     MASS,
     Matrix,
     assertthat,
-    purrr,
-    rlang,
     sandwich,
     survival
 Suggests:
+    purrr,
+    rlang,
     stringr,
     testthat,
     tidyverse
