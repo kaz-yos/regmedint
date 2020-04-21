@@ -49,16 +49,16 @@ describe("fit_yreg loglinear as modified poisson (no interaction)", {
                         data = pbc_cc)
         ## Same classes
         expect_equal(class(yreg_fit0),
-                     class(ref_fit0))
+                     c("regmedint_mod_poisson", class(ref_fit0)))
         ## Same formula
         expect_equal(as.character(yreg_fit0$call$formula),
                      as.character(ref_fit0$call$formula))
         ## Same coef
         expect_equal(coef(yreg_fit0),
                      coef(ref_fit0))
-        ## Same vcov
+        ## Robust vcov
         expect_equal(vcov(yreg_fit0),
-                     vcov(ref_fit0))
+                     sandwich::sandwich(ref_fit0))
     })
 
     it("fits a correct model with one covariate", {
@@ -76,16 +76,16 @@ describe("fit_yreg loglinear as modified poisson (no interaction)", {
                         data = pbc_cc)
         ## Same classes
         expect_equal(class(yreg_fit1),
-                     class(ref_fit1))
+                     c("regmedint_mod_poisson", class(ref_fit1)))
         ## Same formula
         expect_equal(as.character(yreg_fit1$call$formula),
                      as.character(ref_fit1$call$formula))
         ## Same coef
         expect_equal(coef(yreg_fit1),
                      coef(ref_fit1))
-        ## Same vcov
+        ## Robust vcov
         expect_equal(vcov(yreg_fit1),
-                     vcov(ref_fit1))
+                     sandwich::sandwich(ref_fit1))
     })
 
     it("fits a correct model with three covariates", {
@@ -103,16 +103,16 @@ describe("fit_yreg loglinear as modified poisson (no interaction)", {
                         data = pbc_cc)
         ## Same classes
         expect_equal(class(yreg_fit3),
-                     class(ref_fit3))
+                     c("regmedint_mod_poisson", class(ref_fit3)))
         ## Same formula
         expect_equal(as.character(yreg_fit3$call$formula),
                      as.character(ref_fit3$call$formula))
         ## Same coef
         expect_equal(coef(yreg_fit3),
                      coef(ref_fit3))
-        ## Same vcov
+        ## Robust vcov
         expect_equal(vcov(yreg_fit3),
-                     vcov(ref_fit3))
+                     sandwich::sandwich(ref_fit3))
     })
 
 })
@@ -140,17 +140,17 @@ describe("fit_yreg loglinear as modified poisson (interaction)", {
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
-        expect_equal(class(yreg_fit0),
-                     class(ref_fit0))
+        c("regmedint_mod_poisson", expect_equal(class(yreg_fit0),
+                     class(ref_fit0)))
         ## Same formula
         expect_equal(as.character(yreg_fit0$call$formula),
                      as.character(ref_fit0$call$formula))
         ## Same coef
         expect_equal(coef(yreg_fit0),
                      coef(ref_fit0))
-        ## Same vcov
+        ## Robust vcov
         expect_equal(vcov(yreg_fit0),
-                     vcov(ref_fit0))
+                     sandwich::sandwich(ref_fit0))
     })
 
     it("fits a correct model with one covariate", {
@@ -167,17 +167,17 @@ describe("fit_yreg loglinear as modified poisson (interaction)", {
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
-        expect_equal(class(yreg_fit1),
-                     class(ref_fit1))
+        c("regmedint_mod_poisson", expect_equal(class(yreg_fit1),
+                     class(ref_fit1)))
         ## Same formula
         expect_equal(as.character(yreg_fit1$call$formula),
                      as.character(ref_fit1$call$formula))
         ## Same coef
         expect_equal(coef(yreg_fit1),
                      coef(ref_fit1))
-        ## Same vcov
+        ## Robust vcov
         expect_equal(vcov(yreg_fit1),
-                     vcov(ref_fit1))
+                     sandwich::sandwich(ref_fit1))
     })
 
     it("fits a correct model with three covariates", {
@@ -194,17 +194,17 @@ describe("fit_yreg loglinear as modified poisson (interaction)", {
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
-        expect_equal(class(yreg_fit3),
-                     class(ref_fit3))
+        c("regmedint_mod_poisson", expect_equal(class(yreg_fit3),
+                     class(ref_fit3)))
         ## Same formula
         expect_equal(as.character(yreg_fit3$call$formula),
                      as.character(ref_fit3$call$formula))
         ## Same coef
         expect_equal(coef(yreg_fit3),
                      coef(ref_fit3))
-        ## Same vcov
+        ## Robust vcov
         expect_equal(vcov(yreg_fit3),
-                     vcov(ref_fit3))
+                     sandwich::sandwich(ref_fit3))
     })
 
 })
