@@ -8,17 +8,18 @@ Authors@R: c(
     role = c('cre','aut'),
     comment = c(ORCID = '0000-0002-2030-3549'))
     )
-Description: R re-implementation of the SAS macro developped by Valeri and VanderWeele.
+Description: R implementation of regression-based causal mediation analysis with standard errors via the delta method.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Imports:
-    assertthat,
     Deriv,
     MASS,
     Matrix,
+    assertthat,
     purrr,
     rlang,
+    sandwich,
     survival
 Suggests:
     stringr,
