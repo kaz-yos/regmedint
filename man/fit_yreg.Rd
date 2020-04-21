@@ -27,14 +27,14 @@ fit_yreg(yreg, data, yvar, avar, mvar, cvar, eventvar, interaction)
 Model fit object from on of the above regression functions.
 }
 \description{
-The outcome model type \code{yreg} can be one of the following \code{"linear"}, \code{"logistic"}, \code{"loglinear"}, \code{"poisson"}, \code{"negbin"}, \code{"survCox"}, \code{"survAFT_exp"}, or \code{"survAFT_weibull"}.
+The outcome model type \code{yreg} can be one of the following \code{"linear"}, \code{"logistic"}, \code{"loglinear"} (implemented as modified Poisson), \code{"poisson"}, \code{"negbin"}, \code{"survCox"}, \code{"survAFT_exp"}, or \code{"survAFT_weibull"}.
 }
 \details{
 The outcome regression functions to be called are the following:
 \itemize{
   \item \code{"linear"} \code{\link{lm}}
   \item \code{"logistic"} \code{\link{glm}}
-  \item \code{"loglinear"} \code{\link{glm}}
+  \item \code{"loglinear"} \code{\link{glm}} (modified Poisson)
   \item \code{"poisson"} \code{\link{glm}}
   \item \code{"negbin"} \code{\link[MASS]{glm.nb}}
   \item \code{"survCox"} \code{\link[survival]{coxph}}
