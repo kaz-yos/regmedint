@@ -15,13 +15,13 @@
 
 ##' Fit a model for the outcome given the treatment, mediator, and covariates.
 ##'
-##' The outcome model type \code{yreg} can be one of the following \code{"linear"}, \code{"logistic"}, \code{"loglinear"}, \code{"poisson"}, \code{"negbin"}, \code{"survCox"}, \code{"survAFT_exp"}, or \code{"survAFT_weibull"}.
+##' The outcome model type \code{yreg} can be one of the following \code{"linear"}, \code{"logistic"}, \code{"loglinear"} (implemented as modified Poisson), \code{"poisson"}, \code{"negbin"}, \code{"survCox"}, \code{"survAFT_exp"}, or \code{"survAFT_weibull"}.
 ##'
 ##' The outcome regression functions to be called are the following:
 ##' \itemize{
 ##'   \item \code{"linear"} \code{\link{lm}}
 ##'   \item \code{"logistic"} \code{\link{glm}}
-##'   \item \code{"loglinear"} \code{\link{glm}}
+##'   \item \code{"loglinear"} \code{\link{glm}} (modified Poisson)
 ##'   \item \code{"poisson"} \code{\link{glm}}
 ##'   \item \code{"negbin"} \code{\link[MASS]{glm.nb}}
 ##'   \item \code{"survCox"} \code{\link[survival]{coxph}}
@@ -74,17 +74,17 @@ fit_yreg <- function(yreg,
 
     } else if (yreg == "loglinear") {
 
-        ## FIXME: implement loglinear
-        message("loglinear is unsupported currently. Just running regular Poisson!")
-        ## https://github.com/mdonoghoe/logbin does not support an interaction term
-        ## in the formula.
-        eval(
-            bquote(
-                glm(formula = .(as.formula(string_formula)),
-                    family = poisson(link = "log"),
-                    data = data)
+        message("loglinear is implemented as modified Poisson (Zou 2004).")
+        yreg_fit <-
+            eval(
+                bquote(
+                    glm(formula = .(as.formula(string_formula)),
+                        family = poisson(link = "log"),
+                        data = data)
+                )
             )
-        )
+        class(yreg_fit) <- c("regmedint_mod_poisson", class(yreg_fit))
+        return(yreg_fit)
 
     } else if (yreg == "poisson") {
 
@@ -185,4 +185,16 @@ string_yreg_formula <- function(yvar,
         return(sprintf("%s ~ %s", surv_string, amcvar_string))
 
     }
+}
+
+##' Robust sandwich variance estimator for modified Poisson
+##'
+##' .. content for \details{} ..
+##'
+##' @param object A model object of the class \code{regmedint_mod_poisson}
+##' @param ... For compatibility with the generic.
+##'
+##' @return A variance-covariance matrix using the \code{\link{sandwich::sandwich}}.
+vcov.regmedint_mod_poisson <- function(object, ...) {
+    sandwich::sandwich(object, ...)
 }
