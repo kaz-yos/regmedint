@@ -237,11 +237,11 @@ junk <- macro_args_sas_r_prelim %>%
     mutate(filename_r_res = stringr::str_replace_all(filename, "sas$", "r.txt")) %>%
     mutate(junk = pmap(list(res, filename_r_res, cmean), function(res, filename_r_res, cmean) {
         ## Create a textual representation of the results
-        res_char_vec <- capture.output(summary(res))
+        res_char_vec <- capture.output(summary(res, exponentiate = TRUE))
         res_char <- paste0(paste0(res_char_vec, collapse = "\n"), "\n")
         ## Create a textual representation of the results at cmean when avaialble
         if (!is.null(cmean)) {
-            res_char_vec_cmean <- capture.output(coef(summary(res, c_cond = cmean)))
+            res_char_vec_cmean <- capture.output(coef(summary(res, c_cond = cmean, exponentiate = TRUE)))
             res_char_cmean <- paste0(paste0(res_char_vec_cmean, collapse = "\n"), "\n")
             res_char <- paste0(res_char,
                                "\n### Re-evaluation at c_cond = cmean\n",
