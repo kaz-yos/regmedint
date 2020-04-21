@@ -1,125 +1,31 @@
 ✔ |  OK F W S | Context
-⠏ |   0       | 01_regmedint_class_ui⠼ |   5       | 01_regmedint_class_ui✔ |   9       | 01_regmedint_class_ui [0.2 s]
+⠏ |   0       | 01_regmedint_class_ui⠸ |   4       | 01_regmedint_class_ui⠼ |   5       | 01_regmedint_class_ui✔ |   9       | 01_regmedint_class_ui [0.3 s]
 ⠏ |   0       | 03_fit_mreg✔ |  24       | 03_fit_mreg
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg✔ |  23       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear✔ |  24       | 04_fit_yreg_linear
 ⠏ |   0       | 04_fit_yreg_logistic✔ |  24       | 04_fit_yreg_logistic
-⠏ |   0       | 04_fit_yreg_loglinear✖ |  15 9     | 04_fit_yreg_loglinear
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-test-04_fit_yreg_loglinear.R:51: failure: fit_yreg loglinear as modified poisson (no interaction): fits a correct model with no covariates
-class(yreg_fit0) not equal to c("regmedint_mod_poisson", class(ref_fit0)).
-Lengths differ: 2 is not 3
-
-test-04_fit_yreg_loglinear.R:60: failure: fit_yreg loglinear as modified poisson (no interaction): fits a correct model with no covariates
-vcov(yreg_fit0) not equal to sandwich::sandwich(ref_fit0).
-9/9 mismatches (average diff: 0.0121)
-[1]  0.125813 -  0.083201 ==  0.042612
-[2] -0.073857 - -0.049282 == -0.024575
-[3] -0.000485 - -0.000283 == -0.000202
-[4] -0.073857 - -0.049282 == -0.024575
-[5]  0.051569 -  0.035078 ==  0.016491
-[6] -0.000671 - -0.000457 == -0.000214
-[7] -0.000485 - -0.000283 == -0.000202
-[8] -0.000671 - -0.000457 == -0.000214
-[9]  0.000286 -  0.000157 ==  0.000129
-
-test-04_fit_yreg_loglinear.R:78: failure: fit_yreg loglinear as modified poisson (no interaction): fits a correct model with one covariate
-class(yreg_fit1) not equal to c("regmedint_mod_poisson", class(ref_fit1)).
-Lengths differ: 2 is not 3
-
-test-04_fit_yreg_loglinear.R:87: failure: fit_yreg loglinear as modified poisson (no interaction): fits a correct model with one covariate
-vcov(yreg_fit1) not equal to sandwich::sandwich(ref_fit1).
-16/16 mismatches (average diff: 0.0155)
-[1]  0.468804 -  0.317962 ==  0.150842
-[2] -0.094729 - -0.058535 == -0.036194
-[3]  0.000972 -  0.000203 ==  0.000769
-[4] -0.006420 - -0.004504 == -0.001916
-[5] -0.094729 - -0.058535 == -0.036194
-[6]  0.052893 -  0.035345 ==  0.017548
-[7] -0.000771 - -0.000468 == -0.000303
-[8]  0.000390 -  0.000180 ==  0.000211
-[9]  0.000972 -  0.000203 ==  0.000769
-...
-
-test-04_fit_yreg_loglinear.R:105: failure: fit_yreg loglinear as modified poisson (no interaction): fits a correct model with three covariates
-class(yreg_fit3) not equal to c("regmedint_mod_poisson", class(ref_fit3)).
-Lengths differ: 2 is not 3
-
-test-04_fit_yreg_loglinear.R:114: failure: fit_yreg loglinear as modified poisson (no interaction): fits a correct model with three covariates
-vcov(yreg_fit3) not equal to sandwich::sandwich(ref_fit3).
-36/36 mismatches (average diff: 0.0166)
-[1]  0.700714 -  0.485955 ==  0.214759
-[2] -0.094428 - -0.050600 == -0.043829
-[3]  0.002371 -  0.001646 ==  0.000725
-[4] -0.005920 - -0.004277 == -0.001643
-[5]  0.037329 - -0.025215 ==  0.062544
-[6] -0.076936 - -0.055011 == -0.021925
-[7] -0.094428 - -0.050600 == -0.043829
-[8]  0.052031 -  0.030418 ==  0.021614
-[9] -0.000474 - -0.000341 == -0.000133
-...
-
-test-04_fit_yreg_loglinear.R:152: failure: fit_yreg loglinear as modified poisson (interaction): fits a correct model with no covariates
-vcov(yreg_fit0) not equal to sandwich::sandwich(ref_fit0).
-16/16 mismatches (average diff: 0.0139)
-[1]  0.21582 -  0.14616 ==  0.06966
-[2] -0.12770 - -0.08700 == -0.04070
-[3] -0.01864 - -0.01043 == -0.00822
-[4]  0.01060 -  0.00603 ==  0.00458
-[5] -0.12770 - -0.08700 == -0.04070
-[6]  0.08364 -  0.05742 ==  0.02623
-[7]  0.01060 -  0.00603 ==  0.00458
-[8] -0.00658 - -0.00383 == -0.00276
-[9] -0.01864 - -0.01043 == -0.00822
-...
-
-test-04_fit_yreg_loglinear.R:179: failure: fit_yreg loglinear as modified poisson (interaction): fits a correct model with one covariate
-vcov(yreg_fit1) not equal to sandwich::sandwich(ref_fit1).
-25/25 mismatches (average diff: 0.0128)
-[1]  0.538890 -  0.379058 ==  0.1598320
-[2] -0.140731 - -0.094682 == -0.0460487
-[3] -0.014677 - -0.009534 == -0.0051435
-[4] -0.006273 - -0.004521 == -0.0017512
-[5]  0.009082 -  0.005744 ==  0.0033384
-[6] -0.140731 - -0.094682 == -0.0460487
-[7]  0.084139 -  0.057394 ==  0.0267452
-[8]  0.010407 -  0.005898 ==  0.0045090
-[9]  0.000256 -  0.000158 ==  0.0000975
-...
-
-test-04_fit_yreg_loglinear.R:206: failure: fit_yreg loglinear as modified poisson (interaction): fits a correct model with three covariates
-vcov(yreg_fit3) not equal to sandwich::sandwich(ref_fit3).
-49/49 mismatches (average diff: 0.014)
-[1]  0.73629 -  0.51090 ==  0.22538
-[2] -0.13049 - -0.07555 == -0.05494
-[3] -0.00963 - -0.00495 == -0.00467
-[4] -0.00580 - -0.00427 == -0.00153
-[5]  0.03315 - -0.02762 ==  0.06077
-[6] -0.07180 - -0.05062 == -0.02118
-[7]  0.00712 -  0.00383 ==  0.00329
-[8] -0.13049 - -0.07555 == -0.05494
-[9]  0.08923 -  0.05581 ==  0.03342
-...
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 04_fit_yreg_negbin✔ |  24       | 04_fit_yreg_negbin
+⠏ |   0       | 04_fit_yreg_loglinear✔ |  24       | 04_fit_yreg_loglinear
+⠏ |   0       | 04_fit_yreg_negbin⠹ |  23       | 04_fit_yreg_negbin✔ |  24       | 04_fit_yreg_negbin [0.1 s]
 ⠏ |   0       | 04_fit_yreg_poisson✔ |  24       | 04_fit_yreg_poisson
 ⠏ |   0       | 04_fit_yreg_survAFT_exp✔ |  24       | 04_fit_yreg_survAFT_exp
 ⠏ |   0       | 04_fit_yreg_survAFT_weibull✔ |  24       | 04_fit_yreg_survAFT_weibull
 ⠏ |   0       | 04_fit_yreg_survCox✔ |  24       | 04_fit_yreg_survCox
 ⠏ |   0       | 05_calc_myreg✔ |   3       | 05_calc_myreg
-⠏ |   0       | 06_calc_myreg_helpers_coef⠏ |  40       | 06_calc_myreg_helpers_coef⠧ |  88       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov⠦ |  27       | 06_calc_myreg_helpers_vcov⠴ |  56       | 06_calc_myreg_helpers_vcov⠙ |  82       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.4 s]
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear⠧ |  38       | 07_calc_myreg_mreg_linear_yreg_linear⠴ |  76       | 07_calc_myreg_mreg_linear_yreg_linear⠙ | 112       | 07_calc_myreg_mreg_linear_yreg_linear⠧ | 158       | 07_calc_myreg_mreg_linear_yreg_linear⠏ | 170       | 07_calc_myreg_mreg_linear_yreg_linear✔ | 225       | 07_calc_myreg_mreg_linear_yreg_linear [0.6 s]
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  43       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ |  90       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ | 127       | 07_calc_myreg_mreg_linear_yreg_logistic⠙ | 172       | 07_calc_myreg_mreg_linear_yreg_logistic⠦ | 227       | 07_calc_myreg_mreg_linear_yreg_logistic✔ | 235       | 07_calc_myreg_mreg_linear_yreg_logistic [0.5 s]
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear⠹ |  53       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  91       | 07_calc_myreg_mreg_logistic_yreg_linear⠏ | 140       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ | 178       | 07_calc_myreg_mreg_logistic_yreg_linear✔ | 220       | 07_calc_myreg_mreg_logistic_yreg_linear [0.9 s]
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic⠙ |  52       | 07_calc_myreg_mreg_logistic_yreg_logistic⠏ |  90       | 07_calc_myreg_mreg_logistic_yreg_logistic⠏ | 140       | 07_calc_myreg_mreg_logistic_yreg_logistic⠋ | 181       | 07_calc_myreg_mreg_logistic_yreg_logistic✔ | 223       | 07_calc_myreg_mreg_logistic_yreg_logistic [0.9 s]
-⠏ |   0       | 08_regmedint_class_user_methods⠋ |  21       | 08_regmedint_class_user_methods⠙ |  32       | 08_regmedint_class_user_methods⠸ |  44       | 08_regmedint_class_user_methods⠙ |  72       | 08_regmedint_class_user_methods⠋ |  91       | 08_regmedint_class_user_methods⠸ | 104       | 08_regmedint_class_user_methods⠦ | 137       | 08_regmedint_class_user_methods⠋ | 151       | 08_regmedint_class_user_methods⠏ | 170       | 08_regmedint_class_user_methods⠧ | 198       | 08_regmedint_class_user_methods⠙ | 212       | 08_regmedint_class_user_methods✔ | 226       | 08_regmedint_class_user_methods [1.2 s]
-⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠴ | 106       | 09_cross_check_with_sas_macro⠙ | 162       | 09_cross_check_with_sas_macro⠦ | 267       | 09_cross_check_with_sas_macro⠙ | 392       | 09_cross_check_with_sas_macro⠇ | 519       | 09_cross_check_with_sas_macro⠦ | 637       | 09_cross_check_with_sas_macro⠸ | 764       | 09_cross_check_with_sas_macro⠋ | 891       | 09_cross_check_with_sas_macro⠧ | 1028       | 09_cross_check_with_sas_macro⠙ | 1142       | 09_cross_check_with_sas_macro⠸ | 1264       | 09_cross_check_with_sas_macro⠼ | 1395       | 09_cross_check_with_sas_macro⠇ | 1519       | 09_cross_check_with_sas_macro⠴ | 1646       | 09_cross_check_with_sas_macro⠼ | 1765       | 09_cross_check_with_sas_macro⠇ | 1909       | 09_cross_check_with_sas_macro⠇ | 2049       | 09_cross_check_with_sas_macro⠹ | 2193       | 09_cross_check_with_sas_macro⠏ | 2330       | 09_cross_check_with_sas_macro✔ | 2419       | 09_cross_check_with_sas_macro [4.0 s]
+⠏ |   0       | 06_calc_myreg_helpers_coef⠧ |  38       | 06_calc_myreg_helpers_coef⠋ |  81       | 06_calc_myreg_helpers_coef✔ | 109       | 06_calc_myreg_helpers_coef [0.3 s]
+⠏ |   0       | 06_calc_myreg_helpers_vcov⠦ |  27       | 06_calc_myreg_helpers_vcov⠸ |  54       | 06_calc_myreg_helpers_vcov⠹ |  73       | 06_calc_myreg_helpers_vcov⠦ |  97       | 06_calc_myreg_helpers_vcov✔ | 110       | 06_calc_myreg_helpers_vcov [0.5 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear⠋ |  31       | 07_calc_myreg_mreg_linear_yreg_linear⠙ |  72       | 07_calc_myreg_mreg_linear_yreg_linear⠹ | 103       | 07_calc_myreg_mreg_linear_yreg_linear⠧ | 158       | 07_calc_myreg_mreg_linear_yreg_linear⠇ | 179       | 07_calc_myreg_mreg_linear_yreg_linear✔ | 225       | 07_calc_myreg_mreg_linear_yreg_linear [0.6 s]
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ |  33       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ |  70       | 07_calc_myreg_mreg_linear_yreg_logistic⠏ | 100       | 07_calc_myreg_mreg_linear_yreg_logistic⠹ | 153       | 07_calc_myreg_mreg_linear_yreg_logistic⠴ | 176       | 07_calc_myreg_mreg_linear_yreg_logistic⠇ | 229       | 07_calc_myreg_mreg_linear_yreg_logistic✔ | 235       | 07_calc_myreg_mreg_linear_yreg_logistic [0.6 s]
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear⠇ |  49       | 07_calc_myreg_mreg_logistic_yreg_linear⠹ |  83       | 07_calc_myreg_mreg_logistic_yreg_linear⠙ | 112       | 07_calc_myreg_mreg_logistic_yreg_linear⠇ | 159       | 07_calc_myreg_mreg_logistic_yreg_linear⠹ | 203       | 07_calc_myreg_mreg_logistic_yreg_linear✔ | 220       | 07_calc_myreg_mreg_logistic_yreg_linear [0.9 s]
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic⠹ |  43       | 07_calc_myreg_mreg_logistic_yreg_logistic⠼ |  75       | 07_calc_myreg_mreg_logistic_yreg_logistic⠋ | 101       | 07_calc_myreg_mreg_logistic_yreg_logistic⠹ | 153       | 07_calc_myreg_mreg_logistic_yreg_logistic⠋ | 181       | 07_calc_myreg_mreg_logistic_yreg_logistic✔ | 223       | 07_calc_myreg_mreg_logistic_yreg_logistic [1.1 s]
+⠏ |   0       | 08_regmedint_class_user_methods⠹ |  13       | 08_regmedint_class_user_methods⠼ |  25       | 08_regmedint_class_user_methods⠴ |  36       | 08_regmedint_class_user_methods⠴ |  46       | 08_regmedint_class_user_methods⠹ |  73       | 08_regmedint_class_user_methods⠇ |  89       | 08_regmedint_class_user_methods⠧ |  98       | 08_regmedint_class_user_methods⠦ | 117       | 08_regmedint_class_user_methods⠇ | 139       | 08_regmedint_class_user_methods⠏ | 150       | 08_regmedint_class_user_methods⠼ | 165       | 08_regmedint_class_user_methods⠇ | 189       | 08_regmedint_class_user_methods⠸ | 204       | 08_regmedint_class_user_methods⠼ | 215       | 08_regmedint_class_user_methods✔ | 226       | 08_regmedint_class_user_methods [1.5 s]
+⠏ |   0       | 09_cross_check_with_sas_macro⠙ |   2       | 09_cross_check_with_sas_macro⠙ | 102       | 09_cross_check_with_sas_macro⠙ | 162       | 09_cross_check_with_sas_macro⠏ | 250       | 09_cross_check_with_sas_macro⠹ | 363       | 09_cross_check_with_sas_macro⠋ | 471       | 09_cross_check_with_sas_macro⠙ | 562       | 09_cross_check_with_sas_macro⠦ | 657       | 09_cross_check_with_sas_macro⠋ | 751       | 09_cross_check_with_sas_macro⠇ | 859       | 09_cross_check_with_sas_macro⠧ | 958       | 09_cross_check_with_sas_macro⠋ | 1051       | 09_cross_check_with_sas_macro⠴ | 1146       | 09_cross_check_with_sas_macro⠼ | 1235       | 09_cross_check_with_sas_macro⠸ | 1334       | 09_cross_check_with_sas_macro⠏ | 1430       | 09_cross_check_with_sas_macro⠋ | 1531       | 09_cross_check_with_sas_macro⠏ | 1640       | 09_cross_check_with_sas_macro⠦ | 1747       | 09_cross_check_with_sas_macro⠹ | 1853       | 09_cross_check_with_sas_macro⠸ | 1964       | 09_cross_check_with_sas_macro⠸ | 2074       | 09_cross_check_with_sas_macro⠸ | 2174       | 09_cross_check_with_sas_macro⠧ | 2288       | 09_cross_check_with_sas_macro⠹ | 2403       | 09_cross_check_with_sas_macro✔ | 2419       | 09_cross_check_with_sas_macro [4.5 s]
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 10.9 s
+Duration: 12.5 s
 
-OK:       4009
-Failed:   9
+OK:       4018
+Failed:   0
 Warnings: 0
 Skipped:  0
+
+You rock!
