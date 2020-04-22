@@ -103,13 +103,14 @@ print.regmedint <- function(x,
 ##' Summarize the \code{mreg_fit}, \code{yreg_fit}, and the mediation analysis effect estimates.
 ##'
 ##' @inheritParams print.regmedint
+##' @param object An object of the \code{\link{regmedint}} class.
 ##' @param exponentiate Whether to add exponentiated point and confidence limit estimates. When \code{yreg = "linear"}, it is ignored.
 ##' @param level Confidence level for the confidence intervals.
 ##'
 ##' @return A \code{summary_regmedint} object, which is a list containing the summary objects of the \code{mreg_fit} and the \code{yreg_fit} as well as the mediation analysis results.
 ##'
 ##' @export
-summary.regmedint <- function(x,
+summary.regmedint <- function(object,
                               a0 = NULL,
                               a1 = NULL,
                               m_cde = NULL,
@@ -120,6 +121,7 @@ summary.regmedint <- function(x,
                               level = 0.95,
                               ...) {
 
+    x <- object
     ## This is a user function. Check arguments heavily.
     validate_eval_at_values(x = x,
                             a0 = a0,
@@ -254,14 +256,14 @@ print.summary_regmedint <- function(x, ...) {
 ##'
 ##' Extract the result matrix from a summary_regmedint object.
 ##'
-##' @param x An object with a class of \code{summary_regmedint}.
+##' @param object An object with a class of \code{summary_regmedint}.
 ##' @param ... For compatibility with the generic.
 ##'
 ##' @return  A matrix populated with results.
 ##'
 ##' @export
-coef.summary_regmedint <- function(x, ...) {
-    x$summary_myreg
+coef.summary_regmedint <- function(object, ...) {
+    object$summary_myreg
 }
 
 
@@ -321,17 +323,19 @@ print_eval_info_helper <- function(a0, a1, m_cde, c_cond,
 ##' Extract point estimates evaluated at \code{a0}, \code{a1}, \code{m_cde}, and \code{c_cond}.
 ##'
 ##' @inheritParams print.regmedint
+##' @param object An object of the \code{\link{regmedint}} class.
 ##'
 ##' @return A numeric vector of point estimates.
 ##'
 ##' @export
-coef.regmedint <- function(x,
+coef.regmedint <- function(object,
                            a0 = NULL,
                            a1 = NULL,
                            m_cde = NULL,
                            c_cond = NULL,
                            ...) {
 
+    x <- object
     ## This is a user function. Check arguments heavily.
     validate_eval_at_values(x = x,
                             a0 = a0,
@@ -370,17 +374,19 @@ coef.regmedint <- function(x,
 ##' Extract variance estimates evaluated at \code{a0}, \code{a1}, \code{m_cde}, and \code{c_cond}.
 ##'
 ##' @inheritParams print.regmedint
+##' @param object An object of the \code{\link{regmedint}} class.
 ##'
 ##' @return A numeric matrix with the diagonals populated with variance estimates. Off-diagnonals are NA since these are not estimated.
 ##'
 ##' @export
-vcov.regmedint <- function(x,
+vcov.regmedint <- function(object,
                            a0 = NULL,
                            a1 = NULL,
                            m_cde = NULL,
                            c_cond = NULL,
                            ...) {
 
+    x <- object
     ## This is a user function. Check arguments heavily.
     validate_eval_at_values(x = x,
                             a0 = a0,
@@ -430,6 +436,7 @@ vcov.regmedint <- function(x,
 ##' Construct Wald approximate confidence intervals for the quantities of interest.
 ##'
 ##' @inheritParams print.regmedint
+##' @param object An object of the \code{\link{regmedint}} class.
 ##' @param parm For compatibility with generic. Ignored.
 ##' @param level A numeric vector of length one. Requested confidence level. Defaults to 0.95.
 ##' @param ... For compatibility with generic.
@@ -437,7 +444,7 @@ vcov.regmedint <- function(x,
 ##' @return A numeric matrix of the lower limit and upper limit.
 ##'
 ##' @export
-confint.regmedint <- function(x,
+confint.regmedint <- function(object,
                               parm = NULL,
                               level = 0.95,
                               a0 = NULL,
@@ -446,6 +453,7 @@ confint.regmedint <- function(x,
                               c_cond = NULL,
                               ...) {
 
+    x <- object
     ## This is a user function. Check arguments heavily.
     validate_eval_at_values(x = x,
                             a0 = a0,
