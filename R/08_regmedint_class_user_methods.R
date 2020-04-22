@@ -168,7 +168,7 @@ summary.regmedint <- function(object,
     res_p <- 2 * (1 - pnorm(q = abs(res_Z)))
 
     ## Compute CI estimates
-    res_ci <- confint(x = x,
+    res_ci <- confint(object = x,
                       a0 = a0,
                       a1 = a1,
                       m_cde = m_cde,
