@@ -180,7 +180,7 @@ validate_args <- function(data,
     ## between yreg and mreg.
     vars_interest <- c(yvar, avar, mvar, cvar, eventvar)
     data_vars_interest <- data[, vars_interest, drop = FALSE]
-    assertthat::assert_that(all(complete.cases(data_vars_interest)),
+    assertthat::assert_that(all(stats::complete.cases(data_vars_interest)),
                             msg = "Missing is not allowed in variables of intrest! Consider multiple imputation.")
 
     ## Do not allow factors as they can result in multiple
