@@ -252,7 +252,11 @@ summary.regmedint_mod_poisson <- function(object, ...) {
 	Qr <- qr.lm(object)
         ## WATCHIT! doesn't this rely on pivoting not permuting 1L:p? -- that's quaranteed
         coef.p <- object$coefficients[Qr$pivot[p1]]
-        covmat.unscaled <- chol2inv(Qr$qr[p1,p1,drop=FALSE])
+        ## Changed from below.
+        ## covmat.unscaled <- chol2inv(Qr$qr[p1,p1,drop=FALSE])
+        ## The dispersion is fixed at 1 for poisson, so vcov is ok.
+        ## This should dispatch a robust variance estimator.
+        covmat.unscaled <- vcov(object)
         dimnames(covmat.unscaled) <- list(names(coef.p),names(coef.p))
         covmat <- dispersion*covmat.unscaled
         var.cf <- diag(covmat)
