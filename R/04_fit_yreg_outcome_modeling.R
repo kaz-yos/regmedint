@@ -196,6 +196,11 @@ string_yreg_formula <- function(yvar,
 ##'
 ##' @return A variance-covariance matrix using the \code{\link[sandwich]{sandwich}}.
 vcov.regmedint_mod_poisson <- function(object, ...) {
+    ## Drop the regmedint_mod_poisson class from the object because
+    ## sandwich::sandwich internally invoke a summary method.
+    ## We want the regular summary.glm to be invoked, not our version
+    ## summary.regmedint_mod_poisson.
+    class(object) <- setdiff(class(object), "regmedint_mod_poisson")
     sandwich::sandwich(object, ...)
 }
 
