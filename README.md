@@ -462,32 +462,6 @@ The software design is outlined here for those who may be interested.
         (cde,pnde,tnie,tnde,pnie,te,pm). Off-diagonals are NA.
     -   confint.regmedint: regmedint → matrix of (lower,upper)
 
-Corrections to the SAS macro
-============================
-
-The version of the SAS macro included in this repo contains some
-corrections to the original.
-
-Empty cvar handling
--------------------
-
-The original errored upon encountering an empty cvar argment. The
-version here guards against this error by not calling the countw()
-function when it is empty.
-
-mreg logistic yreg linear \_{TE} The gamma\[3,\] expression (*Γ*<sub>*T**E*</sub>) for the total effect standard error was corrected based on VV2013 Appendix p14.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-mreg linear yreg linear interacton true for “conditional” TNIE
---------------------------------------------------------------
-
-For gamma\[11,\], x0 expression was missing and was added.
-
-mreg logistic yreg linear interaction true Gamma for TE
--------------------------------------------------------
-
-gamma\[6,\]
-
 Similar or related R projects
 =============================
 

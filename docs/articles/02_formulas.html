@@ -143,7 +143,7 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7f963c5b5708&gt;
+## &lt;bytecode: 0x7fe117e60be0&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 <div id="standard-error-estimates" class="section level2">
@@ -185,25 +185,14 @@
 ##             length(beta2)), 0, 0, beta1, (beta1 * a0), rep(0, 
 ##             length(theta4))))
 ##         Gamma_te &lt;- Gamma_pnde + Gamma_tnie
-##         d1_numer &lt;- -theta3 * ((theta2 * beta1) + (theta3 * beta1 * 
-##             a1))
-##         d1_denom_sqrt &lt;- (theta1 + (theta3 * beta0) + (theta3 * 
-##             beta1 * a0) + (theta3 * beta2_c) + (theta2 * beta1) + 
-##             (theta3 * beta1 * a1))
-##         d1 &lt;- d1_numer/d1_denom_sqrt^2
-##         d2 &lt;- ((theta2 + (theta3 * a1) * (-1 * ((theta2 * beta1) + 
-##             (theta3 * beta1 * a1)) + d1_denom_sqrt)) - (theta3 * 
-##             a0))/d1_denom_sqrt^2
-##         d3 &lt;- c_cond * (d1_numer/d1_denom_sqrt^2)
-##         d4 &lt;- 0
-##         d5 &lt;- ((theta2 * beta1) + (theta3 * beta1 * a1))/d1_denom_sqrt^2
-##         d6 &lt;- beta1 * (-1 * ((theta2 * beta1) + (theta3 * beta1 * 
-##             a1)) + d1_denom_sqrt)/d1_denom_sqrt^2
-##         d7 &lt;- ((beta1 * a1 * d1_denom_sqrt) - ((beta0 + (beta1 * 
-##             (a1 + a0)) + beta2_c) * ((theta2 * beta1) + (theta3 * 
-##             beta1 * a1))))/d1_denom_sqrt^2
-##         d8 &lt;- rep(0, length(theta4))
-##         Gamma_pm &lt;- c(d1, d2, d3, d4, d5, d6, d7, d8)
+##         pnde &lt;- (theta1 + (theta3 * beta0) + (theta3 * beta1 * 
+##             a0) + (theta3 * beta2_c)) * (a1 - a0)
+##         tnie &lt;- ((theta2 * beta1) + (theta3 * beta1 * a1)) * 
+##             (a1 - a0)
+##         d_pm &lt;- grad_prop_med_yreg_linear(pnde = unname(pnde), 
+##             tnie = unname(tnie))
+##         Gamma_pm &lt;- (d_pm[["pnde"]] * Gamma_pnde) + (d_pm[["tnie"]] * 
+##             Gamma_tnie)
 ##         a1_sub_a0 &lt;- abs(a1 - a0)
 ##         se_cde &lt;- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% 
 ##             Gamma_cde)) * a1_sub_a0
@@ -226,7 +215,7 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7f963c713628&gt;
+## &lt;bytecode: 0x7fe117fbeb00&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
@@ -275,7 +264,7 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7f963e8735b8&gt;
+## &lt;bytecode: 0x7fe120118e80&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 <div id="standard-error-estimates-1" class="section level2">
@@ -354,7 +343,7 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7f963e9c1a50&gt;
+## &lt;bytecode: 0x7fe120269318&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
@@ -405,7 +394,7 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7f963eb18588&gt;
+## &lt;bytecode: 0x7fe1203c3dd0&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 <div id="standard-error-estimates-2" class="section level2">
@@ -530,7 +519,7 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7f963ec64b38&gt;
+## &lt;bytecode: 0x7fe12050c470&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
@@ -585,7 +574,7 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7f963edd28d0&gt;
+## &lt;bytecode: 0x7fe12067a208&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 <div id="standard-error-estimates-3" class="section level2">
@@ -721,7 +710,7 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7f963ef22e80&gt;
+## &lt;bytecode: 0x7fe1207cc7b8&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
@@ -749,7 +738,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
 </div>
 
       </footer>

@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Fit a model for the outcome given the treatment, mediator, and covariates. — fit_yreg" />
-<meta property="og:description" content="The outcome model type yreg can be one of the following &quot;linear&quot;, &quot;logistic&quot;, &quot;loglinear&quot;, &quot;poisson&quot;, &quot;negbin&quot;, &quot;survCox&quot;, &quot;survAFT_exp&quot;, or &quot;survAFT_weibull&quot;." />
+<meta property="og:description" content="The outcome model type yreg can be one of the following &quot;linear&quot;, &quot;logistic&quot;, &quot;loglinear&quot; (implemented as modified Poisson), &quot;poisson&quot;, &quot;negbin&quot;, &quot;survCox&quot;, &quot;survAFT_exp&quot;, or &quot;survAFT_weibull&quot;." />
 
 
 
@@ -138,7 +138,7 @@
     </div>
 
     <div class="ref-description">
-    <p>The outcome model type <code>yreg</code> can be one of the following <code>"linear"</code>, <code>"logistic"</code>, <code>"loglinear"</code>, <code>"poisson"</code>, <code>"negbin"</code>, <code>"survCox"</code>, <code>"survAFT_exp"</code>, or <code>"survAFT_weibull"</code>.</p>
+    <p>The outcome model type <code>yreg</code> can be one of the following <code>"linear"</code>, <code>"logistic"</code>, <code>"loglinear"</code> (implemented as modified Poisson), <code>"poisson"</code>, <code>"negbin"</code>, <code>"survCox"</code>, <code>"survAFT_exp"</code>, or <code>"survAFT_weibull"</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>fit_yreg</span>(<span class='no'>yreg</span>, <span class='no'>data</span>, <span class='no'>yvar</span>, <span class='no'>avar</span>, <span class='no'>mvar</span>, <span class='no'>cvar</span>, <span class='no'>eventvar</span>, <span class='no'>interaction</span>)</pre>
@@ -188,7 +188,7 @@
     <p>The outcome regression functions to be called are the following:</p><ul>
 <li><p><code>"linear"</code> <code><a href='https://rdrr.io/r/stats/lm.html'>lm</a></code></p></li>
 <li><p><code>"logistic"</code> <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code></p></li>
-<li><p><code>"loglinear"</code> <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code></p></li>
+<li><p><code>"loglinear"</code> <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code> (modified Poisson)</p></li>
 <li><p><code>"poisson"</code> <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code></p></li>
 <li><p><code>"negbin"</code> <code><a href='https://rdrr.io/pkg/MASS/man/glm.nb.html'>glm.nb</a></code></p></li>
 <li><p><code>"survCox"</code> <code><a href='https://rdrr.io/pkg/survival/man/coxph.html'>coxph</a></code></p></li>
@@ -212,7 +212,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
 </div>
 
       </footer>

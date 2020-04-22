@@ -202,7 +202,7 @@
 
 <span class="co">## Bootstrapping</span>
 <span class="no">tib_obj</span> <span class="kw">&lt;-</span> <span class="no">vv2015</span> <span class="kw">%&gt;%</span>
-    <span class="kw pkg">modelr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/modelr/man/bootstrap.html">bootstrap</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">1000</span>) <span class="kw">%&gt;%</span>
+    <span class="kw pkg">modelr</span><span class="kw ns">::</span><span class="fu"><a href="https://modelr.tidyverse.org/reference/bootstrap.html">bootstrap</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">1000</span>) <span class="kw">%&gt;%</span>
     <span class="co">## Resampled data objects are in the list column named strap.</span>
     <span class="fu">mutate</span>(<span class="kw">boot_fit</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/furrr/man/future_map.html">future_map</a></span>(<span class="no">strap</span>, <span class="kw">function</span>(<span class="no">strap</span>) {
         <span class="co">## Note the change in the data argument.</span>
@@ -284,7 +284,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
 </div>
 
       </footer>
