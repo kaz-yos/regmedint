@@ -59,6 +59,9 @@ describe("fit_yreg loglinear as modified poisson (no interaction)", {
         ## Robust vcov
         expect_equal(vcov(yreg_fit0),
                      sandwich::sandwich(ref_fit0))
+        ## Summary should use robust vcov
+        expect_equal(coef(summary(yreg_fit0))[,"Std. Error"],
+                     sqrt(diag(sandwich::sandwich(ref_fit0))))
     })
 
     it("fits a correct model with one covariate", {
@@ -86,6 +89,9 @@ describe("fit_yreg loglinear as modified poisson (no interaction)", {
         ## Robust vcov
         expect_equal(vcov(yreg_fit1),
                      sandwich::sandwich(ref_fit1))
+        ## Summary should use robust vcov
+        expect_equal(coef(summary(yreg_fit1))[,"Std. Error"],
+                     sqrt(diag(sandwich::sandwich(ref_fit1))))
     })
 
     it("fits a correct model with three covariates", {
@@ -113,6 +119,9 @@ describe("fit_yreg loglinear as modified poisson (no interaction)", {
         ## Robust vcov
         expect_equal(vcov(yreg_fit3),
                      sandwich::sandwich(ref_fit3))
+        ## Summary should use robust vcov
+        expect_equal(coef(summary(yreg_fit3))[,"Std. Error"],
+                     sqrt(diag(sandwich::sandwich(ref_fit3))))
     })
 
 })
@@ -151,6 +160,9 @@ describe("fit_yreg loglinear as modified poisson (interaction)", {
         ## Robust vcov
         expect_equal(vcov(yreg_fit0),
                      sandwich::sandwich(ref_fit0))
+        ## Summary should use robust vcov
+        expect_equal(coef(summary(yreg_fit0))[,"Std. Error"],
+                     sqrt(diag(sandwich::sandwich(ref_fit0))))
     })
 
     it("fits a correct model with one covariate", {
@@ -178,6 +190,9 @@ describe("fit_yreg loglinear as modified poisson (interaction)", {
         ## Robust vcov
         expect_equal(vcov(yreg_fit1),
                      sandwich::sandwich(ref_fit1))
+        ## Summary should use robust vcov
+        expect_equal(coef(summary(yreg_fit1))[,"Std. Error"],
+                     sqrt(diag(sandwich::sandwich(ref_fit1))))
     })
 
     it("fits a correct model with three covariates", {
@@ -205,6 +220,9 @@ describe("fit_yreg loglinear as modified poisson (interaction)", {
         ## Robust vcov
         expect_equal(vcov(yreg_fit3),
                      sandwich::sandwich(ref_fit3))
+        ## Summary should use robust vcov
+        expect_equal(coef(summary(yreg_fit3))[,"Std. Error"],
+                     sqrt(diag(sandwich::sandwich(ref_fit3))))
     })
 
 })
