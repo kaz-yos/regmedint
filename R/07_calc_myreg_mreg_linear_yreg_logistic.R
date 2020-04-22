@@ -248,6 +248,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                 rep(0, length(theta4)),                             # theta4 vector
                 ##
                 (theta3 * theta2 + (1/2) * theta3^2 * (a1 + a0))))  # sigma^2
+        print(Gamma_pnde)
         ##
         Gamma_tnie <-
             matrix(c(
@@ -296,6 +297,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         ## sum of gradients for pnde and tnie.
         Gamma_te <-
             Gamma_pnde + Gamma_tnie # By linearity of differentiation
+        print(Gamma_te)
         ##
         ## Not implemented in mediation.sas.
         ## Not mentioned in VV2013, VV2015, or VanderWeele 2015.
