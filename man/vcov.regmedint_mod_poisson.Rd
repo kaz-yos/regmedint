@@ -12,8 +12,8 @@
 \item{...}{For compatibility with the generic.}
 }
 \value{
-A variance-covariance matrix using the \code{\link{sandwich::sandwich}}.
+A variance-covariance matrix using the \code{\link[sandwich]{sandwich}}.
 }
 \description{
-Provide robust sandwich variance-covariance estimate using \code{\link{sandwich::sandwich}}.
+Provide robust sandwich variance-covariance estimate using \code{\link[sandwich]{sandwich}}.
 }

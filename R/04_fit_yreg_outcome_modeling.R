@@ -189,12 +189,12 @@ string_yreg_formula <- function(yvar,
 
 ##' Robust sandwich variance estimator for modified Poisson
 ##'
-##' Provide robust sandwich variance-covariance estimate using \code{\link{sandwich::sandwich}}.
+##' Provide robust sandwich variance-covariance estimate using \code{\link[sandwich]{sandwich}}.
 ##'
 ##' @param object A model object of the class \code{regmedint_mod_poisson}
 ##' @param ... For compatibility with the generic.
 ##'
-##' @return A variance-covariance matrix using the \code{\link{sandwich::sandwich}}.
+##' @return A variance-covariance matrix using the \code{\link[sandwich]{sandwich}}.
 vcov.regmedint_mod_poisson <- function(object, ...) {
     sandwich::sandwich(object, ...)
 }
