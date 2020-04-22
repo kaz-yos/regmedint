@@ -5,7 +5,7 @@
 \title{Confidence intervals for mediation prameter estimates.}
 \usage{
 \method{confint}{regmedint}(
-  x,
+  object,
   parm = NULL,
   level = 0.95,
   a0 = NULL,
@@ -16,7 +16,7 @@
 )
 }
 \arguments{
-\item{x}{An object of the \code{\link{regmedint}} class.}
+\item{object}{An object of the \code{\link{regmedint}} class.}
 
 \item{parm}{For compatibility with generic. Ignored.}
 

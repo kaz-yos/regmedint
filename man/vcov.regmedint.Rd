@@ -4,10 +4,10 @@
 \alias{vcov.regmedint}
 \title{Extract variance estimates in the vcov form.}
 \usage{
-\method{vcov}{regmedint}(x, a0 = NULL, a1 = NULL, m_cde = NULL, c_cond = NULL, ...)
+\method{vcov}{regmedint}(object, a0 = NULL, a1 = NULL, m_cde = NULL, c_cond = NULL, ...)
 }
 \arguments{
-\item{x}{An object of the \code{\link{regmedint}} class.}
+\item{object}{An object of the \code{\link{regmedint}} class.}
 
 \item{a0}{A numeric vector of length one.}
 

@@ -4,10 +4,10 @@
 \alias{coef.summary_regmedint}
 \title{Extract the result matrix from a summary_regmedint object.}
 \usage{
-\method{coef}{summary_regmedint}(x, ...)
+\method{coef}{summary_regmedint}(object, ...)
 }
 \arguments{
-\item{x}{An object with a class of \code{summary_regmedint}.}
+\item{object}{An object with a class of \code{summary_regmedint}.}
 
 \item{...}{For compatibility with the generic.}
 }
