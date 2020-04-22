@@ -209,6 +209,19 @@ vcov.regmedint_mod_poisson <- function(object, ...) {
 ##'
 ##' @return An object of the class \code{summary.glm}
 summary.regmedint_mod_poisson <- function(object, ...) {
+    ## Set items that are irrelevant and not included in the arguments.
+    dispersion <- NULL
+    correlation <- FALSE
+    symbolic.cor <- FALSE
+    ## https://github.com/wch/r-source/blob/trunk/src/library/stats/R/lm.R
+    ## using qr(<lm>)  as interface to  <lm>$qr :
+    qr.lm <- function(x, ...) {
+        if(is.null(r <- x$qr))
+            stop("lm object does not have a proper 'qr' component.
+ Rank zero or should not have used lm(.., qr=FALSE).")
+        r
+    }
+
     ## https://github.com/wch/r-source/blob/trunk/src/library/stats/R/glm.R
     est.disp <- FALSE
     df.r <- object$df.residual
