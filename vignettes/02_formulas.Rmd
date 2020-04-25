@@ -21,7 +21,7 @@ opts_knit$set(animation.fun = hook_ffmpeg_html)
 options(width = 116, scipen = 5)
 ```
 
-The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references. The code seen here is compacted and lacks the comments. For more redable code, please refer to the [Github repo](https://github.com/kaz-yos/regmedint) and search for the function names without the preceding `regmedint:::`.
+The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references. The code seen here is compacted and lacks the comments. For more redable code, please refer to the [Github repo](https://github.com/kaz-yos/regmedint) and search for the function names without the preceding `regmedint:::`. For the type-set mathematical expressions and LaTeX source, please see the [supplement](https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf).
 
 
 # mreg linear yreg linear (V2015 p466 Proposition 2.3)
