@@ -61,25 +61,8 @@ Package has no Sweave vignette sources and no VignetteBuilder field.
 * checking examples ... NONE
 * checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ...
- ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  > test_check("regmedint")
-  ── 1. Error: calc_myreg: calls calc_myreg_mreg_linear_yreg_linear when mreg line
-  Function calc_myreg_mreg_linear_yreg_linear not found in environment testthat.
-  Backtrace:
-   1. testthat::with_mock(...)
-   2. testthat:::extract_mocks(mock_funs, .env = .env)
-   3. base::lapply(...)
-   4. testthat:::FUN(X[[i]], ...)
-  
-  ══ testthat results  ═══════════════════════════════════════════════════════════
-  [ OK: 4023 | SKIPPED: 0 | WARNINGS: 0 | FAILED: 1 ]
-  1. Error: calc_myreg: calls calc_myreg_mreg_linear_yreg_linear when mreg linear / yreg linear (@test-05_calc_myreg.R#95) 
-  
-  Error: testthat unit tests failed
-  Execution halted
+ OK
 * checking PDF version of manual ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 ERROR, 1 WARNING, 1 NOTE
+Status: 1 WARNING, 1 NOTE
