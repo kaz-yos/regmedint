@@ -73,18 +73,18 @@ Package has no Sweave vignette sources and no VignetteBuilder field.
  ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  lower_cmean[["tnde"]] not equal to log(sas_lower[["marginal_tnde"]]).
-  1/1 mismatches
-  [1] -1.14 - -1.13 == -0.00868
+  > test_check("regmedint")
+  ── 1. Error: calc_myreg: calls calc_myreg_mreg_linear_yreg_linear when mreg line
+  Function calc_myreg_mreg_linear_yreg_linear not found in environment testthat.
+  Backtrace:
+   1. testthat::with_mock(...)
+   2. testthat:::extract_mocks(mock_funs, .env = .env)
+   3. base::lapply(...)
+   4. testthat:::FUN(X[[i]], ...)
   
   ══ testthat results  ═══════════════════════════════════════════════════════════
-  [ OK: 4018 | SKIPPED: 0 | WARNINGS: 0 | FAILED: 6 ]
+  [ OK: 4023 | SKIPPED: 0 | WARNINGS: 0 | FAILED: 1 ]
   1. Error: calc_myreg: calls calc_myreg_mreg_linear_yreg_linear when mreg linear / yreg linear (@test-05_calc_myreg.R#95) 
-  2. Failure: lower confint match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar0.sas (@test-09_cross_check_with_sas_macro.R#637) 
-  3. Failure: lower confint match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar0.sas (@test-09_cross_check_with_sas_macro.R#641) 
-  4. Failure: upper confint match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar0.sas (@test-09_cross_check_with_sas_macro.R#646) 
-  5. Failure: upper confint match with sas-mreg_linear_yreg_logistic_int_t_caco_f_ncvar0.sas (@test-09_cross_check_with_sas_macro.R#650) 
-  6. Failure: lower_cmean confint match with sas-mreg_linear_yreg_logistic_int_t_caco_t_ncvar3.sas (@test-09_cross_check_with_sas_macro.R#548) 
   
   Error: testthat unit tests failed
   Execution halted
