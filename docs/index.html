@@ -96,13 +96,127 @@
 <a href="#regmedint" class="anchor"></a>regmedint <img src="reference/figures/hex.png" align="right" height="140">
 </h1></div>
 
-<p>This is an R reimplementation of the regression-based causal mediation analysis methods as implemented in the SAS macro by Valeri and VanderWeele (2013 and 2015). The original is found at Dr. VanderWeele’s <a href="https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/">Tools and Tutorials</a>.</p>
-<p>This package is meant to be an educational tool. Thanks to R’s expressibility, the code is likely easier to read than SAS IML. Thus, the correspondence between the formulas presented in the Appendix of Explanation in Causal Inference (VanderWeele 2015) and the code should be easier to grasp.</p>
+<p>This is an R re-implementation of the regression-based causal mediation analysis methods as implemented in the SAS macro by Valeri and VanderWeele (2013 and 2015). The original is found at Dr. VanderWeele’s <a href="https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/">Tools and Tutorials</a>.</p>
+<p>This package is meant to be an educational tool. Thanks to R’s expressibility, the code is likely easier to read than SAS IML. Thus, the correspondence between the mathematical formulas presented in the Appendix of Explanation in Causal Inference (V2015) and the code should be easier to grasp. See the vignette (Article on the package website) for the code that implements formulas.</p>
 </div>
+<div id="implemented-models" class="section level1">
+<h1 class="hasAnchor">
+<a href="#implemented-models" class="anchor"></a>Implemented models</h1>
+<p>This package is currently under development and is not on CRAN, yet. Following VV2015, the following grid of models are implemented. yreg refers to the outcome model and mreg refers to the mediator model. See the <a href="https://github.com/kaz-yos/regmedint/tree/master/tests/reference_results">Github repo</a> for cross-check results against the SAS macro.</p>
+<table class="table">
+<table class="table">
+<thead><tr class="header">
+<th style="text-align: left;">
+yreg \ mreg
+</th>
+<th style="text-align: center;">
+linear
+</th>
+<th style="text-align: center;">
+logistic
+</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">
+linear
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+logistic (1)
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">
+loglinear
+</td>
+<td style="text-align: center;">
+implemented (2)
+</td>
+<td style="text-align: center;">
+implemented (2)
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+poisson
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">
+negbin
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+survCox (1)
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">
+survAFT exp
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">
+survAFT weibull
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+<td style="text-align: center;">
+implemented
+</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p>Approximation depends on the rare event assumptions.</p></li>
+<li><p>As oppose to the SAS macro, the outcome model is implemented as a modified Poisson model (log link with robust variance) as in Z2004.</p></li>
+</ol>
+<p>See the corresponding vignettes (Articles on the package website) for how to perform bootstrapping and multiple imputation.</p>
+
 <div id="example" class="section level1">
 <h1 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h1>
-<p>Here we will analyze the simulated example that is included with the SAS macro.</p>
+<p>Here we will analyze the simulated example that is included with the SAS macro. See the introduction vignette (Article on the package website) for details of the user interface functions.</p>
 <div id="regmedint-to-fit-models" class="section level2">
 <h2 class="hasAnchor">
 <a href="#regmedint-to-fit-models" class="anchor"></a><code>regmedint()</code> to fit models</h2>
@@ -265,120 +379,10 @@
 <a class="sourceLine" id="cb5-10" title="10"><span class="co">## pm   0.030184325 0.01276593 2.3644440 0.01805716  0.005163563 0.05520509       NA         NA         NA</span></a></code></pre></div>
 </div>
 </div>
-<div id="implementation-status" class="section level1">
-<h1 class="hasAnchor">
-<a href="#implementation-status" class="anchor"></a>Implementation status</h1>
-<p>This package is currently under development. The eAppendix for SAS macro for causal mediation analysis with survival data (Valeri &amp; VanderWeele 2015) describes the following grid of models.</p>
-<table class="table">
-<table class="table">
-<thead><tr class="header">
-<th style="text-align: left;">
-yreg  mreg
-</th>
-<th style="text-align: center;">
-linear
-</th>
-<th style="text-align: center;">
-logistic
-</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">
-linear
-</td>
-<td style="text-align: center;">
-3
-</td>
-<td style="text-align: center;">
-3
-</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">
-logistic
-</td>
-<td style="text-align: center;">
-3
-</td>
-<td style="text-align: center;">
-3
-</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">
-loglinear
-</td>
-<td style="text-align: center;">
-1
-</td>
-<td style="text-align: center;">
-1
-</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">
-poisson
-</td>
-<td style="text-align: center;">
-3
-</td>
-<td style="text-align: center;">
-3
-</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">
-negbin
-</td>
-<td style="text-align: center;">
-3
-</td>
-<td style="text-align: center;">
-3
-</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">
-survCox
-</td>
-<td style="text-align: center;">
-3
-</td>
-<td style="text-align: center;">
-3
-</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">
-survAFT exp
-</td>
-<td style="text-align: center;">
-3
-</td>
-<td style="text-align: center;">
-3
-</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">
-survAFT weibull
-</td>
-<td style="text-align: center;">
-3
-</td>
-<td style="text-align: center;">
-3
-</td>
-</tr>
-</tbody>
-</table>
-<p>The current implementation status: 0. None (left blank) 1. SAS reference results created 2. R implementation ongoing 3. R implementation complete</p>
-
 <div id="formulas" class="section level1">
 <h1 class="hasAnchor">
 <a href="#formulas" class="anchor"></a>Formulas</h1>
-<p>The point estimate and standard error formulas (multivariate delta method) were taken from the following references.</p>
+<p>The point estimate and standard error formulas (multivariate delta method) were taken from the following references. See <a href="https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf" class="uri">https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf</a> for type-set formulas.</p>
 <ul>
 <li>V2015: VanderWeele (2015) Explanation in Causal Inference.</li>
 <li>VV2013A: Valeri &amp; VanderWeele (2013) Appendix</li>
@@ -396,7 +400,7 @@ survAFT weibull
 </colgroup>
 <thead><tr class="header">
 <th>
-yreg  mreg
+yreg \ mreg
 </th>
 <th>
 linear
@@ -525,7 +529,7 @@ V2015 p495 Proposition 4.3 (Use 2.6)
 </colgroup>
 <thead><tr class="header">
 <th>
-yreg  mreg
+yreg \ mreg
 </th>
 <th>
 linear
@@ -699,20 +703,44 @@ V2015 p495 Use Proposition 2.6
 </li>
 </ul>
 </div>
-<div id="similar-or-related-r-projects" class="section level1">
+<div id="similar-or-related-projects-for-counterfactual-causal-mediation-analysis" class="section level1">
 <h1 class="hasAnchor">
-<a href="#similar-or-related-r-projects" class="anchor"></a>Similar or related R projects</h1>
+<a href="#similar-or-related-projects-for-counterfactual-causal-mediation-analysis" class="anchor"></a>Similar or related projects for counterfactual causal mediation analysis</h1>
+<div id="r" class="section level2">
+<h2 class="hasAnchor">
+<a href="#r" class="anchor"></a>R</h2>
 <ul>
-<li>mediation: <a href="https:/cran.r-project.org/web/packages/mediation/index.html/" class="uri">https:/cran.r-project.org/web/packages/mediation/index.html/</a>
+<li>mediation (simulation-based): <a href="https://CRAN.R-project.org/package=mediation" class="uri">https://CRAN.R-project.org/package=mediation</a>
 </li>
-<li>medflex: <a href="https:/cran.r-project.org/web/packages/medflex/index.html/" class="uri">https:/cran.r-project.org/web/packages/medflex/index.html/</a>
+<li>medflex (natural effect model): <a href="https://CRAN.R-project.org/package=medflex" class="uri">https://CRAN.R-project.org/package=medflex</a>
 </li>
-<li>intmed: <a href="https:/cran.r-project.org/web/packages/intmed/index.html/" class="uri">https:/cran.r-project.org/web/packages/intmed/index.html/</a>
+<li>intmed (interventional analogue): <a href="https://CRAN.R-project.org/package=intmed" class="uri">https://CRAN.R-project.org/package=intmed</a>
 </li>
-<li>mediator: <a href="https:/github.com/GerkeLab/mediator/" class="uri">https:/github.com/GerkeLab/mediator/</a>
+<li>mediator (regression-based): <a href="https:/github.com/GerkeLab/mediator/" class="uri">https:/github.com/GerkeLab/mediator/</a>
 </li>
-<li>causalMediation: <a href="https:/github.com/harvard-P01/causalMediation" class="uri">https:/github.com/harvard-P01/causalMediation</a>
+<li>causalMediation (regression-based): <a href="https:/github.com/harvard-P01/causalMediation" class="uri">https:/github.com/harvard-P01/causalMediation</a>
 </li>
+</ul>
+</div>
+<div id="other-statistical-environment" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-statistical-environment" class="anchor"></a>Other statistical environment</h2>
+<ul>
+<li>SAS macro (original regression-based) <a href="https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/" class="uri">https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/</a>
+</li>
+<li>SAS PROC CAUSALMED (regression-based) <a href="https://support.sas.com/rnd/app/stat/procedures/causalmed.html" class="uri">https://support.sas.com/rnd/app/stat/procedures/causalmed.html</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="references" class="section level1">
+<h1 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h1>
+<ul>
+<li>V2015: VanderWeele (2015) Explanation in Causal Inference.</li>
+<li>VV2013: Valeri &amp; VanderWeele (2013) Psych Method. 18:137.</li>
+<li>VV2015: Valeri &amp; VanderWeele (2015) Epidemiology. 26:e23.</li>
+<li>Z2004: Zou (2004) Am J Epidemiol 159:702.</li>
 </ul>
 </div>
 </table>
@@ -731,6 +759,7 @@ V2015 p495 Use Proposition 2.6
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Kazuki Yoshida <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0002-2030-3549" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 

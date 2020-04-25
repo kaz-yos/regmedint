@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract variance estimates in the vcov form. — vcov.regmedint • regmedint</title>
+<title>Summary with robust sandwich variance estimator for modified Poisson — summary.regmedint_mod_poisson • regmedint</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Extract variance estimates in the vcov form. — vcov.regmedint" />
-<meta property="og:description" content="Extract variance estimates evaluated at a0, a1, m_cde, and c_cond." />
+<meta property="og:title" content="Summary with robust sandwich variance estimator for modified Poisson — summary.regmedint_mod_poisson" />
+<meta property="og:description" content="This is a version of summary.glm modified to use the robust variance estimator sandwich." />
 
 
 
@@ -132,50 +132,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extract variance estimates in the vcov form.</h1>
+    <h1>Summary with robust sandwich variance estimator for modified Poisson</h1>
     
-    <div class="hidden name"><code>vcov.regmedint.Rd</code></div>
+    <div class="hidden name"><code>summary.regmedint_mod_poisson.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Extract variance estimates evaluated at <code>a0</code>, <code>a1</code>, <code>m_cde</code>, and <code>c_cond</code>.</p>
+    <p>This is a version of <code><a href='https://rdrr.io/r/stats/summary.glm.html'>summary.glm</a></code> modified to use the robust variance estimator <code><a href='https://rdrr.io/pkg/sandwich/man/sandwich.html'>sandwich</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for regmedint</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/vcov.html'>vcov</a></span>(<span class='no'>object</span>, <span class='kw'>a0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>a1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>m_cde</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>c_cond</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for regmedint_mod_poisson</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>An object of the <code><a href='regmedint.html'>regmedint</a></code> class.</p></td>
-    </tr>
-    <tr>
-      <th>a0</th>
-      <td><p>A numeric vector of length one.</p></td>
-    </tr>
-    <tr>
-      <th>a1</th>
-      <td><p>A numeric vector of length one.</p></td>
-    </tr>
-    <tr>
-      <th>m_cde</th>
-      <td><p>A numeric vector of length one. A mediator value at which the controlled direct effect (CDE) conditional on the adjustment covariates is evaluated. If not provided, the default value supplied to the call to <code><a href='regmedint.html'>regmedint</a></code> will be used. Only the CDE is affected.</p></td>
-    </tr>
-    <tr>
-      <th>c_cond</th>
-      <td><p>A numeric vector as long as the number of adjustment covariates. A set of covariate values at which the conditional natural effects are evaluated.</p></td>
+      <td><p>A model object of the class <code>regmedint_mod_poisson</code></p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>For compatibility with the generic. Ignored.</p></td>
+      <td><p>For compatibility with the generic.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A numeric matrix with the diagonals populated with variance estimates. Off-diagnonals are NA since these are not estimated.</p>
+    <p>An object of the class <code>summary.glm</code></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
