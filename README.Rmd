@@ -55,14 +55,26 @@ This package is currently under development and is not on CRAN, yet. Following V
 See the corresponding vignettes (Articles on the package website) for how to perform bootstrapping and multiple imputation.
 
 
+# Installation
+
+For the developmental version on Github, use the following commands to install the package.
+```{r, eval = FALSE}
+install.packages("devtools") # If you do not have devtools already.
+devtools::install_github("kaz-yos/regmedint")
+```
+
+Once released on CRAN, the following should install the stable version.
+```{r, eval = FALSE}
+install.packages("regmedint")
+```
+
+
 # Example
 Here we will analyze the simulated example that is included with the SAS macro. See the introduction vignette (Article on the package website) for details of the user interface functions.
 
 ## `regmedint()` to fit models
 The `regmedint` function is the user interface for constructing a result object of class `regmedint`. The interface is made similar to the original SAS macro. For survival outcomes, the indicator variable is an event indicator (1 for event, 0 for censoring). The `c_cond` vector is required. This vector is the vector of covariate values at which the conditional effects are evaluated at.
 ```{r, eval = TRUE}
-## install.packages("devtools") # If you do not have it.
-## devtools::install_github("kaz-yos/regmedint") # If you have not installed it, yet.
 library(regmedint)
 library(tidyverse)
 
@@ -190,7 +202,7 @@ The software design is outlined here for those who may be interested.
 - mediation (simulation-based): https://CRAN.R-project.org/package=mediation
 - medflex (natural effect model): https://CRAN.R-project.org/package=medflex
 - intmed (interventional analogue): https://CRAN.R-project.org/package=intmed
-- mediator (regression-based): https:/github.com/GerkeLab/mediator/
+- mediator (regression-based): https:/github.com/GerkeLab/mediator
 - causalMediation (regression-based): https:/github.com/harvard-P01/causalMediation
 
 ## Other statistical environment
