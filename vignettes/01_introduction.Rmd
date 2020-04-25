@@ -1,6 +1,12 @@
 ---
 title: "Introduction to user interface functions"
-output: github_document
+author: "Kazuki Yoshida"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
 ---
 
 ```{r, message = FALSE, tidy = FALSE, echo = F}
