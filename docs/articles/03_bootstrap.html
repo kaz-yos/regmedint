@@ -92,7 +92,9 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using bootstrapping with regemedint</h1>
+                        <h4 class="author">Kazuki Yoshida</h4>
             
+            <h4 class="date">2020-04-25</h4>
       
       
       <div class="hidden name"><code>03_bootstrap.Rmd</code></div>
@@ -230,9 +232,12 @@
         <span class="fu">as_tibble</span>(<span class="no">mat</span>)
     })) <span class="kw">%&gt;%</span>
     <span class="fu">select</span>(-<span class="no">strap</span>) <span class="kw">%&gt;%</span>
-    <span class="fu">unnest</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">boot_fit</span>))
-
-<span class="no">tib_obj2</span> <span class="kw">&lt;-</span> <span class="no">tib_obj</span> <span class="kw">%&gt;%</span>
+    <span class="fu">unnest</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">boot_fit</span>))</pre></body></html></div>
+<pre><code>## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
+## Please use `tibble()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">tib_obj2</span> <span class="kw">&lt;-</span> <span class="no">tib_obj</span> <span class="kw">%&gt;%</span>
     <span class="fu">pivot_longer</span>(-<span class="no">.id</span>) <span class="kw">%&gt;%</span>
     <span class="fu">mutate</span>(<span class="kw">name</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="no">name</span>, <span class="kw">levels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>)))) <span class="kw">%&gt;%</span>
     <span class="fu">group_by</span>(<span class="no">name</span>) <span class="kw">%&gt;%</span>
@@ -253,7 +258,7 @@
 <div id="comparison-to-the-delta-method-confidence-intervals" class="section level2">
 <h2 class="hasAnchor">
 <a href="#comparison-to-the-delta-method-confidence-intervals" class="anchor"></a>Comparison to the delta method confidence intervals</h2>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">tib_obj2</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">tib_obj2</span> <span class="kw">%&gt;%</span>
     <span class="fu">mutate</span>(<span class="kw">lower_delta</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span>(<span class="no">regmedint_obj</span>)[,<span class="st">"lower"</span>],
            <span class="kw">upper_delta</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span>(<span class="no">regmedint_obj</span>)[,<span class="st">"upper"</span>])</pre></body></html></div>
 <pre><code>## # A tibble: 7 x 5
@@ -284,7 +289,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
