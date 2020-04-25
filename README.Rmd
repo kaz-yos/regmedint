@@ -26,13 +26,37 @@ options(width = 116, scipen = 5)
 [![](http://www.r-pkg.org/badges/version/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 
-This is an R reimplementation of the regression-based causal mediation analysis methods as implemented in the SAS macro by Valeri and VanderWeele (2013 and 2015). The original is found at Dr. VanderWeele's [Tools and Tutorials](https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/).
+This is an R re-implementation of the regression-based causal mediation analysis methods as implemented in the SAS macro by Valeri and VanderWeele (2013 and 2015). The original is found at Dr. VanderWeele's [Tools and Tutorials](https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/).
 
-This package is meant to be an educational tool. Thanks to R's expressibility, the code is likely easier to read than SAS IML. Thus, the correspondence between the formulas presented in the Appendix of Explanation in Causal Inference (VanderWeele 2015) and the code should be easier to grasp.
+This package is meant to be an educational tool. Thanks to R's expressibility, the code is likely easier to read than SAS IML. Thus, the correspondence between the mathematical formulas presented in the Appendix of Explanation in Causal Inference (V2015) and the code should be easier to grasp. See the vignette (Article on the package website) for the code that implements formulas.
+
+
+# Implemented models
+
+This package is currently under development and is not on CRAN, yet. Following VV2015, the following grid of models are implemented. yreg refers to the outcome model and mreg refers to the mediator model. See the [Github repo](https://github.com/kaz-yos/regmedint/tree/master/tests/reference_results) for cross-check results against the SAS macro.
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+| yreg \\\\ mreg  | linear          | logistic        |
+|:----------------|:---------------:|:---------------:|
+| linear          | implemented     | implemented     |
+| logistic (1)    | implemented     | implemented     |
+| loglinear       | implemented (2) | implemented (2) |
+| poisson         | implemented     | implemented     |
+| negbin          | implemented     | implemented     |
+| survCox (1)     | implemented     | implemented     |
+| survAFT exp     | implemented     | implemented     |
+| survAFT weibull | implemented     | implemented     |
+
+(1) Approximation depends on the rare event assumptions.
+
+(2) As oppose to the SAS macro, the outcome model is implemented as a modified Poisson model (log link with robust variance) as in Z2004.
+
+See the corresponding vignettes (Articles on the package website) for how to perform bootstrapping and multiple imputation.
 
 
 # Example
-Here we will analyze the simulated example that is included with the SAS macro.
+Here we will analyze the simulated example that is included with the SAS macro. See the introduction vignette (Article on the package website) for details of the user interface functions.
 
 ## `regmedint()` to fit models
 The `regmedint` function is the user interface for constructing a result object of class `regmedint`. The interface is made similar to the original SAS macro. For survival outcomes, the indicator variable is an event indicator (1 for event, 0 for censoring). The `c_cond` vector is required. This vector is the vector of covariate values at which the conditional effects are evaluated at.
@@ -87,32 +111,9 @@ Note that the estimates can be re-evaluated at different `m_cde` and `c_cond` wi
 coef(summary(regmedint_obj, exponentiate = TRUE, m_cde = 0, c_cond = 5))
 ```
 
-# Implementation status
-
-This package is currently under development. The eAppendix for SAS macro for causal mediation analysis with survival data (Valeri & VanderWeele 2015) describes the following grid of models.
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-| yreg \ mreg     | linear | logistic |
-|:----------------|:------:|:--------:|
-| linear          | 3      | 3        |
-| logistic        | 3      | 3        |
-| loglinear       | 1      | 1        |
-| poisson         | 3      | 3        |
-| negbin          | 3      | 3        |
-| survCox         | 3      | 3        |
-| survAFT exp     | 3      | 3        |
-| survAFT weibull | 3      | 3        |
-
-The current implementation status:
-0. None (left blank)
-1. SAS reference results created
-2. R implementation ongoing
-3. R implementation complete
-
 
 # Formulas
-The point estimate and standard error formulas (multivariate delta method) were taken from the following references.
+The point estimate and standard error formulas (multivariate delta method) were taken from the following references. See https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf for type-set formulas.
 
 - V2015: VanderWeele (2015) Explanation in Causal Inference.
 - VV2013A: Valeri & VanderWeele (2013) Appendix
@@ -121,8 +122,8 @@ The point estimate and standard error formulas (multivariate delta method) were 
 As seen below, there are only four patterns.
 
 ## Effect formulas
-| yreg \ mreg     | linear                               | logistic                             |
-|-----------------+--------------------------------------+--------------------------------------|
+| yreg \\\\ mreg  | linear                               | logistic                             |
+|-----------------|--------------------------------------|--------------------------------------|
 | linear          | V2015 p466 Proposition 2.3           | V2015 p471 Proposition 2.5           |
 |                 |                                      |                                      |
 | logistic        | V2015 p468 Proposition 2.4           | V2015 p473 Proposition 2.6           |
@@ -137,8 +138,8 @@ As seen below, there are only four patterns.
 Note the loglinear outcome model means log link with binomial error.
 
 ## Standard error formulas
-| yreg \ mreg     | linear                         | logistic                       |
-|-----------------+--------------------------------+--------------------------------|
+| yreg \\\\ mreg  | linear                         | logistic                       |
+|-----------------|--------------------------------|--------------------------------|
 | linear          | V2015 p466 Proposition 2.3     | V2015 p471 Proposition 2.5     |
 |                 |                                |                                |
 | logistic        | V2015 p468 Proposition 2.4     | V2015 p473 Proposition 2.6     |
@@ -184,9 +185,21 @@ The software design is outlined here for those who may be interested.
   - confint.regmedint: regmedint → matrix of (lower,upper)
 
 
-# Similar or related R projects
-- mediation: https:/cran.r-project.org/web/packages/mediation/index.html/
-- medflex: https:/cran.r-project.org/web/packages/medflex/index.html/
-- intmed: https:/cran.r-project.org/web/packages/intmed/index.html/
-- mediator: https:/github.com/GerkeLab/mediator/
-- causalMediation: https:/github.com/harvard-P01/causalMediation
+# Similar or related projects for counterfactual causal mediation analysis
+## R
+- mediation (simulation-based): https://CRAN.R-project.org/package=mediation
+- medflex (natural effect model): https://CRAN.R-project.org/package=medflex
+- intmed (interventional analogue): https://CRAN.R-project.org/package=intmed
+- mediator (regression-based): https:/github.com/GerkeLab/mediator/
+- causalMediation (regression-based): https:/github.com/harvard-P01/causalMediation
+
+## Other statistical environment
+- SAS macro (original regression-based) https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/
+- SAS PROC CAUSALMED (regression-based) https://support.sas.com/rnd/app/stat/procedures/causalmed.html
+
+
+# References
+- V2015: VanderWeele (2015) Explanation in Causal Inference.
+- VV2013: Valeri & VanderWeele (2013) Psych Method. 18:137.
+- VV2015: Valeri & VanderWeele (2015) Epidemiology. 26:e23.
+- Z2004: Zou (2004) Am J Epidemiol 159:702.
