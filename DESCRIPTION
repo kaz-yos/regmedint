@@ -6,7 +6,10 @@ Authors@R: c(
     person('Kazuki', 'Yoshida',
     email = 'kazukiyoshida@mail.harvard.edu',
     role = c('cre','aut'),
-    comment = c(ORCID = '0000-0002-2030-3549'))
+    comment = c(ORCID = '0000-0002-2030-3549')),
+    person('Maya', 'Mathur',
+    role = c('ctb'),
+    comment = c(ORCID = '0000-0001-6698-2607'))
     )
 Description: R implementation of regression-based causal mediation analysis with standard errors via the delta method.
 License: GPL-2
