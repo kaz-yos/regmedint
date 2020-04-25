@@ -92,6 +92,19 @@ for cross-check results against the SAS macro.
 See the corresponding vignettes (Articles on the package website) for
 how to perform bootstrapping and multiple imputation.
 
+Installation
+============
+
+For the developmental version on Github, use the following commands to
+install the package.
+
+    install.packages("devtools") # If you do not have devtools already.
+    devtools::install_github("kaz-yos/regmedint")
+
+Once released on CRAN, the following should install the stable version.
+
+    install.packages("regmedint")
+
 Example
 =======
 
@@ -109,8 +122,6 @@ event indicator (1 for event, 0 for censoring). The `c_cond` vector is
 required. This vector is the vector of covariate values at which the
 conditional effects are evaluated at.
 
-    ## install.packages("devtools") # If you do not have it.
-    ## devtools::install_github("kaz-yos/regmedint") # If you have not installed it, yet.
     library(regmedint)
     library(tidyverse)
 
@@ -487,7 +498,7 @@ R
 -   intmed (interventional analogue):
     <a href="https://CRAN.R-project.org/package=intmed" class="uri">https://CRAN.R-project.org/package=intmed</a>
 -   mediator (regression-based):
-    <a href="https:/github.com/GerkeLab/mediator/" class="uri">https:/github.com/GerkeLab/mediator/</a>
+    <a href="https:/github.com/GerkeLab/mediator" class="uri">https:/github.com/GerkeLab/mediator</a>
 -   causalMediation (regression-based):
     <a href="https:/github.com/harvard-P01/causalMediation" class="uri">https:/github.com/harvard-P01/causalMediation</a>
 
