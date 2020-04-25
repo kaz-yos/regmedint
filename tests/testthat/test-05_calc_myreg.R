@@ -24,6 +24,8 @@ pbc_cc <- pbc[complete.cases(pbc),] %>%
     mutate(male = if_else(sex == "m", 1L, 0L),
            ## Combine transplant and death for testing purpose
            status = if_else(status == 0, 0L, 1L),
+           ## Binary mvar
+           bili_bin = if_else(bili > median(bili), 1L, 0L),
            alk_phos = alk.phos)
 
 describe("calc_myreg", {
@@ -94,7 +96,8 @@ describe("calc_myreg", {
                              eventvar = NULL)
         with_mock(
             ## Mock
-            calc_myreg_mreg_linear_yreg_linear =
+            ## https://github.com/r-lib/testthat/issues/734
+            "regmedint:::calc_myreg_mreg_linear_yreg_linear" =
                 function(...) {
                     message("calc_myreg_mreg_linear_yreg_linear was called!")
                 },
@@ -109,6 +112,111 @@ describe("calc_myreg", {
                                           cvar = NULL,
                                           interaction = TRUE),
                                regexp = "calc_myreg_mreg_linear_yreg_linear was called!")
+            })
+    })
+    ##
+    it("calls calc_myreg_mreg_linear_yreg_logistic when mreg linear / yreg logistic", {
+        mreg_fit <- fit_mreg(mreg = "linear",
+                             data = pbc_cc,
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = NULL)
+        yreg_fit <- fit_yreg(yreg = "logistic",
+                             data = pbc_cc,
+                             yvar = "spiders",
+                             avar = "trt",
+                             mvar = "bili",
+                             cvar = NULL,
+                             interaction = TRUE,
+                             eventvar = NULL)
+        with_mock(
+            ## Mock
+            ## https://github.com/r-lib/testthat/issues/734
+            "regmedint:::calc_myreg_mreg_linear_yreg_logistic" =
+                function(...) {
+                    message("calc_myreg_mreg_linear_yreg_logistic was called!")
+                },
+            ## Body
+            {
+                expect_message(calc_myreg(mreg = "linear",
+                                          mreg_fit = mreg_fit,
+                                          yreg = "logistic",
+                                          yreg_fit = yreg_fit,
+                                          avar = "trt",
+                                          mvar = "bili",
+                                          cvar = NULL,
+                                          interaction = TRUE),
+                               regexp = "calc_myreg_mreg_linear_yreg_logistic was called!")
+            })
+    })
+    ##
+    it("calls calc_myreg_mreg_logistic_yreg_linear when mreg logistic / yreg linear", {
+        mreg_fit <- fit_mreg(mreg = "logistic",
+                             data = pbc_cc,
+                             avar = "trt",
+                             mvar = "bili_bin",
+                             cvar = NULL)
+        yreg_fit <- fit_yreg(yreg = "linear",
+                             data = pbc_cc,
+                             yvar = "alk_phos",
+                             avar = "trt",
+                             mvar = "bili_bin",
+                             cvar = NULL,
+                             interaction = TRUE,
+                             eventvar = NULL)
+        with_mock(
+            ## Mock
+            ## https://github.com/r-lib/testthat/issues/734
+            "regmedint:::calc_myreg_mreg_logistic_yreg_linear" =
+                function(...) {
+                    message("calc_myreg_mreg_logistic_yreg_linear was called!")
+                },
+            ## Body
+            {
+                expect_message(calc_myreg(mreg = "logistic",
+                                          mreg_fit = mreg_fit,
+                                          yreg = "linear",
+                                          yreg_fit = yreg_fit,
+                                          avar = "trt",
+                                          mvar = "bili",
+                                          cvar = NULL,
+                                          interaction = TRUE),
+                               regexp = "calc_myreg_mreg_logistic_yreg_linear was called!")
+            })
+    })
+    ##
+    it("calls calc_myreg_mreg_logistic_yreg_logistic when mreg logistic / yreg logistic", {
+        mreg_fit <- fit_mreg(mreg = "logistic",
+                             data = pbc_cc,
+                             avar = "trt",
+                             mvar = "bili_bin",
+                             cvar = NULL)
+        yreg_fit <- fit_yreg(yreg = "logistic",
+                             data = pbc_cc,
+                             yvar = "spiders",
+                             avar = "trt",
+                             mvar = "bili_bin",
+                             cvar = NULL,
+                             interaction = TRUE,
+                             eventvar = NULL)
+        with_mock(
+            ## Mock
+            ## https://github.com/r-lib/testthat/issues/734
+            "regmedint:::calc_myreg_mreg_logistic_yreg_logistic" =
+                function(...) {
+                    message("calc_myreg_mreg_logistic_yreg_logistic was called!")
+                },
+            ## Body
+            {
+                expect_message(calc_myreg(mreg = "logistic",
+                                          mreg_fit = mreg_fit,
+                                          yreg = "logistic",
+                                          yreg_fit = yreg_fit,
+                                          avar = "trt",
+                                          mvar = "bili",
+                                          cvar = NULL,
+                                          interaction = TRUE),
+                               regexp = "calc_myreg_mreg_logistic_yreg_logistic was called!")
             })
     })
 })
