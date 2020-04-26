@@ -23,9 +23,11 @@ Imports:
     sandwich,
     survival
 Suggests:
+    knitr,
     purrr,
     rlang,
     stringr,
     testthat,
     tidyverse
 RoxygenNote: 7.1.0
+VignetteBuilder: knitr
