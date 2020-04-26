@@ -1,6 +1,6 @@
 Package: regmedint
 Title: Regression-Based Causal Mediation Analysis with an Interaction Term
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
     # http://r-pkgs.had.co.nz/description.html#author
     person('Kazuki', 'Yoshida',
