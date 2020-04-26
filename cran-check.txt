@@ -1,6 +1,6 @@
 * using log directory ‘/Users/kazuki/Dropbox/documents/programming/r/regmedint/regmedint.Rcheck’
-* using R version 3.6.3 (2020-02-29)
-* using platform: x86_64-apple-darwin19.3.0 (64-bit)
+* using R version 4.0.0 (2020-04-24)
+* using platform: x86_64-apple-darwin19.4.0 (64-bit)
 * using session charset: UTF-8
 * using option ‘--as-cran’
 * checking for file ‘regmedint/DESCRIPTION’ ... OK
@@ -37,7 +37,6 @@ Version contains large components (0.0.0.9000)
 * checking whether the package can be unloaded cleanly ... OK
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
-* checking loading without being on the library search path ... OK
 * checking use of S3 registration ... OK
 * checking dependencies in R code ... OK
 * checking S3 generic/method consistency ... OK
@@ -63,6 +62,7 @@ Package has no Sweave vignette sources and no VignetteBuilder field.
 * checking tests ...
  OK
 * checking PDF version of manual ... OK
+* checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
 Status: 1 WARNING, 1 NOTE
