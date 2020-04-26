@@ -23,7 +23,13 @@ Imports:
     sandwich,
     survival
 Suggests:
+    boot,
+    furrr,
+    future,
     knitr,
+    mice,
+    mitools,
+    modelr,
     purrr,
     rlang,
     stringr,
