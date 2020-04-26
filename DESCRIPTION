@@ -1,5 +1,5 @@
 Package: regmedint
-Title: Regression-Based Causal Mediation Analysis
+Title: Regression-Based Causal Mediation Analysis with an Interaction Term
 Version: 0.0.0.9000
 Authors@R: c(
     # http://r-pkgs.had.co.nz/description.html#author
@@ -7,11 +7,12 @@ Authors@R: c(
     email = 'kazukiyoshida@mail.harvard.edu',
     role = c('cre','aut'),
     comment = c(ORCID = '0000-0002-2030-3549')),
+    #
     person('Maya', 'Mathur',
     role = c('ctb'),
     comment = c(ORCID = '0000-0001-6698-2607'))
     )
-Description: R implementation of regression-based causal mediation analysis with standard errors via the delta method.
+Description: R re-implementation of the regression-based causal mediation analysis method, supporting a treatment-mediator interaction term, as implemented in the SAS macro by Valeri and VanderWeele (2013 and 2015).
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
@@ -37,3 +38,4 @@ Suggests:
     tidyverse
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
+URL: https://kaz-yos.github.io/regmedint/
