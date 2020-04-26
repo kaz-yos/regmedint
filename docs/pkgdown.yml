@@ -1,10 +1,10 @@
-pandoc: '2.4'
+pandoc: 2.9.2.1
 pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
-  01_introduction: 01_introduction.html
-  02_formulas: 02_formulas.html
-  03_bootstrap: 03_bootstrap.html
-  04_mi: 04_mi.html
-last_built: 2020-04-25T11:37Z
+  vig_01_introduction: vig_01_introduction.html
+  vig_02_formulas: vig_02_formulas.html
+  vig_03_bootstrap: vig_03_bootstrap.html
+  vig_04_mi: vig_04_mi.html
+last_built: 2020-04-26T10:22Z
 

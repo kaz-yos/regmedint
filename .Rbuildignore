@@ -29,3 +29,5 @@ cran-check.txt
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^doc$
+^Meta$

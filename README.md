@@ -8,9 +8,9 @@ Status](https://travis-ci.org/kaz-yos/regmedint.svg?branch=master)](https://trav
 downloads](http://cranlogs.r-pkg.org/badges/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 
 This is an R re-implementation of the regression-based causal mediation
-analysis methods as implemented in the SAS macro by Valeri and
-VanderWeele (2013 and 2015). The original is found at Dr. VanderWeele’s
-[Tools and
+analysis method, supporting a treatment-mediator interaction term, as
+implemented in the SAS macro by Valeri and VanderWeele (2013 and 2015).
+The original is found at Dr. VanderWeele’s [Tools and
 Tutorials](https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/).
 
 This package is meant to be an educational tool. Thanks to R’s
