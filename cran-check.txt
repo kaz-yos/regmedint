@@ -4,14 +4,12 @@
 * using session charset: UTF-8
 * using option ‘--as-cran’
 * checking for file ‘regmedint/DESCRIPTION’ ... OK
-* this is package ‘regmedint’ version ‘0.0.0.9000’
+* this is package ‘regmedint’ version ‘0.1.0’
 * package encoding: UTF-8
 * checking CRAN incoming feasibility ... NOTE
 Maintainer: ‘Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>’
 
 New submission
-
-Version contains large components (0.0.0.9000)
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
