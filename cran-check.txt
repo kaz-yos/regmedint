@@ -25,6 +25,7 @@ Version contains large components (0.0.0.9000)
 * checking installed package size ... OK
 * checking package directory ... OK
 * checking for future file timestamps ... OK
+* checking ‘build’ directory ... OK
 * checking DESCRIPTION meta-information ... OK
 * checking top-level files ... OK
 * checking for left-over files ... OK
@@ -52,17 +53,17 @@ Version contains large components (0.0.0.9000)
 * checking Rd \usage sections ... OK
 * checking Rd contents ... OK
 * checking for unstated dependencies in examples ... OK
-* checking files in ‘vignettes’ ... WARNING
-Files in the 'vignettes' directory but no files in 'inst/doc':
-  ‘01_introduction.Rmd’, ‘02_formulas.Rmd’, ‘03_bootstrap.Rmd’,
-    ‘04_mi.Rmd’, ‘man/figuresunnamed-chunk-3-1.png’
-Package has no Sweave vignette sources and no VignetteBuilder field.
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
 * checking examples ... NONE
 * checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ...
  OK
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking re-building of vignette outputs ... OK
 * checking PDF version of manual ... OK
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 WARNING, 1 NOTE
+Status: 1 NOTE
