@@ -1,6 +1,8 @@
 # regmedint 0.1.0
 
-* This will be the first CRAN release version.
+* This is the first CRAN release candidate version.
+* All models in Valeri and VanderWeele's %mediation() SAS
+  macro are supported.
 
 
 # regmedint 0.0.0.9000
