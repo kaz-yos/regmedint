@@ -12,7 +12,7 @@ Authors@R: c(
     role = c('ctb'),
     comment = c(ORCID = '0000-0001-6698-2607'))
     )
-Description: R re-implementation of the regression-based causal mediation analysis method, supporting a treatment-mediator interaction term, as implemented in the SAS macro by Valeri and VanderWeele (2013 and 2015).
+Description: R re-implementation of the regression-based causal mediation analysis with a treatment-mediator interaction term, as originally implemented in the SAS macro by Valeri and VanderWeele (2013 and 2015). Linear and logistic models are supported for the mediator model. Linear, logistic, loglinear, Poisson, negative binomial, Cox, accelerated failure time (exponential and Weibull) models are supported for the outcome model.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
@@ -40,3 +40,4 @@ Suggests:
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 URL: https://kaz-yos.github.io/regmedint/
+BugReports: https://github.com/kaz-yos/regmedint/issues
