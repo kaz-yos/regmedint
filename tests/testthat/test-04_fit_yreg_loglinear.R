@@ -6,6 +6,8 @@
 ################################################################################
 
 ## Load testthat in case this is run in isolation.
+library(sandwich)
+library(geepack)
 library(testthat)
 library(survival)
 library(tidyverse)
@@ -26,10 +28,78 @@ library(tidyverse)
 ## https://www.jstatsoft.org/article/view/v016i09
 
 
+describe("Modified Poisson regression in R", {
+
+    ## Examine whether glm/sandwich implementation
+    ## is comparable to geepack implementation.
+    ## https://rpubs.com/kaz_yos/epi204-lab4
+
+    data(pbc)
+    ## Missing data should be warned in validate_args()
+    pbc_cc <- pbc[complete.cases(pbc),] %>%
+        mutate(male = if_else(sex == "m", 1L, 0L),
+               id = factor(id))
+
+    it("implemented in glm/sandwich matches geepack exchangeable (no covariates)", {
+        glm_fit0 <- glm(formula = spiders ~ trt*bili,
+                        family = poisson(link = "log"),
+                        data = pbc_cc)
+
+        geeglm_fit0 <- geeglm(formula   = spiders ~ trt*bili,
+                              family    = poisson(link = "log"),
+                              id        = id,
+                              data      = pbc_cc,
+                              corstr    = "exchangeable")
+
+        expect_equal(coef(glm_fit0),
+                     coef(geeglm_fit0),
+                     ## Tolerance for absolute differences
+                     tolerance = 0.00000001, scale = 1)
+
+        expect_equal(sandwich::sandwich(glm_fit0),
+                     vcov(geeglm_fit0),
+                     ## Tolerance for absolute differences
+                     tolerance = 0.000001, scale = 1)
+
+        expect_equal(sqrt(diag(sandwich::sandwich(glm_fit0))),
+                     sqrt(diag(vcov(geeglm_fit0))),
+                     ## Tolerance for absolute differences
+                     tolerance = 0.000001, scale = 1)
+
+    })
+
+    it("implemented in glm/sandwich  geepack exchangeable (three covariates)", {
+        glm_fit3 <- glm(formula = spiders ~ trt*bili + age + male + stage,
+                        family = poisson(link = "log"),
+                        data = pbc_cc)
+
+        geeglm_fit3 <- geeglm(formula   = spiders ~ trt*bili + age + male + stage,
+                              family    = poisson(link = "log"),
+                              id        = id,
+                              data      = pbc_cc,
+                              corstr    = "exchangeable")
+
+        expect_equal(coef(glm_fit3),
+                     coef(geeglm_fit3),
+                     ## Tolerance for absolute differences
+                     tolerance = 0.0000001, scale = 1)
+
+        expect_equal(sandwich::sandwich(glm_fit3),
+                     vcov(geeglm_fit3),
+                     ## Tolerance for absolute differences
+                     tolerance = 0.00001, scale = 1)
+
+        expect_equal(sqrt(diag(sandwich::sandwich(glm_fit3))),
+                     sqrt(diag(vcov(geeglm_fit3))),
+                     ## Tolerance for absolute differences
+                     tolerance = 0.00001, scale = 1)
+    })
+})
+
+
 describe("fit_yreg loglinear as modified poisson (no interaction)", {
 
     data(pbc)
-
     ## Missing data should be warned in validate_args()
     pbc_cc <- pbc[complete.cases(pbc),] %>%
         mutate(male = if_else(sex == "m", 1L, 0L))
