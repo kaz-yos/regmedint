@@ -27,6 +27,7 @@ Suggests:
     boot,
     furrr,
     future,
+    geepack,
     knitr,
     mice,
     mitools,
