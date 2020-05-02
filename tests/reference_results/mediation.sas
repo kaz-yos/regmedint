@@ -2638,6 +2638,10 @@ z3=J(nrow(V2),1,0);
 A= V2 || zero2 ||z3;
 B= zero1 || V1||z2;
 zeros=J(1,nrow(V1)+nrow(V2),0);
+/* @kaz-yos on 2020-05-02 */
+/* This is wrong. It should be the following based on V2015 p470.
+where n = sample size, p = length(betas), s2 = sigma^2
+D= zeros || ((2 * (s2**2)) / (n - p)) */
 D= zeros ||s2;
 sigma= A // B//D;
 zero=0;
@@ -3675,6 +3679,10 @@ z3=J(nrow(V2),1,0);
 A= V2 || zero2 ||z3;
 B= zero1 || V1||z2;
 zeros=J(1,nrow(V1)+nrow(V2),0);
+/* @kaz-yos on 2020-05-02 */
+/* This is wrong. It should be the following based on V2015 p470.
+where n = sample size, p = length(betas), s2 = sigma^2
+D= zeros || ((2 * (s2**2)) / (n - p)) */
 D= zeros ||s2;
 sigma= A // B//D;
 zero=0;
