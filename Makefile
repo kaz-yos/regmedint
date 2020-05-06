@@ -15,19 +15,27 @@ PKG_VERSION=$(shell grep -i ^version: DESCRIPTION | cut -d : -d \  -f 2)
 
 ## Define files to check for updates
 R_FILES   := $(wildcard R/*.R)
-TST_FILES := $(wildcard tests/testthat/*.R)
+TEST_FILES := $(wildcard tests/testthat/*.R)
 SAS_FILES := $(wildcard tests/reference_results/sas-*.sas)
 SRC_FILES := $(wildcard src/*) $(addprefix src/, $(COPY_SRC))
 VIG_FILES := $(wildcard vignettes/*)
-PKG_FILES := DESCRIPTION NAMESPACE NEWS.md $(R_FILES) $(TST_FILES) $(SRC_FILES) $(VIG_FILES)
+DATA_RAW_FILES := $(wildcard data-raw/*)
+DATA_FILES := $(wildcard data/*)
+PKG_FILES := DESCRIPTION NAMESPACE NEWS.md $(R_FILES) $(TEST_FILES) $(SRC_FILES) $(VIG_FILES) $(DATA_RAW_FILES) $(DATA_FILES)
 
 
 ## .PHONY to allow non-file targets (file targets should not be here)
 ## https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
-.PHONY: test lint winbuild vignettes readme pkgdown build check check_devtools revdep install sas clean
+.PHONY: test lint winbuild vignettes readme pkgdown build check check_devtools revdep install sas clean data
 
 
 ### Define targets
+
+## Data generation when raw files are updated.
+## This may not work when adding new datasets.
+data: $(DATA_FILES)
+$(DATA_FILES): $(DATA_RAW_FILES)
+	cd ./data-raw; Rscript vv2015.R
 
 ## test just runs testthat scripts. No dependencies.
 test: NAMESPACE
@@ -152,7 +160,7 @@ list:
 	@echo $(SAS_FILES)
 	@echo
 	@echo "Test files:"
-	@echo $(TST_FILES)
+	@echo $(TEST_FILES)
 	@echo
 	@echo "Source files:"
 	@echo $(SRC_FILES)
