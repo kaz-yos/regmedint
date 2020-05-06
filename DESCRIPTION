@@ -41,3 +41,5 @@ RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 URL: https://kaz-yos.github.io/regmedint/
 BugReports: https://github.com/kaz-yos/regmedint/issues
+Depends:
+    R (>= 2.10)
