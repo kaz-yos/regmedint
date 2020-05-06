@@ -113,7 +113,7 @@ regmedint <- function(data,
 ##'
 ##' @inheritParams regmedint
 ##'
-##' @return NULL
+##' @return No return value, called for side effects.
 validate_args <- function(data,
                           yvar,
                           avar,
@@ -206,7 +206,7 @@ validate_args <- function(data,
 ##'
 ##' @param x A \code{regmedint} object.
 ##'
-##' @return NULL
+##' @return No return value, called for side effects.
 validate_regmedint <- function(x) {
 
     assertthat::assert_that(class(x)[[1]] == "regmedint")

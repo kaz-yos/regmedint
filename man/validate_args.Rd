@@ -50,6 +50,9 @@ validate_args(
 
 \item{casecontrol}{A logical vector of length 1. Default to FALSE. Whether data comes from a case-control study.}
 }
+\value{
+No return value, called for side effects.
+}
 \description{
 Internal functions (usually) do not validate arguments, thus, we need to make sure informative errors are raised when the arguments are not safe for subsequent computation.
 }

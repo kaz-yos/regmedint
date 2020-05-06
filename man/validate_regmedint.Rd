@@ -9,6 +9,9 @@ validate_regmedint(x)
 \arguments{
 \item{x}{A \code{regmedint} object.}
 }
+\value{
+No return value, called for side effects.
+}
 \description{
 Check the structure of a proposed regmedint object for soundness.
 }
