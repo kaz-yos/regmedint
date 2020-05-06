@@ -31,3 +31,4 @@ cran-check.txt
 ^pkgdown$
 ^doc$
 ^Meta$
+^data-raw$
