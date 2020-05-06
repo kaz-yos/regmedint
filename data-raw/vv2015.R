@@ -17,7 +17,7 @@ library(usethis)
 ## The file is from:
 ##
 ## https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/
-## 
+##
 ## A tutorial on mediation with SAS, Stata, and SPSS macros
 ## Valeri, L. and VanderWeele, T.J. (2013).
 ## Mediation analysis allowing for exposure-mediator interactions
@@ -34,4 +34,4 @@ vv2015 <- read_delim(file = "./vv2015.txt",
 ### Save data
 ################################################################################
 
-usethis::use_data(vv2015)
+usethis::use_data(vv2015, overwrite = TRUE)
