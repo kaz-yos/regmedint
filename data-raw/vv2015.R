@@ -5,6 +5,8 @@
 ## Author: Kazuki Yoshida
 ################################################################################
 
+## http://r-pkgs.had.co.nz/data.html#data-data
+
 ## Load packages
 library(tidyverse)
 library(usethis)
