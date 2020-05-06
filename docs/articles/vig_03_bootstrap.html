@@ -94,7 +94,7 @@
       <h1 data-toc-skip>Using bootstrapping with regemedint</h1>
                         <h4 class="author">Kazuki Yoshida</h4>
             
-            <h4 class="date">2020-05-01</h4>
+            <h4 class="date">2020-05-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/master/vignettes/vig_03_bootstrap.Rmd"><code>vignettes/vig_03_bootstrap.Rmd</code></a></small>
       <div class="hidden name"><code>vig_03_bootstrap.Rmd</code></div>
@@ -111,10 +111,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">regmedint</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
 <span class="co">## Prepare dataset</span>
-<span class="no">vv2015</span> <span class="kw">&lt;-</span> <span class="fu">read_delim</span>(<span class="kw">file</span> <span class="kw">=</span> <span class="st">"../tests/reference_results/data-valeri-vanderweele-2015.txt"</span>,
-                     <span class="kw">delim</span> <span class="kw">=</span> <span class="st">" "</span>) <span class="kw">%&gt;%</span>
-    <span class="co">## Following R convention, an event indicator is used.</span>
-    <span class="fu">mutate</span>(<span class="kw">event</span> <span class="kw">=</span> <span class="fu">if_else</span>(<span class="no">cens</span> <span class="kw">==</span> <span class="fl">0</span>, <span class="fl">1L</span>, <span class="fl">0L</span>))
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">vv2015</span>)
 <span class="co">## Main fit</span>
 <span class="no">regmedint_obj</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">vv2015</span>,
                            <span class="co">## Variables</span>
@@ -173,11 +170,14 @@
     <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>)
 }
 <span class="co">## Run bootstrapping</span>
+<span class="no">ncpus</span> <span class="kw">&lt;-</span> <span class="fl">1</span>
+<span class="co">## For parallization, use the following instead.</span>
+<span class="co">## ncpus &lt;- parallel::detectCores()</span>
 <span class="no">boot_obj</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.html">boot</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">vv2015</span>, <span class="kw">statistic</span> <span class="kw">=</span> <span class="no">regmedint_boot</span>, <span class="kw">R</span> <span class="kw">=</span> <span class="fl">1000</span>,
                  <span class="co">## For palatalization</span>
                  <span class="co">## See https://cran.r-project.org/package=boot</span>
                  <span class="kw">parallel</span> <span class="kw">=</span> <span class="st">"multicore"</span>,
-                 <span class="kw">ncpus</span> <span class="kw">=</span> <span class="kw pkg">parallel</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html">detectCores</a></span>())
+                 <span class="kw">ncpus</span> <span class="kw">=</span> <span class="no">ncpus</span>)
 <span class="co">## Confidence interval for the pm</span>
 <span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.ci.html">boot.ci</a></span>(<span class="no">boot_obj</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"basic"</span>, <span class="kw">index</span> <span class="kw">=</span> <span class="fl">7</span>)</pre></body></html></div>
 <pre><code>## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
@@ -197,9 +197,10 @@
 <p>In the tidyverse ecosystem, the <code>modelr</code> package can be used to provide a potentially more flexible workflow in some settings.</p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">modelr</span>)
 
-<span class="co">## For parallization</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">future</span>)
-<span class="kw pkg">future</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/future/man/plan.html">plan</a></span>(<span class="no">multiprocess</span>)
+<span class="kw pkg">future</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/future/man/plan.html">plan</a></span>(<span class="no">sequential</span>)
+<span class="co">## For parallization, use the following instead.</span>
+<span class="co">## future::plan(multiprocess)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">furrr</span>)
 
 <span class="co">## Bootstrapping</span>

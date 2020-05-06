@@ -177,6 +177,86 @@
 
     <p>A numeric matrix with the diagonals populated with variance estimates. Off-diagnonals are NA since these are not estimated.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>regmedint</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>vv2015</span>)
+<span class='no'>regmedint_obj</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='regmedint.html'>regmedint</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>vv2015</span>,
+                           <span class='co'>## Variables</span>
+                           <span class='kw'>yvar</span> <span class='kw'>=</span> <span class='st'>"y"</span>,
+                           <span class='kw'>avar</span> <span class='kw'>=</span> <span class='st'>"x"</span>,
+                           <span class='kw'>mvar</span> <span class='kw'>=</span> <span class='st'>"m"</span>,
+                           <span class='kw'>cvar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"c"</span>),
+                           <span class='kw'>eventvar</span> <span class='kw'>=</span> <span class='st'>"event"</span>,
+                           <span class='co'>## Values at which effects are evaluated</span>
+                           <span class='kw'>a0</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+                           <span class='kw'>a1</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+                           <span class='kw'>m_cde</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+                           <span class='kw'>c_cond</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+                           <span class='co'>## Model types</span>
+                           <span class='kw'>mreg</span> <span class='kw'>=</span> <span class='st'>"logistic"</span>,
+                           <span class='kw'>yreg</span> <span class='kw'>=</span> <span class='st'>"survAFT_weibull"</span>,
+                           <span class='co'>## Additional specification</span>
+                           <span class='kw'>interaction</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                           <span class='kw'>casecontrol</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'><a href='https://rdrr.io/r/stats/vcov.html'>vcov</a></span>(<span class='no'>regmedint_obj</span>)</div><div class='output co'>#&gt;             cde       pnde        tnie       tnde         pnie         te
+#&gt; cde  0.08657105         NA          NA         NA           NA         NA
+#&gt; pnde         NA 0.04430708          NA         NA           NA         NA
+#&gt; tnie         NA         NA 0.001373526         NA           NA         NA
+#&gt; tnde         NA         NA          NA 0.04498446           NA         NA
+#&gt; pnie         NA         NA          NA         NA 0.0007458327         NA
+#&gt; te           NA         NA          NA         NA           NA 0.04447903
+#&gt; pm           NA         NA          NA         NA           NA         NA
+#&gt;               pm
+#&gt; cde           NA
+#&gt; pnde          NA
+#&gt; tnie          NA
+#&gt; tnde          NA
+#&gt; pnie          NA
+#&gt; te            NA
+#&gt; pm   0.000297802
+#&gt; attr(,"args")
+#&gt; attr(,"args")$a0
+#&gt; [1] 0
+#&gt; 
+#&gt; attr(,"args")$a1
+#&gt; [1] 1
+#&gt; 
+#&gt; attr(,"args")$m_cde
+#&gt; [1] 1
+#&gt; 
+#&gt; attr(,"args")$c_cond
+#&gt; [1] 0.5
+#&gt; </div><div class='input'><span class='co'>## Evaluate at different values</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/vcov.html'>vcov</a></span>(<span class='no'>regmedint_obj</span>, <span class='kw'>m_cde</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>c_cond</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt;             cde       pnde        tnie       tnde         pnie         te
+#&gt; cde  0.09049915         NA          NA         NA           NA         NA
+#&gt; pnde         NA 0.04416578          NA         NA           NA         NA
+#&gt; tnie         NA         NA 0.001334745         NA           NA         NA
+#&gt; tnde         NA         NA          NA 0.04593907           NA         NA
+#&gt; pnie         NA         NA          NA         NA 0.0007330485         NA
+#&gt; te           NA         NA          NA         NA           NA 0.04499562
+#&gt; pm           NA         NA          NA         NA           NA         NA
+#&gt;                pm
+#&gt; cde            NA
+#&gt; pnde           NA
+#&gt; tnie           NA
+#&gt; tnde           NA
+#&gt; pnie           NA
+#&gt; te             NA
+#&gt; pm   0.0002794262
+#&gt; attr(,"args")
+#&gt; attr(,"args")$a0
+#&gt; [1] 0
+#&gt; 
+#&gt; attr(,"args")$a1
+#&gt; [1] 1
+#&gt; 
+#&gt; attr(,"args")$m_cde
+#&gt; [1] 0
+#&gt; 
+#&gt; attr(,"args")$c_cond
+#&gt; [1] 1
+#&gt; </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -125,10 +125,8 @@ conditional effects are evaluated at.
     library(regmedint)
     library(tidyverse)
 
-    vv2015 <- read_delim(file = "./tests/reference_results/data-valeri-vanderweele-2015.txt",
-                         delim = " ") %>%
-        ## Following R convention, an event indicator is used.
-        mutate(event = if_else(cens == 0, 1L, 0L))
+    ## Example data
+    data(vv2015)
 
     regmedint_obj <- regmedint(data = vv2015,
                                ## Variables

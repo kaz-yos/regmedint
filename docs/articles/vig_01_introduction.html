@@ -94,7 +94,7 @@
       <h1 data-toc-skip>Introduction to user interface functions</h1>
                         <h4 class="author">Kazuki Yoshida</h4>
             
-            <h4 class="date">2020-05-01</h4>
+            <h4 class="date">2020-05-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/master/vignettes/vig_01_introduction.Rmd"><code>vignettes/vig_01_introduction.Rmd</code></a></small>
       <div class="hidden name"><code>vig_01_introduction.Rmd</code></div>
@@ -110,11 +110,7 @@
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">regmedint</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
 <span class="co">## Prepare dataset</span>
-<span class="no">vv2015</span> <span class="kw">&lt;-</span> <span class="fu">read_delim</span>(<span class="kw">file</span> <span class="kw">=</span> <span class="st">"../tests/reference_results/data-valeri-vanderweele-2015.txt"</span>,
-                     <span class="kw">delim</span> <span class="kw">=</span> <span class="st">" "</span>) <span class="kw">%&gt;%</span>
-    <span class="co">## Following R convention, an event indicator is used.</span>
-    <span class="fu">mutate</span>(<span class="kw">event</span> <span class="kw">=</span> <span class="fu">if_else</span>(<span class="no">cens</span> <span class="kw">==</span> <span class="fl">0</span>, <span class="fl">1L</span>, <span class="fl">0L</span>)) <span class="kw">%&gt;%</span>
-    <span class="fu">select</span>(-<span class="no">cens</span>)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">vv2015</span>)</pre></body></html></div>
 </div>
 <div id="regmedint-object" class="section level1">
 <h1 class="hasAnchor">
@@ -175,13 +171,13 @@
 ## Call:
 ## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
 ##     dist = "weibull")
-##               Value Std. Error     z           p
-## (Intercept) -1.0424     0.1903 -5.48 0.000000043
-## x            0.4408     0.3008  1.47        0.14
-## m            0.0905     0.2683  0.34        0.74
-## c           -0.0669     0.0915 -0.73        0.46
-## x:m          0.1003     0.4207  0.24        0.81
-## Log(scale)  -0.0347     0.0810 -0.43        0.67
+##               Value Std. Error     z       p
+## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
+## x            0.4408     0.3008  1.47    0.14
+## m            0.0905     0.2683  0.34    0.74
+## c           -0.0669     0.0915 -0.73    0.46
+## x:m          0.1003     0.4207  0.24    0.81
+## Log(scale)  -0.0347     0.0810 -0.43    0.67
 ## 
 ## Scale= 0.966 
 ## 
@@ -240,13 +236,13 @@
 ## Call:
 ## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
 ##     dist = "weibull")
-##               Value Std. Error     z           p
-## (Intercept) -1.0424     0.1903 -5.48 0.000000043
-## x            0.4408     0.3008  1.47        0.14
-## m            0.0905     0.2683  0.34        0.74
-## c           -0.0669     0.0915 -0.73        0.46
-## x:m          0.1003     0.4207  0.24        0.81
-## Log(scale)  -0.0347     0.0810 -0.43        0.67
+##               Value Std. Error     z       p
+## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
+## x            0.4408     0.3008  1.47    0.14
+## m            0.0905     0.2683  0.34    0.74
+## c           -0.0669     0.0915 -0.73    0.46
+## x:m          0.1003     0.4207  0.24    0.81
+## Log(scale)  -0.0347     0.0810 -0.43    0.67
 ## 
 ## Scale= 0.966 
 ## 
@@ -257,14 +253,22 @@
 ## n= 100 
 ## 
 ## ### Mediation analysis 
-##              est         se         Z           p       lower      upper exp(est) exp(lower) exp(upper)
-## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019 1.717845  0.9650179   3.057967
-## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809 1.630571  1.0793648   2.463266
-## tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846 1.018407  0.9470547   1.095136
-## tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281 1.646256  1.0863290   2.494786
-## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348 1.008705  0.9561318   1.064168
-## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785 1.660586  1.0983544   2.510615
-## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926       NA         NA         NA
+##              est         se         Z           p       lower      upper
+## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
+## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
+## tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
+## tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
+## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
+## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
+## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926
+##      exp(est) exp(lower) exp(upper)
+## cde  1.717845  0.9650179   3.057967
+## pnde 1.630571  1.0793648   2.463266
+## tnie 1.018407  0.9470547   1.095136
+## tnde 1.646256  1.0863290   2.494786
+## pnie 1.008705  0.9561318   1.064168
+## te   1.660586  1.0983544   2.510615
+## pm         NA         NA         NA
 ## 
 ## Evaluated at:
 ## avar: x
@@ -305,13 +309,13 @@
 ## Call:
 ## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
 ##     dist = "weibull")
-##               Value Std. Error     z           p
-## (Intercept) -1.0424     0.1903 -5.48 0.000000043
-## x            0.4408     0.3008  1.47        0.14
-## m            0.0905     0.2683  0.34        0.74
-## c           -0.0669     0.0915 -0.73        0.46
-## x:m          0.1003     0.4207  0.24        0.81
-## Log(scale)  -0.0347     0.0810 -0.43        0.67
+##               Value Std. Error     z       p
+## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
+## x            0.4408     0.3008  1.47    0.14
+## m            0.0905     0.2683  0.34    0.74
+## c           -0.0669     0.0915 -0.73    0.46
+## x:m          0.1003     0.4207  0.24    0.81
+## Log(scale)  -0.0347     0.0810 -0.43    0.67
 ## 
 ## Scale= 0.966 
 ## 
@@ -370,13 +374,13 @@
 ## Call:
 ## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
 ##     dist = "weibull")
-##               Value Std. Error     z           p
-## (Intercept) -1.0424     0.1903 -5.48 0.000000043
-## x            0.4408     0.3008  1.47        0.14
-## m            0.0905     0.2683  0.34        0.74
-## c           -0.0669     0.0915 -0.73        0.46
-## x:m          0.1003     0.4207  0.24        0.81
-## Log(scale)  -0.0347     0.0810 -0.43        0.67
+##               Value Std. Error     z       p
+## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
+## x            0.4408     0.3008  1.47    0.14
+## m            0.0905     0.2683  0.34    0.74
+## c           -0.0669     0.0915 -0.73    0.46
+## x:m          0.1003     0.4207  0.24    0.81
+## Log(scale)  -0.0347     0.0810 -0.43    0.67
 ## 
 ## Scale= 0.966 
 ## 
@@ -412,8 +416,10 @@
 <a href="#coef-for-regmedint" class="anchor"></a><code>coef()</code> for <code>regmedint</code>
 </h2>
 <div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>)</pre></body></html></div>
-<pre><code>##         cde        pnde        tnie        tnde        pnie          te          pm 
-## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 0.045436278 
+<pre><code>##         cde        pnde        tnie        tnde        pnie          te 
+## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 
+##          pm 
+## 0.045436278 
 ## attr(,"args")
 ## attr(,"args")$a0
 ## [1] 0
@@ -427,8 +433,10 @@
 ## attr(,"args")$c_cond
 ## [1] 0.5</code></pre>
 <div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>, <span class="kw">m_cde</span> <span class="kw">=</span> <span class="fl">0</span>, <span class="kw">c_cond</span> <span class="kw">=</span> <span class="fl">1</span>)</pre></body></html></div>
-<pre><code>##         cde        pnde        tnie        tnde        pnie          te          pm 
-## 0.440756562 0.492306223 0.018077074 0.501765186 0.008618111 0.510383297 0.044816400 
+<pre><code>##         cde        pnde        tnie        tnde        pnie          te 
+## 0.440756562 0.492306223 0.018077074 0.501765186 0.008618111 0.510383297 
+##          pm 
+## 0.044816400 
 ## attr(,"args")
 ## attr(,"args")$a0
 ## [1] 0
@@ -447,14 +455,22 @@
 <a href="#vcov-for-regmedint" class="anchor"></a><code>vcov()</code> for <code>regmedint</code>
 </h2>
 <div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span>(<span class="no">regmedint_obj</span>)</pre></body></html></div>
-<pre><code>##             cde       pnde        tnie       tnde         pnie         te          pm
-## cde  0.08657105         NA          NA         NA           NA         NA          NA
-## pnde         NA 0.04430708          NA         NA           NA         NA          NA
-## tnie         NA         NA 0.001373526         NA           NA         NA          NA
-## tnde         NA         NA          NA 0.04498446           NA         NA          NA
-## pnie         NA         NA          NA         NA 0.0007458327         NA          NA
-## te           NA         NA          NA         NA           NA 0.04447903          NA
-## pm           NA         NA          NA         NA           NA         NA 0.000297802
+<pre><code>##             cde       pnde        tnie       tnde         pnie         te
+## cde  0.08657105         NA          NA         NA           NA         NA
+## pnde         NA 0.04430708          NA         NA           NA         NA
+## tnie         NA         NA 0.001373526         NA           NA         NA
+## tnde         NA         NA          NA 0.04498446           NA         NA
+## pnie         NA         NA          NA         NA 0.0007458327         NA
+## te           NA         NA          NA         NA           NA 0.04447903
+## pm           NA         NA          NA         NA           NA         NA
+##               pm
+## cde           NA
+## pnde          NA
+## tnie          NA
+## tnde          NA
+## pnie          NA
+## te            NA
+## pm   0.000297802
 ## attr(,"args")
 ## attr(,"args")$a0
 ## [1] 0
@@ -468,14 +484,22 @@
 ## attr(,"args")$c_cond
 ## [1] 0.5</code></pre>
 <div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span>(<span class="no">regmedint_obj</span>, <span class="kw">m_cde</span> <span class="kw">=</span> <span class="fl">0</span>, <span class="kw">c_cond</span> <span class="kw">=</span> <span class="fl">1</span>)</pre></body></html></div>
-<pre><code>##             cde       pnde        tnie       tnde         pnie         te           pm
-## cde  0.09049915         NA          NA         NA           NA         NA           NA
-## pnde         NA 0.04416578          NA         NA           NA         NA           NA
-## tnie         NA         NA 0.001334745         NA           NA         NA           NA
-## tnde         NA         NA          NA 0.04593907           NA         NA           NA
-## pnie         NA         NA          NA         NA 0.0007330485         NA           NA
-## te           NA         NA          NA         NA           NA 0.04499562           NA
-## pm           NA         NA          NA         NA           NA         NA 0.0002794262
+<pre><code>##             cde       pnde        tnie       tnde         pnie         te
+## cde  0.09049915         NA          NA         NA           NA         NA
+## pnde         NA 0.04416578          NA         NA           NA         NA
+## tnie         NA         NA 0.001334745         NA           NA         NA
+## tnde         NA         NA          NA 0.04593907           NA         NA
+## pnie         NA         NA          NA         NA 0.0007330485         NA
+## te           NA         NA          NA         NA           NA 0.04499562
+## pm           NA         NA          NA         NA           NA         NA
+##                pm
+## cde            NA
+## pnde           NA
+## tnie           NA
+## tnde           NA
+## pnie           NA
+## te             NA
+## pm   0.0002794262
 ## attr(,"args")
 ## attr(,"args")$a0
 ## [1] 0
@@ -588,8 +612,10 @@
 ##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177 
 ## n= 100 
 ## ### Mediation analysis 
-##         cde        pnde        tnie        tnde        pnie          te          pm 
-## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 0.045436278</code></pre>
+##         cde        pnde        tnie        tnde        pnie          te 
+## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 
+##          pm 
+## 0.045436278</code></pre>
 <div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">regmedint_obj</span>)</pre></body></html></div>
 <pre><code>## ### Mediator model
 ## 
@@ -617,8 +643,10 @@
 ##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177 
 ## n= 100 
 ## ### Mediation analysis 
-##         cde        pnde        tnie        tnde        pnie          te          pm 
-## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 0.045436278</code></pre>
+##         cde        pnde        tnie        tnde        pnie          te 
+## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 
+##          pm 
+## 0.045436278</code></pre>
 <div class="sourceCode" id="cb29"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">regmedint_obj</span>, <span class="kw">m_cde</span> <span class="kw">=</span> <span class="fl">0</span>, <span class="kw">c_cond</span> <span class="kw">=</span> <span class="fl">1</span>)</pre></body></html></div>
 <pre><code>## ### Mediator model
 ## 
@@ -646,8 +674,10 @@
 ##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177 
 ## n= 100 
 ## ### Mediation analysis 
-##         cde        pnde        tnie        tnde        pnie          te          pm 
-## 0.440756562 0.492306223 0.018077074 0.501765186 0.008618111 0.510383297 0.044816400</code></pre>
+##         cde        pnde        tnie        tnde        pnie          te 
+## 0.440756562 0.492306223 0.018077074 0.501765186 0.008618111 0.510383297 
+##          pm 
+## 0.044816400</code></pre>
 </div>
 <div id="methods-for-summary_regmedint" class="section level2">
 <h2 class="hasAnchor">
@@ -702,13 +732,13 @@
 ## Call:
 ## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
 ##     dist = "weibull")
-##               Value Std. Error     z           p
-## (Intercept) -1.0424     0.1903 -5.48 0.000000043
-## x            0.4408     0.3008  1.47        0.14
-## m            0.0905     0.2683  0.34        0.74
-## c           -0.0669     0.0915 -0.73        0.46
-## x:m          0.1003     0.4207  0.24        0.81
-## Log(scale)  -0.0347     0.0810 -0.43        0.67
+##               Value Std. Error     z       p
+## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
+## x            0.4408     0.3008  1.47    0.14
+## m            0.0905     0.2683  0.34    0.74
+## c           -0.0669     0.0915 -0.73    0.46
+## x:m          0.1003     0.4207  0.24    0.81
+## Log(scale)  -0.0347     0.0810 -0.43    0.67
 ## 
 ## Scale= 0.966 
 ## 
@@ -767,13 +797,13 @@
 ## Call:
 ## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
 ##     dist = "weibull")
-##               Value Std. Error     z           p
-## (Intercept) -1.0424     0.1903 -5.48 0.000000043
-## x            0.4408     0.3008  1.47        0.14
-## m            0.0905     0.2683  0.34        0.74
-## c           -0.0669     0.0915 -0.73        0.46
-## x:m          0.1003     0.4207  0.24        0.81
-## Log(scale)  -0.0347     0.0810 -0.43        0.67
+##               Value Std. Error     z       p
+## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
+## x            0.4408     0.3008  1.47    0.14
+## m            0.0905     0.2683  0.34    0.74
+## c           -0.0669     0.0915 -0.73    0.46
+## x:m          0.1003     0.4207  0.24    0.81
+## Log(scale)  -0.0347     0.0810 -0.43    0.67
 ## 
 ## Scale= 0.966 
 ## 

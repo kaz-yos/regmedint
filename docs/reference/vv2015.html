@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Validate soundness of a regmedint object. — validate_regmedint • regmedint</title>
+<title>Example dataset from Valeri and VanderWeele 2015. — vv2015 • regmedint</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Validate soundness of a regmedint object. — validate_regmedint" />
-<meta property="og:description" content="Check the structure of a proposed regmedint object for soundness." />
+<meta property="og:title" content="Example dataset from Valeri and VanderWeele 2015. — vv2015" />
+<meta property="og:description" content="An example dataset from Valeri and VanderWeele (2015) &amp;lt;doi:10.1097/EDE.0000000000000253&amp;gt;." />
 
 
 
@@ -132,29 +132,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Validate soundness of a regmedint object.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kaz-yos/regmedint/blob/master/R/01_regmedint_class_ui.R'><code>R/01_regmedint_class_ui.R</code></a></small>
-    <div class="hidden name"><code>validate_regmedint.Rd</code></div>
+    <h1>Example dataset from Valeri and VanderWeele 2015.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kaz-yos/regmedint/blob/master/R/00_package_information.R'><code>R/00_package_information.R</code></a></small>
+    <div class="hidden name"><code>vv2015.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Check the structure of a proposed regmedint object for soundness.</p>
+    <p>An example dataset from Valeri and VanderWeele (2015) &lt;doi:10.1097/EDE.0000000000000253&gt;.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>validate_regmedint</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='no'>vv2015</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A <code>regmedint</code> object.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>No return value, called for side effects.</p>
+    <p>A tibble with 100 rows and 7 variables:</p><dl'>
+  <dt>id</dt><dd><p>Positive integer id.</p></dd>
+  <dt>x</dt><dd><p>Binary treatment assignment variable.</p></dd>
+  <dt>m</dt><dd><p>Binary mediator variable.</p></dd>
+  <dt>y</dt><dd><p>Time to event outcome variable.</p></dd>
+  <dt>cens</dt><dd><p>Binary censoring indicator. Censored is 1.</p></dd>
+  <dt>c</dt><dd><p>Continuous confounder variable.</p></dd>
+  <dt>event</dt><dd><p>Binary event indicator. Event is 1.</p></dd>
+
+</dl>
+
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/'>https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/</a></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
