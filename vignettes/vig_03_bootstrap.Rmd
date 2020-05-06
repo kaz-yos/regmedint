@@ -36,10 +36,7 @@ set.seed(138087069)
 library(regmedint)
 library(tidyverse)
 ## Prepare dataset
-vv2015 <- read_delim(file = "../tests/reference_results/data-valeri-vanderweele-2015.txt",
-                     delim = " ") %>%
-    ## Following R convention, an event indicator is used.
-    mutate(event = if_else(cens == 0, 1L, 0L))
+data(vv2015)
 ## Main fit
 regmedint_obj <- regmedint(data = vv2015,
                            ## Variables

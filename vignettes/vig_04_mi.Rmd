@@ -37,10 +37,8 @@ set.seed(138087069)
 library(regmedint)
 library(tidyverse)
 ## Prepare dataset
-vv2015 <- read_delim(file = "../tests/reference_results/data-valeri-vanderweele-2015.txt",
-                     delim = " ") %>%
-    ## Following R convention, an event indicator is used.
-    mutate(event = if_else(cens == 0, 1L, 0L)) %>%
+data(vv2015)
+vv2015 <- vv2015 %>%
     select(-cens) %>%
     ## Generate exposure-dependent missing of mediator
     mutate(logit_p_m_miss = -1 + 0.5 * x,
