@@ -38,3 +38,32 @@ Invisibly return the \code{regmedint} class object as is.
 \description{
 Print the \code{mreg_fit}, \code{yreg_fit}, and the mediation analysis effect estimates.
 }
+\examples{
+library(regmedint)
+data(vv2015)
+regmedint_obj <- regmedint(data = vv2015,
+                           ## Variables
+                           yvar = "y",
+                           avar = "x",
+                           mvar = "m",
+                           cvar = c("c"),
+                           eventvar = "event",
+                           ## Values at which effects are evaluated
+                           a0 = 0,
+                           a1 = 1,
+                           m_cde = 1,
+                           c_cond = 0.5,
+                           ## Model types
+                           mreg = "logistic",
+                           yreg = "survAFT_weibull",
+                           ## Additional specification
+                           interaction = TRUE,
+                           casecontrol = FALSE)
+## Implicit printing
+regmedint_obj
+## Explicit printing
+print(regmedint_obj)
+## Evaluate at different values
+print(regmedint_obj, m_cde = 0, c_cond = 1)
+
+}

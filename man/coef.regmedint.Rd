@@ -25,3 +25,29 @@ A numeric vector of point estimates.
 \description{
 Extract point estimates evaluated at \code{a0}, \code{a1}, \code{m_cde}, and \code{c_cond}.
 }
+\examples{
+library(regmedint)
+data(vv2015)
+regmedint_obj <- regmedint(data = vv2015,
+                           ## Variables
+                           yvar = "y",
+                           avar = "x",
+                           mvar = "m",
+                           cvar = c("c"),
+                           eventvar = "event",
+                           ## Values at which effects are evaluated
+                           a0 = 0,
+                           a1 = 1,
+                           m_cde = 1,
+                           c_cond = 0.5,
+                           ## Model types
+                           mreg = "logistic",
+                           yreg = "survAFT_weibull",
+                           ## Additional specification
+                           interaction = TRUE,
+                           casecontrol = FALSE)
+coef(regmedint_obj)
+## Evaluate at different values
+coef(regmedint_obj, m_cde = 0, c_cond = 1)
+
+}

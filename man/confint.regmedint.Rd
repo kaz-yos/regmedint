@@ -38,3 +38,31 @@ A numeric matrix of the lower limit and upper limit.
 \description{
 Construct Wald approximate confidence intervals for the quantities of interest.
 }
+\examples{
+library(regmedint)
+data(vv2015)
+regmedint_obj <- regmedint(data = vv2015,
+                           ## Variables
+                           yvar = "y",
+                           avar = "x",
+                           mvar = "m",
+                           cvar = c("c"),
+                           eventvar = "event",
+                           ## Values at which effects are evaluated
+                           a0 = 0,
+                           a1 = 1,
+                           m_cde = 1,
+                           c_cond = 0.5,
+                           ## Model types
+                           mreg = "logistic",
+                           yreg = "survAFT_weibull",
+                           ## Additional specification
+                           interaction = TRUE,
+                           casecontrol = FALSE)
+confint(regmedint_obj)
+## Evaluate at different values
+confint(regmedint_obj, m_cde = 0, c_cond = 1)
+## Change confidence level
+confint(regmedint_obj, m_cde = 0, c_cond = 1, level = 0.99)
+
+}

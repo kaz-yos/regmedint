@@ -44,3 +44,34 @@ A \code{summary_regmedint} object, which is a list containing the summary object
 \description{
 Summarize the \code{mreg_fit}, \code{yreg_fit}, and the mediation analysis effect estimates.
 }
+\examples{
+library(regmedint)
+data(vv2015)
+regmedint_obj <- regmedint(data = vv2015,
+                           ## Variables
+                           yvar = "y",
+                           avar = "x",
+                           mvar = "m",
+                           cvar = c("c"),
+                           eventvar = "event",
+                           ## Values at which effects are evaluated
+                           a0 = 0,
+                           a1 = 1,
+                           m_cde = 1,
+                           c_cond = 0.5,
+                           ## Model types
+                           mreg = "logistic",
+                           yreg = "survAFT_weibull",
+                           ## Additional specification
+                           interaction = TRUE,
+                           casecontrol = FALSE)
+## Detailed result with summary
+summary(regmedint_obj)
+## Add exponentiate results for non-linear outcome models
+summary(regmedint_obj, exponentiate = TRUE)
+## Evaluate at different values
+summary(regmedint_obj, m_cde = 0, c_cond = 1)
+## Change confidence level
+summary(regmedint_obj, m_cde = 0, c_cond = 1, level = 0.99)
+
+}
