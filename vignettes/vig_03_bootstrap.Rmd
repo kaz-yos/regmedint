@@ -84,11 +84,14 @@ regmedint_boot <- function(data, ind)  {
     coef(regmedint_obj)
 }
 ## Run bootstrapping
+ncpus <- 1
+## For parallization, use the following instead.
+## ncpus <- parallel::detectCores()
 boot_obj <- boot(data = vv2015, statistic = regmedint_boot, R = 1000,
                  ## For palatalization
                  ## See https://cran.r-project.org/package=boot
                  parallel = "multicore",
-                 ncpus = parallel::detectCores())
+                 ncpus = ncpus)
 ## Confidence interval for the pm
 boot.ci(boot_obj, type = "basic", index = 7)
 ```
@@ -101,9 +104,10 @@ In the tidyverse ecosystem, the `modelr` package can be used to provide a potent
 ```{r}
 library(modelr)
 
-## For parallization
 library(future)
-future::plan(multiprocess)
+future::plan(sequential)
+## For parallization, use the following instead.
+## future::plan(multiprocess)
 library(furrr)
 
 ## Bootstrapping
