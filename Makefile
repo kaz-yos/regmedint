@@ -62,7 +62,7 @@ readme: README.Rmd
 
 ## Build website
 ## https://pkgdown.r-lib.org
-pkgdown: vignettes readme
+pkgdown: vignettes readme NAMESPACE
 	Rscript -e "pkgdown::build_site()"
 
 ## build depends on the *.tar.gz file, i.e., its own product.
