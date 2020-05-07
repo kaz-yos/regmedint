@@ -41,6 +41,29 @@
 ##'
 ##' @return regmedint object, which is a list containing the mediator regression object, the outcome regression object, and the regression-based mediation results.
 ##'
+##' @examples
+##' library(regmedint)
+##' data(vv2015)
+##' regmedint_obj <- regmedint(data = vv2015,
+##'                            ## Variables
+##'                            yvar = "y",
+##'                            avar = "x",
+##'                            mvar = "m",
+##'                            cvar = c("c"),
+##'                            eventvar = "event",
+##'                            ## Values at which effects are evaluated
+##'                            a0 = 0,
+##'                            a1 = 1,
+##'                            m_cde = 1,
+##'                            c_cond = 0.5,
+##'                            ## Model types
+##'                            mreg = "logistic",
+##'                            yreg = "survAFT_weibull",
+##'                            ## Additional specification
+##'                            interaction = TRUE,
+##'                            casecontrol = FALSE)
+##' summary(regmedint_obj)
+##'
 ##' @export
 regmedint <- function(data,
                       yvar,

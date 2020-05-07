@@ -41,6 +41,34 @@ validate_eval_at_values <- function(x, a0, a1, m_cde, c_cond) {
 ##'
 ##' @return Invisibly return the \code{regmedint} class object as is.
 ##'
+##' @examples
+##' library(regmedint)
+##' data(vv2015)
+##' regmedint_obj <- regmedint(data = vv2015,
+##'                            ## Variables
+##'                            yvar = "y",
+##'                            avar = "x",
+##'                            mvar = "m",
+##'                            cvar = c("c"),
+##'                            eventvar = "event",
+##'                            ## Values at which effects are evaluated
+##'                            a0 = 0,
+##'                            a1 = 1,
+##'                            m_cde = 1,
+##'                            c_cond = 0.5,
+##'                            ## Model types
+##'                            mreg = "logistic",
+##'                            yreg = "survAFT_weibull",
+##'                            ## Additional specification
+##'                            interaction = TRUE,
+##'                            casecontrol = FALSE)
+##' ## Implicit printing
+##' regmedint_obj
+##' ## Explicit printing
+##' print(regmedint_obj)
+##' ## Evaluate at different values
+##' print(regmedint_obj, m_cde = 0, c_cond = 1)
+##'
 ##' @export
 print.regmedint <- function(x,
                             a0 = NULL,
@@ -108,6 +136,36 @@ print.regmedint <- function(x,
 ##' @param level Confidence level for the confidence intervals.
 ##'
 ##' @return A \code{summary_regmedint} object, which is a list containing the summary objects of the \code{mreg_fit} and the \code{yreg_fit} as well as the mediation analysis results.
+##'
+##' @examples
+##' library(regmedint)
+##' data(vv2015)
+##' regmedint_obj <- regmedint(data = vv2015,
+##'                            ## Variables
+##'                            yvar = "y",
+##'                            avar = "x",
+##'                            mvar = "m",
+##'                            cvar = c("c"),
+##'                            eventvar = "event",
+##'                            ## Values at which effects are evaluated
+##'                            a0 = 0,
+##'                            a1 = 1,
+##'                            m_cde = 1,
+##'                            c_cond = 0.5,
+##'                            ## Model types
+##'                            mreg = "logistic",
+##'                            yreg = "survAFT_weibull",
+##'                            ## Additional specification
+##'                            interaction = TRUE,
+##'                            casecontrol = FALSE)
+##' ## Detailed result with summary
+##' summary(regmedint_obj)
+##' ## Add exponentiate results for non-linear outcome models
+##' summary(regmedint_obj, exponentiate = TRUE)
+##' ## Evaluate at different values
+##' summary(regmedint_obj, m_cde = 0, c_cond = 1)
+##' ## Change confidence level
+##' summary(regmedint_obj, m_cde = 0, c_cond = 1, level = 0.99)
 ##'
 ##' @export
 summary.regmedint <- function(object,
@@ -218,6 +276,32 @@ summary.regmedint <- function(object,
 ##'
 ##' @return Invisibly return the first argument.
 ##'
+##' @examples
+##' library(regmedint)
+##' data(vv2015)
+##' regmedint_obj <- regmedint(data = vv2015,
+##'                            ## Variables
+##'                            yvar = "y",
+##'                            avar = "x",
+##'                            mvar = "m",
+##'                            cvar = c("c"),
+##'                            eventvar = "event",
+##'                            ## Values at which effects are evaluated
+##'                            a0 = 0,
+##'                            a1 = 1,
+##'                            m_cde = 1,
+##'                            c_cond = 0.5,
+##'                            ## Model types
+##'                            mreg = "logistic",
+##'                            yreg = "survAFT_weibull",
+##'                            ## Additional specification
+##'                            interaction = TRUE,
+##'                            casecontrol = FALSE)
+##' ## Implicit printing
+##' summary(regmedint_obj)
+##' ## Explicit printing
+##' print(summary(regmedint_obj))
+##'
 ##' @export
 print.summary_regmedint <- function(x, ...) {
 
@@ -260,6 +344,29 @@ print.summary_regmedint <- function(x, ...) {
 ##' @param ... For compatibility with the generic.
 ##'
 ##' @return  A matrix populated with results.
+##'
+##' @examples
+##' library(regmedint)
+##' data(vv2015)
+##' regmedint_obj <- regmedint(data = vv2015,
+##'                            ## Variables
+##'                            yvar = "y",
+##'                            avar = "x",
+##'                            mvar = "m",
+##'                            cvar = c("c"),
+##'                            eventvar = "event",
+##'                            ## Values at which effects are evaluated
+##'                            a0 = 0,
+##'                            a1 = 1,
+##'                            m_cde = 1,
+##'                            c_cond = 0.5,
+##'                            ## Model types
+##'                            mreg = "logistic",
+##'                            yreg = "survAFT_weibull",
+##'                            ## Additional specification
+##'                            interaction = TRUE,
+##'                            casecontrol = FALSE)
+##' coef(summary(regmedint_obj))
 ##'
 ##' @export
 coef.summary_regmedint <- function(object, ...) {
@@ -327,6 +434,31 @@ print_eval_info_helper <- function(a0, a1, m_cde, c_cond,
 ##'
 ##' @return A numeric vector of point estimates.
 ##'
+##' @examples
+##' library(regmedint)
+##' data(vv2015)
+##' regmedint_obj <- regmedint(data = vv2015,
+##'                            ## Variables
+##'                            yvar = "y",
+##'                            avar = "x",
+##'                            mvar = "m",
+##'                            cvar = c("c"),
+##'                            eventvar = "event",
+##'                            ## Values at which effects are evaluated
+##'                            a0 = 0,
+##'                            a1 = 1,
+##'                            m_cde = 1,
+##'                            c_cond = 0.5,
+##'                            ## Model types
+##'                            mreg = "logistic",
+##'                            yreg = "survAFT_weibull",
+##'                            ## Additional specification
+##'                            interaction = TRUE,
+##'                            casecontrol = FALSE)
+##' coef(regmedint_obj)
+##' ## Evaluate at different values
+##' coef(regmedint_obj, m_cde = 0, c_cond = 1)
+##'
 ##' @export
 coef.regmedint <- function(object,
                            a0 = NULL,
@@ -377,6 +509,31 @@ coef.regmedint <- function(object,
 ##' @param object An object of the \code{\link{regmedint}} class.
 ##'
 ##' @return A numeric matrix with the diagonals populated with variance estimates. Off-diagnonals are NA since these are not estimated.
+##'
+##' @examples
+##' library(regmedint)
+##' data(vv2015)
+##' regmedint_obj <- regmedint(data = vv2015,
+##'                            ## Variables
+##'                            yvar = "y",
+##'                            avar = "x",
+##'                            mvar = "m",
+##'                            cvar = c("c"),
+##'                            eventvar = "event",
+##'                            ## Values at which effects are evaluated
+##'                            a0 = 0,
+##'                            a1 = 1,
+##'                            m_cde = 1,
+##'                            c_cond = 0.5,
+##'                            ## Model types
+##'                            mreg = "logistic",
+##'                            yreg = "survAFT_weibull",
+##'                            ## Additional specification
+##'                            interaction = TRUE,
+##'                            casecontrol = FALSE)
+##' vcov(regmedint_obj)
+##' ## Evaluate at different values
+##' vcov(regmedint_obj, m_cde = 0, c_cond = 1)
 ##'
 ##' @export
 vcov.regmedint <- function(object,
@@ -442,6 +599,33 @@ vcov.regmedint <- function(object,
 ##' @param ... For compatibility with generic.
 ##'
 ##' @return A numeric matrix of the lower limit and upper limit.
+##'
+##' @examples
+##' library(regmedint)
+##' data(vv2015)
+##' regmedint_obj <- regmedint(data = vv2015,
+##'                            ## Variables
+##'                            yvar = "y",
+##'                            avar = "x",
+##'                            mvar = "m",
+##'                            cvar = c("c"),
+##'                            eventvar = "event",
+##'                            ## Values at which effects are evaluated
+##'                            a0 = 0,
+##'                            a1 = 1,
+##'                            m_cde = 1,
+##'                            c_cond = 0.5,
+##'                            ## Model types
+##'                            mreg = "logistic",
+##'                            yreg = "survAFT_weibull",
+##'                            ## Additional specification
+##'                            interaction = TRUE,
+##'                            casecontrol = FALSE)
+##' confint(regmedint_obj)
+##' ## Evaluate at different values
+##' confint(regmedint_obj, m_cde = 0, c_cond = 1)
+##' ## Change confidence level
+##' confint(regmedint_obj, m_cde = 0, c_cond = 1, level = 0.99)
 ##'
 ##' @export
 confint.regmedint <- function(object,
