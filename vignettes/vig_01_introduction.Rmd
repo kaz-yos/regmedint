@@ -19,8 +19,6 @@ opts_chunk$set(comment = "##", error= TRUE, warning = showWarning, message = sho
                tidy = FALSE, cache = FALSE, echo = TRUE,
                fig.width = 7, fig.height = 7, dev.args = list(family = "sans"),
                fig.path = "man/figures")
-## R configuration
-options(width = 116, scipen = 5)
 ```
 
 # Data preparation

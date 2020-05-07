@@ -19,12 +19,6 @@ opts_chunk$set(comment = "##", error= TRUE, warning = showWarning, message = sho
                tidy = FALSE, cache = FALSE, echo = TRUE,
                fig.width = 7, fig.height = 7, dev.args = list(family = "sans"),
                fig.path = "man/figures")
-## for rgl
-## knit_hooks$set(rgl = hook_rgl, webgl = hook_webgl)
-## for animation
-opts_knit$set(animation.fun = hook_ffmpeg_html)
-## R configuration
-options(width = 116, scipen = 5)
 ```
 
 The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references. The code seen here is compacted and lacks the comments. For more redable code, please refer to the [Github repo](https://github.com/kaz-yos/regmedint) and search for the function names without the preceding `regmedint:::`. For the type-set mathematical expressions and LaTeX source, please see the [supplement](https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf).
