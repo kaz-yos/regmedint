@@ -28,7 +28,7 @@
 ##' @param yvar A character vector of length 1. Outcome variable name. It should be the time variable for survival outcomes.
 ##' @param avar A character vector of length 1. Treatment variable name.
 ##' @param mvar A character vector of length 1. Mediator variable name.
-##' @param cvar A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{avar} and \code{yvar}.
+##' @param cvar A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.
 ##' @param eventvar An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.
 ##' @param a0 A numeric vector of length 1. Reference level of treatment variable that is considered "untreated" or "unexposed".
 ##' @param a1 A numeric vector of length 1.
