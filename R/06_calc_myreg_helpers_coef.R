@@ -227,10 +227,10 @@ prop_med_yreg_linear <- function(pnde, tnie) {
 ##'
 ##' Calculate the gradient of the proportion mediated for yreg linear case.
 ##'
-##' @param pnde Pure natural direct effect.
-##' @param tnie Total natural indirect effect.
+##' @param pnde A numeric vector of length one. Pure natural direct effect.
+##' @param tnie A numeric vector of length one. Total natural indirect effect.
 ##'
-##' @return Proportion mediated value.
+##' @return A numeric vector of length two. Gradient of the proportion mediated with respect to pnde and tnie.
 grad_prop_med_yreg_linear <- Deriv::Deriv(prop_med_yreg_linear)
 ## function (pnde, tnie)
 ## {
@@ -252,6 +252,14 @@ prop_med_yreg_logistic <- function(pnde, tnie) {
 }
 
 ## Corresponding gradient: R^2 -> R^2
+##' Calculate the gradient of the proportion mediated for yreg logistic.
+##'
+##' Calculate the gradient of the proportion mediated for yreg logistic case.
+##'
+##' @param pnde A numeric vector of length one. Pure natural direct effect.
+##' @param tnie A numeric vector of length one. Total natural indirect effect.
+##'
+##' @return A numeric vector of length two. Gradient of the proportion mediated with respect to pnde and tnie.
 grad_prop_med_yreg_logistic <- Deriv::Deriv(prop_med_yreg_logistic)
 ## function (pnde, tnie)
 ## {
