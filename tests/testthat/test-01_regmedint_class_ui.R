@@ -33,7 +33,7 @@ describe("regmedint", {
 
     describe("validate_args (regmedint argument validation)", {
         it("rejects missing data in the variales of interest", {
-            msg_missing <- "Missing is not allowed in variables of intrest! Consider multiple imputation."
+            msg_missing <- "Missing is not allowed in variables of interest! See the multiple imputation vignette."
             expect_error(pbc_cc %>%
                          mutate(alk_phos = NA) %>%
                          regmedint(data = .,
