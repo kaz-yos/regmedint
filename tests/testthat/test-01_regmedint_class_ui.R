@@ -210,7 +210,8 @@ describe("regmedint", {
         })
         ##
         it("rejects missing in evaluation arguments", {
-            msg_na_assertion_failure <- "are not true"
+            msg_na_assertion_c_cond <- "are not true"
+            msg_na_assertion <- "is not TRUE"
             expect_error(pbc_cc %>%
                          regmedint(data = .,
                                    yvar = "alk_phos",
@@ -226,7 +227,7 @@ describe("regmedint", {
                                    interaction = FALSE,
                                    casecontrol = FALSE,
                                    eventvar = NULL),
-                         msg_na_assertion_failure)
+                         msg_na_assertion)
             expect_error(pbc_cc %>%
                          regmedint(data = .,
                                    yvar = "alk_phos",
@@ -242,7 +243,7 @@ describe("regmedint", {
                                    interaction = FALSE,
                                    casecontrol = FALSE,
                                    eventvar = NULL),
-                         msg_na_assertion_failure)
+                         msg_na_assertion)
             expect_error(pbc_cc %>%
                          regmedint(data = .,
                                    yvar = "alk_phos",
@@ -258,7 +259,7 @@ describe("regmedint", {
                                    interaction = FALSE,
                                    casecontrol = FALSE,
                                    eventvar = NULL),
-                         msg_na_assertion_failure)
+                         msg_na_assertion)
             expect_error(pbc_cc %>%
                          regmedint(data = .,
                                    yvar = "alk_phos",
@@ -274,7 +275,7 @@ describe("regmedint", {
                                    interaction = FALSE,
                                    casecontrol = FALSE,
                                    eventvar = NULL),
-                         msg_na_assertion_failure)
+                         msg_na_assertion_c_cond)
         })
     })
 
