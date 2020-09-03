@@ -208,6 +208,74 @@ describe("regmedint", {
                                    eventvar = "status"),
                          msg_factor)
         })
+        ##
+        it("rejects missing in evaluation arguments", {
+            msg_na_assertion_failure <- "are not true"
+            expect_error(pbc_cc %>%
+                         regmedint(data = .,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = as.numeric(NA),
+                                   a1 = 2,
+                                   m_cde = 0,
+                                   c_cond = c(50,2,4),
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = NULL),
+                         msg_na_assertion_failure)
+            expect_error(pbc_cc %>%
+                         regmedint(data = .,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = 1,
+                                   a1 = as.numeric(NA),
+                                   m_cde = 0,
+                                   c_cond = c(50,2,4),
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = NULL),
+                         msg_na_assertion_failure)
+            expect_error(pbc_cc %>%
+                         regmedint(data = .,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = 1,
+                                   a1 = 2,
+                                   m_cde = as.numeric(NA),
+                                   c_cond = c(50,2,4),
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = NULL),
+                         msg_na_assertion_failure)
+            expect_error(pbc_cc %>%
+                         regmedint(data = .,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = 1,
+                                   a1 = 2,
+                                   m_cde = 0,
+                                   c_cond = c(50,2,NA),
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = NULL),
+                         msg_na_assertion_failure)
+        })
     })
 
     describe("regmedint mreg linear yreg linear", {
