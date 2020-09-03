@@ -169,15 +169,19 @@ validate_args <- function(data,
     ##
     assertthat::assert_that(is.numeric(a0))
     assertthat::assert_that(length(a0) == 1)
+    assertthat::assert_that(!is.na(a0))
     ##
     assertthat::assert_that(is.numeric(a1))
     assertthat::assert_that(length(a1) == 1)
+    assertthat::assert_that(!is.na(a1))
     ##
     assertthat::assert_that(is.numeric(m_cde))
     assertthat::assert_that(length(m_cde) == 1)
+    assertthat::assert_that(!is.na(m_cde))
     ##
     assertthat::assert_that(is.null(c_cond) | is.numeric(c_cond))
     assertthat::assert_that(length(c_cond) == length(cvar))
+    assertthat::assert_that(all(!is.na(c_cond)))
     ##
     assertthat::assert_that(is.character(mreg))
     assertthat::assert_that(length(mreg) == 1)
