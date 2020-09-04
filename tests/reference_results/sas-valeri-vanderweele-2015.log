@@ -1,9 +1,9 @@
-1                                                          The SAS System                             23:48 Wednesday, April 1, 2020
+1                                                          The SAS System                            15:33 Friday, September 4, 2020
 
 NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
 NOTE: SAS (r) Proprietary Software 9.4 (TS1M5) 
       Licensed to BRIGHAM & WOMENS HSPTL-DIV OF PREVENTATIVE MED-T&R, Site 70122551.
-NOTE: This session is executing on the Linux 2.6.32-754.23.1.el6.x86_64 (LIN X64) platform.
+NOTE: This session is executing on the Linux 2.6.32-754.31.1.el6.x86_64 (LIN X64) platform.
 
 
 
@@ -17,7 +17,7 @@ NOTE: Updated analytical products:
 
 NOTE: Additional host information:
 
- Linux LIN X64 2.6.32-754.23.1.el6.x86_64 #1 SMP Tue Sep 17 09:46:55 EDT 2019 x86_64 Red Hat Enterprise Linux Server release 6.10 
+ Linux LIN X64 2.6.32-754.31.1.el6.x86_64 #1 SMP Mon Jun 15 08:08:31 EDT 2020 x86_64 Red Hat Enterprise Linux Server release 6.10 
       (Santiago) 
 
 You are running SAS 9. Some SAS 8 files will be automatically converted 
@@ -56,11 +56,11 @@ NOTE: Libref W was successfully assigned as follows:
 9          
 10         /* Load SAS macro */
 11         %include './mediation.sas';
-4350       
-4351       /* Load data */
-2                                                          The SAS System                             23:48 Wednesday, April 1, 2020
+4461       
+4462       /* Load data */
+2                                                          The SAS System                            15:33 Friday, September 4, 2020
 
-4352       %include './data-valeri-vanderweele-2015.sas';
+4463       %include './data-valeri-vanderweele-2015.sas';
 
 NOTE: The data set WORK.DATA has 100 observations and 6 variables.
 NOTE: DATA statement used (Total process time):
@@ -68,25 +68,25 @@ NOTE: DATA statement used (Total process time):
       cpu time            0.01 seconds
       
 
-4457       
-4458       /* Invoke macro */
-4459       %mediation(
-4460           data = data,
-4461           yvar = y,
-4462           avar = x,
-4463           mvar = m,
-4464           cvar = c,
-4465           a0 = 0,
-4466           a1 = 1,
-4467           m = 1,
-4468           yreg = survAFT_exp,
-4469           mreg = logistic,
-4470           interaction = true,
-4471           casecontrol = false,
-4472           output = full,
-4473           c = 0.5,
-4474           boot = ,
-4475           cens = cens);
+4568       
+4569       /* Invoke macro */
+4570       %mediation(
+4571           data = data,
+4572           yvar = y,
+4573           avar = x,
+4574           mvar = m,
+4575           cvar = c,
+4576           a0 = 0,
+4577           a1 = 1,
+4578           m = 1,
+4579           yreg = survAFT_exp,
+4580           mreg = logistic,
+4581           interaction = true,
+4582           casecontrol = false,
+4583           output = full,
+4584           c = 0.5,
+4585           boot = ,
+4586           cens = cens);
 There are 1 confounders in the string "c"
 
 NOTE: There were 100 observations read from the data set WORK.DATA.
@@ -118,7 +118,7 @@ NOTE: The data set WORK.DATA21 has 1 observations and 1 variables.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
       cpu time            0.00 seconds
-3                                                          The SAS System                             23:48 Wednesday, April 1, 2020
+3                                                          The SAS System                            15:33 Friday, September 4, 2020
 
       
 
@@ -127,7 +127,7 @@ NOTE: Exiting IML.
 NOTE: The data set WORK.DATA2NEW1 has 1 observations and 1 variables.
 NOTE: PROCEDURE IML used (Total process time):
       real time           0.02 seconds
-      cpu time            0.03 seconds
+      cpu time            0.02 seconds
       
 
 
@@ -137,7 +137,7 @@ NOTE: There were 1 observations read from the data set WORK.DATA2NEW1.
 NOTE: The data set WORK.DATA3 has 1 observations and 1 variables.
 NOTE: PROCEDURE APPEND used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.02 seconds
       
 
 NOTE: PROCEDURE SQL used (Total process time):
@@ -160,7 +160,7 @@ NOTE: Table WORK.DATA2 created, with 1 rows and 2 columns.
 
 NOTE: PROCEDURE SQL used (Total process time):
       real time           0.01 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 NOTE: The query requires remerging summary statistics back with the original data.
@@ -170,7 +170,7 @@ NOTE: Table WORK.DATA2 created, with 1 rows and 3 columns.
 
 NOTE: PROCEDURE SQL used (Total process time):
       real time           0.01 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 NOTE: Algorithm converged.
@@ -178,9 +178,9 @@ NOTE: The data set WORK.GMCOVB has 6 observations and 7 variables.
 NOTE: The data set WORK.GMPARMS has 7 observations and 8 variables.
 NOTE: The PROCEDURE LIFEREG printed pages 1-2.
 NOTE: PROCEDURE LIFEREG used (Total process time):
-4                                                          The SAS System                             23:48 Wednesday, April 1, 2020
+4                                                          The SAS System                            15:33 Friday, September 4, 2020
 
-      real time           0.02 seconds
+      real time           0.01 seconds
       cpu time            0.01 seconds
       
 
@@ -189,7 +189,7 @@ NOTE: Exiting IML.
 NOTE: The data set WORK.OUT1 has 6 observations and 5 variables.
 NOTE: PROCEDURE IML used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 
@@ -206,7 +206,7 @@ NOTE: PROCEDURE LOGISTIC used (Total process time):
 NOTE: IML Ready
 ERROR: (execution) Matrices do not conform to the operation.
 
- operation : || at line 4459 column 1
+ operation : || at line 4570 column 1
  operands  : d1nde, d2nde, d3nde, d4nde, d5nde, d6nde, d7nde, d8nde
 
 d1nde      2 rows      1 col     (numeric)
@@ -238,7 +238,7 @@ d6nde      2 rows      1 col     (numeric)
  0.0242391
 
 d7nde      2 rows      1 col     (numeric)
-5                                                          The SAS System                             23:48 Wednesday, April 1, 2020
+5                                                          The SAS System                            15:33 Friday, September 4, 2020
 
 
  0.5205312
@@ -248,10 +248,10 @@ d8nde      1 row       1 col     (numeric)
 
          0
 
- statement : ASSIGN at line 4459 column 1
+ statement : ASSIGN at line 4570 column 1
 ERROR: (execution) Matrices do not conform to the operation.
 
- operation : || at line 4459 column 1
+ operation : || at line 4570 column 1
  operands  : s, x, w, zero, t, s, h, z1
 
 s      2 rows      1 col     (numeric)
@@ -291,14 +291,14 @@ z1      1 row       1 col     (numeric)
 
          0
 
- statement : ASSIGN at line 4459 column 1
+ statement : ASSIGN at line 4570 column 1
 ERROR: (execution) Matrices do not conform to the operation.
 
- operation : || at line 4459 column 1
+ operation : || at line 4570 column 1
  operands  : d1nie, d2nie, d3nie, d4nie, d5nie, d6nie, d7nie, d8nie
 
 d1nie      2 rows      1 col     (numeric)
-6                                                          The SAS System                             23:48 Wednesday, April 1, 2020
+6                                                          The SAS System                            15:33 Friday, September 4, 2020
 
 
  -0.001598
@@ -335,10 +335,10 @@ d8nie      1 row       1 col     (numeric)
 
          0
 
- statement : ASSIGN at line 4459 column 1
+ statement : ASSIGN at line 4570 column 1
 ERROR: (execution) Matrices do not conform to the operation.
 
- operation : || at line 4459 column 1
+ operation : || at line 4570 column 1
  operands  : s, x, w, zero, zero, l, k, z1
 
 s      2 rows      1 col     (numeric)
@@ -358,7 +358,7 @@ w      1 row       1 col     (numeric)
 zero      1 row       1 col     (numeric)
 
          0
-7                                                          The SAS System                             23:48 Wednesday, April 1, 2020
+7                                                          The SAS System                            15:33 Friday, September 4, 2020
 
 
 zero      1 row       1 col     (numeric)
@@ -379,10 +379,10 @@ z1      1 row       1 col     (numeric)
 
          0
 
- statement : ASSIGN at line 4459 column 1
+ statement : ASSIGN at line 4570 column 1
 ERROR: (execution) Matrices do not conform to the operation.
 
- operation : || at line 4459 column 1
+ operation : || at line 4570 column 1
  operands  : d1, d2, d3, d4, d5, d6, d7, z1
 
 d1      2 rows      1 col     (numeric)
@@ -418,13 +418,13 @@ d7      2 rows      1 col     (numeric)
  0.6145183
  0.5549283
 
-8                                                          The SAS System                             23:48 Wednesday, April 1, 2020
+8                                                          The SAS System                            15:33 Friday, September 4, 2020
 
 z1      1 row       1 col     (numeric)
 
          0
 
- statement : ASSIGN at line 4459 column 1
+ statement : ASSIGN at line 4570 column 1
 NOTE: Exiting IML.
 NOTE: The data set WORK.EFFECT has 1 observations and 12 variables.
 NOTE: The data set WORK.SE has 1 observations and 12 variables.
@@ -435,7 +435,7 @@ NOTE: The SAS System stopped processing this step because of errors.
 NOTE: SAS set option OBS=0 and will continue to check statements. This might cause NOTE: No observations in data set.
 NOTE: PROCEDURE IML used (Total process time):
       real time           0.04 seconds
-      cpu time            0.03 seconds
+      cpu time            0.02 seconds
       
 
 
@@ -444,7 +444,7 @@ WARNING: IML is now in syntax-check-only mode due to errors in previous steps. N
 NOTE: Exiting IML.
 NOTE: PROCEDURE IML used (Total process time):
       real time           0.00 seconds
-      cpu time            0.00 seconds
+      cpu time            0.01 seconds
       
 
 ERROR: File WORK.X4.DATA does not exist.
@@ -468,37 +468,37 @@ NOTE: PROCEDURE PRINT used (Total process time):
 
 NOTE: PROCEDURE DATASETS used (Total process time):
       real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+9                                                          The SAS System                            15:33 Friday, September 4, 2020
+
+
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+4587       run;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
       cpu time            0.01 seconds
-      
-
-
-
-NOTE: PROCEDURE DATASETS used (Total process time):
-      real time           0.00 seconds
-      cpu time            0.00 seconds
-      
-
-9                                                          The SAS System                             23:48 Wednesday, April 1, 2020
-
-
-
-NOTE: PROCEDURE DATASETS used (Total process time):
-      real time           0.00 seconds
-      cpu time            0.00 seconds
-      
-
-
-4476       run;
-
-NOTE: PROCEDURE DATASETS used (Total process time):
-      real time           0.00 seconds
-      cpu time            0.00 seconds
       
 
 ERROR: Errors printed on pages 4,5,6,7,8.
 
 NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
 NOTE: The SAS System used:
-      real time           0.35 seconds
-      cpu time            0.23 seconds
+      real time           0.36 seconds
+      cpu time            0.24 seconds
       
