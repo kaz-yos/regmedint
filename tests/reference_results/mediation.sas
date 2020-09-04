@@ -2305,34 +2305,66 @@ run;
 		%if &cvar^= %then %do;
 			%if &casecontrol^=true %then %do;
 proc reg data=data1 covout
-outest=out2(drop=_model_ _type_ _name_ _depvar_ &mvar)  ;
-model  &mvar=&avar &cvar ;
-proc print;
+outest=out2(drop=_model_ _type_ _name_ _depvar_ &mvar _IN_ _P_ _SSE_ _RSQ_)  ;
+model  &mvar=&avar &cvar / sse; /* 2020-09-04 @kaz-yos added / sse based on Yi Li's input. */
+/* 2020-09-05 @kaz-yos extract  */
+/* error degree of freedom (EDF): sample size - number of parameters */
+/* https://www.lexjansen.com/nesug/nesug04/pm/pm13.pdf */
+data out2;
+    set out2;
+    if _N_ = 1 then
+        call symput("edf", _EDF_);
+    drop _EDF_;
+proc print data=out2;
 run;
 			%end;
 			%if &casecontrol=true %then %do;
 proc reg data=data1 covout
-outest=out2(drop=_model_ _type_ _name_ _depvar_  &mvar)  ;
+outest=out2(drop=_model_ _type_ _name_ _depvar_  &mvar _IN_ _P_ _SSE_ _RSQ_)  ;
 where &yvar=0;
-model  &mvar=&avar &cvar;
-proc print;
+model  &mvar=&avar &cvar / sse; /* 2020-09-04 @kaz-yos added / sse based on Yi Li's input. */
+/* 2020-09-05 @kaz-yos */
+/* error degree of freedom (EDF): sample size - number of parameters */
+/* https://www.lexjansen.com/nesug/nesug04/pm/pm13.pdf */
+data out2;
+    set out2;
+    if _N_ = 1 then
+        call symput("edf", _EDF_);
+    drop _EDF_;
+proc print data=out2;
 run;
 			%end;
 		%end;
 		%if  &cvar= %then %do;
 			%if &casecontrol^=true %then %do;
 proc reg data=data1 covout
-outest=out2(drop=_model_ _type_ _name_ _depvar_  &mvar)  ;
-model  &mvar=&avar ;
-proc print;
+outest=out2(drop=_model_ _type_ _name_ _depvar_  &mvar _IN_ _P_ _SSE_ _RSQ_)  ;
+model  &mvar=&avar / sse; /* 2020-09-04 @kaz-yos added / sse based on Yi Li's input. */
+/* 2020-09-05 @kaz-yos */
+/* error degree of freedom (EDF): sample size - number of parameters */
+/* https://www.lexjansen.com/nesug/nesug04/pm/pm13.pdf */
+data out2;
+    set out2;
+    if _N_ = 1 then
+        call symput("edf", _EDF_);
+    drop _EDF_;
+proc print data=out2;
 run;
 			%end;
 			%if &casecontrol=true %then %do;
 proc reg data=data1 covout
-outest=out2(drop=_model_ _type_ _name_ _depvar_ &mvar)  ;
+outest=out2(drop=_model_ _type_ _name_ _depvar_ &mvar _IN_ _P_ _SSE_ _RSQ_)  ;
 where &yvar=0;
-model  &mvar=&avar;
-proc print;
+model  &mvar=&avar / sse; /* 2020-09-04 @kaz-yos added / sse based on Yi Li's input. */
+/* 2020-09-05 @kaz-yos */
+/* error degree of freedom (EDF): sample size - number of parameters */
+/* https://www.lexjansen.com/nesug/nesug04/pm/pm13.pdf */
+data out2;
+    set out2;
+    if _N_ = 1 then
+        call symput("edf", _EDF_);
+    drop _EDF_;
+proc print data=out2;
 run;
 			%end;
 		%end;
@@ -2638,11 +2670,14 @@ z3=J(nrow(V2),1,0);
 A= V2 || zero2 ||z3;
 B= zero1 || V1||z2;
 zeros=J(1,nrow(V1)+nrow(V2),0);
-/* @kaz-yos on 2020-05-02 */
+/* @kaz-yos on 2020-09-06 */
 /* This is wrong. It should be the following based on V2015 p470.
 where n = sample size, p = length(betas), s2 = sigma^2
+(n - p) is _EDF_ (error degrees of freedom) in PROC REG
 D= zeros || ((2 * (s2**2)) / (n - p)) */
-D= zeros ||s2;
+D= zeros || ((2 * (s2**2)) / &edf);
+/* Old and wrong
+D= zeros ||s2; */
 sigma= A // B//D;
 zero=0;
 one=1;
@@ -3679,11 +3714,14 @@ z3=J(nrow(V2),1,0);
 A= V2 || zero2 ||z3;
 B= zero1 || V1||z2;
 zeros=J(1,nrow(V1)+nrow(V2),0);
-/* @kaz-yos on 2020-05-02 */
+/* @kaz-yos on 2020-09-06 */
 /* This is wrong. It should be the following based on V2015 p470.
 where n = sample size, p = length(betas), s2 = sigma^2
+(n - p) is _EDF_ (error degrees of freedom) in PROC REG
 D= zeros || ((2 * (s2**2)) / (n - p)) */
-D= zeros ||s2;
+D= zeros || ((2 * (s2**2)) / &edf);
+/* Old and wrong
+D= zeros ||s2; */
 sigma= A // B//D;
 zero=0;
 one=1;
