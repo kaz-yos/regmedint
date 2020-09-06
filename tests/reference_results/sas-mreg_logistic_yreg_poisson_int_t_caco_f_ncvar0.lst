@@ -1,4 +1,4 @@
-                                                           The SAS System                        15:32 Friday, September 4, 2020   1
+                                                           The SAS System                        06:56 Sunday, September 6, 2020   1
 
                                                         The GENMOD Procedure
 
@@ -52,7 +52,7 @@
                                   Prm4      0.0001581      -0.000103      -0.000338      0.0002240
 
 
-                                                           The SAS System                        15:32 Friday, September 4, 2020   2
+                                                           The SAS System                        06:56 Sunday, September 6, 2020   2
 
                                                         The GENMOD Procedure
 
@@ -68,7 +68,7 @@
                     Scale         0      1.0000      0.0000      1.0000      1.0000                            
 
 NOTE: The scale parameter was held fixed.
-                                                           The SAS System                        15:32 Friday, September 4, 2020   3
+                                                           The SAS System                        06:56 Sunday, September 6, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -121,7 +121,7 @@ NOTE: The scale parameter was held fixed.
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                        15:32 Friday, September 4, 2020   4
+                                                           The SAS System                        06:56 Sunday, September 6, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -148,7 +148,7 @@ NOTE: The scale parameter was held fixed.
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                        15:32 Friday, September 4, 2020   5
+                                                           The SAS System                        06:56 Sunday, September 6, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper
