@@ -1,4 +1,4 @@
-                                                           The SAS System                        06:56 Sunday, September 6, 2020   1
+                                                           The SAS System                        07:31 Sunday, September 6, 2020   1
 
                                                        The LIFEREG Procedure
 
@@ -57,7 +57,7 @@
 
                                           trt               1        0.1156        0.7339
                                           bili_bin          1       62.1066        <.0001
-                                                           The SAS System                        06:56 Sunday, September 6, 2020   2
+                                                           The SAS System                        07:31 Sunday, September 6, 2020   2
 
                                                        The LIFEREG Procedure
 
@@ -88,7 +88,7 @@
                                  trt           -0.046777      0.031039      0.000778             0
                                  bili_bin      -0.031475      0.000778      0.040739             0
                                  Scale                 0             0             0             0
-                                                           The SAS System                        06:56 Sunday, September 6, 2020   3
+                                                           The SAS System                        07:31 Sunday, September 6, 2020   3
 
                                                        The LOGISTIC Procedure
 
@@ -141,7 +141,7 @@
                                       Wald                     0.1267        1         0.7219
 
 
-                                                           The SAS System                        06:56 Sunday, September 6, 2020   4
+                                                           The SAS System                        07:31 Sunday, September 6, 2020   4
 
                                                        The LOGISTIC Procedure
 
@@ -168,7 +168,7 @@
                                          Percent Discordant     23.9    Gamma        0.043
                                          Percent Tied           50.0    Tau-a        0.011
                                          Pairs                 19035    c            0.511
-                                                           The SAS System                        06:56 Sunday, September 6, 2020   5
+                                                           The SAS System                        07:31 Sunday, September 6, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper

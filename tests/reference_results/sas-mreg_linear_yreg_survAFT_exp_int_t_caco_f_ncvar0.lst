@@ -1,4 +1,4 @@
-                                                           The SAS System                        06:56 Sunday, September 6, 2020   1
+                                                           The SAS System                        07:30 Sunday, September 6, 2020   1
 
                                                        The LIFEREG Procedure
 
@@ -58,7 +58,7 @@
 
                                           trt               1        0.0564        0.8122
                                           bili              1       15.6638        <.0001
-                                                           The SAS System                        06:56 Sunday, September 6, 2020   2
+                                                           The SAS System                        07:30 Sunday, September 6, 2020   2
 
                                                        The LIFEREG Procedure
 
@@ -99,7 +99,7 @@
                           bili          -0.010044      0.005705      0.002099     -0.001162             0
                           int            0.005705     -0.003535     -0.001162      0.000693             0
                           Scale                 0             0             0             0             0
-                                                           The SAS System                        06:56 Sunday, September 6, 2020   3
+                                                           The SAS System                        07:30 Sunday, September 6, 2020   3
 
                                                          The REG Procedure
                                                            Model: MODEL1
@@ -131,21 +131,21 @@
 
                                 Intercept     1        2.21324        0.87840       2.52      0.0123
                                 trt           1        0.74338        0.55315       1.34      0.1801
-                                                           The SAS System                        06:56 Sunday, September 6, 2020   4
+                                                           The SAS System                        07:30 Sunday, September 6, 2020   4
 
                                               Obs     _RMSE_    Intercept       trt
 
                                                1     4.59435      2.21324     0.74338
                                                2     4.59435      0.77160    -0.46118
                                                3     4.59435     -0.46118     0.30598
-                                                           The SAS System                        06:56 Sunday, September 6, 2020   5
+                                                           The SAS System                        07:30 Sunday, September 6, 2020   5
 
                                                                                _95__CI_    _95__CI_
                                  Obs    effect          Estimate    p_value      lower       upper
 
                                   1     cde              1.12913    0.61647     0.70201     1.81610
-                                  2     pnde             1.08523    0.75205     0.65337     1.80254
+                                  2     pnde             1.08523    0.75122     0.65451     1.79938
                                   3     pnie             0.88001    0.18621     0.72808     1.06365
-                                  4     tnde             1.12616    0.62706     0.69734     1.81867
+                                  4     tnde             1.12616    0.62572     0.69864     1.81530
                                   5     tnie             0.91320    0.19461     0.79612     1.04750
-                                  6     total effect     0.99103    0.97258     0.59300     1.65625
+                                  6     total effect     0.99103    0.97249     0.59402     1.65338
