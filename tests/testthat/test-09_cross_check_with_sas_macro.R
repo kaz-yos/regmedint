@@ -31,7 +31,7 @@ if (rlang::env_has(rlang::global_env(), "expect_equal")) {
 }
 
 ## scale = 1 to test on the absolute scale
-expect_equal <- purrr::partial(expect_equal, tolerance = 0.008, scale = 1)
+expect_equal <- purrr::partial(expect_equal, tolerance = 0.007, scale = 1)
 
 
 ###
