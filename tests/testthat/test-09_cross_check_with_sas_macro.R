@@ -22,6 +22,19 @@ test_that("placeholder", {
 
 
 ###
+### Adjust convergence criterion for glm to match SAS PROC LOGISTIC better
+################################################################################
+
+## Need to remove from global_env() to make sure we are not overwriting.
+if (rlang::env_has(rlang::global_env(), "glm")) {
+    rlang::env_unbind(rlang::global_env(), "glm")
+}
+
+## This does not overshadow glm() appearing in regmedint functions.
+glm <- purrr::partial(glm, control = list(epsilon = 1e-10, maxit = 25, trace= FALSE))
+
+
+###
 ### Adjust tolerance by masking the original expect_equal
 ################################################################################
 
