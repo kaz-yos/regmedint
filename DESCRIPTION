@@ -37,7 +37,7 @@ Suggests:
     stringr,
     testthat,
     tidyverse
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 URL: https://kaz-yos.github.io/regmedint/
 BugReports: https://github.com/kaz-yos/regmedint/issues
