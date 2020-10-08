@@ -207,8 +207,16 @@ validate_args <- function(data,
     ## between yreg and mreg.
     vars_interest <- c(yvar, avar, mvar, cvar, eventvar)
     data_vars_interest <- data[, vars_interest, drop = FALSE]
+    logical_vars_missing <- unlist(lapply(data_vars_interest, function(v) {
+        any(is.na(v))
+    }))
+    ## Capture names of variables with missingness
+    vars_missing <- vars_interest[logical_vars_missing]
     assertthat::assert_that(all(stats::complete.cases(data_vars_interest)),
-                            msg = "Missing is not allowed in variables of interest! See the multiple imputation vignette.")
+                            msg = paste0("Missingness is not allowed in variables of interest!
+See the multiple imputation vignette.
+Variables with missingness: ",
+                                         paste0(vars_missing, collapse = ", ")))
 
     ## Do not allow factors as they can result in multiple
     ## dummy variables and coef results in different names

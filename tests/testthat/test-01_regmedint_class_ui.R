@@ -33,7 +33,9 @@ describe("regmedint", {
 
     describe("validate_args (regmedint argument validation)", {
         it("rejects missing data in the variales of interest", {
-            msg_missing <- "Missing is not allowed in variables of interest! See the multiple imputation vignette."
+            msg_missing <- "Missingness is not allowed in variables of interest!
+See the multiple imputation vignette.
+Variables with missingness: "
             expect_error(pbc_cc %>%
                          mutate(alk_phos = NA) %>%
                          regmedint(data = .,
@@ -50,7 +52,7 @@ describe("regmedint", {
                                    interaction = FALSE,
                                    casecontrol = FALSE,
                                    eventvar = NULL),
-                         msg_missing)
+                         paste0(msg_missing, "alk_phos"))
             expect_error(pbc_cc %>%
                          mutate(trt = NA) %>%
                          regmedint(data = .,
@@ -67,7 +69,7 @@ describe("regmedint", {
                                    interaction = FALSE,
                                    casecontrol = FALSE,
                                    eventvar = NULL),
-                         msg_missing)
+                         paste0(msg_missing, "trt"))
             expect_error(pbc_cc %>%
                          mutate(bili = NA) %>%
                          regmedint(data = .,
@@ -84,7 +86,7 @@ describe("regmedint", {
                                    interaction = FALSE,
                                    casecontrol = FALSE,
                                    eventvar = NULL),
-                         msg_missing)
+                         paste0(msg_missing, "bili"))
             expect_error(pbc_cc %>%
                          mutate(age = NA) %>%
                          regmedint(data = .,
@@ -101,7 +103,25 @@ describe("regmedint", {
                                    interaction = FALSE,
                                    casecontrol = FALSE,
                                    eventvar = NULL),
-                         msg_missing)
+                         paste0(msg_missing, "age"))
+            expect_error(pbc_cc %>%
+                         mutate(age = NA,
+                                male = NA) %>%
+                         regmedint(data = .,
+                                   yvar = "alk_phos",
+                                   avar = "trt",
+                                   mvar = "bili",
+                                   cvar = c("age","male","stage"),
+                                   a0 = 1,
+                                   a1 = 2,
+                                   m_cde = 0,
+                                   c_cond = c(50,2,4),
+                                   mreg = "linear",
+                                   yreg = "linear",
+                                   interaction = FALSE,
+                                   casecontrol = FALSE,
+                                   eventvar = NULL),
+                         paste0(msg_missing, "age, male"))
         })
         ##
         it("allows missing data in unused variables", {
