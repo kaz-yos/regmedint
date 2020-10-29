@@ -36,7 +36,7 @@ fit_mreg <- function(mreg,
 
         eval(
             bquote(
-                lm(formula = .(as.formula(string_formula)),
+                lm(formula = .(as.formula(string_formula)), na.action = na.exclude, # YL: added on 20201028
                    data = data)
             )
         )
@@ -45,8 +45,8 @@ fit_mreg <- function(mreg,
 
         eval(
             bquote(
-                glm(formula = .(as.formula(string_formula)),
-                    family = binomial(link = "logit"),
+                glm(formula = .(as.formula(string_formula)), 
+                    family = binomial(link = "logit"), na.action = na.exclude, # YL: added on 20201028
                     data = data)
             )
         )
