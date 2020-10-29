@@ -57,7 +57,7 @@ fit_yreg <- function(yreg,
 
         eval(
             bquote(
-                lm(formula = .(as.formula(string_formula)), na.action = na.exclude, # YL: added on 20201028
+                lm(formula = .(as.formula(string_formula)), 
                    data = data)
             )
         )
@@ -67,7 +67,7 @@ fit_yreg <- function(yreg,
         eval(
             bquote(
                 glm(formula = .(as.formula(string_formula)),
-                    family = binomial(link = "logit"), na.action = na.exclude, # YL: added on 20201028
+                    family = binomial(link = "logit"), 
                     data = data)
             )
         )
@@ -100,7 +100,7 @@ fit_yreg <- function(yreg,
 
         eval(
             bquote(
-                MASS::glm.nb(formula = .(as.formula(string_formula)), na.action = na.exclude, # YL: added on 20201028. CHECKED: glm.nb also has this option.
+                MASS::glm.nb(formula = .(as.formula(string_formula)), 
                              data = data)
             )
         )
