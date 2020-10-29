@@ -81,6 +81,16 @@ regmedint <- function(data,
                       casecontrol = FALSE) {
     ## This is the user-friendly helper function with a name that is the class name.
     ## https://adv-r.hadley.nz/s3.html#helpers
+  
+  
+  
+    ## New: handle missing value (added by YL, 20201028)
+      # Print warning message
+    print_and_capture(x = x)
+  
+      # Output complete case data
+    data <- na.omit(data)
+
 
     ## Check data contains yvar, avar, mvar, cvar, eventvar (if provided)
     validate_args(data = data,
@@ -124,6 +134,20 @@ regmedint <- function(data,
     ## Return results
     res
 }
+
+
+### New: handle missing value (added by YL, 20201028)
+#1. Print warning message
+print_and_capture <- function(x)
+{
+  paste(capture.output(print(x)), collapse = "\n")
+}
+if(any(is.na(data))) 
+  warning('Dataset contains NAs. Below are NAs by column: \n', 
+          print_and_capture(colSums(is.na(data))))
+
+
+
 
 
 ###
