@@ -91,7 +91,7 @@ regmedint <- function(data,
     
     ## Let users choose na.omit (added by YL, 20201101)
     if(any(is.na(data)) && na.omit == TRUE) {data <- na.omit(data)} 
-      else if(any(is.na(data)) && na.action == FALSE) {data <- na.fail(data)}
+      else if(any(is.na(data)) && na.omit == FALSE) {data <- na.fail(data)}
 
 
     ## Check data contains yvar, avar, mvar, cvar, eventvar (if provided)
