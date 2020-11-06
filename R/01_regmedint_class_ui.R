@@ -86,12 +86,12 @@ regmedint <- function(data,
   
     ## New: handle missing value (added by YL, 20201028)
       # Print warning message
-    print_and_capture(x = x)
+    print_and_capture(x = data)
   
     
     ## Let users choose na.omit (added by YL, 20201101)
     if(any(is.na(data)) && na.omit == TRUE) {data <- na.omit(data)} 
-      else if(any(is.na(data)) && na.omit == FALSE) {data <- na.fail(data)}
+      # else if(any(is.na(data)) && na.omit == FALSE) {data <- na.fail(data)}
 
 
     ## Check data contains yvar, avar, mvar, cvar, eventvar (if provided)
@@ -106,7 +106,6 @@ regmedint <- function(data,
                   c_cond = c_cond,
                   mreg = mreg,
                   yreg = yreg,
-                  na.omit = na.omit, # new option, added by YL
                   interaction = interaction,
                   casecontrol = casecontrol,
                   eventvar = eventvar)
@@ -125,7 +124,6 @@ regmedint <- function(data,
                          c_cond = c_cond,
                          mreg = mreg,
                          yreg = yreg,
-                         na.omit = na.omit, # new option, added by YL
                          interaction = interaction,
                          casecontrol = casecontrol,
                          eventvar = eventvar)
@@ -177,7 +175,6 @@ validate_args <- function(data,
                           c_cond,
                           mreg,
                           yreg,
-                          na.omit, # new option, added by YL
                           interaction,
                           casecontrol) {
 
