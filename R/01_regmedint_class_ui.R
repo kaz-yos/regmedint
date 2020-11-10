@@ -84,16 +84,34 @@ regmedint <- function(data,
     ## https://adv-r.hadley.nz/s3.html#helpers
 
   
-    ## New: handle missing value (added by YL, 20201028)
-      # Print warning message
-    print_and_capture(x = data)
+    #### New: handle missing value (added by YL, 20201109) ####
+  
+  miss.var.sum <- as.data.frame(matrix(0, nrow = ncol(data), ncol = 2))
+  colnames(miss.var.sum) <- c("variable", "n.missing")
+  
+  ## Add warning: NAs
+  # If the dataset contains NAs, print a general warning message
+  
+  if(any(is.na(data)))
+    message('Dataset contains NAs.')
+  
+  for(i in 1:ncol(data)){
+    if(any(is.na(data[,i])))
+      message(paste(colnames(data)[i], 
+                    'has', 
+                    sum(is.na(data[,i])), 
+                    'NAs.'))
+  }
+
+  
+ 
+  
+    ## User-specified na.action option
+    if(any(is.na(data)) && na.omit == TRUE) {data <- na.omit(data)} 
+      # else if(any(is.na(data)) && na.action == FALSE) {data <- na.fail(data)}
   
     
-    ## Let users choose na.omit (added by YL, 20201101)
-    if(any(is.na(data)) && na.omit == TRUE) {data <- na.omit(data)} 
-      # else if(any(is.na(data)) && na.omit == FALSE) {data <- na.fail(data)}
-
-
+  
     ## Check data contains yvar, avar, mvar, cvar, eventvar (if provided)
     validate_args(data = data,
                   yvar = yvar,
@@ -138,15 +156,7 @@ regmedint <- function(data,
 }
 
 
-### New: handle missing value (added by YL, 20201028)
-#1. Print warning message
-print_and_capture <- function(x)
-{
-  paste(capture.output(print(x)), collapse = "\n")
-}
-if(any(is.na(data))) 
-  warning('Dataset contains NAs. Below are NAs by column: \n', 
-          print_and_capture(colSums(is.na(data))))
+
 
 
 
