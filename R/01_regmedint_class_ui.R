@@ -77,40 +77,25 @@ regmedint <- function(data,
                       c_cond,
                       mreg,
                       yreg,
-                      na.omit = FALSE, # new option, added by YL
+                      na_omit = FALSE, # new option, added by YL
                       interaction = TRUE,
                       casecontrol = FALSE) {
     ## This is the user-friendly helper function with a name that is the class name.
     ## https://adv-r.hadley.nz/s3.html#helpers
 
-  
-    #### New: handle missing value (added by YL, 20201109) ####
-  
-  miss.var.sum <- as.data.frame(matrix(0, nrow = ncol(data), ncol = 2))
-  colnames(miss.var.sum) <- c("variable", "n.missing")
-  
-  ## Add warning: NAs
-  # If the dataset contains NAs, print a general warning message
-  
-  if(any(is.na(data)))
-    message('Dataset contains NAs.')
-  
-  for(i in 1:ncol(data)){
-    if(any(is.na(data[,i])))
-      message(paste(colnames(data)[i], 
-                    'has', 
-                    sum(is.na(data[,i])), 
-                    'NAs.'))
-  }
-
-  
  
   
-    ## User-specified na.action option
-    if(any(is.na(data)) && na.omit == TRUE) {data <- na.omit(data)} 
-      # else if(any(is.na(data)) && na.action == FALSE) {data <- na.fail(data)}
+    ## Handle missing value
+  # Select columns of interest: y, a, m, c, event 
+  data <- data[,c(yvar, avar, mvar, cvar, eventvar)]
   
-    
+  # Report NA
+  report_missing(data, yvar, avar, mvar, cvar, eventvar)
+
+  # Complete case data
+  if(any(is.na(data)) && na_omit == TRUE) {data <- na.omit(data)}
+  
+  
   
     ## Check data contains yvar, avar, mvar, cvar, eventvar (if provided)
     validate_args(data = data,
@@ -157,6 +142,25 @@ regmedint <- function(data,
 
 
 
+
+###
+#### Functions to handle missing data
+################################################################################
+## report_missing()
+report_missing <- function(data, yvar, avar, mvar, cvar, eventvar){
+  miss.var.sum <- as.data.frame(matrix(0, nrow = ncol(data), ncol = 2))
+  colnames(miss.var.sum) <- c("variable", "n.missing")
+  ## Add warning: NAs
+  # If the dataset contains NAs, print a general warning message
+  if(any(is.na(data)))
+    message('Dataset contains NAs.')
+  # Print # NAs by columns of interest
+  for(i in 1:ncol(data)){
+    if(any(is.na(data[,i])))
+      message(paste(colnames(data)[i],'has',sum(is.na(data[,i])),'NAs.'))
+  }
+  
+}
 
 
 
