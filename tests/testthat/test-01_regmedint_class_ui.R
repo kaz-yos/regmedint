@@ -130,8 +130,10 @@ describe("regmedint", {
 
     describe("validate_args (regmedint argument validation)", {
         it("rejects missing data in the variales of interest", {
+            ## This is a regexp. () needs escapes.
             msg_missing <- "Missingness is not allowed in variables of interest!
-See the multiple imputation vignette.
+For multiple imputation, see the multiple imputation vignette: vignette\\(\"vig_04_mi\"\\)
+To perform complete case analysis, use na_omit = TRUE.
 Variables with missingness: "
             expect_error(pbc_cc %>%
                          mutate(alk_phos = NA) %>%
