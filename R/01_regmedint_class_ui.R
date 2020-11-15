@@ -78,26 +78,23 @@ regmedint <- function(data,
                       c_cond,
                       mreg,
                       yreg,
-                      na_omit = FALSE, 
                       interaction = TRUE,
-                      casecontrol = FALSE) {
+                      casecontrol = FALSE,
+                      na_omit = FALSE) {
+
     ## This is the user-friendly helper function with a name that is the class name.
     ## https://adv-r.hadley.nz/s3.html#helpers
 
- 
-  
     ## Handle missing value
-  # Select columns of interest: y, a, m, c, event 
-  data <- data[,c(yvar, avar, mvar, cvar, eventvar)]
-  
-  # Report NA
-  report_missing(data, yvar, avar, mvar, cvar, eventvar)
+    ## Select columns of interest only.
+    data <- data[,c(yvar, avar, mvar, cvar, eventvar)]
+    ## Report NA
+    report_missing(data, yvar, avar, mvar, cvar, eventvar)
+    ## Construct a complete case dataset if requested via na_omit
+    if(any(is.na(data)) && na_omit) {
+        data <- na.omit(data)
+    }
 
-  # Complete case data
-  if(any(is.na(data)) && na_omit == TRUE) {data <- na.omit(data)}
-  
-  
-  
     ## Check data contains yvar, avar, mvar, cvar, eventvar (if provided)
     validate_args(data = data,
                   yvar = yvar,
