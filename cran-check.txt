@@ -1,15 +1,13 @@
-* using log directory ‘/Users/kazuki/Dropbox/documents/programming/r/regmedint/regmedint.Rcheck’
-* using R version 4.0.0 (2020-04-24)
-* using platform: x86_64-apple-darwin19.4.0 (64-bit)
+* using log directory ‘/Users/kazuki/Dropbox (Personal)/documents/programming/r/regmedint/regmedint.Rcheck’
+* using R version 4.0.3 (2020-10-10)
+* using platform: x86_64-apple-darwin19.6.0 (64-bit)
 * using session charset: UTF-8
 * using option ‘--as-cran’
 * checking for file ‘regmedint/DESCRIPTION’ ... OK
-* this is package ‘regmedint’ version ‘0.1.0’
+* this is package ‘regmedint’ version ‘0.2.0’
 * package encoding: UTF-8
-* checking CRAN incoming feasibility ... NOTE
+* checking CRAN incoming feasibility ... Note_to_CRAN_maintainers
 Maintainer: ‘Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>’
-
-New submission
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -36,6 +34,7 @@ New submission
 * checking whether the package can be unloaded cleanly ... OK
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
 * checking use of S3 registration ... OK
 * checking dependencies in R code ... OK
 * checking S3 generic/method consistency ... OK
@@ -67,4 +66,4 @@ New submission
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 NOTE
+Status: OK
