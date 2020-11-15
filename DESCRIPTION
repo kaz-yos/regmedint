@@ -1,13 +1,16 @@
 Package: regmedint
 Title: Regression-Based Causal Mediation Analysis with an Interaction Term
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     # http://r-pkgs.had.co.nz/description.html#author
     person('Kazuki', 'Yoshida',
     email = 'kazukiyoshida@mail.harvard.edu',
     role = c('cre','aut'),
     comment = c(ORCID = '0000-0002-2030-3549')),
-    #
+    person('Yi', 'Li',
+    email = 'yli23@hsph.harvard.edu',
+    role = c('aut'),
+    comment = c(ORCID = '0000-0002-9359-210X')),
     person('Maya', 'Mathur',
     role = c('ctb'),
     comment = c(ORCID = '0000-0001-6698-2607'))
