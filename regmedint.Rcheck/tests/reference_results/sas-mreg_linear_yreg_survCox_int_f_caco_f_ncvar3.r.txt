@@ -1,0 +1,97 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt + age + male + stage, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.1854 -2.5979 -1.2638  0.5727 24.2813 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -2.54577    1.76354  -1.444 0.150018    
+trt          0.60723    0.54646   1.111 0.267464    
+age          0.02419    0.02706   0.894 0.372025    
+male        -0.61583    0.84467  -0.729 0.466584    
+stage        1.26164    0.32279   3.909 0.000117 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.472 on 271 degrees of freedom
+Multiple R-squared:  0.06893,	Adjusted R-squared:  0.05518 
+F-statistic: 5.016 on 4 and 271 DF,  p-value: 0.0006483
+
+### Outcome model
+Call:
+survival::coxph(formula = Surv(time, status) ~ trt + bili + age + 
+    male + stage, data = data, ties = "efron")
+
+  n= 276, number of events= 129 
+
+           coef exp(coef)  se(coef)      z Pr(>|z|)    
+trt   -0.192511  0.824885  0.180450 -1.067   0.2860    
+bili   0.140134  1.150428  0.014301  9.799  < 2e-16 ***
+age    0.007463  1.007491  0.009537  0.782   0.4339    
+male   0.504040  1.655395  0.240725  2.094   0.0363 *  
+stage  0.674402  1.962859  0.126505  5.331 9.77e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+      exp(coef) exp(-coef) lower .95 upper .95
+trt      0.8249     1.2123    0.5792     1.175
+bili     1.1504     0.8692    1.1186     1.183
+age      1.0075     0.9926    0.9888     1.027
+male     1.6554     0.6041    1.0328     2.653
+stage    1.9629     0.5095    1.5318     2.515
+
+Concordance= 0.803  (se = 0.017 )
+Likelihood ratio test= 117.9  on 5 df,   p=<2e-16
+Wald test            = 137.4  on 5 df,   p=<2e-16
+Score (logrank) test = 185.8  on 5 df,   p=<2e-16
+
+### Mediation analysis 
+            est         se          Z         p       lower     upper  exp(est)
+cde  -0.2310134 0.21654043 -1.0668374 0.2860453 -0.65542488 0.1933980 0.7937288
+pnde -0.2310134 0.21654043 -1.0668374 0.2860453 -0.65542488 0.1933980 0.7937288
+tnie  0.1021117 0.09248155  1.1041309 0.2695364 -0.07914877 0.2833723 1.1075072
+tnde -0.2310134 0.21654043 -1.0668374 0.2860453 -0.65542488 0.1933980 0.7937288
+pnie  0.1021117 0.09248155  1.1041309 0.2695364 -0.07914877 0.2833723 1.1075072
+te   -0.1289017 0.23464650 -0.5493442 0.5827693 -0.58880037 0.3309970 0.8790604
+pm   -0.7055718 1.69784813 -0.4155682 0.6777260 -4.03329294 2.6221494        NA
+     exp(lower) exp(upper)
+cde   0.5192214   1.213366
+pnde  0.5192214   1.213366
+tnie  0.9239025   1.327599
+tnde  0.5192214   1.213366
+pnie  0.9239025   1.327599
+te    0.5549927   1.392356
+pm           NA         NA
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2.3
+ a0 (reference value of avar)  = 1.1
+mvar: bili
+ m_cde (intervend value of mvar for cde) = 1.4
+cvar: age male stage
+ c_cond (covariate vector value) = 50 1 2
+
+Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.
+
+### Re-evaluation at c_cond = cmean
+            est         se          Z         p       lower     upper  exp(est)
+cde  -0.2310134 0.21654043 -1.0668374 0.2860453 -0.65542488 0.1933980 0.7937288
+pnde -0.2310134 0.21654043 -1.0668374 0.2860453 -0.65542488 0.1933980 0.7937288
+tnie  0.1021117 0.09248155  1.1041309 0.2695364 -0.07914877 0.2833723 1.1075072
+tnde -0.2310134 0.21654043 -1.0668374 0.2860453 -0.65542488 0.1933980 0.7937288
+pnie  0.1021117 0.09248155  1.1041309 0.2695364 -0.07914877 0.2833723 1.1075072
+te   -0.1289017 0.23464650 -0.5493442 0.5827693 -0.58880037 0.3309970 0.8790604
+pm   -0.7055718 1.69784813 -0.4155682 0.6777260 -4.03329294 2.6221494        NA
+     exp(lower) exp(upper)
+cde   0.5192214   1.213366
+pnde  0.5192214   1.213366
+tnie  0.9239025   1.327599
+tnde  0.5192214   1.213366
+pnie  0.9239025   1.327599
+te    0.5549927   1.392356
+pm           NA         NA

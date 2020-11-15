@@ -1,0 +1,1106 @@
+
+R version 4.0.2 (2020-06-22) -- "Taking Off Again"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "regmedint"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> base::assign(".ExTimings", "regmedint-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
+> library('regmedint')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("coef.regmedint")
+> ### * coef.regmedint
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: coef.regmedint
+> ### Title: Extract point estimates.
+> ### Aliases: coef.regmedint
+> 
+> ### ** Examples
+> 
+> library(regmedint)
+> data(vv2015)
+> regmedint_obj <- regmedint(data = vv2015,
++                            ## Variables
++                            yvar = "y",
++                            avar = "x",
++                            mvar = "m",
++                            cvar = c("c"),
++                            eventvar = "event",
++                            ## Values at which effects are evaluated
++                            a0 = 0,
++                            a1 = 1,
++                            m_cde = 1,
++                            c_cond = 0.5,
++                            ## Model types
++                            mreg = "logistic",
++                            yreg = "survAFT_weibull",
++                            ## Additional specification
++                            interaction = TRUE,
++                            casecontrol = FALSE)
+> coef(regmedint_obj)
+        cde        pnde        tnie        tnde        pnie          te 
+0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 
+         pm 
+0.045436278 
+attr(,"args")
+attr(,"args")$a0
+[1] 0
+
+attr(,"args")$a1
+[1] 1
+
+attr(,"args")$m_cde
+[1] 1
+
+attr(,"args")$c_cond
+[1] 0.5
+
+> ## Evaluate at different values
+> coef(regmedint_obj, m_cde = 0, c_cond = 1)
+        cde        pnde        tnie        tnde        pnie          te 
+0.440756562 0.492306223 0.018077074 0.501765186 0.008618111 0.510383297 
+         pm 
+0.044816400 
+attr(,"args")
+attr(,"args")$a0
+[1] 0
+
+attr(,"args")$a1
+[1] 1
+
+attr(,"args")$m_cde
+[1] 0
+
+attr(,"args")$c_cond
+[1] 1
+
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("coef.regmedint", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("coef.summary_regmedint")
+> ### * coef.summary_regmedint
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: coef.summary_regmedint
+> ### Title: Extract the result matrix from a summary_regmedint object.
+> ### Aliases: coef.summary_regmedint
+> 
+> ### ** Examples
+> 
+> library(regmedint)
+> data(vv2015)
+> regmedint_obj <- regmedint(data = vv2015,
++                            ## Variables
++                            yvar = "y",
++                            avar = "x",
++                            mvar = "m",
++                            cvar = c("c"),
++                            eventvar = "event",
++                            ## Values at which effects are evaluated
++                            a0 = 0,
++                            a1 = 1,
++                            m_cde = 1,
++                            c_cond = 0.5,
++                            ## Model types
++                            mreg = "logistic",
++                            yreg = "survAFT_weibull",
++                            ## Additional specification
++                            interaction = TRUE,
++                            casecontrol = FALSE)
+> coef(summary(regmedint_obj))
+             est         se         Z           p       lower      upper
+cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
+pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
+tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
+tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
+pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
+te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
+pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("coef.summary_regmedint", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("confint.regmedint")
+> ### * confint.regmedint
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: confint.regmedint
+> ### Title: Confidence intervals for mediation prameter estimates.
+> ### Aliases: confint.regmedint
+> 
+> ### ** Examples
+> 
+> library(regmedint)
+> data(vv2015)
+> regmedint_obj <- regmedint(data = vv2015,
++                            ## Variables
++                            yvar = "y",
++                            avar = "x",
++                            mvar = "m",
++                            cvar = c("c"),
++                            eventvar = "event",
++                            ## Values at which effects are evaluated
++                            a0 = 0,
++                            a1 = 1,
++                            m_cde = 1,
++                            c_cond = 0.5,
++                            ## Model types
++                            mreg = "logistic",
++                            yreg = "survAFT_weibull",
++                            ## Additional specification
++                            interaction = TRUE,
++                            casecontrol = FALSE)
+> confint(regmedint_obj)
+           lower      upper
+cde  -0.03560858 1.11775019
+pnde  0.07637274 0.90148809
+tnie -0.05439841 0.09087846
+tnde  0.08280410 0.91420281
+pnie -0.04485951 0.06219348
+te    0.09381303 0.92052785
+pm    0.01161329 0.07925926
+attr(,"args")
+attr(,"args")$a0
+[1] 0
+
+attr(,"args")$a1
+[1] 1
+
+attr(,"args")$m_cde
+[1] 1
+
+attr(,"args")$c_cond
+[1] 0.5
+
+> ## Evaluate at different values
+> confint(regmedint_obj, m_cde = 0, c_cond = 1)
+           lower      upper
+cde  -0.14886090 1.03037403
+pnde  0.08040695 0.90420550
+tnie -0.05352857 0.08968272
+tnde  0.08167823 0.92185214
+pnie -0.04444765 0.06168388
+te    0.09463237 0.92613422
+pm    0.01205355 0.07757925
+attr(,"args")
+attr(,"args")$a0
+[1] 0
+
+attr(,"args")$a1
+[1] 1
+
+attr(,"args")$m_cde
+[1] 0
+
+attr(,"args")$c_cond
+[1] 1
+
+> ## Change confidence level
+> confint(regmedint_obj, m_cde = 0, c_cond = 1, level = 0.99)
+            lower      upper
+cde  -0.334132138 1.21564526
+pnde -0.049021181 1.03363363
+tnie -0.076028699 0.11218285
+tnde -0.050322656 1.05385303
+pnie -0.061122126 0.07835835
+te   -0.036006037 1.05677263
+pm    0.001758718 0.08787408
+attr(,"args")
+attr(,"args")$a0
+[1] 0
+
+attr(,"args")$a1
+[1] 1
+
+attr(,"args")$m_cde
+[1] 0
+
+attr(,"args")$c_cond
+[1] 1
+
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("confint.regmedint", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("print.regmedint")
+> ### * print.regmedint
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: print.regmedint
+> ### Title: print method for regmedint object
+> ### Aliases: print.regmedint
+> 
+> ### ** Examples
+> 
+> library(regmedint)
+> data(vv2015)
+> regmedint_obj <- regmedint(data = vv2015,
++                            ## Variables
++                            yvar = "y",
++                            avar = "x",
++                            mvar = "m",
++                            cvar = c("c"),
++                            eventvar = "event",
++                            ## Values at which effects are evaluated
++                            a0 = 0,
++                            a1 = 1,
++                            m_cde = 1,
++                            c_cond = 0.5,
++                            ## Model types
++                            mreg = "logistic",
++                            yreg = "survAFT_weibull",
++                            ## Additional specification
++                            interaction = TRUE,
++                            casecontrol = FALSE)
+> ## Implicit printing
+> regmedint_obj
+### Mediator model
+
+Call:  glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
+
+Coefficients:
+(Intercept)            x            c  
+    -0.3545       0.3842       0.2694  
+
+Degrees of Freedom: 99 Total (i.e. Null);  97 Residual
+Null Deviance:	    138.6 
+Residual Deviance: 136.1 	AIC: 142.1
+### Outcome model
+Call:
+survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
+    dist = "weibull")
+
+Coefficients:
+(Intercept)           x           m           c         x:m 
+-1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424 
+
+Scale= 0.9658808 
+
+Loglik(model)= -11.4   Loglik(intercept only)= -14.5
+	Chisq= 6.31 on 4 degrees of freedom, p= 0.177 
+n= 100 
+### Mediation analysis 
+        cde        pnde        tnie        tnde        pnie          te 
+0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 
+         pm 
+0.045436278 
+> ## Explicit printing
+> print(regmedint_obj)
+### Mediator model
+
+Call:  glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
+
+Coefficients:
+(Intercept)            x            c  
+    -0.3545       0.3842       0.2694  
+
+Degrees of Freedom: 99 Total (i.e. Null);  97 Residual
+Null Deviance:	    138.6 
+Residual Deviance: 136.1 	AIC: 142.1
+### Outcome model
+Call:
+survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
+    dist = "weibull")
+
+Coefficients:
+(Intercept)           x           m           c         x:m 
+-1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424 
+
+Scale= 0.9658808 
+
+Loglik(model)= -11.4   Loglik(intercept only)= -14.5
+	Chisq= 6.31 on 4 degrees of freedom, p= 0.177 
+n= 100 
+### Mediation analysis 
+        cde        pnde        tnie        tnde        pnie          te 
+0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 
+         pm 
+0.045436278 
+> ## Evaluate at different values
+> print(regmedint_obj, m_cde = 0, c_cond = 1)
+### Mediator model
+
+Call:  glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
+
+Coefficients:
+(Intercept)            x            c  
+    -0.3545       0.3842       0.2694  
+
+Degrees of Freedom: 99 Total (i.e. Null);  97 Residual
+Null Deviance:	    138.6 
+Residual Deviance: 136.1 	AIC: 142.1
+### Outcome model
+Call:
+survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
+    dist = "weibull")
+
+Coefficients:
+(Intercept)           x           m           c         x:m 
+-1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424 
+
+Scale= 0.9658808 
+
+Loglik(model)= -11.4   Loglik(intercept only)= -14.5
+	Chisq= 6.31 on 4 degrees of freedom, p= 0.177 
+n= 100 
+### Mediation analysis 
+        cde        pnde        tnie        tnde        pnie          te 
+0.440756562 0.492306223 0.018077074 0.501765186 0.008618111 0.510383297 
+         pm 
+0.044816400 
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("print.regmedint", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("print.summary_regmedint")
+> ### * print.summary_regmedint
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: print.summary_regmedint
+> ### Title: Print method for summary objects from 'summary.regmedint'
+> ### Aliases: print.summary_regmedint
+> 
+> ### ** Examples
+> 
+> library(regmedint)
+> data(vv2015)
+> regmedint_obj <- regmedint(data = vv2015,
++                            ## Variables
++                            yvar = "y",
++                            avar = "x",
++                            mvar = "m",
++                            cvar = c("c"),
++                            eventvar = "event",
++                            ## Values at which effects are evaluated
++                            a0 = 0,
++                            a1 = 1,
++                            m_cde = 1,
++                            c_cond = 0.5,
++                            ## Model types
++                            mreg = "logistic",
++                            yreg = "survAFT_weibull",
++                            ## Additional specification
++                            interaction = TRUE,
++                            casecontrol = FALSE)
+> ## Implicit printing
+> summary(regmedint_obj)
+### Mediator model
+
+Call:
+glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.5143  -1.1765   0.9177   1.1133   1.4602  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -0.3545     0.3252  -1.090    0.276
+x             0.3842     0.4165   0.922    0.356
+c             0.2694     0.2058   1.309    0.191
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 138.59  on 99  degrees of freedom
+Residual deviance: 136.08  on 97  degrees of freedom
+AIC: 142.08
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
+    dist = "weibull")
+              Value Std. Error     z       p
+(Intercept) -1.0424     0.1903 -5.48 4.3e-08
+x            0.4408     0.3008  1.47    0.14
+m            0.0905     0.2683  0.34    0.74
+c           -0.0669     0.0915 -0.73    0.46
+x:m          0.1003     0.4207  0.24    0.81
+Log(scale)  -0.0347     0.0810 -0.43    0.67
+
+Scale= 0.966 
+
+Weibull distribution
+Loglik(model)= -11.4   Loglik(intercept only)= -14.5
+	Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
+Number of Newton-Raphson Iterations: 5 
+n= 100 
+
+### Mediation analysis 
+             est         se         Z           p       lower      upper
+cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
+pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
+tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
+tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
+pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
+te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
+pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926
+
+Evaluated at:
+avar: x
+ a1 (intervened value of avar) = 1
+ a0 (reference value of avar)  = 0
+mvar: m
+ m_cde (intervend value of mvar for cde) = 1
+cvar: c
+ c_cond (covariate vector value) = 0.5
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+> ## Explicit printing
+> print(summary(regmedint_obj))
+### Mediator model
+
+Call:
+glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.5143  -1.1765   0.9177   1.1133   1.4602  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -0.3545     0.3252  -1.090    0.276
+x             0.3842     0.4165   0.922    0.356
+c             0.2694     0.2058   1.309    0.191
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 138.59  on 99  degrees of freedom
+Residual deviance: 136.08  on 97  degrees of freedom
+AIC: 142.08
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
+    dist = "weibull")
+              Value Std. Error     z       p
+(Intercept) -1.0424     0.1903 -5.48 4.3e-08
+x            0.4408     0.3008  1.47    0.14
+m            0.0905     0.2683  0.34    0.74
+c           -0.0669     0.0915 -0.73    0.46
+x:m          0.1003     0.4207  0.24    0.81
+Log(scale)  -0.0347     0.0810 -0.43    0.67
+
+Scale= 0.966 
+
+Weibull distribution
+Loglik(model)= -11.4   Loglik(intercept only)= -14.5
+	Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
+Number of Newton-Raphson Iterations: 5 
+n= 100 
+
+### Mediation analysis 
+             est         se         Z           p       lower      upper
+cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
+pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
+tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
+tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
+pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
+te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
+pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926
+
+Evaluated at:
+avar: x
+ a1 (intervened value of avar) = 1
+ a0 (reference value of avar)  = 0
+mvar: m
+ m_cde (intervend value of mvar for cde) = 1
+cvar: c
+ c_cond (covariate vector value) = 0.5
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("print.summary_regmedint", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("regmedint")
+> ### * regmedint
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: regmedint
+> ### Title: regmedint: A package for regression-based causal mediation
+> ###   analysis
+> ### Aliases: regmedint
+> 
+> ### ** Examples
+> 
+> library(regmedint)
+> data(vv2015)
+> regmedint_obj <- regmedint(data = vv2015,
++                            ## Variables
++                            yvar = "y",
++                            avar = "x",
++                            mvar = "m",
++                            cvar = c("c"),
++                            eventvar = "event",
++                            ## Values at which effects are evaluated
++                            a0 = 0,
++                            a1 = 1,
++                            m_cde = 1,
++                            c_cond = 0.5,
++                            ## Model types
++                            mreg = "logistic",
++                            yreg = "survAFT_weibull",
++                            ## Additional specification
++                            interaction = TRUE,
++                            casecontrol = FALSE)
+> summary(regmedint_obj)
+### Mediator model
+
+Call:
+glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.5143  -1.1765   0.9177   1.1133   1.4602  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -0.3545     0.3252  -1.090    0.276
+x             0.3842     0.4165   0.922    0.356
+c             0.2694     0.2058   1.309    0.191
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 138.59  on 99  degrees of freedom
+Residual deviance: 136.08  on 97  degrees of freedom
+AIC: 142.08
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
+    dist = "weibull")
+              Value Std. Error     z       p
+(Intercept) -1.0424     0.1903 -5.48 4.3e-08
+x            0.4408     0.3008  1.47    0.14
+m            0.0905     0.2683  0.34    0.74
+c           -0.0669     0.0915 -0.73    0.46
+x:m          0.1003     0.4207  0.24    0.81
+Log(scale)  -0.0347     0.0810 -0.43    0.67
+
+Scale= 0.966 
+
+Weibull distribution
+Loglik(model)= -11.4   Loglik(intercept only)= -14.5
+	Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
+Number of Newton-Raphson Iterations: 5 
+n= 100 
+
+### Mediation analysis 
+             est         se         Z           p       lower      upper
+cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
+pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
+tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
+tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
+pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
+te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
+pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926
+
+Evaluated at:
+avar: x
+ a1 (intervened value of avar) = 1
+ a0 (reference value of avar)  = 0
+mvar: m
+ m_cde (intervend value of mvar for cde) = 1
+cvar: c
+ c_cond (covariate vector value) = 0.5
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("regmedint", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("summary.regmedint")
+> ### * summary.regmedint
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: summary.regmedint
+> ### Title: summary method for regmedint object
+> ### Aliases: summary.regmedint
+> 
+> ### ** Examples
+> 
+> library(regmedint)
+> data(vv2015)
+> regmedint_obj <- regmedint(data = vv2015,
++                            ## Variables
++                            yvar = "y",
++                            avar = "x",
++                            mvar = "m",
++                            cvar = c("c"),
++                            eventvar = "event",
++                            ## Values at which effects are evaluated
++                            a0 = 0,
++                            a1 = 1,
++                            m_cde = 1,
++                            c_cond = 0.5,
++                            ## Model types
++                            mreg = "logistic",
++                            yreg = "survAFT_weibull",
++                            ## Additional specification
++                            interaction = TRUE,
++                            casecontrol = FALSE)
+> ## Detailed result with summary
+> summary(regmedint_obj)
+### Mediator model
+
+Call:
+glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.5143  -1.1765   0.9177   1.1133   1.4602  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -0.3545     0.3252  -1.090    0.276
+x             0.3842     0.4165   0.922    0.356
+c             0.2694     0.2058   1.309    0.191
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 138.59  on 99  degrees of freedom
+Residual deviance: 136.08  on 97  degrees of freedom
+AIC: 142.08
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
+    dist = "weibull")
+              Value Std. Error     z       p
+(Intercept) -1.0424     0.1903 -5.48 4.3e-08
+x            0.4408     0.3008  1.47    0.14
+m            0.0905     0.2683  0.34    0.74
+c           -0.0669     0.0915 -0.73    0.46
+x:m          0.1003     0.4207  0.24    0.81
+Log(scale)  -0.0347     0.0810 -0.43    0.67
+
+Scale= 0.966 
+
+Weibull distribution
+Loglik(model)= -11.4   Loglik(intercept only)= -14.5
+	Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
+Number of Newton-Raphson Iterations: 5 
+n= 100 
+
+### Mediation analysis 
+             est         se         Z           p       lower      upper
+cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
+pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
+tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
+tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
+pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
+te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
+pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926
+
+Evaluated at:
+avar: x
+ a1 (intervened value of avar) = 1
+ a0 (reference value of avar)  = 0
+mvar: m
+ m_cde (intervend value of mvar for cde) = 1
+cvar: c
+ c_cond (covariate vector value) = 0.5
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+> ## Add exponentiate results for non-linear outcome models
+> summary(regmedint_obj, exponentiate = TRUE)
+### Mediator model
+
+Call:
+glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.5143  -1.1765   0.9177   1.1133   1.4602  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -0.3545     0.3252  -1.090    0.276
+x             0.3842     0.4165   0.922    0.356
+c             0.2694     0.2058   1.309    0.191
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 138.59  on 99  degrees of freedom
+Residual deviance: 136.08  on 97  degrees of freedom
+AIC: 142.08
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
+    dist = "weibull")
+              Value Std. Error     z       p
+(Intercept) -1.0424     0.1903 -5.48 4.3e-08
+x            0.4408     0.3008  1.47    0.14
+m            0.0905     0.2683  0.34    0.74
+c           -0.0669     0.0915 -0.73    0.46
+x:m          0.1003     0.4207  0.24    0.81
+Log(scale)  -0.0347     0.0810 -0.43    0.67
+
+Scale= 0.966 
+
+Weibull distribution
+Loglik(model)= -11.4   Loglik(intercept only)= -14.5
+	Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
+Number of Newton-Raphson Iterations: 5 
+n= 100 
+
+### Mediation analysis 
+             est         se         Z           p       lower      upper
+cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
+pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
+tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
+tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
+pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
+te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
+pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926
+     exp(est) exp(lower) exp(upper)
+cde  1.717845  0.9650179   3.057967
+pnde 1.630571  1.0793648   2.463266
+tnie 1.018407  0.9470547   1.095136
+tnde 1.646256  1.0863290   2.494786
+pnie 1.008705  0.9561318   1.064168
+te   1.660586  1.0983544   2.510615
+pm         NA         NA         NA
+
+Evaluated at:
+avar: x
+ a1 (intervened value of avar) = 1
+ a0 (reference value of avar)  = 0
+mvar: m
+ m_cde (intervend value of mvar for cde) = 1
+cvar: c
+ c_cond (covariate vector value) = 0.5
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+> ## Evaluate at different values
+> summary(regmedint_obj, m_cde = 0, c_cond = 1)
+### Mediator model
+
+Call:
+glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.5143  -1.1765   0.9177   1.1133   1.4602  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -0.3545     0.3252  -1.090    0.276
+x             0.3842     0.4165   0.922    0.356
+c             0.2694     0.2058   1.309    0.191
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 138.59  on 99  degrees of freedom
+Residual deviance: 136.08  on 97  degrees of freedom
+AIC: 142.08
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
+    dist = "weibull")
+              Value Std. Error     z       p
+(Intercept) -1.0424     0.1903 -5.48 4.3e-08
+x            0.4408     0.3008  1.47    0.14
+m            0.0905     0.2683  0.34    0.74
+c           -0.0669     0.0915 -0.73    0.46
+x:m          0.1003     0.4207  0.24    0.81
+Log(scale)  -0.0347     0.0810 -0.43    0.67
+
+Scale= 0.966 
+
+Weibull distribution
+Loglik(model)= -11.4   Loglik(intercept only)= -14.5
+	Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
+Number of Newton-Raphson Iterations: 5 
+n= 100 
+
+### Mediation analysis 
+             est         se         Z          p       lower      upper
+cde  0.440756562 0.30083077 1.4651313 0.14288511 -0.14886090 1.03037403
+pnde 0.492306223 0.21015655 2.3425690 0.01915149  0.08040695 0.90420550
+tnie 0.018077074 0.03653416 0.4947991 0.62074191 -0.05352857 0.08968272
+tnde 0.501765186 0.21433402 2.3410432 0.01922994  0.08167823 0.92185214
+pnie 0.008618111 0.02707487 0.3183067 0.75025232 -0.04444765 0.06168388
+te   0.510383297 0.21212172 2.4060870 0.01612443  0.09463237 0.92613422
+pm   0.044816400 0.01671605 2.6810406 0.00733936  0.01205355 0.07757925
+
+Evaluated at:
+avar: x
+ a1 (intervened value of avar) = 1
+ a0 (reference value of avar)  = 0
+mvar: m
+ m_cde (intervend value of mvar for cde) = 0
+cvar: c
+ c_cond (covariate vector value) = 1
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+> ## Change confidence level
+> summary(regmedint_obj, m_cde = 0, c_cond = 1, level = 0.99)
+### Mediator model
+
+Call:
+glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.5143  -1.1765   0.9177   1.1133   1.4602  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -0.3545     0.3252  -1.090    0.276
+x             0.3842     0.4165   0.922    0.356
+c             0.2694     0.2058   1.309    0.191
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 138.59  on 99  degrees of freedom
+Residual deviance: 136.08  on 97  degrees of freedom
+AIC: 142.08
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
+    dist = "weibull")
+              Value Std. Error     z       p
+(Intercept) -1.0424     0.1903 -5.48 4.3e-08
+x            0.4408     0.3008  1.47    0.14
+m            0.0905     0.2683  0.34    0.74
+c           -0.0669     0.0915 -0.73    0.46
+x:m          0.1003     0.4207  0.24    0.81
+Log(scale)  -0.0347     0.0810 -0.43    0.67
+
+Scale= 0.966 
+
+Weibull distribution
+Loglik(model)= -11.4   Loglik(intercept only)= -14.5
+	Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
+Number of Newton-Raphson Iterations: 5 
+n= 100 
+
+### Mediation analysis 
+             est         se         Z          p        lower      upper
+cde  0.440756562 0.30083077 1.4651313 0.14288511 -0.334132138 1.21564526
+pnde 0.492306223 0.21015655 2.3425690 0.01915149 -0.049021181 1.03363363
+tnie 0.018077074 0.03653416 0.4947991 0.62074191 -0.076028699 0.11218285
+tnde 0.501765186 0.21433402 2.3410432 0.01922994 -0.050322656 1.05385303
+pnie 0.008618111 0.02707487 0.3183067 0.75025232 -0.061122126 0.07835835
+te   0.510383297 0.21212172 2.4060870 0.01612443 -0.036006037 1.05677263
+pm   0.044816400 0.01671605 2.6810406 0.00733936  0.001758718 0.08787408
+
+Evaluated at:
+avar: x
+ a1 (intervened value of avar) = 1
+ a0 (reference value of avar)  = 0
+mvar: m
+ m_cde (intervend value of mvar for cde) = 0
+cvar: c
+ c_cond (covariate vector value) = 1
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("summary.regmedint", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("vcov.regmedint")
+> ### * vcov.regmedint
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: vcov.regmedint
+> ### Title: Extract variance estimates in the vcov form.
+> ### Aliases: vcov.regmedint
+> 
+> ### ** Examples
+> 
+> library(regmedint)
+> data(vv2015)
+> regmedint_obj <- regmedint(data = vv2015,
++                            ## Variables
++                            yvar = "y",
++                            avar = "x",
++                            mvar = "m",
++                            cvar = c("c"),
++                            eventvar = "event",
++                            ## Values at which effects are evaluated
++                            a0 = 0,
++                            a1 = 1,
++                            m_cde = 1,
++                            c_cond = 0.5,
++                            ## Model types
++                            mreg = "logistic",
++                            yreg = "survAFT_weibull",
++                            ## Additional specification
++                            interaction = TRUE,
++                            casecontrol = FALSE)
+> vcov(regmedint_obj)
+            cde       pnde        tnie       tnde         pnie         te
+cde  0.08657105         NA          NA         NA           NA         NA
+pnde         NA 0.04430708          NA         NA           NA         NA
+tnie         NA         NA 0.001373526         NA           NA         NA
+tnde         NA         NA          NA 0.04498446           NA         NA
+pnie         NA         NA          NA         NA 0.0007458327         NA
+te           NA         NA          NA         NA           NA 0.04447903
+pm           NA         NA          NA         NA           NA         NA
+              pm
+cde           NA
+pnde          NA
+tnie          NA
+tnde          NA
+pnie          NA
+te            NA
+pm   0.000297802
+attr(,"args")
+attr(,"args")$a0
+[1] 0
+
+attr(,"args")$a1
+[1] 1
+
+attr(,"args")$m_cde
+[1] 1
+
+attr(,"args")$c_cond
+[1] 0.5
+
+> ## Evaluate at different values
+> vcov(regmedint_obj, m_cde = 0, c_cond = 1)
+            cde       pnde        tnie       tnde         pnie         te
+cde  0.09049915         NA          NA         NA           NA         NA
+pnde         NA 0.04416578          NA         NA           NA         NA
+tnie         NA         NA 0.001334745         NA           NA         NA
+tnde         NA         NA          NA 0.04593907           NA         NA
+pnie         NA         NA          NA         NA 0.0007330485         NA
+te           NA         NA          NA         NA           NA 0.04499562
+pm           NA         NA          NA         NA           NA         NA
+               pm
+cde            NA
+pnde           NA
+tnie           NA
+tnde           NA
+pnie           NA
+te             NA
+pm   0.0002794262
+attr(,"args")
+attr(,"args")$a0
+[1] 0
+
+attr(,"args")$a1
+[1] 1
+
+attr(,"args")$m_cde
+[1] 0
+
+attr(,"args")$c_cond
+[1] 1
+
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("vcov.regmedint", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  2.617 0.142 2.988 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

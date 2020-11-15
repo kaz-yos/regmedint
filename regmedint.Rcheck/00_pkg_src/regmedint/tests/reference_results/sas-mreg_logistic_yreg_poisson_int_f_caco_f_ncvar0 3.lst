@@ -1,0 +1,163 @@
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   1
+
+                                                        The GENMOD Procedure
+
+                                                         Model Information
+
+                                                  Data Set              WORK.DATA1
+                                                  Distribution             Poisson
+                                                  Link Function                Log
+                                                  Dependent Variable      platelet
+
+
+                                              Number of Observations Read         276
+                                              Number of Observations Used         276
+
+
+                                                       Parameter Information
+ 
+                                                     Parameter       Effect
+
+                                                     Prm1            Intercept
+                                                     Prm2            trt      
+                                                     Prm3            bili_bin 
+
+
+                                               Criteria For Assessing Goodness Of Fit
+ 
+                                  Criterion                     DF           Value        Value/DF
+
+                                  Deviance                     273       8965.6487         32.8412
+                                  Scaled Deviance              273       8965.6487         32.8412
+                                  Pearson Chi-Square           273       8890.3533         32.5654
+                                  Scaled Pearson X2            273       8890.3533         32.5654
+                                  Log Likelihood                       330155.8624                
+                                  Full Log Likelihood                   -5495.1392                
+                                  AIC (smaller is better)               10996.2784                
+                                  AICC (smaller is better)              10996.3666                
+                                  BIC (smaller is better)               11007.1396                
+
+
+                            Algorithm converged.                                                       
+
+
+                                                    Estimated Covariance Matrix
+ 
+                                                        Prm1           Prm2           Prm3
+
+                                         Prm1      0.0001542      -0.000084      -0.000027
+                                         Prm2      -0.000084      0.0000554      1.1876E-6
+                                         Prm3      -0.000027      1.1876E-6      0.0000558
+
+
+                                        Analysis Of Maximum Likelihood Parameter Estimates
+ 
+                                                   Standard     Wald 95% Confidence          Wald
+                    Parameter    DF    Estimate       Error           Limits           Chi-Square    Pr > ChiSq
+
+                    Intercept     1      5.5912      0.0124      5.5669      5.6156        202714        <.0001
+                    trt           1      0.0252      0.0074      0.0106      0.0398         11.43        0.0007
+                    bili_bin      1     -0.1307      0.0075     -0.1453     -0.1160        305.94        <.0001
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   2
+
+                                                        The GENMOD Procedure
+
+                                        Analysis Of Maximum Likelihood Parameter Estimates
+ 
+                                                   Standard     Wald 95% Confidence          Wald
+                    Parameter    DF    Estimate       Error           Limits           Chi-Square    Pr > ChiSq
+
+                    Scale         0      1.0000      0.0000      1.0000      1.0000                            
+
+NOTE: The scale parameter was held fixed.
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   3
+
+                                                       The LOGISTIC Procedure
+
+                                                         Model Information
+
+                                           Data Set                      WORK.DATA1      
+                                           Response Variable             bili_bin        
+                                           Number of Response Levels     2               
+                                           Model                         binary logit    
+                                           Optimization Technique        Fisher's scoring
+
+
+                                              Number of Observations Read         276
+                                              Number of Observations Used         276
+
+
+                                                          Response Profile
+ 
+                                               Ordered                          Total
+                                                 Value     bili_bin         Frequency
+
+                                                     1     1                      135
+                                                     2     0                      141
+
+                                                Probability modeled is bili_bin='1'.
+
+
+                                                      Model Convergence Status
+
+                                           Convergence criterion (GCONV=1E-8) satisfied.          
+
+
+                                                        Model Fit Statistics
+ 
+                                                                            Intercept
+                                                             Intercept            and
+                                               Criterion          Only     Covariates
+
+                                               AIC             384.487        386.360
+                                               SC              388.107        393.601
+                                               -2 Log L        382.487        382.360
+
+
+                                              Testing Global Null Hypothesis: BETA=0
+ 
+                                      Test                 Chi-Square       DF     Pr > ChiSq
+
+                                      Likelihood Ratio         0.1268        1         0.7218
+                                      Score                    0.1268        1         0.7218
+                                      Wald                     0.1267        1         0.7219
+
+
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   4
+
+                                                       The LOGISTIC Procedure
+
+                                             Analysis of Maximum Likelihood Estimates
+ 
+                                                               Standard          Wald
+                                Parameter    DF    Estimate       Error    Chi-Square    Pr > ChiSq
+
+                                Intercept     1      0.0858      0.3825        0.0503        0.8226
+                                trt           1     -0.0858      0.2409        0.1267        0.7219
+
+
+                                                        Odds Ratio Estimates
+                                                                  
+                                                          Point          95% Wald
+                                             Effect    Estimate      Confidence Limits
+
+                                             trt          0.918       0.572       1.472
+
+
+                                   Association of Predicted Probabilities and Observed Responses
+
+                                         Percent Concordant     26.1    Somers' D    0.021
+                                         Percent Discordant     23.9    Gamma        0.043
+                                         Percent Tied           50.0    Tau-a        0.011
+                                         Pairs                 19035    c            0.511
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   5
+
+                                                                               _95__CI_    _95__CI_
+                                 Obs    effect          Estimate    p_value      lower       upper
+
+                                  1     cde              1.03067    0.00072     1.01278     1.04888
+                                  2     pnde             1.03067    0.00072     1.01278     1.04888
+                                  3     pnie             1.00335    0.72208     0.98502     1.02203
+                                  4     tnde             1.03067    0.00072     1.01278     1.04888
+                                  5     tnie             1.00335    0.72153     0.98506     1.02199
+                                  6     total effect     1.03413    0.00961     1.00819     1.06073

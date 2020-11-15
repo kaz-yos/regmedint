@@ -1,0 +1,129 @@
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   1
+
+                                                        The GENMOD Procedure
+
+                                                         Model Information
+
+                                                  Data Set              WORK.DATA1
+                                                  Distribution            Binomial
+                                                  Link Function                Log
+                                                  Dependent Variable       spiders
+
+
+                                              Number of Observations Read         276
+                                              Number of Observations Used         276
+                                              Number of Events                     80
+                                              Number of Trials                    276
+
+
+                                                          Response Profile
+ 
+                                                   Ordered                   Total
+                                                     Value    spiders    Frequency
+
+                                                         1    1                 80
+                                                         2    0                196
+
+PROC GENMOD is modeling the probability that spiders='1'.
+
+
+                                                       Parameter Information
+ 
+                                                     Parameter       Effect
+
+                                                     Prm1            Intercept
+                                                     Prm2            trt      
+                                                     Prm3            bili     
+                                                     Prm4            int      
+
+
+                                               Criteria For Assessing Goodness Of Fit
+ 
+                                  Criterion                     DF           Value        Value/DF
+
+                                  Log Likelihood                         -158.0534                
+                                  Full Log Likelihood                    -158.0534                
+                                  AIC (smaller is better)                 324.1067                
+                                  AICC (smaller is better)                324.2543                
+                                  BIC (smaller is better)                 338.5884                
+
+
+                            Algorithm converged.                                                       
+
+
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   2
+
+                                                        The GENMOD Procedure
+
+                                                    Estimated Covariance Matrix
+ 
+                                                 Prm1           Prm2           Prm3           Prm4
+
+                                  Prm1        0.14379       -0.08513      -0.008828       0.005029
+                                  Prm2       -0.08513        0.05580       0.005029      -0.003129
+                                  Prm3      -0.008828       0.005029      0.0009962      -0.000568
+                                  Prm4       0.005029      -0.003129      -0.000568      0.0003546
+
+
+                                        Analysis Of Maximum Likelihood Parameter Estimates
+ 
+                                                   Standard     Wald 95% Confidence          Wald
+                    Parameter    DF    Estimate       Error           Limits           Chi-Square    Pr > ChiSq
+
+                    Intercept     1     -1.5641      0.3792     -2.3073     -0.8209         17.01        <.0001
+                    trt           1      0.0651      0.2362     -0.3979      0.5280          0.08        0.7830
+                    bili          1      0.1076      0.0316      0.0458      0.1695         11.63        0.0007
+                    int           1     -0.0341      0.0188     -0.0710      0.0029          3.27        0.0705
+                    Scale         0      1.0000      0.0000      1.0000      1.0000                            
+
+NOTE: The scale parameter was held fixed.
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   3
+
+                                                         The REG Procedure
+                                                           Model: MODEL1
+                                                     Dependent Variable: bili 
+
+                                              Number of Observations Read         196
+                                              Number of Observations Used         196
+
+
+                                                        Analysis of Variance
+ 
+                                                               Sum of           Mean
+                           Source                   DF        Squares         Square    F Value    Pr > F
+
+                           Model                     1       23.48847       23.48847       1.68    0.1959
+                           Error                   194     2705.65250       13.94666                     
+                           Corrected Total         195     2729.14097                                    
+
+
+                                        Root MSE              3.73452    R-Square     0.0086
+                                        Dependent Mean        2.56582    Adj R-Sq     0.0035
+                                        Coeff Var           145.54912                       
+
+
+                                                        Parameter Estimates
+ 
+                                                     Parameter       Standard
+                                Variable     DF       Estimate          Error    t Value    Pr > |t|
+
+                                Intercept     1        1.52000        0.84887       1.79      0.0749
+                                trt           1        0.69250        0.53361       1.30      0.1959
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   4
+
+                                              Obs     _RMSE_    Intercept       trt
+
+                                               1     3.73452      1.52000     0.69250
+                                               2     3.73452      0.72058    -0.43002
+                                               3     3.73452     -0.43002     0.28474
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   5
+
+                                                                               _95__CI_    _95__CI_
+                                 Obs    effect          Estimate    p_value      lower       upper
+
+                                  1     cde              1.02108    0.93658     0.61081     1.70693
+                                  2     pnde             0.95742    0.85735     0.59574     1.53869
+                                  3     pnie             1.06004    0.20744     0.96817     1.16062
+                                  4     tnde             0.92546    0.73923     0.58649     1.46034
+                                  5     tnie             1.02465    0.28999     0.97946     1.07192
+                                  6     total effect     0.98102    0.93575     0.61567     1.56317

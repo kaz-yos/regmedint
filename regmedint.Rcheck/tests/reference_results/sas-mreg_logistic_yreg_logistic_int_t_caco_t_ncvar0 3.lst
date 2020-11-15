@@ -1,0 +1,175 @@
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   1
+
+                                                       The LOGISTIC Procedure
+
+                                                         Model Information
+
+                                           Data Set                      WORK.DATA1      
+                                           Response Variable             spiders         
+                                           Number of Response Levels     2               
+                                           Model                         binary logit    
+                                           Optimization Technique        Fisher's scoring
+
+
+                                              Number of Observations Read         276
+                                              Number of Observations Used         276
+
+
+                                                          Response Profile
+ 
+                                               Ordered                          Total
+                                                 Value     spiders          Frequency
+
+                                                     1     1                       80
+                                                     2     0                      196
+
+                                                Probability modeled is spiders='1'.
+
+
+                                                      Model Convergence Status
+
+                                           Convergence criterion (GCONV=1E-8) satisfied.          
+
+
+                                                        Model Fit Statistics
+ 
+                                                                            Intercept
+                                                             Intercept            and
+                                               Criterion          Only     Covariates
+
+                                               AIC             334.316        319.825
+                                               SC              337.936        334.307
+                                               -2 Log L        332.316        311.825
+
+
+                                              Testing Global Null Hypothesis: BETA=0
+ 
+                                      Test                 Chi-Square       DF     Pr > ChiSq
+
+                                      Likelihood Ratio        20.4907        3         0.0001
+                                      Score                   20.0776        3         0.0002
+                                      Wald                    19.0673        3         0.0003
+
+
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   2
+
+                                                       The LOGISTIC Procedure
+
+                                             Analysis of Maximum Likelihood Estimates
+ 
+                                                               Standard          Wald
+                                Parameter    DF    Estimate       Error    Chi-Square    Pr > ChiSq
+
+                                Intercept     1     -1.4549      0.7103        4.1960        0.0405
+                                trt           1     -0.0855      0.4482        0.0364        0.8487
+                                bili_bin      1      1.0729      0.8993        1.4235        0.2328
+                                int           1      0.1108      0.5683        0.0380        0.8454
+
+
+                                                        Odds Ratio Estimates
+                                                                  
+                                                           Point          95% Wald
+                                            Effect      Estimate      Confidence Limits
+
+                                            trt            0.918       0.381       2.210
+                                            bili_bin       2.924       0.502      17.039
+                                            int            1.117       0.367       3.403
+
+
+                                   Association of Predicted Probabilities and Observed Responses
+
+                                         Percent Concordant     53.6    Somers' D    0.303
+                                         Percent Discordant     23.3    Gamma        0.393
+                                         Percent Tied           23.1    Tau-a        0.125
+                                         Pairs                 15680    c            0.651
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   3
+
+                                                       The LOGISTIC Procedure
+
+                                                         Model Information
+
+                                           Data Set                      WORK.DATA1      
+                                           Response Variable             bili_bin        
+                                           Number of Response Levels     2               
+                                           Model                         binary logit    
+                                           Optimization Technique        Fisher's scoring
+
+
+                                              Number of Observations Read         196
+                                              Number of Observations Used         196
+
+
+                                                          Response Profile
+ 
+                                               Ordered                          Total
+                                                 Value     bili_bin         Frequency
+
+                                                     1     1                       79
+                                                     2     0                      117
+
+                                                Probability modeled is bili_bin='1'.
+
+
+                                                      Model Convergence Status
+
+                                           Convergence criterion (GCONV=1E-8) satisfied.          
+
+
+                                                        Model Fit Statistics
+ 
+                                                                            Intercept
+                                                             Intercept            and
+                                               Criterion          Only     Covariates
+
+                                               AIC             266.299        268.155
+                                               SC              269.578        274.711
+                                               -2 Log L        264.299        264.155
+
+
+                                              Testing Global Null Hypothesis: BETA=0
+ 
+                                      Test                 Chi-Square       DF     Pr > ChiSq
+
+                                      Likelihood Ratio         0.1448        1         0.7036
+                                      Score                    0.1448        1         0.7036
+                                      Wald                     0.1447        1         0.7036
+
+
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   4
+
+                                                       The LOGISTIC Procedure
+
+                                             Analysis of Maximum Likelihood Estimates
+ 
+                                                               Standard          Wald
+                                Parameter    DF    Estimate       Error    Chi-Square    Pr > ChiSq
+
+                                Intercept     1     -0.2256      0.4620        0.2385        0.6253
+                                trt           1     -0.1108      0.2914        0.1447        0.7036
+
+
+                                                        Odds Ratio Estimates
+                                                                  
+                                                          Point          95% Wald
+                                             Effect    Estimate      Confidence Limits
+
+                                             trt          0.895       0.506       1.584
+
+
+                                   Association of Predicted Probabilities and Observed Responses
+
+                                         Percent Concordant     26.4    Somers' D    0.028
+                                         Percent Discordant     23.6    Gamma        0.055
+                                         Percent Tied           50.0    Tau-a        0.013
+                                         Pairs                  9243    c            0.514
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   5
+
+                                                                               _95__CI_    _95__CI_
+                                 Obs    effect          Estimate    p_value      lower       upper
+
+                                  1     cde              1.08717    0.89364     0.31927     3.70206
+                                  2     pnde             0.99233    0.98180     0.51235     1.92197
+                                  3     pnie             0.96244    0.70446     0.78971     1.17296
+                                  4     tnde             0.98866    0.97277     0.51355     1.90331
+                                  5     tnie             0.95887    0.70655     0.77057     1.19319
+                                  6     total effect     0.95152    0.88766     0.47754     1.89596

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>R: Regression-Based Causal Mediation Analysis with an Interaction
+Term</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+<h1> Regression-Based Causal Mediation Analysis with an Interaction
+Term
+<img class="toplogo" src="../../../doc/html/Rlogo.svg" alt="[R logo]" />
+</h1>
+<hr/>
+<div style="text-align: center;">
+<a href="../../../doc/html/packages.html"><img class="arrow" src="../../../doc/html/left.jpg" alt="[Up]" /></a>
+<a href="../../../doc/html/index.html"><img class="arrow" src="../../../doc/html/up.jpg" alt="[Top]" /></a>
+</div><h2>Documentation for package &lsquo;regmedint&rsquo; version 0.2.0</h2>
+
+<ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
+<li><a href="../doc/index.html">User guides, package vignettes and other documentation.</a></li>
+</ul>
+
+<h2>Help Pages</h2>
+
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="beta_hat.html">beta_hat</a></td>
+<td>Create a vector of coefficients from the mediator model (mreg)</td></tr>
+<tr><td style="width: 25%;"><a href="calc_myreg.html">calc_myreg</a></td>
+<td>Return mediation analysis functions given mediator and outcome models.</td></tr>
+<tr><td style="width: 25%;"><a href="calc_myreg_mreg_linear_yreg_linear.html">calc_myreg_mreg_linear_yreg_linear</a></td>
+<td>Create calculators for effects and se (mreg linear / yreg linear)</td></tr>
+<tr><td style="width: 25%;"><a href="calc_myreg_mreg_linear_yreg_logistic.html">calc_myreg_mreg_linear_yreg_logistic</a></td>
+<td>Create calculators for effects and se (mreg linear / yreg logistic)</td></tr>
+<tr><td style="width: 25%;"><a href="calc_myreg_mreg_logistic_yreg_linear.html">calc_myreg_mreg_logistic_yreg_linear</a></td>
+<td>Create calculators for effects and se (mreg logistic / yreg linear)</td></tr>
+<tr><td style="width: 25%;"><a href="calc_myreg_mreg_logistic_yreg_logistic.html">calc_myreg_mreg_logistic_yreg_logistic</a></td>
+<td>Create calculators for effects and se (mreg logistic / yreg logistic)</td></tr>
+<tr><td style="width: 25%;"><a href="coef.regmedint.html">coef.regmedint</a></td>
+<td>Extract point estimates.</td></tr>
+<tr><td style="width: 25%;"><a href="coef.summary_regmedint.html">coef.summary_regmedint</a></td>
+<td>Extract the result matrix from a summary_regmedint object.</td></tr>
+<tr><td style="width: 25%;"><a href="confint.regmedint.html">confint.regmedint</a></td>
+<td>Confidence intervals for mediation prameter estimates.</td></tr>
+<tr><td style="width: 25%;"><a href="fit_mreg.html">fit_mreg</a></td>
+<td>Fit a model for the mediator given the treatment and covariates.</td></tr>
+<tr><td style="width: 25%;"><a href="fit_yreg.html">fit_yreg</a></td>
+<td>Fit a model for the outcome given the treatment, mediator, and covariates.</td></tr>
+<tr><td style="width: 25%;"><a href="grad_prop_med_yreg_linear.html">grad_prop_med_yreg_linear</a></td>
+<td>Calculate the gradient of the proportion mediated for yreg linear.</td></tr>
+<tr><td style="width: 25%;"><a href="new_regmedint.html">new_regmedint</a></td>
+<td>Low level constructor for a regmedint S3 class object.</td></tr>
+<tr><td style="width: 25%;"><a href="print.regmedint.html">print.regmedint</a></td>
+<td>print method for regmedint object</td></tr>
+<tr><td style="width: 25%;"><a href="print.summary_regmedint.html">print.summary_regmedint</a></td>
+<td>Print method for summary objects from 'summary.regmedint'</td></tr>
+<tr><td style="width: 25%;"><a href="prop_med_yreg_linear.html">prop_med_yreg_linear</a></td>
+<td>Calculate the proportion mediated for yreg linear.</td></tr>
+<tr><td style="width: 25%;"><a href="prop_med_yreg_logistic.html">prop_med_yreg_logistic</a></td>
+<td>Calculate the proportion mediated for yreg logistic.</td></tr>
+<tr><td style="width: 25%;"><a href="regmedint.html">regmedint</a></td>
+<td>regmedint: A package for regression-based causal mediation analysis</td></tr>
+<tr><td style="width: 25%;"><a href="summary.regmedint.html">summary.regmedint</a></td>
+<td>summary method for regmedint object</td></tr>
+<tr><td style="width: 25%;"><a href="summary.regmedint_mod_poisson.html">summary.regmedint_mod_poisson</a></td>
+<td>Summary with robust sandwich variance estimator for modified Poisson</td></tr>
+<tr><td style="width: 25%;"><a href="theta_hat.html">theta_hat</a></td>
+<td>Create a vector of coefficients from the outcome model (yreg)</td></tr>
+<tr><td style="width: 25%;"><a href="validate_args.html">validate_args</a></td>
+<td>Validate arguments to regmedint before passing to other functions</td></tr>
+<tr><td style="width: 25%;"><a href="validate_regmedint.html">validate_regmedint</a></td>
+<td>Validate soundness of a regmedint object.</td></tr>
+<tr><td style="width: 25%;"><a href="vcov.regmedint.html">vcov.regmedint</a></td>
+<td>Extract variance estimates in the vcov form.</td></tr>
+<tr><td style="width: 25%;"><a href="vcov.regmedint_mod_poisson.html">vcov.regmedint_mod_poisson</a></td>
+<td>Robust sandwich variance estimator for modified Poisson</td></tr>
+<tr><td style="width: 25%;"><a href="vv2015.html">vv2015</a></td>
+<td>Example dataset from Valeri and VanderWeele 2015.</td></tr>
+</table>
+</body></html>

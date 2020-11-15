@@ -1,0 +1,106 @@
+---
+title: "Introduction to user interface functions"
+author: "Kazuki Yoshida"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to user interface functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r, message = FALSE, tidy = FALSE, echo = F}
+## knitr configuration: http://yihui.name/knitr/options#chunk_options
+library(knitr)
+showMessage <- FALSE
+showWarning <- TRUE
+set_alias(w = "fig.width", h = "fig.height", res = "results")
+opts_chunk$set(comment = "##", error= TRUE, warning = showWarning, message = showMessage,
+               tidy = FALSE, cache = FALSE, echo = TRUE,
+               fig.width = 7, fig.height = 7, dev.args = list(family = "sans"),
+               fig.path = "man/figures")
+```
+
+# Data preparation
+The package require all variables to be numerical. So a multi-category factor needs to be converted to multiple dichotomous indicators. For survival outcome models, the indicator variable is for event (1 = event, 0 = censored).
+
+```{r}
+library(regmedint)
+library(tidyverse)
+## Prepare dataset
+data(vv2015)
+```
+
+
+# `regmedint` object
+Following typical modeling workflow in R (e.g., `lm` and `glm`), a constructor function is used to create a model fit object. The `summary` method is the main user function for examining the results in the object. Lower-level methods such as `coef`, `vcov`, and `confint` are also provided for flexibility. The `print` method is mainly for meaningful implicit printing when only the object name is evaluated. All methods for the `regmedint` object has arguments `a0`, `a1`, `m_cde`, and `c_cond`. These are used to re-evaluate the results without re-fitting the underlying models.
+
+## `regemedint()` object constructor
+```{r}
+regmedint_obj <- regmedint(data = vv2015,
+                           ## Variables
+                           yvar = "y",
+                           avar = "x",
+                           mvar = "m",
+                           cvar = c("c"),
+                           eventvar = "event",
+                           ## Values at which effects are evaluated
+                           a0 = 0,
+                           a1 = 1,
+                           m_cde = 1,
+                           c_cond = 0.5,
+                           ## Model types
+                           mreg = "logistic",
+                           yreg = "survAFT_weibull",
+                           ## Additional specification
+                           interaction = TRUE,
+                           casecontrol = FALSE)
+```
+## `summary()` for `regmedint`
+```{r}
+summary(regmedint_obj)
+summary(regmedint_obj, exponentiate = TRUE)
+summary(regmedint_obj, m_cde = 0, c_cond = 1)
+summary(regmedint_obj, m_cde = 0, c_cond = 1, level = 0.99)
+```
+
+## `coef()` for `regmedint`
+```{r}
+coef(regmedint_obj)
+coef(regmedint_obj, m_cde = 0, c_cond = 1)
+```
+
+## `vcov()` for `regmedint`
+```{r}
+vcov(regmedint_obj)
+vcov(regmedint_obj, m_cde = 0, c_cond = 1)
+```
+
+## `confint()` for `regmedint`
+```{r}
+confint(regmedint_obj)
+confint(regmedint_obj, m_cde = 0, c_cond = 1)
+confint(regmedint_obj, m_cde = 0, c_cond = 1, level = 0.99)
+```
+
+## `print()` for `regmedint`
+```{r}
+regmedint_obj # Implicit printing
+print(regmedint_obj)
+print(regmedint_obj, m_cde = 0, c_cond = 1)
+```
+
+## Methods for `summary_regmedint`
+The `summary` method for the `regmedint` object returns an object of class `summary_regmedint`. To extract the mediation analysis result table as a matrix, use the `coef` method.
+
+### `coef()` for `summary_regmedint`
+```{r}
+coef(summary(regmedint_obj))
+```
+
+### `print()` for `summary_regmedint`
+```{r}
+regmedint_summary_obj <- summary(regmedint_obj)
+regmedint_summary_obj # Implicit printing
+print(regmedint_summary_obj)
+```
