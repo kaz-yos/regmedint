@@ -263,9 +263,10 @@ validate_args <- function(data,
     vars_missing <- vars_interest[logical_vars_missing]
     assertthat::assert_that(all(stats::complete.cases(data_vars_interest)),
                             msg = paste0("Missingness is not allowed in variables of interest!
-See the multiple imputation vignette.
+For multiple imputation, see the multiple imputation vignette: vignette(\"vig_04_mi\")
+To perform complete case analysis, use na_omit = TRUE.
 Variables with missingness: ",
-                                         paste0(vars_missing, collapse = ", ")))
+paste0(vars_missing, collapse = ", ")))
 
     ## Do not allow factors as they can result in multiple
     ## dummy variables and coef results in different names
