@@ -15,120 +15,118 @@ library(tidyverse)
 ################################################################################
 
 describe("regmedint", {
-data(pbc)
-  pbc_cc <- pbc %>%
-    as_tibble() %>%
-    ## Missing data should be warned in validate_args()
-    #drop_na() %>%
-    mutate(male = if_else(sex == "m", 1L, 0L),
-           ## Combine transplant and death for testing purpose
-           status = if_else(status == 0, 0L, 1L),
-           ##
-           event = if_else(status == 1L, 1L, 0L),
-           ## Binary mvar
-           bili_bin = if_else(bili > median(bili), 1L, 0L),
-           alk_phos = alk.phos)
 
-    #
-    describe("na_omit (m: linear, y: linear)", {
-    # Specify variables of interest
-    yvar  <-  "alk_phos"
-    avar <- "trt"
-    mvar <- "bili_bin"
-    cvar <- c("age","male","stage")
+    data(pbc)
 
-    ## Gold standard sample size
-    expected_sample_size <- nrow(pbc_cc) - sum(rowSums(is.na(pbc_cc[,c(yvar, avar, mvar, cvar)]))>0)
+    describe("na_omit", {
+        ## Create a numeric dataset with NAs
+        pbc_na <- pbc %>%
+            as_tibble() %>%
+            mutate(male = if_else(sex == "m", 1L, 0L),
+                   ## Combine transplant and death for testing purpose
+                   status = if_else(status == 0, 0L, 1L),
+                   ##
+                   event = if_else(status == 1L, 1L, 0L),
+                   ## Binary mvar
+                   bili_bin = if_else(bili > median(bili), 1L, 0L),
+                   alk_phos = alk.phos)
 
-    fit_regmedint_obj <- regmedint(data = pbc_cc,
-                                   yvar = yvar,
-                                   avar = avar,
-                                   mvar = mvar,
-                                   cvar = cvar,
-                                   a0 = 1,
-                                   a1 = 2,
-                                   m_cde = 0,
-                                   c_cond = c(50,2,4),
-                                   mreg = "linear",
-                                   yreg = "linear",
-                                   interaction = FALSE,
-                                   casecontrol = FALSE,
-                                   ## No need for eventvar
-                                   # eventvar = eventvar,
-                                   na_omit = TRUE)
+        describe("na_omit (mreg linear, yreg linear)", {
+            ## Specify variables of interest
+            yvar <- "alk_phos"
+            avar <- "trt"
+            mvar <- "bili_bin"
+            cvar <- c("age","male","stage")
+            ## Gold standard sample size
+            expected_sample_size <- nrow(pbc_na) -
+                sum(rowSums(is.na(pbc_na[,c(yvar, avar, mvar, cvar)])) > 0)
 
-    # Extract the sample size from the outcome model
-    out_regmedint <- summary(fit_regmedint_obj)
+            fit_regmedint_obj <- regmedint(data = pbc_na,
+                                           yvar = yvar,
+                                           avar = avar,
+                                           mvar = mvar,
+                                           cvar = cvar,
+                                           a0 = 1,
+                                           a1 = 2,
+                                           m_cde = 0,
+                                           c_cond = c(50,2,4),
+                                           mreg = "linear",
+                                           yreg = "linear",
+                                           interaction = FALSE,
+                                           casecontrol = FALSE,
+                                           ## No need for eventvar
+                                           na_omit = TRUE)
+            out_regmedint <- summary(fit_regmedint_obj)
 
-    # Sample size extracted from the models
-    mreg_sample_size <- out_regmedint$summary_mreg_fit$df[2] + nrow(out_regmedint$summary_mreg_fit$coefficients)
-    yreg_sample_size <- out_regmedint$summary_yreg_fit$df[2] + nrow(out_regmedint$summary_yreg_fit$coefficients)
+            ## Sample size extracted from the models
+            mreg_sample_size <- out_regmedint$summary_mreg_fit$df[2] +
+                nrow(out_regmedint$summary_mreg_fit$coefficients)
+            yreg_sample_size <- out_regmedint$summary_yreg_fit$df[2] +
+                nrow(out_regmedint$summary_yreg_fit$coefficients)
 
-    ## Check sample sizes of both mediator and outcome models
-    it("= TRUE: drops rows containing NAs in variables of interest", {
-      expect_equal(mreg_sample_size, expected_sample_size)
-      expect_equal(yreg_sample_size, expected_sample_size)
-    })
-    })
-
-
-    describe("na_omit (m: linear, y: survCox)", {
-      # Specify variables of interest
-      yvar = "time"
-      avar = "trt"
-      mvar = "bili_bin"
-      cvar = c("age")
-      eventvar = "status"
-
-      ## Gold standard sample size
-      expected_sample_size <- nrow(pbc_cc) - sum(rowSums(is.na(pbc_cc[,c(yvar, avar, mvar, cvar, eventvar)]))>0)
-
-      fit_regmedint_obj <- regmedint(data = pbc_cc,
-                                     yvar = yvar,
-                                     avar = avar,
-                                     mvar = mvar,
-                                     cvar = cvar,
-                                     eventvar = eventvar,
-                                     a0 = 1,
-                                     a1 = 2,
-                                     m_cde = 0,
-                                     c_cond = 40,
-                                     mreg = "linear",
-                                     yreg = "survCox",
-                                     interaction = FALSE,
-                                     casecontrol = FALSE,
-                                     na_omit = TRUE)
-      
-      # Extract the sample size from the outcome model
-      out_regmedint <- summary(fit_regmedint_obj)
-
-      # Sample size extracted from the models
-      mreg_sample_size <- out_regmedint$summary_mreg_fit$df[2] + nrow(out_regmedint$summary_mreg_fit$coefficients)
-      # YL: coxph doesnt have the df.residual, so I used df[2].
-      yreg_sample_size <- out_regmedint$summary_yreg_fit$n
-
-      ## Check sample sizes of both mediator and outcome models
-      it("= TRUE: drops rows containing NAs in variables of interest", {
-        expect_equal(mreg_sample_size, expected_sample_size)
-        expect_equal(yreg_sample_size, expected_sample_size)
+            ## Check sample sizes of both mediator and outcome models
+            it("drops rows containing NAs in variables of interest when TRUE", {
+                expect_equal(mreg_sample_size, expected_sample_size)
+                expect_equal(yreg_sample_size, expected_sample_size)
+            })
         })
-      })
-    
-  
-    
-    
+
+        describe("na_omit (mreg linear, yreg survCox)", {
+            ## Specify variables of interest
+            yvar = "time"
+            avar = "trt"
+            mvar = "bili_bin"
+            cvar = c("age")
+            eventvar = "status"
+
+            ## Gold standard sample size
+            expected_sample_size <- nrow(pbc_na) -
+                sum(rowSums(is.na(pbc_na[,c(yvar, avar, mvar, cvar, eventvar)])) > 0)
+
+            fit_regmedint_obj <- regmedint(data = pbc_na,
+                                           yvar = yvar,
+                                           avar = avar,
+                                           mvar = mvar,
+                                           cvar = cvar,
+                                           eventvar = eventvar,
+                                           a0 = 1,
+                                           a1 = 2,
+                                           m_cde = 0,
+                                           c_cond = 40,
+                                           mreg = "linear",
+                                           yreg = "survCox",
+                                           interaction = FALSE,
+                                           casecontrol = FALSE,
+                                           na_omit = TRUE)
+            out_regmedint <- summary(fit_regmedint_obj)
+
+            ## Sample size extracted from the models
+            mreg_sample_size <- out_regmedint$summary_mreg_fit$df[2] +
+                nrow(out_regmedint$summary_mreg_fit$coefficients)
+            ## summary.coxph object does not have df.
+            yreg_sample_size <- out_regmedint$summary_yreg_fit$n
+
+            ## Check sample sizes of both mediator and outcome models
+            it("drops rows containing NAs in variables of interest when NA", {
+                expect_equal(mreg_sample_size, expected_sample_size)
+                expect_equal(yreg_sample_size, expected_sample_size)
+            })
+        })
+    })
+
+
     pbc_cc <- pbc %>%
-      as_tibble() %>%
-      ## Missing data should be warned in validate_args()
-      drop_na() %>%
-      mutate(male = if_else(sex == "m", 1L, 0L),
-             ## Combine transplant and death for testing purpose
-             status = if_else(status == 0, 0L, 1L),
-             ##
-             event = if_else(status == 1L, 1L, 0L),
-             ## Binary mvar
-             bili_bin = if_else(bili > median(bili), 1L, 0L), # changed from bili_bin
-             alk_phos = alk.phos)
+        as_tibble() %>%
+        ## Missing data should be warned in validate_args()
+        drop_na() %>%
+        mutate(male = if_else(sex == "m", 1L, 0L),
+               ## Combine transplant and death for testing purpose
+               status = if_else(status == 0, 0L, 1L),
+               ##
+               event = if_else(status == 1L, 1L, 0L),
+               ## Binary mvar
+               bili_bin = if_else(bili > median(bili), 1L, 0L), # changed from bili_bin
+               alk_phos = alk.phos)
 
     describe("validate_args (regmedint argument validation)", {
         it("rejects missing data in the variales of interest", {
