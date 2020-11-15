@@ -147,20 +147,31 @@ regmedint <- function(data,
 ###
 #### Functions to handle missing data
 ################################################################################
-## report_missing()
+
+##' Report variables with missing data
+##'
+##' Report the number of missing observations for each variables of interest relevant for the analysis
+##'
+##' @inheritParams regmedint
+##'
+##' @return No return value, called for side effects.
 report_missing <- function(data, yvar, avar, mvar, cvar, eventvar){
-  miss.var.sum <- as.data.frame(matrix(0, nrow = ncol(data), ncol = 2))
-  colnames(miss.var.sum) <- c("variable", "n.missing")
-  ## Add warning: NAs
-  # If the dataset contains NAs, print a general warning message
-  if(any(is.na(data)))
-    message('Dataset contains NAs.')
-  # Print # NAs by columns of interest
-  for(i in 1:ncol(data)){
-    if(any(is.na(data[,i])))
-      message(paste(colnames(data)[i],'has',sum(is.na(data[,i])),'NAs.'))
-  }
-  
+    ## Only report missing in these variables.
+    data <- data[c(yvar, avar, mvar, cvar, eventvar)]
+    ## Add warning: NAs
+    ## If the dataset contains NAs, print a general warning message
+    if (any(is.na(data))) {
+        message("Dataset contains NAs.")
+    }
+    ## Print the number of NAs by columns of interest
+    for (i in 1:ncol(data)) {
+        if (any(is.na(data[,i]))) {
+            message(paste(colnames(data)[i],
+                          "has",
+                          sum(is.na(data[,i])),
+                          "NAs."))
+        }
+    }
 }
 
 
