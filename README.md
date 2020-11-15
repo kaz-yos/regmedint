@@ -20,6 +20,8 @@ Appendix of Explanation in Causal Inference (V2015) and the code should
 be easier to grasp. See the vignette (Article on the package website)
 for the code that implements formulas.
 
+To cite this software, please refer to <https://osf.io/6c79f/>.
+
 Implemented models
 ==================
 
@@ -293,7 +295,7 @@ Formulas
 
 The point estimate and standard error formulas (multivariate delta
 method) were taken from the following references. See
-<a href="https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf" class="uri">https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf</a>
+<https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf>
 for type-set formulas.
 
 -   V2015: VanderWeele (2015) Explanation in Causal Inference.
@@ -490,23 +492,22 @@ R
 -
 
 -   mediation (simulation-based):
-    <a href="https://CRAN.R-project.org/package=mediation" class="uri">https://CRAN.R-project.org/package=mediation</a>
+    <https://CRAN.R-project.org/package=mediation>
 -   medflex (natural effect model):
-    <a href="https://CRAN.R-project.org/package=medflex" class="uri">https://CRAN.R-project.org/package=medflex</a>
+    <https://CRAN.R-project.org/package=medflex>
 -   intmed (interventional analogue):
-    <a href="https://CRAN.R-project.org/package=intmed" class="uri">https://CRAN.R-project.org/package=intmed</a>
--   mediator (regression-based):
-    <a href="https:/github.com/GerkeLab/mediator" class="uri">https:/github.com/GerkeLab/mediator</a>
+    <https://CRAN.R-project.org/package=intmed>
+-   mediator (regression-based): <https:/github.com/GerkeLab/mediator>
 -   causalMediation (regression-based):
-    <a href="https:/github.com/harvard-P01/causalMediation" class="uri">https:/github.com/harvard-P01/causalMediation</a>
+    <https:/github.com/harvard-P01/causalMediation>
 
 Other statistical environment
 -----------------------------
 
 -   SAS macro (original regression-based)
-    <a href="https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/" class="uri">https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/</a>
+    <https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/>
 -   SAS PROC CAUSALMED (regression-based)
-    <a href="https://support.sas.com/rnd/app/stat/procedures/causalmed.html" class="uri">https://support.sas.com/rnd/app/stat/procedures/causalmed.html</a>
+    <https://support.sas.com/rnd/app/stat/procedures/causalmed.html>
 
 References
 ==========

@@ -30,6 +30,8 @@ This is an R re-implementation of the regression-based causal mediation analysis
 
 This package is meant to be an educational tool. Thanks to R's expressibility, the code is likely easier to read than SAS IML. Thus, the correspondence between the mathematical formulas presented in the Appendix of Explanation in Causal Inference (V2015) and the code should be easier to grasp. See the vignette (Article on the package website) for the code that implements formulas.
 
+To cite this software, please refer to https://osf.io/6c79f/.
+
 
 # Implemented models
 
