@@ -20,7 +20,7 @@
 ##' confint
 ##' FIXME: Document once implemented.
 ##'
-##' @importFrom stats coef confint pnorm qnorm sigma vcov pt residuals
+##' @importFrom stats coef confint pnorm qnorm sigma vcov pt residuals as.formula na.omit
 ##' @importFrom survival Surv
 ##'
 ##' @docType package
