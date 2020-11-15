@@ -38,6 +38,7 @@
 ##' @param yreg A character vector of length 1. Outcome regression type: \code{"linear"}, \code{"logistic"}, \code{"loglinear"}, \code{"poisson"}, \code{"negbin"}, \code{"survCox"}, \code{"survAFT_exp"}, or \code{"survAFT_weibull"}.
 ##' @param interaction A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.
 ##' @param casecontrol A logical vector of length 1. Default to FALSE. Whether data comes from a case-control study.
+##' @param na_omit A logical vector of length 1. Default to FALSE. Whether to use na.omit() function in stats package to remove NAs in columns of interest before fitting the models.
 ##'
 ##' @return regmedint object, which is a list containing the mediator regression object, the outcome regression object, and the regression-based mediation results.
 ##'
@@ -77,7 +78,7 @@ regmedint <- function(data,
                       c_cond,
                       mreg,
                       yreg,
-                      na_omit = FALSE, # new option, added by YL
+                      na_omit = FALSE, 
                       interaction = TRUE,
                       casecontrol = FALSE) {
     ## This is the user-friendly helper function with a name that is the class name.
