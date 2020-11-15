@@ -20,7 +20,8 @@ regmedint(
   mreg,
   yreg,
   interaction = TRUE,
-  casecontrol = FALSE
+  casecontrol = FALSE,
+  na_omit = FALSE
 )
 }
 \arguments{
@@ -32,7 +33,7 @@ regmedint(
 
 \item{mvar}{A character vector of length 1. Mediator variable name.}
 
-\item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{avar} and \code{yvar}.}
+\item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
 
 \item{eventvar}{An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.}
 
@@ -51,6 +52,8 @@ regmedint(
 \item{interaction}{A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.}
 
 \item{casecontrol}{A logical vector of length 1. Default to FALSE. Whether data comes from a case-control study.}
+
+\item{na_omit}{A logical vector of length 1. Default to FALSE. Whether to use na.omit() function in stats package to remove NAs in columns of interest before fitting the models.}
 }
 \value{
 regmedint object, which is a list containing the mediator regression object, the outcome regression object, and the regression-based mediation results.
