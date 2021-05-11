@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a vector of coefficients from the mediator model (mreg) — beta_hat • regmedint</title>
+<title>Report variables with missing data — report_missing • regmedint</title>
 
 
 <!-- jquery -->
@@ -39,11 +39,8 @@
 
 
 
-<meta property="og:title" content="Create a vector of coefficients from the mediator model (mreg) — beta_hat" />
-<meta property="og:description" content="This function extracts coef from mreg_fit and pads with zeros appropriately to create a named vector consistently having the following elements:
-(Intercept)
-avar
-cvar: This part is eliminated when cvar = NULL." />
+<meta property="og:title" content="Report variables with missing data — report_missing" />
+<meta property="og:description" content="Report the number of missing observations for each variables of interest relevant for the analysis" />
 
 
 
@@ -135,44 +132,49 @@ cvar: This part is eliminated when cvar = NULL." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a vector of coefficients from the mediator model (mreg)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kaz-yos/regmedint/blob/master/R/06_calc_myreg_helpers_coef.R'><code>R/06_calc_myreg_helpers_coef.R</code></a></small>
-    <div class="hidden name"><code>beta_hat.Rd</code></div>
+    <h1>Report variables with missing data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kaz-yos/regmedint/blob/master/R/01_regmedint_class_ui.R'><code>R/01_regmedint_class_ui.R</code></a></small>
+    <div class="hidden name"><code>report_missing.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function extracts <code><a href='https://rdrr.io/r/stats/coef.html'>coef</a></code> from <code>mreg_fit</code> and pads with zeros appropriately to create a named vector consistently having the following elements:
-<code>(Intercept)</code>
-<code>avar</code>
-<code>cvar</code>: This part is eliminated when <code>cvar = NULL</code>.</p>
+    <p>Report the number of missing observations for each variables of interest relevant for the analysis</p>
     </div>
 
-    <pre class="usage"><span class='fu'>beta_hat</span><span class='op'>(</span><span class='va'>mreg</span>, <span class='va'>mreg_fit</span>, <span class='va'>avar</span>, <span class='va'>cvar</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>report_missing</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>yvar</span>, <span class='va'>avar</span>, <span class='va'>mvar</span>, <span class='va'>cvar</span>, <span class='va'>eventvar</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>mreg</th>
-      <td><p>A character vector of length 1. Mediator regression type: <code>"linear"</code> or <code>"logistic"</code>.</p></td>
+      <th>data</th>
+      <td><p>Data frame containing the relevant variables.</p></td>
     </tr>
     <tr>
-      <th>mreg_fit</th>
-      <td><p>Model fit object for mreg (mediator model).</p></td>
+      <th>yvar</th>
+      <td><p>A character vector of length 1. Outcome variable name. It should be the time variable for survival outcomes.</p></td>
     </tr>
     <tr>
       <th>avar</th>
       <td><p>A character vector of length 1. Treatment variable name.</p></td>
     </tr>
     <tr>
+      <th>mvar</th>
+      <td><p>A character vector of length 1. Mediator variable name.</p></td>
+    </tr>
+    <tr>
       <th>cvar</th>
       <td><p>A character vector of length &gt; 0. Covariate names. Use <code>NULL</code> if there is no covariate. However, this is a highly suspicious situation. Even if <code>avar</code> is randomized, <code>mvar</code> is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between <code>mvar</code> and <code>yvar</code>.</p></td>
+    </tr>
+    <tr>
+      <th>eventvar</th>
+      <td><p>An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A named numeric vector of coefficients.</p>
+    <p>No return value, called for side effects.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

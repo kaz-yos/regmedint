@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">regmedint</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -115,7 +115,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/kaz-yos/regmedint">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -141,7 +141,7 @@
     <p><code><a href='https://rdrr.io/r/stats/lm.html'>lm</a></code> is called if <code>mreg = "linear"</code>. <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code> is called with <code>family = binomial()</code> if <code>mreg = "logistic"</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fit_mreg</span>(<span class='no'>mreg</span>, <span class='no'>data</span>, <span class='no'>avar</span>, <span class='no'>mvar</span>, <span class='no'>cvar</span>)</pre>
+    <pre class="usage"><span class='fu'>fit_mreg</span><span class='op'>(</span><span class='va'>mreg</span>, <span class='va'>data</span>, <span class='va'>avar</span>, <span class='va'>mvar</span>, <span class='va'>cvar</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,7 +164,7 @@
     </tr>
     <tr>
       <th>cvar</th>
-      <td><p>A character vector of length &gt; 0. Covariate names. Use <code>NULL</code> if there is no covariate. However, this is a highly suspicious situation. Even if <code>avar</code> is randomized, <code>mvar</code> is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between <code>avar</code> and <code>yvar</code>.</p></td>
+      <td><p>A character vector of length &gt; 0. Covariate names. Use <code>NULL</code> if there is no covariate. However, this is a highly suspicious situation. Even if <code>avar</code> is randomized, <code>mvar</code> is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between <code>mvar</code> and <code>yvar</code>.</p></td>
     </tr>
     </table>
 
@@ -183,11 +183,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Kazuki Yoshida.</p>
+  <p>Developed by Kazuki Yoshida, Yi Li.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

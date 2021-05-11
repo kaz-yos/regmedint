@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">regmedint</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -74,7 +74,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/kaz-yos/regmedint">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -88,13 +88,13 @@
 
       
 
-      </header><script src="vig_03_bootstrap_files/header-attrs-2.1/header-attrs.js"></script><div class="row">
+      </header><script src="vig_03_bootstrap_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using bootstrapping with regemedint</h1>
                         <h4 class="author">Kazuki Yoshida</h4>
             
-            <h4 class="date">2020-05-07</h4>
+            <h4 class="date">2021-05-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/master/vignettes/vig_03_bootstrap.Rmd"><code>vignettes/vig_03_bootstrap.Rmd</code></a></small>
       <div class="hidden name"><code>vig_03_bootstrap.Rmd</code></div>
@@ -107,31 +107,32 @@
 <h2 class="hasAnchor">
 <a href="#bootstrapping-support" class="anchor"></a>Bootstrapping support</h2>
 <p>The <code>regmedint</code> function itself does not contain a bootstrap standard error option, which may be perferred in some settings. However, it is relatively easy to implmement in R using the <code><a href="../reference/regmedint.html">regmedint()</a></code> function and the corresponding <code><a href="https://rdrr.io/r/stats/coef.html">coef()</a></code> point estimate extraction method.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">138087069</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">regmedint</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">138087069</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kaz-yos.github.io/regmedint/">regmedint</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="co">## Prepare dataset</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">vv2015</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">vv2015</span><span class="op">)</span>
 <span class="co">## Main fit</span>
-<span class="no">regmedint_obj</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">vv2015</span>,
+<span class="va">regmedint_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">vv2015</span>,
                            <span class="co">## Variables</span>
-                           <span class="kw">yvar</span> <span class="kw">=</span> <span class="st">"y"</span>,
-                           <span class="kw">avar</span> <span class="kw">=</span> <span class="st">"x"</span>,
-                           <span class="kw">mvar</span> <span class="kw">=</span> <span class="st">"m"</span>,
-                           <span class="kw">cvar</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"c"</span>),
-                           <span class="kw">eventvar</span> <span class="kw">=</span> <span class="st">"event"</span>,
+                           yvar <span class="op">=</span> <span class="st">"y"</span>,
+                           avar <span class="op">=</span> <span class="st">"x"</span>,
+                           mvar <span class="op">=</span> <span class="st">"m"</span>,
+                           cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+                           eventvar <span class="op">=</span> <span class="st">"event"</span>,
                            <span class="co">## Values at which effects are evaluated</span>
-                           <span class="kw">a0</span> <span class="kw">=</span> <span class="fl">0</span>,
-                           <span class="kw">a1</span> <span class="kw">=</span> <span class="fl">1</span>,
-                           <span class="kw">m_cde</span> <span class="kw">=</span> <span class="fl">1</span>,
-                           <span class="kw">c_cond</span> <span class="kw">=</span> <span class="fl">0.5</span>,
+                           a0 <span class="op">=</span> <span class="fl">0</span>,
+                           a1 <span class="op">=</span> <span class="fl">1</span>,
+                           m_cde <span class="op">=</span> <span class="fl">1</span>,
+                           c_cond <span class="op">=</span> <span class="fl">0.5</span>,
                            <span class="co">## Model types</span>
-                           <span class="kw">mreg</span> <span class="kw">=</span> <span class="st">"logistic"</span>,
-                           <span class="kw">yreg</span> <span class="kw">=</span> <span class="st">"survAFT_weibull"</span>,
+                           mreg <span class="op">=</span> <span class="st">"logistic"</span>,
+                           yreg <span class="op">=</span> <span class="st">"survAFT_weibull"</span>,
                            <span class="co">## Additional specification</span>
-                           <span class="kw">interaction</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                           <span class="kw">casecontrol</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">regmedint_obj</span>))</pre></body></html></div>
+                           interaction <span class="op">=</span> <span class="cn">TRUE</span>,
+                           casecontrol <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>##              est         se         Z           p       lower      upper
 ## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
 ## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
@@ -145,41 +146,42 @@
 <h2 class="hasAnchor">
 <a href="#boot-package" class="anchor"></a><code>boot</code> package</h2>
 <p>The <code>boot</code> package is the classical way to perform bootstrapping in R. It requires defining a wrapper function.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">boot</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span>
 <span class="co">## Define a wrapper function</span>
-<span class="no">regmedint_boot</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">data</span>, <span class="no">ind</span>)  {
+<span class="va">regmedint_boot</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">ind</span><span class="op">)</span>  <span class="op">{</span>
     <span class="co">## Note the change in the data argument.</span>
-    <span class="no">regmedint_obj</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data</span>[<span class="no">ind</span>,],
+    <span class="va">regmedint_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span><span class="op">[</span><span class="va">ind</span>,<span class="op">]</span>,
                                <span class="co">## Variables</span>
-                               <span class="kw">yvar</span> <span class="kw">=</span> <span class="st">"y"</span>,
-                               <span class="kw">avar</span> <span class="kw">=</span> <span class="st">"x"</span>,
-                               <span class="kw">mvar</span> <span class="kw">=</span> <span class="st">"m"</span>,
-                               <span class="kw">cvar</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"c"</span>),
-                               <span class="kw">eventvar</span> <span class="kw">=</span> <span class="st">"event"</span>,
+                               yvar <span class="op">=</span> <span class="st">"y"</span>,
+                               avar <span class="op">=</span> <span class="st">"x"</span>,
+                               mvar <span class="op">=</span> <span class="st">"m"</span>,
+                               cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+                               eventvar <span class="op">=</span> <span class="st">"event"</span>,
                                <span class="co">## Values at which effects are evaluated</span>
-                               <span class="kw">a0</span> <span class="kw">=</span> <span class="fl">0</span>,
-                               <span class="kw">a1</span> <span class="kw">=</span> <span class="fl">1</span>,
-                               <span class="kw">m_cde</span> <span class="kw">=</span> <span class="fl">1</span>,
-                               <span class="kw">c_cond</span> <span class="kw">=</span> <span class="fl">0.5</span>,
+                               a0 <span class="op">=</span> <span class="fl">0</span>,
+                               a1 <span class="op">=</span> <span class="fl">1</span>,
+                               m_cde <span class="op">=</span> <span class="fl">1</span>,
+                               c_cond <span class="op">=</span> <span class="fl">0.5</span>,
                                <span class="co">## Model types</span>
-                               <span class="kw">mreg</span> <span class="kw">=</span> <span class="st">"logistic"</span>,
-                               <span class="kw">yreg</span> <span class="kw">=</span> <span class="st">"survAFT_weibull"</span>,
+                               mreg <span class="op">=</span> <span class="st">"logistic"</span>,
+                               yreg <span class="op">=</span> <span class="st">"survAFT_weibull"</span>,
                                <span class="co">## Additional specification</span>
-                               <span class="kw">interaction</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                               <span class="kw">casecontrol</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-    <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>)
-}
+                               interaction <span class="op">=</span> <span class="cn">TRUE</span>,
+                               casecontrol <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span>
+<span class="op">}</span>
 <span class="co">## Run bootstrapping</span>
-<span class="no">ncpus</span> <span class="kw">&lt;-</span> <span class="fl">1</span>
+<span class="va">ncpus</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="co">## For parallization, use the following instead.</span>
 <span class="co">## ncpus &lt;- parallel::detectCores()</span>
-<span class="no">boot_obj</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.html">boot</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">vv2015</span>, <span class="kw">statistic</span> <span class="kw">=</span> <span class="no">regmedint_boot</span>, <span class="kw">R</span> <span class="kw">=</span> <span class="fl">1000</span>,
+<span class="va">boot_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.html">boot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">vv2015</span>, statistic <span class="op">=</span> <span class="va">regmedint_boot</span>, R <span class="op">=</span> <span class="fl">1000</span>,
                  <span class="co">## For palatalization</span>
                  <span class="co">## See https://cran.r-project.org/package=boot</span>
-                 <span class="kw">parallel</span> <span class="kw">=</span> <span class="st">"multicore"</span>,
-                 <span class="kw">ncpus</span> <span class="kw">=</span> <span class="no">ncpus</span>)
+                 parallel <span class="op">=</span> <span class="st">"multicore"</span>,
+                 ncpus <span class="op">=</span> <span class="va">ncpus</span><span class="op">)</span>
 <span class="co">## Confidence interval for the pm</span>
-<span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.ci.html">boot.ci</a></span>(<span class="no">boot_obj</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"basic"</span>, <span class="kw">index</span> <span class="kw">=</span> <span class="fl">7</span>)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.ci.html">boot.ci</a></span><span class="op">(</span><span class="va">boot_obj</span>, type <span class="op">=</span> <span class="st">"basic"</span>, index <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></code></pre></div>
 <pre><code>## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
 ## Based on 1000 bootstrap replicates
 ## 
@@ -195,56 +197,54 @@
 <h2 class="hasAnchor">
 <a href="#modelr-package" class="anchor"></a><code>modelr</code> package</h2>
 <p>In the tidyverse ecosystem, the <code>modelr</code> package can be used to provide a potentially more flexible workflow in some settings.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">modelr</span>)
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://modelr.tidyverse.org">modelr</a></span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">future</span>)
-<span class="kw pkg">future</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/future/man/plan.html">plan</a></span>(<span class="no">sequential</span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/HenrikBengtsson/future">future</a></span><span class="op">)</span>
+<span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/future/man/plan.html">plan</a></span><span class="op">(</span><span class="va">sequential</span><span class="op">)</span>
 <span class="co">## For parallization, use the following instead.</span>
 <span class="co">## future::plan(multiprocess)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">furrr</span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/DavisVaughan/furrr">furrr</a></span><span class="op">)</span>
 
 <span class="co">## Bootstrapping</span>
-<span class="no">tib_obj</span> <span class="kw">&lt;-</span> <span class="no">vv2015</span> <span class="kw">%&gt;%</span>
-    <span class="kw pkg">modelr</span><span class="kw ns">::</span><span class="fu"><a href="https://modelr.tidyverse.org/reference/bootstrap.html">bootstrap</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">1000</span>) <span class="kw">%&gt;%</span>
+<span class="va">tib_obj</span> <span class="op">&lt;-</span> <span class="va">vv2015</span> <span class="op">%&gt;%</span>
+    <span class="fu">modelr</span><span class="fu">::</span><span class="fu"><a href="https://modelr.tidyverse.org/reference/bootstrap.html">bootstrap</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span> <span class="op">%&gt;%</span>
     <span class="co">## Resampled data objects are in the list column named strap.</span>
-    <span class="fu">mutate</span>(<span class="kw">boot_fit</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/furrr/man/future_map.html">future_map</a></span>(<span class="no">strap</span>, <span class="kw">function</span>(<span class="no">strap</span>) {
+    <span class="fu">mutate</span><span class="op">(</span>boot_fit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/furrr/man/future_map.html">future_map</a></span><span class="op">(</span><span class="va">strap</span>, <span class="kw">function</span><span class="op">(</span><span class="va">strap</span><span class="op">)</span> <span class="op">{</span>
         <span class="co">## Note the change in the data argument.</span>
-        <span class="no">regmedint_obj</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="fu">as_tibble</span>(<span class="no">strap</span>),
+        <span class="va">regmedint_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="va">strap</span><span class="op">)</span>,
                                    <span class="co">## Variables</span>
-                                   <span class="kw">yvar</span> <span class="kw">=</span> <span class="st">"y"</span>,
-                                   <span class="kw">avar</span> <span class="kw">=</span> <span class="st">"x"</span>,
-                                   <span class="kw">mvar</span> <span class="kw">=</span> <span class="st">"m"</span>,
-                                   <span class="kw">cvar</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"c"</span>),
-                                   <span class="kw">eventvar</span> <span class="kw">=</span> <span class="st">"event"</span>,
+                                   yvar <span class="op">=</span> <span class="st">"y"</span>,
+                                   avar <span class="op">=</span> <span class="st">"x"</span>,
+                                   mvar <span class="op">=</span> <span class="st">"m"</span>,
+                                   cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+                                   eventvar <span class="op">=</span> <span class="st">"event"</span>,
                                    <span class="co">## Values at which effects are evaluated</span>
-                                   <span class="kw">a0</span> <span class="kw">=</span> <span class="fl">0</span>,
-                                   <span class="kw">a1</span> <span class="kw">=</span> <span class="fl">1</span>,
-                                   <span class="kw">m_cde</span> <span class="kw">=</span> <span class="fl">1</span>,
-                                   <span class="kw">c_cond</span> <span class="kw">=</span> <span class="fl">0.5</span>,
+                                   a0 <span class="op">=</span> <span class="fl">0</span>,
+                                   a1 <span class="op">=</span> <span class="fl">1</span>,
+                                   m_cde <span class="op">=</span> <span class="fl">1</span>,
+                                   c_cond <span class="op">=</span> <span class="fl">0.5</span>,
                                    <span class="co">## Model types</span>
-                                   <span class="kw">mreg</span> <span class="kw">=</span> <span class="st">"logistic"</span>,
-                                   <span class="kw">yreg</span> <span class="kw">=</span> <span class="st">"survAFT_weibull"</span>,
+                                   mreg <span class="op">=</span> <span class="st">"logistic"</span>,
+                                   yreg <span class="op">=</span> <span class="st">"survAFT_weibull"</span>,
                                    <span class="co">## Additional specification</span>
-                                   <span class="kw">interaction</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                   <span class="kw">casecontrol</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+                                   interaction <span class="op">=</span> <span class="cn">TRUE</span>,
+                                   casecontrol <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
         <span class="co">## Trick to return a row tibble</span>
-        <span class="no">mat</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>)))
-        <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">mat</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>))
-        <span class="fu">as_tibble</span>(<span class="no">mat</span>)
-    })) <span class="kw">%&gt;%</span>
-    <span class="fu">select</span>(-<span class="no">strap</span>) <span class="kw">%&gt;%</span>
-    <span class="fu">unnest</span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">boot_fit</span>))</pre></body></html></div>
-<pre><code>## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
-## Please use `tibble()` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">tib_obj2</span> <span class="kw">&lt;-</span> <span class="no">tib_obj</span> <span class="kw">%&gt;%</span>
-    <span class="fu">pivot_longer</span>(-<span class="no">.id</span>) <span class="kw">%&gt;%</span>
-    <span class="fu">mutate</span>(<span class="kw">name</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="no">name</span>, <span class="kw">levels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_obj</span>)))) <span class="kw">%&gt;%</span>
-    <span class="fu">group_by</span>(<span class="no">name</span>) <span class="kw">%&gt;%</span>
-    <span class="fu">summarize</span>(<span class="kw">lower_boot</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span>(<span class="no">value</span>, <span class="kw">probs</span> <span class="kw">=</span> <span class="fl">0.025</span>),
-              <span class="kw">upper_boot</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span>(<span class="no">value</span>, <span class="kw">probs</span> <span class="kw">=</span> <span class="fl">0.975</span>))
-<span class="no">tib_obj2</span></pre></body></html></div>
+        <span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+        <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span><span class="op">)</span>
+        <span class="fu">as_tibble</span><span class="op">(</span><span class="va">mat</span><span class="op">)</span>
+    <span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">strap</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">unnest</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">boot_fit</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">tib_obj2</span> <span class="op">&lt;-</span> <span class="va">tib_obj</span> <span class="op">%&gt;%</span>
+    <span class="fu">pivot_longer</span><span class="op">(</span><span class="op">-</span><span class="va">.id</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">name</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">summarize</span><span class="op">(</span>lower_boot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">value</span>, probs <span class="op">=</span> <span class="fl">0.025</span><span class="op">)</span>,
+              upper_boot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">value</span>, probs <span class="op">=</span> <span class="fl">0.975</span><span class="op">)</span><span class="op">)</span>
+<span class="va">tib_obj2</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 3
 ##   name  lower_boot upper_boot
 ##   &lt;fct&gt;      &lt;dbl&gt;      &lt;dbl&gt;
@@ -259,9 +259,10 @@
 <div id="comparison-to-the-delta-method-confidence-intervals" class="section level2">
 <h2 class="hasAnchor">
 <a href="#comparison-to-the-delta-method-confidence-intervals" class="anchor"></a>Comparison to the delta method confidence intervals</h2>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">tib_obj2</span> <span class="kw">%&gt;%</span>
-    <span class="fu">mutate</span>(<span class="kw">lower_delta</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span>(<span class="no">regmedint_obj</span>)[,<span class="st">"lower"</span>],
-           <span class="kw">upper_delta</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span>(<span class="no">regmedint_obj</span>)[,<span class="st">"upper"</span>])</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tib_obj2</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>lower_delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span><span class="op">[</span>,<span class="st">"lower"</span><span class="op">]</span>,
+           upper_delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span><span class="op">[</span>,<span class="st">"upper"</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 5
 ##   name  lower_boot upper_boot lower_delta upper_delta
 ##   &lt;fct&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
@@ -286,11 +287,11 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Kazuki Yoshida.</p>
+  <p>Developed by Kazuki Yoshida, Yi Li.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

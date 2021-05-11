@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a vector of coefficients from the mediator model (mreg) — beta_hat • regmedint</title>
+<title>Calculate the gradient of the proportion mediated for yreg logistic. — grad_prop_med_yreg_logistic • regmedint</title>
 
 
 <!-- jquery -->
@@ -39,11 +39,8 @@
 
 
 
-<meta property="og:title" content="Create a vector of coefficients from the mediator model (mreg) — beta_hat" />
-<meta property="og:description" content="This function extracts coef from mreg_fit and pads with zeros appropriately to create a named vector consistently having the following elements:
-(Intercept)
-avar
-cvar: This part is eliminated when cvar = NULL." />
+<meta property="og:title" content="Calculate the gradient of the proportion mediated for yreg logistic. — grad_prop_med_yreg_logistic" />
+<meta property="og:description" content="Calculate the gradient of the proportion mediated for yreg logistic case." />
 
 
 
@@ -135,44 +132,33 @@ cvar: This part is eliminated when cvar = NULL." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a vector of coefficients from the mediator model (mreg)</h1>
+    <h1>Calculate the gradient of the proportion mediated for yreg logistic.</h1>
     <small class="dont-index">Source: <a href='https://github.com/kaz-yos/regmedint/blob/master/R/06_calc_myreg_helpers_coef.R'><code>R/06_calc_myreg_helpers_coef.R</code></a></small>
-    <div class="hidden name"><code>beta_hat.Rd</code></div>
+    <div class="hidden name"><code>grad_prop_med_yreg_logistic.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function extracts <code><a href='https://rdrr.io/r/stats/coef.html'>coef</a></code> from <code>mreg_fit</code> and pads with zeros appropriately to create a named vector consistently having the following elements:
-<code>(Intercept)</code>
-<code>avar</code>
-<code>cvar</code>: This part is eliminated when <code>cvar = NULL</code>.</p>
+    <p>Calculate the gradient of the proportion mediated for yreg logistic case.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>beta_hat</span><span class='op'>(</span><span class='va'>mreg</span>, <span class='va'>mreg_fit</span>, <span class='va'>avar</span>, <span class='va'>cvar</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>grad_prop_med_yreg_logistic</span><span class='op'>(</span><span class='va'>pnde</span>, <span class='va'>tnie</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>mreg</th>
-      <td><p>A character vector of length 1. Mediator regression type: <code>"linear"</code> or <code>"logistic"</code>.</p></td>
+      <th>pnde</th>
+      <td><p>A numeric vector of length one. Pure natural direct effect.</p></td>
     </tr>
     <tr>
-      <th>mreg_fit</th>
-      <td><p>Model fit object for mreg (mediator model).</p></td>
-    </tr>
-    <tr>
-      <th>avar</th>
-      <td><p>A character vector of length 1. Treatment variable name.</p></td>
-    </tr>
-    <tr>
-      <th>cvar</th>
-      <td><p>A character vector of length &gt; 0. Covariate names. Use <code>NULL</code> if there is no covariate. However, this is a highly suspicious situation. Even if <code>avar</code> is randomized, <code>mvar</code> is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between <code>mvar</code> and <code>yvar</code>.</p></td>
+      <th>tnie</th>
+      <td><p>A numeric vector of length one. Total natural indirect effect.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A named numeric vector of coefficients.</p>
+    <p>A numeric vector of length two. Gradient of the proportion mediated with respect to pnde and tnie.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

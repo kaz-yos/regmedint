@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">regmedint</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -74,7 +74,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/kaz-yos/regmedint">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -88,13 +88,13 @@
 
       
 
-      </header><script src="vig_02_formulas_files/header-attrs-2.1/header-attrs.js"></script><div class="row">
+      </header><script src="vig_02_formulas_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Implementation of formulas</h1>
                         <h4 class="author">Kazuki Yoshida</h4>
             
-            <h4 class="date">2020-05-07</h4>
+            <h4 class="date">2021-05-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/master/vignettes/vig_02_formulas.Rmd"><code>vignettes/vig_02_formulas.Rmd</code></a></small>
       <div class="hidden name"><code>vig_02_formulas.Rmd</code></div>
@@ -111,7 +111,8 @@
 <div id="point-estimates" class="section level2">
 <h2 class="hasAnchor">
 <a href="#point-estimates" class="anchor"></a>Point estimates</h2>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_linear_yreg_linear_est</span></pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_linear_yreg_linear_est</span></code></pre></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4) 
 ## {
@@ -145,13 +146,14 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7fee9f75ff60&gt;
+## &lt;bytecode: 0x7fe0ba78ee90&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 <div id="standard-error-estimates" class="section level2">
 <h2 class="hasAnchor">
 <a href="#standard-error-estimates" class="anchor"></a>Standard error estimates</h2>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_linear_yreg_linear_se</span></pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_linear_yreg_linear_se</span></code></pre></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4, Sigma_beta, Sigma_theta) 
 ## {
@@ -217,7 +219,7 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7feeac0c3970&gt;
+## &lt;bytecode: 0x7fe0aa69f370&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
@@ -228,7 +230,8 @@
 <div id="point-estimates-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#point-estimates-1" class="anchor"></a>Point estimates</h2>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_linear_yreg_logistic_est</span></pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_linear_yreg_logistic_est</span></code></pre></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4, sigma_sq) 
 ## {
@@ -266,13 +269,14 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7feeac214be0&gt;
+## &lt;bytecode: 0x7fe078537758&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 <div id="standard-error-estimates-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#standard-error-estimates-1" class="anchor"></a>Standard error estimates</h2>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_linear_yreg_logistic_se</span></pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_linear_yreg_logistic_se</span></code></pre></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4, sigma_sq, Sigma_beta, Sigma_theta, Sigma_sigma_sq) 
 ## {
@@ -345,7 +349,7 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7feeac35feb0&gt;
+## &lt;bytecode: 0x7fe0786c2090&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
@@ -356,7 +360,8 @@
 <div id="point-estimates-2" class="section level2">
 <h2 class="hasAnchor">
 <a href="#point-estimates-2" class="anchor"></a>Point estimates</h2>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_logistic_yreg_linear_est</span></pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_logistic_yreg_linear_est</span></code></pre></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4) 
 ## {
@@ -396,13 +401,14 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7feeac4b57e8&gt;
+## &lt;bytecode: 0x7fe07b05a6a0&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 <div id="standard-error-estimates-2" class="section level2">
 <h2 class="hasAnchor">
 <a href="#standard-error-estimates-2" class="anchor"></a>Standard error estimates</h2>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_logistic_yreg_linear_se</span></pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_logistic_yreg_linear_se</span></code></pre></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4, Sigma_beta, Sigma_theta) 
 ## {
@@ -521,7 +527,7 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7feeac602c50&gt;
+## &lt;bytecode: 0x7fe07b14d880&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
@@ -532,7 +538,8 @@
 <div id="point-estimates-3" class="section level2">
 <h2 class="hasAnchor">
 <a href="#point-estimates-3" class="anchor"></a>Point estimates</h2>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_logistic_yreg_logistic_est</span></pre></body></html></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_logistic_yreg_logistic_est</span></code></pre></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4) 
 ## {
@@ -576,13 +583,14 @@
 ##     }
 ##     return(fun_est)
 ## }
-## &lt;bytecode: 0x7feeac76b7e8&gt;
+## &lt;bytecode: 0x7fe078942cf0&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 <div id="standard-error-estimates-3" class="section level2">
 <h2 class="hasAnchor">
 <a href="#standard-error-estimates-3" class="anchor"></a>Standard error estimates</h2>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="kw pkg">regmedint</span><span class="kw ns">:::</span><span class="no">calc_myreg_mreg_logistic_yreg_logistic_se</span></pre></body></html></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_logistic_yreg_logistic_se</span></code></pre></div>
 <pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
 ##     theta4, Sigma_beta, Sigma_theta) 
 ## {
@@ -712,7 +720,7 @@
 ##     }
 ##     return(fun_se)
 ## }
-## &lt;bytecode: 0x7feeac8c6c50&gt;
+## &lt;bytecode: 0x7fe078ad5cd0&gt;
 ## &lt;environment: namespace:regmedint&gt;</code></pre>
 </div>
 </div>
@@ -736,11 +744,11 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Kazuki Yoshida.</p>
+  <p>Developed by Kazuki Yoshida, Yi Li.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Print method for summary objects from <code><a href='summary.regmedint.html'>summary.regmedint</a></code> — print.summary_regmedint • regmedint</title>
+<title>Print method for summary objects from summary.regmedint — print.summary_regmedint • regmedint</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Print method for summary objects from <code><a href='summary.regmedint.html'>summary.regmedint</a></code> — print.summary_regmedint" />
+<meta property="og:title" content="Print method for summary objects from summary.regmedint — print.summary_regmedint" />
 <meta property="og:description" content="Print results contained in a summary_regmedint object with additional explanation regarding the evaluation settings." />
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">regmedint</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -115,7 +115,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/kaz-yos/regmedint">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -142,7 +142,7 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for summary_regmedint</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,28 +162,29 @@
     <p>Invisibly return the first argument.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>regmedint</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>vv2015</span>)
-<span class='no'>regmedint_obj</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='regmedint.html'>regmedint</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>vv2015</span>,
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://kaz-yos.github.io/regmedint/'>regmedint</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>vv2015</span><span class='op'>)</span>
+<span class='va'>regmedint_obj</span> <span class='op'>&lt;-</span> <span class='fu'><a href='regmedint.html'>regmedint</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>vv2015</span>,
                            <span class='co'>## Variables</span>
-                           <span class='kw'>yvar</span> <span class='kw'>=</span> <span class='st'>"y"</span>,
-                           <span class='kw'>avar</span> <span class='kw'>=</span> <span class='st'>"x"</span>,
-                           <span class='kw'>mvar</span> <span class='kw'>=</span> <span class='st'>"m"</span>,
-                           <span class='kw'>cvar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"c"</span>),
-                           <span class='kw'>eventvar</span> <span class='kw'>=</span> <span class='st'>"event"</span>,
+                           yvar <span class='op'>=</span> <span class='st'>"y"</span>,
+                           avar <span class='op'>=</span> <span class='st'>"x"</span>,
+                           mvar <span class='op'>=</span> <span class='st'>"m"</span>,
+                           cvar <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span>,
+                           eventvar <span class='op'>=</span> <span class='st'>"event"</span>,
                            <span class='co'>## Values at which effects are evaluated</span>
-                           <span class='kw'>a0</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-                           <span class='kw'>a1</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-                           <span class='kw'>m_cde</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-                           <span class='kw'>c_cond</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+                           a0 <span class='op'>=</span> <span class='fl'>0</span>,
+                           a1 <span class='op'>=</span> <span class='fl'>1</span>,
+                           m_cde <span class='op'>=</span> <span class='fl'>1</span>,
+                           c_cond <span class='op'>=</span> <span class='fl'>0.5</span>,
                            <span class='co'>## Model types</span>
-                           <span class='kw'>mreg</span> <span class='kw'>=</span> <span class='st'>"logistic"</span>,
-                           <span class='kw'>yreg</span> <span class='kw'>=</span> <span class='st'>"survAFT_weibull"</span>,
+                           mreg <span class='op'>=</span> <span class='st'>"logistic"</span>,
+                           yreg <span class='op'>=</span> <span class='st'>"survAFT_weibull"</span>,
                            <span class='co'>## Additional specification</span>
-                           <span class='kw'>interaction</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                           <span class='kw'>casecontrol</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+                           interaction <span class='op'>=</span> <span class='cn'>TRUE</span>,
+                           casecontrol <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 <span class='co'>## Implicit printing</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>regmedint_obj</span>)</div><div class='output co'>#&gt; ### Mediator model
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>regmedint_obj</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ### Mediator model
 #&gt; 
 #&gt; Call:
 #&gt; glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
@@ -247,7 +248,8 @@
 #&gt;  c_cond (covariate vector value) = 0.5
 #&gt; 
 #&gt; Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</div><div class='input'><span class='co'>## Explicit printing</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>regmedint_obj</span>))</div><div class='output co'>#&gt; ### Mediator model
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>regmedint_obj</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ### Mediator model
 #&gt; 
 #&gt; Call:
 #&gt; glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
@@ -323,11 +325,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Kazuki Yoshida.</p>
+  <p>Developed by Kazuki Yoshida, Yi Li.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

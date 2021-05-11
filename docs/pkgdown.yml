@@ -1,10 +1,10 @@
-pandoc: 2.9.2.1
-pkgdown: 1.5.1
+pandoc: '2.13'
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   vig_01_introduction: vig_01_introduction.html
   vig_02_formulas: vig_02_formulas.html
   vig_03_bootstrap: vig_03_bootstrap.html
   vig_04_mi: vig_04_mi.html
-last_built: 2020-05-07T10:45Z
+last_built: 2021-05-11T12:26Z
 

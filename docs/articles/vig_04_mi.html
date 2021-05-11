@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">regmedint</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -74,7 +74,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/kaz-yos/regmedint">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -88,13 +88,13 @@
 
       
 
-      </header><script src="vig_04_mi_files/header-attrs-2.1/header-attrs.js"></script><div class="row">
+      </header><script src="vig_04_mi_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using multiple imputation with regmedint</h1>
                         <h4 class="author">Kazuki Yoshida</h4>
             
-            <h4 class="date">2020-05-07</h4>
+            <h4 class="date">2021-05-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/master/vignettes/vig_04_mi.Rmd"><code>vignettes/vig_04_mi.Rmd</code></a></small>
       <div class="hidden name"><code>vig_04_mi.Rmd</code></div>
@@ -108,45 +108,47 @@
 <h2 class="hasAnchor">
 <a href="#missing-data-generation" class="anchor"></a>Missing data generation</h2>
 <p>For demonstration purpose, missing data is introduced here.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">138087069</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">regmedint</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">138087069</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kaz-yos.github.io/regmedint/">regmedint</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="co">## Prepare dataset</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">vv2015</span>)
-<span class="no">vv2015</span> <span class="kw">&lt;-</span> <span class="no">vv2015</span> <span class="kw">%&gt;%</span>
-    <span class="fu">select</span>(-<span class="no">cens</span>) <span class="kw">%&gt;%</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">vv2015</span><span class="op">)</span>
+<span class="va">vv2015</span> <span class="op">&lt;-</span> <span class="va">vv2015</span> <span class="op">%&gt;%</span>
+    <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">cens</span><span class="op">)</span> <span class="op">%&gt;%</span>
     <span class="co">## Generate exposure-dependent missing of mediator</span>
-    <span class="fu">mutate</span>(<span class="kw">logit_p_m_miss</span> <span class="kw">=</span> -<span class="fl">1</span> + <span class="fl">0.5</span> * <span class="no">x</span>,
-           <span class="kw">p_m_miss</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="no">logit_p_m_miss</span>) / (<span class="fl">1</span> + <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="no">logit_p_m_miss</span>)),
+    <span class="fu">mutate</span><span class="op">(</span>logit_p_m_miss <span class="op">=</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="va">x</span>,
+           p_m_miss <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">logit_p_m_miss</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">logit_p_m_miss</span><span class="op">)</span><span class="op">)</span>,
            <span class="co">## Indicator draw</span>
-           <span class="kw">ind_m_miss</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="no">p_m_miss</span>), <span class="kw">size</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">prob</span> <span class="kw">=</span> <span class="no">p_m_miss</span>),
-           <span class="kw">m_true</span> <span class="kw">=</span> <span class="no">m</span>,
-           <span class="kw">m</span> <span class="kw">=</span> <span class="fu">if_else</span>(<span class="no">ind_m_miss</span> <span class="kw">==</span> <span class="fl">1L</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(<span class="fl">NA</span>), <span class="no">m</span>))</pre></body></html></div>
+           ind_m_miss <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">p_m_miss</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="va">p_m_miss</span><span class="op">)</span>,
+           m_true <span class="op">=</span> <span class="va">m</span>,
+           m <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">ind_m_miss</span> <span class="op">==</span> <span class="fl">1L</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>, <span class="va">m</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="truth-fit" class="section level2">
 <h2 class="hasAnchor">
 <a href="#truth-fit" class="anchor"></a>Truth fit</h2>
 <p>Taking the advantage of the simulated setting, the true model is fit here.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">regmedint_true</span> <span class="kw">&lt;-</span>
-    <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">vv2015</span>,
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">regmedint_true</span> <span class="op">&lt;-</span>
+    <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">vv2015</span>,
               <span class="co">## Variables</span>
-              <span class="kw">yvar</span> <span class="kw">=</span> <span class="st">"y"</span>,
-              <span class="kw">avar</span> <span class="kw">=</span> <span class="st">"x"</span>,
-              <span class="kw">mvar</span> <span class="kw">=</span> <span class="st">"m_true"</span>,
-              <span class="kw">cvar</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"c"</span>),
-              <span class="kw">eventvar</span> <span class="kw">=</span> <span class="st">"event"</span>,
+              yvar <span class="op">=</span> <span class="st">"y"</span>,
+              avar <span class="op">=</span> <span class="st">"x"</span>,
+              mvar <span class="op">=</span> <span class="st">"m_true"</span>,
+              cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+              eventvar <span class="op">=</span> <span class="st">"event"</span>,
               <span class="co">## Values at which effects are evaluated</span>
-              <span class="kw">a0</span> <span class="kw">=</span> <span class="fl">0</span>,
-              <span class="kw">a1</span> <span class="kw">=</span> <span class="fl">1</span>,
-              <span class="kw">m_cde</span> <span class="kw">=</span> <span class="fl">1</span>,
-              <span class="kw">c_cond</span> <span class="kw">=</span> <span class="fl">0.5</span>,
+              a0 <span class="op">=</span> <span class="fl">0</span>,
+              a1 <span class="op">=</span> <span class="fl">1</span>,
+              m_cde <span class="op">=</span> <span class="fl">1</span>,
+              c_cond <span class="op">=</span> <span class="fl">0.5</span>,
               <span class="co">## Model types</span>
-              <span class="kw">mreg</span> <span class="kw">=</span> <span class="st">"logistic"</span>,
-              <span class="kw">yreg</span> <span class="kw">=</span> <span class="st">"survAFT_weibull"</span>,
+              mreg <span class="op">=</span> <span class="st">"logistic"</span>,
+              yreg <span class="op">=</span> <span class="st">"survAFT_weibull"</span>,
               <span class="co">## Additional specification</span>
-              <span class="kw">interaction</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-              <span class="kw">casecontrol</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">regmedint_true</span>)</pre></body></html></div>
+              interaction <span class="op">=</span> <span class="cn">TRUE</span>,
+              casecontrol <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_true</span><span class="op">)</span></code></pre></div>
 <pre><code>## ### Mediator model
 ## 
 ## Call:
@@ -216,27 +218,28 @@
 <div id="naive-complete-case-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#naive-complete-case-analysis" class="anchor"></a>Naive complete case analysis</h2>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">regmedint_cca</span> <span class="kw">&lt;-</span> <span class="no">vv2015</span> <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">m</span>)) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">.</span>,
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">regmedint_cca</span> <span class="op">&lt;-</span> <span class="va">vv2015</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>,
               <span class="co">## Variables</span>
-              <span class="kw">yvar</span> <span class="kw">=</span> <span class="st">"y"</span>,
-              <span class="kw">avar</span> <span class="kw">=</span> <span class="st">"x"</span>,
-              <span class="kw">mvar</span> <span class="kw">=</span> <span class="st">"m"</span>,
-              <span class="kw">cvar</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"c"</span>),
-              <span class="kw">eventvar</span> <span class="kw">=</span> <span class="st">"event"</span>,
+              yvar <span class="op">=</span> <span class="st">"y"</span>,
+              avar <span class="op">=</span> <span class="st">"x"</span>,
+              mvar <span class="op">=</span> <span class="st">"m"</span>,
+              cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+              eventvar <span class="op">=</span> <span class="st">"event"</span>,
               <span class="co">## Values at which effects are evaluated</span>
-              <span class="kw">a0</span> <span class="kw">=</span> <span class="fl">0</span>,
-              <span class="kw">a1</span> <span class="kw">=</span> <span class="fl">1</span>,
-              <span class="kw">m_cde</span> <span class="kw">=</span> <span class="fl">1</span>,
-              <span class="kw">c_cond</span> <span class="kw">=</span> <span class="fl">0.5</span>,
+              a0 <span class="op">=</span> <span class="fl">0</span>,
+              a1 <span class="op">=</span> <span class="fl">1</span>,
+              m_cde <span class="op">=</span> <span class="fl">1</span>,
+              c_cond <span class="op">=</span> <span class="fl">0.5</span>,
               <span class="co">## Model types</span>
-              <span class="kw">mreg</span> <span class="kw">=</span> <span class="st">"logistic"</span>,
-              <span class="kw">yreg</span> <span class="kw">=</span> <span class="st">"survAFT_weibull"</span>,
+              mreg <span class="op">=</span> <span class="st">"logistic"</span>,
+              yreg <span class="op">=</span> <span class="st">"survAFT_weibull"</span>,
               <span class="co">## Additional specification</span>
-              <span class="kw">interaction</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-              <span class="kw">casecontrol</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">regmedint_cca</span>)</pre></body></html></div>
+              interaction <span class="op">=</span> <span class="cn">TRUE</span>,
+              casecontrol <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_cca</span><span class="op">)</span></code></pre></div>
 <pre><code>## ### Mediator model
 ## 
 ## Call:
@@ -306,14 +309,15 @@
 <h2 class="hasAnchor">
 <a href="#multiple-imputation" class="anchor"></a>Multiple imputation</h2>
 <p>This specific data setting is a little tricky in that the outcome variable is a censored survival time variable. Here we will use a log transformed survival time.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">mice</span>)
-<span class="no">vv2015_mod</span> <span class="kw">&lt;-</span> <span class="no">vv2015</span> <span class="kw">%&gt;%</span>
-    <span class="fu">mutate</span>(<span class="kw">log_y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(<span class="no">y</span>)) <span class="kw">%&gt;%</span>
-    <span class="fu">select</span>(<span class="no">x</span>,<span class="no">m</span>,<span class="no">c</span>,<span class="no">log_y</span>,<span class="no">event</span>)
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice">mice</a></span><span class="op">)</span>
+<span class="va">vv2015_mod</span> <span class="op">&lt;-</span> <span class="va">vv2015</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>log_y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">select</span><span class="op">(</span><span class="va">x</span>,<span class="va">m</span>,<span class="va">c</span>,<span class="va">log_y</span>,<span class="va">event</span><span class="op">)</span>
 <span class="co">## Run mice</span>
-<span class="no">vv2015_mice</span> <span class="kw">&lt;-</span> <span class="fu"><a href="http://stefvanbuuren.github.io/mice/reference/mice.html">mice</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">vv2015_mod</span>, <span class="kw">m</span> <span class="kw">=</span> <span class="fl">50</span>, <span class="kw">printFlag</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<span class="va">vv2015_mice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://amices.org/mice/reference/mice.html">mice</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">vv2015_mod</span>, m <span class="op">=</span> <span class="fl">50</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">## Object containig 50 imputed dataset</span>
-<span class="no">vv2015_mice</span></pre></body></html></div>
+<span class="va">vv2015_mice</span></code></pre></div>
 <pre><code>## Class: mids
 ## Number of multiple imputations:  50 
 ## Imputation methods:
@@ -327,85 +331,88 @@
 ## log_y 1 1 1     0     1
 ## event 1 1 1     1     0</code></pre>
 <p>After creating such MI datasets, mediation analysis can be performed in each dataset.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="co">## Fit in each MI dataset</span>
-<span class="no">vv2015_mice_regmedint</span> <span class="kw">&lt;-</span>
-    <span class="no">vv2015_mice</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Fit in each MI dataset</span>
+<span class="va">vv2015_mice_regmedint</span> <span class="op">&lt;-</span>
+    <span class="va">vv2015_mice</span> <span class="op">%&gt;%</span>
     <span class="co">## Stacked up dataset</span>
-    <span class="kw pkg">mice</span><span class="kw ns">::</span><span class="fu"><a href="http://stefvanbuuren.github.io/mice/reference/complete.mids.html">complete</a></span>(<span class="st">"long"</span>) <span class="kw">%&gt;%</span>
-    <span class="fu">as_tibble</span>() <span class="kw">%&gt;%</span>
-    <span class="fu">mutate</span>(<span class="kw">y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="no">log_y</span>)) <span class="kw">%&gt;%</span>
-    <span class="fu">group_by</span>(<span class="no">.imp</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/complete.mids.html">complete</a></span><span class="op">(</span><span class="st">"long"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">log_y</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">group_by</span><span class="op">(</span><span class="va">.imp</span><span class="op">)</span> <span class="op">%&gt;%</span>
     <span class="co">## Nested data frame</span>
-    <span class="fu">nest</span>() <span class="kw">%&gt;%</span>
-    <span class="fu">mutate</span>(<span class="kw">fit</span> <span class="kw">=</span> <span class="fu">map</span>(<span class="no">data</span>, <span class="kw">function</span>(<span class="no">data</span>) {
-        <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data</span>,
+    <span class="fu">nest</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mutate</span><span class="op">(</span>fit <span class="op">=</span> <span class="fu">map</span><span class="op">(</span><span class="va">data</span>, <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span>
+        <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span>,
                   <span class="co">## Variables</span>
-                  <span class="kw">yvar</span> <span class="kw">=</span> <span class="st">"y"</span>,
-                  <span class="kw">avar</span> <span class="kw">=</span> <span class="st">"x"</span>,
-                  <span class="kw">mvar</span> <span class="kw">=</span> <span class="st">"m"</span>,
-                  <span class="kw">cvar</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"c"</span>),
-                  <span class="kw">eventvar</span> <span class="kw">=</span> <span class="st">"event"</span>,
+                  yvar <span class="op">=</span> <span class="st">"y"</span>,
+                  avar <span class="op">=</span> <span class="st">"x"</span>,
+                  mvar <span class="op">=</span> <span class="st">"m"</span>,
+                  cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+                  eventvar <span class="op">=</span> <span class="st">"event"</span>,
                   <span class="co">## Values at which effects are evaluated</span>
-                  <span class="kw">a0</span> <span class="kw">=</span> <span class="fl">0</span>,
-                  <span class="kw">a1</span> <span class="kw">=</span> <span class="fl">1</span>,
-                  <span class="kw">m_cde</span> <span class="kw">=</span> <span class="fl">1</span>,
-                  <span class="kw">c_cond</span> <span class="kw">=</span> <span class="fl">0.5</span>,
+                  a0 <span class="op">=</span> <span class="fl">0</span>,
+                  a1 <span class="op">=</span> <span class="fl">1</span>,
+                  m_cde <span class="op">=</span> <span class="fl">1</span>,
+                  c_cond <span class="op">=</span> <span class="fl">0.5</span>,
                   <span class="co">## Model types</span>
-                  <span class="kw">mreg</span> <span class="kw">=</span> <span class="st">"logistic"</span>,
-                  <span class="kw">yreg</span> <span class="kw">=</span> <span class="st">"survAFT_weibull"</span>,
+                  mreg <span class="op">=</span> <span class="st">"logistic"</span>,
+                  yreg <span class="op">=</span> <span class="st">"survAFT_weibull"</span>,
                   <span class="co">## Additional specification</span>
-                  <span class="kw">interaction</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                  <span class="kw">casecontrol</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-    })) <span class="kw">%&gt;%</span>
+                  interaction <span class="op">=</span> <span class="cn">TRUE</span>,
+                  casecontrol <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+    <span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
     <span class="co">## Extract point estimates and variance estimates</span>
-    <span class="fu">mutate</span>(<span class="kw">coef_fit</span> <span class="kw">=</span> <span class="fu">map</span>(<span class="no">fit</span>, <span class="no">coef</span>),
-           <span class="kw">vcov_fit</span> <span class="kw">=</span> <span class="fu">map</span>(<span class="no">fit</span>, <span class="no">vcov</span>))
-<span class="no">vv2015_mice_regmedint</span></pre></body></html></div>
+    <span class="fu">mutate</span><span class="op">(</span>coef_fit <span class="op">=</span> <span class="fu">map</span><span class="op">(</span><span class="va">fit</span>, <span class="va">coef</span><span class="op">)</span>,
+           vcov_fit <span class="op">=</span> <span class="fu">map</span><span class="op">(</span><span class="va">fit</span>, <span class="va">vcov</span><span class="op">)</span><span class="op">)</span>
+<span class="va">vv2015_mice_regmedint</span></code></pre></div>
 <pre><code>## # A tibble: 50 x 5
 ## # Groups:   .imp [50]
-##     .imp data               fit        coef_fit  vcov_fit         
-##    &lt;int&gt; &lt;list&gt;             &lt;list&gt;     &lt;list&gt;    &lt;list&gt;           
-##  1     1 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  2     2 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  3     3 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  4     4 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  5     5 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  6     6 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  7     7 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  8     8 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  9     9 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-## 10    10 &lt;tibble [100 × 7]&gt; &lt;regmednt&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
+##     .imp data                   fit            coef_fit  vcov_fit         
+##    &lt;int&gt; &lt;list&gt;                 &lt;list&gt;         &lt;list&gt;    &lt;list&gt;           
+##  1     1 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
+##  2     2 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
+##  3     3 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
+##  4     4 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
+##  5     5 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
+##  6     6 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
+##  7     7 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
+##  8     8 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
+##  9     9 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
+## 10    10 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
 ## # … with 40 more rows</code></pre>
 <p>The results can be combined using the mitools package.</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">regmedint_mi</span> <span class="kw">&lt;-</span> <span class="kw pkg">mitools</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/mitools/man/MIcombine.html">MIcombine</a></span>(<span class="kw">results</span> <span class="kw">=</span> <span class="no">vv2015_mice_regmedint</span>$<span class="no">coef_fit</span>,
-                                   <span class="kw">variances</span> <span class="kw">=</span> <span class="no">vv2015_mice_regmedint</span>$<span class="no">vcov_fit</span>)
-<span class="no">regmedint_mi_summary</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">regmedint_mi</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">regmedint_mi</span> <span class="op">&lt;-</span> <span class="fu">mitools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mitools/man/MIcombine.html">MIcombine</a></span><span class="op">(</span>results <span class="op">=</span> <span class="va">vv2015_mice_regmedint</span><span class="op">$</span><span class="va">coef_fit</span>,
+                                   variances <span class="op">=</span> <span class="va">vv2015_mice_regmedint</span><span class="op">$</span><span class="va">vcov_fit</span><span class="op">)</span>
+<span class="va">regmedint_mi_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_mi</span><span class="op">)</span></code></pre></div>
 <pre><code>## Multiple imputation results:
 ##       MIcombine.default(results = vv2015_mice_regmedint$coef_fit, variances = vv2015_mice_regmedint$vcov_fit)
-##          results         se      (lower     upper) missInfo
-## cde  0.364444513 0.31285436 -0.24886705 0.97775608      9 %
-## pnde 0.490086249 0.21309992  0.07241792 0.90775458      0 %
-## tnie 0.003130126 0.03166385 -0.05896404 0.06522429     15 %
-## tnde 0.482592943 0.21622030  0.05880487 0.90638102      2 %
-## pnie 0.010623432 0.06015876 -0.10748936 0.12873622     27 %
-## te   0.493216375 0.21374378  0.07428624 0.91214651      0 %
-## pm   0.007737162 0.03500720 -0.06200195 0.07747628     81 %</code></pre>
+##         results         se      (lower     upper) missInfo
+## cde  0.35334826 0.31280990 -0.25988229 0.96657881      9 %
+## pnde 0.48716281 0.21292928  0.06982892 0.90449669      0 %
+## tnie 0.00486299 0.03096690 -0.05584982 0.06557580     11 %
+## tnde 0.47324382 0.21699611  0.04793551 0.89855213      2 %
+## pnie 0.01878197 0.06178469 -0.10246510 0.14002905     23 %
+## te   0.49202580 0.21430966  0.07198654 0.91206506      0 %
+## pm   0.01232649 0.03060726 -0.04852257 0.07317555     76 %</code></pre>
 </div>
 <div id="comparison" class="section level2">
 <h2 class="hasAnchor">
 <a href="#comparison" class="anchor"></a>Comparison</h2>
 <p>We can observe the MI estimtates are generally more in alignment with the true estimates than the complete-case analysis estimates.</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="http://stefvanbuuren.github.io/mice/reference/cbind.html">cbind</a></span>(<span class="kw">true</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_true</span>),
-      <span class="kw">cca</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span>(<span class="no">regmedint_cca</span>),
-      <span class="kw">mi</span> <span class="kw">=</span> <span class="no">regmedint_mi_summary</span>$<span class="no">results</span>)</pre></body></html></div>
-<pre><code>##             true         cca          mi
-## cde  0.541070807 0.463323084 0.364444513
-## pnde 0.488930417 0.582515084 0.490086249
-## tnie 0.018240025 0.006182822 0.003130126
-## tnde 0.498503455 0.574385442 0.482592943
-## pnie 0.008666987 0.014312464 0.010623432
-## te   0.507170442 0.588697906 0.493216375
-## pm   0.045436278 0.013852661 0.007737162</code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://amices.org/mice/reference/cbind.html">cbind</a></span><span class="op">(</span>true <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">regmedint_true</span><span class="op">)</span>,
+      cca <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">regmedint_cca</span><span class="op">)</span>,
+      mi <span class="op">=</span> <span class="va">regmedint_mi_summary</span><span class="op">$</span><span class="va">results</span><span class="op">)</span></code></pre></div>
+<pre><code>##             true         cca         mi
+## cde  0.541070807 0.463323084 0.35334826
+## pnde 0.488930417 0.582515084 0.48716281
+## tnie 0.018240025 0.006182822 0.00486299
+## tnde 0.498503455 0.574385442 0.47324382
+## pnie 0.008666987 0.014312464 0.01878197
+## te   0.507170442 0.588697906 0.49202580
+## pm   0.045436278 0.013852661 0.01232649</code></pre>
 </div>
   </div>
 
@@ -420,11 +427,11 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Kazuki Yoshida.</p>
+  <p>Developed by Kazuki Yoshida, Yi Li.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
