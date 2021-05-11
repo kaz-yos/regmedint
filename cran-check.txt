@@ -1,10 +1,10 @@
 * using log directory ‘/Users/kazuki/Dropbox (Personal)/documents/programming/r/regmedint/regmedint.Rcheck’
-* using R version 4.0.3 (2020-10-10)
-* using platform: x86_64-apple-darwin19.6.0 (64-bit)
+* using R version 4.0.5 (2021-03-31)
+* using platform: x86_64-apple-darwin20.3.0 (64-bit)
 * using session charset: UTF-8
 * using option ‘--as-cran’
 * checking for file ‘regmedint/DESCRIPTION’ ... OK
-* this is package ‘regmedint’ version ‘0.2.0’
+* this is package ‘regmedint’ version ‘0.2.1’
 * package encoding: UTF-8
 * checking CRAN incoming feasibility ... Note_to_CRAN_maintainers
 Maintainer: ‘Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>’
