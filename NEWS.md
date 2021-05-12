@@ -1,3 +1,8 @@
+# regmedint 0.2.1
+
+* BUGFIX for knitr update
+  Add rmarkdown to Suggests to support new knitr
+
 # regmedint 0.2.0
 
 * Improve missingness messaging/handling.
