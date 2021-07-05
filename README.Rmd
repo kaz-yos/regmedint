@@ -22,6 +22,7 @@ options(width = 116, scipen = 5)
 
 # regmedint <img src="man/figures/hex.png" align="right" height="140"/>
 
+[![R-CMD-check](https://github.com/kaz-yos/regmedint/workflows/R-CMD-check/badge.svg)](https://github.com/kaz-yos/regmedint/actions)
 [![](http://www.r-pkg.org/badges/version/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 
