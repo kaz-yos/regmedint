@@ -21,6 +21,9 @@ new_regmedint <- function(data,
                           avar,
                           mvar,
                           cvar,
+                          EMM_AC_Mmodel, # EMM vector
+                          EMM_AC_Ymodel, # EMM vector
+                          EMM_MC, # EMM vector
                           eventvar,
                           a0,
                           a1,
@@ -48,7 +51,8 @@ new_regmedint <- function(data,
                          data = mreg_data,
                          avar = avar,
                          mvar = mvar,
-                         cvar = cvar)
+                         cvar = cvar,
+                         EMM_AC_Mmodel) # EMM vectors
 
     ## Perform yreg
     yreg_fit <- fit_yreg(yreg = yreg,
@@ -57,7 +61,9 @@ new_regmedint <- function(data,
                          avar = avar,
                          mvar = mvar,
                          cvar = cvar,
-                         interaction = interaction,
+                         EMM_AC_Ymodel = EMM_AC_Ymodel, # EMM vector
+                         EMM_MC = EMM_MC, # EMM vector
+                         interaction = interaction, 
                          eventvar = eventvar)
 
     ## Return a list of functions
@@ -68,7 +74,10 @@ new_regmedint <- function(data,
                              avar = avar,
                              mvar = mvar,
                              cvar = cvar,
-                             interaction = interaction)
+                             EMM_AC_Mmodel = EMM_AC_Mmodel, # EMM vector
+                             EMM_AC_Ymodel = EMM_AC_Ymodel, # EMM vector
+                             EMM_MC = EMM_MC, # EMM vector
+                             interaction = interaction) 
 
     ## Construct the result object
     res <- list(mreg_fit = mreg_fit,
@@ -79,6 +88,9 @@ new_regmedint <- function(data,
                             avar = avar,
                             mvar = mvar,
                             cvar = cvar,
+                            EMM_AC_Mmodel = EMM_AC_Mmodel, # EMM vector
+                            EMM_AC_Ymodel = EMM_AC_Ymodel, # EMM vector
+                            EMM_MC = EMM_MC, # EMM vector
                             a0 = a0,
                             a1 = a1,
                             m_cde = m_cde,
@@ -86,7 +98,7 @@ new_regmedint <- function(data,
                             mreg = mreg,
                             interaction = interaction,
                             casecontrol = casecontrol,
-                            c_cond = c_cond,
+                            c_cond = c_cond, # all covariates levels
                             eventvar = eventvar))
     ## The main class is regmedint.
     class(res) <- c("regmedint", class(res))
