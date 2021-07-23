@@ -29,6 +29,9 @@
 ##' @param avar A character vector of length 1. Treatment variable name.
 ##' @param mvar A character vector of length 1. Mediator variable name.
 ##' @param cvar A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.
+##' @param EMM_AC_Mmodel A character vector of length > 0. Effect modifiers names. The C in AxC product term in mediator model. Use \code{NULL} if there is no covariate.
+##' @param EMM_AC_Ymodel A character vector of length > 0. Effect modifiers names. The C in AxC product term in outcome model. Use \code{NULL} if there is no covariate.
+##' @param EMM_MC A character vector of length > 0. Effect modifiers names. The C in MxC product term in mediator model. Use \code{NULL} if there is no covariate.
 ##' @param eventvar An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.
 ##' @param a0 A numeric vector of length 1. Reference level of treatment variable that is considered "untreated" or "unexposed".
 ##' @param a1 A numeric vector of length 1.
@@ -71,6 +74,9 @@ regmedint <- function(data,
                       avar,
                       mvar,
                       cvar,
+                      EMM_AC_Mmodel, # EMM vector
+                      EMM_AC_Ymodel, # EMM vector
+                      EMM_MC, # EMM vector
                       eventvar = NULL,
                       a0,
                       a1,
@@ -95,12 +101,15 @@ regmedint <- function(data,
         data <- na.omit(data)
     }
 
-    ## Check data contains yvar, avar, mvar, cvar, eventvar (if provided)
+    ## Check data contains yvar, avar, mvar, cvar, eventvar (if provided), EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC
     validate_args(data = data,
                   yvar = yvar,
                   avar = avar,
                   mvar = mvar,
                   cvar = cvar,
+                  EMM_AC_Mmodel, # EMM vector
+                  EMM_AC_Ymodel, # EMM vector
+                  EMM_MC, # EMM vector
                   a0 = a0,
                   a1 = a1,
                   m_cde = m_cde,
@@ -119,6 +128,9 @@ regmedint <- function(data,
                          avar = avar,
                          mvar = mvar,
                          cvar = cvar,
+                         EMM_AC_Mmodel = EMM_AC_Mmodel, # EMM vector
+                         EMM_AC_Ymodel = EMM_AC_Ymodel, # EMM vector
+                         EMM_MC = EMM_MC, # EMM vector
                          a0 = a0,
                          a1 = a1,
                          m_cde = m_cde,
@@ -191,6 +203,9 @@ validate_args <- function(data,
                           avar,
                           mvar,
                           cvar,
+                          EMM_AC_Mmodel, # EMM vector
+                          EMM_AC_Ymodel, # EMM vector
+                          EMM_MC, # EMM vector
                           eventvar,
                           a0,
                           a1,
@@ -215,6 +230,12 @@ validate_args <- function(data,
     assertthat::assert_that(length(mvar) == 1)
     ##
     assertthat::assert_that(is.null(cvar) | is.character(cvar))
+    ##
+    assertthat::assert_that(is.null(EMM_AC_Mmodel) | is.character(EMM_AC_Mmodel))
+    ##
+    assertthat::assert_that(is.null(EMM_AC_Ymodel) | is.character(EMM_AC_Ymodel))
+    ##
+    assertthat::assert_that(is.null(EMM_MC) | is.character(EMM_MC))
     ##
     assertthat::assert_that(is.numeric(a0))
     assertthat::assert_that(length(a0) == 1)
