@@ -23,9 +23,9 @@ Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
     }
     ## Pad with 0: when computing SE later, t(Gamma) %*% Sigma %*% Gamma won't matter if some C or AC are missing
     # initialize the matrix with 0:
-    vcov_temp <- matrix(0, 2+2*length(cvar), 2+2*length(cvar))
+  vcov_beta <- matrix(0, 2+2*length(cvar), 2+2*length(cvar))
     # assign row and column names for vcov matrix:
-    rownames(vcov_temp) <- colnames(vcov_temp) <- c("(Intercept)", avar, cvar, paste0(avar, ":", cvar))
+    rownames(vcov_beta) <- colnames(vcov_beta) <- c("(Intercept)", avar, cvar, paste0(avar, ":", cvar))
     # plug in non-zeros to corresponding elements:
     for(row_name in names(coef(mreg_fit))){
       for(col_name in names(coef(mreg_fit))){
