@@ -38,6 +38,8 @@ fit_yreg <- function(yreg,
                      avar,
                      mvar,
                      cvar,
+                     EMM_AC_Ymodel,
+                     EMM_MC,
                      eventvar,
                      interaction) {
 
@@ -46,6 +48,8 @@ fit_yreg <- function(yreg,
                                           avar,
                                           mvar,
                                           cvar,
+                                          EMM_AC_Ymodel,
+                                          EMM_MC,
                                           interaction,
                                           eventvar)
 
@@ -151,6 +155,8 @@ string_yreg_formula <- function(yvar,
                                 avar,
                                 mvar,
                                 cvar,
+                                EMM_AC_Ymodel,
+                                EMM_MC,
                                 interaction,
                                 eventvar) {
 
@@ -160,32 +166,64 @@ string_yreg_formula <- function(yvar,
 
     ## Create A*M or A + M depending on interaction.
     if (interaction) {
-        amvar_string <- sprintf("%s*%s", avar, mvar)
+      amvar_string <- paste(avar, mvar, paste(avar, mvar, sep = " : "), sep = " + ")
     } else {
-        amvar_string <- sprintf("%s + %s", avar, mvar)
+      amvar_string <- paste(avar, mvar, sep = " + ")
     }
 
     ## Add covariates if they exist.
     if (is.null(cvar)) {
-        amcvar_string <- amvar_string
+      amcvar_string <- amvar_string
     } else {
+      if(is.null(EMM_AC_Ymodel) & is.null(EMM_MC)){
         cvar_string <- paste0(cvar, collapse = " + ")
         amcvar_string <- sprintf("%s + %s", amvar_string, cvar_string)
+      }
+      else if(!is.null(EMM_AC_Ymodel) & is.null(EMM_MC)){
+        cvar_string <- paste0(cvar, collapse = " + ")
+        ## Add avar*EMM_AC_Ymodel terms:
+        temp <- NULL
+        for(i in 1:length(EMM_AC_Ymodel)){
+          temp <- paste0(c(temp, paste0(c(avar, EMM_AC_Ymodel[i]), collapse = " : ")), collapse = " + ")
+        }
+        amcvar_string <- paste(amvar_string, cvar_string, temp, sep = " + ") 
+      }
+      else if(is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
+        cvar_string <- paste0(cvar, collapse = " + ")
+        ## Add mvar*EMM_MC terms:
+        temp <- NULL
+        for(i in 1:length(EMM_MC)){
+          temp <- paste0(c(temp, paste0(c(mvar, EMM_MC[i]), collapse = " : ")), collapse = " + ")
+        }
+        amcvar_string <- paste(amvar_string, cvar_string, temp, sep = " + ")  
+      }
+      else if(!is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
+        cvar_string <- paste0(cvar, collapse = " + ")
+        ## Add avar*EMM_AC_Mmodel terms:
+        temp1 <- temp2 <- NULL
+        for(i in 1:length(EMM_AC_Ymodel)){
+          temp1 <- paste0(c(temp1, paste0(c(avar, EMM_AC_Ymodel[i]), collapse = " : ")), collapse = " + ")
+        }
+        ## Add mvar*EMM_MC terms:
+        for(j in 1:length(EMM_MC)){
+          temp2 <- paste0(c(temp2, paste0(c(mvar, EMM_MC[j]), collapse = " : ")), collapse = " + ")
+        }
+        amcvar_string <- paste(amvar_string, cvar_string, temp1, temp2, sep = " + ") 
+      }
     }
-
+    
     ## eventvar must be NULL for a non-survival outcome model.
     if (is.null(eventvar)) {
-
-        return(sprintf("%s ~ %s", yvar, amcvar_string))
-
+      return(sprintf("%s ~ %s", yvar, amcvar_string))
+      
     } else {
-
-        ## Survival outcome
-        surv_string <- sprintf("Surv(%s, %s)", yvar, eventvar)
-        return(sprintf("%s ~ %s", surv_string, amcvar_string))
-
+      ## Survival outcome
+      surv_string <- sprintf("Surv(%s, %s)", yvar, eventvar)
+      return(sprintf("%s ~ %s", surv_string, amcvar_string))
+      
     }
 }
+
 
 ##' Robust sandwich variance estimator for modified Poisson
 ##'
