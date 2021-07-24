@@ -10,12 +10,35 @@
 ### vcov extractors
 ################################################################################
 
-Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar) {
-    vars <- c("(Intercept)", avar, cvar)
-    vcov(mreg_fit)[vars,vars, drop = FALSE]
+Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
+    ### [0724 Question] do we need is.null(EMM_AC_Mmodel)? If is.null(cvar) is not needed, then is.null(EMM_AC_Mmodel) is not needed either. 
+    ### Just let vars take the entire c("(Intercept)", avar, cvar, paste0(avar, ":", EMM_AC_Mmodel)),
+    ### and set the missing C and AxC to 0?
+  
+    ### But is "vars" needed? We only need vcov matrix.
+    if(is.null(EMM_AC_Mmodel)){
+      vars <- c("(Intercept)", avar, cvar)
+    } else if(!is.null(EMM_AC_Mmodel)){
+      vars <- c("(Intercept)", avar, cvar, paste0(avar, ":", EMM_AC_Mmodel))
+    }
+    ## Pad with 0: when computing SE later, t(Gamma) %*% Sigma %*% Gamma won't matter if some C or AC are missing
+    # initialize the matrix with 0:
+    vcov_temp <- matrix(0, 2+2*length(cvar), 2+2*length(cvar))
+    # assign row and column names for vcov matrix:
+    rownames(vcov_temp) <- colnames(vcov_temp) <- c("(Intercept)", avar, cvar, paste0(avar, ":", cvar))
+    # plug in non-zeros to corresponding elements:
+    for(row_name in names(coef(mreg_fit))){
+      for(col_name in names(coef(mreg_fit))){
+        vcov_beta[row_name, col_name] <- vcov(mreg_fit)[row_name, col_name, drop = FALSE]
+        return(vcov_beta)
+      }
+    }
 }
 
-Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
+
+
+
+Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, interaction) {
 
     vcov_raw <- vcov(yreg_fit)
 
@@ -36,7 +59,7 @@ Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
         ## vcov.survreg(weibull_fit) has an extra row and column corresponding
         ## to the log(scale) parameter (See the above commit).
         coef_ind <- seq_along(coef(yreg_fit))
-        vcov_ready <- vcov_raw[coef_ind,coef_ind]
+        vcov_ready <- vcov_raw[coef_ind, coef_ind]
         if (is.null(dimnames(vcov_ready))) {
             ## Older vcov.survreg gives an unnamed vcov matrix
             dimnames(vcov_ready) <- list(names(coef(yreg_fit)),
@@ -58,7 +81,7 @@ Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
 
     }
 
-
+    ## [0724 Question] Same as beta: is "vars" needed? If not, whether interaction == TRUE or not doesn't matter.
     if (interaction) {
 
         ## Interaction case
@@ -66,9 +89,9 @@ Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
         ## Technically, the first case can be used in both because NULL
         ## drops out in c(..., NULL). Here it is made explicit.
         if (!is.null(cvar)) {
-            vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar), cvar)
+            vars <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar), cvar)
         } else {
-            vars <- c("(Intercept)", avar, mvar, paste0(avar,":",mvar))
+            vars <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar))
         }
 
     } else {
