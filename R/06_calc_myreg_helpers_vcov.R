@@ -13,7 +13,7 @@
 Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
     ### [0724 Question] do we need is.null(EMM_AC_Mmodel)? If is.null(cvar) is not needed, then is.null(EMM_AC_Mmodel) is not needed either. 
     ### Just let vars take the entire c("(Intercept)", avar, cvar, paste0(avar, ":", EMM_AC_Mmodel)),
-    ### and set the missing C and AxC to 0?
+    ### and set the missing C and AxC to 0 in vcov matrix.
   
     ### But is "vars" needed? We only need vcov matrix.
     if(is.null(EMM_AC_Mmodel)){
