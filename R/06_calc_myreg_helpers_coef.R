@@ -123,10 +123,10 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, i
 
         ## No interaction case
         if (!is.null(cvar) & is.null(EMM_AC_Ymodel) & is.null(EMM_MC)) {
-            coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar), 1],
+            coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar)],
                             ## Add zero for AxM term
                             0,
-                            coef_ready[cvar, 1])
+                            coef_ready[cvar])
             names(coef_ready) <- c("(Intercept)",
                                    avar, mvar,
                                    ## Name for AxM term
@@ -134,11 +134,11 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, i
                                    cvar)
             vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar)
         } else if (!is.null(cvar) & !is.null(EMM_AC_Ymodel) & is.null(EMM_MC)){
-          coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar), 1],
+          coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar)],
                           ## Add zero for AxM term
                           0,
-                          coef_ready[cvar, 1],
-                          coef_ready[paste0(avar, ":", EMM_AC_Ymodel), 1])
+                          coef_ready[cvar],
+                          coef_ready[paste0(avar, ":", EMM_AC_Ymodel)])
           names(coef_ready) <- c("(Intercept)",
                                  avar, mvar,
                                  ## Name for AxM term
@@ -150,8 +150,8 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, i
         } else if (!is.null(cvar) & is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
             coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar)],
                             0,
-                            coef_ready[cvar, 1],
-                            coef_ready[paste0(mvar, ":", EMM_MC), 1])
+                            coef_ready[cvar],
+                            coef_ready[paste0(mvar, ":", EMM_MC)])
             names(coef_ready) <- c("(Intercept)",
                                    avar, mvar,
                                    ## Name for AxM term
@@ -163,9 +163,9 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, i
         } else if (!is.null(cvar) & !is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
           coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar)],
                           0,
-                          coef_ready[cvar, 1],
-                          coef_ready[paste0(avar, ":", EMM_AC_Ymodel), 1],
-                          coef_ready[paste0(mvar, ":", EMM_MC), 1])
+                          coef_ready[cvar],
+                          coef_ready[paste0(avar, ":", EMM_AC_Ymodel)],
+                          coef_ready[paste0(mvar, ":", EMM_MC)])
           names(coef_ready) <- c("(Intercept)",
                                  avar, mvar,
                                  ## Name for AxM term
@@ -183,7 +183,7 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, i
     }
 }
 
-theta_hat_helper <- function(yreg, yreg_fit, avar, mvar, cvar, interaction) {
+theta_hat_helper <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, interaction) {
     theta_hat <- theta_hat(yreg = yreg,
                            yreg_fit = yreg_fit,
                            avar = avar,
