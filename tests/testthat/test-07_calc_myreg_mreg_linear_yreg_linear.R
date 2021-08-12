@@ -9,7 +9,7 @@
 library(testthat)
 library(survival)
 library(tidyverse)
-
+library(locfit)
 
 ###
 ### Tests for calc_myreg_mreg_linear_yreg_linear
