@@ -23,19 +23,25 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                                avar,
                                                mvar,
                                                cvar, # This can be NULL.
+                                               EMM_AC_Mmodel,
+                                               EMM_AC_Ymodel,
+                                               EMM_MC,
                                                interaction) {
 
     ## mreg coefficients
     beta_hat <- beta_hat_helper(mreg = mreg,
                                 mreg_fit = mreg_fit,
                                 avar = avar,
-                                cvar = cvar)
+                                cvar = cvar,
+                                EMM_AC_Mmodel = EMM_AC_Mmodel)
     ## yreg coefficients
     theta_hat <- theta_hat_helper(yreg = yreg,
                                   yreg_fit = yreg_fit,
                                   avar = avar,
                                   mvar = mvar,
                                   cvar = cvar,
+                                  EMM_AC_Ymodel = EMM_AC_Ymodel,
+                                  EMM_MC = EMM_MC,
                                   interaction = interaction)
     ## Construct a function of (a1, a0, m_cde, c_cond) that returns
     ## a vector of point estimates for quantities of interest.
@@ -43,22 +49,28 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
         calc_myreg_mreg_linear_yreg_linear_est(beta0 = beta_hat$beta0,
                                                beta1 = beta_hat$beta1,
                                                beta2 = beta_hat$beta2,
+                                               beta3 = beta_hat$beta3,
                                                theta0 = theta_hat$theta0,
                                                theta1 = theta_hat$theta1,
                                                theta2 = theta_hat$theta2,
                                                theta3 = theta_hat$theta3,
-                                               theta4 = theta_hat$theta4)
+                                               theta4 = theta_hat$theta4,
+                                               theta5 = theta_hat$theta5,
+                                               theta6 = theta_hat$theta6)
 
     ## vcovs
     Sigma_beta_hat <- Sigma_beta_hat(mreg = mreg,
                                      mreg_fit = mreg_fit,
                                      avar = avar,
-                                     cvar = cvar)
+                                     cvar = cvar,
+                                     EMM_AC_Mmodel = EMM_AC_Mmodel)
     Sigma_theta_hat <- Sigma_theta_hat(yreg = yreg,
                                        yreg_fit = yreg_fit,
                                        avar = avar,
                                        mvar = mvar,
                                        cvar = cvar,
+                                       EMM_AC_Ymodel = EMM_AC_Ymodel,
+                                       EMM_MC = EMM_MC,
                                        interaction = interaction)
     ## Construct a function of (a0, a1, m_cde, c_cond) that returns
     ## a vector of estimates.
@@ -66,11 +78,14 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
         calc_myreg_mreg_linear_yreg_linear_se(beta0 = beta_hat$beta0,
                                               beta1 = beta_hat$beta1,
                                               beta2 = beta_hat$beta2,
+                                              beta3 = beta_hat$beta3,
                                               theta0 = theta_hat$theta0,
                                               theta1 = theta_hat$theta1,
                                               theta2 = theta_hat$theta2,
                                               theta3 = theta_hat$theta3,
                                               theta4 = theta_hat$theta4,
+                                              theta5 = theta_hat$theta5,
+                                              theta6 = theta_hat$theta6,
                                               Sigma_beta = Sigma_beta_hat,
                                               Sigma_theta = Sigma_theta_hat)
 
@@ -88,20 +103,26 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
 calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
                                                    beta1,
                                                    beta2,
+                                                   beta3,
                                                    theta0,
                                                    theta1,
                                                    theta2,
                                                    theta3,
-                                                   theta4) {
+                                                   theta4,
+                                                   theta5,
+                                                   theta6) {
 
     validate_myreg_coefs(beta0 = beta0,
                          beta1 = beta1,
                          beta2 = beta2,
+                         beta3 = beta3,
                          theta0 = theta0,
                          theta1 = theta1,
                          theta2 = theta2,
                          theta3 = theta3,
-                         theta4 = theta4)
+                         theta4 = theta4,
+                         theta5 = theta5,
+                         theta6 = theta6)
 
     ## Construct a function for point estimates given (a0, a1, m_cde, c_cond).
     fun_est <- function(a0, a1, m_cde, c_cond) {
@@ -116,24 +137,58 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
             assertthat::assert_that(length(c_cond) == length(beta2))
             beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
         }
-
-        ## VanderWeele 2015 p466
+        
+        if (is.null(beta3)) {
+            assertthat::assert_that(is.null(c_cond))
+            beta3_c <- 0
+        } else {
+            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(length(c_cond) == length(beta3))
+            beta3_c <- sum(t(matrix(beta3)) %*% matrix(c_cond))
+        }
+        
+        if (is.null(theta4)) {
+            assertthat::assert_that(is.null(c_cond))
+            theta4_c <- 0
+        } else {
+            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(length(c_cond) == length(theta5))
+            theta4_c <- sum(t(matrix(theta4)) %*% matrix(c_cond))
+        }
+        
+        if (is.null(theta5)) {
+            assertthat::assert_that(is.null(c_cond))
+            theta5_c <- 0
+        } else {
+            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(length(c_cond) == length(theta5))
+            theta5_c <- sum(t(matrix(theta5)) %*% matrix(c_cond))
+        }
+        
+        if (is.null(theta6)) {
+            assertthat::assert_that(is.null(c_cond))
+            theta6_c <- 0
+        } else {
+            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(length(c_cond) == length(theta6))
+            theta6_c <- sum(t(matrix(theta6)) %*% matrix(c_cond))
+        }
+        
+        ## Extension of VanderWeele 2015 p466
         ## Adopted from mediation.sas and modified.
         ## Look up the third occurrence of the following:
         ## %if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
-        cde <- (theta1 + (theta3 * m_cde)) * (a1 - a0)
+        cde <- (theta1 + theta3*m_cde + theta5) * (a1 - a0)
         ## Pearl decomposition (Regular NDE and NIE)
-        ## Note the a0 in the first line.                      vv
-        pnde <- (theta1 + (theta3 * beta0) + (theta3 * beta1 * a0) +
-                 (theta3 * beta2_c)) * (a1 - a0)
-        ## Note the a1.                               vv
-        tnie <- ((theta2 * beta1) + (theta3 * beta1 * a1)) * (a1 - a0)
+        ## Note the a0 in the first line.                      
+        pnde <- (theta1 + theta3*(beta0 + beta1*a0 + beta2_c + beta3_c*a0) + theta5_c) * (a1 - a0)
+        ## Note the a1.                               
+        tnie <- (theta2 + theta3*a1 + theta6_c) * (beta1 + beta3_c) * (a1 - a0)
         ## Another decomposition
-        ## Note the a0 -> a1 change in the first line.         vv
-        tnde <- (theta1 + (theta3 * beta0) + (theta3 * beta1 * a1) +
-                 (theta3 * beta2_c)) * (a1 - a0)
-        ## Note the a1 -> a0 change.                  vv
-        pnie <- ((theta2 * beta1) + (theta3 * beta1 * a0)) * (a1 - a0)
+        ## Note the a0 -> a1 change in the first line.         
+        tnde <- (theta1 + theta3*(beta0 + beta1*a1 + beta2_c + beta3_c*a1) + theta5_c) * (a1 - a0)
+        ## Note the a1 -> a0 change.                  
+        pnie <- (theta2 + theta3*a0 + theta6_c) * (beta1 + beta3_c) * (a1 - a0)
         ## It is the sum of NDE and NIE on the log scale.
         te <- pnde + tnie
         ## VanderWeele 2015 p47
@@ -156,31 +211,40 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
 calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
                                                   beta1,
                                                   beta2,
+                                                  beta3,
                                                   theta0,
                                                   theta1,
                                                   theta2,
                                                   theta3,
                                                   theta4,
+                                                  theta5,
+                                                  theta6,
                                                   Sigma_beta,
                                                   Sigma_theta) {
 
     validate_myreg_coefs(beta0 = beta0,
                          beta1 = beta1,
                          beta2 = beta2,
-                         theta0 = theta0,
-                         theta1 = theta1,
-                         theta2 = theta2,
-                         theta3 = theta3,
-                         theta4 = theta4)
-
-    validate_myreg_vcovs(beta0 = beta0,
-                         beta1 = beta1,
-                         beta2 = beta2,
+                         beta3 = beta3,
                          theta0 = theta0,
                          theta1 = theta1,
                          theta2 = theta2,
                          theta3 = theta3,
                          theta4 = theta4,
+                         theta5 = theta5,
+                         theta6 = theta6)
+
+    validate_myreg_vcovs(beta0 = beta0,
+                         beta1 = beta1,
+                         beta2 = beta2,
+                         beta3 = beta3,
+                         theta0 = theta0,
+                         theta1 = theta1,
+                         theta2 = theta2,
+                         theta3 = theta3,
+                         theta4 = theta4,
+                         theta5 = theta5,
+                         theta6 = theta6,
                          Sigma_beta = Sigma_beta,
                          Sigma_theta = Sigma_theta)
 
@@ -200,8 +264,44 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
             assertthat::assert_that(length(c_cond) == length(beta2))
             beta2_c <- sum(t(matrix(beta2)) %*% matrix(c_cond))
         }
+        
+        if (is.null(beta3)) {
+            assertthat::assert_that(is.null(c_cond))
+            beta3_c <- 0
+        } else {
+            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(length(c_cond) == length(beta3))
+            beta3_c <- sum(t(matrix(beta3)) %*% matrix(c_cond))
+        }
+        
+        if (is.null(theta4)) {
+            assertthat::assert_that(is.null(c_cond))
+            theta4_c <- 0
+        } else {
+            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(length(c_cond) == length(theta5))
+            theta4_c <- sum(t(matrix(theta4)) %*% matrix(c_cond))
+        }
+        
+        if (is.null(theta5)) {
+            assertthat::assert_that(is.null(c_cond))
+            theta5_c <- 0
+        } else {
+            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(length(c_cond) == length(theta5))
+            theta5_c <- sum(t(matrix(theta5)) %*% matrix(c_cond))
+        }
+        
+        if (is.null(theta6)) {
+            assertthat::assert_that(is.null(c_cond))
+            theta6_c <- 0
+        } else {
+            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(length(c_cond) == length(theta6))
+            theta6_c <- sum(t(matrix(theta6)) %*% matrix(c_cond))
+        }
 
-        ## VanderWeele 2015. p468
+        ## Extension of VanderWeele 2015. p468
         ## Valeri & VanderWeele 2013. Appendix p6-9
         ## These are the gradient vector of each scalar quantity of interest.
         ## Obtain the first partial derivative wrt to each parameter.
@@ -209,71 +309,91 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
             matrix(c(0,                       # beta0
                      0,                       # beta1
                      rep(0, length(beta2)),   # beta2 vector
+                     rep(0, length(beta3)),   # beta3 vector
                      ##
                      0,                       # theta0
                      1,                       # theta1
                      0,                       # theta2
                      m_cde,                   # theta3
-                     rep(0, length(theta4)))) # theta4 vector
+                     rep(0, length(theta4)),  # theta4 vector
+                     rep(1, length(theta5)),  # theta5 vector
+                     rep(0, length(theta6))   # theta6 vector
+                     )) 
         ##
         Gamma_pnde <-
             matrix(c(
                 theta3,                            # beta0
-                (theta3 * a0),                     # beta1
-                (theta3 * c_cond),                 # beta2 vector
+                theta3*a0,                         # beta1
+                theta3*c_cond,                     # beta2 vector
+                ##
+                theta3*a0*c_cond,                  # beta3 vector
                 ##
                 0,                                 # theta0
                 1,                                 # theta1
                 0,                                 # theta2
-                (beta0 + (beta1 * a0) + beta2_c),  # theta3
-                rep(0, length(theta4))))           # theta4 vector
+                beta0 + beta1*a0 + beta2_c + beta3_c*a0,  # theta3
+                rep(0, length(theta4)),            # theta4 vector
+                c_cond,                            # theta5 vector
+                rep(0, length(theta6))             # theta6 vector
+                ))           
         ##
         Gamma_tnie <-
             matrix(c(
                 0,                         # beta0
-                (theta2 + (theta3 * a1)),  # beta1
+                theta2 + theta3*a1 + theta6_c,  # beta1
                 rep(0, length(beta2)),     # beta2 vector
+                c_cond * (theta2 + theta3*a1 + theta6_c),  # beta3 vector
                 ##
                 0,                         # theta0
                 0,                         # theta1
-                beta1,                     # theta2
-                (beta1 * a1),              # theta3
-                rep(0, length(theta4))))   # theta4 vector
+                beta1 + beta3_c,           # theta2
+                a1 * (beta1 + beta3_c),    # theta3
+                rep(0, length(theta4)),    # theta4 vector
+                rep(0, length(theta5)),    # theta5 vector
+                c_cond * (beta1 + beta3_c) # theta3
+                ))   
         ##
         Gamma_tnde <-
             matrix(c(
                 theta3,                            # beta0
-                (theta3 * a1),                     # beta1 a0 -> a1
-                (theta3 * c_cond),                 # beta2 vector
+                theta3*a1,                         # beta1 a0 -> a1
+                theta3*c_cond,                     # beta2 vector
+                theta3*a1*c_cond,                  # beta3 vector
                 ##
                 0,                                 # theta0
                 1,                                 # theta1
                 0,                                 # theta2
-                (beta0 + (beta1 * a1) + beta2_c),  # theta3 a0 -> a1
-                rep(0, length(theta4))))           # theta4 vector
+                beta0 + beta1*a1 + beta2_c + beta3_c*a1,  # theta3 a0 -> a1
+                rep(0, length(theta4)),            # theta4 vector
+                c_cond,                            # theta5 vector
+                rep(0, length(theta6))             # theta6 vector
+                ))           
         ##
         Gamma_pnie <-
             matrix(c(
                 0,                         # beta0
-                (theta2 + (theta3 * a0)),  # beta1 a1 -> a0
+                theta2 + theta3*a0 + theta6_c,        # beta1 a1 -> a0
                 rep(0, length(beta2)),     # beta2 vector
+                c_cond * (theta2 + theta3*a0 + theta6_c),        # beta3 vector
                 ##
                 0,                         # theta0
                 0,                         # theta1
-                beta1,                     # theta2
-                (beta1 * a0),              # theta3 a1 -> a0
-                rep(0, length(theta4))))   # theta4 vector
+                beta1 + beta3_c,           # theta2
+                a0 * (beta1 + beta3_c),    # theta3 a1 -> a0
+                rep(0, length(theta4)),    # theta4 vector
+                rep(0, length(theta5)),    # theta5 vector
+                c_cond * (beta1 + beta3_c) # theta6 vector
+                ))   
         ##
         Gamma_te <-
             Gamma_pnde + Gamma_tnie # By linearity of differentiation
         ##
         ## PM
         ## Copied from calc_myreg_mreg_linear_yreg_linear_est
-        ## Note the a0 in the first line.                      vv
-        pnde <- (theta1 + (theta3 * beta0) + (theta3 * beta1 * a0) +
-                 (theta3 * beta2_c)) * (a1 - a0)
-        ## Note the a1.                               vv
-        tnie <- ((theta2 * beta1) + (theta3 * beta1 * a1)) * (a1 - a0)
+        ## Note the a0 in the first line.                      
+        pnde <- (theta1 + theta3*(beta0 + beta1*a0 + beta2_c + beta3_c*a0) + theta5_c) * (a1 - a0)
+        ## Note the a1.                               
+        tnie <- (theta2 + theta3*a1 + theta6_c) * (beta1 + beta3_c) * (a1 - a0)
         ##
         ## Need to unname argument vectors to get c(pnde = , tnie = ).
         d_pm <- grad_prop_med_yreg_linear(pnde = unname(pnde), tnie = unname(tnie))
