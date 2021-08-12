@@ -11,15 +11,17 @@
 ################################################################################
 
 Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
-    ## Pad with 0: when computing SE later, t(Gamma) %*% Sigma %*% Gamma won't matter if some C or AC are missing
-    # initialize the matrix with 0:
-    vcov_beta <- matrix(0, 2+2*length(cvar), 2+2*length(cvar))
-    # assign row and column names for vcov matrix: problematic if cvar = NULL
-    
     ## Assign row and column names, stratified by is.null(cvar), because paste0(avar, ":", cvar) will have avar:  .
     if(!is.null(cvar)){
-      rownames(vcov_beta) <- colnames(vcov_beta) <- 
-        c("(Intercept)", avar, cvar, paste0(avar, ":", cvar))
+      if(!is.null(EMM_AC_Mmodel)){
+        vcov_beta <- matrix(0, 2+2*length(cvar), 2+2*length(cvar))
+        rownames(vcov_beta) <- colnames(vcov_beta) <- 
+          c("(Intercept)", avar, cvar, paste0(avar, ":", cvar))
+      } else {
+        vcov_beta <- matrix(0, 2+length(cvar), 2+length(cvar))
+        rownames(vcov_beta) <- colnames(vcov_beta) <- 
+          c("(Intercept)", avar, cvar)
+      }
     } else {
       rownames(vcov_beta) <- colnames(vcov_beta) <- 
         c("(Intercept)", avar)
@@ -32,7 +34,7 @@ Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
       }
     }
     
-    return(vcov_beta[which(rowSums(vcov_theta) > 0), which(colSums(vcov_theta) > 0)])
+    return(vcov_beta)
     
 }
 
@@ -40,58 +42,26 @@ Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
 
 
 Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, interaction) {
-
-    # vcov_raw <- vcov(yreg_fit)
-
-    ## Older versions of survival:::vcov.survreg() did not give dimension names.
-    ## https://github.com/therneau/survival/commit/ed1c71b3817d4bfced43ed374e5e598e5f229bb8
-
-    # if (yreg == "survAFT_exp") {
-    # 
-    #     vcov_ready <- vcov_raw
-    #     if (is.null(dimnames(vcov_ready))) {
-    #         ## Older vcov.survreg gives an unnamed vcov matrix
-    #         dimnames(vcov_ready) <- list(names(coef(yreg_fit)),
-    #                                      names(coef(yreg_fit)))
-    #     }
-    # 
-    # } else if (yreg == "survAFT_weibull") {
-    # 
-    #     ## vcov.survreg(weibull_fit) has an extra row and column corresponding
-    #     ## to the log(scale) parameter (See the above commit).
-    #     coef_ind <- seq_along(coef(yreg_fit))
-    #     vcov_ready <- vcov_raw[coef_ind, coef_ind]
-    #     if (is.null(dimnames(vcov_ready))) {
-    #         ## Older vcov.survreg gives an unnamed vcov matrix
-    #         dimnames(vcov_ready) <- list(names(coef(yreg_fit)),
-    #                                      names(coef(yreg_fit)))
-    #     }
-    # 
-    # } else if (yreg == "survCox") {
-    # 
-    #     ## Pad the left and upper edges with zeros by creating a block diagonal.
-    #     vcov_ready <- Matrix::bdiag(matrix(0),
-    #                                 vcov_raw)
-    #     vars_cox <- c("(Intercept)", names(coef(yreg_fit)))
-    #     dimnames(vcov_ready) <- list(vars_cox,
-    #                                  vars_cox)
-    # 
-    # } else {
-    # 
-    #     vcov_ready <- vcov_raw
-    # 
-    # }
-    
-    ## Pad with 0: when computing SE later, t(Gamma) %*% Sigma %*% Gamma won't matter if some C or AC are missing
-    # initialize the matrix with 0:
-    vcov_theta <- matrix(0, 4+3*length(cvar), 4+3*length(cvar))
-    # assign row and column names for vcov matrix: problematic if cvar = NULL
-    
     ## Assign row and column names, stratified by is.null(cvar), because paste0(avar, ":", cvar) will have avar:  .
     if(!is.null(cvar)){
-      rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar), cvar, 
-                                                        paste0(avar, ":", cvar), # AxC in Y model
-                                                        paste0(mvar, ":", cvar)) # MxC
+      if(!is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
+        vcov_theta <- matrix(0, 4+3*length(cvar), 4+3*length(cvar))
+        rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar), cvar, 
+                                                          paste0(avar, ":", cvar), # AxC in Y model
+                                                          paste0(mvar, ":", cvar)) # MxC
+      } else if (!is.null(EMM_AC_Ymodel) & is.null(EMM_MC)){
+        vcov_theta <- matrix(0, 4+2*length(cvar), 4+2*length(cvar))
+        rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar), cvar, 
+                                                          paste0(avar, ":", cvar)) 
+      } else if (is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
+        vcov_theta <- matrix(0, 4+2*length(cvar), 4+2*length(cvar))
+        rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar), cvar, 
+                                                          paste0(mvar, ":", cvar)) 
+      } else{
+        vcov_theta <- matrix(0, 4+length(cvar), 4+length(cvar))
+        rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar), cvar) 
+      }
+     
     } else {
       rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar))
     }
@@ -103,7 +73,7 @@ Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM
       }
     }
     
-    return(vcov_theta[which(rowSums(vcov_theta) > 0), which(colSums(vcov_theta) > 0)])
+    return(vcov_theta)
 
     
 }
