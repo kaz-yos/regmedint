@@ -21,9 +21,9 @@ new_regmedint <- function(data,
                           avar,
                           mvar,
                           cvar,
-                          EMM_AC_Mmodel, # EMM vector
-                          EMM_AC_Ymodel, # EMM vector
-                          EMM_MC, # EMM vector
+                          EMM_AC_Mmodel, 
+                          EMM_AC_Ymodel, 
+                          EMM_MC, 
                           eventvar,
                           a0,
                           a1,
@@ -52,7 +52,7 @@ new_regmedint <- function(data,
                          avar = avar,
                          mvar = mvar,
                          cvar = cvar,
-                         EMM_AC_Mmodel) # EMM vectors
+                         EMM_AC_Mmodel = EMM_AC_Mmodel) 
 
     ## Perform yreg
     yreg_fit <- fit_yreg(yreg = yreg,
@@ -61,8 +61,8 @@ new_regmedint <- function(data,
                          avar = avar,
                          mvar = mvar,
                          cvar = cvar,
-                         EMM_AC_Ymodel = EMM_AC_Ymodel, # EMM vector
-                         EMM_MC = EMM_MC, # EMM vector
+                         EMM_AC_Ymodel = EMM_AC_Ymodel, 
+                         EMM_MC = EMM_MC, 
                          interaction = interaction, 
                          eventvar = eventvar)
 
@@ -74,9 +74,9 @@ new_regmedint <- function(data,
                              avar = avar,
                              mvar = mvar,
                              cvar = cvar,
-                             EMM_AC_Mmodel = EMM_AC_Mmodel, # EMM vector
-                             EMM_AC_Ymodel = EMM_AC_Ymodel, # EMM vector
-                             EMM_MC = EMM_MC, # EMM vector
+                             EMM_AC_Mmodel = EMM_AC_Mmodel, 
+                             EMM_AC_Ymodel = EMM_AC_Ymodel, 
+                             EMM_MC = EMM_MC, 
                              interaction = interaction) 
 
     ## Construct the result object
@@ -88,9 +88,9 @@ new_regmedint <- function(data,
                             avar = avar,
                             mvar = mvar,
                             cvar = cvar,
-                            EMM_AC_Mmodel = EMM_AC_Mmodel, # EMM vector
-                            EMM_AC_Ymodel = EMM_AC_Ymodel, # EMM vector
-                            EMM_MC = EMM_MC, # EMM vector
+                            EMM_AC_Mmodel = EMM_AC_Mmodel, 
+                            EMM_AC_Ymodel = EMM_AC_Ymodel, 
+                            EMM_MC = EMM_MC, 
                             a0 = a0,
                             a1 = a1,
                             m_cde = m_cde,
