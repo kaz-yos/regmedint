@@ -38,8 +38,8 @@ fit_yreg <- function(yreg,
                      avar,
                      mvar,
                      cvar,
-                     EMM_AC_Ymodel,
-                     EMM_MC,
+                     EMM_AC_Ymodel = NULL,
+                     EMM_MC = NULL,
                      eventvar,
                      interaction) {
 
