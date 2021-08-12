@@ -42,7 +42,7 @@
 ##' @param interaction A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.
 ##' @param casecontrol A logical vector of length 1. Default to FALSE. Whether data comes from a case-control study.
 ##' @param na_omit A logical vector of length 1. Default to FALSE. Whether to use na.omit() function in stats package to remove NAs in columns of interest before fitting the models.
-##'
+##' 
 ##' @return regmedint object, which is a list containing the mediator regression object, the outcome regression object, and the regression-based mediation results.
 ##'
 ##' @examples
@@ -74,9 +74,9 @@ regmedint <- function(data,
                       avar,
                       mvar,
                       cvar,
-                      EMM_AC_Mmodel, # EMM vector
-                      EMM_AC_Ymodel, # EMM vector
-                      EMM_MC, # EMM vector
+                      EMM_AC_Mmodel = NULL, 
+                      EMM_AC_Ymodel = NULL, 
+                      EMM_MC = NULL, 
                       eventvar = NULL,
                       a0,
                       a1,
@@ -87,10 +87,10 @@ regmedint <- function(data,
                       interaction = TRUE,
                       casecontrol = FALSE,
                       na_omit = FALSE) {
-
+    
     ## This is the user-friendly helper function with a name that is the class name.
     ## https://adv-r.hadley.nz/s3.html#helpers
-
+    
     ## Handle missing value
     ## Select columns of interest only.
     data <- data[,c(yvar, avar, mvar, cvar, eventvar)]
@@ -100,16 +100,16 @@ regmedint <- function(data,
     if(any(is.na(data)) && na_omit) {
         data <- na.omit(data)
     }
-
+    
     ## Check data contains yvar, avar, mvar, cvar, eventvar (if provided), EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC
     validate_args(data = data,
                   yvar = yvar,
                   avar = avar,
                   mvar = mvar,
                   cvar = cvar,
-                  EMM_AC_Mmodel, # EMM vector
-                  EMM_AC_Ymodel, # EMM vector
-                  EMM_MC, # EMM vector
+                  EMM_AC_Mmodel = EMM_AC_Mmodel, 
+                  EMM_AC_Ymodel = EMM_AC_Ymodel, 
+                  EMM_MC = EMM_MC, 
                   a0 = a0,
                   a1 = a1,
                   m_cde = m_cde,
@@ -119,7 +119,7 @@ regmedint <- function(data,
                   interaction = interaction,
                   casecontrol = casecontrol,
                   eventvar = eventvar)
-
+    
     ## Construct a regmedint object after argument validation.
     ## This is the low-level constructor function.
     ## https://adv-r.hadley.nz/s3.html#s3-constructor
@@ -128,9 +128,9 @@ regmedint <- function(data,
                          avar = avar,
                          mvar = mvar,
                          cvar = cvar,
-                         EMM_AC_Mmodel = EMM_AC_Mmodel, # EMM vector
-                         EMM_AC_Ymodel = EMM_AC_Ymodel, # EMM vector
-                         EMM_MC = EMM_MC, # EMM vector
+                         EMM_AC_Mmodel = EMM_AC_Mmodel, 
+                         EMM_AC_Ymodel = EMM_AC_Ymodel, 
+                         EMM_MC = EMM_MC, 
                          a0 = a0,
                          a1 = a1,
                          m_cde = m_cde,
@@ -140,12 +140,12 @@ regmedint <- function(data,
                          interaction = interaction,
                          casecontrol = casecontrol,
                          eventvar = eventvar)
-
+    
     ## Check the resulting object for anomalies.
     ## This is the class validator function.
     ## https://adv-r.hadley.nz/s3.html#validators
     validate_regmedint(res)
-
+    
     ## Return results
     res
 }
@@ -203,9 +203,9 @@ validate_args <- function(data,
                           avar,
                           mvar,
                           cvar,
-                          EMM_AC_Mmodel, # EMM vector
-                          EMM_AC_Ymodel, # EMM vector
-                          EMM_MC, # EMM vector
+                          EMM_AC_Mmodel, 
+                          EMM_AC_Ymodel, 
+                          EMM_MC, 
                           eventvar,
                           a0,
                           a1,
@@ -215,10 +215,10 @@ validate_args <- function(data,
                           yreg,
                           interaction,
                           casecontrol) {
-
+    
     ## Dataset
     assertthat::assert_that(is.data.frame(data))
-
+    
     ##
     assertthat::assert_that(is.character(yvar))
     assertthat::assert_that(length(yvar) == 1)
@@ -271,7 +271,7 @@ validate_args <- function(data,
     ##
     assertthat::assert_that(is.null(eventvar) | is.character(eventvar))
     assertthat::assert_that(length(eventvar) <= 1)
-
+    
     ## Do not allow missing data in variables of interest
     ## because they may differ unexpected differences in sample sizes
     ## between yreg and mreg.
@@ -287,8 +287,8 @@ validate_args <- function(data,
 For multiple imputation, see the multiple imputation vignette: vignette(\"vig_04_mi\")
 To perform complete case analysis, use na_omit = TRUE.
 Variables with missingness: ",
-paste0(vars_missing, collapse = ", ")))
-
+                                         paste0(vars_missing, collapse = ", ")))
+    
     ## Do not allow factors as they can result in multiple
     ## dummy variables and coef results in different names
     ## from the original variable names.
@@ -297,7 +297,7 @@ paste0(vars_missing, collapse = ", ")))
                                         ## template value
                                         FUN.VALUE = TRUE)),
                             msg = "Factors are not allowed! Use numeric variables only. Create multiple dichotomous variables for multi-category variables.")
-
+    
     NULL
 }
 
@@ -314,13 +314,13 @@ paste0(vars_missing, collapse = ", ")))
 ##'
 ##' @return No return value, called for side effects.
 validate_regmedint <- function(x) {
-
+    
     assertthat::assert_that(class(x)[[1]] == "regmedint")
     ##
     assertthat::assert_that("myreg" %in% names(x))
     assertthat::assert_that("args" %in% names(x))
     ##
     assertthat::assert_that(is.list(x$args))
-
+    
     NULL
 }
