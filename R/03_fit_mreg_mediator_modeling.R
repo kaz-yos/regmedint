@@ -22,7 +22,7 @@ fit_mreg <- function(mreg,
                      avar,
                      mvar,
                      cvar,
-                     EMM_AC_Mmodel) { 
+                     EMM_AC_Mmodel = NULL) { 
 
     ## Create a string representation of the formula
     string_formula <- string_mreg_formula(mvar,
