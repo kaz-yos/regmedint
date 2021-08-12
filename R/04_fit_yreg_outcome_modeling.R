@@ -166,7 +166,7 @@ string_yreg_formula <- function(yvar,
 
     ## Create A*M or A + M depending on interaction.
     if (interaction) {
-      amvar_string <- paste(avar, mvar, paste(avar, mvar, sep = " : "), sep = " + ")
+      amvar_string <- paste(avar, mvar, paste0(avar, ":", mvar), sep = " + ")
     } else {
       amvar_string <- paste(avar, mvar, sep = " + ")
     }
