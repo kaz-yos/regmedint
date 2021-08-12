@@ -8,6 +8,7 @@
 ## Required packages
 library(tidyverse)
 library(stringr)
+library(locfit) # 
 
 read_parsed_sas_mediation_output <- function(file) {
     ## Open a connection and save as a file/connection object.
