@@ -1,0 +1,134 @@
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   1
+
+                                                         The REG Procedure
+                                                           Model: MODEL1
+                                                   Dependent Variable: alk_phos 
+
+                                              Number of Observations Read         276
+                                              Number of Observations Used         276
+
+
+                                                        Analysis of Variance
+ 
+                                                               Sum of           Mean
+                           Source                   DF        Squares         Square    F Value    Pr > F
+
+                           Model                     3       24993215        8331072       1.88    0.1333
+                           Error                   272     1205699634        4432719                     
+                           Corrected Total         275     1230692848                                    
+
+
+                                        Root MSE           2105.40239    R-Square     0.0203
+                                        Dependent Mean     1996.61159    Adj R-Sq     0.0095
+                                        Coeff Var           105.44877                       
+
+
+                                                        Parameter Estimates
+ 
+                                                     Parameter       Standard
+                                Variable     DF       Estimate          Error    t Value    Pr > |t|
+
+                                Intercept     1     1775.11531      566.98357       3.13      0.0019
+                                trt           1      -47.75355      354.83690      -0.13      0.8930
+                                bili_bin      1      536.00032      805.21957       0.67      0.5062
+                                int           1       42.76439      507.20436       0.08      0.9329
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   2
+
+                                    Obs     Intercept           trt      bili_bin           int
+
+                                     1        1775.12        -47.75        536.00         42.76
+                                     2      321470.37    -191096.28    -321470.37     191096.28
+                                     3     -191096.28     125909.23     191096.28    -125909.23
+                                     4     -321470.37     191096.28     648378.55    -387630.36
+                                     5      191096.28    -125909.23    -387630.36     257256.27
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   3
+
+                                                       The LOGISTIC Procedure
+
+                                                         Model Information
+
+                                           Data Set                      WORK.DATA1      
+                                           Response Variable             bili_bin        
+                                           Number of Response Levels     2               
+                                           Model                         binary logit    
+                                           Optimization Technique        Fisher's scoring
+
+
+                                              Number of Observations Read         276
+                                              Number of Observations Used         276
+
+
+                                                          Response Profile
+ 
+                                               Ordered                          Total
+                                                 Value     bili_bin         Frequency
+
+                                                     1     1                      135
+                                                     2     0                      141
+
+                                                Probability modeled is bili_bin='1'.
+
+
+                                                      Model Convergence Status
+
+                                           Convergence criterion (GCONV=1E-8) satisfied.          
+
+
+                                                        Model Fit Statistics
+ 
+                                                                            Intercept
+                                                             Intercept            and
+                                               Criterion          Only     Covariates
+
+                                               AIC             384.487        386.360
+                                               SC              388.107        393.601
+                                               -2 Log L        382.487        382.360
+
+
+                                              Testing Global Null Hypothesis: BETA=0
+ 
+                                      Test                 Chi-Square       DF     Pr > ChiSq
+
+                                      Likelihood Ratio         0.1268        1         0.7218
+                                      Score                    0.1268        1         0.7218
+                                      Wald                     0.1267        1         0.7219
+
+
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   4
+
+                                                       The LOGISTIC Procedure
+
+                                             Analysis of Maximum Likelihood Estimates
+ 
+                                                               Standard          Wald
+                                Parameter    DF    Estimate       Error    Chi-Square    Pr > ChiSq
+
+                                Intercept     1      0.0858      0.3825        0.0503        0.8226
+                                trt           1     -0.0858      0.2409        0.1267        0.7219
+
+
+                                                        Odds Ratio Estimates
+                                                                  
+                                                          Point          95% Wald
+                                             Effect    Estimate      Confidence Limits
+
+                                             trt          0.918       0.572       1.472
+
+
+                                   Association of Predicted Probabilities and Observed Responses
+
+                                         Percent Concordant     26.1    Somers' D    0.021
+                                         Percent Discordant     23.9    Gamma        0.043
+                                         Percent Tied           50.0    Tau-a        0.011
+                                         Pairs                 19035    c            0.511
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   5
+
+                                                                                    _95__CI_    _95__CI_
+                           Obs    effect          Estimate      s_e_     p_value      lower       upper
+
+                            1     cde              14.5399    632.237    0.98165    -1224.64     1253.72
+                            2     pnde            -31.7555    304.304    0.91689     -628.19      564.68
+                            3     pnie            -14.9828     42.882    0.72679      -99.03       69.07
+                            4     tnde            -33.0742    304.450    0.91349     -629.80      563.65
+                            5     tnie            -16.3015     47.356    0.73067     -109.12       76.52
+                            6     total effect    -48.0570    307.469    0.87580     -650.70      554.58

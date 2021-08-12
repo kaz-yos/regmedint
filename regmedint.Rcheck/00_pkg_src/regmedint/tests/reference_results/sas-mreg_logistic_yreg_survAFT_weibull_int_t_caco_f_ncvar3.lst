@@ -1,0 +1,204 @@
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   1
+
+                                                       The LIFEREG Procedure
+
+                                                         Model Information
+
+                                              Data Set                      WORK.DATA1
+                                              Dependent Variable             Log(time)
+                                              Censoring Variable                  cens
+                                              Censoring Value(s)                     1
+                                              Number of Observations               276
+                                              Noncensored Values                   129
+                                              Right Censored Values                147
+                                              Left Censored Values                   0
+                                              Interval Censored Values               0
+                                              Number of Parameters                   8
+                                              Name of Distribution             Weibull
+                                              Log Likelihood              -246.6646651
+
+
+                                              Number of Observations Read         276
+                                              Number of Observations Used         276
+
+
+                                                       Parameter Information
+ 
+                                                       Parameter    Effect
+
+                                                       Intercept    Intercept
+                                                       trt          trt      
+                                                       bili_bin     bili_bin 
+                                                       int          int      
+                                                       age          age      
+                                                       male         male     
+                                                       stage        stage    
+
+
+                                                          Fit Statistics
+
+                                               -2 Log Likelihood             493.329
+                                               AIC (smaller is better)       509.329
+                                               AICC (smaller is better)      509.869
+                                               BIC (smaller is better)       538.293
+
+
+                                                Fit Statistics (Unlogged Response)
+
+                                           -2 Log Likelihood                    2291.435
+                                           Weibull AIC (smaller is better)      2307.435
+                                           Weibull AICC (smaller is better)     2307.975
+                                           Weibull BIC (smaller is better)      2336.399
+
+
+                            Algorithm converged.                                                       
+
+
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   2
+
+                                                       The LIFEREG Procedure
+
+                                                   Type III Analysis of Effects
+ 
+                                                                       Wald
+                                          Effect           DF    Chi-Square    Pr > ChiSq
+
+                                          trt               1        0.0043        0.9476
+                                          bili_bin          1        7.8499        0.0051
+                                          int               1        0.1895        0.6634
+                                          age               1        4.3482        0.0370
+                                          male              1        0.0003        0.9859
+                                          stage             1       19.1169        <.0001
+
+
+                                        Analysis of Maximum Likelihood Parameter Estimates
+ 
+                                                        Standard   95% Confidence     Chi-
+                              Parameter     DF Estimate    Error       Limits       Square Pr > ChiSq
+
+                              Intercept      1  10.7151   0.5778   9.5826  11.8476  343.88     <.0001
+                              trt            1   0.0163   0.2480  -0.4698   0.5024    0.00     0.9476
+                              bili_bin       1  -1.2824   0.4577  -2.1795  -0.3853    7.85     0.0051
+                              int            1   0.1252   0.2877  -0.4387   0.6892    0.19     0.6634
+                              age            1  -0.0134   0.0064  -0.0261  -0.0008    4.35     0.0370
+                              male           1  -0.0030   0.1720  -0.3402   0.3341    0.00     0.9859
+                              stage          1  -0.4105   0.0939  -0.5945  -0.2265   19.12     <.0001
+                              Scale          1   0.7102   0.0511   0.6168   0.8176                   
+                              Weibull Shape  1   1.4081   0.1012   1.2231   1.6212                   
+
+
+                                                    Estimated Covariance Matrix
+ 
+                   Intercept           trt      bili_bin           int           age          male         stage         Scale
+
+     Intercept      0.333876     -0.096318     -0.163185      0.093780     -0.001901      0.009056     -0.020957      0.008373
+     trt           -0.096318      0.061512      0.092598     -0.061053      0.000106  -0.000041242     -0.000715   0.000076945
+     bili_bin      -0.163185      0.092598      0.209492     -0.123469   0.000036846     -0.000476      0.000877     -0.002513
+     int            0.093780     -0.061053     -0.123469      0.082783   0.000065780     -0.002645     -0.001541     -0.000329
+     age           -0.001901      0.000106   0.000036846   0.000065780   0.000041583     -0.000349     -0.000135  -0.000044260
+     male           0.009056  -0.000041242     -0.000476     -0.002645     -0.000349      0.029597      0.002030     -0.000107
+     stage         -0.020957     -0.000715      0.000877     -0.001541     -0.000135      0.002030      0.008814     -0.000986
+     Scale          0.008373   0.000076945     -0.002513     -0.000329  -0.000044260     -0.000107     -0.000986      0.002607
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   3
+
+                                                       The LOGISTIC Procedure
+
+                                                         Model Information
+
+                                           Data Set                      WORK.DATA1      
+                                           Response Variable             bili_bin        
+                                           Number of Response Levels     2               
+                                           Model                         binary logit    
+                                           Optimization Technique        Fisher's scoring
+
+
+                                              Number of Observations Read         276
+                                              Number of Observations Used         276
+
+
+                                                          Response Profile
+ 
+                                               Ordered                          Total
+                                                 Value     bili_bin         Frequency
+
+                                                     1     1                      135
+                                                     2     0                      141
+
+                                                Probability modeled is bili_bin='1'.
+
+
+                                                      Model Convergence Status
+
+                                           Convergence criterion (GCONV=1E-8) satisfied.          
+
+
+                                                        Model Fit Statistics
+ 
+                                                                            Intercept
+                                                             Intercept            and
+                                               Criterion          Only     Covariates
+
+                                               AIC             384.487        359.596
+                                               SC              388.107        377.698
+                                               -2 Log L        382.487        349.596
+
+
+                                              Testing Global Null Hypothesis: BETA=0
+ 
+                                      Test                 Chi-Square       DF     Pr > ChiSq
+
+                                      Likelihood Ratio        32.8904        4         <.0001
+                                      Score                   31.0073        4         <.0001
+                                      Wald                    27.5947        4         <.0001
+
+
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   4
+
+                                                       The LOGISTIC Procedure
+
+                                             Analysis of Maximum Likelihood Estimates
+ 
+                                                               Standard          Wald
+                                Parameter    DF    Estimate       Error    Chi-Square    Pr > ChiSq
+
+                                Intercept     1     -1.5302      0.8512        3.2322        0.0722
+                                trt           1     -0.1712      0.2598        0.4340        0.5100
+                                age           1     -0.0139      0.0130        1.1379        0.2861
+                                male          1      1.3304      0.4391        9.1802        0.0024
+                                stage         1      0.7464      0.1636       20.8250        <.0001
+
+
+                                                        Odds Ratio Estimates
+                                                                  
+                                                          Point          95% Wald
+                                             Effect    Estimate      Confidence Limits
+
+                                             trt          0.843       0.506       1.402
+                                             age          0.986       0.961       1.012
+                                             male         3.783       1.600       8.945
+                                             stage        2.109       1.531       2.907
+
+
+                                   Association of Predicted Probabilities and Observed Responses
+
+                                         Percent Concordant     70.4    Somers' D    0.407
+                                         Percent Discordant     29.6    Gamma        0.407
+                                         Percent Tied            0.0    Tau-a        0.204
+                                         Pairs                 19035    c            0.704
+                                                           The SAS System                         23:48 Wednesday, April 1, 2020   5
+
+                                                                                     _95__CI_    _95__CI_
+                           Obs    effect                      Estimate    p_value      lower       upper
+
+                             1    marginal cde                 1.25855    0.40437     0.73302     2.16083
+                             2    marginal pnde                1.06041    0.79399     0.68275     1.64697
+                             3    marginal pnie                1.05330    0.50733     0.90340     1.22809
+                             4    marginal tnde                1.05445    0.82102     0.66611     1.66917
+                             5    marginal tnie                1.04738    0.51115     0.91229     1.20246
+                             6    marginal total effect        1.11065    0.66468     0.69101     1.78513
+                             7    conditional cde              1.25855    0.40437     0.73302     2.16083
+                             8    conditional pnde             1.07342    0.73038     0.71742     1.60606
+                             9    conditional pnie             1.05789    0.50915     0.89512     1.25026
+                            10    conditional tnde             1.06625    0.76654     0.69813     1.62850
+                            11    conditional tnie             1.05083    0.51379     0.90552     1.21945
+                            12    conditional total effect     1.12798    0.59425     0.72421     1.75685

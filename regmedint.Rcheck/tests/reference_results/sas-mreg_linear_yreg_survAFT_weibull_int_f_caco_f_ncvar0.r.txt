@@ -1,0 +1,59 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.4000 -2.5000 -1.7000  0.4434 24.3000 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   2.2132     0.8784   2.520   0.0123 *
+trt           0.7434     0.5532   1.344   0.1801  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.594 on 274 degrees of freedom
+Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
+F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(time, status) ~ trt + bili, 
+    data = data, dist = "weibull")
+               Value Std. Error      z        p
+(Intercept)  8.26928    0.19748  41.87  < 2e-16
+trt          0.15845    0.12738   1.24     0.21
+bili        -0.10040    0.00934 -10.75  < 2e-16
+Log(scale)  -0.34643    0.07511  -4.61 0.000004
+
+Scale= 0.707 
+
+Weibull distribution
+Loglik(model)= -1165.7   Loglik(intercept only)= -1203.8
+	Chisq= 76.03 on 2 degrees of freedom, p= 3.1e-17 
+Number of Newton-Raphson Iterations: 6 
+n= 276 
+
+### Mediation analysis 
+             est        se          Z         p      lower      upper  exp(est) exp(lower) exp(upper)
+cde   0.19014456 0.1528561  1.2439446 0.2135200 -0.1094480 0.48973708 1.2094244  0.8963288   1.631887
+pnde  0.19014456 0.1528561  1.2439446 0.2135200 -0.1094480 0.48973708 1.2094244  0.8963288   1.631887
+tnie -0.08956246 0.0671626 -1.3335168 0.1823623 -0.2211987 0.04207382 0.9143312  0.8015574   1.042971
+tnde  0.19014456 0.1528561  1.2439446 0.2135200 -0.1094480 0.48973708 1.2094244  0.8963288   1.631887
+pnie -0.08956246 0.0671626 -1.3335168 0.1823623 -0.2211987 0.04207382 0.9143312  0.8015574   1.042971
+te    0.10058210 0.1653583  0.6082676 0.5430100 -0.2235142 0.42467843 1.1058144  0.7997035   1.529099
+pm   -0.97916699 1.9566679 -0.5004258 0.6167753 -4.8141656 2.85583157        NA         NA         NA
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2.3
+ a0 (reference value of avar)  = 1.1
+mvar: bili
+ m_cde (intervend value of mvar for cde) = 1.4
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.

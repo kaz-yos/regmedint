@@ -1,0 +1,88 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+glm(formula = platelet ~ trt * bili_bin + age + male + stage, 
+    family = poisson(link = "log"), data = data)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-14.4279   -4.1437   -0.5009    3.1686   17.8282  
+
+Coefficients:
+               Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   5.8506864  0.0264742 220.996  < 2e-16 ***
+trt           0.0962003  0.0102096   9.423  < 2e-16 ***
+bili_bin      0.1475711  0.0240611   6.133 8.61e-10 ***
+age          -0.0034731  0.0003757  -9.245  < 2e-16 ***
+male         -0.0525958  0.0123636  -4.254 2.10e-05 ***
+stage        -0.0699231  0.0045909 -15.231  < 2e-16 ***
+trt:bili_bin -0.1561189  0.0149868 -10.417  < 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 9286.7  on 275  degrees of freedom
+Residual deviance: 8439.8  on 269  degrees of freedom
+AIC: 10478
+
+Number of Fisher Scoring iterations: 4
+
+### Mediation analysis 
+              est          se          Z            p        lower        upper  exp(est) exp(lower) exp(upper)
+cde  -0.146839350 0.019242344 -7.6310530 2.331468e-14 -0.184553652 -0.109125048 0.8634327  0.8314753  0.8966183
+pnde  0.008114561 0.022190892  0.3656708 7.146107e-01 -0.035378787  0.051607909 1.0081476  0.9652397  1.0529628
+tnie  0.010730585 0.016365306  0.6556911 5.120229e-01 -0.021344826  0.042805996 1.0107884  0.9788814  1.0437354
+tnde  0.017632486 0.024678030  0.7145014 4.749172e-01 -0.030735564  0.066000535 1.0177889  0.9697320  1.0682273
+pnie  0.001212661 0.001921226  0.6311910 5.279156e-01 -0.002552873  0.004978195 1.0012134  0.9974504  1.0049906
+te    0.018845146 0.025617514  0.7356352 4.619527e-01 -0.031364258  0.069054551 1.0190238  0.9691225  1.0714947
+pm    0.571717664 0.005924612 96.4987544 0.000000e+00  0.560105638  0.583329690        NA         NA         NA
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2.3
+ a0 (reference value of avar)  = 1.1
+mvar: bili_bin
+ m_cde (intervend value of mvar for cde) = 1.4
+cvar: age male stage
+ c_cond (covariate vector value) = 50 1 2
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+
+### Re-evaluation at c_cond = cmean
+              est          se          Z            p        lower       upper  exp(est) exp(lower) exp(upper)
+cde  -0.146839350 0.019242344 -7.6310530 2.331468e-14 -0.184553652 -0.10912505 0.8634327  0.8314753  0.8966183
+pnde  0.026155062 0.011957287  2.1873743 2.871521e-02  0.002719210  0.04959091 1.0265001  1.0027229  1.0508411
+tnie  0.010750006 0.016257480  0.6612344 5.084620e-01 -0.021114069  0.04261408 1.0108080  0.9791073  1.0435351
+tnde  0.035668100 0.014332845  2.4885568 1.282628e-02  0.007576239  0.06375996 1.0363118  1.0076050  1.0658365
+pnie  0.001236968 0.001941715  0.6370490 5.240929e-01 -0.002568724  0.00504266 1.0012377  0.9974346  1.0050554
+te    0.036905068 0.015605987  2.3648019 1.803972e-02  0.006317896  0.06749224 1.0375945  1.0063379  1.0698220
+pm    0.295107084 0.005698426 51.7874697 0.000000e+00  0.283938373  0.30627579        NA         NA         NA

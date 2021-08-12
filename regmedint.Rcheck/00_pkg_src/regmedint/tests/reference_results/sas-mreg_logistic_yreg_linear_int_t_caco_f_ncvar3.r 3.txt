@@ -1,0 +1,84 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+lm(formula = alk_phos ~ trt * bili_bin + age + male + stage, 
+    data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2024.9 -1078.3  -594.4    44.3 12074.4 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)  
+(Intercept)  2140.824    918.685   2.330   0.0205 *
+trt           -52.733    359.220  -0.147   0.8834  
+bili_bin      565.487    816.683   0.692   0.4893  
+age            -4.433     12.830  -0.346   0.7300  
+male          -15.412    407.373  -0.038   0.9698  
+stage         -49.156    159.301  -0.309   0.7579  
+trt:bili_bin   42.041    510.197   0.082   0.9344  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2116 on 269 degrees of freedom
+Multiple R-squared:  0.02133,	Adjusted R-squared:  -0.0004967 
+F-statistic: 0.9772 on 6 and 269 DF,  p-value: 0.441
+
+### Mediation analysis 
+             est         se           Z         p        lower      upper
+cde    7.3490099 638.701879  0.01150617 0.9908196 -1244.483670 1259.18169
+pnde -32.9351555 318.191908 -0.10350721 0.9175604  -656.579835  590.70952
+tnie -33.1774995  56.236639 -0.58996235 0.5552159  -143.399286   77.04429
+tnde -35.4628271 312.964803 -0.11331251 0.9097828  -648.862569  577.93691
+pnie -30.6498279  49.883072 -0.61443344 0.5389289  -128.418853   67.11920
+te   -66.1126550 318.108265 -0.20783067 0.8353612  -689.593397  557.36809
+pm     0.5018328   2.489371  0.20159023 0.8402371    -4.377244    5.38091
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2.3
+ a0 (reference value of avar)  = 1.1
+mvar: bili_bin
+ m_cde (intervend value of mvar for cde) = 1.4
+cvar: age male stage
+ c_cond (covariate vector value) = 50 1 2
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+
+### Re-evaluation at c_cond = cmean
+             est         se           Z         p        lower       upper
+cde    7.3490099 638.701879  0.01150617 0.9908196 -1244.483670 1259.181690
+pnde -37.7519518 310.711544 -0.12150161 0.9032937  -646.735388  571.231484
+tnie -33.9211917  57.035087 -0.59474252 0.5520156  -145.707909   77.865525
+tnde -40.3362826 311.210717 -0.12961084 0.8968743  -650.298079  569.625514
+pnie -31.3368609  50.556449 -0.61983904 0.5353638  -130.425680   67.751958
+te   -71.6731435 314.416441 -0.22795609 0.8196804  -687.918045  544.571758
+pm     0.4732762   2.104913  0.22484353 0.8221010    -3.652278    4.598831

@@ -1,0 +1,122 @@
+* using log directory ‘/Users/yili/Desktop/regmedint2021/regmedint.Rcheck’
+* using R version 4.0.2 (2020-06-22)
+* using platform: x86_64-apple-darwin17.0 (64-bit)
+* using session charset: UTF-8
+* using option ‘--as-cran’
+* checking for file ‘regmedint/DESCRIPTION’ ... OK
+* this is package ‘regmedint’ version ‘0.2.1’
+* package encoding: UTF-8
+* checking CRAN incoming feasibility ... WARNING
+Maintainer: ‘Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>’
+
+Insufficient package version (submitted: 0.2.1, existing: 0.2.1)
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking serialization versions ... OK
+* checking whether package ‘regmedint’ can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking for future file timestamps ... OK
+* checking ‘build’ directory ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking use of S3 registration ... OK
+* checking dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... OK
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd line widths ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... ERROR
+Running examples in ‘regmedint-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: coef.regmedint
+> ### Title: Extract point estimates.
+> ### Aliases: coef.regmedint
+> 
+> ### ** Examples
+> 
+> library(regmedint)
+> data(vv2015)
+> regmedint_obj <- regmedint(data = vv2015,
++                            ## Variables
++                            yvar = "y",
++                            avar = "x",
++                            mvar = "m",
++                            cvar = c("c"),
++                            eventvar = "event",
++                            ## Values at which effects are evaluated
++                            a0 = 0,
++                            a1 = 1,
++                            m_cde = 1,
++                            c_cond = 0.5,
++                            ## Model types
++                            mreg = "logistic",
++                            yreg = "survAFT_weibull",
++                            ## Additional specification
++                            interaction = TRUE,
++                            casecontrol = FALSE)
+> coef(regmedint_obj)
+Error in eval(assertion, env) : 
+  argument "EMM_AC_Mmodel" is missing, with no default
+Calls: coef ... tryCatchList -> tryCatchOne -> doTryCatch -> eval -> eval
+Execution halted
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... ERROR
+  Running ‘testthat.R’ [21s/24s]
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+    9. │   ├─utils::capture.output(summary(res, exponentiate = TRUE)) test-09_cross_check_with_sas_macro.R:240:8
+   10. │   │ └─utils:::evalVis(expr)
+   11. │   │   ├─base::withVisible(eval(expr, pf))
+   12. │   │   └─base::eval(expr, pf)
+   13. │   │     └─base::eval(expr, pf)
+   14. │   ├─base::summary(res, exponentiate = TRUE)
+   15. │   └─regmedint:::summary.regmedint(res, exponentiate = TRUE)
+   16. │     └─x$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond)
+   17. │       └─assertthat::assert_that(is.null(c_cond))
+   18. │         └─base::stop(assertError(attr(res, "msg")))
+   19. └─(function (e) ...
+  
+  [ FAIL 106 | WARN 0 | SKIP 0 | PASS 512 ]
+  Error: Test failures
+  Execution halted
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking re-building of vignette outputs ... OK
+* checking PDF version of manual ... OK
+* checking for non-standard things in the check directory ... OK
+* checking for detritus in the temp directory ... OK
+* DONE
+Status: 2 ERRORs, 1 WARNING

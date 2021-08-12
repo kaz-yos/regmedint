@@ -1,0 +1,93 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+
+Call:
+MASS::glm.nb(formula = platelet ~ trt * bili_bin + age + male + 
+    stage, data = data, init.theta = 8.220644756, link = log)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-3.07377  -0.72633  -0.09645   0.53936   2.84728  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   5.855365   0.153743  38.085  < 2e-16 ***
+trt           0.097983   0.060088   1.631  0.10296    
+bili_bin      0.133186   0.136763   0.974  0.33014    
+age          -0.003413   0.002148  -1.589  0.11216    
+male         -0.047873   0.068284  -0.701  0.48325    
+stage        -0.073352   0.026659  -2.752  0.00593 ** 
+trt:bili_bin -0.147330   0.085427  -1.725  0.08459 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for Negative Binomial(8.2206) family taken to be 1)
+
+    Null deviance: 308.25  on 275  degrees of freedom
+Residual deviance: 282.18  on 269  degrees of freedom
+AIC: 3273.9
+
+Number of Fisher Scoring iterations: 1
+
+
+              Theta:  8.221 
+          Std. Err.:  0.712 
+
+ 2 x log-likelihood:  -3257.853 
+### Mediation analysis 
+              est          se          Z         p        lower       upper  exp(est) exp(lower) exp(upper)
+cde  -0.129935157 0.107031344 -1.2139916 0.2247509 -0.339712737 0.079842424 0.8781524  0.7119748   1.083116
+pnde  0.016270722 0.055904816  0.2910433 0.7710182 -0.093300704 0.125842148 1.0164038  0.9109195   1.134103
+tnie  0.010432317 0.016430484  0.6349366 0.5254697 -0.021770841 0.042635474 1.0104869  0.9784644   1.043557
+tnde  0.025253064 0.056344096  0.4481936 0.6540135 -0.085179335 0.135685463 1.0255746  0.9183476   1.145322
+pnie  0.001449974 0.003635117  0.3988797 0.6899819 -0.005674724 0.008574672 1.0014510  0.9943413   1.008612
+te    0.026703038 0.056971794  0.4687063 0.6392796 -0.084959627 0.138365704 1.0270628  0.9185494   1.148395
+pm    0.393860373 0.008328112 47.2928761 0.0000000  0.377537573 0.410183173        NA         NA         NA
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2.3
+ a0 (reference value of avar)  = 1.1
+mvar: bili_bin
+ m_cde (intervend value of mvar for cde) = 1.4
+cvar: age male stage
+ c_cond (covariate vector value) = 50 1 2
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+
+### Re-evaluation at c_cond = cmean
+              est          se          Z         p        lower      upper  exp(est) exp(lower) exp(upper)
+cde  -0.129935157 0.107031344 -1.2139916 0.2247509 -0.339712737 0.07984242 0.8781524  0.7119748   1.083116
+pnde  0.033296514 0.052493737  0.6342950 0.5258883 -0.069589319 0.13618235 1.0338570  0.9327768   1.145891
+tnie  0.010457055 0.016319338  0.6407769 0.5216676 -0.021528259 0.04244237 1.0105119  0.9787018   1.043356
+tnde  0.042275202 0.053445764  0.7909926 0.4289483 -0.062476571 0.14702698 1.0431815  0.9394351   1.158385
+pnie  0.001478367 0.003686539  0.4010177 0.6884071 -0.005747116 0.00870385 1.0014795  0.9942694   1.008742
+te    0.043753570 0.053697766  0.8148117 0.4151801 -0.061492118 0.14899926 1.0447249  0.9403604   1.160672
+pm    0.242992851 0.007918115 30.6882179 0.0000000  0.227473630 0.25851207        NA         NA         NA

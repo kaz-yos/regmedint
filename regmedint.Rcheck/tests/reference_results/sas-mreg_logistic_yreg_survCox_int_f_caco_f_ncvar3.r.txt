@@ -1,0 +1,86 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+Call:
+survival::coxph(formula = Surv(time, status) ~ trt + bili_bin + 
+    age + male + stage, data = data, ties = "efron")
+
+  n= 276, number of events= 129 
+
+              coef exp(coef)  se(coef)      z Pr(>|z|)    
+trt      -0.190824  0.826278  0.183608 -1.039   0.2987    
+bili_bin  1.563912  4.777473  0.211434  7.397 1.40e-13 ***
+age       0.017857  1.018018  0.009109  1.960   0.0499 *  
+male     -0.014087  0.986012  0.241194 -0.058   0.9534    
+stage     0.585521  1.795926  0.130490  4.487 7.22e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+         exp(coef) exp(-coef) lower .95 upper .95
+trt         0.8263     1.2102    0.5766     1.184
+bili_bin    4.7775     0.2093    3.1566     7.231
+age         1.0180     0.9823    1.0000     1.036
+male        0.9860     1.0142    0.6146     1.582
+stage       1.7959     0.5568    1.3906     2.319
+
+Concordance= 0.795  (se = 0.019 )
+Likelihood ratio test= 116.7  on 5 df,   p=<2e-16
+Wald test            = 99.1  on 5 df,   p=<2e-16
+Score (logrank) test = 117.6  on 5 df,   p=<2e-16
+
+### Mediation analysis 
+             est         se          Z             p       lower     upper  exp(est) exp(lower) exp(upper)
+cde  -0.22898871 0.22032974 -1.0393001 0.29866519663 -0.66082706 0.2028496 0.7953375  0.5164240   1.224888
+pnde -0.22898871 0.22032974 -1.0393001 0.29866519663 -0.66082706 0.2028496 0.7953375  0.5164240   1.224888
+tnie -0.05958184 0.09322543 -0.6391158 0.52274762886 -0.24230034 0.1231367 0.9421584  0.7848204   1.131039
+tnde -0.22898871 0.22032974 -1.0393001 0.29866519663 -0.66082706 0.2028496 0.7953375  0.5164240   1.224888
+pnie -0.05958184 0.09322543 -0.6391158 0.52274762886 -0.24230034 0.1231367 0.9421584  0.7848204   1.131039
+te   -0.28857056 0.23923583 -1.2062180 0.22773345857 -0.75746417 0.1803231 0.7493339  0.4688539   1.197604
+pm    0.18352535 0.04555985  4.0282253 0.00005619949  0.09422968 0.2728210        NA         NA         NA
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2.3
+ a0 (reference value of avar)  = 1.1
+mvar: bili_bin
+ m_cde (intervend value of mvar for cde) = 1.4
+cvar: age male stage
+ c_cond (covariate vector value) = 50 1 2
+
+Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.
+
+### Re-evaluation at c_cond = cmean
+             est         se          Z             p      lower     upper  exp(est) exp(lower) exp(upper)
+cde  -0.22898871 0.22032974 -1.0393001 0.29866519663 -0.6608271 0.2028496 0.7953375  0.5164240   1.224888
+pnde -0.22898871 0.22032974 -1.0393001 0.29866519663 -0.6608271 0.2028496 0.7953375  0.5164240   1.224888
+tnie -0.06877586 0.10551747 -0.6517959 0.51453285074 -0.2755863 0.1380346 0.9335359  0.7591269   1.148015
+tnde -0.22898871 0.22032974 -1.0393001 0.29866519663 -0.6608271 0.2028496 0.7953375  0.5164240   1.224888
+pnie -0.06877586 0.10551747 -0.6517959 0.51453285074 -0.2755863 0.1380346 0.9335359  0.7591269   1.148015
+te   -0.29776457 0.24428674 -1.2189142 0.22287677709 -0.7765578 0.1810286 0.7424761  0.4599867   1.198450
+pm    0.20526792 0.04860136  4.2235019 0.00002405353  0.1100110 0.3005248        NA         NA         NA
