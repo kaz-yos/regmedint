@@ -9,6 +9,7 @@
 library(testthat)
 library(survival)
 library(tidyverse)
+library(locfit)
 
 
 ###
@@ -31,13 +32,15 @@ describe("Sigma_beta_hat", {
             expect_equal(Sigma_beta_hat(mreg = "linear",
                                         mreg_fit = lm3,
                                         avar = c("trt"),
-                                        cvar = NULL),
+                                        cvar = NULL, 
+                                        EMM_AC_Mmodel = NULL),
                          vcov(lm3))
             vars <- c("(Intercept)","trt")
             expect_equal(Sigma_beta_hat(mreg = "linear",
                                         mreg_fit = lm3,
                                         avar = c("trt"),
-                                        cvar = NULL),
+                                        cvar = NULL,
+                                        EMM_AC_Mmodel = NULL),
                          vcov(lm3)[vars,vars])
         })
         it("extracts vcov from logistic models correctly without cvar", {
@@ -47,13 +50,15 @@ describe("Sigma_beta_hat", {
             expect_equal(Sigma_beta_hat(mreg = "logistic",
                                         mreg_fit = glm3,
                                         avar = c("trt"),
-                                        cvar = NULL),
+                                        cvar = NULL,
+                                        EMM_AC_Mmodel = NULL),
                          vcov(glm3))
             vars <- c("(Intercept)","trt")
             expect_equal(Sigma_beta_hat(mreg = "logistic",
                                         mreg_fit = glm3,
                                         avar = c("trt"),
-                                        cvar = NULL),
+                                        cvar = NULL,
+                                        EMM_AC_Mmodel = NULL),
                          vcov(glm3)[vars,vars])
         })
     })
@@ -65,13 +70,15 @@ describe("Sigma_beta_hat", {
             expect_equal(Sigma_beta_hat(mreg = "linear",
                                         mreg_fit = lm3,
                                         avar = c("trt"),
-                                        cvar = c("age")),
+                                        cvar = c("age"),
+                                        EMM_AC_Mmodel = NULL),
                          vcov(lm3))
             vars <- c("(Intercept)","trt","age")
             expect_equal(Sigma_beta_hat(mreg = "linear",
                                         mreg_fit = lm3,
                                         avar = c("trt"),
-                                        cvar = c("age")),
+                                        cvar = c("age"),
+                                        EMM_AC_Mmodel = NULL),
                          vcov(lm3)[vars,vars])
         })
         it("extracts vcov from logistic models correctly", {
@@ -81,13 +88,15 @@ describe("Sigma_beta_hat", {
             expect_equal(Sigma_beta_hat(mreg = "logistic",
                                         mreg_fit = glm3,
                                         avar = c("trt"),
-                                        cvar = c("age")),
+                                        cvar = c("age"),
+                                        EMM_AC_Mmodel = NULL),
                          vcov(glm3))
             vars <- c("(Intercept)","trt","age")
             expect_equal(Sigma_beta_hat(mreg = "logistic",
                                         mreg_fit = glm3,
                                         avar = c("trt"),
-                                        cvar = c("age")),
+                                        cvar = c("age"),
+                                        EMM_AC_Mmodel = NULL),
                          vcov(glm3)[vars,vars])
         })
     })
@@ -99,13 +108,15 @@ describe("Sigma_beta_hat", {
             expect_equal(Sigma_beta_hat(mreg = "linear",
                                         mreg_fit = lm3,
                                         avar = c("trt"),
-                                        cvar = c("age","male","stage")),
+                                        cvar = c("age","male","stage"),
+                                        EMM_AC_Mmodel = NULL),
                          vcov(lm3))
             vars <- c("(Intercept)","trt","age","stage","male")
             expect_equal(Sigma_beta_hat(mreg = "linear",
                                         mreg_fit = lm3,
                                         avar = c("trt"),
-                                        cvar = c("age","stage","male")),
+                                        cvar = c("age","stage","male"),
+                                        EMM_AC_Mmodel = NULL),
                          vcov(lm3)[vars,vars])
         })
         it("extracts vcov from logistic models correctly", {
@@ -115,13 +126,15 @@ describe("Sigma_beta_hat", {
             expect_equal(Sigma_beta_hat(mreg = "logistic",
                                         mreg_fit = glm3,
                                         avar = c("trt"),
-                                        cvar = c("age","male","stage")),
+                                        cvar = c("age","male","stage"),
+                                        EMM_AC_Mmodel = NULL),
                          vcov(glm3))
             vars <- c("(Intercept)","trt","age","stage","male")
             expect_equal(Sigma_beta_hat(mreg = "logistic",
                                         mreg_fit = glm3,
                                         avar = c("trt"),
-                                        cvar = c("age","stage","male")),
+                                        cvar = c("age","stage","male"),
+                                        EMM_AC_Mmodel = NULL),
                          vcov(glm3)[vars,vars])
         })
     })
@@ -171,6 +184,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -184,6 +199,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "linear",
@@ -191,6 +208,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 1)
             })
@@ -201,6 +220,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -209,6 +230,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "linear",
@@ -216,6 +239,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 0)
             })
@@ -228,6 +253,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -241,6 +268,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
@@ -248,6 +277,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 1)
             })
@@ -258,6 +289,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -266,6 +299,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
@@ -273,6 +308,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 0)
             })
@@ -285,6 +322,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -298,6 +337,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
@@ -305,6 +346,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 1)
             })
@@ -315,6 +358,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -323,6 +368,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
@@ -330,6 +377,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 0)
             })
@@ -343,6 +392,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -356,6 +407,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
@@ -363,6 +416,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 1)
 
@@ -374,6 +429,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -382,6 +439,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
@@ -389,6 +448,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 0)
             })
@@ -402,6 +463,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -415,6 +478,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
@@ -422,6 +487,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 1)
             })
@@ -432,6 +499,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -440,6 +509,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
@@ -447,6 +518,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 0)
             })
@@ -459,6 +532,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("trt","bili")
@@ -473,6 +548,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
@@ -480,6 +557,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 2)
             })
@@ -490,6 +569,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars1 <- c("trt","bili","trt:bili")
@@ -502,6 +583,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              ref_vcov)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
@@ -509,6 +592,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 1)
             })
@@ -521,6 +606,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("(Intercept)","trt","bili")
@@ -534,6 +621,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
@@ -541,6 +630,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 1)
             })
@@ -551,6 +642,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -559,6 +652,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
@@ -566,6 +661,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit0)) + 0)
             })
@@ -578,6 +675,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("(Intercept)","trt","bili")
@@ -591,6 +690,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
@@ -598,6 +699,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              ## -1 for Log(scale)
                              dim(vcov(yreg_fit0)) -1 + 1)
@@ -609,6 +712,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -617,6 +722,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit0)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
@@ -624,6 +731,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = NULL,
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              ## -1 for Log(scale)
                              dim(vcov(yreg_fit0)) -1 + 0)
@@ -641,6 +750,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -655,6 +766,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "linear",
@@ -662,6 +775,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 1)
             })
@@ -672,6 +787,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -680,6 +797,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "linear",
@@ -687,6 +806,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 0)
             })
@@ -699,6 +820,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -713,6 +836,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
@@ -720,6 +845,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 1)
             })
@@ -730,6 +857,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -738,6 +867,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
@@ -745,6 +876,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 0)
             })
@@ -757,6 +890,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -771,6 +906,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
@@ -778,6 +915,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 1)
             })
@@ -788,6 +927,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -796,6 +937,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
@@ -803,6 +946,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 0)
             })
@@ -816,6 +961,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -830,6 +977,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
@@ -837,6 +986,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 1)
 
@@ -848,6 +999,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -856,6 +1009,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
@@ -863,6 +1018,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 0)
             })
@@ -876,6 +1033,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -890,6 +1049,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
@@ -897,6 +1058,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 1)
             })
@@ -907,6 +1070,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -915,6 +1080,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
@@ -922,6 +1089,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 0)
             })
@@ -934,6 +1103,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("trt","bili")
@@ -949,6 +1120,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
@@ -956,6 +1129,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 2)
             })
@@ -966,6 +1141,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars1 <- c("trt","bili","trt:bili","age")
@@ -978,6 +1155,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              ref_vcov)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
@@ -985,6 +1164,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 1)
             })
@@ -997,6 +1178,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1011,6 +1194,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
@@ -1018,6 +1203,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 1)
             })
@@ -1028,6 +1215,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -1036,6 +1225,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
@@ -1043,6 +1234,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit1)) + 0)
             })
@@ -1055,6 +1248,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1069,6 +1264,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
@@ -1076,6 +1273,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              ## -1 for Log(scale)
                              dim(vcov(yreg_fit1)) -1 + 1)
@@ -1087,6 +1286,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -1095,6 +1296,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit1)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
@@ -1102,6 +1305,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              ## -1 for Log(scale)
                              dim(vcov(yreg_fit1)) -1 + 0)
@@ -1119,6 +1324,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1133,6 +1340,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "linear",
@@ -1140,6 +1349,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 1)
             })
@@ -1150,6 +1361,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1158,6 +1371,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit3)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "linear",
@@ -1165,6 +1380,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 0)
             })
@@ -1177,6 +1394,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1191,6 +1410,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
@@ -1198,6 +1419,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 1)
             })
@@ -1208,6 +1431,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1216,6 +1441,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit3)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
@@ -1223,6 +1450,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 0)
             })
@@ -1235,6 +1464,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1249,6 +1480,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
@@ -1256,6 +1489,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 1)
             })
@@ -1266,6 +1501,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1274,6 +1511,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit3)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "loglinear",
@@ -1281,6 +1520,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 0)
             })
@@ -1294,6 +1535,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1308,6 +1551,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
@@ -1315,6 +1560,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 1)
 
@@ -1326,6 +1573,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1334,6 +1583,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit3)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "poisson",
@@ -1341,6 +1592,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 0)
             })
@@ -1354,6 +1607,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1368,6 +1623,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
@@ -1375,6 +1632,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 1)
             })
@@ -1385,6 +1644,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1393,6 +1654,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit3)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "negbin",
@@ -1400,6 +1663,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 0)
             })
@@ -1412,6 +1677,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("trt","bili")
@@ -1427,6 +1694,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
@@ -1434,6 +1703,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 2)
             })
@@ -1444,6 +1715,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars1 <- c("trt","bili","trt:bili","age","male","stage")
@@ -1456,6 +1729,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              ref_vcov)
                 expect_equal(Sigma_theta_hat(yreg = "survCox",
@@ -1463,6 +1738,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 1)
             })
@@ -1475,6 +1752,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1489,6 +1768,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_exp",
@@ -1496,6 +1777,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 1)
             })
@@ -1506,6 +1789,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1514,6 +1799,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit3)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "logistic",
@@ -1521,6 +1808,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              dim(vcov(yreg_fit3)) + 0)
             })
@@ -1533,6 +1822,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1547,6 +1838,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE),
                              ref_vcov[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
@@ -1554,6 +1847,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = FALSE) %>% dim(),
                              ## -1 for Log(scale)
                              dim(vcov(yreg_fit3)) -1 + 1)
@@ -1565,6 +1860,8 @@ describe("Sigma_theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1573,6 +1870,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE),
                              vcov(yreg_fit3)[vars,vars])
                 expect_equal(Sigma_theta_hat(yreg = "survAFT_weibull",
@@ -1580,6 +1879,8 @@ describe("Sigma_theta_hat", {
                                              avar = "trt",
                                              mvar = "bili",
                                              cvar = c("age","male","stage"),
+                                             EMM_AC_Ymodel = NULL,
+                                             EMM_MC = NULL,
                                              interaction = TRUE) %>% dim(),
                              ## -1 for Log(scale)
                              dim(vcov(yreg_fit3)) -1 + 0)
