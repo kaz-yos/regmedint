@@ -9,6 +9,7 @@
 library(testthat)
 library(survival)
 library(tidyverse)
+library(locfit)
 
 
 ###
@@ -31,6 +32,8 @@ describe("fit_yreg logistic (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit0 <- glm(formula = spiders ~ trt + bili,
@@ -58,6 +61,8 @@ describe("fit_yreg logistic (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit1 <- glm(formula = spiders ~ trt + bili + age,
@@ -85,6 +90,8 @@ describe("fit_yreg logistic (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit3 <- glm(formula = spiders ~ trt + bili + age + male + stage,
@@ -123,9 +130,11 @@ describe("fit_yreg logistic (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit0 <- glm(formula = spiders ~ trt*bili,
+        ref_fit0 <- glm(formula = spiders ~ trt + bili + trt:bili,
                         family = binomial(link = "logit"),
                         data = pbc_cc)
         ## Same classes
@@ -150,9 +159,11 @@ describe("fit_yreg logistic (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit1 <- glm(formula = spiders ~ trt*bili + age,
+        ref_fit1 <- glm(formula = spiders ~ trt + bili + trt:bili + age,
                         family = binomial(link = "logit"),
                         data = pbc_cc)
         ## Same classes
@@ -177,9 +188,11 @@ describe("fit_yreg logistic (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit3 <- glm(formula = spiders ~ trt*bili + age + male + stage,
+        ref_fit3 <- glm(formula = spiders ~ trt + bili + trt:bili + age + male + stage,
                         family = binomial(link = "logit"),
                         data = pbc_cc)
         ## Same classes

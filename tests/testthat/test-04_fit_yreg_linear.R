@@ -9,6 +9,7 @@
 library(testthat)
 library(survival)
 library(tidyverse)
+library(locfit)
 
 
 ###
@@ -32,6 +33,8 @@ describe("fit_yreg linear (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit0 <- lm(formula = alk.phos ~ trt + bili,
@@ -58,6 +61,8 @@ describe("fit_yreg linear (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit1 <- lm(formula = alk.phos ~ trt + bili + age,
@@ -84,6 +89,8 @@ describe("fit_yreg linear (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit3 <- lm(formula = alk.phos ~ trt + bili + age + male + stage,
@@ -120,9 +127,11 @@ describe("fit_yreg linear (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit0 <- lm(formula = alk.phos ~ trt*bili,
+        ref_fit0 <- lm(formula = alk.phos ~ trt + bili + trt:bili,
                        data = pbc_cc)
         ## Same classes
         expect_equal(class(yreg_fit0),
@@ -146,9 +155,11 @@ describe("fit_yreg linear (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit1 <- lm(formula = alk.phos ~ trt*bili + age,
+        ref_fit1 <- lm(formula = alk.phos ~ trt + bili + trt:bili + age,
                        data = pbc_cc)
         ## Same classes
         expect_equal(class(yreg_fit1),
@@ -172,9 +183,11 @@ describe("fit_yreg linear (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit3 <- lm(formula = alk.phos ~ trt*bili + age + male + stage,
+        ref_fit3 <- lm(formula = alk.phos ~ trt + bili + trt:bili + age + male + stage,
                        data = pbc_cc)
         ## Same classes
         expect_equal(class(yreg_fit3),
