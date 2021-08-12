@@ -22,7 +22,7 @@
 ##' @param mreg_fit Model fit object for mreg (mediator model).
 ##'
 ##' @return A named numeric vector of coefficients.
-beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
+beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel = NULL) {
     if (is.null(cvar)) {
         vars <- c("(Intercept)", avar)
     } else if (!is.null(cvar) & is.null(EMM_AC_Mmodel)){
@@ -35,7 +35,7 @@ beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
 
 
 
-beta_hat_helper <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
+beta_hat_helper <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel = NULL) {
     beta_hat <- beta_hat(mreg = mreg,
                          mreg_fit = mreg_fit,
                          avar = avar,
@@ -44,7 +44,7 @@ beta_hat_helper <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
     beta0 <- beta_hat["(Intercept)"]
     beta1 <- beta_hat[avar]
     if (is.null(cvar)) {
-        ## beta_hat does not contain the cvar part in this case.
+        ## beta_hat does not contain the cvar part in this case. ???
         beta2 <- NULL
     } else {
         beta2 <- beta_hat[cvar]
@@ -81,7 +81,8 @@ beta_hat_helper <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
 ##' @param yreg_fit Model fit object for yreg (outcome model).
 ##'
 ##' @return A named numeric vector of coefficients.
-theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, interaction) {
+theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel = NULL, EMM_MC = NULL, 
+                      interaction) {
 
     coef_raw <- coef(yreg_fit)
 
@@ -183,7 +184,7 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, i
     }
 }
 
-theta_hat_helper <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, interaction) {
+theta_hat_helper <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel = NULL, EMM_MC = NULL, interaction) {
     theta_hat <- theta_hat(yreg = yreg,
                            yreg_fit = yreg_fit,
                            avar = avar,
@@ -197,7 +198,6 @@ theta_hat_helper <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EM
     theta2 <- theta_hat[mvar]
     theta3 <- theta_hat[paste0(avar,":", mvar)]
     if (is.null(cvar)) {
-        ## theta_hat does not contain the cvar part in this case.
         theta4 <- NULL
     } else {
         theta4 <- theta_hat[cvar]
@@ -255,13 +255,13 @@ validate_myreg_coefs <- function(beta0,
     assertthat::assert_that(length(beta0) == 1)
     assertthat::assert_that(length(beta1) == 1)
     assertthat::assert_that(length(beta2) == length(theta4))
-    assertthat::assert_that(length(beta2) == length(beta3))
+    # assertthat::assert_that(length(beta2) == length(beta3))
     assertthat::assert_that(length(theta0) == 1)
     assertthat::assert_that(length(theta1) == 1)
     assertthat::assert_that(length(theta2) == 1)
     assertthat::assert_that(length(theta3) == 1)
-    assertthat::assert_that(length(theta4) == length(theta5))
-    assertthat::assert_that(length(theta4) == length(theta6))
+    # assertthat::assert_that(length(theta4) == length(theta5))
+    # assertthat::assert_that(length(theta4) == length(theta6))
     if (!is.null(sigma_sq)) {
         assertthat::assert_that(length(sigma_sq) == 1)
     }
@@ -285,8 +285,12 @@ validate_myreg_vcovs <- function(beta0,
 
     Sigma_beta_size <- sum(1, # beta0 (Intercept)
                            1, # beta1 for avar
-                           ## This can be 0 = length(NULL) when cvar = NULL
-                           length(beta2)) # beta2 vector cvar
+                           ## The following can be 0 = length(NULL) when cvar = NULL 
+                           length(beta2), 
+                           length(beta3)) 
+    # Can accommodate both scenarios:
+    # if is.null(beta2), then Sigma_beta_size = sum(1,1); 
+    # else, Sigma_beta_size = sum(1,1,length(cvar),length(cvar))
     assertthat::assert_that(dim(Sigma_beta)[1] == Sigma_beta_size)
     assertthat::assert_that(dim(Sigma_beta)[2] == Sigma_beta_size)
 
@@ -294,8 +298,10 @@ validate_myreg_vcovs <- function(beta0,
                             1, # theta1 for avar
                             1, # theta2 for mvar
                             1, # theta3 for avar:mvar
-                            ## This can be 0 = length(NULL) when cvar = NULL
-                            length(theta4)) # theta4 for cvar
+                            ## The following can be 0 = length(NULL) when cvar = NULL
+                            length(theta4),
+                            length(theta5),
+                            length(theta6)) 
     assertthat::assert_that(dim(Sigma_theta)[1] == Sigma_theta_size)
     assertthat::assert_that(dim(Sigma_theta)[2] == Sigma_theta_size)
 
