@@ -67,7 +67,7 @@ calc_myreg <- function(mreg,
 
     } else if (mreg == "linear" & yreg %in% supported_nonlinear_yreg) {
 
-        ## Extended VanderWeele 2015 p468 Proposition 2.4
+        ## Extension of VanderWeele 2015 p468 Proposition 2.4
         list_est_fun_se_fun <-
             calc_myreg_mreg_linear_yreg_logistic(mreg = mreg,
                                                  mreg_fit = mreg_fit,
@@ -83,7 +83,7 @@ calc_myreg <- function(mreg,
 
     } else if (mreg == "logistic" & yreg == "linear") {
 
-        ## Extended VanderWeele 2015 p471 Proposition 2.5
+        ## Extension of VanderWeele 2015 p471 Proposition 2.5
         list_est_fun_se_fun <-
             calc_myreg_mreg_logistic_yreg_linear(mreg = mreg,
                                                  mreg_fit = mreg_fit,
