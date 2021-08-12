@@ -81,7 +81,8 @@ beta_hat_helper <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel = NULL) {
 ##' @param yreg_fit Model fit object for yreg (outcome model).
 ##'
 ##' @return A named numeric vector of coefficients.
-theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel = NULL, EMM_MC = NULL, 
+theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, 
+                      EMM_AC_Ymodel = NULL, EMM_MC = NULL, 
                       interaction) {
 
     coef_raw <- coef(yreg_fit)
@@ -150,6 +151,7 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel = NULL, EM
           vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar, paste0(avar, ":", EMM_AC_Ymodel))
         } else if (!is.null(cvar) & is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
             coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar)],
+                            ## Add zero for AxM term
                             0,
                             coef_ready[cvar],
                             coef_ready[paste0(mvar, ":", EMM_MC)])
@@ -163,6 +165,7 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel = NULL, EM
             vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar, paste0(mvar, ":", EMM_MC))
         } else if (!is.null(cvar) & !is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
           coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar)],
+                          ## Add zero for AxM term
                           0,
                           coef_ready[cvar],
                           coef_ready[paste0(avar, ":", EMM_AC_Ymodel)],
