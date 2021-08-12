@@ -9,6 +9,7 @@
 library(testthat)
 library(survival)
 library(tidyverse)
+library(locfit)
 
 
 ###
@@ -29,7 +30,8 @@ describe("fit_mreg", {
                                          data = pbc_cc,
                                          avar = "trt",
                                          mvar = "bili",
-                                         cvar = NULL)
+                                         cvar = NULL,
+                                         EMM_AC_Mmodel = NULL)
             lm0 <- lm(formula = bili ~ trt,
                       data = pbc_cc)
             ## Same classes
@@ -51,7 +53,8 @@ describe("fit_mreg", {
                                          data = pbc_cc,
                                          avar = "trt",
                                          mvar = "bili",
-                                         cvar = c("age"))
+                                         cvar = c("age"),
+                                         EMM_AC_Mmodel = NULL)
             lm1 <- lm(formula = bili ~ trt + age,
                       data = pbc_cc)
             ## Same classes
@@ -73,7 +76,8 @@ describe("fit_mreg", {
                                          data = pbc_cc,
                                          avar = "trt",
                                          mvar = "bili",
-                                         cvar = c("age","male","stage"))
+                                         cvar = c("age","male","stage"),
+                                         EMM_AC_Mmodel = NULL)
             lm3 <- lm(formula = bili ~ trt + age + male + stage,
                       data = pbc_cc)
             ## Same classes
@@ -98,7 +102,8 @@ describe("fit_mreg", {
                                            data = pbc_cc,
                                            avar = "trt",
                                            mvar = "hepato",
-                                           cvar = NULL)
+                                           cvar = NULL,
+                                           EMM_AC_Mmodel = NULL)
             glm0 <- glm(formula = hepato ~ trt,
                         family = binomial(link = "logit"),
                         data = pbc_cc)
@@ -121,7 +126,8 @@ describe("fit_mreg", {
                                            data = pbc_cc,
                                            avar = "trt",
                                            mvar = "hepato",
-                                           cvar = c("age"))
+                                           cvar = c("age"),
+                                           EMM_AC_Mmodel = NULL)
             glm1 <- glm(formula = hepato ~ trt + age,
                         family = binomial(link = "logit"),
                         data = pbc_cc)
@@ -144,7 +150,8 @@ describe("fit_mreg", {
                                            data = pbc_cc,
                                            avar = "trt",
                                            mvar = "hepato",
-                                           cvar = c("age","male","stage"))
+                                           cvar = c("age","male","stage"),
+                                           EMM_AC_Mmodel = NULL)
             glm3 <- glm(formula = hepato ~ trt + age + male + stage,
                         family = binomial(link = "logit"),
                         data = pbc_cc)
