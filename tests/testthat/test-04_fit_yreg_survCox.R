@@ -9,6 +9,7 @@
 library(testthat)
 library(survival)
 library(tidyverse)
+library(locfit)
 
 
 ###
@@ -33,6 +34,8 @@ describe("fit_yreg Cox (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = "status")
         ref_fit0 <- coxph(formula = Surv(time,status) ~ trt + bili,
@@ -59,6 +62,8 @@ describe("fit_yreg Cox (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = "status")
         ref_fit1 <- coxph(formula = Surv(time,status) ~ trt + bili + age,
@@ -85,6 +90,8 @@ describe("fit_yreg Cox (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = "status")
         ref_fit3 <- coxph(formula = Surv(time,status) ~ trt + bili + age + male + stage,
@@ -124,9 +131,11 @@ describe("fit_yreg Cox (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = "status")
-        ref_fit0 <- coxph(formula = Surv(time,status) ~ trt*bili,
+        ref_fit0 <- coxph(formula = Surv(time,status) ~ trt + bili + trt:bili,
                           data = pbc_cc)
         ## Same classes
         expect_equal(class(yreg_fit0),
@@ -150,9 +159,11 @@ describe("fit_yreg Cox (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = "status")
-        ref_fit1 <- coxph(formula = Surv(time,status) ~ trt*bili + age,
+        ref_fit1 <- coxph(formula = Surv(time,status) ~ trt + bili + trt:bili + age,
                           data = pbc_cc)
         ## Same classes
         expect_equal(class(yreg_fit1),
@@ -176,9 +187,11 @@ describe("fit_yreg Cox (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = "status")
-        ref_fit3 <- coxph(formula = Surv(time,status) ~ trt*bili + age + male + stage,
+        ref_fit3 <- coxph(formula = Surv(time,status) ~ trt + bili + trt:bili + age + male + stage,
                           data = pbc_cc)
         ## Same classes
         expect_equal(class(yreg_fit3),

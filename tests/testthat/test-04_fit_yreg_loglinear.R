@@ -11,7 +11,7 @@ library(geepack)
 library(testthat)
 library(survival)
 library(tidyverse)
-
+library(locfit)
 
 ###
 ### Internal function for yreg model fitting (loglinear)
@@ -41,11 +41,11 @@ describe("Modified Poisson regression in R", {
                id = factor(id))
 
     it("implemented in glm/sandwich matches geepack exchangeable (no covariates)", {
-        glm_fit0 <- glm(formula = spiders ~ trt*bili,
+        glm_fit0 <- glm(formula = spiders ~ trt + bili + trt:bili,
                         family = poisson(link = "log"),
                         data = pbc_cc)
 
-        geeglm_fit0 <- geeglm(formula   = spiders ~ trt*bili,
+        geeglm_fit0 <- geeglm(formula   = spiders ~ trt + bili + trt:bili,
                               family    = poisson(link = "log"),
                               id        = id,
                               data      = pbc_cc,
@@ -69,11 +69,11 @@ describe("Modified Poisson regression in R", {
     })
 
     it("implemented in glm/sandwich  geepack exchangeable (three covariates)", {
-        glm_fit3 <- glm(formula = spiders ~ trt*bili + age + male + stage,
+        glm_fit3 <- glm(formula = spiders ~ trt + bili + trt:bili + age + male + stage,
                         family = poisson(link = "log"),
                         data = pbc_cc)
 
-        geeglm_fit3 <- geeglm(formula   = spiders ~ trt*bili + age + male + stage,
+        geeglm_fit3 <- geeglm(formula   = spiders ~ trt + bili + trt:bili + age + male + stage,
                               family    = poisson(link = "log"),
                               id        = id,
                               data      = pbc_cc,
@@ -112,6 +112,8 @@ describe("fit_yreg loglinear as modified poisson (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit0 <- glm(formula = spiders ~ trt + bili,
@@ -142,6 +144,8 @@ describe("fit_yreg loglinear as modified poisson (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit1 <- glm(formula = spiders ~ trt + bili + age,
@@ -172,6 +176,8 @@ describe("fit_yreg loglinear as modified poisson (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit3 <- glm(formula = spiders ~ trt + bili + age + male + stage,
@@ -213,9 +219,11 @@ describe("fit_yreg loglinear as modified poisson (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit0 <- glm(formula = spiders ~ trt*bili,
+        ref_fit0 <- glm(formula = spiders ~ trt + bili + trt:bili,
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
@@ -243,9 +251,11 @@ describe("fit_yreg loglinear as modified poisson (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit1 <- glm(formula = spiders ~ trt*bili + age,
+        ref_fit1 <- glm(formula = spiders ~ trt + bili + trt:bili + age,
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
@@ -273,9 +283,11 @@ describe("fit_yreg loglinear as modified poisson (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit3 <- glm(formula = spiders ~ trt*bili + age + male + stage,
+        ref_fit3 <- glm(formula = spiders ~ trt + bili + trt:bili + age + male + stage,
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes

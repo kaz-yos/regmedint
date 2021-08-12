@@ -9,7 +9,7 @@
 library(testthat)
 library(survival)
 library(tidyverse)
-
+library(locfit)
 
 ###
 ### Internal function for yreg model fitting (logistic)
@@ -31,6 +31,8 @@ describe("fit_yreg poisson (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit0 <- glm(formula = platelet ~ trt + bili,
@@ -58,6 +60,8 @@ describe("fit_yreg poisson (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit1 <- glm(formula = platelet ~ trt + bili + age,
@@ -85,6 +89,8 @@ describe("fit_yreg poisson (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit3 <- glm(formula = platelet ~ trt + bili + age + male + stage,
@@ -123,9 +129,11 @@ describe("fit_yreg poisson (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit0 <- glm(formula = platelet ~ trt*bili,
+        ref_fit0 <- glm(formula = platelet ~ trt + bili + trt:bili,
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
@@ -150,9 +158,11 @@ describe("fit_yreg poisson (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit1 <- glm(formula = platelet ~ trt*bili + age,
+        ref_fit1 <- glm(formula = platelet ~ trt + bili + trt:bili + age,
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes
@@ -177,9 +187,11 @@ describe("fit_yreg poisson (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
-        ref_fit3 <- glm(formula = platelet ~ trt*bili + age + male + stage,
+        ref_fit3 <- glm(formula = platelet ~ trt + bili + trt:bili + age + male + stage,
                         family = poisson(link = "log"),
                         data = pbc_cc)
         ## Same classes

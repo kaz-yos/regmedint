@@ -9,7 +9,7 @@
 library(testthat)
 library(survival)
 library(tidyverse)
-
+library(locfit)
 
 ###
 ### Internal function for yreg model fitting (logistic)
@@ -33,6 +33,8 @@ describe("fit_yreg exponential AFT (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = "status")
         ref_fit0 <- survreg(formula = Surv(time,status) ~ trt + bili,
@@ -60,6 +62,8 @@ describe("fit_yreg exponential AFT (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = "status")
         ref_fit1 <- survreg(formula = Surv(time,status) ~ trt + bili + age,
@@ -87,6 +91,8 @@ describe("fit_yreg exponential AFT (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = "status")
         ref_fit3 <- survreg(formula = Surv(time,status) ~ trt + bili + age + male + stage,
@@ -127,9 +133,11 @@ describe("fit_yreg exponential AFT (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = "status")
-        ref_fit0 <- survreg(formula = Surv(time,status) ~ trt*bili,
+        ref_fit0 <- survreg(formula = Surv(time,status) ~ trt + bili + trt:bili,
                             dist = "exponential",
                             data = pbc_cc)
         ## Same classes
@@ -154,9 +162,11 @@ describe("fit_yreg exponential AFT (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = "status")
-        ref_fit1 <- survreg(formula = Surv(time,status) ~ trt*bili + age,
+        ref_fit1 <- survreg(formula = Surv(time,status) ~ trt + bili + trt:bili + age,
                             dist = "exponential",
                             data = pbc_cc)
         ## Same classes
@@ -181,9 +191,11 @@ describe("fit_yreg exponential AFT (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = "status")
-        ref_fit3 <- survreg(formula = Surv(time,status) ~ trt*bili + age + male + stage,
+        ref_fit3 <- survreg(formula = Surv(time,status) ~ trt + bili + trt:bili + age + male + stage,
                             dist = "exponential",
                             data = pbc_cc)
         ## Same classes
