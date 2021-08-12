@@ -22,10 +22,10 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                  yreg_fit,
                                                  avar,
                                                  mvar,
-                                                 cvar, # This can be NULL.
-                                                 EMM_AC_Mmodel,
-                                                 EMM_AC_Ymodel,
-                                                 EMM_MC,
+                                                 cvar, 
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = NULL,
                                                  interaction) {
 
     ## mreg coefficients
@@ -147,10 +147,10 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
         }
         
         if (is.null(beta3)) {
-            assertthat::assert_that(is.null(c_cond))
+            assertthat::assert_that(is.null(EMM_AC_Mmodel))
             beta3_c <- 0
         } else {
-            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(!is.null(EMM_AC_Mmodel))
             assertthat::assert_that(length(c_cond) == length(beta3))
             beta3_c <- sum(t(matrix(beta3)) %*% matrix(c_cond))
         }
@@ -165,19 +165,19 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
         }
         
         if (is.null(theta5)) {
-            assertthat::assert_that(is.null(c_cond))
+            assertthat::assert_that(is.null(EMM_AC_Ymodel))
             theta5_c <- 0
         } else {
-            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(!is.null(EMM_AC_Ymodel))
             assertthat::assert_that(length(c_cond) == length(theta5))
             theta5_c <- sum(t(matrix(theta5)) %*% matrix(c_cond))
         }
         
         if (is.null(theta6)) {
-            assertthat::assert_that(is.null(c_cond))
+            assertthat::assert_that(is.null(EMM_MC))
             theta6_c <- 0
         } else {
-            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(!is.null(EMM_MC))
             assertthat::assert_that(length(c_cond) == length(theta6))
             theta6_c <- sum(t(matrix(theta6)) %*% matrix(c_cond))
         }
@@ -282,10 +282,10 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         }
         
         if (is.null(beta3)) {
-            assertthat::assert_that(is.null(c_cond))
+            assertthat::assert_that(is.null(EMM_AC_Mmodel))
             beta3_c <- 0
         } else {
-            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(!is.null(EMM_AC_Mmodel))
             assertthat::assert_that(length(c_cond) == length(beta3))
             beta3_c <- sum(t(matrix(beta3)) %*% matrix(c_cond))
         }
@@ -300,19 +300,19 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         }
         
         if (is.null(theta5)) {
-            assertthat::assert_that(is.null(c_cond))
+            assertthat::assert_that(is.null(EMM_AC_Ymodel))
             theta5_c <- 0
         } else {
-            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(!is.null(EMM_AC_Ymodel))
             assertthat::assert_that(length(c_cond) == length(theta5))
             theta5_c <- sum(t(matrix(theta5)) %*% matrix(c_cond))
         }
         
         if (is.null(theta6)) {
-            assertthat::assert_that(is.null(c_cond))
+            assertthat::assert_that(is.null(EMM_MC))
             theta6_c <- 0
         } else {
-            assertthat::assert_that(!is.null(c_cond))
+            assertthat::assert_that(!is.null(EMM_MC))
             assertthat::assert_that(length(c_cond) == length(theta6))
             theta6_c <- sum(t(matrix(theta6)) %*% matrix(c_cond))
         }
