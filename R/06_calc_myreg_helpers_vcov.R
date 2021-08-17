@@ -41,7 +41,7 @@ Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
 
 
 
-# Note: always has AxM row/column, even though there is interaction = FALSE
+# Note1: always has AxM row/column, even though there is interaction = FALSE
 Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, interaction) {
     ## Assign row and column names, stratified by is.null(cvar), because paste0(avar, ":", cvar) will have avar:  .
     if(!is.null(cvar)){
