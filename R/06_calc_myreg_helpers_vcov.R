@@ -41,7 +41,7 @@ Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
 
 
 
-
+# Always has AxM row/column, even though there is interaction = FALSE
 Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, interaction) {
     ## Assign row and column names, stratified by is.null(cvar), because paste0(avar, ":", cvar) will have avar:  .
     if(!is.null(cvar)){
@@ -65,10 +65,10 @@ Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM
      
     } else {
       vcov_theta <- matrix(0, 4, 4)
-      rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar))
+      rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar))
     }
     
-    # plug in non-zeros to corresponding elements:f
+    # plug in non-zeros to corresponding elements
     for(row_name in names(coef(yreg_fit))){
       for(col_name in names(coef(yreg_fit))){
         vcov_theta[row_name, col_name] <- vcov(yreg_fit)[row_name, col_name, drop = FALSE]
