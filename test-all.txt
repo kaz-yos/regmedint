@@ -1,26 +1,372 @@
-✔ |  OK F W S | Context
-⠏ |   0       | 01_regmedint_class_ui                                                                                   ⠋ |   1       | 01_regmedint_class_ui                                                                                   ⠹ |   3       | 01_regmedint_class_ui                                                                                   ⠏ |  10       | 01_regmedint_class_ui                                                                                   ✔ |  18       | 01_regmedint_class_ui [1.8 s]
-⠏ |   0       | 03_fit_mreg                                                                                             ✔ |  24       | 03_fit_mreg
-⠏ |   0       | 03_helpers_fit_mreg_fit_yreg                                                                            ✔ |  23       | 03_helpers_fit_mreg_fit_yreg
-⠏ |   0       | 04_fit_yreg_linear                                                                                      ✔ |  24       | 04_fit_yreg_linear
-⠏ |   0       | 04_fit_yreg_logistic                                                                                    ✔ |  24       | 04_fit_yreg_logistic
-⠏ |   0       | 04_fit_yreg_loglinear                                                                                   ⠦ |   7       | 04_fit_yreg_loglinear                                                                                   ⠏ |  30       | 04_fit_yreg_loglinear                                                                                   ✔ |  36       | 04_fit_yreg_loglinear [0.2 s]
-⠏ |   0       | 04_fit_yreg_negbin                                                                                      ⠦ |  17       | 04_fit_yreg_negbin                                                                                      ✔ |  24       | 04_fit_yreg_negbin [0.1 s]
-⠏ |   0       | 04_fit_yreg_poisson                                                                                     ✔ |  24       | 04_fit_yreg_poisson
-⠏ |   0       | 04_fit_yreg_survAFT_exp                                                                                 ✔ |  24       | 04_fit_yreg_survAFT_exp
-⠏ |   0       | 04_fit_yreg_survAFT_weibull                                                                             ✔ |  24       | 04_fit_yreg_survAFT_weibull
-⠏ |   0       | 04_fit_yreg_survCox                                                                                     ✔ |  24       | 04_fit_yreg_survCox
-⠏ |   0       | 05_calc_myreg                                                                                           ⠹ |   3       | 05_calc_myreg                                                                                           ✔ |   6       | 05_calc_myreg [0.2 s]
-⠏ |   0       | 06_calc_myreg_helpers_coef                                                                              ⠏ |  30       | 06_calc_myreg_helpers_coef                                                                              ⠇ |  49       | 06_calc_myreg_helpers_coef                                                                              ⠸ |  94       | 06_calc_myreg_helpers_coef                                                                              ✔ | 109       | 06_calc_myreg_helpers_coef [0.4 s]
-⠏ |   0       | 06_calc_myreg_helpers_vcov                                                                              ⠸ |  24       | 06_calc_myreg_helpers_vcov                                                                              ⠇ |  49       | 06_calc_myreg_helpers_vcov                                                                              ⠋ |  71       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  97       | 06_calc_myreg_helpers_vcov                                                                              ✔ | 110       | 06_calc_myreg_helpers_vcov [0.5 s]
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠦ |  27       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠇ |  69       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠙ | 102       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠇ | 119       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠏ | 160       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠼ | 185       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ✔ | 225       | 07_calc_myreg_mreg_linear_yreg_linear [0.7 s]
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠹ |  23       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠇ |  59       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠹ |  93       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠇ | 129       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠦ | 167       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠙ | 202       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ✔ | 235       | 07_calc_myreg_mreg_linear_yreg_logistic [0.7 s]
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠇ |  49       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠴ |  86       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠋ | 121       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠦ | 157       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠼ | 195       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ✔ | 220       | 07_calc_myreg_mreg_logistic_yreg_linear [1.0 s]
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠇ |  49       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠧ |  88       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠇ | 119       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠸ | 154       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠦ | 177       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠴ | 216       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ✔ | 223       | 07_calc_myreg_mreg_logistic_yreg_logistic [1.1 s]
-⠏ |   0       | 08_regmedint_class_user_methods                                                                         ⠴ |   6       | 08_regmedint_class_user_methods                                                                         ⠸ |  24       | 08_regmedint_class_user_methods                                                                         ⠹ |  33       | 08_regmedint_class_user_methods                                                                         ⠸ |  44       | 08_regmedint_class_user_methods                                                                         ⠸ |  64       | 08_regmedint_class_user_methods                                                                         ⠙ |  82       | 08_regmedint_class_user_methods                                                                         ⠹ |  93       | 08_regmedint_class_user_methods                                                                         ⠹ | 103       | 08_regmedint_class_user_methods                                                                         ⠦ | 127       | 08_regmedint_class_user_methods                                                                         ⠙ | 142       | 08_regmedint_class_user_methods                                                                         ⠹ | 153       | 08_regmedint_class_user_methods                                                                         ⠇ | 169       | 08_regmedint_class_user_methods                                                                         ⠼ | 195       | 08_regmedint_class_user_methods                                                                         ⠴ | 206       | 08_regmedint_class_user_methods                                                                         ⠦ | 217       | 08_regmedint_class_user_methods                                                                         ✔ | 226       | 08_regmedint_class_user_methods [1.8 s]
-⠏ |   0       | 09_cross_check_with_sas_macro                                                                           ⠙ |   2       | 09_cross_check_with_sas_macro                                                                           ⠏ |  80       | 09_cross_check_with_sas_macro                                                                           ⠴ | 146       | 09_cross_check_with_sas_macro                                                                           ⠙ | 162       | 09_cross_check_with_sas_macro                                                                           ⠸ | 224       | 09_cross_check_with_sas_macro                                                                           ⠋ | 291       | 09_cross_check_with_sas_macro                                                                           ⠸ | 374       | 09_cross_check_with_sas_macro                                                                           ⠴ | 466       | 09_cross_check_with_sas_macro                                                                           ⠸ | 564       | 09_cross_check_with_sas_macro                                                                           ⠧ | 658       | 09_cross_check_with_sas_macro                                                                           ⠙ | 752       | 09_cross_check_with_sas_macro                                                                           ⠇ | 869       | 09_cross_check_with_sas_macro                                                                           ⠇ | 979       | 09_cross_check_with_sas_macro                                                                           ⠹ | 1083       | 09_cross_check_with_sas_macro                                                                          ⠦ | 1187       | 09_cross_check_with_sas_macro                                                                          ⠹ | 1293       | 09_cross_check_with_sas_macro                                                                          ⠙ | 1382       | 09_cross_check_with_sas_macro                                                                          ⠋ | 1481       | 09_cross_check_with_sas_macro                                                                          ⠦ | 1597       | 09_cross_check_with_sas_macro                                                                          ⠙ | 1692       | 09_cross_check_with_sas_macro                                                                          ⠏ | 1790       | 09_cross_check_with_sas_macro                                                                          ⠼ | 1905       | 09_cross_check_with_sas_macro                                                                          ⠧ | 2018       | 09_cross_check_with_sas_macro                                                                          ⠇ | 2109       | 09_cross_check_with_sas_macro                                                                          ⠦ | 2217       | 09_cross_check_with_sas_macro                                                                          ⠦ | 2327       | 09_cross_check_with_sas_macro                                                                          ✔ | 2419       | 09_cross_check_with_sas_macro [5.6 s]
+✔ |  OK [38;5;214mF[39m [35mW[39m [34mS[39m | Context
+⠏ |   0       | 01_regmedint_class_ui                                                                                   [38;5;214m⠋[39m |   0 1     | 01_regmedint_class_ui                                                                                   [31m✖[39m |   0 1     | 01_regmedint_class_ui[36m [2.2 s][39m
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1m[38;5;214mError[39m (test-01_regmedint_class_ui.R:18:1): (code run outside of `test_that()`)[22m
+Error: object 'EMM_AC_Mmodel' not found
+[1mBacktrace:[22m
+[90m  1. [39mtestthat::describe(...) [90mtest-01_regmedint_class_ui.R:18:0[39m
+[90m  2. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m  4. [39mtestthat::describe(...) [90mtest-01_regmedint_class_ui.R:22:4[39m
+[90m  5. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m  7. [39mtestthat::describe(...) [90mtest-01_regmedint_class_ui.R:35:8[39m
+[90m  8. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 11. [39mregmedint::summary.regmedint(fit_regmedint_obj)
+[90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 03_fit_mreg                                                                                             [32m✔[39m |  24       | 03_fit_mreg
+⠏ |   0       | 03_helpers_fit_mreg_fit_yreg                                                                            ⠙ |  22       | 03_helpers_fit_mreg_fit_yreg                                                                            ⠹ |  23       | 03_helpers_fit_mreg_fit_yreg                                                                            [32m✔[39m |  23       | 03_helpers_fit_mreg_fit_yreg[36m [0.4 s][39m
+⠏ |   0       | 04_fit_yreg_linear                                                                                      ⠼ |   5       | 04_fit_yreg_linear                                                                                      ⠹ |  13       | 04_fit_yreg_linear                                                                                      [32m✔[39m |  24       | 04_fit_yreg_linear[36m [0.3 s][39m
+⠏ |   0       | 04_fit_yreg_logistic                                                                                    ⠏ |  20       | 04_fit_yreg_logistic                                                                                    [32m✔[39m |  24       | 04_fit_yreg_logistic[36m [0.1 s][39m
+⠏ |   0       | 04_fit_yreg_loglinear                                                                                   ⠙ |   2       | 04_fit_yreg_loglinear                                                                                   ⠼ |  15       | 04_fit_yreg_loglinear                                                                                   ⠴ |  16       | 04_fit_yreg_loglinear                                                                                   ⠧ |  28       | 04_fit_yreg_loglinear                                                                                   [32m✔[39m |  36       | 04_fit_yreg_loglinear[36m [0.8 s][39m
+⠏ |   0       | 04_fit_yreg_negbin                                                                                      ⠇ |   9       | 04_fit_yreg_negbin                                                                                      ⠸ |  24       | 04_fit_yreg_negbin                                                                                      [32m✔[39m |  24       | 04_fit_yreg_negbin[36m [0.2 s][39m
+⠏ |   0       | 04_fit_yreg_poisson                                                                                     [32m✔[39m |  24       | 04_fit_yreg_poisson
+⠏ |   0       | 04_fit_yreg_survAFT_exp                                                                                 ⠴ |  16       | 04_fit_yreg_survAFT_exp                                                                                 [32m✔[39m |  24       | 04_fit_yreg_survAFT_exp[36m [0.1 s][39m
+⠏ |   0       | 04_fit_yreg_survAFT_weibull                                                                             ⠹ |  13       | 04_fit_yreg_survAFT_weibull                                                                             [32m✔[39m |  24       | 04_fit_yreg_survAFT_weibull[36m [0.2 s][39m
+⠏ |   0       | 04_fit_yreg_survCox                                                                                     ⠇ |   9       | 04_fit_yreg_survCox                                                                                     ⠹ |  23       | 04_fit_yreg_survCox                                                                                     [32m✔[39m |  24       | 04_fit_yreg_survCox[36m [0.2 s][39m
+⠏ |   0       | 05_calc_myreg                                                                                           ⠹ |   3       | 05_calc_myreg                                                                                           [32m✔[39m |   6       | 05_calc_myreg[36m [0.4 s][39m
+⠏ |   0       | 06_calc_myreg_helpers_coef                                                                              [38;5;214m⠧[39m |  13 5     | 06_calc_myreg_helpers_coef                                                                              [38;5;214m⠙[39m |  18 14     | 06_calc_myreg_helpers_coef                                                                             [38;5;214m⠏[39m |  30 20     | 06_calc_myreg_helpers_coef                                                                             [38;5;214m⠙[39m |  46 26     | 06_calc_myreg_helpers_coef                                                                             [38;5;214m⠴[39m |  64 32     | 06_calc_myreg_helpers_coef                                                                             [31m✖[39m |  68 33     | 06_calc_myreg_helpers_coef[36m [0.5 s][39m
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1m[38;5;214mError[39m (test-06_calc_myreg_helpers_coef.R:191:17): theta_hat (NULL cvar) for yreg linear: extracts coef correctly when there is no interaction (add zero)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-06_calc_myreg_helpers_coef.R:191:16[39m
+[90m 4. [39mregmedint::theta_hat(...)
 
-══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 14.7 s
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:222:17): theta_hat (NULL cvar) for yreg linear: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
 
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 4042 ]
+[1m[38;5;214mError[39m (test-06_calc_myreg_helpers_coef.R:231:17): theta_hat (NULL cvar) for yreg linear: extracts coef correctly when there is an interaction[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-06_calc_myreg_helpers_coef.R:231:16[39m
+[90m 5. [39mregmedint::theta_hat(...)
+
+[1m[38;5;214mError[39m (test-06_calc_myreg_helpers_coef.R:259:17): theta_hat (NULL cvar) for yreg logistic: extracts coef correctly when there is no interaction (add zero)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-06_calc_myreg_helpers_coef.R:259:16[39m
+[90m 4. [39mregmedint::theta_hat(...)
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:290:17): theta_hat (NULL cvar) for yreg logistic: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mError[39m (test-06_calc_myreg_helpers_coef.R:327:17): theta_hat (NULL cvar) for yreg loglinear: extracts coef correctly when there is no interaction (add zero)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-06_calc_myreg_helpers_coef.R:327:16[39m
+[90m 4. [39mregmedint::theta_hat(...)
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:358:17): theta_hat (NULL cvar) for yreg loglinear: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mError[39m (test-06_calc_myreg_helpers_coef.R:396:17): theta_hat (NULL cvar) for yreg poisson: extracts coef correctly when there is no interaction (add zero)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-06_calc_myreg_helpers_coef.R:396:16[39m
+[90m 4. [39mregmedint::theta_hat(...)
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:427:17): theta_hat (NULL cvar) for yreg poisson: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mError[39m (test-06_calc_myreg_helpers_coef.R:465:17): theta_hat (NULL cvar) for yreg negbin: extracts coef correctly when there is no interaction (add zero)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-06_calc_myreg_helpers_coef.R:465:16[39m
+[90m 4. [39mregmedint::theta_hat(...)
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:496:17): theta_hat (NULL cvar) for yreg negbin: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mError[39m (test-06_calc_myreg_helpers_coef.R:534:17): theta_hat (NULL cvar) for yreg survCox: extracts coef correctly when there is no interaction (add two zeros)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-06_calc_myreg_helpers_coef.R:534:16[39m
+[90m 4. [39mregmedint::theta_hat(...)
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:567:17): theta_hat (NULL cvar) for yreg survCox: extracts coef correctly when there is an interaction (add zero for Intercept)[22m
+theta_hat(...) not equal to `ref_coef`.
+Types not compatible: character is not double
+
+[1m[38;5;214mError[39m (test-06_calc_myreg_helpers_coef.R:604:17): theta_hat (NULL cvar) for yreg survAFT_exp: extracts coef correctly when there is no interaction (add zero)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-06_calc_myreg_helpers_coef.R:604:16[39m
+[90m 4. [39mregmedint::theta_hat(...)
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:635:17): theta_hat (NULL cvar) for yreg survAFT_exp: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mError[39m (test-06_calc_myreg_helpers_coef.R:672:17): theta_hat (NULL cvar) for yreg survAFT_weibull: extracts coef correctly when there is no interaction (add zero)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-06_calc_myreg_helpers_coef.R:672:16[39m
+[90m 4. [39mregmedint::theta_hat(...)
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:703:17): theta_hat (NULL cvar) for yreg survAFT_weibull: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:775:17): theta_hat (1 cvar) for yreg linear: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:844:17): theta_hat (1 cvar) for yreg logistic: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:913:17): theta_hat (1 cvar) for yreg loglinear: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:983:17): theta_hat (1 cvar) for yreg poisson: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1053:17): theta_hat (1 cvar) for yreg negbin: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1125:17): theta_hat (1 cvar) for yreg survCox: extracts coef correctly when there is an interaction (add zero for Intercept)[22m
+theta_hat(...) not equal to `ref_coef`.
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1194:17): theta_hat (1 cvar) for yreg survAFT_exp: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1263:17): theta_hat (1 cvar) for yreg survAFT_weibull: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1335:17): theta_hat (3 cvar) for yreg linear: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1404:17): theta_hat (3 cvar) for yreg logistic: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1473:17): theta_hat (3 cvar) for yreg loglinear: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1543:17): theta_hat (3 cvar) for yreg poisson: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1613:17): theta_hat (3 cvar) for yreg negbin: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1685:17): theta_hat (3 cvar) for yreg survCox: extracts coef correctly when there is an interaction (Add zero for Intercept)[22m
+theta_hat(...) not equal to `ref_coef`.
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1754:17): theta_hat (3 cvar) for yreg survAFT_exp: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1823:17): theta_hat (3 cvar) for yreg survAFT_weibull: extracts coef correctly when there is an interaction[22m
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 06_calc_myreg_helpers_vcov                                                                              ⠙ |  12       | 06_calc_myreg_helpers_vcov                                                                              [38;5;214m⠇[39m |  17 2     | 06_calc_myreg_helpers_vcov                                                                              [38;5;214m⠴[39m |  23 3     | 06_calc_myreg_helpers_vcov                                                                              [38;5;214m⠼[39m |  36 9     | 06_calc_myreg_helpers_vcov                                                                              [38;5;214m⠼[39m |  43 12     | 06_calc_myreg_helpers_vcov                                                                             [38;5;214m⠦[39m |  45 12     | 06_calc_myreg_helpers_vcov                                                                             [38;5;214m⠙[39m |  49 13     | 06_calc_myreg_helpers_vcov                                                                             [38;5;214m⠴[39m |  58 18     | 06_calc_myreg_helpers_vcov                                                                             [38;5;214m⠼[39m |  65 20     | 06_calc_myreg_helpers_vcov                                                                             [38;5;214m⠦[39m |  66 21     | 06_calc_myreg_helpers_vcov                                                                             [38;5;214m⠇[39m |  68 21     | 06_calc_myreg_helpers_vcov                                                                             [38;5;214m⠋[39m |  69 22     | 06_calc_myreg_helpers_vcov                                                                             [38;5;214m⠦[39m |  74 23     | 06_calc_myreg_helpers_vcov                                                                             [38;5;214m⠦[39m |  80 27     | 06_calc_myreg_helpers_vcov                                                                             [31m✖[39m |  83 27     | 06_calc_myreg_helpers_vcov[36m [1.7 s][39m
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:197:17): Sigma_theta_hat (NULL cvar) for yreg linear: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:266:17): Sigma_theta_hat (NULL cvar) for yreg logistic: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:335:17): Sigma_theta_hat (NULL cvar) for yreg loglinear: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:405:17): Sigma_theta_hat (NULL cvar) for yreg poisson: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:476:17): Sigma_theta_hat (NULL cvar) for yreg negbin: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:546:17): Sigma_theta_hat (NULL cvar) for yreg survCox: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to `ref_vcov`.
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:581:17): Sigma_theta_hat (NULL cvar) for yreg survCox: extracts vcov correctly when there is an interaction[22m
+Sigma_theta_hat(...) not equal to `ref_vcov`.
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:619:17): Sigma_theta_hat (NULL cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:688:17): Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:764:17): Sigma_theta_hat (1 cvar) for yreg linear: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:834:17): Sigma_theta_hat (1 cvar) for yreg logistic: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:904:17): Sigma_theta_hat (1 cvar) for yreg loglinear: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:975:17): Sigma_theta_hat (1 cvar) for yreg poisson: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1047:17): Sigma_theta_hat (1 cvar) for yreg negbin: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1118:17): Sigma_theta_hat (1 cvar) for yreg survCox: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1153:17): Sigma_theta_hat (1 cvar) for yreg survCox: extracts vcov correctly when there is an interaction[22m
+Sigma_theta_hat(...) not equal to `ref_vcov`.
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1192:17): Sigma_theta_hat (1 cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1262:17): Sigma_theta_hat (1 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1338:17): Sigma_theta_hat (3 cvar) for yreg linear: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1408:17): Sigma_theta_hat (3 cvar) for yreg logistic: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1478:17): Sigma_theta_hat (3 cvar) for yreg loglinear: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1549:17): Sigma_theta_hat (3 cvar) for yreg poisson: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1621:17): Sigma_theta_hat (3 cvar) for yreg negbin: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1692:17): Sigma_theta_hat (3 cvar) for yreg survCox: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1727:17): Sigma_theta_hat (3 cvar) for yreg survCox: extracts vcov correctly when there is an interaction[22m
+Sigma_theta_hat(...) not equal to `ref_vcov`.
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1766:17): Sigma_theta_hat (3 cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+
+[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_vcov.R:1836:17): Sigma_theta_hat (3 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction[22m
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [31m✖[39m |   0 1     | 07_calc_myreg_mreg_linear_yreg_linear
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:26:1): (code run outside of `test_that()`)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:26:0[39m
+[90m 2. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 4. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:28:4[39m
+[90m 5. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 7. [39mregmedint::calc_myreg_mreg_linear_yreg_linear(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:42:8[39m
+[90m 8. [39mregmedint::theta_hat_helper(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_linear_yreg_linear.R:38:4[39m
+[90m 9. [39mregmedint::theta_hat(...) [90m/Users/yili/Desktop/regmedint2021/R/06_calc_myreg_helpers_coef.R:191:4[39m
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [31m✖[39m |   0 1     | 07_calc_myreg_mreg_linear_yreg_logistic
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:26:1): (code run outside of `test_that()`)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:26:0[39m
+[90m 2. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 4. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:28:4[39m
+[90m 5. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 7. [39mregmedint::calc_myreg_mreg_linear_yreg_logistic(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:42:8[39m
+[90m 8. [39mregmedint::theta_hat_helper(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_linear_yreg_logistic.R:40:4[39m
+[90m 9. [39mregmedint::theta_hat(...) [90m/Users/yili/Desktop/regmedint2021/R/06_calc_myreg_helpers_coef.R:191:4[39m
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [31m✖[39m |   0 1     | 07_calc_myreg_mreg_logistic_yreg_linear
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:28:1): (code run outside of `test_that()`)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:28:0[39m
+[90m 2. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 4. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:30:4[39m
+[90m 5. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 7. [39mregmedint::calc_myreg_mreg_logistic_yreg_linear(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:44:8[39m
+[90m 8. [39mregmedint::theta_hat_helper(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_logistic_yreg_linear.R:39:4[39m
+[90m 9. [39mregmedint::theta_hat(...) [90m/Users/yili/Desktop/regmedint2021/R/06_calc_myreg_helpers_coef.R:191:4[39m
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [31m✖[39m |   0 1     | 07_calc_myreg_mreg_logistic_yreg_logistic
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:28:1): (code run outside of `test_that()`)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:28:0[39m
+[90m 2. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 4. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:30:4[39m
+[90m 5. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 7. [39mregmedint::calc_myreg_mreg_logistic_yreg_logistic(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:44:8[39m
+[90m 8. [39mregmedint::theta_hat_helper(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_logistic_yreg_logistic.R:39:4[39m
+[90m 9. [39mregmedint::theta_hat(...) [90m/Users/yili/Desktop/regmedint2021/R/06_calc_myreg_helpers_coef.R:191:4[39m
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 08_regmedint_class_user_methods                                                                         [38;5;214m⠋[39m |   0 1     | 08_regmedint_class_user_methods                                                                         [31m✖[39m |   0 1     | 08_regmedint_class_user_methods[36m [0.1 s][39m
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:12:1): (code run outside of `test_that()`)[22m
+Error: invalid subscript type 'closure'
+[1mBacktrace:[22m
+[90m  1. [39mtestthat::describe(...) [90mtest-08_regmedint_class_user_methods.R:12:0[39m
+[90m  2. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m  4. [39mtestthat::describe(...) [90mtest-08_regmedint_class_user_methods.R:23:4[39m
+[90m  5. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m  7. [39mregmedint::regmedint(...) [90mtest-08_regmedint_class_user_methods.R:24:8[39m
+[90m  8. [39mregmedint::new_regmedint(...) [90m/Users/yili/Desktop/regmedint2021/R/01_regmedint_class_ui.R:126:4[39m
+[90m  9. [39mregmedint::calc_myreg(...) [90m/Users/yili/Desktop/regmedint2021/R/02_regmedint_class_constructor.R:70:4[39m
+[90m 10. [39mregmedint::calc_myreg_mreg_linear_yreg_linear(...) [90m/Users/yili/Desktop/regmedint2021/R/05_calc_myreg_mediation_analysis.R:55:8[39m
+[90m 11. [39mregmedint::theta_hat_helper(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_linear_yreg_linear.R:38:4[39m
+[90m 12. [39mregmedint::theta_hat(...) [90m/Users/yili/Desktop/regmedint2021/R/06_calc_myreg_helpers_coef.R:191:4[39m
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 09_cross_check_with_sas_macro                                                                           ⠋ |   1       | 09_cross_check_with_sas_macro                                                                           ⠙ |   2       | 09_cross_check_with_sas_macro                                                                           ⠼ |  35       | 09_cross_check_with_sas_macro                                                                           ⠹ |  73       | 09_cross_check_with_sas_macro                                                                           ⠼ |  95       | 09_cross_check_with_sas_macro                                                                           ⠙ | 132       | 09_cross_check_with_sas_macro                                                                           [38;5;214m⠙[39m | 161 1     | 09_cross_check_with_sas_macro                                                                           [31m✖[39m | 161 1     | 09_cross_check_with_sas_macro[36m [5.1 s][39m
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1m[38;5;214mError[39m (test-09_cross_check_with_sas_macro.R:236:1): (code run outside of `test_that()`)[22m
+Error: Problem with `mutate()` column `junk`.
+[34mℹ[39m `junk = pmap(...)`.
+[31m✖[39m object 'EMM_AC_Mmodel' not found
+[1mBacktrace:[22m
+[90m  1. [39m`%>%`(...) [90mtest-09_cross_check_with_sas_macro.R:236:0[39m
+[90m 25. [39mbase::.handleSimpleError(...)
+[90m 26. [39mdplyr:::h(simpleError(msg, call))
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+══ [1mResults[22m ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
+[36mDuration: 13.3 s[39m
+
+[ [38;5;214mFAIL[39m 67 | [35mWARN[39m 0 | [34mSKIP[39m 0 | [32mPASS[39m 569 ]
