@@ -105,14 +105,14 @@ calc_myreg_mreg_logistic_yreg_linear <- function(mreg,
 calc_myreg_mreg_logistic_yreg_linear_est <- function(beta0,
                                                      beta1,
                                                      beta2,
-                                                     beta3,
+                                                     beta3 = NULL,
                                                      theta0,
                                                      theta1,
                                                      theta2,
                                                      theta3,
                                                      theta4,
-                                                     theta5,
-                                                     theta6) {
+                                                     theta5 = NULL,
+                                                     theta6 = NULL) {
 
     validate_myreg_coefs(beta0 = beta0,
                          beta1 = beta1,
@@ -126,8 +126,8 @@ calc_myreg_mreg_logistic_yreg_linear_est <- function(beta0,
                          theta5 = theta5,
                          theta6 = theta6)
 
-    ## Construct a function for point estimates given (a0, a1, m_cde, c_cond).
-    fun_est <- function(a0, a1, m_cde, c_cond) {
+    ## Construct a function for point estimates given (a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC).
+    fun_est <- function(a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC) {
 
         ## Term involving an inner product of beta2 and c_cond
         ## matrix operation to error on non-conformant structure.
@@ -212,14 +212,14 @@ calc_myreg_mreg_logistic_yreg_linear_est <- function(beta0,
 calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                                                     beta1,
                                                     beta2,
-                                                    beta3,
+                                                    beta3 = NULL,
                                                     theta0,
                                                     theta1,
                                                     theta2,
                                                     theta3,
                                                     theta4,
-                                                    theta5,
-                                                    theta6,
+                                                    theta5 = NULL,
+                                                    theta6 = NULL,
                                                     Sigma_beta,
                                                     Sigma_theta) {
 
@@ -252,8 +252,8 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
     Sigma <- Matrix::bdiag(Sigma_beta,
                            Sigma_theta)
 
-    ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond)
-    fun_se <- function(a0, a1, m_cde, c_cond) {
+    ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC)
+    fun_se <- function(a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC) {
 
         ## Term involving an inner product of beta2 and c_cond
         ## matrix operation to error on non-conformant structure.
