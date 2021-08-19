@@ -188,7 +188,6 @@ describe("theta_hat", {
                 vars <- c("(Intercept)","trt","bili","trt:bili")
                 ref_coef <- c(coef(yreg_fit0)[vars1],
                               "trt:bili" = 0)
-                
                 expect_equal(theta_hat(yreg = "linear",
                                        yreg_fit = yreg_fit0,
                                        avar = "trt",
