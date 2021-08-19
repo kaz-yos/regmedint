@@ -47,7 +47,10 @@ describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
                                                avar = "trt",
                                                mvar = "bili",
                                                cvar = NULL,
-                                               interaction = FALSE)
+                                               interaction = FALSE,
+                                               EMM_AC_Mmodel = NULL,
+                                               EMM_AC_Ymodel = NULL,
+                                               EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -62,7 +65,7 @@ describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
                          c("a0","a1","m_cde","c_cond", "EMM_AC_Mmodel", "EMM_AC_Ymodel", "EMM_MC"))
         })
         it("returns functions that return named vector of effect estimates", {
-            expect_equal(names(myreg_funs[[1]](1,2,3,NULL)),
+            expect_equal(names(myreg_funs[[1]](1,2,3,NULL)), #???
                          c("cde",
                            "pnde","tnie",
                            "tnde","pnie",
