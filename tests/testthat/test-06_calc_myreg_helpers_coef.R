@@ -235,7 +235,7 @@ describe("theta_hat", {
                                        cvar = NULL,
                                        EMM_AC_Ymodel = NULL,
                                        EMM_MC = NULL,
-                                       interaction = FALSE) %>% length(),
+                                       interaction = TRUE) %>% length(),
                              length(coef(yreg_fit0)) + 0)
             })
         })
