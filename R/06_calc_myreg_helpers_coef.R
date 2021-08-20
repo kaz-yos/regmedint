@@ -114,23 +114,23 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar,
           names(coef_ready) <- c("(Intercept)",
                                  avar, mvar,
                                  paste0(avar, ":", mvar))
-            vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar))
+          vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar))
         } else if (!is.null(cvar) & is.null(EMM_AC_Ymodel) & is.null(EMM_MC)) {
-            coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar)])
-            names(coef_ready) <- c("(Intercept)",
+          coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar)])
+          names(coef_ready) <- c("(Intercept)",
                                    avar, mvar,
                                    paste0(avar, ":", mvar),
                                    cvar)
-            vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar)
+          vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar)
         } else if (!is.null(cvar) & !is.null(EMM_AC_Ymodel) & is.null(EMM_MC)) {
-            coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar,
+          coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar,
                                          paste0(avar, ":", EMM_AC_Ymodel))])
-            names(coef_ready) <- c("(Intercept)",
+          names(coef_ready) <- c("(Intercept)",
                                  avar, mvar,
                                  paste0(avar, ":", mvar),
                                  cvar,
                                  paste0(avar, ":", EMM_AC_Ymodel))
-            vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar, 
+          vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar, 
                       paste0(avar, ":", EMM_AC_Ymodel))
         } else if (!is.null(cvar) & is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)) {
           coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar,
@@ -140,7 +140,7 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar,
                                  paste0(avar, ":", mvar),
                                  cvar,
                                  paste0(mvar, ":", EMM_MC))
-            vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar, 
+          vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar, 
                       paste0(mvar, ":", EMM_MC))
         } else if (!is.null(cvar) & !is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)) {
           coef_ready <- c(coef_ready[c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar,
@@ -152,12 +152,13 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar,
                                  cvar,
                                  paste0(avar, ":", EMM_AC_Ymodel),
                                  paste0(mvar, ":", EMM_MC))
-            vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar, 
+          vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar, 
                       paste0(avar, ":", EMM_AC_Ymodel), 
                       paste0(mvar, ":", EMM_MC))
         }
-          
-
+      
+      coef_ready[vars]
+      
     } else {
 
         ## No interaction case
@@ -226,12 +227,11 @@ theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar,
                                  ## Name for MxC term
                                  paste0(mvar, ":", EMM_MC))
           vars <- c("(Intercept)", avar, mvar, paste0(avar, ":", mvar), cvar, paste0(avar, ":", EMM_AC_Ymodel), paste0(mvar, ":", EMM_MC))
-
         } 
-
-    ## Subset to ensure the ordering and error on non-existent element.
-    coef_ready[vars]
+      
+      coef_ready[vars]
     }
+    
 }
 
 theta_hat_helper <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel = NULL, EMM_MC = NULL, interaction) {
