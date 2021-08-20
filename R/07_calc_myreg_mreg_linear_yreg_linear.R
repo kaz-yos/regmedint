@@ -23,9 +23,9 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                                avar,
                                                mvar,
                                                cvar, 
-                                               EMM_AC_Mmodel = NULL,
-                                               EMM_AC_Ymodel = NULL,
-                                               EMM_MC = NULL,
+                                               EMM_AC_Mmodel,
+                                               EMM_AC_Ymodel,
+                                               EMM_MC,
                                                interaction) {
 
     ## mreg coefficients
@@ -103,14 +103,14 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
 calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
                                                    beta1,
                                                    beta2,
-                                                   beta3 = NULL,
+                                                   beta3,
                                                    theta0,
                                                    theta1,
                                                    theta2,
                                                    theta3,
                                                    theta4,
-                                                   theta5 = NULL,
-                                                   theta6 = NULL) {
+                                                   theta5,
+                                                   theta6) {
 
     validate_myreg_coefs(beta0 = beta0,
                          beta1 = beta1,
@@ -211,14 +211,14 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
 calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
                                                   beta1,
                                                   beta2,
-                                                  beta3 = NULL,
+                                                  beta3,
                                                   theta0,
                                                   theta1,
                                                   theta2,
                                                   theta3,
                                                   theta4,
-                                                  theta5 = NULL,
-                                                  theta6 = NULL,
+                                                  theta5,
+                                                  theta6,
                                                   Sigma_beta,
                                                   Sigma_theta) {
 
@@ -251,7 +251,7 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
     Sigma <- Matrix::bdiag(Sigma_beta,
                            Sigma_theta)
 
-    ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond, EMM_AC_Mmodel)
+    ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC)
     fun_se <- function(a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC) {
 
         ## Term involving an inner product of beta2 and c_cond
