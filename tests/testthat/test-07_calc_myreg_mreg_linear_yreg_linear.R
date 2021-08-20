@@ -108,7 +108,10 @@ describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
                                                avar = "trt",
                                                mvar = "bili",
                                                cvar = c("age"),
-                                               interaction = FALSE)
+                                               interaction = FALSE,
+                                               EMM_AC_Mmodel = NULL,
+                                               EMM_AC_Ymodel = NULL,
+                                               EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -166,7 +169,10 @@ describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
                                                avar = "trt",
                                                mvar = "bili",
                                                cvar = c("age","male","stage"),
-                                               interaction = FALSE)
+                                               interaction = FALSE,
+                                               EMM_AC_Mmodel = NULL,
+                                               EMM_AC_Ymodel = NULL,
+                                               EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -223,7 +229,10 @@ describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
                                                avar = "trt",
                                                mvar = "bili",
                                                cvar = c("age","male","stage"),
-                                               interaction = FALSE)
+                                               interaction = FALSE,
+                                               EMM_AC_Mmodel = NULL,
+                                               EMM_AC_Ymodel = NULL,
+                                               EMM_MC = NULL)
         it("returns functions where cde does not depend on m_cde", {
             expect_equal(myreg_funs[[1]](1,2,-3,c(4,5,6))["cde"],
                          myreg_funs[[1]](1,2,+3,c(4,5,6))["cde"])
@@ -299,7 +308,10 @@ describe("calc_myreg_mreg_linear_yreg_linear linear interaction", {
                                                avar = "trt",
                                                mvar = "bili",
                                                cvar = NULL,
-                                               interaction = TRUE)
+                                               interaction = TRUE,
+                                               EMM_AC_Mmodel = NULL,
+                                               EMM_AC_Ymodel = NULL,
+                                               EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -357,7 +369,10 @@ describe("calc_myreg_mreg_linear_yreg_linear linear interaction", {
                                                avar = "trt",
                                                mvar = "bili",
                                                cvar = c("age"),
-                                               interaction = TRUE)
+                                               interaction = TRUE,
+                                               EMM_AC_Mmodel = NULL,
+                                               EMM_AC_Ymodel = NULL,
+                                               EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -415,7 +430,10 @@ describe("calc_myreg_mreg_linear_yreg_linear linear interaction", {
                                                avar = "trt",
                                                mvar = "bili",
                                                cvar = c("age","male","stage"),
-                                               interaction = TRUE)
+                                               interaction = TRUE,
+                                               EMM_AC_Mmodel = NULL,
+                                               EMM_AC_Ymodel = NULL,
+                                               EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -476,7 +494,10 @@ describe("calc_myreg_mreg_linear_yreg_linear linear interaction", {
                                                avar = "trt",
                                                mvar = "bili",
                                                cvar = c("age","male","stage"),
-                                               interaction = TRUE)
+                                               interaction = TRUE,
+                                               EMM_AC_Mmodel = NULL,
+                                               EMM_AC_Ymodel = NULL,
+                                               EMM_MC = NULL)
         it("returns functions where cde depends on m_cde", {
             ## Positive (a1 - a0)
             if (theta3 > 0) {
