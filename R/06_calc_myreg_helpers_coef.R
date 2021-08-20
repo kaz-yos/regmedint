@@ -44,7 +44,7 @@ beta_hat_helper <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel = NULL) {
     beta0 <- beta_hat["(Intercept)"]
     beta1 <- beta_hat[avar]
     if (is.null(cvar)) {
-        ## beta_hat does not contain the cvar part in this case. ???
+        ## beta_hat does not contain the cvar part in this case. 
         beta2 <- NULL
     } else {
         beta2 <- beta_hat[cvar]
