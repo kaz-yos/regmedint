@@ -214,18 +214,12 @@ summary.regmedint <- function(object,
     res_est <- x$myreg$est_fun(a0 = a0,
                                a1 = a1,
                                m_cde = m_cde,
-                               c_cond = c_cond,
-                               EMM_AC_Mmodel = EMM_AC_Mmodel,
-                               EMM_AC_Ymodel = EMM_AC_Ymodel,
-                               EMM_MC = EMM_MC)
+                               c_cond = c_cond)
     ## Compute SE estimates
     res_se <- x$myreg$se_fun(a0 = a0,
                              a1 = a1,
                              m_cde = m_cde,
-                             c_cond = c_cond,
-                             EMM_AC_Mmodel = EMM_AC_Mmodel,
-                             EMM_AC_Ymodel = EMM_AC_Ymodel,
-                             EMM_MC = EMM_MC)
+                             c_cond = c_cond)
 
     assertthat::assert_that(length(res_est) == length(res_se))
     res_Z <- res_est / res_se
