@@ -59,9 +59,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
         })
         it("returns functions that take 4 arguments", {
             expect_equal(names(formals(myreg_funs[[1]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
             expect_equal(names(formals(myreg_funs[[2]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns functions that return named vector of effect estimates", {
             expect_equal(names(myreg_funs[[1]](1,2,3,NULL)),
@@ -117,9 +117,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
         })
         it("returns functions that take 4 arguments", {
             expect_equal(names(formals(myreg_funs[[1]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
             expect_equal(names(formals(myreg_funs[[2]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns functions that return named vector of effect estimates", {
             expect_equal(names(myreg_funs[[1]](1,2,3,4)),
@@ -175,9 +175,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
         })
         it("returns functions that take 4 arguments", {
             expect_equal(names(formals(myreg_funs[[1]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
             expect_equal(names(formals(myreg_funs[[2]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns functions that return named vector of effect estimates", {
             expect_equal(names(myreg_funs[[1]](1,2,3,c(4,5,6))),
@@ -309,9 +309,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
         })
         it("returns functions that take 4 arguments", {
             expect_equal(names(formals(myreg_funs[[1]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
             expect_equal(names(formals(myreg_funs[[2]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns functions that return named vector of effect estimates", {
             expect_equal(names(myreg_funs[[1]](1,2,3,NULL)),
@@ -367,9 +367,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
         })
         it("returns functions that take 4 arguments", {
             expect_equal(names(formals(myreg_funs[[1]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
             expect_equal(names(formals(myreg_funs[[2]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns functions that return named vector of effect estimates", {
             expect_equal(names(myreg_funs[[1]](1,2,3,4)),
@@ -425,9 +425,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
         })
         it("returns functions that take 4 arguments", {
             expect_equal(names(formals(myreg_funs[[1]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
             expect_equal(names(formals(myreg_funs[[2]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns functions that return named vector of effect estimates", {
             expect_equal(names(myreg_funs[[1]](1,2,3,c(4,5,6))),
@@ -750,9 +750,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_est function factory", {
             expect_equal(class(est_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(est_fun)),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns a function with parameters in the enslosing environment", {
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "beta0"), 1)
@@ -793,9 +793,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_est function factory", {
             expect_equal(class(est_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(est_fun)),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns a function with parameters in the enslosing environment", {
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "beta0"), 1)
@@ -836,9 +836,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_est function factory", {
             expect_equal(class(est_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(est_fun)),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns a function with parameters in the enslosing environment", {
             expect_equal(rlang::env_get(rlang::fn_env(est_fun), nm = "beta0"), 1)
@@ -1053,9 +1053,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
             expect_equal(class(se_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(se_fun)),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns a function with parameters in the enslosing environment", {
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 0.1)
@@ -1098,9 +1098,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
             expect_equal(class(se_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(se_fun)),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns a function with parameters in the enslosing environment", {
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 0.1)
@@ -1143,9 +1143,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
             expect_equal(class(se_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(se_fun)),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns a function with parameters in the enslosing environment", {
             expect_equal(rlang::env_get(rlang::fn_env(se_fun), nm = "beta0"), 0.1)
