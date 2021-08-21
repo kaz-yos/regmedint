@@ -1,8 +1,8 @@
 ✔ |  OK [38;5;214mF[39m [35mW[39m [34mS[39m | Context
-⠏ |   0       | 01_regmedint_class_ui                                                                                   [38;5;214m⠋[39m |   0 1     | 01_regmedint_class_ui                                                                                   [31m✖[39m |   0 1     | 01_regmedint_class_ui[36m [2.8 s][39m
+⠏ |   0       | 01_regmedint_class_ui                                                                                   [38;5;214m⠋[39m |   0 1     | 01_regmedint_class_ui                                                                                   [31m✖[39m |   0 1     | 01_regmedint_class_ui[36m [1.8 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [1m[38;5;214mError[39m (test-01_regmedint_class_ui.R:18:1): (code run outside of `test_that()`)[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::describe(...) [90mtest-01_regmedint_class_ui.R:18:0[39m
 [90m  2. [39m[ base::eval(...) ][90m with 1 more call[39m
@@ -13,1588 +13,754 @@ Error: argument "EMM_AC_Mmodel" is missing, with no default
 [90m 11. [39mregmedint::summary.regmedint(fit_regmedint_obj)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 03_fit_mreg                                                                                             ⠼ |   5       | 03_fit_mreg                                                                                             [32m✔[39m |  24       | 03_fit_mreg[36m [0.2 s][39m
-⠏ |   0       | 03_helpers_fit_mreg_fit_yreg                                                                            ⠼ |   5       | 03_helpers_fit_mreg_fit_yreg                                                                            ⠙ |  12       | 03_helpers_fit_mreg_fit_yreg                                                                            ⠦ |  17       | 03_helpers_fit_mreg_fit_yreg                                                                            [32m✔[39m |  23       | 03_helpers_fit_mreg_fit_yreg[36m [0.4 s][39m
-⠏ |   0       | 04_fit_yreg_linear                                                                                      ⠹ |  13       | 04_fit_yreg_linear                                                                                      [32m✔[39m |  24       | 04_fit_yreg_linear[36m [0.2 s][39m
-⠏ |   0       | 04_fit_yreg_logistic                                                                                    ⠦ |   7       | 04_fit_yreg_logistic                                                                                    ⠴ |  16       | 04_fit_yreg_logistic                                                                                    [32m✔[39m |  24       | 04_fit_yreg_logistic[36m [0.3 s][39m
-⠏ |   0       | 04_fit_yreg_loglinear                                                                                   ⠋ |   1       | 04_fit_yreg_loglinear                                                                                   ⠦ |   7       | 04_fit_yreg_loglinear                                                                                   ⠼ |  15       | 04_fit_yreg_loglinear                                                                                   ⠴ |  16       | 04_fit_yreg_loglinear                                                                                   ⠹ |  23       | 04_fit_yreg_loglinear                                                                                   ⠙ |  32       | 04_fit_yreg_loglinear                                                                                   [32m✔[39m |  36       | 04_fit_yreg_loglinear[36m [0.9 s][39m
-⠏ |   0       | 04_fit_yreg_negbin                                                                                      ⠋ |   1       | 04_fit_yreg_negbin                                                                                      ⠇ |   9       | 04_fit_yreg_negbin                                                                                      ⠹ |  13       | 04_fit_yreg_negbin                                                                                      ⠏ |  20       | 04_fit_yreg_negbin                                                                                      ⠋ |  21       | 04_fit_yreg_negbin                                                                                      [32m✔[39m |  24       | 04_fit_yreg_negbin[36m [0.7 s][39m
-⠏ |   0       | 04_fit_yreg_poisson                                                                                     ⠹ |  13       | 04_fit_yreg_poisson                                                                                     [32m✔[39m |  24       | 04_fit_yreg_poisson[36m [0.2 s][39m
-⠏ |   0       | 04_fit_yreg_survAFT_exp                                                                                 ⠇ |   9       | 04_fit_yreg_survAFT_exp                                                                                 ⠼ |  15       | 04_fit_yreg_survAFT_exp                                                                                 ⠏ |  20       | 04_fit_yreg_survAFT_exp                                                                                 ⠹ |  23       | 04_fit_yreg_survAFT_exp                                                                                 [32m✔[39m |  24       | 04_fit_yreg_survAFT_exp[36m [0.5 s][39m
-⠏ |   0       | 04_fit_yreg_survAFT_weibull                                                                             ⠋ |   1       | 04_fit_yreg_survAFT_weibull                                                                             ⠹ |  13       | 04_fit_yreg_survAFT_weibull                                                                             [32m✔[39m |  24       | 04_fit_yreg_survAFT_weibull[36m [0.4 s][39m
-⠏ |   0       | 04_fit_yreg_survCox                                                                                     ⠼ |   5       | 04_fit_yreg_survCox                                                                                     ⠴ |  16       | 04_fit_yreg_survCox                                                                                     ⠋ |  21       | 04_fit_yreg_survCox                                                                                     [32m✔[39m |  24       | 04_fit_yreg_survCox[36m [0.4 s][39m
-⠏ |   0       | 05_calc_myreg                                                                                           ⠋ |   1       | 05_calc_myreg                                                                                           ⠹ |   3       | 05_calc_myreg                                                                                           [32m✔[39m |   6       | 05_calc_myreg[36m [1.2 s][39m
-⠏ |   0       | 06_calc_myreg_helpers_coef                                                                              ⠹ |  13       | 06_calc_myreg_helpers_coef                                                                              ⠸ |  14       | 06_calc_myreg_helpers_coef                                                                              [38;5;214m⠏[39m |  26 4     | 06_calc_myreg_helpers_coef                                                                              [38;5;214m⠼[39m |  37 8     | 06_calc_myreg_helpers_coef                                                                              [38;5;214m⠏[39m |  56 14     | 06_calc_myreg_helpers_coef                                                                             [38;5;214m⠴[39m |  75 21     | 06_calc_myreg_helpers_coef                                                                             [31m✖[39m |  85 24     | 06_calc_myreg_helpers_coef[36m [0.8 s][39m
+⠏ |   0       | 03_fit_mreg                                                                                             [32m✔[39m |  24       | 03_fit_mreg
+⠏ |   0       | 03_helpers_fit_mreg_fit_yreg                                                                            [32m✔[39m |  23       | 03_helpers_fit_mreg_fit_yreg
+⠏ |   0       | 04_fit_yreg_linear                                                                                      [32m✔[39m |  24       | 04_fit_yreg_linear
+⠏ |   0       | 04_fit_yreg_logistic                                                                                    ⠋ |  21       | 04_fit_yreg_logistic                                                                                    [32m✔[39m |  24       | 04_fit_yreg_logistic[36m [0.1 s][39m
+⠏ |   0       | 04_fit_yreg_loglinear                                                                                   ⠸ |   4       | 04_fit_yreg_loglinear                                                                                   ⠴ |  16       | 04_fit_yreg_loglinear                                                                                   [32m✔[39m |  36       | 04_fit_yreg_loglinear[36m [0.3 s][39m
+⠏ |   0       | 04_fit_yreg_negbin                                                                                      ⠦ |  17       | 04_fit_yreg_negbin                                                                                      [32m✔[39m |  24       | 04_fit_yreg_negbin[36m [0.1 s][39m
+⠏ |   0       | 04_fit_yreg_poisson                                                                                     [32m✔[39m |  24       | 04_fit_yreg_poisson
+⠏ |   0       | 04_fit_yreg_survAFT_exp                                                                                 ⠋ |  21       | 04_fit_yreg_survAFT_exp                                                                                 [32m✔[39m |  24       | 04_fit_yreg_survAFT_exp[36m [0.1 s][39m
+⠏ |   0       | 04_fit_yreg_survAFT_weibull                                                                             ⠏ |  20       | 04_fit_yreg_survAFT_weibull                                                                             [32m✔[39m |  24       | 04_fit_yreg_survAFT_weibull[36m [0.1 s][39m
+⠏ |   0       | 04_fit_yreg_survCox                                                                                     ⠇ |  19       | 04_fit_yreg_survCox                                                                                     [32m✔[39m |  24       | 04_fit_yreg_survCox[36m [0.1 s][39m
+⠏ |   0       | 05_calc_myreg                                                                                           ⠹ |   3       | 05_calc_myreg                                                                                           [32m✔[39m |   6       | 05_calc_myreg[36m [0.5 s][39m
+⠏ |   0       | 06_calc_myreg_helpers_coef                                                                              ⠸ |  14       | 06_calc_myreg_helpers_coef                                                                              ⠦ |  37       | 06_calc_myreg_helpers_coef                                                                              ⠴ |  66       | 06_calc_myreg_helpers_coef                                                                              ⠴ |  96       | 06_calc_myreg_helpers_coef                                                                              [32m✔[39m | 109       | 06_calc_myreg_helpers_coef[36m [0.5 s][39m
+⠏ |   0       | 06_calc_myreg_helpers_vcov                                                                              ⠋ |  11       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  17       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  27       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  47       | 06_calc_myreg_helpers_vcov                                                                              ⠴ |  56       | 06_calc_myreg_helpers_vcov                                                                              ⠋ |  61       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  77       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  87       | 06_calc_myreg_helpers_vcov                                                                              ⠧ |  88       | 06_calc_myreg_helpers_vcov                                                                              ⠏ |  90       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  97       | 06_calc_myreg_helpers_vcov                                                                              [32m✔[39m | 110       | 06_calc_myreg_helpers_vcov[36m [1.4 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠋ |   1       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠇[39m |  17 2     | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠦[39m |  28 9     | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠴[39m |  44 12     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠏[39m |  51 19     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠸[39m |  73 21     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠴[39m | 101 25     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [31m✖[39m | 110 26     | 07_calc_myreg_mreg_linear_yreg_linear[36m [0.9 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:223:17): theta_hat (NULL cvar) for yreg linear: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit0)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:291:17): theta_hat (NULL cvar) for yreg logistic: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit0)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:359:17): theta_hat (NULL cvar) for yreg loglinear: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit0)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:428:17): theta_hat (NULL cvar) for yreg poisson: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit0)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:497:17): theta_hat (NULL cvar) for yreg negbin: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit0)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:568:17): theta_hat (NULL cvar) for yreg survCox: extracts coef correctly when there is an interaction (add zero for Intercept)[22m
-theta_hat(...) not equal to `ref_coef`.
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:636:17): theta_hat (NULL cvar) for yreg survAFT_exp: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit0)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:704:17): theta_hat (NULL cvar) for yreg survAFT_weibull: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit0)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:776:17): theta_hat (1 cvar) for yreg linear: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit1)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:845:17): theta_hat (1 cvar) for yreg logistic: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit1)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:914:17): theta_hat (1 cvar) for yreg loglinear: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit1)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:984:17): theta_hat (1 cvar) for yreg poisson: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit1)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1054:17): theta_hat (1 cvar) for yreg negbin: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit1)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1126:17): theta_hat (1 cvar) for yreg survCox: extracts coef correctly when there is an interaction (add zero for Intercept)[22m
-theta_hat(...) not equal to `ref_coef`.
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1195:17): theta_hat (1 cvar) for yreg survAFT_exp: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit1)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1264:17): theta_hat (1 cvar) for yreg survAFT_weibull: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit1)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1336:17): theta_hat (3 cvar) for yreg linear: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit3)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1405:17): theta_hat (3 cvar) for yreg logistic: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit3)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1474:17): theta_hat (3 cvar) for yreg loglinear: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit3)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1544:17): theta_hat (3 cvar) for yreg poisson: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit3)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1614:17): theta_hat (3 cvar) for yreg negbin: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit3)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1686:17): theta_hat (3 cvar) for yreg survCox: extracts coef correctly when there is an interaction (Add zero for Intercept)[22m
-theta_hat(...) not equal to `ref_coef`.
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1755:17): theta_hat (3 cvar) for yreg survAFT_exp: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit3)[vars].
-Types not compatible: character is not double
-
-[1m[38;5;214mFailure[39m (test-06_calc_myreg_helpers_coef.R:1824:17): theta_hat (3 cvar) for yreg survAFT_weibull: extracts coef correctly when there is an interaction[22m
-theta_hat(...) not equal to coef(yreg_fit3)[vars].
-Types not compatible: character is not double
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 06_calc_myreg_helpers_vcov                                                                              ⠇ |   9       | 06_calc_myreg_helpers_vcov                                                                              ⠼ |  15       | 06_calc_myreg_helpers_vcov                                                                              ⠼ |  25       | 06_calc_myreg_helpers_vcov                                                                              ⠼ |  35       | 06_calc_myreg_helpers_vcov                                                                              ⠹ |  53       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  57       | 06_calc_myreg_helpers_vcov                                                                              ⠹ |  63       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  77       | 06_calc_myreg_helpers_vcov                                                                              ⠴ |  86       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  87       | 06_calc_myreg_helpers_vcov                                                                              ⠇ |  89       | 06_calc_myreg_helpers_vcov                                                                              ⠋ |  91       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  97       | 06_calc_myreg_helpers_vcov                                                                              [32m✔[39m | 110       | 06_calc_myreg_helpers_vcov[36m [1.6 s][39m
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠋ |   1       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠧[39m |  16 2     | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠙[39m |  24 8     | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠋[39m |  40 11     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠙[39m |  48 14     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠸[39m |  55 19     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠸[39m |  73 21     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠙[39m |  97 25     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠸[39m | 109 25     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠹[39m | 144 29     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [31m✖[39m | 144 31     | 07_calc_myreg_mreg_linear_yreg_linear[36m [1.1 s][39m
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:65:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (NULL cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:68:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (NULL cvar): returns functions that return named vector of effect estimates[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:65:12[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:68:12[39m
 [90m 4. [39mmyreg_funs[[1]](1, 2, 3, NULL)
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:123:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:129:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:123:12[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:129:12[39m
 [90m 4. [39mmyreg_funs[[1]](1, 2, 3, 4)
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:181:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:190:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:181:12[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:190:12[39m
 [90m 4. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:225:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:225:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, -3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:231:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where natural effects do no depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:231:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, -3, -1 * c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:237:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where direct effects match up[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:237:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:237:12[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
+[90m 4. [39mmyreg_funs[[1]](1, 2, -3, c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:243:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where indirect effects match up[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:243:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where natural effects do no depend on c_cond[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:243:12[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:247:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:247:12[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:266:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mbase::unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:266:12[39m
-[90m 2. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:314:13): calc_myreg_mreg_linear_yreg_linear linear interaction (NULL cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:314:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, NULL)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:372:13): calc_myreg_mreg_linear_yreg_linear linear interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:372:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, 4)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:430:13): calc_myreg_mreg_linear_yreg_linear linear interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:430:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:481:17): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where cde depends on m_cde[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_gt(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:481:16[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, +3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:490:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:490:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, +3, -1 * c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:496:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where nie does not depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:496:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, +3, -1 * c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:521:21): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where nde and te depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_lt(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:521:20[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, +3, -1 * c_cond)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:551:17): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where natural effects relate correctly[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_gt(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:551:16[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:564:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:564:12[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:583:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mbase::unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:583:12[39m
-[90m 2. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:766:13): calc_myreg_mreg_linear_yreg_linear_est (NULL cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:766:12[39m
-[90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:773:13): calc_myreg_mreg_linear_yreg_linear_est (NULL cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:773:12[39m
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:810:13): calc_myreg_mreg_linear_yreg_linear_est (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:810:12[39m
-[90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:816:13): calc_myreg_mreg_linear_yreg_linear_est (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:816:12[39m
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:855:13): calc_myreg_mreg_linear_yreg_linear_est (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:855:12[39m
-[90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:859:13): calc_myreg_mreg_linear_yreg_linear_est (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:859:12[39m
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1069:13): calc_myreg_mreg_linear_yreg_linear_se (NULL cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1069:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1076:13): calc_myreg_mreg_linear_yreg_linear_se (NULL cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1076:12[39m
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1115:13): calc_myreg_mreg_linear_yreg_linear_se (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1115:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1121:13): calc_myreg_mreg_linear_yreg_linear_se (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1121:12[39m
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1162:13): calc_myreg_mreg_linear_yreg_linear_se (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1162:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1166:13): calc_myreg_mreg_linear_yreg_linear_se (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1166:12[39m
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠴[39m |   3 3     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠇[39m |   6 3     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠏[39m |   7 3     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠴[39m |  17 9     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠸[39m |  19 15     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠧[39m |  27 21     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠧[39m |  34 24     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠦[39m |  36 31     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠧[39m |  47 31     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠧[39m |  73 35     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠧[39m |  88 40     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠏[39m | 100 40     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠋[39m | 134 47     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [31m✖[39m | 136 49     | 07_calc_myreg_mreg_linear_yreg_logistic[36m [1.6 s][39m
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:59:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (NULL cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:61:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (NULL cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:65:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (NULL cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:65:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, NULL)
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:117:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (1 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:119:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (1 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:123:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:123:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, 4)
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:175:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (3 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:177:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (3 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:181:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:181:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:225:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:225:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, -3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:231:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where natural effects do no depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:231:12[39m
 [90m 4. [39mmyreg_funs[[1]](1, 2, -3, -1 * c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:237:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where direct effects match up[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:249:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where direct effects match up[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:237:12[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:249:12[39m
 [90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:243:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where indirect effects match up[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:255:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where indirect effects match up[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:243:12[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:255:12[39m
 [90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:247:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:259:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:247:12[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:259:12[39m
 [90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:266:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:278:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mbase::unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:266:12[39m
+[90m 1. [39mbase::unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:278:12[39m
 [90m 2. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
 
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:309:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (NULL cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:311:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (NULL cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:315:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (NULL cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:329:13): calc_myreg_mreg_linear_yreg_linear linear interaction (NULL cvar): returns functions that return named vector of effect estimates[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:315:12[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:329:12[39m
 [90m 4. [39mmyreg_funs[[1]](1, 2, 3, NULL)
 
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:367:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (1 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:369:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (1 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:373:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:390:13): calc_myreg_mreg_linear_yreg_linear linear interaction (1 cvar): returns functions that return named vector of effect estimates[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:373:12[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:390:12[39m
 [90m 4. [39mmyreg_funs[[1]](1, 2, 3, 4)
 
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:425:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (3 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:427:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (3 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:431:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:451:13): calc_myreg_mreg_linear_yreg_linear linear interaction (3 cvar): returns functions that return named vector of effect estimates[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:431:12[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:451:12[39m
 [90m 4. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:486:17): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where cde depends on m_cde[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:505:17): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where cde depends on m_cde[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_lt(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:486:16[39m
+[90m 1. [39mtestthat::expect_gt(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:505:16[39m
 [90m 4. [39mmyreg_funs[[1]](1, 2, +3, c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:491:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:514:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:491:12[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:514:12[39m
 [90m 4. [39mmyreg_funs[[1]](1, 2, +3, -1 * c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:497:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where nie does not depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:520:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where nie does not depend on c_cond[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:497:12[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:520:12[39m
 [90m 4. [39mmyreg_funs[[1]](1, 2, +3, -1 * c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:539:21): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where nde and te depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:545:21): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where nde and te depend on c_cond[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_gt(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:539:20[39m
+[90m 1. [39mtestthat::expect_lt(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:545:20[39m
 [90m 4. [39mmyreg_funs[[1]](1, 2, +3, -1 * c_cond)
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:558:17): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where natural effects relate correctly[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:575:17): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where natural effects relate correctly[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_lt(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:558:16[39m
+[90m 1. [39mtestthat::expect_gt(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:575:16[39m
 [90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:565:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:588:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where total effect is nde+nie[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:565:12[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:588:12[39m
 [90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:584:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:607:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly[22m
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
-[90m 1. [39mbase::unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:584:12[39m
+[90m 1. [39mbase::unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:607:12[39m
 [90m 2. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
 
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:789:13): calc_myreg_mreg_linear_yreg_logistic_est (NULL cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(est_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:804:13): calc_myreg_mreg_linear_yreg_logistic_est (NULL cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:790:13): calc_myreg_mreg_linear_yreg_linear_est (NULL cvar): returns a function that errors given inconsistent c_cond[22m
+Error: argument "beta3" is missing, with no default
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:804:12[39m
+[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:790:12[39m
 [90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:811:13): calc_myreg_mreg_linear_yreg_logistic_est (NULL cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:797:13): calc_myreg_mreg_linear_yreg_linear_est (NULL cvar): returns a function that gives a numeric vector without NA[22m
+Error: argument "beta3" is missing, with no default
 [1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:811:12[39m
+[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:797:12[39m
 
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:834:13): calc_myreg_mreg_linear_yreg_logistic_est (one cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(est_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:850:13): calc_myreg_mreg_linear_yreg_logistic_est (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:834:13): calc_myreg_mreg_linear_yreg_linear_est (one cvar): returns a function that errors given inconsistent c_cond[22m
+Error: argument "beta3" is missing, with no default
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:850:12[39m
+[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:834:12[39m
 [90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:856:13): calc_myreg_mreg_linear_yreg_logistic_est (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:840:13): calc_myreg_mreg_linear_yreg_linear_est (one cvar): returns a function that gives a numeric vector without NA[22m
+Error: argument "beta3" is missing, with no default
 [1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:856:12[39m
+[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:840:12[39m
 
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:879:13): calc_myreg_mreg_linear_yreg_logistic_est (three cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(est_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:897:13): calc_myreg_mreg_linear_yreg_logistic_est (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:879:13): calc_myreg_mreg_linear_yreg_linear_est (three cvar): returns a function that errors given inconsistent c_cond[22m
+Error: argument "beta3" is missing, with no default
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:897:12[39m
+[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:879:12[39m
 [90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:901:13): calc_myreg_mreg_linear_yreg_logistic_est (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:883:13): calc_myreg_mreg_linear_yreg_linear_est (three cvar): returns a function that gives a numeric vector without NA[22m
+Error: argument "beta3" is missing, with no default
 [1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:901:12[39m
+[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:883:12[39m
 
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1153:13): calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(se_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1168:13): calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:898:1): (code run outside of `test_that()`)[22m
+Error: argument "beta3" is missing, with no default
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1168:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1175:13): calc_myreg_mreg_linear_yreg_logistic_se (NULL cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1175:12[39m
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1201:13): calc_myreg_mreg_linear_yreg_logistic_se (one cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(se_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1217:13): calc_myreg_mreg_linear_yreg_logistic_se (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1217:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1223:13): calc_myreg_mreg_linear_yreg_logistic_se (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1223:12[39m
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1249:13): calc_myreg_mreg_linear_yreg_logistic_se (three cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(se_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1267:13): calc_myreg_mreg_linear_yreg_logistic_se (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1267:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1271:13): calc_myreg_mreg_linear_yreg_logistic_se (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1271:12[39m
+[90m 1. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:898:0[39m
+[90m 2. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 4. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1062:4[39m
+[90m 5. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 7. [39mregmedint::calc_myreg_mreg_linear_yreg_linear_se(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1063:8[39m
+[90m 8. [39mregmedint::validate_myreg_vcovs(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_linear_yreg_linear.R:237:4[39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [38;5;214m⠴[39m |   3 3     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [38;5;214m⠇[39m |   6 3     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [38;5;214m⠏[39m |   7 3     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [38;5;214m⠧[39m |  18 10     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠧[39m |  27 21     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠋[39m |  36 25     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠹[39m |  43 30     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠹[39m |  69 34     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠧[39m |  81 37     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠼[39m |  86 39     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠦[39m | 114 43     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [31m✖[39m | 126 48     | 07_calc_myreg_mreg_logistic_yreg_linear[36m [1.5 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [31m✖[39m |   0 1     | 07_calc_myreg_mreg_linear_yreg_logistic
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:61:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (NULL cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:63:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (NULL cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:67:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (NULL cvar): returns functions that return named vector of effect estimates[22m
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:26:1): (code run outside of `test_that()`)[22m
 Error: argument "EMM_AC_Mmodel" is missing, with no default
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:67:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, NULL)
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:119:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (1 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:121:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (1 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:125:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:125:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, 4)
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:177:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (3 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:179:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (3 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:183:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:183:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:227:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:227:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, -3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:233:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where cde and nde do no depend on c_cond (V2015 p471)[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:233:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, -3, -1 * c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:239:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where direct effects match up[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:239:12[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:245:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where indirect effects match up[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:245:12[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:249:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:249:12[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:268:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mbase::unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:268:12[39m
-[90m 2. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:310:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (NULL cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:312:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (NULL cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:316:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (NULL cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:316:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, NULL)
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:368:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (1 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:370:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (1 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:374:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:374:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, 4)
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:426:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (3 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:428:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (3 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:432:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:432:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:483:17): calc_myreg_mreg_logistic_yreg_linear linear interaction (methodological correctness): returns functions where cde depends on m_cde[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_gt(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:483:16[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, +3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:492:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:492:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, +3, -1 * c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:510:21): calc_myreg_mreg_logistic_yreg_linear linear interaction (methodological correctness): returns functions where ndes depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_lt(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:510:20[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, +3, -1 * c_cond)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:540:17): calc_myreg_mreg_logistic_yreg_linear linear interaction (methodological correctness): returns functions where natural effects relate correctly[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_lt(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:540:16[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:547:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:547:12[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:566:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mbase::unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:566:12[39m
-[90m 2. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:735:13): calc_myreg_mreg_logistic_yreg_linear_est (NULL cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(est_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:749:13): calc_myreg_mreg_logistic_yreg_linear_est (NULL cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:749:12[39m
-[90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:756:13): calc_myreg_mreg_logistic_yreg_linear_est (NULL cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:756:12[39m
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:778:13): calc_myreg_mreg_logistic_yreg_linear_est (one cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(est_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:793:13): calc_myreg_mreg_logistic_yreg_linear_est (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:793:12[39m
-[90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:799:13): calc_myreg_mreg_logistic_yreg_linear_est (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:799:12[39m
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:821:13): calc_myreg_mreg_logistic_yreg_linear_est (three cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(est_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:838:13): calc_myreg_mreg_logistic_yreg_linear_est (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:838:12[39m
-[90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:842:13): calc_myreg_mreg_logistic_yreg_linear_est (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:842:12[39m
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1038:13): calc_myreg_mreg_logistic_yreg_linear_se (NULL cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(se_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1052:13): calc_myreg_mreg_logistic_yreg_linear_se (NULL cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1052:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1059:13): calc_myreg_mreg_logistic_yreg_linear_se (NULL cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1059:12[39m
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1083:13): calc_myreg_mreg_logistic_yreg_linear_se (one cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(se_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1098:13): calc_myreg_mreg_logistic_yreg_linear_se (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1098:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1104:13): calc_myreg_mreg_logistic_yreg_linear_se (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1104:12[39m
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1128:13): calc_myreg_mreg_logistic_yreg_linear_se (three cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(se_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1145:13): calc_myreg_mreg_logistic_yreg_linear_se (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1145:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1149:13): calc_myreg_mreg_logistic_yreg_linear_se (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1149:12[39m
+[90m 1. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:26:0[39m
+[90m 2. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 4. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:28:4[39m
+[90m 5. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 7. [39mregmedint::calc_myreg_mreg_linear_yreg_logistic(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:42:8[39m
+[90m 8. [39mregmedint::beta_hat_helper(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_linear_yreg_logistic.R:32:4[39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠴[39m |   3 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠇[39m |   6 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠏[39m |   7 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠧[39m |  18 10     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠹[39m |  25 18     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠋[39m |  36 25     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠦[39m |  47 30     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠦[39m |  80 37     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠋[39m |  92 39     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠏[39m | 124 46     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [31m✖[39m | 126 48     | 07_calc_myreg_mreg_logistic_yreg_logistic[36m [1.6 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [31m✖[39m |   0 1     | 07_calc_myreg_mreg_logistic_yreg_linear
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:61:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (NULL cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:63:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (NULL cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:67:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (NULL cvar): returns functions that return named vector of effect estimates[22m
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:28:1): (code run outside of `test_that()`)[22m
 Error: argument "EMM_AC_Mmodel" is missing, with no default
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:67:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, NULL)
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:119:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (1 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:121:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (1 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:125:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:125:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, 4)
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:177:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (3 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:179:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (3 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:183:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:183:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:227:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:227:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, -3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:233:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where nde do no depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:233:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, -3, -1 * c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:239:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where direct effects match up[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:239:12[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:245:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where indirect effects match up[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:245:12[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:249:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:249:12[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:268:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mbase::unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:268:12[39m
-[90m 2. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:311:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (NULL cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:313:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (NULL cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:317:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (NULL cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:317:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, NULL)
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:369:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (1 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:371:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (1 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:375:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:375:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, 4)
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:427:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (3 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[1]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:429:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (3 cvar): returns functions that take 4 arguments[22m
-names(formals(myreg_funs[[2]])) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:433:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:433:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:484:17): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where cde depends on m_cde[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_gt(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:484:16[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, +3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:493:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:493:12[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, +3, -1 * c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:518:21): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where natural effects depend on c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_lt(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:518:20[39m
-[90m 4. [39mmyreg_funs[[1]](1, 2, +3, -1 * c_cond)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:558:17): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where natural effects relate correctly[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_lt(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:558:16[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:565:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:565:12[39m
-[90m 5. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:584:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where pm is calculated from natural effects correctly[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mbase::unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:584:12[39m
-[90m 2. [39mmyreg_funs[[1]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:754:13): calc_myreg_mreg_logistic_yreg_logistic_est (NULL cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(est_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:768:13): calc_myreg_mreg_logistic_yreg_logistic_est (NULL cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:768:12[39m
-[90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:775:13): calc_myreg_mreg_logistic_yreg_logistic_est (NULL cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:775:12[39m
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:797:13): calc_myreg_mreg_logistic_yreg_logistic_est (one cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(est_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:812:13): calc_myreg_mreg_logistic_yreg_logistic_est (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:812:12[39m
-[90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:818:13): calc_myreg_mreg_logistic_yreg_logistic_est (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:818:12[39m
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:840:13): calc_myreg_mreg_logistic_yreg_logistic_est (three cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(est_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:857:13): calc_myreg_mreg_logistic_yreg_logistic_est (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:857:12[39m
-[90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:861:13): calc_myreg_mreg_logistic_yreg_logistic_est (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:861:12[39m
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1057:13): calc_myreg_mreg_logistic_yreg_logistic_se (NULL cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(se_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1071:13): calc_myreg_mreg_logistic_yreg_logistic_se (NULL cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1071:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1078:13): calc_myreg_mreg_logistic_yreg_logistic_se (NULL cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1078:12[39m
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1102:13): calc_myreg_mreg_logistic_yreg_logistic_se (one cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(se_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1117:13): calc_myreg_mreg_logistic_yreg_logistic_se (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1117:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1123:13): calc_myreg_mreg_logistic_yreg_logistic_se (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1123:12[39m
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1147:13): calc_myreg_mreg_logistic_yreg_logistic_se (three cvar): returns a function that takes a0, a1, m_cde, and c_cond[22m
-names(formals(se_fun)) not equal to c("a0", "a1", "m_cde", "c_cond").
-Lengths differ: 7 is not 4
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1164:13): calc_myreg_mreg_logistic_yreg_logistic_se (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1164:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1168:13): calc_myreg_mreg_logistic_yreg_logistic_se (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1168:12[39m
+[90m 1. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:28:0[39m
+[90m 2. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 4. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:30:4[39m
+[90m 5. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 7. [39mregmedint::calc_myreg_mreg_logistic_yreg_linear(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:44:8[39m
+[90m 8. [39mregmedint::beta_hat_helper(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_logistic_yreg_linear.R:33:4[39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 08_regmedint_class_user_methods                                                                         [38;5;214m⠋[39m |   0 1     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠴[39m |   0 6     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠴[39m |   0 16     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠹[39m |   0 23     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠸[39m |   0 34     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠇[39m |   0 39     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠧[39m |   0 48     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠧[39m |   0 58     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠇[39m |   0 69     | 08_regmedint_class_user_methods                                                                        [31m✖[39m |   0 76     | 08_regmedint_class_user_methods[36m [1.2 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [31m✖[39m |   0 1     | 07_calc_myreg_mreg_logistic_yreg_logistic
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:28:1): (code run outside of `test_that()`)[22m
+Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:28:0[39m
+[90m 2. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 4. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:30:4[39m
+[90m 5. [39m[ base::eval(...) ][90m with 1 more call[39m
+[90m 7. [39mregmedint::calc_myreg_mreg_logistic_yreg_logistic(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:44:8[39m
+[90m 8. [39mregmedint::beta_hat_helper(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_logistic_yreg_logistic.R:33:4[39m
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 08_regmedint_class_user_methods                                                                         [38;5;214m⠋[39m |   0 1     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠧[39m |   0 8     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠇[39m |   0 19     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠏[39m |   0 20     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠹[39m |   0 23     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠼[39m |   0 35     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠇[39m |   0 39     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠙[39m |   0 42     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠹[39m |   0 53     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠧[39m |   0 58     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠇[39m |   0 59     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠋[39m |   0 71     | 08_regmedint_class_user_methods                                                                        [31m✖[39m |   0 76     | 08_regmedint_class_user_methods[36m [1.9 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:55:17): print.regmedint: prints the mreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:55:16[39m
 [90m 11. [39mregmedint::print.regmedint(fit_regmedint)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:60:17): print.regmedint: prints the yreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:60:16[39m
 [90m 11. [39mregmedint::print.regmedint(fit_regmedint)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:65:17): print.regmedint: prints mediation analysis results with expected elements[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(print(fit_regmedint), "cde") [90mtest-08_regmedint_class_user_methods.R:65:16[39m
 [90m 11. [39mregmedint::print.regmedint(fit_regmedint)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:76:17): summary.regmedint: returns an object of summary_regmedint class[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(class(summary(fit_regmedint))[[1]], "summary_regmedint") [90mtest-08_regmedint_class_user_methods.R:76:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:80:17): summary.regmedint: returns an object containing the mreg summary[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:80:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:84:17): summary.regmedint: returns an object containing the yreg summary[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:84:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:88:17): summary.regmedint: returns an object containing the myreg summary matrix[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:88:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:92:17): summary.regmedint: returns an object with appropriate columns[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:92:16[39m
 [90m 7. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:105:17): summary.regmedint: returns an object, ignoring exponentiate = TRUE[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:105:16[39m
 [90m 7. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
 [90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:124:21): print.summary_regmedint: prints the mreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:124:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:129:21): print.summary_regmedint: prints the yreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:129:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:134:21): print.summary_regmedint: prints mediation analysis results with expected elements[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(print(summary(fit_regmedint)), "cde") [90mtest-08_regmedint_class_user_methods.R:134:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:143:21): print.summary_regmedint: prints mediation analysis results with expected elements exponentiated[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:143:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:152:21): print.summary_regmedint: prints evaluation information[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:152:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:178:21): coef.summary_regmedint: extract the matrix object[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(coef(summary(fit_regmedint)), summary(fit_regmedint)$summary_myreg) [90mtest-08_regmedint_class_user_methods.R:178:20[39m
 [90m 6. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 7. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:188:17): coef.regmedint: creates a vector of estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:188:16[39m
 [90m 5. [39mregmedint::coef.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:494:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:194:17): vcov.regmedint: creates a matrix with correct dimension names[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(class(vcov(fit_regmedint))[[1]], "matrix") [90mtest-08_regmedint_class_user_methods.R:194:16[39m
 [90m 5. [39mregmedint::vcov.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:571:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:205:17): confint.regmedint: creates a matrix of estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:205:16[39m
 [90m 7. [39mregmedint::confint.regmedint(fit_regmedint)
 [90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:664:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:211:17): confint.regmedint: creates the lower column less than the upper column[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_true(...) [90mtest-08_regmedint_class_user_methods.R:211:16[39m
 [90m 5. [39mregmedint::confint.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:664:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:250:17): print.regmedint: prints the mreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:250:16[39m
 [90m 11. [39mregmedint::print.regmedint(fit_regmedint)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:255:17): print.regmedint: prints the yreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:255:16[39m
 [90m 11. [39mregmedint::print.regmedint(fit_regmedint)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:260:17): print.regmedint: prints mediation analysis results with expected elements[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(print(fit_regmedint), "cde") [90mtest-08_regmedint_class_user_methods.R:260:16[39m
 [90m 11. [39mregmedint::print.regmedint(fit_regmedint)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:271:17): summary.regmedint: returns an object of summary_regmedint class[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(class(summary(fit_regmedint))[[1]], "summary_regmedint") [90mtest-08_regmedint_class_user_methods.R:271:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:275:17): summary.regmedint: returns an object containing the mreg summary[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:275:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:279:17): summary.regmedint: returns an object containing the yreg summary[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:279:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:283:17): summary.regmedint: returns an object containing the myreg summary matrix[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:283:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:287:17): summary.regmedint: returns an object with appropriate columns[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:287:16[39m
 [90m 7. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:300:17): summary.regmedint: returns an object with appropriate columns (exponentiated, exp(pm) is NA)[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:300:16[39m
 [90m 7. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
 [90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:332:21): print.summary_regmedint: prints the mreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:332:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:337:21): print.summary_regmedint: prints the yreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:337:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:342:21): print.summary_regmedint: prints mediation analysis results with expected elements[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(print(summary(fit_regmedint)), "cde") [90mtest-08_regmedint_class_user_methods.R:342:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:351:21): print.summary_regmedint: prints mediation analysis results with expected elements exponentiated[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:351:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:360:21): print.summary_regmedint: prints evaluation information[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:360:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:386:21): coef.summary_regmedint: extract the matrix object[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(coef(summary(fit_regmedint)), summary(fit_regmedint)$summary_myreg) [90mtest-08_regmedint_class_user_methods.R:386:20[39m
 [90m 6. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 7. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:396:17): coef.regmedint: creates a vector of estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:396:16[39m
 [90m 5. [39mregmedint::coef.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:494:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:403:17): vcov.regmedint: creates a matrix with correct dimension names[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(class(vcov(fit_regmedint))[[1]], "matrix") [90mtest-08_regmedint_class_user_methods.R:403:16[39m
 [90m 5. [39mregmedint::vcov.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:571:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:414:17): confint.regmedint: creates a matrix of estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:414:16[39m
 [90m 7. [39mregmedint::confint.regmedint(fit_regmedint)
 [90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:664:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:420:17): confint.regmedint: creates the lower column less than the upper column[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_true(...) [90mtest-08_regmedint_class_user_methods.R:420:16[39m
 [90m 5. [39mregmedint::confint.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:664:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:459:17): print.regmedint: prints the mreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:459:16[39m
 [90m 11. [39mregmedint::print.regmedint(fit_regmedint)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:464:17): print.regmedint: prints the yreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:464:16[39m
 [90m 11. [39mregmedint::print.regmedint(fit_regmedint)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:469:17): print.regmedint: prints mediation analysis results with expected elements[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(print(fit_regmedint), "cde") [90mtest-08_regmedint_class_user_methods.R:469:16[39m
 [90m 11. [39mregmedint::print.regmedint(fit_regmedint)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:480:17): summary.regmedint: returns an object of summary_regmedint class[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(class(summary(fit_regmedint))[[1]], "summary_regmedint") [90mtest-08_regmedint_class_user_methods.R:480:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:484:17): summary.regmedint: returns an object containing the mreg summary[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:484:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:488:17): summary.regmedint: returns an object containing the yreg summary[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:488:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:492:17): summary.regmedint: returns an object containing the myreg summary matrix[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:492:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:496:17): summary.regmedint: returns an object with appropriate columns[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:496:16[39m
 [90m 7. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:509:17): summary.regmedint: returns an object, ignoring exponentiate = TRUE[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:509:16[39m
 [90m 7. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
 [90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:528:21): print.summary_regmedint: prints the mreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:528:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:533:21): print.summary_regmedint: prints the yreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:533:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:538:21): print.summary_regmedint: prints mediation analysis results with expected elements[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(print(summary(fit_regmedint)), "cde") [90mtest-08_regmedint_class_user_methods.R:538:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:547:21): print.summary_regmedint: prints mediation analysis results with expected elements exponentiated[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:547:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:556:21): print.summary_regmedint: prints evaluation information[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:556:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:582:21): coef.summary_regmedint: extract the matrix object[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(coef(summary(fit_regmedint)), summary(fit_regmedint)$summary_myreg) [90mtest-08_regmedint_class_user_methods.R:582:20[39m
 [90m 6. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 7. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:592:17): coef.regmedint: creates a vector of estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:592:16[39m
 [90m 5. [39mregmedint::coef.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:494:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:599:17): vcov.regmedint: creates a matrix with correct dimension names[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(class(vcov(fit_regmedint))[[1]], "matrix") [90mtest-08_regmedint_class_user_methods.R:599:16[39m
 [90m 5. [39mregmedint::vcov.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:571:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:610:17): confint.regmedint: creates a matrix of estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:610:16[39m
 [90m 7. [39mregmedint::confint.regmedint(fit_regmedint)
 [90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:664:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:616:17): confint.regmedint: creates the lower column less than the upper column[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_true(...) [90mtest-08_regmedint_class_user_methods.R:616:16[39m
 [90m 5. [39mregmedint::confint.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:664:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:655:17): print.regmedint: prints the mreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:655:16[39m
 [90m 11. [39mregmedint::print.regmedint(fit_regmedint)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:660:17): print.regmedint: prints the yreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:660:16[39m
 [90m 11. [39mregmedint::print.regmedint(fit_regmedint)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:665:17): print.regmedint: prints mediation analysis results with expected elements[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(print(fit_regmedint), "cde") [90mtest-08_regmedint_class_user_methods.R:665:16[39m
 [90m 11. [39mregmedint::print.regmedint(fit_regmedint)
 [90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:676:17): summary.regmedint: returns an object of summary_regmedint class[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(class(summary(fit_regmedint))[[1]], "summary_regmedint") [90mtest-08_regmedint_class_user_methods.R:676:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:680:17): summary.regmedint: returns an object containing the mreg summary[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:680:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:684:17): summary.regmedint: returns an object containing the yreg summary[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:684:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:688:17): summary.regmedint: returns an object containing the myreg summary matrix[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:688:16[39m
 [90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:692:17): summary.regmedint: returns an object with appropriate columns[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:692:16[39m
 [90m 7. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:705:17): summary.regmedint: returns an object with appropriate columns (exponentiated, exp(pm) is NA)[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:705:16[39m
 [90m 7. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
 [90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:737:21): print.summary_regmedint: prints the mreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:737:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:742:21): print.summary_regmedint: prints the yreg results[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:742:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:747:21): print.summary_regmedint: prints mediation analysis results with expected elements[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(print(summary(fit_regmedint)), "cde") [90mtest-08_regmedint_class_user_methods.R:747:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:756:21): print.summary_regmedint: prints mediation analysis results with expected elements exponentiated[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:756:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:765:21): print.summary_regmedint: prints evaluation information[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:765:20[39m
 [90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:791:21): coef.summary_regmedint: extract the matrix object[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(coef(summary(fit_regmedint)), summary(fit_regmedint)$summary_myreg) [90mtest-08_regmedint_class_user_methods.R:791:20[39m
 [90m 6. [39mregmedint::summary.regmedint(fit_regmedint)
 [90m 7. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:801:17): coef.regmedint: creates a vector of estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:801:16[39m
 [90m 5. [39mregmedint::coef.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:494:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:808:17): vcov.regmedint: creates a matrix with correct dimension names[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(class(vcov(fit_regmedint))[[1]], "matrix") [90mtest-08_regmedint_class_user_methods.R:808:16[39m
 [90m 5. [39mregmedint::vcov.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:571:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:819:17): confint.regmedint: creates a matrix of estimates[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:819:16[39m
 [90m 7. [39mregmedint::confint.regmedint(fit_regmedint)
 [90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:664:4[39m
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:825:17): confint.regmedint: creates the lower column less than the upper column[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+Error: object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_true(...) [90mtest-08_regmedint_class_user_methods.R:825:16[39m
 [90m 5. [39mregmedint::confint.regmedint(fit_regmedint)
 [90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:664:4[39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 09_cross_check_with_sas_macro                                                                           ⠋ |   1       | 09_cross_check_with_sas_macro                                                                           ⠙ |   2       | 09_cross_check_with_sas_macro                                                                           ⠹ |  53       | 09_cross_check_with_sas_macro                                                                           ⠹ |  83       | 09_cross_check_with_sas_macro                                                                           ⠙ | 102       | 09_cross_check_with_sas_macro                                                                           ⠹ | 133       | 09_cross_check_with_sas_macro                                                                           ⠏ | 160       | 09_cross_check_with_sas_macro                                                                           [38;5;214m⠙[39m | 161 1     | 09_cross_check_with_sas_macro                                                                           [31m✖[39m | 161 1     | 09_cross_check_with_sas_macro[36m [4.1 s][39m
+⠏ |   0       | 09_cross_check_with_sas_macro                                                                           ⠋ |   1       | 09_cross_check_with_sas_macro                                                                           ⠙ |   2       | 09_cross_check_with_sas_macro                                                                           ⠼ |  55       | 09_cross_check_with_sas_macro                                                                           ⠸ |  94       | 09_cross_check_with_sas_macro                                                                           ⠼ | 145       | 09_cross_check_with_sas_macro                                                                           [38;5;214m⠙[39m | 161 1     | 09_cross_check_with_sas_macro                                                                           [31m✖[39m | 161 1     | 09_cross_check_with_sas_macro[36m [3.1 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [1m[38;5;214mError[39m (test-09_cross_check_with_sas_macro.R:236:1): (code run outside of `test_that()`)[22m
 Error: Problem with `mutate()` column `junk`.
 [34mℹ[39m `junk = pmap(...)`.
-[31m✖[39m argument "EMM_AC_Mmodel" is missing, with no default
+[31m✖[39m object 'EMM_AC_Mmodel' not found
 [1mBacktrace:[22m
 [90m  1. [39m`%>%`(...) [90mtest-09_cross_check_with_sas_macro.R:236:0[39m
 [90m 25. [39mbase::.handleSimpleError(...)
@@ -1602,6 +768,6 @@ Error: Problem with `mutate()` column `junk`.
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ [1mResults[22m ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-[36mDuration: 23.0 s[39m
+[36mDuration: 12.1 s[39m
 
-[ [38;5;214mFAIL[39m 278 | [35mWARN[39m 0 | [34mSKIP[39m 0 | [32mPASS[39m 1145 ]
+[ [38;5;214mFAIL[39m 107 | [35mWARN[39m 0 | [34mSKIP[39m 0 | [32mPASS[39m 747 ]
