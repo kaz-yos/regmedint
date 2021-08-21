@@ -126,8 +126,8 @@ calc_myreg_mreg_logistic_yreg_logistic_est <- function(beta0,
                          theta5 = theta5,
                          theta6 = theta6)
 
-    ## Construct a function for point estimates given (a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC).
-    fun_est <- function(a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC) {
+    ## Construct a function for point estimates given (a0, a1, m_cde, c_cond).
+    fun_est <- function(a0, a1, m_cde, c_cond) {
 
         ## Term involving an inner product of beta2 and c_cond
         ## matrix operation to error on non-conformant structure.
@@ -266,7 +266,7 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
                            Sigma_theta)
 
     ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond)
-    fun_se <- function(a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC) {
+    fun_se <- function(a0, a1, m_cde, c_cond) {
 
         ## Term involving an inner product of beta2 and c_cond
         ## matrix operation to error on non-conformant structure.
