@@ -139,10 +139,10 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
         }
         
         if (is.null(beta3)) {
-            assertthat::assert_that(is.null(EMM_AC_Mmodel))
+            ## assertthat::assert_that(is.null(EMM_AC_Mmodel))
             beta3_c <- 0
         } else {
-            assertthat::assert_that(!is.null(EMM_AC_Mmodel))
+            ## assertthat::assert_that(!is.null(EMM_AC_Mmodel))
             assertthat::assert_that(length(c_cond) == length(beta3))
             beta3_c <- sum(t(matrix(beta3)) %*% matrix(c_cond))
         }
@@ -157,19 +157,19 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
         }
         
         if (is.null(theta5)) {
-            assertthat::assert_that(is.null(EMM_AC_Ymodel))
+            ## assertthat::assert_that(is.null(EMM_AC_Ymodel))
             theta5_c <- 0
         } else {
-            assertthat::assert_that(!is.null(EMM_AC_Ymodel))
+            ## assertthat::assert_that(!is.null(EMM_AC_Ymodel))
             assertthat::assert_that(length(c_cond) == length(theta5))
             theta5_c <- sum(t(matrix(theta5)) %*% matrix(c_cond))
         }
         
         if (is.null(theta6)) {
-            assertthat::assert_that(is.null(EMM_MC))
+            ## assertthat::assert_that(is.null(EMM_MC))
             theta6_c <- 0
         } else {
-            assertthat::assert_that(!is.null(EMM_MC))
+            ## assertthat::assert_that(!is.null(EMM_MC))
             assertthat::assert_that(length(c_cond) == length(theta6))
             theta6_c <- sum(t(matrix(theta6)) %*% matrix(c_cond))
         }
@@ -251,7 +251,7 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
     Sigma <- Matrix::bdiag(Sigma_beta,
                            Sigma_theta)
 
-    ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC)
+    ## Construct a function for SE estimates given (a0, a1, m_cde, c_cond)
     fun_se <- function(a0, a1, m_cde, c_cond) {
 
         ## Term involving an inner product of beta2 and c_cond
@@ -266,10 +266,10 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
         }
         
         if (is.null(beta3)) {
-            assertthat::assert_that(is.null(EMM_AC_Mmodel))
+            ## assertthat::assert_that(is.null(EMM_AC_Mmodel))
             beta3_c <- 0
         } else {
-            assertthat::assert_that(!is.null(EMM_AC_Mmodel))
+            ## assertthat::assert_that(!is.null(EMM_AC_Mmodel))
             assertthat::assert_that(length(c_cond) == length(beta3))
             beta3_c <- sum(t(matrix(beta3)) %*% matrix(c_cond))
         }
@@ -284,19 +284,19 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
         }
         
         if (is.null(theta5)) {
-            assertthat::assert_that(is.null(EMM_AC_Ymodel))
+            ## assertthat::assert_that(is.null(EMM_AC_Ymodel))
             theta5_c <- 0
         } else {
-            assertthat::assert_that(!is.null(EMM_AC_Ymodel))
+            ## assertthat::assert_that(!is.null(EMM_AC_Ymodel))
             assertthat::assert_that(length(c_cond) == length(theta5))
             theta5_c <- sum(t(matrix(theta5)) %*% matrix(c_cond))
         }
         
         if (is.null(theta6)) {
-            assertthat::assert_that(is.null(EMM_MC))
+            ## assertthat::assert_that(is.null(EMM_MC))
             theta6_c <- 0
         } else {
-            assertthat::assert_that(!is.null(EMM_MC))
+            ## assertthat::assert_that(!is.null(EMM_MC))
             assertthat::assert_that(length(c_cond) == length(theta6))
             theta6_c <- sum(t(matrix(theta6)) %*% matrix(c_cond))
         }
