@@ -180,7 +180,7 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
         ## Adopted from mediation.sas and modified.
         ## Look up the third occurrence of the following:
         ## %if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
-        cde <- (theta1 + (theta3 * m_cde)) * (a1 - a0)
+        cde <- (theta1 + theta3 * m_cde + theta5_c) * (a1 - a0)
         ## Pearl decomposition (Regular NDE and NIE)
         ## Note the a0 in the first line.                      
         pnde <- ((theta1 + theta5_c + theta3*(beta0 + beta1*a0 + beta2_c + beta3_c*a0) +
@@ -320,7 +320,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                      0,                       # theta2
                      m_cde,                   # theta3
                      rep(0, length(theta4)),  # theta4 vector
-                     rep(1, length(theta5)),  # theta5 vector
+                     c_cond,                  # theta5 vector
                      rep(0, length(theta6)),  # theta6 vector
                      ##
                      0))                      # sigma^2
@@ -338,7 +338,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                 a0*(beta1 + beta3_c) + beta0 + beta2_c + sigma_sq*((theta2 + theta6_c) + theta3*(a0 + a1)),  # theta3
                 rep(0, length(theta4)),                             # theta4 vector
                 c_cond,                                             # theta5 vector
-                theta3*sigma_sq*c_cond ,                             # theta6 vector
+                theta3*sigma_sq*c_cond ,                            # theta6 vector
                 ##
                 1/2*theta3*(2*(theta2 + theta6_c) + theta3*(a0 + a1))))  # sigma^2
         ##
