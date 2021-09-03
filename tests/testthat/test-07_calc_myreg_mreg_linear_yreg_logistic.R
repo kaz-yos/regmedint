@@ -47,7 +47,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction", {
                                                  avar = "trt",
                                                  mvar = "bili",
                                                  cvar = NULL,
-                                                 interaction = FALSE)
+                                                 interaction = FALSE,
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -105,7 +108,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction", {
                                                  avar = "trt",
                                                  mvar = "bili",
                                                  cvar = c("age"),
-                                                 interaction = FALSE)
+                                                 interaction = FALSE,
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -163,7 +169,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction", {
                                                  avar = "trt",
                                                  mvar = "bili",
                                                  cvar = c("age","male","stage"),
-                                                 interaction = FALSE)
+                                                 interaction = FALSE,
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -220,7 +229,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic no interaction", {
                                                  avar = "trt",
                                                  mvar = "bili",
                                                  cvar = c("age","male","stage"),
-                                                 interaction = FALSE)
+                                                 interaction = FALSE,
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = NULL)
         it("returns functions where cde does not depend on m_cde", {
             expect_equal(myreg_funs[[1]](1,2,-3,c(4,5,6))["cde"],
                          myreg_funs[[1]](1,2,+3,c(4,5,6))["cde"])
@@ -297,7 +309,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
                                                  avar = "trt",
                                                  mvar = "bili",
                                                  cvar = NULL,
-                                                 interaction = TRUE)
+                                                 interaction = TRUE,
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -355,7 +370,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
                                                  avar = "trt",
                                                  mvar = "bili",
                                                  cvar = c("age"),
-                                                 interaction = TRUE)
+                                                 interaction = TRUE,
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -365,9 +383,9 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
         })
         it("returns functions that take 4 +3 = 7 arguments", {
             expect_equal(names(formals(myreg_funs[[1]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
             expect_equal(names(formals(myreg_funs[[2]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns functions that return named vector of effect estimates", {
             expect_equal(names(myreg_funs[[1]](1,2,3,4)),
@@ -413,7 +431,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
                                                  avar = "trt",
                                                  mvar = "bili",
                                                  cvar = c("age","male","stage"),
-                                                 interaction = TRUE)
+                                                 interaction = TRUE,
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -421,11 +442,11 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
             expect_equal(length(myreg_funs),
                          2)
         })
-        it("returns functions that take 4 +3 = 7 arguments", {
+        it("returns functions that take 4 arguments", {
             expect_equal(names(formals(myreg_funs[[1]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
             expect_equal(names(formals(myreg_funs[[2]])),
-                         c("a0","a1","m_cde","c_cond","EMM_AC_Mmodel","EMM_AC_Ymodel","EMM_MC"))
+                         c("a0","a1","m_cde","c_cond"))
         })
         it("returns functions that return named vector of effect estimates", {
             expect_equal(names(myreg_funs[[1]](1,2,3,c(4,5,6))),
@@ -474,7 +495,10 @@ describe("calc_myreg_mreg_linear_yreg_logistic logistic interaction", {
                                                  avar = "trt",
                                                  mvar = "bili",
                                                  cvar = c("age","male","stage"),
-                                                 interaction = TRUE)
+                                                 interaction = TRUE,
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = NULL)
         it("returns functions where cde depends on m_cde", {
             ## Positive (a1 - a0)
             if (theta3 > 0) {
