@@ -348,8 +348,8 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
         
         tnie_d1 <- (theta2 + theta3*a1 + theta6_c) * (tnie_expit_a1*(1 - tnie_expit_a1) - tnie_expit_a0*(1 - tnie_expit_a0))
         tnie_d2 <- a1 * (theta2 + theta3*a1 + theta6_c) * (tnie_expit_a1*(1 - tnie_expit_a1) - tnie_expit_a0*(1 - tnie_expit_a0))
-        tnie_d3 <- c * (theta2 + theta3*a1 + theta6_c) * (tnie_expit_a1*(1 - tnie_expit_a1) - tnie_expit_a0*(1 - tnie_expit_a0))
-        tnie_d4 <- c * (theta2 + theta3*a1 + theta6_c) * (a1*tnie_expit_a1*(1 - tnie_expit_a1) - a0*tnie_expit_a0*(1 - tnie_expit_a0))
+        tnie_d3 <- c_cond * (theta2 + theta3*a1 + theta6_c) * (tnie_expit_a1*(1 - tnie_expit_a1) - tnie_expit_a0*(1 - tnie_expit_a0))
+        tnie_d4 <- c_cond * (theta2 + theta3*a1 + theta6_c) * (a1*tnie_expit_a1*(1 - tnie_expit_a1) - a0*tnie_expit_a0*(1 - tnie_expit_a0))
         tnie_d5 <- 0
         tnie_d6 <- 0
         tnie_d7 <- tnie_expit_a1 - tnie_expit_a0
