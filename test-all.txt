@@ -12,176 +12,131 @@ Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cho
 [90m  8. [39m[ base::eval(...) ][90m with 1 more call[39m
 [90m 11. [39mregmedint::summary.regmedint(fit_regmedint_obj)
 [90m 12. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
-[90m 14. [39mt(Gamma_pnde) %*% Sigma
+[90m 14. [39mt(Gamma_cde) %*% Sigma
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ⠏ |   0       | 03_fit_mreg                                                                                             [32m✔[39m |  24       | 03_fit_mreg
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg                                                                            [32m✔[39m |  23       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear                                                                                      [32m✔[39m |  24       | 04_fit_yreg_linear
 ⠏ |   0       | 04_fit_yreg_logistic                                                                                    [32m✔[39m |  24       | 04_fit_yreg_logistic
 ⠏ |   0       | 04_fit_yreg_loglinear                                                                                   ⠸ |   4       | 04_fit_yreg_loglinear                                                                                   ⠴ |  16       | 04_fit_yreg_loglinear                                                                                   [32m✔[39m |  36       | 04_fit_yreg_loglinear[36m [0.3 s][39m
-⠏ |   0       | 04_fit_yreg_negbin                                                                                      ⠹ |  13       | 04_fit_yreg_negbin                                                                                      [32m✔[39m |  24       | 04_fit_yreg_negbin[36m [0.2 s][39m
+⠏ |   0       | 04_fit_yreg_negbin                                                                                      ⠦ |  17       | 04_fit_yreg_negbin                                                                                      [32m✔[39m |  24       | 04_fit_yreg_negbin[36m [0.1 s][39m
 ⠏ |   0       | 04_fit_yreg_poisson                                                                                     [32m✔[39m |  24       | 04_fit_yreg_poisson
-⠏ |   0       | 04_fit_yreg_survAFT_exp                                                                                 ⠏ |  20       | 04_fit_yreg_survAFT_exp                                                                                 [32m✔[39m |  24       | 04_fit_yreg_survAFT_exp[36m [0.1 s][39m
-⠏ |   0       | 04_fit_yreg_survAFT_weibull                                                                             ⠴ |  16       | 04_fit_yreg_survAFT_weibull                                                                             [32m✔[39m |  24       | 04_fit_yreg_survAFT_weibull[36m [0.1 s][39m
-⠏ |   0       | 04_fit_yreg_survCox                                                                                     ⠹ |  13       | 04_fit_yreg_survCox                                                                                     [32m✔[39m |  24       | 04_fit_yreg_survCox[36m [0.2 s][39m
-⠏ |   0       | 05_calc_myreg                                                                                           ⠹ |   3       | 05_calc_myreg                                                                                           [32m✔[39m |   6       | 05_calc_myreg[36m [0.4 s][39m
-⠏ |   0       | 06_calc_myreg_helpers_coef                                                                              ⠸ |  14       | 06_calc_myreg_helpers_coef                                                                              ⠏ |  40       | 06_calc_myreg_helpers_coef                                                                              ⠴ |  66       | 06_calc_myreg_helpers_coef                                                                              ⠏ |  90       | 06_calc_myreg_helpers_coef                                                                              ⠸ | 104       | 06_calc_myreg_helpers_coef                                                                              [32m✔[39m | 109       | 06_calc_myreg_helpers_coef[36m [0.7 s][39m
-⠏ |   0       | 06_calc_myreg_helpers_vcov                                                                              ⠋ |  11       | 06_calc_myreg_helpers_vcov                                                                              ⠼ |  15       | 06_calc_myreg_helpers_vcov                                                                              ⠼ |  25       | 06_calc_myreg_helpers_vcov                                                                              ⠇ |  39       | 06_calc_myreg_helpers_vcov                                                                              ⠼ |  55       | 06_calc_myreg_helpers_vcov                                                                              ⠧ |  58       | 06_calc_myreg_helpers_vcov                                                                              ⠹ |  73       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  87       | 06_calc_myreg_helpers_vcov                                                                              ⠧ |  88       | 06_calc_myreg_helpers_vcov                                                                              ⠏ |  90       | 06_calc_myreg_helpers_vcov                                                                              ⠴ |  96       | 06_calc_myreg_helpers_vcov                                                                              [32m✔[39m | 110       | 06_calc_myreg_helpers_vcov[36m [1.4 s][39m
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠋ |   1       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠇[39m |  16 3     | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠋[39m |  31 10     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠏[39m |  47 13     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠙[39m |  56 16     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠴[39m |  77 19     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠧[39m | 114 24     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠸[39m | 128 26     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [31m✖[39m | 128 26     | 07_calc_myreg_mreg_linear_yreg_linear[36m [0.9 s][39m
+⠏ |   0       | 04_fit_yreg_survAFT_exp                                                                                 [32m✔[39m |  24       | 04_fit_yreg_survAFT_exp
+⠏ |   0       | 04_fit_yreg_survAFT_weibull                                                                             ⠏ |  20       | 04_fit_yreg_survAFT_weibull                                                                             [32m✔[39m |  24       | 04_fit_yreg_survAFT_weibull[36m [0.1 s][39m
+⠏ |   0       | 04_fit_yreg_survCox                                                                                     ⠹ |  13       | 04_fit_yreg_survCox                                                                                     [32m✔[39m |  24       | 04_fit_yreg_survCox[36m [0.1 s][39m
+⠏ |   0       | 05_calc_myreg                                                                                           ⠹ |   3       | 05_calc_myreg                                                                                           [32m✔[39m |   6       | 05_calc_myreg[36m [0.5 s][39m
+⠏ |   0       | 06_calc_myreg_helpers_coef                                                                              ⠸ |  14       | 06_calc_myreg_helpers_coef                                                                              ⠙ |  42       | 06_calc_myreg_helpers_coef                                                                              ⠏ |  70       | 06_calc_myreg_helpers_coef                                                                              ⠙ |  92       | 06_calc_myreg_helpers_coef                                                                              [32m✔[39m | 109       | 06_calc_myreg_helpers_coef[36m [0.5 s][39m
+⠏ |   0       | 06_calc_myreg_helpers_vcov                                                                              ⠹ |  13       | 06_calc_myreg_helpers_vcov                                                                              ⠙ |  22       | 06_calc_myreg_helpers_vcov                                                                              ⠏ |  30       | 06_calc_myreg_helpers_vcov                                                                              ⠋ |  51       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  57       | 06_calc_myreg_helpers_vcov                                                                              ⠼ |  65       | 06_calc_myreg_helpers_vcov                                                                              ⠹ |  83       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  87       | 06_calc_myreg_helpers_vcov                                                                              ⠧ |  88       | 06_calc_myreg_helpers_vcov                                                                              ⠏ |  90       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  97       | 06_calc_myreg_helpers_vcov                                                                              [32m✔[39m | 110       | 06_calc_myreg_helpers_vcov[36m [1.3 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠋ |   1       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠋[39m |  20 1     | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠹[39m |  37 6     | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠋[39m |  54 7     | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠧[39m |  68 10     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠦[39m |  86 11     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠼[39m | 104 11     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠏[39m | 139 11     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠴[39m | 155 11     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠴[39m | 192 14     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [31m✖[39m | 197 16     | 07_calc_myreg_mreg_linear_yreg_linear[36m [1.2 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:68:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (NULL cvar): returns functions that return named vector of effect estimates[22m
-names(myreg_funs[[1]](1, 2, 3, NULL)) not equal to c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm").
-Lengths differ: 6 is not 7
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:129:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-names(myreg_funs[[1]](1, 2, 3, 4)) not equal to c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm").
-Lengths differ: 6 is not 7
-
 [1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:135:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
 Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:135:12[39m
 [90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
-[90m 6. [39mt(Gamma_pnde) %*% Sigma
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:190:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-names(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))) not equal to c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm").
-Lengths differ: 6 is not 7
+[90m 6. [39mt(Gamma_cde) %*% Sigma
 
 [1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:196:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
 Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:196:12[39m
 [90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 6. [39mt(Gamma_pnde) %*% Sigma
+[90m 6. [39mt(Gamma_cde) %*% Sigma
 
 [1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:239:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
 Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:239:12[39m
 [90m 4. [39mmyreg_funs[[2]](1, 2, -3, c(4, 5, 6))
-[90m 6. [39mt(Gamma_pnde) %*% Sigma
+[90m 6. [39mt(Gamma_cde) %*% Sigma
 
 [1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:245:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where natural effects do no depend on c_cond[22m
 Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:245:12[39m
 [90m 4. [39mmyreg_funs[[2]](1, 2, -3, -1 * c(4, 5, 6))
-[90m 6. [39mt(Gamma_pnde) %*% Sigma
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:249:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where direct effects match up[22m
-unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["cde"]) not equal to unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnde"]).
-1/1 mismatches
-[1] NA - -98.1 == NA
+[90m 6. [39mt(Gamma_cde) %*% Sigma
 
 [1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:251:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where direct effects match up[22m
 Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:251:12[39m
 [90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 7. [39mt(Gamma_pnde) %*% Sigma
+[90m 7. [39mt(Gamma_cde) %*% Sigma
 
 [1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:268:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
 Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:268:12[39m
 [90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 7. [39mt(Gamma_pnde) %*% Sigma
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:329:13): calc_myreg_mreg_linear_yreg_linear linear interaction (NULL cvar): returns functions that return named vector of effect estimates[22m
-names(myreg_funs[[1]](1, 2, 3, NULL)) not equal to c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm").
-Lengths differ: 6 is not 7
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:390:13): calc_myreg_mreg_linear_yreg_linear linear interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-names(myreg_funs[[1]](1, 2, 3, 4)) not equal to c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm").
-Lengths differ: 6 is not 7
+[90m 7. [39mt(Gamma_cde) %*% Sigma
 
 [1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:396:13): calc_myreg_mreg_linear_yreg_linear linear interaction (1 cvar): returns functions that return named vector of effect estimates[22m
 Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:396:12[39m
 [90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
-[90m 6. [39mt(Gamma_pnde) %*% Sigma
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:451:13): calc_myreg_mreg_linear_yreg_linear linear interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-names(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))) not equal to c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm").
-Lengths differ: 6 is not 7
+[90m 6. [39mt(Gamma_cde) %*% Sigma
 
 [1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:457:13): calc_myreg_mreg_linear_yreg_linear linear interaction (3 cvar): returns functions that return named vector of effect estimates[22m
 Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:457:12[39m
 [90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 6. [39mt(Gamma_pnde) %*% Sigma
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:505:17): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where cde depends on m_cde[22m
-myreg_funs[[1]](1, 2, +3, c(4, 5, 6))["cde"] is not strictly more than myreg_funs[[1]](1, 2, -3, c(4, 5, 6))["cde"]. Difference: NA
+[90m 6. [39mt(Gamma_cde) %*% Sigma
 
 [1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:516:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
 Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:516:12[39m
 [90m 4. [39mmyreg_funs[[2]](1, 2, +3, -1 * c(4, 5, 6))
-[90m 6. [39mt(Gamma_pnde) %*% Sigma
+[90m 6. [39mt(Gamma_cde) %*% Sigma
 
 [1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:522:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where nie does not depend on c_cond[22m
 Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:522:12[39m
 [90m 4. [39mmyreg_funs[[2]](1, 2, +3, -1 * c(4, 5, 6))
-[90m 6. [39mt(Gamma_pnde) %*% Sigma
+[90m 6. [39mt(Gamma_cde) %*% Sigma
 
 [1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:597:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where total effect is nde+nie[22m
 Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:597:12[39m
 [90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 7. [39mt(Gamma_pnde) %*% Sigma
+[90m 7. [39mt(Gamma_cde) %*% Sigma
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:790:13): calc_myreg_mreg_linear_yreg_linear_est (NULL cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "beta3" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1238:13): calc_myreg_mreg_linear_yreg_linear_se (one cvar): returns a function that errors given inconsistent c_cond[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:790:12[39m
-[90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL)
+[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1238:12[39m
+[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
+[90m 6. [39mt(Gamma_cde) %*% Sigma
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:797:13): calc_myreg_mreg_linear_yreg_linear_est (NULL cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "beta3" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1244:13): calc_myreg_mreg_linear_yreg_linear_se (one cvar): returns a function that gives a numeric vector without NA[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = NULL) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:797:12[39m
+[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1244:12[39m
+[90m 3. [39mt(Gamma_cde) %*% Sigma
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:834:13): calc_myreg_mreg_linear_yreg_linear_est (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "beta3" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:834:12[39m
-[90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
+[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1271:13): calc_myreg_mreg_linear_yreg_linear_se (three cvar): returns a function that takes a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymode, EMM_MC[22m
+names(formals(se_fun)) not equal to c(...).
+Lengths differ: 4 is not 7
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:840:13): calc_myreg_mreg_linear_yreg_linear_est (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "beta3" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1288:13): calc_myreg_mreg_linear_yreg_linear_se (three cvar): returns a function that errors given inconsistent c_cond[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:840:12[39m
+[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1288:12[39m
+[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
+[90m 6. [39mt(Gamma_cde) %*% Sigma
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:879:13): calc_myreg_mreg_linear_yreg_linear_est (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: argument "beta3" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1292:13): calc_myreg_mreg_linear_yreg_linear_se (three cvar): returns a function that gives a numeric vector without NA[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:879:12[39m
-[90m 4. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:883:13): calc_myreg_mreg_linear_yreg_linear_est (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: argument "beta3" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::est_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:883:12[39m
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:898:1): (code run outside of `test_that()`)[22m
-Error: argument "beta3" is missing, with no default
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:898:0[39m
-[90m 2. [39m[ base::eval(...) ][90m with 1 more call[39m
-[90m 4. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1062:4[39m
-[90m 5. [39m[ base::eval(...) ][90m with 1 more call[39m
-[90m 7. [39mregmedint::calc_myreg_mreg_linear_yreg_linear_se(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1063:8[39m
-[90m 8. [39mregmedint::validate_myreg_vcovs(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_linear_yreg_linear.R:231:4[39m
+[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1292:12[39m
+[90m 3. [39mt(Gamma_cde) %*% Sigma
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠦ |   7       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠧ |   8       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠋[39m |  20 1     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [31m✖[39m |  28 3     | 07_calc_myreg_mreg_linear_yreg_logistic[36m [0.6 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠦ |   7       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠧ |   8       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠏[39m |  28 2     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠋[39m |  45 6     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠏[39m |  62 8     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠋[39m |  80 11     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠴[39m | 105 11     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠼[39m | 144 11     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠋[39m | 160 11     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠸[39m | 183 11     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠙[39m | 207 15     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [31m✖[39m | 207 16     | 07_calc_myreg_mreg_linear_yreg_logistic[36m [1.4 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:135:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
 Error: non-conformable arrays
@@ -195,215 +150,310 @@ Error: non-conformable arrays
 [90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:196:12[39m
 [90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
 
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:26:1): (code run outside of `test_that()`)[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:239:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
+Error: non-conformable arrays
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:26:0[39m
-[90m 2. [39m[ base::eval(...) ][90m with 1 more call[39m
-[90m 4. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:210:4[39m
-[90m 5. [39m[ base::eval(...) ][90m with 1 more call[39m
-[90m 7. [39mregmedint::calc_myreg_mreg_linear_yreg_logistic(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:224:8[39m
-[90m 8. [39mregmedint::beta_hat_helper(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_linear_yreg_logistic.R:32:4[39m
-[90m 9. [39mregmedint::beta_hat(...) [90m/Users/yili/Desktop/regmedint2021/R/06_calc_myreg_helpers_coef.R:39:4[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:239:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, -3, c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:245:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where natural effects do no depend on c_cond[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:245:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, -3, -1 * c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:251:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where direct effects match up[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:251:12[39m
+[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:268:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:268:12[39m
+[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:397:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (1 cvar): returns functions that return named vector of effect estimates[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:397:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:458:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (3 cvar): returns functions that return named vector of effect estimates[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:458:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:517:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:517:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, +3, -1 * c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:523:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where nie does not depend on c_cond[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:523:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, +3, -1 * c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:598:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where total effect is nde+nie[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:598:12[39m
+[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+
+[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1333:13): calc_myreg_mreg_linear_yreg_logistic_se (one cvar): returns a function that takes a0, a1, m_cde, c_cond[22m
+names(formals(se_fun)) not equal to c(...).
+Lengths differ: 4 is not 7
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1349:13): calc_myreg_mreg_linear_yreg_logistic_se (one cvar): returns a function that errors given inconsistent c_cond[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1349:12[39m
+[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1355:13): calc_myreg_mreg_linear_yreg_logistic_se (one cvar): returns a function that gives a numeric vector without NA[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1355:12[39m
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1402:13): calc_myreg_mreg_linear_yreg_logistic_se (three cvar): returns a function that errors given inconsistent c_cond[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1402:12[39m
+[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1406:13): calc_myreg_mreg_linear_yreg_logistic_se (three cvar): returns a function that gives a numeric vector without NA[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1406:12[39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [31m✖[39m |   0 1     | 07_calc_myreg_mreg_logistic_yreg_linear
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠦ |   7       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [38;5;214m⠋[39m |  29 2     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [38;5;214m⠧[39m |  51 7     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [38;5;214m⠙[39m |  64 8     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [38;5;214m⠋[39m |  81 10     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠏[39m | 110 10     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠋[39m | 141 10     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠸[39m | 164 10     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠧[39m | 196 12     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [31m✖[39m | 196 14     | 07_calc_myreg_mreg_logistic_yreg_linear[36m [1.3 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:28:1): (code run outside of `test_that()`)[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:137:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:28:0[39m
-[90m 2. [39m[ base::eval(...) ][90m with 1 more call[39m
-[90m 4. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:30:4[39m
-[90m 5. [39m[ base::eval(...) ][90m with 1 more call[39m
-[90m 7. [39mregmedint::calc_myreg_mreg_logistic_yreg_linear(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:44:8[39m
-[90m 8. [39mregmedint::beta_hat_helper(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_logistic_yreg_linear.R:33:4[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:137:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
+[90m 6. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:198:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:198:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+[90m 6. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:241:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:241:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, -3, c(4, 5, 6))
+[90m 6. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:247:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where cde and nde do no depend on c_cond (V2015 p471)[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:247:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, -3, -1 * c(4, 5, 6))
+[90m 6. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:253:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where direct effects match up[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:253:12[39m
+[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+[90m 7. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:270:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:270:12[39m
+[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+[90m 7. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:398:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (1 cvar): returns functions that return named vector of effect estimates[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:398:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
+[90m 6. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:459:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (3 cvar): returns functions that return named vector of effect estimates[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:459:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+[90m 6. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:518:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:518:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, +3, -1 * c(4, 5, 6))
+[90m 6. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:580:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (methodological correctness): returns functions where total effect is nde+nie[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:580:12[39m
+[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+[90m 7. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1221:13): calc_myreg_mreg_logistic_yreg_linear_se (one cvar): returns a function that errors given inconsistent c_cond[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1221:12[39m
+[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
+[90m 6. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1227:13): calc_myreg_mreg_logistic_yreg_linear_se (one cvar): returns a function that gives a numeric vector without NA[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1227:12[39m
+[90m 3. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1271:13): calc_myreg_mreg_logistic_yreg_linear_se (three cvar): returns a function that errors given inconsistent c_cond[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1271:12[39m
+[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
+[90m 6. [39mt(Gamma_cde) %*% Sigma
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1275:13): calc_myreg_mreg_logistic_yreg_linear_se (three cvar): returns a function that gives a numeric vector without NA[22m
+Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
+[1mBacktrace:[22m
+[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1275:12[39m
+[90m 3. [39mt(Gamma_cde) %*% Sigma
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [31m✖[39m |   0 1     | 07_calc_myreg_mreg_logistic_yreg_logistic
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠦ |   7       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠋[39m |  29 2     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠋[39m |  45 6     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠇[39m |  61 8     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠧[39m |  75 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠧[39m |  85 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠇[39m | 106 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠸[39m | 121 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠸[39m | 141 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠴[39m | 153 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠸[39m | 181 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [31m✖[39m | 196 17     | 07_calc_myreg_mreg_logistic_yreg_logistic[36m [2.0 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:28:1): (code run outside of `test_that()`)[22m
-Error: argument "EMM_AC_Mmodel" is missing, with no default
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:137:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
+Error: non-conformable arrays
 [1mBacktrace:[22m
-[90m 1. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:28:0[39m
-[90m 2. [39m[ base::eval(...) ][90m with 1 more call[39m
-[90m 4. [39mtestthat::describe(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:30:4[39m
-[90m 5. [39m[ base::eval(...) ][90m with 1 more call[39m
-[90m 7. [39mregmedint::calc_myreg_mreg_logistic_yreg_logistic(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:44:8[39m
-[90m 8. [39mregmedint::beta_hat_helper(...) [90m/Users/yili/Desktop/regmedint2021/R/07_calc_myreg_mreg_logistic_yreg_logistic.R:33:4[39m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:137:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:198:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:198:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:241:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:241:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, -3, c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:247:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where nde do no depend on c_cond[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:247:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, -3, -1 * c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:253:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where direct effects match up[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:253:12[39m
+[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:270:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:270:12[39m
+[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:399:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (1 cvar): returns functions that return named vector of effect estimates[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:399:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:460:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (3 cvar): returns functions that return named vector of effect estimates[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:460:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:519:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:519:12[39m
+[90m 4. [39mmyreg_funs[[2]](1, 2, +3, -1 * c(4, 5, 6))
+
+[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:546:21): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where natural effects depend on c_cond[22m
+myreg_funs[[1]](1, 2, +3, -1 * c_cond)["pnie"] is not strictly less than myreg_funs[[1]](1, 2, +3, +2 * c_cond)["pnie"]. Difference: 0.0588
+
+[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:584:17): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where natural effects relate correctly[22m
+unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["tnie"]) is not strictly less than unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnie"]). Difference: 0.0588
+
+[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:593:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where total effect is nde+nie[22m
+unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["te"]) not equal to +....
+1/1 mismatches
+[1] -0.19 - -0.249 == 0.0588
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:598:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where total effect is nde+nie[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:598:12[39m
+[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1240:13): calc_myreg_mreg_logistic_yreg_logistic_se (one cvar): returns a function that errors given inconsistent c_cond[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1240:12[39m
+[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1246:13): calc_myreg_mreg_logistic_yreg_logistic_se (one cvar): returns a function that gives a numeric vector without NA[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1246:12[39m
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1290:13): calc_myreg_mreg_logistic_yreg_logistic_se (three cvar): returns a function that errors given inconsistent c_cond[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1290:12[39m
+[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
+
+[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1294:13): calc_myreg_mreg_logistic_yreg_logistic_se (three cvar): returns a function that gives a numeric vector without NA[22m
+Error: non-conformable arrays
+[1mBacktrace:[22m
+[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1294:12[39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 08_regmedint_class_user_methods                                                                         ⠋ |   1       | 08_regmedint_class_user_methods                                                                         [38;5;214m⠙[39m |   8 4     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠹[39m |   8 15     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠼[39m |  11 16 8   | 08_regmedint_class_user_methods                                                                        [38;5;214m⠹[39m |  29 16 8   | 08_regmedint_class_user_methods                                                                        [38;5;214m⠸[39m |  36 20 8   | 08_regmedint_class_user_methods                                                                        [38;5;214m⠼[39m |  46 21 8   | 08_regmedint_class_user_methods                                                                        [38;5;214m⠙[39m |  52 22 8   | 08_regmedint_class_user_methods                                                                        [38;5;214m⠼[39m |  53 24 8   | 08_regmedint_class_user_methods                                                                        [38;5;214m⠧[39m |  53 37 8   | 08_regmedint_class_user_methods                                                                        [38;5;214m⠏[39m |  53 39 8   | 08_regmedint_class_user_methods                                                                        [38;5;214m⠋[39m |  53 40 8   | 08_regmedint_class_user_methods                                                                        [38;5;214m⠹[39m |  53 52 8   | 08_regmedint_class_user_methods                                                                        [31m✖[39m |  53 57 8   | 08_regmedint_class_user_methods[36m [2.0 s][39m
+⠏ |   0       | 08_regmedint_class_user_methods                                                                         ⠋ |   1       | 08_regmedint_class_user_methods                                                                         ⠏ |  10       | 08_regmedint_class_user_methods                                                                         ⠋ |  21       | 08_regmedint_class_user_methods                                                                         [38;5;214m⠧[39m |  23 5     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠋[39m |  36 5     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠴[39m |  51 5     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠦[39m |  58 9     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠸[39m |  74 10     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠙[39m |  90 12     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠼[39m | 100 15     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠸[39m | 119 15     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠸[39m | 125 19     | 08_regmedint_class_user_methods                                                                        [31m✖[39m | 134 20     | 08_regmedint_class_user_methods[36m [1.4 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mFailure[39m (test-08_regmedint_class_user_methods.R:65:17): print.regmedint: prints mediation analysis results with expected elements[22m
-`print\(fit_regmedint\)` does not match "cde".
-Actual value: "### Mediator model\\n\\nCall:\\nlm\(formula = bili ~ trt, data = data\)\\n\\nCoefficients:\\n\(Intercept\)          trt  \\n     2\.2132       0\.7434  \\n\\n### Outcome model\\n\\nCall:\\nlm\(formula = alk_phos ~ trt \+ bili, data = data\)\\n\\nCoefficients:\\n\(Intercept\)          trt         bili  \\n    1913\.49       -87\.70        64\.58  \\n\\n### Mediation analysis \\n      pnde       tnie       tnde       pnie         te         pm \\n-87\.700481  48\.010649 -87\.700481  48\.010649 -39\.689832  -1\.209646 "
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:76:17): summary.regmedint: returns an object of summary_regmedint class[22m
-Error: length(res_est) not equal to length(res_se)
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(class(summary(fit_regmedint))[[1]], "summary_regmedint") [90mtest-08_regmedint_class_user_methods.R:76:16[39m
-[90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 6. [39massertthat::assert_that(length(res_est) == length(res_se)) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:224:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:80:17): summary.regmedint: returns an object containing the mreg summary[22m
-Error: length(res_est) not equal to length(res_se)
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:80:16[39m
-[90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 6. [39massertthat::assert_that(length(res_est) == length(res_se)) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:224:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:84:17): summary.regmedint: returns an object containing the yreg summary[22m
-Error: length(res_est) not equal to length(res_se)
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:84:16[39m
-[90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 6. [39massertthat::assert_that(length(res_est) == length(res_se)) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:224:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:88:17): summary.regmedint: returns an object containing the myreg summary matrix[22m
-Error: length(res_est) not equal to length(res_se)
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:88:16[39m
-[90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 6. [39massertthat::assert_that(length(res_est) == length(res_se)) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:224:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:92:17): summary.regmedint: returns an object with appropriate columns[22m
-Error: length(res_est) not equal to length(res_se)
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:92:16[39m
-[90m 7. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 8. [39massertthat::assert_that(length(res_est) == length(res_se)) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:224:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:105:17): summary.regmedint: returns an object, ignoring exponentiate = TRUE[22m
-Error: length(res_est) not equal to length(res_se)
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:105:16[39m
-[90m 7. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
-[90m 8. [39massertthat::assert_that(length(res_est) == length(res_se)) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:224:4[39m
-
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:124:21): print.summary_regmedint: prints the mreg results[22m
-Error: length(res_est) not equal to length(res_se)
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:124:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 13. [39massertthat::assert_that(length(res_est) == length(res_se)) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:224:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:129:21): print.summary_regmedint: prints the yreg results[22m
-Error: length(res_est) not equal to length(res_se)
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:129:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 13. [39massertthat::assert_that(length(res_est) == length(res_se)) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:224:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:134:21): print.summary_regmedint: prints mediation analysis results with expected elements[22m
-Error: length(res_est) not equal to length(res_se)
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(print(summary(fit_regmedint)), "cde") [90mtest-08_regmedint_class_user_methods.R:134:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 13. [39massertthat::assert_that(length(res_est) == length(res_se)) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:224:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:143:21): print.summary_regmedint: prints mediation analysis results with expected elements exponentiated[22m
-Error: length(res_est) not equal to length(res_se)
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:143:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
-[90m 13. [39massertthat::assert_that(length(res_est) == length(res_se)) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:224:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint, exponentiate = TRUE))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:152:21): print.summary_regmedint: prints evaluation information[22m
-Error: length(res_est) not equal to length(res_se)
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:152:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 13. [39massertthat::assert_that(length(res_est) == length(res_se)) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:224:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:178:21): coef.summary_regmedint: extract the matrix object[22m
-Error: length(res_est) not equal to length(res_se)
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(coef(summary(fit_regmedint)), summary(fit_regmedint)$summary_myreg) [90mtest-08_regmedint_class_user_methods.R:178:20[39m
-[90m 6. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 7. [39massertthat::assert_that(length(res_est) == length(res_se)) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:224:4[39m
-
-[1m[38;5;214mFailure[39m (test-08_regmedint_class_user_methods.R:188:17): coef.regmedint: creates a vector of estimates[22m
-names(coef(fit_regmedint)) not equal to c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm").
-Lengths differ: 6 is not 7
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:194:17): vcov.regmedint: creates a matrix with correct dimension names[22m
-Error: length of 'dimnames' [2] not equal to array extent
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(class(vcov(fit_regmedint))[[1]], "matrix") [90mtest-08_regmedint_class_user_methods.R:194:16[39m
-[90m 5. [39mregmedint::vcov.regmedint(fit_regmedint)
-[90m 6. [39mbase::`colnames<-`(...) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:584:4[39m
-
-[1m[35mWarning[39m (test-08_regmedint_class_user_methods.R:205:17): confint.regmedint: creates a matrix of estimates[22m
-longer object length is not a multiple of shorter object length
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:205:16[39m
-[90m 7. [39mregmedint::confint.regmedint(fit_regmedint)
-[90m 8. [39mbase::cbind(...) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:675:4[39m
-
-[1m[35mWarning[39m (test-08_regmedint_class_user_methods.R:205:17): confint.regmedint: creates a matrix of estimates[22m
-longer object length is not a multiple of shorter object length
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:205:16[39m
-[90m 7. [39mregmedint::confint.regmedint(fit_regmedint)
-[90m 8. [39mbase::cbind(...) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:675:4[39m
-
-[1m[35mWarning[39m (test-08_regmedint_class_user_methods.R:207:17): confint.regmedint: creates a matrix of estimates[22m
-longer object length is not a multiple of shorter object length
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:207:16[39m
-[90m 6. [39mregmedint::confint.regmedint(fit_regmedint)
-[90m 7. [39mbase::cbind(...) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:675:4[39m
-
-[1m[35mWarning[39m (test-08_regmedint_class_user_methods.R:207:17): confint.regmedint: creates a matrix of estimates[22m
-longer object length is not a multiple of shorter object length
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:207:16[39m
-[90m 6. [39mregmedint::confint.regmedint(fit_regmedint)
-[90m 7. [39mbase::cbind(...) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:675:4[39m
-
-[1m[38;5;214mFailure[39m (test-08_regmedint_class_user_methods.R:207:17): confint.regmedint: creates a matrix of estimates[22m
-rownames(confint(fit_regmedint)) not equal to c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm").
-7/7 mismatches
-x[1]: "se_cde"
-y[1]: "cde"
-
-x[2]: "se_pnde"
-y[2]: "pnde"
-
-x[3]: "se_tnie"
-y[3]: "tnie"
-
-x[4]: "se_tnde"
-y[4]: "tnde"
-
-x[5]: "se_pnie"
-y[5]: "pnie"
-
-[1m[35mWarning[39m (test-08_regmedint_class_user_methods.R:211:17): confint.regmedint: creates the lower column less than the upper column[22m
-longer object length is not a multiple of shorter object length
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_true(...) [90mtest-08_regmedint_class_user_methods.R:211:16[39m
-[90m 5. [39mregmedint::confint.regmedint(fit_regmedint)
-[90m 6. [39mbase::cbind(...) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:675:4[39m
-
-[1m[35mWarning[39m (test-08_regmedint_class_user_methods.R:211:17): confint.regmedint: creates the lower column less than the upper column[22m
-longer object length is not a multiple of shorter object length
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_true(...) [90mtest-08_regmedint_class_user_methods.R:211:16[39m
-[90m 5. [39mregmedint::confint.regmedint(fit_regmedint)
-[90m 6. [39mbase::cbind(...) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:675:4[39m
-
-[1m[35mWarning[39m (test-08_regmedint_class_user_methods.R:211:17): confint.regmedint: creates the lower column less than the upper column[22m
-longer object length is not a multiple of shorter object length
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_true(...) [90mtest-08_regmedint_class_user_methods.R:211:16[39m
-[90m 5. [39mregmedint::confint.regmedint(fit_regmedint)
-[90m 6. [39mbase::cbind(...) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:675:4[39m
-
-[1m[35mWarning[39m (test-08_regmedint_class_user_methods.R:211:17): confint.regmedint: creates the lower column less than the upper column[22m
-longer object length is not a multiple of shorter object length
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_true(...) [90mtest-08_regmedint_class_user_methods.R:211:16[39m
-[90m 5. [39mregmedint::confint.regmedint(fit_regmedint)
-[90m 6. [39mbase::cbind(...) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:675:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:332:21): print.summary_regmedint: prints the mreg results[22m
 Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
@@ -435,262 +485,81 @@ Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:360:20[39m
 [90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mFailure[39m (test-08_regmedint_class_user_methods.R:469:17): print.regmedint: prints mediation analysis results with expected elements[22m
-`print\(fit_regmedint\)` does not match "cde".
-Actual value: "### Mediator model\\n\\nCall:  glm\(formula = bili_bin ~ trt, family = binomial\(link = "logit"\), \\n    data = data\)\\n\\nCoefficients:\\n\(Intercept\)          trt  \\n    0\.08577     -0\.08577  \\n\\nDegrees of Freedom: 275 Total \(i\.e\. Null\);  274 Residual\\nNull Deviance:\\t    382\.5 \\nResidual Deviance: 382\.4 \\tAIC: 386\.4\\n### Outcome model\\n\\nCall:\\nlm\(formula = alk_phos ~ trt \+ bili_bin, data = data\)\\n\\nCoefficients:\\n\(Intercept\)          trt     bili_bin  \\n    1743\.35       -26\.82       600\.44  \\n\\n### Mediation analysis \\n       pnde        tnie        tnde        pnie          te          pm \\n-26\.8233219 -12\.8665101 -26\.8233219 -12\.8665101 -39\.6898319   0\.3241765 "
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:480:17): summary.regmedint: returns an object of summary_regmedint class[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(class(summary(fit_regmedint))[[1]], "summary_regmedint") [90mtest-08_regmedint_class_user_methods.R:480:16[39m
-[90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:484:17): summary.regmedint: returns an object containing the mreg summary[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:484:16[39m
-[90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:488:17): summary.regmedint: returns an object containing the yreg summary[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:488:16[39m
-[90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:492:17): summary.regmedint: returns an object containing the myreg summary matrix[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:492:16[39m
-[90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:496:17): summary.regmedint: returns an object with appropriate columns[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:496:16[39m
-[90m 7. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 8. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:509:17): summary.regmedint: returns an object, ignoring exponentiate = TRUE[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:509:16[39m
-[90m 7. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
-[90m 8. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
-
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:528:21): print.summary_regmedint: prints the mreg results[22m
-Error: non-numeric argument to binary operator
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:528:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 13. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:533:21): print.summary_regmedint: prints the yreg results[22m
-Error: non-numeric argument to binary operator
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:533:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 13. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:538:21): print.summary_regmedint: prints mediation analysis results with expected elements[22m
-Error: non-numeric argument to binary operator
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(print(summary(fit_regmedint)), "cde") [90mtest-08_regmedint_class_user_methods.R:538:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 13. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:547:21): print.summary_regmedint: prints mediation analysis results with expected elements exponentiated[22m
-Error: non-numeric argument to binary operator
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:547:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
-[90m 13. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint, exponentiate = TRUE))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:556:21): print.summary_regmedint: prints evaluation information[22m
-Error: non-numeric argument to binary operator
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:556:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 13. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:582:21): coef.summary_regmedint: extract the matrix object[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(coef(summary(fit_regmedint)), summary(fit_regmedint)$summary_myreg) [90mtest-08_regmedint_class_user_methods.R:582:20[39m
-[90m 6. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 7. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
-
-[1m[38;5;214mFailure[39m (test-08_regmedint_class_user_methods.R:592:17): coef.regmedint: creates a vector of estimates[22m
-names(coef(fit_regmedint)) not equal to c("cde", "pnde", "tnie", "tnde", "pnie", "te", "pm").
-Lengths differ: 6 is not 7
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:599:17): vcov.regmedint: creates a matrix with correct dimension names[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(class(vcov(fit_regmedint))[[1]], "matrix") [90mtest-08_regmedint_class_user_methods.R:599:16[39m
-[90m 5. [39mregmedint::vcov.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:571:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:610:17): confint.regmedint: creates a matrix of estimates[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:610:16[39m
-[90m 7. [39mregmedint::confint.regmedint(fit_regmedint)
-[90m 8. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:669:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:616:17): confint.regmedint: creates the lower column less than the upper column[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_true(...) [90mtest-08_regmedint_class_user_methods.R:616:16[39m
-[90m 5. [39mregmedint::confint.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:669:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:655:17): print.regmedint: prints the mreg results[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:655:16[39m
-[90m 11. [39mregmedint::print.regmedint(fit_regmedint)
-[90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:660:17): print.regmedint: prints the yreg results[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:660:16[39m
-[90m 11. [39mregmedint::print.regmedint(fit_regmedint)
-[90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:665:17): print.regmedint: prints mediation analysis results with expected elements[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(print(fit_regmedint), "cde") [90mtest-08_regmedint_class_user_methods.R:665:16[39m
-[90m 11. [39mregmedint::print.regmedint(fit_regmedint)
-[90m 12. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:113:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:676:17): summary.regmedint: returns an object of summary_regmedint class[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(class(summary(fit_regmedint))[[1]], "summary_regmedint") [90mtest-08_regmedint_class_user_methods.R:676:16[39m
-[90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:680:17): summary.regmedint: returns an object containing the mreg summary[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:680:16[39m
-[90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:684:17): summary.regmedint: returns an object containing the yreg summary[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:684:16[39m
-[90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:688:17): summary.regmedint: returns an object containing the myreg summary matrix[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:688:16[39m
-[90m 5. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:692:17): summary.regmedint: returns an object with appropriate columns[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:692:16[39m
-[90m 7. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:705:17): summary.regmedint: returns an object with appropriate columns (exponentiated, exp(pm) is NA)[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:705:16[39m
-[90m 7. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
-[90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:737:21): print.summary_regmedint: prints the mreg results[22m
-Error: non-numeric argument to binary operator
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:737:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:742:21): print.summary_regmedint: prints the yreg results[22m
-Error: non-numeric argument to binary operator
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:742:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:747:21): print.summary_regmedint: prints mediation analysis results with expected elements[22m
-Error: non-numeric argument to binary operator
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(print(summary(fit_regmedint)), "cde") [90mtest-08_regmedint_class_user_methods.R:747:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:756:21): print.summary_regmedint: prints mediation analysis results with expected elements exponentiated[22m
-Error: non-numeric argument to binary operator
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:756:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint, exponentiate = TRUE)
-[90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint, exponentiate = TRUE))
 
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:765:21): print.summary_regmedint: prints evaluation information[22m
-Error: non-numeric argument to binary operator
+Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:765:20[39m
-[90m 12. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 13. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:791:21): coef.summary_regmedint: extract the matrix object[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(coef(summary(fit_regmedint)), summary(fit_regmedint)$summary_myreg) [90mtest-08_regmedint_class_user_methods.R:791:20[39m
-[90m 6. [39mregmedint::summary.regmedint(fit_regmedint)
-[90m 7. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:214:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:801:17): coef.regmedint: creates a vector of estimates[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:801:16[39m
-[90m 5. [39mregmedint::coef.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:494:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:808:17): vcov.regmedint: creates a matrix with correct dimension names[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(class(vcov(fit_regmedint))[[1]], "matrix") [90mtest-08_regmedint_class_user_methods.R:808:16[39m
-[90m 5. [39mregmedint::vcov.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:571:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:819:17): confint.regmedint: creates a matrix of estimates[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-08_regmedint_class_user_methods.R:819:16[39m
-[90m 7. [39mregmedint::confint.regmedint(fit_regmedint)
-[90m 8. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:664:4[39m
-
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:825:17): confint.regmedint: creates the lower column less than the upper column[22m
-Error: non-numeric argument to binary operator
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_true(...) [90mtest-08_regmedint_class_user_methods.R:825:16[39m
-[90m 5. [39mregmedint::confint.regmedint(fit_regmedint)
-[90m 6. [39mx$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:664:4[39m
+[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 09_cross_check_with_sas_macro                                                                           ⠋ |   1       | 09_cross_check_with_sas_macro                                                                           ⠙ |   2       | 09_cross_check_with_sas_macro                                                                           ⠼ |  55       | 09_cross_check_with_sas_macro                                                                           ⠋ |  71       | 09_cross_check_with_sas_macro                                                                           ⠧ | 128       | 09_cross_check_with_sas_macro                                                                           [38;5;214m⠙[39m | 161 1     | 09_cross_check_with_sas_macro                                                                           [31m✖[39m | 161 1     | 09_cross_check_with_sas_macro[36m [3.0 s][39m
+⠏ |   0       | 09_cross_check_with_sas_macro                                                                           ⠙ |   2       | 09_cross_check_with_sas_macro                                                                           ⠋ |  51       | 09_cross_check_with_sas_macro                                                                           ⠸ | 104       | 09_cross_check_with_sas_macro                                                                           ⠋ | 161       | 09_cross_check_with_sas_macro                                                                           [38;5;214m⠙[39m | 161 1     | 09_cross_check_with_sas_macro                                                                           [31m✖[39m | 161 1     | 09_cross_check_with_sas_macro[36m [2.6 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [1m[38;5;214mError[39m (test-09_cross_check_with_sas_macro.R:236:1): (code run outside of `test_that()`)[22m
 Error: Problem with `mutate()` column `junk`.
 [34mℹ[39m `junk = pmap(...)`.
-[31m✖[39m length(res_est) not equal to length(res_se)
+[31m✖[39m unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [1mBacktrace:[22m
+[90m  1. [39m`%>%`(...) [90mtest-09_cross_check_with_sas_macro.R:236:0[39m
+[90m 12. [39mbase::.handleSimpleError(...) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:322:4[39m
+[90m 13. [39mdplyr:::h(simpleError(msg, call))
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ [1mResults[22m ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-[36mDuration: 12.7 s[39m
+[36mDuration: 15.7 s[39m
 
-[ [38;5;214mFAIL[39m 90 | [35mWARN[39m 8 | [34mSKIP[39m 0 | [32mPASS[39m 846 ]
+[ [38;5;214mFAIL[39m 85 | [35mWARN[39m 0 | [34mSKIP[39m 0 | [32mPASS[39m 1567 ]
+
+[38;5;214mNo one gets it right on their first try[39m
