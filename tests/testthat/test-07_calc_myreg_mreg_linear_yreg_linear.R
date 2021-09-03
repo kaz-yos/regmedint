@@ -21,7 +21,7 @@ pbc_cc <- pbc[complete.cases(pbc),] %>%
     mutate(male = if_else(sex == "m", 1L, 0L),
            ## Combine transplant and death for testing purpose
            status = if_else(status == 0, 0L, 1L),
-           alk.phos = alk.phos)
+           alk_phos = alk.phos)
 
 describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
 
@@ -33,7 +33,7 @@ describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
                              cvar = NULL)
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
-                             yvar = "alk.phos", 
+                             yvar = "alk_phos", 
                              avar = "trt",
                              mvar = "bili",
                              cvar = NULL,
@@ -94,7 +94,7 @@ describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
                              cvar = c("age"))
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
-                             yvar = "alk.phos",
+                             yvar = "alk_phos",
                              avar = "trt",
                              mvar = "bili",
                              cvar = c("age"),
@@ -155,7 +155,7 @@ describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
                              cvar = c("age","male","stage"))
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
-                             yvar = "alk.phos",
+                             yvar = "alk_phos",
                              avar = "trt",
                              mvar = "bili",
                              cvar = c("age","male","stage"),
@@ -215,7 +215,7 @@ describe("calc_myreg_mreg_linear_yreg_linear linear no interaction", {
                              cvar = c("age","male","stage"))
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
-                             yvar = "alk.phos",
+                             yvar = "alk_phos",
                              avar = "trt",
                              mvar = "bili",
                              cvar = c("age","male","stage"),
@@ -294,7 +294,7 @@ describe("calc_myreg_mreg_linear_yreg_linear linear interaction", {
                              cvar = NULL)
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
-                             yvar = "alk.phos",
+                             yvar = "alk_phos",
                              avar = "trt",
                              mvar = "bili",
                              cvar = NULL,
@@ -355,7 +355,7 @@ describe("calc_myreg_mreg_linear_yreg_linear linear interaction", {
                              cvar = c("age"))
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
-                             yvar = "alk.phos",
+                             yvar = "alk_phos",
                              avar = "trt",
                              mvar = "bili",
                              cvar = c("age"),
@@ -416,7 +416,7 @@ describe("calc_myreg_mreg_linear_yreg_linear linear interaction", {
                              cvar = c("age","male","stage"))
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
-                             yvar = "alk.phos",
+                             yvar = "alk_phos",
                              avar = "trt",
                              mvar = "bili",
                              cvar = c("age","male","stage"),
@@ -476,7 +476,7 @@ describe("calc_myreg_mreg_linear_yreg_linear linear interaction", {
                              cvar = c("age","male","stage"))
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
-                             yvar = "alk.phos",
+                             yvar = "alk_phos",
                              avar = "trt",
                              mvar = "bili",
                              cvar = c("age","male","stage"),
