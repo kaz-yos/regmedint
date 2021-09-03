@@ -173,7 +173,7 @@ calc_myreg_mreg_logistic_yreg_linear_est <- function(beta0,
         expit <- function(x){exp(x)/(1+exp(x))}
 
         ## Extension of VanderWeele 2015 p471: on log OR scale
-        cde <- (theta1 + theta3*m_cde + theta5) * (a1 - a0)
+        cde <- (theta1 + theta3*m_cde + theta5_c) * (a1 - a0)
         ## Pearl decomposition (Regular NDE and NIE)
         ## Note the a0 in the second term.
         pnde <- (theta1 + theta3*expit(beta0 + beta1*a0 + beta2_c + beta3_c * a0) + theta5_c) * (a1 - a0)
@@ -307,7 +307,7 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                      0,                       # theta2
                      m_cde,                   # theta3
                      rep(0, length(theta4)),  # theta4 vector
-                     rep(1, length(theta5)),  # theta5 vector
+                     c_cond,                  # theta5 vector
                      rep(0, length(theta6))   # theta6 vector
                      )) 
         ##

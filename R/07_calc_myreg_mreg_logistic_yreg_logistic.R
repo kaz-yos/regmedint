@@ -173,29 +173,29 @@ calc_myreg_mreg_logistic_yreg_logistic_est <- function(beta0,
         expit <- function(x){exp(x)/(1+exp(x))}
 
         ## Extension of VanderWeele 2015 p473: on log OR scale
-        ## Note that only cde is presented on the log scale: ???
+        ## Note that only cde is presented on the log scale
         cde <- (theta1 + theta3*m_cde + theta5_c) * (a1 - a0)
         ## Pearl decomposition (Regular NDE and NIE)
         ## Note the a0 in the second term.
         pnde <- ((theta1 + theta5_c) * (a1 - a0)) +
-            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3*a0*c + theta2 + theta3*a1 + theta6_c)) -
-            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3*a0*c + theta2 + theta3*a0 + theta6_c))
+            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0 + theta2 + theta3*a1 + theta6_c)) -
+            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0 + theta2 + theta3*a0 + theta6_c))
         ## Note the a1 in the first term.
-        tnie <- log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3*a1*c + theta2 + theta3*a1 + theta6_c)) - 
-            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3*a0*c + theta2 + theta3*a1 + theta6_c)) +
-            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c * a0)) - 
-            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c * a1))
+        tnie <- log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c*a1 + theta2 + theta3*a1 + theta6_c)) - 
+            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0 + theta2 + theta3*a1 + theta6_c)) +
+            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0)) - 
+            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c*a1))
         ## Another decomposition
         ## Note the a0 -> a1 changes associated with beta1.
         tnde <- ((theta1 + theta5_c) * (a1 - a0)) +
-            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3*a1*c + theta2 + theta3*a1 + theta6_c)) -
-            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3*a1*c + theta2 + theta3*a0 + theta6_c))
+            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c*a1 + theta2 + theta3*a1 + theta6_c)) -
+            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c*a1 + theta2 + theta3*a0 + theta6_c))
         ## Note the a1 -> a0 changes associated with theta3.
         pnie <-
-            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3*a1*c + theta2 + theta3*a0 + theta6_c)) - 
-            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3*a0*c + theta2 + theta3*a1 + theta6_c)) +
-            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c * a0)) - 
-            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c * a1))
+            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c*a1 + theta2 + theta3*a0 + theta6_c)) - 
+            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0 + theta2 + theta3*a1 + theta6_c)) +
+            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0)) - 
+            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c*a1))
         ## It is the sum of NDE and NIE on the log scale.
         te <- pnde + tnie
         ## VanderWeele 2015 p48.
@@ -321,12 +321,12 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
                      0,                        # theta2
                      (a1 - a0) * m_cde,        # theta3
                      rep(0, length(theta4)),   # theta4 vector
-                     rep(1, length(theta5)),   # theta5 vector
+                     c_cond,                   # theta5 vector
                      rep(0, length(theta6))    # theta6 vector
                      ))  
         ##
-        pnde_expit_a1 <- expit(a0*(beta1 + beta3_c) + a1*beta3 + beta0 + beta2_c + theta6_c + theta2)
-        pnde_expit_a0 <- expit(a0*(beta1 + beta3_c) + a0*beta3 + beta0 + beta2_c + theta6_c + theta2)
+        pnde_expit_a1 <- expit(a0*(beta1 + beta3_c) + a1*theta3 + beta0 + beta2_c + theta6_c + theta2)
+        pnde_expit_a0 <- expit(a0*(beta1 + beta3_c) + a0*theta3 + beta0 + beta2_c + theta6_c + theta2)
         
         pnde_d1 <- pnde_expit_a1 - pnde_expit_a0
         pnde_d2 <- a0 * pnde_d1
@@ -390,8 +390,8 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
             ))
         ##
         ## a's from mreg beta1 should be a1.
-        tnde_expit_a1 <- expit(a1*(beta1 + beta3_c) + a1*beta3 + beta0 + beta2_c + theta6_c + theta2)
-        tnde_expit_a0 <- expit(a1*(beta1 + beta3_c) + a0*beta3 + beta0 + beta2_c + theta6_c + theta2)
+        tnde_expit_a1 <- expit(a1*(beta1 + beta3_c) + a1*theta3 + beta0 + beta2_c + theta6_c + theta2)
+        tnde_expit_a0 <- expit(a1*(beta1 + beta3_c) + a0*theta3 + beta0 + beta2_c + theta6_c + theta2)
         
         tnde_d1 <- tnde_expit_a1 - tnde_expit_a0
         tnde_d2 <- a1 * tnde_d1
@@ -464,13 +464,13 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
         ## Copied from calc_myreg_mreg_logistic_yreg_logistic_est
         pnde <-
             ((theta1 + theta5_c) * (a1 - a0)) +
-            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3*a0*c + theta2 + theta3*a1 + theta6_c)) -
-            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3*a0*c + theta2 + theta3*a0 + theta6_c))
+            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0 + theta2 + theta3*a1 + theta6_c)) -
+            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0 + theta2 + theta3*a0 + theta6_c))
         tnie <-
-            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3*a1*c + theta2 + theta3*a1 + theta6_c)) - 
-            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3*a0*c + theta2 + theta3*a1 + theta6_c)) +
-            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c * a0)) - 
-            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c * a1))
+            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c*a1 + theta2 + theta3*a1 + theta6_c)) - 
+            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0 + theta2 + theta3*a1 + theta6_c)) +
+            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0)) - 
+            log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c*a1))
         ## Need to unname argument vectors to get c(pnde = , tnie = ).
         d_pm <- grad_prop_med_yreg_logistic(pnde = unname(pnde), tnie = unname(tnie))
         ## Multivariate chain rule.
