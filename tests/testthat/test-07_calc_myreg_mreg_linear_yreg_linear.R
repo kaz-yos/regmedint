@@ -1219,7 +1219,7 @@ describe("calc_myreg_mreg_linear_yreg_linear_se function factory", {
             expect_equal(class(se_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymodel EMM_MC", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(se_fun)),
                          c("a0","a1","m_cde","c_cond"))
         })
