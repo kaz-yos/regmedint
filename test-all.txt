@@ -1,389 +1,23 @@
 ✔ |  OK [38;5;214mF[39m [35mW[39m [34mS[39m | Context
-⠏ |   0       | 01_regmedint_class_ui                                                                                   [38;5;214m⠋[39m |   0 1     | 01_regmedint_class_ui                                                                                   [31m✖[39m |   0 1     | 01_regmedint_class_ui[36m [1.6 s][39m
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mError[39m (test-01_regmedint_class_ui.R:18:1): (code run outside of `test_that()`)[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m  1. [39mtestthat::describe(...) [90mtest-01_regmedint_class_ui.R:18:0[39m
-[90m  2. [39m[ base::eval(...) ][90m with 1 more call[39m
-[90m  4. [39mtestthat::describe(...) [90mtest-01_regmedint_class_ui.R:22:4[39m
-[90m  5. [39m[ base::eval(...) ][90m with 1 more call[39m
-[90m  7. [39mtestthat::describe(...) [90mtest-01_regmedint_class_ui.R:35:8[39m
-[90m  8. [39m[ base::eval(...) ][90m with 1 more call[39m
-[90m 11. [39mregmedint::summary.regmedint(fit_regmedint_obj)
-[90m 12. [39mx$myreg$se_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:219:4[39m
-[90m 14. [39mt(Gamma_cde) %*% Sigma
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | 01_regmedint_class_ui                                                                                   ⠋ |   1       | 01_regmedint_class_ui                                                                                   ⠹ |   3       | 01_regmedint_class_ui                                                                                   ⠏ |  10       | 01_regmedint_class_ui                                                                                   [32m✔[39m |  18       | 01_regmedint_class_ui[36m [2.9 s][39m
 ⠏ |   0       | 03_fit_mreg                                                                                             [32m✔[39m |  24       | 03_fit_mreg
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg                                                                            [32m✔[39m |  23       | 03_helpers_fit_mreg_fit_yreg
 ⠏ |   0       | 04_fit_yreg_linear                                                                                      [32m✔[39m |  24       | 04_fit_yreg_linear
-⠏ |   0       | 04_fit_yreg_logistic                                                                                    [32m✔[39m |  24       | 04_fit_yreg_logistic
-⠏ |   0       | 04_fit_yreg_loglinear                                                                                   ⠸ |   4       | 04_fit_yreg_loglinear                                                                                   ⠴ |  16       | 04_fit_yreg_loglinear                                                                                   [32m✔[39m |  36       | 04_fit_yreg_loglinear[36m [0.3 s][39m
-⠏ |   0       | 04_fit_yreg_negbin                                                                                      ⠦ |  17       | 04_fit_yreg_negbin                                                                                      [32m✔[39m |  24       | 04_fit_yreg_negbin[36m [0.1 s][39m
-⠏ |   0       | 04_fit_yreg_poisson                                                                                     [32m✔[39m |  24       | 04_fit_yreg_poisson
-⠏ |   0       | 04_fit_yreg_survAFT_exp                                                                                 [32m✔[39m |  24       | 04_fit_yreg_survAFT_exp
-⠏ |   0       | 04_fit_yreg_survAFT_weibull                                                                             ⠏ |  20       | 04_fit_yreg_survAFT_weibull                                                                             [32m✔[39m |  24       | 04_fit_yreg_survAFT_weibull[36m [0.1 s][39m
-⠏ |   0       | 04_fit_yreg_survCox                                                                                     ⠹ |  13       | 04_fit_yreg_survCox                                                                                     [32m✔[39m |  24       | 04_fit_yreg_survCox[36m [0.1 s][39m
-⠏ |   0       | 05_calc_myreg                                                                                           ⠹ |   3       | 05_calc_myreg                                                                                           [32m✔[39m |   6       | 05_calc_myreg[36m [0.5 s][39m
-⠏ |   0       | 06_calc_myreg_helpers_coef                                                                              ⠸ |  14       | 06_calc_myreg_helpers_coef                                                                              ⠙ |  42       | 06_calc_myreg_helpers_coef                                                                              ⠏ |  70       | 06_calc_myreg_helpers_coef                                                                              ⠙ |  92       | 06_calc_myreg_helpers_coef                                                                              [32m✔[39m | 109       | 06_calc_myreg_helpers_coef[36m [0.5 s][39m
-⠏ |   0       | 06_calc_myreg_helpers_vcov                                                                              ⠹ |  13       | 06_calc_myreg_helpers_vcov                                                                              ⠙ |  22       | 06_calc_myreg_helpers_vcov                                                                              ⠏ |  30       | 06_calc_myreg_helpers_vcov                                                                              ⠋ |  51       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  57       | 06_calc_myreg_helpers_vcov                                                                              ⠼ |  65       | 06_calc_myreg_helpers_vcov                                                                              ⠹ |  83       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  87       | 06_calc_myreg_helpers_vcov                                                                              ⠧ |  88       | 06_calc_myreg_helpers_vcov                                                                              ⠏ |  90       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  97       | 06_calc_myreg_helpers_vcov                                                                              [32m✔[39m | 110       | 06_calc_myreg_helpers_vcov[36m [1.3 s][39m
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠋ |   1       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠋[39m |  20 1     | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠹[39m |  37 6     | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠋[39m |  54 7     | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [38;5;214m⠧[39m |  68 10     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠦[39m |  86 11     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠼[39m | 104 11     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠏[39m | 139 11     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠴[39m | 155 11     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [38;5;214m⠴[39m | 192 14     | 07_calc_myreg_mreg_linear_yreg_linear                                                                  [31m✖[39m | 197 16     | 07_calc_myreg_mreg_linear_yreg_linear[36m [1.2 s][39m
+⠏ |   0       | 04_fit_yreg_logistic                                                                                    ⠏ |  20       | 04_fit_yreg_logistic                                                                                    [32m✔[39m |  24       | 04_fit_yreg_logistic[36m [0.1 s][39m
+⠏ |   0       | 04_fit_yreg_loglinear                                                                                   ⠋ |   1       | 04_fit_yreg_loglinear                                                                                   ⠴ |  16       | 04_fit_yreg_loglinear                                                                                   [32m✔[39m |  36       | 04_fit_yreg_loglinear[36m [0.3 s][39m
+⠏ |   0       | 04_fit_yreg_negbin                                                                                      ⠹ |  13       | 04_fit_yreg_negbin                                                                                      [32m✔[39m |  24       | 04_fit_yreg_negbin[36m [0.2 s][39m
+⠏ |   0       | 04_fit_yreg_poisson                                                                                     ⠦ |  17       | 04_fit_yreg_poisson                                                                                     [32m✔[39m |  24       | 04_fit_yreg_poisson[36m [0.1 s][39m
+⠏ |   0       | 04_fit_yreg_survAFT_exp                                                                                 ⠹ |  13       | 04_fit_yreg_survAFT_exp                                                                                 [32m✔[39m |  24       | 04_fit_yreg_survAFT_exp[36m [0.1 s][39m
+⠏ |   0       | 04_fit_yreg_survAFT_weibull                                                                             ⠋ |  21       | 04_fit_yreg_survAFT_weibull                                                                             [32m✔[39m |  24       | 04_fit_yreg_survAFT_weibull[36m [0.1 s][39m
+⠏ |   0       | 04_fit_yreg_survCox                                                                                     ⠇ |   9       | 04_fit_yreg_survCox                                                                                     ⠦ |  17       | 04_fit_yreg_survCox                                                                                     [32m✔[39m |  24       | 04_fit_yreg_survCox[36m [0.3 s][39m
+⠏ |   0       | 05_calc_myreg                                                                                           ⠹ |   3       | 05_calc_myreg                                                                                           [32m✔[39m |   6       | 05_calc_myreg[36m [0.7 s][39m
+⠏ |   0       | 06_calc_myreg_helpers_coef                                                                              ⠋ |   1       | 06_calc_myreg_helpers_coef                                                                              ⠋ |  11       | 06_calc_myreg_helpers_coef                                                                              ⠙ |  32       | 06_calc_myreg_helpers_coef                                                                              ⠸ |  54       | 06_calc_myreg_helpers_coef                                                                              ⠏ |  80       | 06_calc_myreg_helpers_coef                                                                              [32m✔[39m | 109       | 06_calc_myreg_helpers_coef[36m [0.7 s][39m
+⠏ |   0       | 06_calc_myreg_helpers_vcov                                                                              ⠹ |  13       | 06_calc_myreg_helpers_vcov                                                                              ⠋ |  21       | 06_calc_myreg_helpers_vcov                                                                              ⠴ |  26       | 06_calc_myreg_helpers_vcov                                                                              ⠹ |  43       | 06_calc_myreg_helpers_vcov                                                                              ⠴ |  56       | 06_calc_myreg_helpers_vcov                                                                              ⠋ |  61       | 06_calc_myreg_helpers_vcov                                                                              ⠧ |  78       | 06_calc_myreg_helpers_vcov                                                                              ⠴ |  86       | 06_calc_myreg_helpers_vcov                                                                              ⠧ |  88       | 06_calc_myreg_helpers_vcov                                                                              ⠏ |  90       | 06_calc_myreg_helpers_vcov                                                                              ⠸ |  94       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  97       | 06_calc_myreg_helpers_vcov                                                                              ⠇ | 109       | 06_calc_myreg_helpers_vcov                                                                              [32m✔[39m | 110       | 06_calc_myreg_helpers_vcov[36m [1.5 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠇ |  29       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠇ |  49       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠹ |  63       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠏ |  90       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠼ | 115       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠇ | 119       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠙ | 152       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠇ | 169       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠇ | 199       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠙ | 222       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [32m✔[39m | 225       | 07_calc_myreg_mreg_linear_yreg_linear[36m [1.3 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠧ |  18       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠧ |  38       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠹ |  63       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠦ |  87       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠦ |  97       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠇ | 119       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠦ | 157       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠸ | 174       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠇ | 209       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [32m✔[39m | 235       | 07_calc_myreg_mreg_linear_yreg_logistic[36m [1.1 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠦ |   7       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠋ |  31       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠇ |  59       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠴ |  76       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠦ |  97       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠹ | 133       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠇ | 159       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠸ | 184       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠏ | 210       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [32m✔[39m | 220       | 07_calc_myreg_mreg_logistic_yreg_linear[36m [1.5 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠦ |   7       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠦ |  17       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠦ |  27       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠏ |  50       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠼ |  65       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠴[39m |  83 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠧[39m |  95 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠙[39m | 129 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠋[39m | 158 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠧[39m | 185 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠇[39m | 216 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [31m✖[39m | 220 3     | 07_calc_myreg_mreg_logistic_yreg_logistic[36m [1.8 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:135:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:135:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:196:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:196:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:239:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:239:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, -3, c(4, 5, 6))
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:245:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where natural effects do no depend on c_cond[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:245:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, -3, -1 * c(4, 5, 6))
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:251:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where direct effects match up[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:251:12[39m
-[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 7. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:268:13): calc_myreg_mreg_linear_yreg_linear linear no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:268:12[39m
-[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 7. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:396:13): calc_myreg_mreg_linear_yreg_linear linear interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:396:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:457:13): calc_myreg_mreg_linear_yreg_linear linear interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:457:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:516:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:516:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, +3, -1 * c(4, 5, 6))
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:522:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where nie does not depend on c_cond[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:522:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, +3, -1 * c(4, 5, 6))
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:597:13): calc_myreg_mreg_linear_yreg_linear linear interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:597:12[39m
-[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 7. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1238:13): calc_myreg_mreg_linear_yreg_linear_se (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1238:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1244:13): calc_myreg_mreg_linear_yreg_linear_se (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1244:12[39m
-[90m 3. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1271:13): calc_myreg_mreg_linear_yreg_linear_se (three cvar): returns a function that takes a0, a1, m_cde, c_cond, EMM_AC_Mmodel, EMM_AC_Ymode, EMM_MC[22m
-names(formals(se_fun)) not equal to c(...).
-Lengths differ: 4 is not 7
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1288:13): calc_myreg_mreg_linear_yreg_linear_se (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1288:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_linear.R:1292:13): calc_myreg_mreg_linear_yreg_linear_se (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_linear_yreg_linear.R:1292:12[39m
-[90m 3. [39mt(Gamma_cde) %*% Sigma
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠦ |   7       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠧ |   8       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠏[39m |  28 2     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠋[39m |  45 6     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠏[39m |  62 8     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [38;5;214m⠋[39m |  80 11     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠴[39m | 105 11     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠼[39m | 144 11     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠋[39m | 160 11     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠸[39m | 183 11     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [38;5;214m⠙[39m | 207 15     | 07_calc_myreg_mreg_linear_yreg_logistic                                                                [31m✖[39m | 207 16     | 07_calc_myreg_mreg_linear_yreg_logistic[36m [1.4 s][39m
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:135:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:135:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:196:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:196:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:239:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:239:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, -3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:245:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where natural effects do no depend on c_cond[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:245:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, -3, -1 * c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:251:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where direct effects match up[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:251:12[39m
-[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:268:13): calc_myreg_mreg_linear_yreg_logistic logistic no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:268:12[39m
-[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:397:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:397:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:458:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:458:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:517:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:517:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, +3, -1 * c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:523:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where nie does not depend on c_cond[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:523:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, +3, -1 * c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:598:13): calc_myreg_mreg_linear_yreg_logistic logistic interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:598:12[39m
-[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1333:13): calc_myreg_mreg_linear_yreg_logistic_se (one cvar): returns a function that takes a0, a1, m_cde, c_cond[22m
-names(formals(se_fun)) not equal to c(...).
-Lengths differ: 4 is not 7
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1349:13): calc_myreg_mreg_linear_yreg_logistic_se (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1349:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1355:13): calc_myreg_mreg_linear_yreg_logistic_se (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1355:12[39m
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1402:13): calc_myreg_mreg_linear_yreg_logistic_se (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1402:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_linear_yreg_logistic.R:1406:13): calc_myreg_mreg_linear_yreg_logistic_se (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_linear_yreg_logistic.R:1406:12[39m
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠦ |   7       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [38;5;214m⠋[39m |  29 2     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [38;5;214m⠧[39m |  51 7     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [38;5;214m⠙[39m |  64 8     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [38;5;214m⠋[39m |  81 10     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠏[39m | 110 10     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠋[39m | 141 10     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠸[39m | 164 10     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [38;5;214m⠧[39m | 196 12     | 07_calc_myreg_mreg_logistic_yreg_linear                                                                [31m✖[39m | 196 14     | 07_calc_myreg_mreg_logistic_yreg_linear[36m [1.3 s][39m
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:137:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:137:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:198:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:198:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:241:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:241:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, -3, c(4, 5, 6))
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:247:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where cde and nde do no depend on c_cond (V2015 p471)[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:247:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, -3, -1 * c(4, 5, 6))
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:253:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where direct effects match up[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:253:12[39m
-[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 7. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:270:13): calc_myreg_mreg_logistic_yreg_linear linear no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:270:12[39m
-[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 7. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:398:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:398:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:459:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:459:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:518:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:518:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, +3, -1 * c(4, 5, 6))
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:580:13): calc_myreg_mreg_logistic_yreg_linear linear interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:580:12[39m
-[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-[90m 7. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1221:13): calc_myreg_mreg_logistic_yreg_linear_se (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1221:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1227:13): calc_myreg_mreg_logistic_yreg_linear_se (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1227:12[39m
-[90m 3. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1271:13): calc_myreg_mreg_logistic_yreg_linear_se (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1271:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
-[90m 6. [39mt(Gamma_cde) %*% Sigma
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_linear.R:1275:13): calc_myreg_mreg_logistic_yreg_linear_se (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: Cholmod error 'X and/or Y have wrong dimensions' at file ../MatrixOps/cholmod_sdmult.c, line 90
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_logistic_yreg_linear.R:1275:12[39m
-[90m 3. [39mt(Gamma_cde) %*% Sigma
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠦ |   7       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠋[39m |  29 2     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠋[39m |  45 6     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠇[39m |  61 8     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠧[39m |  75 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠧[39m |  85 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠇[39m | 106 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠸[39m | 121 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠸[39m | 141 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠴[39m | 153 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [38;5;214m⠸[39m | 181 13     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                              [31m✖[39m | 196 17     | 07_calc_myreg_mreg_logistic_yreg_logistic[36m [2.0 s][39m
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:137:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:137:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:198:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:198:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:241:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where cde does not depend on m_cde[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:241:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, -3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:247:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where nde do no depend on c_cond[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:247:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, -3, -1 * c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:253:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where direct effects match up[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:253:12[39m
-[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:270:13): calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:270:12[39m
-[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:399:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (1 cvar): returns functions that return named vector of effect estimates[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:399:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, 4)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:460:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (3 cvar): returns functions that return named vector of effect estimates[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:460:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:519:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where cde does no depend on c_cond[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:519:12[39m
-[90m 4. [39mmyreg_funs[[2]](1, 2, +3, -1 * c(4, 5, 6))
-
 [1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:546:21): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where natural effects depend on c_cond[22m
 myreg_funs[[1]](1, 2, +3, -1 * c_cond)["pnie"] is not strictly less than myreg_funs[[1]](1, 2, +3, +2 * c_cond)["pnie"]. Difference: 0.0588
 
@@ -394,36 +28,8 @@ unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["tnie"]) is not strictly less than u
 unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["te"]) not equal to +....
 1/1 mismatches
 [1] -0.19 - -0.249 == 0.0588
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:598:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_equal(...) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:598:12[39m
-[90m 5. [39mmyreg_funs[[2]](1, 2, 3, c(4, 5, 6))
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1240:13): calc_myreg_mreg_logistic_yreg_logistic_se (one cvar): returns a function that errors given inconsistent c_cond[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1240:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1246:13): calc_myreg_mreg_logistic_yreg_logistic_se (one cvar): returns a function that gives a numeric vector without NA[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1246:12[39m
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1290:13): calc_myreg_mreg_logistic_yreg_logistic_se (three cvar): returns a function that errors given inconsistent c_cond[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mtestthat::expect_vector(se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1290:12[39m
-[90m 4. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3)
-
-[1m[38;5;214mError[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:1294:13): calc_myreg_mreg_logistic_yreg_logistic_se (three cvar): returns a function that gives a numeric vector without NA[22m
-Error: non-conformable arrays
-[1mBacktrace:[22m
-[90m 1. [39mregmedint:::se_fun(a0 = 0, a1 = 1, m_cde = 0, c_cond = 1:3) [90mtest-07_calc_myreg_mreg_logistic_yreg_logistic.R:1294:12[39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 08_regmedint_class_user_methods                                                                         ⠋ |   1       | 08_regmedint_class_user_methods                                                                         ⠏ |  10       | 08_regmedint_class_user_methods                                                                         ⠋ |  21       | 08_regmedint_class_user_methods                                                                         [38;5;214m⠧[39m |  23 5     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠋[39m |  36 5     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠴[39m |  51 5     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠦[39m |  58 9     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠸[39m |  74 10     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠙[39m |  90 12     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠼[39m | 100 15     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠸[39m | 119 15     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠸[39m | 125 19     | 08_regmedint_class_user_methods                                                                        [31m✖[39m | 134 20     | 08_regmedint_class_user_methods[36m [1.4 s][39m
+⠏ |   0       | 08_regmedint_class_user_methods                                                                         ⠋ |   1       | 08_regmedint_class_user_methods                                                                         ⠙ |  12       | 08_regmedint_class_user_methods                                                                         [38;5;214m⠼[39m |  23 2     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠧[39m |  33 5     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠇[39m |  54 5     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠧[39m |  58 10     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠧[39m |  78 10     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠹[39m |  90 13     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠼[39m | 100 15     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠸[39m | 109 15     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠏[39m | 125 15     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠦[39m | 127 20     | 08_regmedint_class_user_methods                                                                        [31m✖[39m | 134 20     | 08_regmedint_class_user_methods[36m [1.4 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:124:21): print.summary_regmedint: prints the mreg results[22m
 Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
@@ -545,7 +151,7 @@ Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
 [90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:765:20[39m
 [90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 09_cross_check_with_sas_macro                                                                           ⠙ |   2       | 09_cross_check_with_sas_macro                                                                           ⠋ |  51       | 09_cross_check_with_sas_macro                                                                           ⠸ | 104       | 09_cross_check_with_sas_macro                                                                           ⠋ | 161       | 09_cross_check_with_sas_macro                                                                           [38;5;214m⠙[39m | 161 1     | 09_cross_check_with_sas_macro                                                                           [31m✖[39m | 161 1     | 09_cross_check_with_sas_macro[36m [2.6 s][39m
+⠏ |   0       | 09_cross_check_with_sas_macro                                                                           ⠙ |   2       | 09_cross_check_with_sas_macro                                                                           ⠧ |  38       | 09_cross_check_with_sas_macro                                                                           ⠋ |  61       | 09_cross_check_with_sas_macro                                                                           ⠦ |  87       | 09_cross_check_with_sas_macro                                                                           ⠧ | 128       | 09_cross_check_with_sas_macro                                                                           [38;5;214m⠙[39m | 161 1     | 09_cross_check_with_sas_macro                                                                           [31m✖[39m | 161 1     | 09_cross_check_with_sas_macro[36m [2.8 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [1m[38;5;214mError[39m (test-09_cross_check_with_sas_macro.R:236:1): (code run outside of `test_that()`)[22m
 Error: Problem with `mutate()` column `junk`.
@@ -558,8 +164,6 @@ Error: Problem with `mutate()` column `junk`.
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ [1mResults[22m ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-[36mDuration: 15.7 s[39m
+[36mDuration: 17.5 s[39m
 
-[ [38;5;214mFAIL[39m 85 | [35mWARN[39m 0 | [34mSKIP[39m 0 | [32mPASS[39m 1567 ]
-
-[38;5;214mNo one gets it right on their first try[39m
+[ [38;5;214mFAIL[39m 24 | [35mWARN[39m 0 | [34mSKIP[39m 0 | [32mPASS[39m 1689 ]
