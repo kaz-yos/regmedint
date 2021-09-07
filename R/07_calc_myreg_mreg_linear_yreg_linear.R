@@ -293,6 +293,11 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
         ## Valeri & VanderWeele 2013. Appendix p6-9
         ## These are the gradient vector of each scalar quantity of interest.
         ## Obtain the first partial derivative wrt to each parameter.
+       if(is.null(theta5)){
+           pd_cde_theta5 <- rep(0, length(theta5))
+       }else{
+           pd_cde_theta5 <- c_cond
+       }
         Gamma_cde <-
             matrix(c(0,                       # beta0
                      0,                       # beta1
@@ -304,33 +309,54 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
                      0,                       # theta2
                      m_cde,                   # theta3
                      rep(0, length(theta4)),  # theta4 vector
-                     c_cond,                  # theta5 vector
+                     pd_cde_theta5,           # theta5 vector
                      rep(0, length(theta6))   # theta6 vector
                      )) 
+        
         ##
+        if(is.null(beta3)){
+            pd_pnde_beta3 <- rep(0, length(beta3))
+        }else{
+            pd_pnde_beta3 <- theta3*c_cond
+        }
+        if(is.null(theta5)){
+            pd_pnde_theta5 <- rep(0, length(theta5))
+        }else{
+            pd_pnde_theta5 <- c_cond
+        }
         Gamma_pnde <-
             matrix(c(
                 theta3,                            # beta0
                 theta3*a0,                         # beta1
                 theta3*c_cond,                     # beta2 vector
-                ##
-                theta3*a0*c_cond,                  # beta3 vector
+                pd_pnde_beta3,                     # beta3 vector
                 ##
                 0,                                 # theta0
                 1,                                 # theta1
                 0,                                 # theta2
                 beta0 + beta1*a0 + beta2_c + beta3_c*a0,  # theta3
                 rep(0, length(theta4)),            # theta4 vector
-                c_cond,                            # theta5 vector
+                pd_pnde_theta5,                    # theta5 vector
                 rep(0, length(theta6))             # theta6 vector
-                ))           
+                ))  
+        
         ##
+        if(is.null(beta3)){
+            pd_tnie_beta3 <- rep(0, length(beta3))
+        }else{
+            pd_tnie_beta3 <- c_cond * (theta2 + theta3*a1 + theta6_c)
+        }
+        if(is.null(theta6)){
+            pd_tnie_theta6 <- rep(0, length(theta6))
+        }else{
+            pd_tnie_theta6 <- c_cond * (beta1 + beta3_c)
+        }
         Gamma_tnie <-
             matrix(c(
                 0,                         # beta0
                 theta2 + theta3*a1 + theta6_c,  # beta1
                 rep(0, length(beta2)),     # beta2 vector
-                c_cond * (theta2 + theta3*a1 + theta6_c),  # beta3 vector
+                pd_tnie_beta3,             # beta3 vector
                 ##
                 0,                         # theta0
                 0,                         # theta1
@@ -338,39 +364,61 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
                 a1 * (beta1 + beta3_c),    # theta3
                 rep(0, length(theta4)),    # theta4 vector
                 rep(0, length(theta5)),    # theta5 vector
-                c_cond * (beta1 + beta3_c) # theta3
-                ))   
+                pd_tnie_theta6             # theta6
+                ))  
+        
         ##
+        if(is.null(beta3)){
+            pd_tnde_beta3 <- rep(0, length(beta3))
+        }else{
+            pd_tnde_beta3 <- theta3*a1*c_cond
+        }
+        if(is.null(theta5)){
+            pd_tnde_theta5 <- rep(0, length(theta5))
+        }else{
+            pd_tnde_theta5 <- c_cond
+        }
         Gamma_tnde <-
             matrix(c(
                 theta3,                            # beta0
                 theta3*a1,                         # beta1 a0 -> a1
                 theta3*c_cond,                     # beta2 vector
-                theta3*a1*c_cond,                  # beta3 vector
+                pd_tnde_beta3,                     # beta3 vector
                 ##
                 0,                                 # theta0
                 1,                                 # theta1
                 0,                                 # theta2
                 beta0 + beta1*a1 + beta2_c + beta3_c*a1,  # theta3 a0 -> a1
                 rep(0, length(theta4)),            # theta4 vector
-                c_cond,                            # theta5 vector
+                pd_tnde_theta5,                    # theta5 vector
                 rep(0, length(theta6))             # theta6 vector
-                ))           
+                ))     
+        
         ##
+        if(is.null(beta3)){
+            pd_pnie_beta3 <- rep(0, length(beta3))
+        }else{
+            pd_pnie_beta3 <- c_cond * (theta2 + theta3*a0 + theta6_c)
+        }
+        if(is.null(theta6)){
+            pd_pnie_theta6 <- rep(0, length(theta6))
+        }else{
+            pd_pnie_theta6 <- c_cond * (beta1 + beta3_c)
+        }
         Gamma_pnie <-
             matrix(c(
                 0,                         # beta0
                 theta2 + theta3*a0 + theta6_c,        # beta1 a1 -> a0
                 rep(0, length(beta2)),     # beta2 vector
-                c_cond * (theta2 + theta3*a0 + theta6_c),        # beta3 vector
+                pd_pnie_beta3,             # beta3 vector
                 ##
                 0,                         # theta0
                 0,                         # theta1
                 beta1 + beta3_c,           # theta2
-                a0 * (beta1 + beta3_c),    # theta3 a1 -> a0
+                a0*(beta1 + beta3_c),    # theta3 a1 -> a0
                 rep(0, length(theta4)),    # theta4 vector
                 rep(0, length(theta5)),    # theta5 vector
-                c_cond * (beta1 + beta3_c) # theta6 vector
+                pd_pnie_theta6             # theta6 vector
                 ))   
         ##
         Gamma_te <-

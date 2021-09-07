@@ -310,6 +310,11 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
         ## Valeri & VanderWeele 2013. Appendix p6-9
         ## These are the gradient vector of each scalar quantity of interest.
         ## Obtain the first partial derivative wrt to each parameter.
+        if(is.null(theta5)){
+            pd_cde_theta5 <- rep(0, length(theta5))
+        }else{
+            pd_cde_theta5 <- c_cond
+        }
         Gamma_cde <-
             matrix(c(0,                        # beta0
                      0,                        # beta1
@@ -321,7 +326,7 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
                      0,                        # theta2
                      (a1 - a0) * m_cde,        # theta3
                      rep(0, length(theta4)),   # theta4 vector
-                     c_cond,                   # theta5 vector
+                     pd_cde_theta5,                   # theta5 vector
                      rep(0, length(theta6))    # theta6 vector
                      ))  
         ##
@@ -329,16 +334,31 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
         pnde_expit_a0 <- expit(a0*(beta1 + beta3_c) + a0*theta3 + beta0 + beta2_c + theta6_c + theta2)
         
         pnde_d1 <- pnde_expit_a1 - pnde_expit_a0
-        pnde_d2 <- a0 * pnde_d1
-        pnde_d3 <- c_cond * pnde_d1
-        pnde_d4 <- c_cond * a1 * pnde_d1
+        pnde_d2 <- a0*pnde_d1
+        pnde_d3 <- c_cond*pnde_d1
+        # pnde_d4 <- c_cond*a1*pnde_d1
+        if(is.null(beta3)){
+            pnde_d4 <- rep(0, length(beta3))
+        }else{
+            pnde_d4 <- c_cond*a1*pnde_d1
+        }
         pnde_d5 <- 0
         pnde_d6 <- a1 - a0
         pnde_d7 <- pnde_d1
-        pnde_d8 <- a1 * pnde_expit_a1 - a0 * pnde_expit_a0
+        pnde_d8 <- a1*pnde_expit_a1 - a0*pnde_expit_a0
         pnde_d9 <- rep(0, length(theta4))
-        pnde_d10 <- c_cond * (a1 - a0)
-        pnde_d11 <- c_cond * pnde_d1
+        # pnde_d10 <- c_cond * (a1 - a0)
+        if(is.null(theta5)){
+            pnde_d10 <- rep(0, length(theta5))
+        }else{
+            pnde_d10 <- c_cond*(a1 - a0)
+        }
+        # pnde_d11 <- c_cond*pnde_d1
+        if(is.null(theta6)){
+            pnde_d11 <- rep(0, length(theta6))
+        }else{
+            pnde_d11 <- c_cond*pnde_d1
+        }
         
         Gamma_pnde <-
             matrix(c(
@@ -362,16 +382,26 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
         tnie_expit_q4 <- expit(a1*(beta1 + beta3_c) + a1*theta3 + beta0 + beta2_c + theta6_c + theta2)
         
         tnie_d1 <- tnie_expit_q1 - tnie_expit_q2 - tnie_expit_q3 + tnie_expit_q4
-        tnie_d2 <- a0 * (tnie_expit_q1 - tnie_expit_q2) + a1 * (- tnie_expit_q3 + tnie_expit_q4)
-        tnie_d3 <- c_cond * tnie_d1
-        tnie_d4 <- c_cond * tnie_d2
+        tnie_d2 <- a0 * (tnie_expit_q1-tnie_expit_q2) + a1 * (-tnie_expit_q3+tnie_expit_q4)
+        tnie_d3 <- c_cond*tnie_d1
+        # tnie_d4 <- c_cond*tnie_d2
+        if(is.null(beta3)){
+            tnie_d4 <- rep(0, length(beta3))
+        }else{
+            tnie_d4 <- c_cond*tnie_d2
+        }
         tnie_d5 <- 0
         tnie_d6 <- 0
         tnie_d7 <- tnie_expit_q4 - tnie_expit_q2  # watch out the order
-        tnie_d8 <- a1 * tnie_d7
+        tnie_d8 <- a1*tnie_d7
         tnie_d9 <- rep(0, length(theta4))
         tnie_d10 <- rep(0, length(theta5))
-        tnie_d11 <- c_cond * tnie_d7 
+        # tnie_d11 <- c_cond*tnie_d7 
+        if(is.null(theta6)){
+            tnie_d11 <- rep(0, length(theta6))
+        }else{
+            tnie_d11 <- c_cond*tnie_d7
+        }
         
         Gamma_tnie <-
             matrix(c(
@@ -386,24 +416,39 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
                 tnie_d8,   # theta3
                 tnie_d9,   # theta4 vector
                 tnie_d10,  # theta5 vector
-                tnie_d11   # thet6 vector
+                tnie_d11   # theta6 vector
             ))
         ##
         ## a's from mreg beta1 should be a1.
-        tnde_expit_a1 <- expit(a1*(beta1 + beta3_c) + a1*theta3 + beta0 + beta2_c + theta6_c + theta2)
-        tnde_expit_a0 <- expit(a1*(beta1 + beta3_c) + a0*theta3 + beta0 + beta2_c + theta6_c + theta2)
+        tnde_expit_a1 <- expit(a1*(beta1+beta3_c) + a1*theta3 + beta0 + beta2_c + theta6_c + theta2)
+        tnde_expit_a0 <- expit(a1*(beta1+beta3_c) + a0*theta3 + beta0 + beta2_c + theta6_c + theta2)
         
         tnde_d1 <- tnde_expit_a1 - tnde_expit_a0
-        tnde_d2 <- a1 * tnde_d1
-        tnde_d3 <- c_cond * tnde_d1
-        tnde_d4 <- c_cond * a1 * tnde_d1
+        tnde_d2 <- a1*tnde_d1
+        tnde_d3 <- c_cond*tnde_d1
+        # tnde_d4 <- c_cond*a1*tnde_d1
+        if(is.null(beta3)){
+            tnde_d4 <- rep(0, length(beta3))
+        }else{
+            tnde_d4 <- c_cond*a1*tnde_d1
+        }
         tnde_d5 <- 0
         tnde_d6 <- a1 - a0
         tnde_d7 <- tnde_d1
-        tnde_d8 <- a1 * tnde_expit_a1 - a0 * tnde_expit_a0
+        tnde_d8 <- a1*tnde_expit_a1 - a0*tnde_expit_a0
         tnde_d9 <- rep(0, length(theta4))
-        tnde_d10 <- c_cond * (a1 - a0)
-        tnde_d11 <- tnde_d3
+        # tnde_d10 <- c_cond*(a1 - a0)
+        if(is.null(theta5)){
+            tnde_d10 <- rep(0, length(theta5))
+        }else{
+            tnde_d10 <- c_cond*(a1 - a0)
+        }
+        # tnde_d11 <- tnde_d3
+        if(is.null(theta6)){
+            tnde_d11 <- rep(0, length(theta6))
+        }else{
+            tnde_d11 <- tnde_d3
+        }
         
         Gamma_tnde <-
             matrix(c(
@@ -422,22 +467,32 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
                 ))  
         ##
         ## a's from yreg theta3 should be a0.
-        pnie_expit_q1 <- expit(a0*(beta1 + beta3_c) + beta0 + beta2_c)
-        pnie_expit_q2 <- expit(a0*(beta1 + beta3_c) + a0*theta3 + beta0 + beta2_c + theta6_c + theta2)
-        pnie_expit_q3 <- expit(a1*(beta1 + beta3_c) + beta0 + beta2_c)
-        pnie_expit_q4 <- expit(a1*(beta1 + beta3_c) + a0*theta3 + beta0 + beta2_c + theta6_c + theta2)
+        pnie_expit_q1 <- expit(a0*(beta1+beta3_c) + beta0 + beta2_c)
+        pnie_expit_q2 <- expit(a0*(beta1+beta3_c) + a0*theta3 + beta0 + beta2_c + theta6_c + theta2)
+        pnie_expit_q3 <- expit(a1*(beta1+beta3_c) + beta0 + beta2_c)
+        pnie_expit_q4 <- expit(a1*(beta1+beta3_c) + a0*theta3 + beta0 + beta2_c + theta6_c + theta2)
         
         pnie_d1 <- pnie_expit_q1 + pnie_expit_q2 - pnie_expit_q3 + pnie_expit_q4
-        pnie_d2 <- a0 * (pnie_expit_q1 + pnie_expit_q2) + a1 * (- pnie_expit_q3 + pnie_expit_q4)
-        pnie_d3 <- c_cond * pnie_d1
-        pnie_d4 <- c_cond * pnie_d2
+        pnie_d2 <- a0 * (pnie_expit_q1+pnie_expit_q2) + a1 * (-pnie_expit_q3+pnie_expit_q4)
+        pnie_d3 <- c_cond*pnie_d1
+        # pnie_d4 <- c_cond*pnie_d2
+        if(is.null(beta3)){
+            pnie_d4 <- rep(0, length(beta3))
+        }else{
+            pnie_d4 <- c_cond*pnie_d2
+        }
         pnie_d5 <- 0
         pnie_d6 <- 0
         pnie_d7 <- pnie_expit_q1 - pnie_expit_q3
-        pnie_d8 <- a0 * pnie_d7 
+        pnie_d8 <- a0*pnie_d7 
         pnie_d9 <- rep(0, length(theta4))
         pnie_d10 <- rep(0, length(theta5))
-        pnie_d11 <- c_cond * pnie_d6
+        # pnie_d11 <- c_cond*pnie_d7
+        if(is.null(theta6)){
+            pnie_d11 <- rep(0, length(theta6))
+        }else{
+            pnie_d11 <- c_cond*pnie_d7
+        }
         
         Gamma_pnie <-
             matrix(c(
@@ -451,8 +506,8 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
                 pnie_d7,   # theta2
                 pnie_d8,   # theta3
                 pnie_d9,   # theta4 vector
-                pnie_d10,   # theta5 vector
-                pnie_d11    # theta6 vector
+                pnie_d10,  # theta5 vector
+                pnie_d11   # theta6 vector
                 ))  
         ## because Gamma_pnie does not have a common factor.
         Gamma_te <-
