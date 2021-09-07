@@ -513,7 +513,7 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                           myreg_funs[[1]](1,2,-3,c(4,5,6))["cde"])
             }
         })
-        it("returns functions where cde does no depend on c_cond", {
+        it("returns functions where cde does not depend on c_cond", {
             expect_equal(myreg_funs[[1]](1,2,+3,-1 * c(4,5,6))["cde"],
                          myreg_funs[[1]](1,2,+3,+2 * c(4,5,6))["cde"])
             expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["cde"],
