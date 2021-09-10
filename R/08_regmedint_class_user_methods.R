@@ -378,7 +378,7 @@ coef.summary_regmedint <- function(object, ...) {
 
 
 print_eval_info_helper <- function(a0, a1, m_cde, c_cond,
-                                   avar, mvar, cvar, EMM_AC_MmodeL, EMM_AC_Ymodel, EMM_MC,
+                                   avar, mvar, cvar, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC,
                                    yreg, mreg, interaction, casecontrol) {
 
     cat("\n")
