@@ -193,7 +193,7 @@ calc_myreg_mreg_logistic_yreg_logistic_est <- function(beta0,
         ## Note the a1 -> a0 changes associated with theta3.
         pnie <-
             log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c*a1 + theta2 + theta3*a0 + theta6_c)) - 
-            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0 + theta2 + theta3*a1 + theta6_c)) +
+            log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0 + theta2 + theta3*a0 + theta6_c)) +
             log(1 + exp(beta0 + beta1*a0 + beta2_c + beta3_c*a0)) - 
             log(1 + exp(beta0 + beta1*a1 + beta2_c + beta3_c*a1))
         ## It is the sum of NDE and NIE on the log scale.
