@@ -71,7 +71,7 @@ string_mreg_formula <- function(mvar,
 
     assertthat::assert_that(!is.null(mvar))
     assertthat::assert_that(!is.null(avar))
-
+    
     if (is.null(cvar)) {
         acvar_string <- avar
     } else { 
@@ -80,13 +80,13 @@ string_mreg_formula <- function(mvar,
       acvar_string <- paste0(c(avar, cvar_string), collapse = " + ")
       }
       else {
-        cvar_string <- paste0(cvar, collapse = " + ")
+        cvar_string <- paste0(c(avar, cvar), collapse = " + ")
         ## Add avar*EMM_AC_Mmodel terms:
         temp <- NULL
         for(i in 1:length(EMM_AC_Mmodel)){
           temp <- paste0(c(temp, paste0(c(avar, EMM_AC_Mmodel[i]), collapse = " : ")), collapse = " + ")
         }
-        acvar_string <- paste(acvar_string, temp, sep = " + ")
+        acvar_string <- paste(cvar_string, temp, sep = " + ")
       }
     }
 
