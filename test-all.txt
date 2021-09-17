@@ -1,169 +1,1233 @@
 ✔ |  OK [38;5;214mF[39m [35mW[39m [34mS[39m | Context
-⠏ |   0       | 01_regmedint_class_ui                                                                                   ⠋ |   1       | 01_regmedint_class_ui                                                                                   ⠹ |   3       | 01_regmedint_class_ui                                                                                   ⠏ |  10       | 01_regmedint_class_ui                                                                                   [32m✔[39m |  18       | 01_regmedint_class_ui[36m [2.9 s][39m
-⠏ |   0       | 03_fit_mreg                                                                                             [32m✔[39m |  24       | 03_fit_mreg
+⠏ |   0       | 01_regmedint_class_ui                                                                                   ⠋ |   1       | 01_regmedint_class_ui                                                                                   ⠹ |   3       | 01_regmedint_class_ui                                                                                   ⠏ |  10       | 01_regmedint_class_ui                                                                                   [32m✔[39m |  18       | 01_regmedint_class_ui[36m [1.5 s][39m
+⠏ |   0       | 03_fit_mreg                                                                                             [32m✔[39m |  32       | 03_fit_mreg
 ⠏ |   0       | 03_helpers_fit_mreg_fit_yreg                                                                            [32m✔[39m |  23       | 03_helpers_fit_mreg_fit_yreg
-⠏ |   0       | 04_fit_yreg_linear                                                                                      [32m✔[39m |  24       | 04_fit_yreg_linear
-⠏ |   0       | 04_fit_yreg_logistic                                                                                    ⠏ |  20       | 04_fit_yreg_logistic                                                                                    [32m✔[39m |  24       | 04_fit_yreg_logistic[36m [0.1 s][39m
-⠏ |   0       | 04_fit_yreg_loglinear                                                                                   ⠋ |   1       | 04_fit_yreg_loglinear                                                                                   ⠴ |  16       | 04_fit_yreg_loglinear                                                                                   [32m✔[39m |  36       | 04_fit_yreg_loglinear[36m [0.3 s][39m
-⠏ |   0       | 04_fit_yreg_negbin                                                                                      ⠹ |  13       | 04_fit_yreg_negbin                                                                                      [32m✔[39m |  24       | 04_fit_yreg_negbin[36m [0.2 s][39m
-⠏ |   0       | 04_fit_yreg_poisson                                                                                     ⠦ |  17       | 04_fit_yreg_poisson                                                                                     [32m✔[39m |  24       | 04_fit_yreg_poisson[36m [0.1 s][39m
-⠏ |   0       | 04_fit_yreg_survAFT_exp                                                                                 ⠹ |  13       | 04_fit_yreg_survAFT_exp                                                                                 [32m✔[39m |  24       | 04_fit_yreg_survAFT_exp[36m [0.1 s][39m
-⠏ |   0       | 04_fit_yreg_survAFT_weibull                                                                             ⠋ |  21       | 04_fit_yreg_survAFT_weibull                                                                             [32m✔[39m |  24       | 04_fit_yreg_survAFT_weibull[36m [0.1 s][39m
-⠏ |   0       | 04_fit_yreg_survCox                                                                                     ⠇ |   9       | 04_fit_yreg_survCox                                                                                     ⠦ |  17       | 04_fit_yreg_survCox                                                                                     [32m✔[39m |  24       | 04_fit_yreg_survCox[36m [0.3 s][39m
-⠏ |   0       | 05_calc_myreg                                                                                           ⠹ |   3       | 05_calc_myreg                                                                                           [32m✔[39m |   6       | 05_calc_myreg[36m [0.7 s][39m
-⠏ |   0       | 06_calc_myreg_helpers_coef                                                                              ⠋ |   1       | 06_calc_myreg_helpers_coef                                                                              ⠋ |  11       | 06_calc_myreg_helpers_coef                                                                              ⠙ |  32       | 06_calc_myreg_helpers_coef                                                                              ⠸ |  54       | 06_calc_myreg_helpers_coef                                                                              ⠏ |  80       | 06_calc_myreg_helpers_coef                                                                              [32m✔[39m | 109       | 06_calc_myreg_helpers_coef[36m [0.7 s][39m
-⠏ |   0       | 06_calc_myreg_helpers_vcov                                                                              ⠹ |  13       | 06_calc_myreg_helpers_vcov                                                                              ⠋ |  21       | 06_calc_myreg_helpers_vcov                                                                              ⠴ |  26       | 06_calc_myreg_helpers_vcov                                                                              ⠹ |  43       | 06_calc_myreg_helpers_vcov                                                                              ⠴ |  56       | 06_calc_myreg_helpers_vcov                                                                              ⠋ |  61       | 06_calc_myreg_helpers_vcov                                                                              ⠧ |  78       | 06_calc_myreg_helpers_vcov                                                                              ⠴ |  86       | 06_calc_myreg_helpers_vcov                                                                              ⠧ |  88       | 06_calc_myreg_helpers_vcov                                                                              ⠏ |  90       | 06_calc_myreg_helpers_vcov                                                                              ⠸ |  94       | 06_calc_myreg_helpers_vcov                                                                              ⠦ |  97       | 06_calc_myreg_helpers_vcov                                                                              ⠇ | 109       | 06_calc_myreg_helpers_vcov                                                                              [32m✔[39m | 110       | 06_calc_myreg_helpers_vcov[36m [1.5 s][39m
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠋ |  11       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠇ |  29       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠇ |  49       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠹ |  63       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠏ |  90       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠼ | 115       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠇ | 119       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠙ | 152       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠇ | 169       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠇ | 199       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠙ | 222       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [32m✔[39m | 225       | 07_calc_myreg_mreg_linear_yreg_linear[36m [1.3 s][39m
-⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠧ |  18       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠧ |  38       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠹ |  63       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠦ |  87       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠦ |  97       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠇ | 119       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠦ | 157       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠸ | 174       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠇ | 209       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [32m✔[39m | 235       | 07_calc_myreg_mreg_linear_yreg_logistic[36m [1.1 s][39m
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠦ |   7       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠋ |  31       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠇ |  59       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠴ |  76       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠦ |  97       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠹ | 133       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠇ | 159       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠸ | 184       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠏ | 210       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [32m✔[39m | 220       | 07_calc_myreg_mreg_logistic_yreg_linear[36m [1.5 s][39m
-⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠦ |   7       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠦ |  17       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠦ |  27       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠏ |  50       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠼ |  65       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠴[39m |  83 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠧[39m |  95 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠙[39m | 129 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠋[39m | 158 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠧[39m | 185 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [38;5;214m⠇[39m | 216 3     | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [31m✖[39m | 220 3     | 07_calc_myreg_mreg_logistic_yreg_logistic[36m [1.8 s][39m
+⠏ |   0       | 04_fit_yreg_linear                                                                                      [32m✔[39m |  40       | 04_fit_yreg_linear
+⠏ |   0       | 04_fit_yreg_logistic                                                                                    [32m✔[39m |  28       | 04_fit_yreg_logistic
+⠏ |   0       | 04_fit_yreg_loglinear                                                                                   ⠴ |  16       | 04_fit_yreg_loglinear                                                                                   [32m✔[39m |  46       | 04_fit_yreg_loglinear[36m [0.2 s][39m
+⠏ |   0       | 04_fit_yreg_negbin                                                                                      ⠙ |  22       | 04_fit_yreg_negbin                                                                                      [32m✔[39m |  32       | 04_fit_yreg_negbin[36m [0.1 s][39m
+⠏ |   0       | 04_fit_yreg_poisson                                                                                     [32m✔[39m |  32       | 04_fit_yreg_poisson
+⠏ |   0       | 04_fit_yreg_survAFT_exp                                                                                 [32m✔[39m |  32       | 04_fit_yreg_survAFT_exp
+⠏ |   0       | 04_fit_yreg_survAFT_weibull                                                                             [32m✔[39m |  32       | 04_fit_yreg_survAFT_weibull
+⠏ |   0       | 04_fit_yreg_survCox                                                                                     [32m✔[39m |  32       | 04_fit_yreg_survCox
+⠏ |   0       | 05_calc_myreg                                                                                           [32m✔[39m |   6       | 05_calc_myreg
+⠏ |   0       | 06_calc_myreg_helpers_coef                                                                              ⠸ |  34       | 06_calc_myreg_helpers_coef                                                                              ⠴ |  86       | 06_calc_myreg_helpers_coef                                                                              [32m✔[39m | 109       | 06_calc_myreg_helpers_coef[36m [0.3 s][39m
+⠏ |   0       | 06_calc_myreg_helpers_vcov                                                                              ⠧ |  18       | 06_calc_myreg_helpers_vcov                                                                              ⠹ |  43       | 06_calc_myreg_helpers_vcov                                                                              ⠧ |  58       | 06_calc_myreg_helpers_vcov                                                                              ⠋ |  81       | 06_calc_myreg_helpers_vcov                                                                              ⠇ |  89       | 06_calc_myreg_helpers_vcov                                                                              ⠧ |  98       | 06_calc_myreg_helpers_vcov                                                                              [32m✔[39m | 110       | 06_calc_myreg_helpers_vcov[36m [0.7 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠋ |  31       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠙ |  72       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠙ | 122       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   ⠏ | 200       | 07_calc_myreg_mreg_linear_yreg_linear                                                                   [32m✔[39m | 225       | 07_calc_myreg_mreg_linear_yreg_linear[36m [0.4 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠙ |  32       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠹ |  73       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠴ | 156       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 ⠏ | 230       | 07_calc_myreg_mreg_linear_yreg_logistic                                                                 [32m✔[39m | 235       | 07_calc_myreg_mreg_linear_yreg_logistic[36m [0.4 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠹ |  53       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠏ |  90       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 ⠋ | 161       | 07_calc_myreg_mreg_logistic_yreg_linear                                                                 [32m✔[39m | 220       | 07_calc_myreg_mreg_logistic_yreg_linear[36m [0.6 s][39m
+⠏ |   0       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠧ |   8       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠋ |  11       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠹ |  53       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠇ |  99       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               ⠧ | 178       | 07_calc_myreg_mreg_logistic_yreg_logistic                                                               [32m✔[39m | 223       | 07_calc_myreg_mreg_logistic_yreg_logistic[36m [0.7 s][39m
+⠏ |   0       | 08_regmedint_class_user_methods                                                                         ⠸ |  24       | 08_regmedint_class_user_methods                                                                         ⠏ |  40       | 08_regmedint_class_user_methods                                                                         ⠸ |  74       | 08_regmedint_class_user_methods                                                                         ⠦ |  97       | 08_regmedint_class_user_methods                                                                         ⠇ | 129       | 08_regmedint_class_user_methods                                                                         ⠹ | 153       | 08_regmedint_class_user_methods                                                                         ⠧ | 188       | 08_regmedint_class_user_methods                                                                         ⠹ | 213       | 08_regmedint_class_user_methods                                                                         [32m✔[39m | 226       | 08_regmedint_class_user_methods[36m [0.9 s][39m
+⠏ |   0       | 09_cross_check_with_sas_macro                                                                           ⠙ |   2       | 09_cross_check_with_sas_macro                                                                           ⠏ | 120       | 09_cross_check_with_sas_macro                                                                           ⠙ | 162       | 09_cross_check_with_sas_macro                                                                           ⠼ | 325       | 09_cross_check_with_sas_macro                                                                           ⠴ | 536       | 09_cross_check_with_sas_macro                                                                           ⠙ | 752       | 09_cross_check_with_sas_macro                                                                           ⠙ | 972       | 09_cross_check_with_sas_macro                                                                           ⠼ | 1175       | 09_cross_check_with_sas_macro                                                                          [38;5;214m⠸[39m | 1266 18     | 09_cross_check_with_sas_macro                                                                         [38;5;214m⠋[39m | 1312 49     | 09_cross_check_with_sas_macro                                                                         [38;5;214m⠴[39m | 1367 79     | 09_cross_check_with_sas_macro                                                                         [38;5;214m⠇[39m | 1483 96     | 09_cross_check_with_sas_macro                                                                         [38;5;214m⠸[39m | 1602 112     | 09_cross_check_with_sas_macro                                                                        [38;5;214m⠴[39m | 1717 129     | 09_cross_check_with_sas_macro                                                                        [38;5;214m⠹[39m | 1837 146     | 09_cross_check_with_sas_macro                                                                        [38;5;214m⠧[39m | 1955 163     | 09_cross_check_with_sas_macro                                                                        [38;5;214m⠏[39m | 2070 180     | 09_cross_check_with_sas_macro                                                                        [38;5;214m⠙[39m | 2186 196     | 09_cross_check_with_sas_macro                                                                        [31m✖[39m | 2218 201     | 09_cross_check_with_sas_macro[36m [3.9 s][39m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:546:21): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where natural effects depend on c_cond[22m
-myreg_funs[[1]](1, 2, +3, -1 * c_cond)["pnie"] is not strictly less than myreg_funs[[1]](1, 2, +3, +2 * c_cond)["pnie"]. Difference: 0.0588
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:584:17): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where natural effects relate correctly[22m
-unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["tnie"]) is not strictly less than unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["pnie"]). Difference: 0.0588
-
-[1m[38;5;214mFailure[39m (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:593:13): calc_myreg_mreg_logistic_yreg_logistic logistic interaction (methodological correctness): returns functions where total effect is nde+nie[22m
-unname(myreg_funs[[1]](1, 2, 3, c(4, 5, 6))["te"]) not equal to +....
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:673:33): se match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar0.sas[22m
+se[["tnie"]] not equal to sas_se[["nie"]].
 1/1 mismatches
-[1] -0.19 - -0.249 == 0.0588
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 08_regmedint_class_user_methods                                                                         ⠋ |   1       | 08_regmedint_class_user_methods                                                                         ⠙ |  12       | 08_regmedint_class_user_methods                                                                         [38;5;214m⠼[39m |  23 2     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠧[39m |  33 5     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠇[39m |  54 5     | 08_regmedint_class_user_methods                                                                         [38;5;214m⠧[39m |  58 10     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠧[39m |  78 10     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠹[39m |  90 13     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠼[39m | 100 15     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠸[39m | 109 15     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠏[39m | 125 15     | 08_regmedint_class_user_methods                                                                        [38;5;214m⠦[39m | 127 20     | 08_regmedint_class_user_methods                                                                        [31m✖[39m | 134 20     | 08_regmedint_class_user_methods[36m [1.4 s][39m
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:124:21): print.summary_regmedint: prints the mreg results[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1] 6.51 - 43.8 == -37.3
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:124:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:129:21): print.summary_regmedint: prints the yreg results[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:675:33): se match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar0.sas[22m
+se[["pnie"]] not equal to sas_se[["nie"]].
+1/1 mismatches
+[1] 6.51 - 43.8 == -37.3
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:129:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:134:21): print.summary_regmedint: prints mediation analysis results with expected elements[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:676:33): se match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar0.sas[22m
+se[["te"]] not equal to sas_se[["te"]].
+1/1 mismatches
+[1] 304 - 307 == -3.07
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(print(summary(fit_regmedint)), "cde") [90mtest-08_regmedint_class_user_methods.R:134:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:143:21): print.summary_regmedint: prints mediation analysis results with expected elements exponentiated[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:682:33): p match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar0.sas[22m
+p[["tnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.0177 - 0.725 == -0.707
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:143:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint, exponentiate = TRUE))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:152:21): print.summary_regmedint: prints evaluation information[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:684:33): p match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["nie"]].
+1/1 mismatches
+[1] 0.0177 - 0.725 == -0.707
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:152:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:332:21): print.summary_regmedint: prints the mreg results[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:691:33): lower confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar0.sas[22m
+lower[["tnie"]] not equal to sas_lower[["nie"]].
+1/1 mismatches
+[1] -28.2 - -101 == 73.1
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:332:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:337:21): print.summary_regmedint: prints the yreg results[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:693:33): lower confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to sas_lower[["nie"]].
+1/1 mismatches
+[1] -28.2 - -101 == 73.1
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:337:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:342:21): print.summary_regmedint: prints mediation analysis results with expected elements[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:694:33): lower confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar0.sas[22m
+lower[["te"]] not equal to sas_lower[["te"]].
+1/1 mismatches
+[1] -643 - -649 == 6.02
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(print(summary(fit_regmedint)), "cde") [90mtest-08_regmedint_class_user_methods.R:342:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:351:21): print.summary_regmedint: prints mediation analysis results with expected elements exponentiated[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:700:33): upper confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar0.sas[22m
+upper[["tnie"]] not equal to sas_upper[["nie"]].
+1/1 mismatches
+[1] -2.68 - 70.4 == -73.1
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:351:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint, exponentiate = TRUE))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:360:21): print.summary_regmedint: prints evaluation information[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:702:33): upper confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to sas_upper[["nie"]].
+1/1 mismatches
+[1] -2.68 - 70.4 == -73.1
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:360:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:528:21): print.summary_regmedint: prints the mreg results[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:703:33): upper confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar0.sas[22m
+upper[["te"]] not equal to sas_upper[["te"]].
+1/1 mismatches
+[1] 547 - 554 == -6.02
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:528:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:533:21): print.summary_regmedint: prints the yreg results[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:410:33): se match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+se[["tnie"]] not equal to sas_se[["conditional_tnie"]].
+1/1 mismatches
+[1] 13.7 - 50 == -36.3
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:533:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:538:21): print.summary_regmedint: prints mediation analysis results with expected elements[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:412:33): se match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+se[["pnie"]] not equal to sas_se[["conditional_pnie"]].
+1/1 mismatches
+[1] 13.7 - 50 == -36.3
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(print(summary(fit_regmedint)), "cde") [90mtest-08_regmedint_class_user_methods.R:538:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:547:21): print.summary_regmedint: prints mediation analysis results with expected elements exponentiated[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:413:33): se match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+se[["te"]] not equal to sas_se[["conditional_te"]].
+1/1 mismatches
+[1] 310 - 313 == -3.71
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:547:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint, exponentiate = TRUE))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:556:21): print.summary_regmedint: prints evaluation information[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:419:33): p match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
+1/1 mismatches
+[1] 0.0217 - 0.529 == -0.507
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:556:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:737:21): print.summary_regmedint: prints the mreg results[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:421:33): p match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.0217 - 0.529 == -0.507
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:737:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:742:21): print.summary_regmedint: prints the yreg results[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:428:33): lower confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+lower[["tnie"]] not equal to sas_lower[["conditional_tnie"]].
+1/1 mismatches
+[1] -58.4 - -130 == 71.2
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:742:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:747:21): print.summary_regmedint: prints mediation analysis results with expected elements[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:430:33): lower confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to sas_lower[["conditional_pnie"]].
+1/1 mismatches
+[1] -58.4 - -130 == 71.2
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(print(summary(fit_regmedint)), "cde") [90mtest-08_regmedint_class_user_methods.R:747:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:756:21): print.summary_regmedint: prints mediation analysis results with expected elements exponentiated[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:431:33): lower confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+lower[["te"]] not equal to sas_lower[["conditional_te"]].
+1/1 mismatches
+[1] -677 - -684 == 7.28
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:756:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint, exponentiate = TRUE))
 
-[1m[38;5;214mError[39m (test-08_regmedint_class_user_methods.R:765:21): print.summary_regmedint: prints evaluation information[22m
-Error: unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:437:33): upper confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+upper[["tnie"]] not equal to sas_upper[["conditional_tnie"]].
+1/1 mismatches
+[1] -4.6 - 66.5 == -71.2
 [1mBacktrace:[22m
-[90m  1. [39mtestthat::expect_output(...) [90mtest-08_regmedint_class_user_methods.R:765:20[39m
-[90m 11. [39mregmedint::print.summary_regmedint(summary(fit_regmedint))
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-⠏ |   0       | 09_cross_check_with_sas_macro                                                                           ⠙ |   2       | 09_cross_check_with_sas_macro                                                                           ⠧ |  38       | 09_cross_check_with_sas_macro                                                                           ⠋ |  61       | 09_cross_check_with_sas_macro                                                                           ⠦ |  87       | 09_cross_check_with_sas_macro                                                                           ⠧ | 128       | 09_cross_check_with_sas_macro                                                                           [38;5;214m⠙[39m | 161 1     | 09_cross_check_with_sas_macro                                                                           [31m✖[39m | 161 1     | 09_cross_check_with_sas_macro[36m [2.8 s][39m
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1m[38;5;214mError[39m (test-09_cross_check_with_sas_macro.R:236:1): (code run outside of `test_that()`)[22m
-Error: Problem with `mutate()` column `junk`.
-[34mℹ[39m `junk = pmap(...)`.
-[31m✖[39m unused argument (EMM_AC_Mmodel = x$args$EMM_AC_Mmodel)
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:439:33): upper confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to sas_upper[["conditional_pnie"]].
+1/1 mismatches
+[1] -4.6 - 66.5 == -71.2
 [1mBacktrace:[22m
-[90m  1. [39m`%>%`(...) [90mtest-09_cross_check_with_sas_macro.R:236:0[39m
-[90m 12. [39mbase::.handleSimpleError(...) [90m/Users/yili/Desktop/regmedint2021/R/08_regmedint_class_user_methods.R:322:4[39m
-[90m 13. [39mdplyr:::h(simpleError(msg, call))
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:440:33): upper confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+upper[["te"]] not equal to sas_upper[["conditional_te"]].
+1/1 mismatches
+[1] 537 - 544 == -7.28
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:455:33): se_cmean match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+se_cmean[["tnie"]] not equal to sas_se[["marginal_tnie"]].
+1/1 mismatches
+[1] 13.8 - 50.7 == -36.9
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:457:33): se_cmean match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+se_cmean[["pnie"]] not equal to sas_se[["marginal_pnie"]].
+1/1 mismatches
+[1] 13.8 - 50.7 == -36.9
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:458:33): se_cmean match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+se_cmean[["te"]] not equal to sas_se[["marginal_te"]].
+1/1 mismatches
+[1] 310 - 314 == -3.82
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:464:33): p_cmean match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+p_cmean[["tnie"]] not equal to sas_p[["marginal_tnie"]].
+1/1 mismatches
+[1] 0.0198 - 0.525 == -0.505
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:466:33): p_cmean match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.0198 - 0.525 == -0.505
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:473:33): lower_cmean confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+lower_cmean[["tnie"]] not equal to sas_lower[["marginal_tnie"]].
+1/1 mismatches
+[1] -59.3 - -132 == 72.2
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:475:33): lower_cmean confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to sas_lower[["marginal_pnie"]].
+1/1 mismatches
+[1] -59.3 - -132 == 72.2
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:476:33): lower_cmean confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+lower_cmean[["te"]] not equal to sas_lower[["marginal_te"]].
+1/1 mismatches
+[1] -678 - -685 == 7.48
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:482:33): upper_cmean confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+upper_cmean[["tnie"]] not equal to sas_upper[["marginal_tnie"]].
+1/1 mismatches
+[1] -5.11 - 67.1 == -72.2
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:484:33): upper_cmean confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to sas_upper[["marginal_pnie"]].
+1/1 mismatches
+[1] -5.11 - 67.1 == -72.2
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:485:33): upper_cmean confint match with sas-mreg_logistic_yreg_linear_int_f_caco_f_ncvar3.sas[22m
+upper_cmean[["te"]] not equal to sas_upper[["marginal_te"]].
+1/1 mismatches
+[1] 536 - 544 == -7.48
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:583:33): se match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+se[["tnie"]] not equal to sas_se[["tnie"]].
+1/1 mismatches
+[1] 12.2 - 47.4 == -35.1
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:584:33): se match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+se[["tnde"]] not equal to sas_se[["tnde"]].
+1/1 mismatches
+[1] 304 - 304 == -0.0137
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:585:33): se match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+se[["pnie"]] not equal to sas_se[["pnie"]].
+1/1 mismatches
+[1] 8.4 - 42.9 == -34.5
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:586:33): se match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+se[["te"]] not equal to sas_se[["te"]].
+1/1 mismatches
+[1] 304 - 307 == -3.23
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:592:33): p match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+p[["tnie"]] not equal to sas_p[["tnie"]].
+1/1 mismatches
+[1] 0.182 - 0.731 == -0.548
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:594:33): p match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.0745 - 0.727 == -0.652
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:601:33): lower confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+lower[["tnie"]] not equal to sas_lower[["tnie"]].
+1/1 mismatches
+[1] -40.3 - -109 == 68.9
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:602:33): lower confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+lower[["tnde"]] not equal to sas_lower[["tnde"]].
+1/1 mismatches
+[1] -630 - -630 == 0.0303
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:603:33): lower confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to sas_lower[["pnie"]].
+1/1 mismatches
+[1] -31.5 - -99 == 67.6
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:604:33): lower confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+lower[["te"]] not equal to sas_lower[["te"]].
+1/1 mismatches
+[1] -644 - -651 == 6.34
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:610:33): upper confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+upper[["tnie"]] not equal to sas_upper[["tnie"]].
+1/1 mismatches
+[1] 7.65 - 76.5 == -68.9
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:611:33): upper confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+upper[["tnde"]] not equal to sas_upper[["tnde"]].
+1/1 mismatches
+[1] 564 - 564 == -0.0295
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:612:33): upper confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to sas_upper[["pnie"]].
+1/1 mismatches
+[1] 1.48 - 69.1 == -67.6
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:613:33): upper confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar0.sas[22m
+upper[["te"]] not equal to sas_upper[["te"]].
+1/1 mismatches
+[1] 548 - 555 == -6.34
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:410:33): se match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+se[["tnie"]] not equal to sas_se[["conditional_tnie"]].
+1/1 mismatches
+[1] 24.4 - 56.2 == -31.8
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:411:33): se match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+se[["tnde"]] not equal to sas_se[["conditional_tnde"]].
+1/1 mismatches
+[1] 313 - 313 == -0.0601
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:412:33): se match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+se[["pnie"]] not equal to sas_se[["conditional_pnie"]].
+1/1 mismatches
+[1] 17.3 - 49.9 == -32.6
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:413:33): se match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+se[["te"]] not equal to sas_se[["conditional_te"]].
+1/1 mismatches
+[1] 314 - 318 == -3.91
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:419:33): p match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+p[["tnie"]] not equal to sas_p[["conditional_tnie"]].
+1/1 mismatches
+[1] 0.175 - 0.555 == -0.381
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:421:33): p match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.0763 - 0.539 == -0.463
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:428:33): lower confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+lower[["tnie"]] not equal to sas_lower[["conditional_tnie"]].
+1/1 mismatches
+[1] -81.1 - -143 == 62.3
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:429:33): lower confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+lower[["tnde"]] not equal to sas_lower[["conditional_tnde"]].
+1/1 mismatches
+[1] -649 - -649 == 0.114
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:430:33): lower confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to sas_lower[["conditional_pnie"]].
+1/1 mismatches
+[1] -64.5 - -128 == 63.9
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:431:33): lower confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+lower[["te"]] not equal to sas_lower[["conditional_te"]].
+1/1 mismatches
+[1] -682 - -690 == 7.65
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:437:33): upper confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+upper[["tnie"]] not equal to sas_upper[["conditional_tnie"]].
+1/1 mismatches
+[1] 14.7 - 77 == -62.3
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:438:33): upper confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+upper[["tnde"]] not equal to sas_upper[["conditional_tnde"]].
+1/1 mismatches
+[1] 578 - 578 == -0.119
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:439:33): upper confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to sas_upper[["conditional_pnie"]].
+1/1 mismatches
+[1] 3.24 - 67.1 == -63.9
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:440:33): upper confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+upper[["te"]] not equal to sas_upper[["conditional_te"]].
+1/1 mismatches
+[1] 550 - 557 == -7.66
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:455:33): se_cmean match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+se_cmean[["tnie"]] not equal to sas_se[["marginal_tnie"]].
+1/1 mismatches
+[1] 24.9 - 57 == -32.2
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:456:33): se_cmean match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+se_cmean[["tnde"]] not equal to sas_se[["marginal_tnde"]].
+1/1 mismatches
+[1] 311 - 311 == -0.015
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:457:33): se_cmean match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+se_cmean[["pnie"]] not equal to sas_se[["marginal_pnie"]].
+1/1 mismatches
+[1] 17.5 - 50.6 == -33
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:458:33): se_cmean match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+se_cmean[["te"]] not equal to sas_se[["marginal_te"]].
+1/1 mismatches
+[1] 310 - 314 == -3.99
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:464:33): p_cmean match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+p_cmean[["tnie"]] not equal to sas_p[["marginal_tnie"]].
+1/1 mismatches
+[1] 0.172 - 0.552 == -0.38
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:466:33): p_cmean match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.0737 - 0.535 == -0.462
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:473:33): lower_cmean confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+lower_cmean[["tnie"]] not equal to sas_lower[["marginal_tnie"]].
+1/1 mismatches
+[1] -82.6 - -146 == 63.1
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:474:33): lower_cmean confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+lower_cmean[["tnde"]] not equal to sas_lower[["marginal_tnde"]].
+1/1 mismatches
+[1] -650 - -650 == 0.0296
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:475:33): lower_cmean confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to sas_lower[["marginal_pnie"]].
+1/1 mismatches
+[1] -65.7 - -130 == 64.7
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:476:33): lower_cmean confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+lower_cmean[["te"]] not equal to sas_lower[["marginal_te"]].
+1/1 mismatches
+[1] -680 - -688 == 7.83
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:482:33): upper_cmean confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+upper_cmean[["tnie"]] not equal to sas_upper[["marginal_tnie"]].
+1/1 mismatches
+[1] 14.8 - 77.9 == -63.1
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:483:33): upper_cmean confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+upper_cmean[["tnde"]] not equal to sas_upper[["marginal_tnde"]].
+1/1 mismatches
+[1] 570 - 570 == -0.0322
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:484:33): upper_cmean confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to sas_upper[["marginal_pnie"]].
+1/1 mismatches
+[1] 3.01 - 67.8 == -64.7
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:485:33): upper_cmean confint match with sas-mreg_logistic_yreg_linear_int_t_caco_f_ncvar3.sas[22m
+upper_cmean[["te"]] not equal to sas_upper[["marginal_te"]].
+1/1 mismatches
+[1] 537 - 545 == -7.83
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.886 - 0.721 == 0.164
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.421 - -0.187 == -0.234
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.364 - 0.129 == 0.234
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.948 - 0.524 == 0.425
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -1.46 - -0.19 == -1.27
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 1.36 - 0.0967 == 1.27
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.805 - 0.517 == 0.288
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.468 - -0.211 == -0.257
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.363 - 0.106 == 0.257
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.855 - 0.704 == 0.152
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.465 - -0.243 == -0.221
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.385 - 0.164 == 0.221
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.941 - 0.499 == 0.443
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -1.61 - -0.227 == -1.39
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 1.5 - 0.111 == 1.39
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.76 - 0.486 == 0.274
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.539 - -0.278 == -0.261
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_logistic_int_f_caco_t_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.394 - 0.132 == 0.262
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.888 - 0.722 == 0.166
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.418 - -0.182 == -0.236
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.362 - 0.126 == 0.236
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.949 - 0.527 == 0.422
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -1.45 - -0.188 == -1.26
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 1.36 - 0.096 == 1.26
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.808 - 0.521 == 0.287
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.466 - -0.208 == -0.258
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.363 - 0.105 == 0.258
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.858 - 0.704 == 0.154
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.459 - -0.236 == -0.223
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.382 - 0.16 == 0.223
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.942 - 0.502 == 0.44
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -1.61 - -0.225 == -1.38
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 1.49 - 0.11 == 1.38
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.764 - 0.491 == 0.273
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.536 - -0.274 == -0.261
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_logistic_int_t_caco_t_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.393 - 0.132 == 0.262
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.982 - 0.724 == 0.258
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.292 - -0.0151 == -0.277
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.299 - 0.0218 == 0.277
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.993 - 0.535 == 0.458
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -0.998 - -0.00969 == -0.988
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 1.01 - 0.0187 == 0.988
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.978 - 0.531 == 0.447
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.321 - -0.00969 == -0.311
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_negbin_int_f_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.33 - 0.0188 == 0.311
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.991 - 0.733 == 0.258
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.297 - -0.00827 == -0.289
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.301 - 0.0118 == 0.289
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.998 - 0.69 == 0.308
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -1.02 - -0.00568 == -1.02
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 1.03 - 0.00857 == 1.02
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.993 - 0.689 == 0.304
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.328 - -0.00575 == -0.322
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_negbin_int_t_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.331 - 0.0087 == 0.322
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.982 - 0.722 == 0.26
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.292 - -0.0151 == -0.277
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.299 - 0.0218 == 0.277
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.993 - 0.513 == 0.48
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -0.998 - -0.00898 == -0.989
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 1.01 - 0.018 == 0.989
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.978 - 0.509 == 0.469
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.321 - -0.00898 == -0.312
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_poisson_int_f_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.33 - 0.0181 == 0.312
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.991 - 0.722 == 0.269
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.297 - -0.00788 == -0.289
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.301 - 0.0114 == 0.289
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.998 - 0.528 == 0.47
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -1.03 - -0.00255 == -1.02
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 1.03 - 0.00498 == 1.02
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.994 - 0.524 == 0.47
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.328 - -0.00257 == -0.326
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_poisson_int_t_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.331 - 0.00505 == 0.326
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.802 - 0.724 == 0.0784
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.227 - -0.151 == -0.0758
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.294 - 0.218 == 0.0758
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.808 - 0.508 == 0.301
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -0.477 - -0.132 == -0.345
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 0.612 - 0.267 == 0.345
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.673 - 0.506 == 0.167
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.223 - -0.119 == -0.104
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_survAFT_exp_int_f_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.345 - 0.241 == 0.104
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.801 - 0.724 == 0.077
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.227 - -0.153 == -0.0746
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.294 - 0.22 == 0.0746
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.801 - 0.508 == 0.293
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -0.466 - -0.135 == -0.331
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 0.604 - 0.273 == 0.331
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.667 - 0.507 == 0.161
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.222 - -0.121 == -0.1
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_survAFT_exp_int_t_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.346 - 0.246 == 0.1
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.831 - 0.723 == 0.108
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.233 - -0.129 == -0.104
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.29 - 0.186 == 0.104
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.866 - 0.509 == 0.358
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -0.578 - -0.107 == -0.471
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 0.686 - 0.215 == 0.471
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.731 - 0.507 == 0.224
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.237 - -0.0981 == -0.139
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_f_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.337 - 0.199 == 0.139
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.829 - 0.723 == 0.105
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.232 - -0.131 == -0.102
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.29 - 0.188 == 0.102
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.858 - 0.509 == 0.349
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -0.562 - -0.111 == -0.451
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 0.674 - 0.223 == 0.451
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.722 - 0.507 == 0.215
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.234 - -0.102 == -0.133
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_survAFT_weibull_int_t_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.338 - 0.205 == 0.133
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.865 - 0.72 == 0.144
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.458 - -0.237 == -0.221
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.385 - 0.164 == 0.221
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.939 - 0.523 == 0.416
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -1.57 - -0.242 == -1.33
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 1.46 - 0.123 == 1.33
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.763 - 0.515 == 0.248
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.515 - -0.276 == -0.24
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_survCox_int_f_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.378 - 0.138 == 0.24
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:631:33): p match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar0.sas[22m
+p[["pnie"]] not equal to sas_p[["pnie"]].
+1/1 mismatches
+[1] 0.863 - 0.721 == 0.143
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:640:33): lower confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar0.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["pnie"]]).
+1/1 mismatches
+[1] -0.461 - -0.241 == -0.22
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:649:33): upper confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar0.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["pnie"]]).
+1/1 mismatches
+[1] 0.387 - 0.167 == 0.22
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:504:33): p match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas[22m
+p[["pnie"]] not equal to sas_p[["conditional_pnie"]].
+1/1 mismatches
+[1] 0.937 - 0.523 == 0.414
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:513:33): lower confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas[22m
+lower[["pnie"]] not equal to log(sas_lower[["conditional_pnie"]]).
+1/1 mismatches
+[1] -1.59 - -0.251 == -1.34
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:522:33): upper confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas[22m
+upper[["pnie"]] not equal to log(sas_upper[["conditional_pnie"]]).
+1/1 mismatches
+[1] 1.47 - 0.128 == 1.34
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:540:33): p_cmean match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas[22m
+p_cmean[["pnie"]] not equal to sas_p[["marginal_pnie"]].
+1/1 mismatches
+[1] 0.757 - 0.515 == 0.242
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:549:33): lower_cmean confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas[22m
+lower_cmean[["pnie"]] not equal to log(sas_lower[["marginal_pnie"]]).
+1/1 mismatches
+[1] -0.523 - -0.286 == -0.237
+[1mBacktrace:[22m
+
+[1m[38;5;214mFailure[39m (test-09_cross_check_with_sas_macro.R:558:33): upper_cmean confint match with sas-mreg_logistic_yreg_survCox_int_t_caco_f_ncvar3.sas[22m
+upper_cmean[["pnie"]] not equal to log(sas_upper[["marginal_pnie"]]).
+1/1 mismatches
+[1] 0.38 - 0.144 == 0.237
+[1mBacktrace:[22m
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ══ [1mResults[22m ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
-[36mDuration: 17.5 s[39m
+[36mDuration: 10.6 s[39m
 
-[ [38;5;214mFAIL[39m 24 | [35mWARN[39m 0 | [34mSKIP[39m 0 | [32mPASS[39m 1689 ]
+[ [38;5;214mFAIL[39m 201 | [35mWARN[39m 0 | [34mSKIP[39m 0 | [32mPASS[39m 3919 ]
