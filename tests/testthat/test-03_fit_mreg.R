@@ -93,6 +93,29 @@ describe("fit_mreg", {
             expect_equal(vcov(mreg_linear_fit3),
                          vcov(lm3))
         })
+        it("works ok with three cvar, and non-null 'EMM_AC_Mmodel'", {
+            ## Three covariates
+            mreg_linear_fit4 <- fit_mreg(mreg = "linear",
+                                         data = pbc_cc,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         EMM_AC_Mmodel = c("male", "stage"))
+            lm4 <- lm(formula = bili ~ trt + age + male + stage + trt:male + trt:stage,
+                      data = pbc_cc)
+            ## Same classes
+            expect_equal(class(mreg_linear_fit4),
+                         class(lm4))
+            ## Same formula
+            expect_equal(as.character(mreg_linear_fit4$call$formula),
+                         as.character(lm4$call$formula))
+            ## Same coef
+            expect_equal(coef(mreg_linear_fit4),
+                         coef(lm4))
+            ## Same vcov
+            expect_equal(vcov(mreg_linear_fit4),
+                         vcov(lm4))
+        })
     })
     ##
     describe("fit_mreg = logistic (glm)", {
@@ -167,6 +190,30 @@ describe("fit_mreg", {
             ## Same vcov
             expect_equal(vcov(mreg_logistic_fit3),
                          vcov(glm3))
+        })
+        it("works ok with three cvar, and non-null EMM_AC_Mmodel", {
+            ## Three covariates
+            mreg_logistic_fit4 <- fit_mreg(mreg = "logistic",
+                                          data = pbc_cc,
+                                          avar = "trt",
+                                          mvar = "hepato",
+                                          cvar = c("age","male","stage"),
+                                          EMM_AC_Mmodel = c("male", "stage"))
+            glm4 <- glm(formula = hepato ~ trt + age + male + stage + trt:male + trt:stage,
+                        family = binomial(link = "logit"),
+                        data = pbc_cc)
+            ## Same classes
+            expect_equal(class(mreg_logistic_fit4),
+                         class(glm4))
+            ## Same formula
+            expect_equal(as.character(mreg_logistic_fit4$call$formula),
+                         as.character(glm4$call$formula))
+            ## Same coef
+            expect_equal(coef(mreg_logistic_fit4),
+                         coef(glm4))
+            ## Same vcov
+            expect_equal(vcov(mreg_logistic_fit4),
+                         vcov(glm4))
         })
     })
 })
