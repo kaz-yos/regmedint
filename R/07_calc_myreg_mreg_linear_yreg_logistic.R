@@ -27,6 +27,8 @@ calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                  EMM_AC_Ymodel,
                                                  EMM_MC,
                                                  interaction) {
+  
+  ### 
 
     ## mreg coefficients
     beta_hat <- beta_hat_helper(mreg = mreg,
