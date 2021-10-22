@@ -336,11 +336,11 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
         pnde_d1 <- pnde_expit_a1 - pnde_expit_a0
         pnde_d2 <- a0*pnde_d1
         pnde_d3 <- c_cond*pnde_d1
-        # pnde_d4 <- c_cond*a1*pnde_d1
+        # pnde_d4 <- c_cond*a0*pnde_d1
         if(is.null(beta3)){
             pnde_d4 <- rep(0, length(beta3))
         }else{
-            pnde_d4 <- c_cond*a1*pnde_d1
+            pnde_d4 <- c_cond*a0*pnde_d1
         }
         pnde_d5 <- 0
         pnde_d6 <- a1 - a0

@@ -400,7 +400,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         if(is.null(theta5)){
             pd_tnde_theta5 <- rep(0, length(theta5))
         }else{
-            pd_tnde_theta6 <- c_cond
+            pd_tnde_theta5 <- c_cond
         }
         if(is.null(theta6)){
             pd_tnde_theta6 <- rep(0, length(theta6))
