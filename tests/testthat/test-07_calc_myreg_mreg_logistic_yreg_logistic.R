@@ -114,6 +114,48 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                                                    EMM_AC_Mmodel = NULL,
                                                    EMM_AC_Ymodel = NULL,
                                                    EMM_MC = NULL)
+        
+        # add EMM
+        myreg_funs_EMM1 <-
+          calc_myreg_mreg_logistic_yreg_logistic(mreg = "logistic",
+                                                 mreg_fit = mreg_fit,
+                                                 yreg = "logistic",
+                                                 yreg_fit = yreg_fit,
+                                                 avar = "trt",
+                                                 mvar = "bili_bin",
+                                                 cvar = c("age"),
+                                                 interaction = FALSE,
+                                                 EMM_AC_Mmodel = c("age"),
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = NULL)
+        
+        myreg_funs_EMM2 <-
+          calc_myreg_mreg_logistic_yreg_logistic(mreg = "logistic",
+                                                 mreg_fit = mreg_fit,
+                                                 yreg = "logistic",
+                                                 yreg_fit = yreg_fit,
+                                                 avar = "trt",
+                                                 mvar = "bili_bin",
+                                                 cvar = c("age"),
+                                                 interaction = FALSE,
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = c("age"),
+                                                 EMM_MC = NULL)
+        
+        myreg_funs_EMM3 <-
+          calc_myreg_mreg_logistic_yreg_logistic(mreg = "logistic",
+                                                 mreg_fit = mreg_fit,
+                                                 yreg = "logistic",
+                                                 yreg_fit = yreg_fit,
+                                                 avar = "trt",
+                                                 mvar = "bili_bin",
+                                                 cvar = c("age"),
+                                                 interaction = FALSE,
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = c("age"))
+        
+        
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -146,6 +188,13 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
             expect_error(myreg_funs[[2]](1,2,3,NULL), regexp = "c_cond")
             expect_error(myreg_funs[[1]](1,2,3,c(4,5,6)), regexp = "c_cond")
             expect_error(myreg_funs[[2]](1,2,3,c(4,5,6)), regexp = "c_cond")
+        })
+        
+        # check functions with EMM differ from no EMM 
+        it("check functions with EMM differ from no EMM", {
+          expect_false(isTRUE(all.equal(myreg_funs, myreg_funs_EMM1)))
+          expect_false(isTRUE(all.equal(myreg_funs_EMM1, myreg_funs_EMM2)))
+          expect_false(isTRUE(all.equal(myreg_funs_EMM2, myreg_funs_EMM3)))
         })
     })
     ##
