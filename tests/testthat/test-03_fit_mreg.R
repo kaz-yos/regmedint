@@ -9,7 +9,6 @@
 library(testthat)
 library(survival)
 library(tidyverse)
-library(locfit)
 
 
 ###

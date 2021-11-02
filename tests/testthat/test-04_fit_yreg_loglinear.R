@@ -11,7 +11,6 @@ library(geepack)
 library(testthat)
 library(survival)
 library(tidyverse)
-library(locfit)
 
 ###
 ### Internal function for yreg model fitting (loglinear)
