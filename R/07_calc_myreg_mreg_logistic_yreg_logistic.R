@@ -472,26 +472,26 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
         pnie_expit_q3 <- expit(a1*(beta1+beta3_c) + beta0 + beta2_c)
         pnie_expit_q4 <- expit(a1*(beta1+beta3_c) + a0*theta3 + beta0 + beta2_c + theta6_c + theta2)
         
-        pnie_d1 <- pnie_expit_q1 + pnie_expit_q2 - pnie_expit_q3 + pnie_expit_q4
-        pnie_d2 <- a0 * (pnie_expit_q1+pnie_expit_q2) + a1 * (-pnie_expit_q3+pnie_expit_q4)
-        pnie_d3 <- c_cond*pnie_d1
-        # pnie_d4 <- c_cond*pnie_d2
+        pnie_d1 <- pnie_expit_q1 - pnie_expit_q2 - pnie_expit_q3 + pnie_expit_q4
+        pnie_d2 <- a0 * (pnie_expit_q1 - pnie_expit_q2) + a1 * (- pnie_expit_q3 + pnie_expit_q4)
+        pnie_d3 <- c_cond * pnie_d1
+
         if(is.null(beta3)){
             pnie_d4 <- rep(0, length(beta3))
         }else{
-            pnie_d4 <- c_cond*pnie_d2
+            pnie_d4 <- c_cond * pnie_d2
         }
         pnie_d5 <- 0
         pnie_d6 <- 0
-        pnie_d7 <- pnie_expit_q1 - pnie_expit_q3
-        pnie_d8 <- a0*pnie_d7 
+        pnie_d7 <- pnie_expit_q4 - pnie_expit_q2
+        pnie_d8 <- a0 * pnie_d7 # change from a1
         pnie_d9 <- rep(0, length(theta4))
         pnie_d10 <- rep(0, length(theta5))
-        # pnie_d11 <- c_cond*pnie_d7
+        
         if(is.null(theta6)){
             pnie_d11 <- rep(0, length(theta6))
         }else{
-            pnie_d11 <- c_cond*pnie_d7
+            pnie_d11 <- c_cond * pnie_d7
         }
         
         Gamma_pnie <-
