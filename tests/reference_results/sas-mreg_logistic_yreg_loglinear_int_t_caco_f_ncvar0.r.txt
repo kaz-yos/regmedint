@@ -24,7 +24,7 @@ Number of Fisher Scoring iterations: 3
 ### Outcome model
 
 Call:
-glm(formula = spiders ~ trt * bili_bin, family = poisson(link = "log"), 
+glm(formula = spiders ~ trt + bili_bin + trt:bili_bin, family = poisson(link = "log"), 
     data = data)
 
 Deviance Residuals: 
@@ -38,7 +38,7 @@ trt          -0.07095    0.37184  -0.191  0.84867
 bili_bin      0.76153    0.67005   1.137  0.25574   
 trt:bili_bin  0.08577    0.42433   0.202  0.83982   
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for poisson family taken to be 1)
 
@@ -56,7 +56,7 @@ tnie -0.02322470 0.06597255 -0.35203574 0.7248115 -0.1525285 0.1060791 0.9770429
 tnde -0.01422517 0.21844471 -0.06512022 0.9480783 -0.4423689 0.4139186 0.9858755  0.6425125   1.512734
 pnie -0.02100077 0.05943847 -0.35331944 0.7238490 -0.1374980 0.0954965 0.9792182  0.8715361   1.100205
 te   -0.03522593 0.22678973 -0.15532420 0.8765657 -0.4797256 0.4092738 0.9653873  0.6189532   1.505724
-pm    0.65534317 0.03312535 19.78373566 0.0000000  0.5904187 0.7202677        NA         NA         NA
+pm    0.65534317 4.15069982  0.15788739 0.8745455 -7.4798790 8.7905653        NA         NA         NA
 
 Evaluated at:
 avar: trt

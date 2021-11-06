@@ -12,7 +12,7 @@ Coefficients:
 (Intercept)   2.2132     0.8784   2.520   0.0123 *
 trt           0.7434     0.5532   1.344   0.1801  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 4.594 on 274 degrees of freedom
 Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
@@ -21,7 +21,7 @@ F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
 ### Outcome model
 
 Call:
-glm(formula = spiders ~ trt * bili, family = poisson(link = "log"), 
+glm(formula = spiders ~ trt + bili + trt:bili, family = poisson(link = "log"), 
     data = data)
 
 Deviance Residuals: 
@@ -29,13 +29,13 @@ Deviance Residuals:
 -1.4222  -0.7062  -0.6850   0.5694   1.2061  
 
 Coefficients:
-            Estimate Std. Error z value  Pr(>|z|)    
-(Intercept) -1.62134    0.38231  -4.241 0.0000223 ***
-trt          0.07229    0.23962   0.302   0.76288    
-bili         0.12547    0.03985   3.148   0.00164 ** 
-trt:bili    -0.03830    0.02405  -1.592   0.11131    
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -1.62134    0.38231  -4.241 2.23e-05 ***
+trt          0.07229    0.23962   0.302  0.76288    
+bili         0.12547    0.03985   3.148  0.00164 ** 
+trt:bili    -0.03830    0.02405  -1.592  0.11131    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for poisson family taken to be 1)
 

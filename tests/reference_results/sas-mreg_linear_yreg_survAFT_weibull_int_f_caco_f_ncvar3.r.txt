@@ -15,7 +15,7 @@ age          0.02419    0.02706   0.894 0.372025
 male        -0.61583    0.84467  -0.729 0.466584    
 stage        1.26164    0.32279   3.909 0.000117 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 4.472 on 271 degrees of freedom
 Multiple R-squared:  0.06893,	Adjusted R-squared:  0.05518 
@@ -26,14 +26,14 @@ F-statistic: 5.016 on 4 and 271 DF,  p-value: 0.0006483
 Call:
 survival::survreg(formula = Surv(time, status) ~ trt + bili + 
     age + male + stage, data = data, dist = "weibull")
-               Value Std. Error      z           p
-(Intercept) 10.01568    0.45291  22.11     < 2e-16
-trt          0.11389    0.12075   0.94       0.346
-bili        -0.09428    0.00938 -10.05     < 2e-16
-age         -0.00555    0.00636  -0.87       0.383
-male        -0.34467    0.16321  -2.11       0.035
-stage       -0.44669    0.08696  -5.14 0.000000280
-Log(scale)  -0.39680    0.07259  -5.47 0.000000046
+               Value Std. Error      z       p
+(Intercept) 10.01568    0.45291  22.11 < 2e-16
+trt          0.11389    0.12075   0.94   0.346
+bili        -0.09428    0.00938 -10.05 < 2e-16
+age         -0.00555    0.00636  -0.87   0.383
+male        -0.34467    0.16321  -2.11   0.035
+stage       -0.44669    0.08696  -5.14 2.8e-07
+Log(scale)  -0.39680    0.07259  -5.47 4.6e-08
 
 Scale= 0.672 
 

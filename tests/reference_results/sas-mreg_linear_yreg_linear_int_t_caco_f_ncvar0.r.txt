@@ -12,7 +12,7 @@ Coefficients:
 (Intercept)   2.2132     0.8784   2.520   0.0123 *
 trt           0.7434     0.5532   1.344   0.1801  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 4.594 on 274 degrees of freedom
 Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
@@ -21,7 +21,7 @@ F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
 ### Outcome model
 
 Call:
-lm(formula = alk_phos ~ trt * bili, data = data)
+lm(formula = alk_phos ~ trt + bili + trt:bili, data = data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -29,12 +29,12 @@ Residuals:
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  2163.95     512.54   4.222 0.000033 ***
+(Intercept)  2163.95     512.54   4.222  3.3e-05 ***
 trt          -240.62     317.49  -0.758    0.449    
 bili          -16.36     104.49  -0.157    0.876    
 trt:bili       47.96      59.70   0.803    0.422    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 2104 on 272 degrees of freedom
 Multiple R-squared:  0.02201,	Adjusted R-squared:  0.01122 

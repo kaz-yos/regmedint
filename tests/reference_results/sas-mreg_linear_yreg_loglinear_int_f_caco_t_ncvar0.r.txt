@@ -12,7 +12,7 @@ Coefficients:
 (Intercept)   1.5200     0.8489   1.791   0.0749 .
 trt           0.6925     0.5336   1.298   0.1959  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 3.735 on 194 degrees of freedom
 Multiple R-squared:  0.008607,	Adjusted R-squared:  0.003496 
@@ -29,12 +29,12 @@ Deviance Residuals:
 -1.5239  -0.7171  -0.6785   0.6314   1.2098  
 
 Coefficients:
-            Estimate Std. Error z value   Pr(>|z|)    
-(Intercept) -1.31796    0.28845  -4.569 0.00000490 ***
-trt         -0.11479    0.18729  -0.613       0.54    
-bili         0.06061    0.01253   4.836 0.00000133 ***
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -1.31796    0.28845  -4.569 4.90e-06 ***
+trt         -0.11479    0.18729  -0.613     0.54    
+bili         0.06061    0.01253   4.836 1.33e-06 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for poisson family taken to be 1)
 

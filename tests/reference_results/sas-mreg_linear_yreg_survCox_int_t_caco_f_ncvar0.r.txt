@@ -12,7 +12,7 @@ Coefficients:
 (Intercept)   2.2132     0.8784   2.520   0.0123 *
 trt           0.7434     0.5532   1.344   0.1801  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 4.594 on 274 degrees of freedom
 Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
@@ -20,17 +20,17 @@ F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
 
 ### Outcome model
 Call:
-survival::coxph(formula = Surv(time, status) ~ trt * bili, data = data, 
-    ties = "efron")
+survival::coxph(formula = Surv(time, status) ~ trt + bili + trt:bili, 
+    data = data, ties = "efron")
 
   n= 276, number of events= 129 
 
              coef exp(coef) se(coef)      z Pr(>|z|)    
 trt      -0.08286   0.92048  0.22094 -0.375    0.708    
-bili      0.19522   1.21558  0.04565  4.276 0.000019 ***
+bili      0.19522   1.21558  0.04565  4.276  1.9e-05 ***
 trt:bili -0.03103   0.96944  0.02608 -1.190    0.234    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
          exp(coef) exp(-coef) lower .95 upper .95
 trt         0.9205     1.0864    0.5970     1.419

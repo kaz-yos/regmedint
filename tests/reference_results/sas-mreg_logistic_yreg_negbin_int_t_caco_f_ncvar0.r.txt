@@ -24,8 +24,8 @@ Number of Fisher Scoring iterations: 3
 ### Outcome model
 
 Call:
-MASS::glm.nb(formula = platelet ~ trt * bili_bin, data = data, 
-    init.theta = 7.84536718, link = log)
+MASS::glm.nb(formula = platelet ~ trt + bili_bin + trt:bili_bin, 
+    data = data, init.theta = 7.84536718, link = log)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
@@ -38,7 +38,7 @@ trt           0.09494    0.06102   1.556   0.1197
 bili_bin      0.09973    0.13860   0.720   0.4718    
 trt:bili_bin -0.15251    0.08730  -1.747   0.0806 .  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for Negative Binomial(7.8454) family taken to be 1)
 
@@ -61,7 +61,7 @@ tnie  0.006394558 0.018043844  0.3543900 0.7230466 -0.028970726 0.04175984 1.006
 tnde  0.034738909 0.053738206  0.6464471 0.5179898 -0.070586038 0.14006386 1.0353494  0.9318476   1.150347
 pnie  0.001746071 0.005106238  0.3419487 0.7323895 -0.008261971 0.01175411 1.0017476  0.9917721   1.011823
 te    0.036484981 0.054658491  0.6675080 0.5044477 -0.070643692 0.14361365 1.0371587  0.9317938   1.154438
-pm    0.177912755 0.008367485 21.2623935 0.0000000  0.161512786 0.19431272        NA         NA         NA
+pm    0.177912755 0.501670080  0.3546410 0.7228586 -0.805342534 1.16116804        NA         NA         NA
 
 Evaluated at:
 avar: trt

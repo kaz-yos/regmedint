@@ -15,7 +15,7 @@ age          0.02419    0.02706   0.894 0.372025
 male        -0.61583    0.84467  -0.729 0.466584    
 stage        1.26164    0.32279   3.909 0.000117 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 4.472 on 271 degrees of freedom
 Multiple R-squared:  0.06893,	Adjusted R-squared:  0.05518 
@@ -24,7 +24,8 @@ F-statistic: 5.016 on 4 and 271 DF,  p-value: 0.0006483
 ### Outcome model
 
 Call:
-lm(formula = alk_phos ~ trt * bili + age + male + stage, data = data)
+lm(formula = alk_phos ~ trt + bili + trt:bili + age + male + 
+    stage, data = data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -40,7 +41,7 @@ male         207.641    399.528   0.520  0.60369
 stage        -10.331    158.835  -0.065  0.94819   
 trt:bili      45.361     60.946   0.744  0.45736   
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 2113 on 269 degrees of freedom
 Multiple R-squared:  0.02392,	Adjusted R-squared:  0.002149 

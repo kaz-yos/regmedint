@@ -15,7 +15,7 @@ age          0.02419    0.02706   0.894 0.372025
 male        -0.61583    0.84467  -0.729 0.466584    
 stage        1.26164    0.32279   3.909 0.000117 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 4.472 on 271 degrees of freedom
 Multiple R-squared:  0.06893,	Adjusted R-squared:  0.05518 
@@ -26,13 +26,13 @@ F-statistic: 5.016 on 4 and 271 DF,  p-value: 0.0006483
 Call:
 survival::survreg(formula = Surv(time, status) ~ trt + bili + 
     age + male + stage, data = data, dist = "exponential")
-               Value Std. Error     z         p
-(Intercept) 10.85527    0.63897 16.99   < 2e-16
-trt          0.16639    0.17941  0.93     0.354
-bili        -0.11637    0.01322 -8.80   < 2e-16
-age         -0.00885    0.00929 -0.95     0.340
-male        -0.48484    0.24202 -2.00     0.045
-stage       -0.59017    0.12324 -4.79 0.0000017
+               Value Std. Error     z       p
+(Intercept) 10.85527    0.63897 16.99 < 2e-16
+trt          0.16639    0.17941  0.93   0.354
+bili        -0.11637    0.01322 -8.80 < 2e-16
+age         -0.00885    0.00929 -0.95   0.340
+male        -0.48484    0.24202 -2.00   0.045
+stage       -0.59017    0.12324 -4.79 1.7e-06
 
 Scale fixed at 1 
 

@@ -12,7 +12,7 @@ Coefficients:
 (Intercept)   2.2132     0.8784   2.520   0.0123 *
 trt           0.7434     0.5532   1.344   0.1801  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 4.594 on 274 degrees of freedom
 Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
@@ -21,8 +21,8 @@ F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
 ### Outcome model
 
 Call:
-MASS::glm.nb(formula = platelet ~ trt * bili, data = data, init.theta = 7.58167734, 
-    link = log)
+MASS::glm.nb(formula = platelet ~ trt + bili + trt:bili, data = data, 
+    init.theta = 7.58167734, link = log)
 
 Deviance Residuals: 
      Min        1Q    Median        3Q       Max  
@@ -35,7 +35,7 @@ trt          0.007436   0.055605   0.134    0.894
 bili        -0.019952   0.018332  -1.088    0.276    
 trt:bili     0.008113   0.010471   0.775    0.438    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for Negative Binomial(7.5817) family taken to be 1)
 

@@ -15,7 +15,7 @@ age          0.02419    0.02706   0.894 0.372025
 male        -0.61583    0.84467  -0.729 0.466584    
 stage        1.26164    0.32279   3.909 0.000117 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 4.472 on 271 degrees of freedom
 Multiple R-squared:  0.06893,	Adjusted R-squared:  0.05518 
@@ -39,7 +39,7 @@ age            -8.01      12.79  -0.626  0.53176
 male          204.49     399.18   0.512  0.60887   
 stage         -29.38     156.63  -0.188  0.85136   
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 2111 on 270 degrees of freedom
 Multiple R-squared:  0.02191,	Adjusted R-squared:  0.003798 

@@ -12,9 +12,9 @@ calc_myreg_mreg_linear_yreg_linear(
   avar,
   mvar,
   cvar,
-  EMM_AC_Mmodel = NULL,
-  EMM_AC_Ymodel = NULL,
-  EMM_MC = NULL,
+  EMM_AC_Mmodel,
+  EMM_AC_Ymodel,
+  EMM_MC,
   interaction
 )
 }

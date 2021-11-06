@@ -9,14 +9,14 @@ Deviance Residuals:
 -2.0116  -1.0649  -0.5783   1.0511   1.7122  
 
 Coefficients:
-            Estimate Std. Error z value   Pr(>|z|)    
-(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
-trt         -0.17117    0.25982  -0.659    0.51003    
-age         -0.01386    0.01299  -1.067    0.28610    
-male         1.33046    0.43911   3.030    0.00245 ** 
-stage        0.74640    0.16356   4.563 0.00000503 ***
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798  0.07220 .  
+trt         -0.17117    0.25982  -0.659  0.51003    
+age         -0.01386    0.01299  -1.067  0.28610    
+male         1.33046    0.43911   3.030  0.00245 ** 
+stage        0.74640    0.16356   4.563 5.03e-06 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
@@ -29,8 +29,8 @@ Number of Fisher Scoring iterations: 4
 ### Outcome model
 
 Call:
-lm(formula = alk_phos ~ trt * bili_bin + age + male + stage, 
-    data = data)
+lm(formula = alk_phos ~ trt + bili_bin + trt:bili_bin + age + 
+    male + stage, data = data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -46,7 +46,7 @@ male          -15.412    407.373  -0.038   0.9698
 stage         -49.156    159.301  -0.309   0.7579  
 trt:bili_bin   42.041    510.197   0.082   0.9344  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 2116 on 269 degrees of freedom
 Multiple R-squared:  0.02133,	Adjusted R-squared:  -0.0004967 
