@@ -198,7 +198,7 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
         ## It is the sum of NDE and NIE on the log scale.
         te <- pnde + tnie
         ## VanderWeele 2015 p48.
-        pm <- (exp(pnde) * (exp(tnie) - 1)) / (exp(te) - 1)
+        pm <- exp(pnde) * (exp(tnie) - 1) / (exp(te) - 1)
 
         ## Return a named vector
         c(cde  = unname(cde),
