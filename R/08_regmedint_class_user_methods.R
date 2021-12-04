@@ -31,10 +31,10 @@ validate_eval_at_values <- function(x, a0, a1, m_cde, c_cond) {
 ##' Print the \code{mreg_fit}, \code{yreg_fit}, and the mediation analysis effect estimates.
 ##'
 ##' @param x An object of the \code{\link{regmedint}} class.
-##' @param a0 A numeric vector of length one.
-##' @param a1 A numeric vector of length one.
-##' @param m_cde A numeric vector of length one. A mediator value at which the controlled direct effect (CDE) conditional on the adjustment covariates is evaluated. If not provided, the default value supplied to the call to \code{\link{regmedint}} will be used. Only the CDE is affected.
-##' @param c_cond A numeric vector as long as the number of adjustment covariates. A set of covariate values at which the conditional natural effects are evaluated.
+##' @param a0 A numeric vector of length 1
+##' @param a1 A numeric vector of length 1
+##' @param m_cde A numeric vector of length 1 The mediator value at which the controlled direct effect (CDE) conditional on the adjustment covariates is evaluated. If not provided, the default value supplied to the call to \code{\link{regmedint}} will be used. Only the CDE is affected.
+##' @param c_cond A numeric vector of the same length as \code{cvar}. A set of covariate values at which the conditional natural effects are evaluated.
 ##' @param args_mreg_fit A named list of argument to be passed to the method for the \code{mreg_fit} object.
 ##' @param args_yreg_fit A named list of argument to be passed to the method for the \code{mreg_fit} object.
 ##' @param ... For compatibility with the generic. Ignored.

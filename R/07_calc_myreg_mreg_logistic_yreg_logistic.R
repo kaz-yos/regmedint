@@ -9,13 +9,13 @@
 ## Extension of VanderWeele 2015 p473 Proposition 2.6
 ##' Create calculators for effects and se (mreg logistic / yreg logistic)
 ##'
-##' Construct functions for the conditional effect estimates and their standard errors in the mreg logistic / yreg logistic setting. Internally, this function deconstruct model objects and feed parameter estiamtes to the internal worker functions \code{calc_myreg_mreg_logistic_yreg_logistic_est} and \code{calc_myreg_mreg_logistic_yreg_logistic_se}.
+##' Construct functions for the conditional effect estimates and their standard errors in the mreg logistic / yreg logistic setting. Internally, this function deconstructs model objects and feeds parameter estimates to the internal worker functions \code{calc_myreg_mreg_logistic_yreg_logistic_est} and \code{calc_myreg_mreg_logistic_yreg_logistic_se}.
 ##'
 ##' @inheritParams regmedint
 ##' @param mreg_fit Model fit from \code{\link{fit_mreg}}
 ##' @param yreg_fit Model fit from \code{\link{fit_yreg}}
 ##'
-##' @return A list contraining a function for effect estimates and a function for corresponding standard errors.
+##' @return A list containing a function for effect estimates and a function for corresponding standard errors.
 
 calc_myreg_mreg_logistic_yreg_logistic <- function(mreg,
                                                    mreg_fit,
@@ -172,7 +172,7 @@ calc_myreg_mreg_logistic_yreg_logistic_est <- function(beta0,
         
         expit <- function(x){exp(x)/(1+exp(x))}
 
-        ## Extension of VanderWeele 2015 p473: on log OR scale
+        ## Extension of VanderWeele 2015 p473. Estimates are all on log OR scale.
         ## Note that only cde is presented on the log scale
         cde <- (theta1 + theta3*m_cde + theta5_c) * (a1 - a0)
         ## Pearl decomposition (Regular NDE and NIE)
@@ -306,7 +306,7 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
         expit <- function(x){exp(x)/(1+exp(x))}
 
         ## Extension of VanderWeele 2015. p473
-        ## Note that Gammas are all for log effects.
+        ## Note that Gammas are all for log OR effects.
         ## Valeri & VanderWeele 2013. Appendix p6-9
         ## These are the gradient vector of each scalar quantity of interest.
         ## Obtain the first partial derivative wrt to each parameter.
@@ -326,7 +326,7 @@ calc_myreg_mreg_logistic_yreg_logistic_se <- function(beta0,
                      0,                        # theta2
                      (a1 - a0) * m_cde,        # theta3
                      rep(0, length(theta4)),   # theta4 vector
-                     pd_cde_theta5,                   # theta5 vector
+                     pd_cde_theta5,            # theta5 vector
                      rep(0, length(theta6))    # theta6 vector
                      ))  
         ##

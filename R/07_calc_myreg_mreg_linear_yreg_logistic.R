@@ -9,13 +9,13 @@
 ## VanderWeele 2015 p468 Proposition 2.4
 ##' Create calculators for effects and se (mreg linear / yreg logistic)
 ##'
-##' Construct functions for the conditional effect estimates and their standard errors in the mreg linear / yreg logistic setting. Internally, this function deconstruct model objects and feed parameter estiamtes to the internal worker functions \code{calc_myreg_mreg_linear_yreg_logistic_est} and \code{calc_myreg_mreg_linear_yreg_logistic_se}.
+##' Construct functions for the conditional effect estimates and their standard errors in the mreg linear / yreg logistic setting. Internally, this function deconstructs model objects and feeds parameter estimates to the internal worker functions \code{calc_myreg_mreg_linear_yreg_logistic_est} and \code{calc_myreg_mreg_linear_yreg_logistic_se}.
 ##'
 ##' @inheritParams regmedint
 ##' @param mreg_fit Model fit from \code{\link{fit_mreg}}
 ##' @param yreg_fit Model fit from \code{\link{fit_yreg}}
 ##'
-##' @return A list contraining a function for effect estimates and a function for corresponding standard errors.
+##' @return A list containing a function for effect estimates and a function for corresponding standard errors.
 calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                  mreg_fit,
                                                  yreg,
@@ -178,7 +178,7 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
             theta6_c <- sum(t(matrix(theta6)) %*% matrix(c_cond))
         }
 
-        ## Extension of VanderWeele 2015 p468: estimates are on log OR scale
+        ## Extension of VanderWeele 2015 p468. Estimates are all on log OR scale
         ## Adopted from mediation.sas and modified.
         ## Look up the third occurrence of the following:
         ## %if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
@@ -360,8 +360,8 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                 theta3*sigma_sq,                                    # theta2
                 a0*(beta1+beta3_c) + beta0 + beta2_c + sigma_sq*((theta2+theta6_c) + theta3*(a0+a1)),  # theta3
                 rep(0, length(theta4)),                             # theta4 vector
-                pd_pnde_theta5,                                             # theta5 vector
-                pd_pnde_theta6,                            # theta6 vector
+                pd_pnde_theta5,                                     # theta5 vector
+                pd_pnde_theta6,                                     # theta6 vector
                 ##
                 1/2*theta3*(2*(theta2+theta6_c) + theta3*(a0+a1))))  # sigma^2
         
@@ -464,7 +464,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         ## Copied from calc_myreg_mreg_linear_yreg_logistic_est
         pnde <- ((theta1 + theta5_c + theta3*(beta0 + beta1*a0 + beta2_c + beta3_c*a0) +
                       1/2*sigma_sq*theta3*(2*theta2 + theta3*a1 + theta3*a0 + 2*theta6_c))) * (a1 - a0)
-        tnie <- tnie <- (theta2 + theta3*a1 + theta6_c) * (beta1 + beta3_c) * (a1 - a0)
+        tnie <- (theta2 + theta3*a1 + theta6_c) * (beta1 + beta3_c) * (a1 - a0)
         ## Gradient of pm wrt pnde and tnie. A vector of two.
         ## Need to unname argument vectors to get c(pnde = , tnie = ).
         d_pm <- grad_prop_med_yreg_logistic(pnde = unname(pnde), tnie = unname(tnie))
@@ -475,7 +475,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         ##                   (d_pm / d_tnie) * (d_tnie / d_params)
         ## where (d_pnde / d_params) is (a1 - a0) * Gamma_pnde and
         ##       (d_tnie / d_params) is (a1 - a0) * Gamma_tnie.
-        ## FIXME: This is not tested aginst a reference standard.
+        ## FIXME: This is not tested against a reference standard.
         Gamma_pm <- d_pm[["pnde"]] * Gamma_pnde + d_pm[["tnie"]] * Gamma_tnie
 
 

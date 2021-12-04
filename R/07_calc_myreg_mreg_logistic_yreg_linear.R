@@ -9,13 +9,13 @@
 ## Extension of VanderWeele 2015 p471 Proposition 2.5
 ##' Create calculators for effects and se (mreg logistic / yreg linear)
 ##'
-##' Construct functions for the conditional effect estimates and their standard errors in the mreg logistic / yreg linear setting. Internally, this function deconstruct model objects and feed parameter estiamtes to the internal worker functions \code{calc_myreg_mreg_logistic_yreg_linear_est} and \code{calc_myreg_mreg_logistic_yreg_linear_se}.
+##' Construct functions for the conditional effect estimates and their standard errors in the mreg logistic / yreg linear setting. Internally, this function deconstructs model objects and feeds parameter estimates to the internal worker functions \code{calc_myreg_mreg_logistic_yreg_linear_est} and \code{calc_myreg_mreg_logistic_yreg_linear_se}.
 ##'
 ##' @inheritParams regmedint
 ##' @param mreg_fit Model fit from \code{\link{fit_mreg}}
 ##' @param yreg_fit Model fit from \code{\link{fit_yreg}}
 ##'
-##' @return A list contraining a function for effect estimates and a function for corresponding standard errors.
+##' @return A list containing a function for effect estimates and a function for corresponding standard errors.
 
 calc_myreg_mreg_logistic_yreg_linear <- function(mreg,
                                                  mreg_fit,
@@ -172,7 +172,7 @@ calc_myreg_mreg_logistic_yreg_linear_est <- function(beta0,
       
         expit <- function(x){exp(x)/(1+exp(x))}
 
-        ## Extension of VanderWeele 2015 p471: on log OR scale
+        ## Extension of VanderWeele 2015 p471. Estimates are all on log OR scale.
         cde <- (theta1 + theta3*m_cde + theta5_c) * (a1 - a0)
         ## Pearl decomposition (Regular NDE and NIE)
         ## Note the a0 in the second term.

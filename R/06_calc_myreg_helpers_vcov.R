@@ -43,7 +43,7 @@ Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
 
 # Note1: always has AxM row/column, even though there is interaction = FALSE
 Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, interaction) {
-    ## Assign row and column names, stratified by is.null(cvar), because paste0(avar, ":", cvar) will have avar:  .
+    ## Assign row and column names, stratified by is.null(cvar), because paste0(avar, ":", cvar) will generate string 'avar:'.
     if(!is.null(cvar)){
       if(!is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
         vcov_theta <- matrix(0, 4+3*length(cvar), 4+3*length(cvar))
@@ -53,11 +53,11 @@ Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM
       } else if (!is.null(EMM_AC_Ymodel) & is.null(EMM_MC)){
         vcov_theta <- matrix(0, 4+2*length(cvar), 4+2*length(cvar))
         rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar), cvar, 
-                                                          paste0(avar, ":", cvar)) 
+                                                          paste0(avar, ":", cvar)) # AxC in Y model
       } else if (is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
         vcov_theta <- matrix(0, 4+2*length(cvar), 4+2*length(cvar))
         rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar), cvar, 
-                                                          paste0(mvar, ":", cvar)) 
+                                                          paste0(mvar, ":", cvar)) # MxC
       } else{
         vcov_theta <- matrix(0, 4+length(cvar), 4+length(cvar))
         rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar), cvar) 

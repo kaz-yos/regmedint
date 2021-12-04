@@ -13,10 +13,10 @@
 ##' Create a vector of coefficients from the mediator model (mreg)
 ##'
 ##' This function extracts \code{\link{coef}} from \code{mreg_fit} and pads with zeros appropriately to create a named vector consistently having the following elements:
-##' \code{(Intercept)}
-##' \code{avar}
-##' \code{cvar}: This part is eliminated when \code{cvar = NULL}.
-##' \code{EMM_AC_Mmodel}: This part is eliminated when \code{EMM_AC_Mmodel = NULL}.
+##' \code{(Intercept)},
+##' \code{avar},
+##' \code{cvar} (this part is eliminated when \code{cvar = NULL}),
+##' \code{EMM_AC_Mmodel} (this part is eliminated when \code{EMM_AC_Mmodel = NULL}).
 ##'
 ##' @inheritParams regmedint
 ##' @param mreg_fit Model fit object for mreg (mediator model).
@@ -70,13 +70,13 @@ beta_hat_helper <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel = NULL) {
 ##' Create a vector of coefficients from the outcome model (yreg)
 ##'
 ##' This function extracts \code{\link{coef}} from \code{yreg_fit} and 3s with zeros appropriately to create a named vector consistently having the following elements:
-##' \code{(Intercept)}: A zero element is added for \code{yreg = "survCox"} for which no intercept is estimated (the baseline hazard is left unspecified).
-##' \code{avar}
-##' \code{mvar}
-##' \code{avar:mvar}: A zero element is added when \code{interaction = FALSE}.
-##' \code{cvar}: This part is eliminated when \code{cvar = NULL}.
-##' \code{EMM_AC_Ymodel}: This part is eliminated when \code{EMM_AC_Ymodel = NULL}.
-##' \code{EMM_MC}: This part is eliminated when \code{EMM_MC = NULL}.
+##' \code{(Intercept)} (a zero element is added for \code{yreg = "survCox"} for which no intercept is estimated (the baseline hazard is left unspecified)),
+##' \code{avar},
+##' \code{mvar},
+##' \code{avar:mvar} (a zero element is added when \code{interaction = FALSE}).
+##' \code{cvar} (this part is eliminated when \code{cvar = NULL}),
+##' \code{EMM_AC_Ymodel} (this part is eliminated when \code{EMM_AC_Ymodel = NULL}),
+##' \code{EMM_MC} (this part is eliminated when \code{EMM_MC = NULL}).
 ##'
 ##' @inheritParams regmedint
 ##' @param yreg_fit Model fit object for yreg (outcome model).
@@ -336,7 +336,7 @@ validate_myreg_vcovs <- function(beta0,
 
     Sigma_beta_size <- sum(1, # beta0 (Intercept)
                            1, # beta1 for avar
-                           ## The following can be 0 = length(NULL) when cvar = NULL 
+                           ## The following can be 0 (when cvar = NULL, length(NULL) = 0) 
                            length(beta2), 
                            length(beta3)) 
     # Can accommodate both scenarios:
@@ -349,7 +349,7 @@ validate_myreg_vcovs <- function(beta0,
                             1, # theta1 for avar
                             1, # theta2 for mvar
                             1, # theta3 for avar:mvar
-                            ## The following can be 0 = length(NULL) when cvar = NULL
+                            ## The following can be 0 (when cvar = NULL, length(NULL) = 0) 
                             length(theta4),
                             length(theta5),
                             length(theta6)) 

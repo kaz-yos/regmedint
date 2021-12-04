@@ -9,13 +9,13 @@
 ## VanderWeele 2015 p466 Proposition 2.3
 ##' Create calculators for effects and se (mreg linear / yreg linear)
 ##'
-##' Construct functions for the conditional effect estimates and their standard errors in the mreg linear / yreg linear setting. Internally, this function deconstruct model objects and feed parameter estiamtes to the internal worker functions \code{calc_myreg_mreg_linear_yreg_linear_est} and \code{calc_myreg_mreg_linear_yreg_linear_se}.
+##' Construct functions for the conditional effect estimates and their standard errors in the mreg linear / yreg linear setting. Internally, this function deconstructs model objects and feeds parameter estiamtes to the internal worker functions \code{calc_myreg_mreg_linear_yreg_linear_est} and \code{calc_myreg_mreg_linear_yreg_linear_se}.
 ##'
 ##' @inheritParams regmedint
 ##' @param mreg_fit Model fit from \code{\link{fit_mreg}}
 ##' @param yreg_fit Model fit from \code{\link{fit_yreg}}
 ##'
-##' @return A list contraining a function for effect estimates and a function for corresponding standard errors.
+##' @return A list containing a function for effect estimates and a function for corresponding standard errors.
 calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                                mreg_fit,
                                                yreg,
@@ -171,7 +171,7 @@ calc_myreg_mreg_linear_yreg_linear_est <- function(beta0,
         ## Extension of VanderWeele 2015 p466
         ## Adopted from mediation.sas and modified.
         ## Look up the third occurrence of the following:
-        ## %if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
+        ## %if &yreg=linear & &mreg=linear & &interaction=true %then %do;
         cde <- (theta1 + theta3*m_cde + theta5_c) * (a1 - a0)
         ## Pearl decomposition (Regular NDE and NIE)
         ## Note the a0 in the first line.                      
@@ -415,7 +415,7 @@ calc_myreg_mreg_linear_yreg_linear_se <- function(beta0,
                 0,                         # theta0
                 0,                         # theta1
                 beta1 + beta3_c,           # theta2
-                a0*(beta1 + beta3_c),    # theta3 a1 -> a0
+                a0*(beta1 + beta3_c),      # theta3 a1 -> a0
                 rep(0, length(theta4)),    # theta4 vector
                 rep(0, length(theta5)),    # theta5 vector
                 pd_pnie_theta6             # theta6 vector

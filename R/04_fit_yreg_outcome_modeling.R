@@ -164,7 +164,7 @@ string_yreg_formula <- function(yvar,
     assertthat::assert_that(!is.null(avar))
     assertthat::assert_that(!is.null(yvar))
 
-    ## Create A*M or A + M depending on interaction.
+    ## Create A * M or A + M depending on interaction.
     if (interaction) {
       amvar_string <- paste(avar, mvar, paste0(avar, ":", mvar), sep = " + ")
     } else {
@@ -181,7 +181,7 @@ string_yreg_formula <- function(yvar,
       }
       else if(!is.null(EMM_AC_Ymodel) & is.null(EMM_MC)){
         cvar_string <- paste0(cvar, collapse = " + ")
-        ## Add avar*EMM_AC_Ymodel terms:
+        ## Add avar * EMM_AC_Ymodel product terms:
         temp <- NULL
         for(i in 1:length(EMM_AC_Ymodel)){
           temp <- paste0(c(temp, paste0(c(avar, EMM_AC_Ymodel[i]), collapse = " : ")), collapse = " + ")
@@ -190,7 +190,7 @@ string_yreg_formula <- function(yvar,
       }
       else if(is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
         cvar_string <- paste0(cvar, collapse = " + ")
-        ## Add mvar*EMM_MC terms:
+        ## Add mvar * EMM_MC product terms:
         temp <- NULL
         for(i in 1:length(EMM_MC)){
           temp <- paste0(c(temp, paste0(c(mvar, EMM_MC[i]), collapse = " : ")), collapse = " + ")
@@ -199,12 +199,12 @@ string_yreg_formula <- function(yvar,
       }
       else if(!is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
         cvar_string <- paste0(cvar, collapse = " + ")
-        ## Add avar*EMM_AC_Mmodel terms:
+        ## Add avar * EMM_AC_Mmodel product terms:
         temp1 <- temp2 <- NULL
         for(i in 1:length(EMM_AC_Ymodel)){
           temp1 <- paste0(c(temp1, paste0(c(avar, EMM_AC_Ymodel[i]), collapse = " : ")), collapse = " + ")
         }
-        ## Add mvar*EMM_MC terms:
+        ## Add mvar * EMM_MC product terms:
         for(j in 1:length(EMM_MC)){
           temp2 <- paste0(c(temp2, paste0(c(mvar, EMM_MC[j]), collapse = " : ")), collapse = " + ")
         }
@@ -288,7 +288,7 @@ summary.regmedint_mod_poisson <- function(object, ...) {
     if (p > 0) {
         p1 <- 1L:p
 	Qr <- qr.lm(object)
-        ## WATCHIT! doesn't this rely on pivoting not permuting 1L:p? -- that's quaranteed
+        ## WATCHIT! doesn't this rely on pivoting not permuting 1L:p? -- that's guaranteed
         coef.p <- object$coefficients[Qr$pivot[p1]]
         ## Changed from below.
         ## covmat.unscaled <- chol2inv(Qr$qr[p1,p1,drop=FALSE])
