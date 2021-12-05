@@ -7,7 +7,8 @@
 
 ##' regmedint: A package for regression-based causal mediation analysis
 ##'
-##' The package is a simple R implementation of the SAS macro as described in Valeri & VanderWeele 2013 and Valeri & VanderWeele 2015 \url{https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/}.
+##' The package is an R implementation of the SAS macro as described in Valeri & VanderWeele 2013 and Valeri & VanderWeele 2015 \url{https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/}.
+##' The earlier version is a sister program of the SAS macro. The current version extends the formulas in Valeri & VanderWeele 2013 and Valeri & VanderWeele 2015 and supports effect modification by covariates (treatment-covariate and mediator-covariate product terms) in mediator and outcome models. 
 ##'
 ##' @section Fitting models:
 ##' Use the regmedint function to fit models and set up regression-based causal mediation analysis.
