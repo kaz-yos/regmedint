@@ -28,7 +28,7 @@
 ##' @param yvar A character vector of length 1. Outcome variable name. It should be the time variable for the survival outcome.
 ##' @param avar A character vector of length 1. Treatment variable name.
 ##' @param mvar A character vector of length 1. Mediator variable name.
-##' @param cvar A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}. Specify the vector using \code{c()}
+##' @param cvar A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}. 
 ##' @param EMM_AC_Mmodel A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.
 ##' @param EMM_AC_Ymodel A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the outcome model. 
 ##' @param EMM_MC A character vector of length > 0. Effect modifiers names. The covariate vector in mediator-covariate product term in outcome model. 
@@ -68,27 +68,27 @@
 ##'                             casecontrol = FALSE)
 ##' summary(regmedint_obj1)
 ##' 
-##' ##' regmedint_obj2 <- regmedint(data = vv2015,
-##'                                 ## Variables
-##'                                 yvar = "y",
-##'                                 avar = "x",
-##'                                 mvar = "m",
-##'                                 cvar = c("c"),
-##'                                 EMM_AC_Mmodel = c("c"), 
-##'                                 EMM_AC_Ymodel = c("c"), 
-##'                                 EMM_MC = c("c"), 
-##'                                 eventvar = "event",
-##'                                 ## Values at which effects are evaluated
-##'                                 a0 = 0,
-##'                                 a1 = 1,
-##'                                 m_cde = 1,
-##'                                 c_cond = 3,
-##'                                 ## Model types
-##'                                 mreg = "logistic",
-##'                                 yreg = "survAFT_weibull",
-##'                                 ## Additional specification
-##'                                 interaction = TRUE,
-##'                                 casecontrol = FALSE)
+##' regmedint_obj2 <- regmedint(data = vv2015,
+##'                             ## Variables
+##'                             yvar = "y",
+##'                             avar = "x",
+##'                             mvar = "m",
+##'                             cvar = c("c"),
+##'                             EMM_AC_Mmodel = c("c"), 
+##'                             EMM_AC_Ymodel = c("c"), 
+##'                             EMM_MC = c("c"), 
+##'                             eventvar = "event",
+##'                             ## Values at which effects are evaluated
+##'                             a0 = 0,
+##'                             a1 = 1,
+##'                             m_cde = 1,
+##'                             c_cond = 3,
+##'                             ## Model types
+##'                             mreg = "logistic",
+##'                             yreg = "survAFT_weibull",
+##'                             ## Additional specification
+##'                             interaction = TRUE,
+##'                             casecontrol = FALSE)
 ##' summary(regmedint_obj2)
 ##' 
 ##' 
