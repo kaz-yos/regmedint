@@ -6,7 +6,7 @@
 ################################################################################
 
 
-##' Return mediation analysis functions given mediator and outcome models.
+##' Return mediation analysis functions given mediator and outcome models specifications.
 ##'
 ##' This function returns functions that can be used to calculate the causal effect measures, given the mediator model fit (\code{mreg_fit}) and the outcome model fit (\code{yreg_fit}).
 ##'

@@ -13,17 +13,17 @@ beta_hat(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel = NULL)
 
 \item{avar}{A character vector of length 1. Treatment variable name.}
 
-\item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
+\item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
 
-\item{EMM_AC_Mmodel}{A character vector of length > 0. Effect modifiers names. The C in AxC product term in mediator model. Use \code{NULL} if there is no covariate.}
+\item{EMM_AC_Mmodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.}
 }
 \value{
 A named numeric vector of coefficients.
 }
 \description{
 This function extracts \code{\link{coef}} from \code{mreg_fit} and pads with zeros appropriately to create a named vector consistently having the following elements:
-\code{(Intercept)}
-\code{avar}
-\code{cvar}: This part is eliminated when \code{cvar = NULL}.
-\code{EMM_AC_Mmodel}: This part is eliminated when \code{EMM_AC_Mmodel = NULL}.
+\code{(Intercept)},
+\code{avar},
+\code{cvar} (this part is eliminated when \code{cvar = NULL}),
+\code{EMM_AC_Mmodel} (this part is eliminated when \code{EMM_AC_Mmodel = NULL}).
 }

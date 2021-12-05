@@ -15,7 +15,7 @@ age          0.006127   0.026304   0.233   0.8161
 male         0.337307   0.753642   0.448   0.6550  
 stage        0.727713   0.312232   2.331   0.0208 *
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 3.704 on 191 degrees of freedom
 Multiple R-squared:  0.04002,	Adjusted R-squared:  0.01992 
@@ -32,15 +32,15 @@ Deviance Residuals:
 -1.7192  -0.7643  -0.5101   0.9481   2.2500  
 
 Coefficients:
-            Estimate Std. Error z value   Pr(>|z|)    
-(Intercept) -3.11819    1.02868  -3.031    0.00244 ** 
-trt         -0.30988    0.29758  -1.041    0.29772    
-bili         0.08697    0.03048   2.854    0.00432 ** 
-age         -0.01183    0.01484  -0.797    0.42534    
-male        -1.31047    0.58548  -2.238    0.02520 *  
-stage        0.96743    0.21049   4.596 0.00000431 ***
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -3.11819    1.02868  -3.031  0.00244 ** 
+trt         -0.30988    0.29758  -1.041  0.29772    
+bili         0.08697    0.03048   2.854  0.00432 ** 
+age         -0.01183    0.01484  -0.797  0.42534    
+male        -1.31047    0.58548  -2.238  0.02520 *  
+stage        0.96743    0.21049   4.596 4.31e-06 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for binomial family taken to be 1)
 

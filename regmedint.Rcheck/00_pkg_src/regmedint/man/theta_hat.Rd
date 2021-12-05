@@ -24,24 +24,24 @@ theta_hat(
 
 \item{mvar}{A character vector of length 1. Mediator variable name.}
 
-\item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
+\item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
 
-\item{EMM_AC_Ymodel}{A character vector of length > 0. Effect modifiers names. The C in AxC product term in outcome model. Use \code{NULL} if there is no covariate.}
+\item{EMM_AC_Ymodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the outcome model.}
 
-\item{EMM_MC}{A character vector of length > 0. Effect modifiers names. The C in MxC product term in mediator model. Use \code{NULL} if there is no covariate.}
+\item{EMM_MC}{A character vector of length > 0. Effect modifiers names. The covariate vector in mediator-covariate product term in outcome model.}
 
-\item{interaction}{A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.}
+\item{interaction}{A logical vector of length 1. The presence of treatment-mediator interaction in the outcome model. Default to TRUE.}
 }
 \value{
 A named numeric vector of coefficients.
 }
 \description{
 This function extracts \code{\link{coef}} from \code{yreg_fit} and 3s with zeros appropriately to create a named vector consistently having the following elements:
-\code{(Intercept)}: A zero element is added for \code{yreg = "survCox"} for which no intercept is estimated (the baseline hazard is left unspecified).
-\code{avar}
-\code{mvar}
-\code{avar:mvar}: A zero element is added when \code{interaction = FALSE}.
-\code{cvar}: This part is eliminated when \code{cvar = NULL}.
-\code{EMM_AC_Ymodel}: This part is eliminated when \code{EMM_AC_Ymodel = NULL}.
-\code{EMM_MC}: This part is eliminated when \code{EMM_MC = NULL}.
+\code{(Intercept)} (a zero element is added for \code{yreg = "survCox"} for which no intercept is estimated (the baseline hazard is left unspecified)),
+\code{avar},
+\code{mvar},
+\code{avar:mvar} (a zero element is added when \code{interaction = FALSE}).
+\code{cvar} (this part is eliminated when \code{cvar = NULL}),
+\code{EMM_AC_Ymodel} (this part is eliminated when \code{EMM_AC_Ymodel = NULL}),
+\code{EMM_MC} (this part is eliminated when \code{EMM_MC = NULL}).
 }

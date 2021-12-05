@@ -12,7 +12,7 @@ Coefficients:
 (Intercept)   2.2132     0.8784   2.520   0.0123 *
 trt           0.7434     0.5532   1.344   0.1801  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 4.594 on 274 degrees of freedom
 Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
@@ -21,13 +21,13 @@ F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
 ### Outcome model
 
 Call:
-survival::survreg(formula = Surv(time, status) ~ trt * bili, 
-    data = data, dist = "exponential")
-              Value Std. Error     z        p
-(Intercept)  8.7034     0.3535 24.62  < 2e-16
-trt          0.0528     0.2222  0.24     0.81
-bili        -0.1813     0.0458 -3.96 0.000076
-trt:bili     0.0346     0.0263  1.31     0.19
+survival::survreg(formula = Surv(time, status) ~ trt + bili + 
+    trt:bili, data = data, dist = "exponential")
+              Value Std. Error     z       p
+(Intercept)  8.7034     0.3535 24.62 < 2e-16
+trt          0.0528     0.2222  0.24    0.81
+bili        -0.1813     0.0458 -3.96 7.6e-05
+trt:bili     0.0346     0.0263  1.31    0.19
 
 Scale fixed at 1 
 

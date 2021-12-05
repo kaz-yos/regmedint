@@ -9,24 +9,26 @@
 ## VanderWeele 2015 p468 Proposition 2.4
 ##' Create calculators for effects and se (mreg linear / yreg logistic)
 ##'
-##' Construct functions for the conditional effect estimates and their standard errors in the mreg linear / yreg logistic setting. Internally, this function deconstruct model objects and feed parameter estiamtes to the internal worker functions \code{calc_myreg_mreg_linear_yreg_logistic_est} and \code{calc_myreg_mreg_linear_yreg_logistic_se}.
+##' Construct functions for the conditional effect estimates and their standard errors in the mreg linear / yreg logistic setting. Internally, this function deconstructs model objects and feeds parameter estimates to the internal worker functions \code{calc_myreg_mreg_linear_yreg_logistic_est} and \code{calc_myreg_mreg_linear_yreg_logistic_se}.
 ##'
 ##' @inheritParams regmedint
 ##' @param mreg_fit Model fit from \code{\link{fit_mreg}}
 ##' @param yreg_fit Model fit from \code{\link{fit_yreg}}
 ##'
-##' @return A list contraining a function for effect estimates and a function for corresponding standard errors.
+##' @return A list containing a function for effect estimates and a function for corresponding standard errors.
 calc_myreg_mreg_linear_yreg_logistic <- function(mreg,
                                                  mreg_fit,
                                                  yreg,
                                                  yreg_fit,
                                                  avar,
                                                  mvar,
-                                                 cvar, # This can be NULL.
+                                                 cvar, 
                                                  EMM_AC_Mmodel,
                                                  EMM_AC_Ymodel,
                                                  EMM_MC,
                                                  interaction) {
+  
+  ### 
 
     ## mreg coefficients
     beta_hat <- beta_hat_helper(mreg = mreg,
@@ -147,10 +149,8 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
         }
         
         if (is.null(beta3)) {
-            assertthat::assert_that(is.null(c_cond))
             beta3_c <- 0
         } else {
-            assertthat::assert_that(!is.null(c_cond))
             assertthat::assert_that(length(c_cond) == length(beta3))
             beta3_c <- sum(t(matrix(beta3)) %*% matrix(c_cond))
         }
@@ -160,33 +160,29 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
             theta4_c <- 0
         } else {
             assertthat::assert_that(!is.null(c_cond))
-            assertthat::assert_that(length(c_cond) == length(theta5))
+            assertthat::assert_that(length(c_cond) == length(theta4))
             theta4_c <- sum(t(matrix(theta4)) %*% matrix(c_cond))
         }
         
         if (is.null(theta5)) {
-            assertthat::assert_that(is.null(c_cond))
             theta5_c <- 0
         } else {
-            assertthat::assert_that(!is.null(c_cond))
             assertthat::assert_that(length(c_cond) == length(theta5))
             theta5_c <- sum(t(matrix(theta5)) %*% matrix(c_cond))
         }
         
         if (is.null(theta6)) {
-            assertthat::assert_that(is.null(c_cond))
             theta6_c <- 0
         } else {
-            assertthat::assert_that(!is.null(c_cond))
             assertthat::assert_that(length(c_cond) == length(theta6))
             theta6_c <- sum(t(matrix(theta6)) %*% matrix(c_cond))
         }
 
-        ## Extension of VanderWeele 2015 p468: estimates are on log OR scale
+        ## Extension of VanderWeele 2015 p468. Estimates are all on log OR scale
         ## Adopted from mediation.sas and modified.
         ## Look up the third occurrence of the following:
         ## %if &yreg^=linear & &mreg=linear & &interaction=true %then %do;
-        cde <- (theta1 + (theta3 * m_cde)) * (a1 - a0)
+        cde <- (theta1 + theta3 * m_cde + theta5_c) * (a1 - a0)
         ## Pearl decomposition (Regular NDE and NIE)
         ## Note the a0 in the first line.                      
         pnde <- ((theta1 + theta5_c + theta3*(beta0 + beta1*a0 + beta2_c + beta3_c*a0) +
@@ -202,7 +198,7 @@ calc_myreg_mreg_linear_yreg_logistic_est <- function(beta0,
         ## It is the sum of NDE and NIE on the log scale.
         te <- pnde + tnie
         ## VanderWeele 2015 p48.
-        pm <- (exp(pnde) * (exp(tnie) - 1)) / (exp(te) - 1)
+        pm <- exp(pnde) * (exp(tnie) - 1) / (exp(te) - 1)
 
         ## Return a named vector
         c(cde  = unname(cde),
@@ -282,10 +278,8 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         }
         
         if (is.null(beta3)) {
-            assertthat::assert_that(is.null(c_cond))
             beta3_c <- 0
         } else {
-            assertthat::assert_that(!is.null(c_cond))
             assertthat::assert_that(length(c_cond) == length(beta3))
             beta3_c <- sum(t(matrix(beta3)) %*% matrix(c_cond))
         }
@@ -295,24 +289,20 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
             theta4_c <- 0
         } else {
             assertthat::assert_that(!is.null(c_cond))
-            assertthat::assert_that(length(c_cond) == length(theta5))
+            assertthat::assert_that(length(c_cond) == length(theta4))
             theta4_c <- sum(t(matrix(theta4)) %*% matrix(c_cond))
         }
         
         if (is.null(theta5)) {
-            assertthat::assert_that(is.null(c_cond))
             theta5_c <- 0
         } else {
-            assertthat::assert_that(!is.null(c_cond))
             assertthat::assert_that(length(c_cond) == length(theta5))
             theta5_c <- sum(t(matrix(theta5)) %*% matrix(c_cond))
         }
         
         if (is.null(theta6)) {
-            assertthat::assert_that(is.null(c_cond))
             theta6_c <- 0
         } else {
-            assertthat::assert_that(!is.null(c_cond))
             assertthat::assert_that(length(c_cond) == length(theta6))
             theta6_c <- sum(t(matrix(theta6)) %*% matrix(c_cond))
         }
@@ -321,6 +311,11 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         ## Valeri & VanderWeele 2013. Appendix p6-9
         ## These are the gradient vector of each scalar quantity of interest.
         ## Obtain the first partial derivative wrt to each parameter.
+        if(is.null(theta5)){
+            pd_cde_theta5 <- rep(0, length(theta5))
+        }else{
+            pd_cde_theta5 <- c_cond
+        }
         Gamma_cde <-
             matrix(c(0,                       # beta0
                      0,                       # beta1
@@ -332,34 +327,61 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                      0,                       # theta2
                      m_cde,                   # theta3
                      rep(0, length(theta4)),  # theta4 vector
-                     rep(1, length(theta5)),  # theta5 vector
+                     pd_cde_theta5,           # theta5 vector
                      rep(0, length(theta6)),  # theta6 vector
                      ##
                      0))                      # sigma^2
+        
         ##
+        if(is.null(beta3)){
+            pd_pnde_beta3 <- rep(0, length(beta3))
+        }else{
+            pd_pnde_beta3 <- theta3*a1*c_cond
+        }
+        if(is.null(theta5)){
+            pd_pnde_theta5 <- rep(0, length(theta5))
+        }else{
+            pd_pnde_theta5 <- c_cond
+        }
+        if(is.null(theta6)){
+            pd_pnde_theta6 <- rep(0, length(theta6))
+        }else{
+            pd_pnde_theta6 <- theta3*sigma_sq*c_cond
+        }
         Gamma_pnde <-
             matrix(c(
                 theta3,                                             # beta0
                 theta3*a0,                                          # beta1
                 theta3*c_cond,                                      # beta2 vector
-                theta3*a0*c_cond,                                   # beta3 vector
+                pd_pnde_beta3,                                      # beta3 vector
                 ##
                 0,                                                  # theta0
                 1,                                                  # theta1
                 theta3*sigma_sq,                                    # theta2
-                a0*(beta1 + beta3_c) + beta0 + beta2_c + sigma_sq*((theta2 + theta6_c) + theta3*(a0 + a1)),  # theta3
+                a0*(beta1+beta3_c) + beta0 + beta2_c + sigma_sq*((theta2+theta6_c) + theta3*(a0+a1)),  # theta3
                 rep(0, length(theta4)),                             # theta4 vector
-                c_cond,                                             # theta5 vector
-                theta3*sigma_sq*c_cond ,                             # theta6 vector
+                pd_pnde_theta5,                                     # theta5 vector
+                pd_pnde_theta6,                                     # theta6 vector
                 ##
-                1/2*theta3*(2*(theta2 + theta6_c) + theta3*(a0 + a1))))  # sigma^2
+                1/2*theta3*(2*(theta2+theta6_c) + theta3*(a0+a1))))  # sigma^2
+        
         ##
+        if(is.null(beta3)){
+            pd_tnie_beta3 <- rep(0, length(beta3))
+        }else{
+            pd_tnie_beta3 <- c_cond*(theta2 + theta3*a1 + theta6_c)
+        }
+        if(is.null(theta6)){
+            pd_tnie_theta6 <- rep(0, length(theta6))
+        }else{
+            pd_tnie_theta6 <- c_cond*(beta1 + beta3_c)
+        }
         Gamma_tnie <-
             matrix(c(
                 0,                       # beta0
                 theta2 + theta3*a1 + theta6_c,  # beta1
                 rep(0, length(beta2)),   # beta2 vector
-                c_cond*(theta2 + theta3*a1 + theta6_c),  # beta3 vector
+                pd_tnie_beta3,           # beta3 vector
                 ##
                 0,                       # theta0
                 0,                       # theta1
@@ -367,33 +389,60 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                 a1*(beta1 + beta3_c),    # theta3
                 rep(0, length(theta4)),  # theta4 vector
                 rep(0, length(theta5)),  # theta5 vector
-                c_cond*(beta1 + beta3_c),    # theta6 vector
+                pd_tnie_theta6,          # theta6 vector
                 ##
                 0))                      # sigma^2
+        
         ##
+        if(is.null(beta3)){
+            pd_tnde_beta3 <- rep(0, length(beta3))
+        }else{
+            pd_tnde_beta3 <- theta3*a1*c_cond
+        }
+        if(is.null(theta5)){
+            pd_tnde_theta5 <- rep(0, length(theta5))
+        }else{
+            pd_tnde_theta5 <- c_cond
+        }
+        if(is.null(theta6)){
+            pd_tnde_theta6 <- rep(0, length(theta6))
+        }else{
+            pd_tnde_theta6 <- theta3*sigma_sq*c_cond
+        }
         Gamma_tnde <-
             matrix(c(
                 theta3,                                           # beta0
                 theta3*a1,                                        # beta1 a0 -> a1
                 theta3*c_cond,                                    # beta2 vector
-                theta3*a1*c_cond,                                 # beta2 vector
+                pd_tnde_beta3,                                    # beta3 vector
                 ##
                 0,                                                # theta0
                 1,                                                # theta1
-                theta3 * sigma_sq,                                # theta2
-                a1*(beta1 + beta3_c) + beta0 + beta2_c + sigma_sq*((theta2 + theta6_c) + theta3*(a0 + a1)),   # theta3 a0 -> a1
+                theta3*sigma_sq,                                  # theta2
+                a1*(beta1+beta3_c) + beta0 + beta2_c + sigma_sq*((theta2+theta6_c) + theta3*(a0+a1)),   # theta3 a0 -> a1
                 rep(0, length(theta4)),                           # theta4 vector
-                c_cond,                                           # theta5 vector
-                theta3*sigma_sq*c_cond,                           # theta6 vector
+                pd_tnde_theta5,                                   # theta5 vector
+                pd_tnde_theta6,                                   # theta6 vector
                 ##
-                1/2*theta3*(2*(theta2 + theta6_c) + theta3*(a0 + a1))))  # sigma^2
+                1/2*theta3*(2*(theta2+theta6_c) + theta3*(a0+a1))))  # sigma^2
+       
         ##
+        if(is.null(beta3)){
+            pd_pnie_beta3 <- rep(0, length(beta3))
+        }else{
+            pd_pnie_beta3 <- c_cond * (theta2 + theta3*a0 + theta6_c)
+        }
+        if(is.null(theta6)){
+            pd_pnie_theta6 <- rep(0, length(theta6))
+        }else{
+            pd_pnie_theta6 <- c_cond*(beta1 + beta3_c)
+        }
         Gamma_pnie <-
             matrix(c(
                 0,                       # beta0
                 theta2 + theta3*a0 + theta6_c,  # beta1 a1 -> a0
                 rep(0, length(beta2)),   # beta2 vector
-                c_cond*(theta2 + theta3*a0 + theta6_c),  # beta3 vector
+                pd_pnie_beta3,           # beta3 vector
                 ##
                 0,                       # theta0
                 0,                       # theta1
@@ -401,7 +450,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
                 a0*(beta1 + beta3_c),    # theta3
                 rep(0, length(theta4)),  # theta4 vector
                 rep(0, length(theta5)),  # theta5 vector
-                c_cond*(beta1 + beta3_c),    # theta6 vector
+                pd_pnie_theta6,          # theta6 vector
                 ##
                 0))                      # sigma^2
         ## Note VV2013 Appendix p9 seems to have an error in the gradient
@@ -415,7 +464,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         ## Copied from calc_myreg_mreg_linear_yreg_logistic_est
         pnde <- ((theta1 + theta5_c + theta3*(beta0 + beta1*a0 + beta2_c + beta3_c*a0) +
                       1/2*sigma_sq*theta3*(2*theta2 + theta3*a1 + theta3*a0 + 2*theta6_c))) * (a1 - a0)
-        tnie <- tnie <- (theta2 + theta3*a1 + theta6_c) * (beta1 + beta3_c) * (a1 - a0)
+        tnie <- (theta2 + theta3*a1 + theta6_c) * (beta1 + beta3_c) * (a1 - a0)
         ## Gradient of pm wrt pnde and tnie. A vector of two.
         ## Need to unname argument vectors to get c(pnde = , tnie = ).
         d_pm <- grad_prop_med_yreg_logistic(pnde = unname(pnde), tnie = unname(tnie))
@@ -426,7 +475,7 @@ calc_myreg_mreg_linear_yreg_logistic_se <- function(beta0,
         ##                   (d_pm / d_tnie) * (d_tnie / d_params)
         ## where (d_pnde / d_params) is (a1 - a0) * Gamma_pnde and
         ##       (d_tnie / d_params) is (a1 - a0) * Gamma_tnie.
-        ## FIXME: This is not tested aginst a reference standard.
+        ## FIXME: This is not tested against a reference standard.
         Gamma_pm <- d_pm[["pnde"]] * Gamma_pnde + d_pm[["tnie"]] * Gamma_tnie
 
 

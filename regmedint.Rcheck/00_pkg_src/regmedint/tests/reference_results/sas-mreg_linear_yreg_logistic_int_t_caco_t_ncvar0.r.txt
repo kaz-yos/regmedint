@@ -12,7 +12,7 @@ Coefficients:
 (Intercept)   1.5200     0.8489   1.791   0.0749 .
 trt           0.6925     0.5336   1.298   0.1959  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 3.735 on 194 degrees of freedom
 Multiple R-squared:  0.008607,	Adjusted R-squared:  0.003496 
@@ -21,7 +21,7 @@ F-statistic: 1.684 on 1 and 194 DF,  p-value: 0.1959
 ### Outcome model
 
 Call:
-glm(formula = spiders ~ trt * bili, family = binomial(link = "logit"), 
+glm(formula = spiders ~ trt + bili + trt:bili, family = binomial(link = "logit"), 
     data = data)
 
 Deviance Residuals: 
@@ -35,7 +35,7 @@ trt          0.19162    0.36010   0.532  0.59463
 bili         0.28496    0.12308   2.315  0.02060 * 
 trt:bili    -0.09806    0.06849  -1.432  0.15222   
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
