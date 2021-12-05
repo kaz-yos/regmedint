@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Yi Li, Kazuki Yoshida" />
+
+<meta name="date" content="2021-12-05" />
+
+<title>Validation of extended formuals with effect modification terms</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+<script>$(document).ready(function(){
+    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    if ($('[data-toggle="popover"]').popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+});
+</script>
+<style type="text/css">
+.lightable-minimal {
+border-collapse: separate;
+border-spacing: 16px 1px;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-minimal td {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal th {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal thead tr:last-child th {
+border-bottom: 2px solid #00000050;
+empty-cells: hide;
+}
+.lightable-minimal tbody tr:first-child td {
+padding-top: 0.5em;
+}
+.lightable-minimal.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-minimal.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic {
+border-top: 0.16em solid #111111;
+border-bottom: 0.16em solid #111111;
+width: 100%;
+margin-bottom: 10px;
+margin: 10px 5px;
+}
+.lightable-classic tfoot tr td {
+border: 0;
+}
+.lightable-classic tfoot tr:first-child td {
+border-top: 0.14em solid #111111;
+}
+.lightable-classic caption {
+color: #222222;
+}
+.lightable-classic td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic thead tr:last-child th {
+border-bottom: 0.10em solid #111111;
+}
+.lightable-classic.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic-2 {
+border-top: 3px double #111111;
+border-bottom: 3px double #111111;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-classic-2 tfoot tr td {
+border: 0;
+}
+.lightable-classic-2 tfoot tr:first-child td {
+border-top: 3px double #111111;
+}
+.lightable-classic-2 caption {
+color: #222222;
+}
+.lightable-classic-2 td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic-2 th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic-2 tbody tr:last-child td {
+border-bottom: 3px double #111111;
+}
+.lightable-classic-2 thead tr:last-child th {
+border-bottom: 1px solid #111111;
+}
+.lightable-classic-2.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic-2.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #EEE;
+border-collapse: collapse;
+margin-bottom: 10px;
+}
+.lightable-material tfoot tr td {
+border: 0;
+}
+.lightable-material tfoot tr:first-child td {
+border-top: 1px solid #EEE;
+}
+.lightable-material th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+}
+.lightable-material td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+border-top: 1px solid #eeeeee;
+}
+.lightable-material.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #ddd;
+}
+.lightable-material-dark {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #FFFFFF12;
+border-collapse: collapse;
+margin-bottom: 10px;
+background-color: #363640;
+}
+.lightable-material-dark tfoot tr td {
+border: 0;
+}
+.lightable-material-dark tfoot tr:first-child td {
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF60;
+}
+.lightable-material-dark td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF;
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark.lightable-hover tbody tr:hover {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody tr:nth-child(even) {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material-dark.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #FFFFFF12;
+}
+.lightable-paper {
+width: 100%;
+margin-bottom: 10px;
+color: #444;
+}
+.lightable-paper tfoot tr td {
+border: 0;
+}
+.lightable-paper tfoot tr:first-child td {
+border-top: 1px solid #00000020;
+}
+.lightable-paper thead tr:last-child th {
+color: #666;
+vertical-align: bottom;
+border-bottom: 1px solid #00000020;
+line-height: 1.15em;
+padding: 10px 5px;
+}
+.lightable-paper td {
+vertical-align: middle;
+border-bottom: 1px solid #00000010;
+line-height: 1.15em;
+padding: 7px 5px;
+}
+.lightable-paper.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-paper.lightable-striped tbody tr:nth-child(even) {
+background-color: #00000008;
+}
+.lightable-paper.lightable-striped tbody td {
+border: 0;
+}
+</style>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Validation of extended formuals with effect modification terms</h1>
+<h4 class="author">Yi Li, Kazuki Yoshida</h4>
+<h4 class="date">2021-12-05</h4>
+
+
+
+<div id="about-this-document" class="section level1">
+<h1>About this document</h1>
+<p>Since there is no gold standard to verify our extended formulas incorporating effect modifications, we use bootstrap to check the point estimates and standard errors given in one single run of . The original estimation for standard errors uses delta method, which agrees with bootstrap asymptotically.</p>
+<p>We use simulated data, and present the estimates from 5000 times of boostrap. For the purpose of demonstration, we include all three effect modification terms (i.e. <span class="math inline">\(A\times C\)</span> in mediator model, <span class="math inline">\(A\times C\)</span> in outcome model, and <span class="math inline">\(M\times C\)</span> in outcome model). Due to the long computational time, the code chunks are commented out and only the summary tables are shown. Readers are free to run the code on their side to replicate the results.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(regmedint)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(locfit)</span></code></pre></div>
+</div>
+<div id="parallel-computing-setup" class="section level1">
+<h1>Parallel computing setup</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>numCores <span class="ot">&lt;-</span> <span class="fu">detectCores</span>()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>numCores</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of bootstrap</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5000</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>seed <span class="ot">&lt;-</span>  <span class="dv">3104</span></span></code></pre></div>
+</div>
+<div id="simulated-data-generating-process" class="section level1">
+<h1>Simulated data generating process</h1>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 1: M linear, Y linear</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>datamaker.s4.m1 <span class="ot">=</span> <span class="cf">function</span>(n, k){</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  C <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n<span class="sc">*</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fu">expit</span>(C <span class="sc">+</span> C<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  M <span class="ot">&lt;-</span> <span class="fl">0.2</span> <span class="sc">+</span> <span class="fl">0.4</span><span class="sc">*</span>A <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>C <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>A<span class="sc">*</span>C <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">+</span> <span class="fl">0.3</span><span class="sc">*</span>A <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>M <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>A<span class="sc">*</span>M <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>A<span class="sc">*</span>C <span class="sc">+</span> k<span class="sc">*</span>M<span class="sc">*</span>C <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="fl">0.5</span>) </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">C =</span> C, <span class="at">A =</span> A, <span class="at">M =</span> M, <span class="at">Y =</span> Y)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 2: M logistic, Y linear</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>datamaker.s4.m2 <span class="ot">=</span> <span class="cf">function</span>(n, k){</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  C <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n<span class="sc">*</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fu">expit</span>(C <span class="sc">+</span> C<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  M <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fu">expit</span>(<span class="fl">0.2</span> <span class="sc">+</span> <span class="fl">0.4</span><span class="sc">*</span>A <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>C <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>A<span class="sc">*</span>C))</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">+</span> <span class="fl">0.3</span><span class="sc">*</span>A <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>M <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>A<span class="sc">*</span>M <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>A<span class="sc">*</span>C <span class="sc">+</span> k<span class="sc">*</span>M<span class="sc">*</span>C <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="fl">0.5</span>) </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">C =</span> C, <span class="at">A =</span> A, <span class="at">M =</span> M, <span class="at">Y =</span> Y)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 3: M linear, Y logistic</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>datamaker.s4.m3 <span class="ot">=</span> <span class="cf">function</span>(n, k){</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  C <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n<span class="sc">*</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fu">expit</span>(C <span class="sc">+</span> C<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  M <span class="ot">&lt;-</span> (<span class="fl">0.2</span> <span class="sc">+</span> <span class="fl">0.4</span><span class="sc">*</span>A <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>C <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>A<span class="sc">*</span>C <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="fl">0.5</span>)<span class="sc">/</span><span class="dv">5</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fu">expit</span>((<span class="fl">0.5</span> <span class="sc">+</span> <span class="fl">0.3</span><span class="sc">*</span>A <span class="sc">+</span> <span class="fl">0.6</span><span class="sc">*</span>M <span class="sc">+</span> <span class="fl">0.4</span><span class="sc">*</span>C <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>A<span class="sc">*</span>M <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>A<span class="sc">*</span>C <span class="sc">+</span> k<span class="sc">*</span>M<span class="sc">*</span>C))) </span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">C =</span> C, <span class="at">A =</span> A, <span class="at">M =</span> M, <span class="at">Y =</span> Y)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 4: M logistic, Y logistic</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>datamaker.s4.m4 <span class="ot">=</span> <span class="cf">function</span>(n, k){</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  C <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n<span class="sc">*</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fu">expit</span>(C <span class="sc">+</span> C<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  M <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fu">expit</span>(<span class="fl">0.2</span> <span class="sc">+</span> <span class="fl">0.4</span><span class="sc">*</span>A <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>C <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>A<span class="sc">*</span>C))</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fu">expit</span>(<span class="fl">0.5</span> <span class="sc">+</span> <span class="fl">0.3</span><span class="sc">*</span>A <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>M <span class="sc">+</span> <span class="fl">0.1</span><span class="sc">*</span>C <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>A<span class="sc">*</span>M <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>A<span class="sc">*</span>C <span class="sc">+</span> k<span class="sc">*</span>M<span class="sc">*</span>C))</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">C =</span> C, <span class="at">A =</span> A, <span class="at">M =</span> M, <span class="at">Y =</span> Y)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>} </span></code></pre></div>
+<div id="generate-datasets" class="section level2">
+<h2>Generate datasets</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(seed)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dat_linear_M_linear_Y <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">datamaker.s4.m1</span>(<span class="at">n =</span> <span class="dv">5000</span>, <span class="at">k =</span> <span class="fl">0.3</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>dat_logistic_M_linear_Y <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">datamaker.s4.m2</span>(<span class="at">n =</span> <span class="dv">5000</span>, <span class="at">k =</span> <span class="fl">0.3</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>dat_linear_M_logistic_Y <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">datamaker.s4.m3</span>(<span class="at">n =</span> <span class="dv">5000</span>, <span class="at">k =</span> <span class="fl">0.7</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>dat_logistic_M_logistic_Y <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">datamaker.s4.m4</span>(<span class="at">n =</span> <span class="dv">5000</span>, <span class="at">k =</span> <span class="fl">0.3</span>))</span></code></pre></div>
+</div>
+</div>
+<div id="model-fit" class="section level1">
+<h1>Model fit</h1>
+<div id="linear-mediator-model-linear-outcome-model" class="section level2">
+<h2>1. Linear mediator model, linear outcome model</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regmedint1 &lt;- regmedint(data = dat_linear_M_linear_Y,</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                         yvar = &quot;Y&quot;,</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#                         avar = &quot;A&quot;,</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#                         mvar = &quot;M&quot;,</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                         cvar = c(&quot;C&quot;),</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#                         EMM_AC_Mmodel = c(&quot;C&quot;), </span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                         EMM_AC_Ymodel = c(&quot;C&quot;), </span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                         EMM_MC = c(&quot;C&quot;), </span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                         eventvar = NULL,</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                         a0 = 0,</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#                         a1 = 1,</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                         m_cde = 0.5012509,</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#                         c_cond = -0.0434094,</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#                         mreg = &quot;linear&quot;,</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#                         yreg = &quot;linear&quot;,</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#                         interaction = TRUE,</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#                         casecontrol = FALSE,</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#                         na_omit = FALSE)</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(regmedint1)</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data1 &lt;- dat_linear_M_linear_Y</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># boot1 &lt;- function(trials){</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   ind &lt;- sample(5000, 5000, replace = TRUE)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   dat &lt;- data1[ind,]</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   regmedint1 &lt;- regmedint(data = dat,</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                           yvar = &quot;Y&quot;,</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                           avar = &quot;A&quot;,</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                           mvar = &quot;M&quot;,</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                           cvar = c(&quot;C&quot;),</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#                           EMM_AC_Mmodel = c(&quot;C&quot;), </span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                           EMM_AC_Ymodel = c(&quot;C&quot;), </span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#                           EMM_MC = c(&quot;C&quot;), </span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#                           eventvar = NULL,</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#                           a0 = 0,</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#                           a1 = 1,</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#                           m_cde = 0.5012509,</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#                           c_cond = -0.0434094,</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#                           mreg = &quot;linear&quot;,</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#                           yreg = &quot;linear&quot;,</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">#                           interaction = TRUE,</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#                           casecontrol = FALSE,</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#                           na_omit = FALSE)</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co">#   out &lt;- summary(regmedint1)</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co">#   cde.est.boot &lt;- out$summary_myreg[1,1]</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co">#   pnde.est.boot &lt;- out$summary_myreg[2,1]</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co">#   tnie.est.boot &lt;- out$summary_myreg[3,1]</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   tnde.est.boot &lt;- out$summary_myreg[4,1]</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co">#   pnie.est.boot &lt;- out$summary_myreg[5,1]</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co">#   te.est.boot &lt;- out$summary_myreg[6,1]</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="co">#   pm.est.boot &lt;- out$summary_myreg[7,1]</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co">#   return(c(cde.est.boot, </span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co">#            pnde.est.boot, tnie.est.boot,</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co">#            tnde.est.boot, pnie.est.boot,</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co">#            te.est.boot, pm.est.boot))</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(seed)</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co"># system.time({</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="co">#   results1 &lt;- mclapply(trials, boot1, mc.cores = numCores)</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="co"># })</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="co"># results1.df &lt;- as.data.frame(do.call(rbind, results1))</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="co"># apply(results1.df, 2, mean)</span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="co"># apply(results1.df, 2, sd)</span></span></code></pre></div>
+</div>
+<div id="logistic-mediator-model-linear-outcome-model" class="section level2">
+<h2>2. Logistic mediator model, linear outcome model</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regmedint2 &lt;- regmedint(data = dat_logistic_M_linear_Y,</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                         yvar = &quot;Y&quot;,</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#                         avar = &quot;A&quot;,</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#                         mvar = &quot;M&quot;,</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                         cvar = c(&quot;C&quot;),</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#                         EMM_AC_Mmodel = c(&quot;C&quot;), </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                         EMM_AC_Ymodel = c(&quot;C&quot;), </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                         EMM_MC = c(&quot;C&quot;), </span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                         eventvar = NULL,</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                         a0 = 0,</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#                         a1 = 1,</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                         m_cde = 0,</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#                         c_cond = -0.0434094,</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#                         mreg = &quot;logistic&quot;,</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#                         yreg = &quot;linear&quot;,</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#                         interaction = TRUE,</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">#                         casecontrol = FALSE,</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">#                         na_omit = FALSE)</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(regmedint2)</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data2 &lt;- dat_logistic_M_linear_Y</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># boot2 &lt;- function(trials){</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   ind &lt;- sample(5000, 5000, replace = TRUE)</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   dat &lt;- data2[ind,]</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   regmedint2 &lt;- regmedint(data = dat,</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                           yvar = &quot;Y&quot;,</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                           avar = &quot;A&quot;,</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                           mvar = &quot;M&quot;,</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                           cvar = c(&quot;C&quot;),</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#                           EMM_AC_Mmodel = c(&quot;C&quot;), </span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                           EMM_AC_Ymodel = c(&quot;C&quot;), </span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#                           EMM_MC = c(&quot;C&quot;), </span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#                           eventvar = NULL,</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#                           a0 = 0,</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#                           a1 = 1,</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#                           m_cde = 0,</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#                           c_cond = -0.0434094,</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">#                           mreg = &quot;logistic&quot;,</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">#                           yreg = &quot;linear&quot;,</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#                           interaction = TRUE,</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co">#                           casecontrol = FALSE,</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co">#                           na_omit = FALSE)</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co">#   out &lt;- summary(regmedint2)</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co">#   cde.est.boot &lt;- out$summary_myreg[1,1]</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co">#   pnde.est.boot &lt;- out$summary_myreg[2,1]</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co">#   tnie.est.boot &lt;- out$summary_myreg[3,1]</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   tnde.est.boot &lt;- out$summary_myreg[4,1]</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co">#   pnie.est.boot &lt;- out$summary_myreg[5,1]</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="co">#   te.est.boot &lt;- out$summary_myreg[6,1]</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="co">#   pm.est.boot &lt;- out$summary_myreg[7,1]</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="co">#   return(c(cde.est.boot, </span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co">#            pnde.est.boot, tnie.est.boot,</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="co">#            tnde.est.boot, pnie.est.boot,</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="co">#            te.est.boot, pm.est.boot))</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(seed)</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="co"># system.time({</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="co">#   results2 &lt;- mclapply(1:100, boot2, mc.cores = numCores)</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="co"># })</span></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="co"># results2.df &lt;- as.data.frame(do.call(rbind, results2))</span></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="co"># apply(results2.df, 2, mean)</span></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="co"># apply(results2.df, 2, sd)</span></span></code></pre></div>
+</div>
+<div id="linear-mediator-model-logistic-outcome-model" class="section level2">
+<h2>3. Linear mediator model, logistic outcome model</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regmedint3 &lt;- regmedint(data = dat_linear_M_logistic_Y,</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                         yvar = &quot;Y&quot;,</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#                         avar = &quot;A&quot;,</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#                         mvar = &quot;M&quot;,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                         cvar = c(&quot;C&quot;),</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#                         EMM_AC_Mmodel = c(&quot;C&quot;), </span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                         EMM_AC_Ymodel = c(&quot;C&quot;), </span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                         EMM_MC = c(&quot;C&quot;), </span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                         eventvar = NULL,</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                         a0 = 0,</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#                         a1 = 1,</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                         m_cde = 0.5012509,</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#                         c_cond = 0.5, </span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#                         mreg = &quot;linear&quot;,</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#                         yreg = &quot;logistic&quot;,</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#                         interaction = TRUE,</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">#                         casecontrol = FALSE,</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">#                         na_omit = FALSE)</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(regmedint3)</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data3 &lt;- dat_linear_M_logistic_Y</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># boot3 &lt;- function(trials){</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   ind &lt;- sample(5000, 5000, replace = TRUE)</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   dat &lt;- data3[ind,]</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   regmedint3 &lt;- regmedint(data = dat,</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                           yvar = &quot;Y&quot;,</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                           avar = &quot;A&quot;,</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                           mvar = &quot;M&quot;,</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                           cvar = c(&quot;C&quot;),</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#                           EMM_AC_Mmodel = c(&quot;C&quot;), </span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                           EMM_AC_Ymodel = c(&quot;C&quot;), </span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#                           EMM_MC = c(&quot;C&quot;), </span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#                           eventvar = NULL,</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">#                           a0 = 0,</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co">#                           a1 = 1,</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">#                           m_cde = 0.5012509,</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co">#                           c_cond = 0.5,</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co">#                           mreg = &quot;linear&quot;,</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co">#                           yreg = &quot;logistic&quot;,</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="co">#                           interaction = TRUE,</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co">#                           casecontrol = FALSE,</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co">#                           na_omit = FALSE)</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="co">#   out &lt;- summary(regmedint3)</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="co">#   cde.est.boot &lt;- out$summary_myreg[1,1]</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="co">#   pnde.est.boot &lt;- out$summary_myreg[2,1]</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="co">#   tnie.est.boot &lt;- out$summary_myreg[3,1]</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   tnde.est.boot &lt;- out$summary_myreg[4,1]</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="co">#   pnie.est.boot &lt;- out$summary_myreg[5,1]</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="co">#   te.est.boot &lt;- out$summary_myreg[6,1]</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="co">#   pm.est.boot &lt;- out$summary_myreg[7,1]</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="co">#   return(c(cde.est.boot, </span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="co">#            pnde.est.boot, tnie.est.boot,</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="co">#            tnde.est.boot, pnie.est.boot,</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="co">#            te.est.boot, pm.est.boot))</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(seed)</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="co"># system.time({</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a><span class="co">#   results3 &lt;- mclapply(trials, boot3, mc.cores = numCores)</span></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a><span class="co"># })</span></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a><span class="co"># results3.df &lt;- as.data.frame(do.call(rbind, results3))</span></span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a><span class="co"># apply(results3.df, 2, mean)</span></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a><span class="co"># apply(results3.df, 2, sd)</span></span></code></pre></div>
+</div>
+<div id="logistic-mediator-model-logistic-outcome-model" class="section level2">
+<h2>4. Logistic mediator model, logistic outcome model</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regmedint4 &lt;- regmedint(data = dat_logistic_M_logistic_Y,</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                         yvar = &quot;Y&quot;,</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#                         avar = &quot;A&quot;,</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#                         mvar = &quot;M&quot;,</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                         cvar = c(&quot;C&quot;),</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#                         EMM_AC_Mmodel = c(&quot;C&quot;), </span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                         EMM_AC_Ymodel = c(&quot;C&quot;), </span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                         EMM_MC = c(&quot;C&quot;), </span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                         eventvar = NULL,</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                         a0 = 0,</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#                         a1 = 1,</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                         m_cde = 0,</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#                         c_cond = -0.0434094,</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#                         mreg = &quot;logistic&quot;,</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#                         yreg = &quot;logistic&quot;,</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co">#                         interaction = TRUE,</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co">#                         casecontrol = FALSE,</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co">#                         na_omit = FALSE)</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(regmedint4)</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data4 &lt;- dat_logistic_M_logistic_Y</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># boot4 &lt;- function(trials){</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   ind &lt;- sample(5000, 5000, replace = TRUE)</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   dat &lt;- data4[ind,]</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   regmedint4 &lt;- regmedint(data = dat,</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                           yvar = &quot;Y&quot;,</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                           avar = &quot;A&quot;,</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                           mvar = &quot;M&quot;,</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                           cvar = c(&quot;C&quot;),</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#                           EMM_AC_Mmodel = c(&quot;C&quot;), </span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                           EMM_AC_Ymodel = c(&quot;C&quot;), </span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#                           EMM_MC = c(&quot;C&quot;), </span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#                           eventvar = NULL,</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#                           a0 = 0,</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#                           a1 = 1,</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#                           m_cde = 0,</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">#                           c_cond = -0.0434094,</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">#                           mreg = &quot;logistic&quot;,</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co">#                           yreg = &quot;logistic&quot;,</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co">#                           interaction = TRUE,</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co">#                           casecontrol = FALSE,</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co">#                           na_omit = FALSE)</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co">#   out &lt;- summary(regmedint4)</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co">#   cde.est.boot &lt;- out$summary_myreg[1,1]</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="co">#   pnde.est.boot &lt;- out$summary_myreg[2,1]</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="co">#   tnie.est.boot &lt;- out$summary_myreg[3,1]</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   tnde.est.boot &lt;- out$summary_myreg[4,1]</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="co">#   pnie.est.boot &lt;- out$summary_myreg[5,1]</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="co">#   te.est.boot &lt;- out$summary_myreg[6,1]</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="co">#   pm.est.boot &lt;- out$summary_myreg[7,1]</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="co">#   return(c(cde.est.boot, </span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a><span class="co">#            pnde.est.boot, tnie.est.boot,</span></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="co">#            tnde.est.boot, pnie.est.boot,</span></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="co">#            te.est.boot, pm.est.boot))</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(seed)</span></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a><span class="co"># system.time({</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="co">#   results4 &lt;- mclapply(trials, boot4, mc.cores = numCores)</span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a><span class="co"># })</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a><span class="co"># results4.df &lt;- as.data.frame(do.call(rbind, results4))</span></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a><span class="co"># apply(results4.df, 2, mean)</span></span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a><span class="co"># apply(results4.df, 2, sd)</span></span></code></pre></div>
+</div>
+</div>
+<div id="results-comparison" class="section level1">
+<h1>Results comparison</h1>
+<p>The following tables shows the point estimates and standard errors from one single run of  and bootstrap.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/yili/Dropbox/Causal mediation methods/prj_shore/regmedint20211022/vignettes/for_vig_06&quot;</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>books <span class="ot">&lt;-</span> <span class="fu">list</span>() <span class="co"># creates a list</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>listbooks <span class="ot">&lt;-</span> <span class="fu">dir</span>(<span class="at">pattern =</span> <span class="st">&quot;*.xlsx&quot;</span>) </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>listbooks</span></code></pre></div>
+<pre><code>## [1] &quot;m_lin_y_lin_boot.xlsx&quot; &quot;m_lin_y_lin.xlsx&quot;      &quot;m_lin_y_log_boot.xlsx&quot;
+## [4] &quot;m_lin_y_log.xlsx&quot;      &quot;m_log_y_lin_boot.xlsx&quot; &quot;m_log_y_lin.xlsx&quot;     
+## [7] &quot;m_log_y_log_boot.xlsx&quot; &quot;m_log_y_log.xlsx&quot;</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/yili/Dropbox/Causal mediation methods/prj_shore/regmedint20211022/vignettes/for_vig_06&quot;</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(listbooks)){</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  books[[k]] <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(listbooks[k], <span class="at">col_names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge into 4 tables</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>m_lin_y_lin <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(books[[<span class="dv">2</span>]], books[[<span class="dv">1</span>]])</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(m_lin_y_lin) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CDE&quot;</span>, <span class="st">&quot;PNDE&quot;</span>, <span class="st">&quot;TNIE&quot;</span>, <span class="st">&quot;TNDE&quot;</span>, <span class="st">&quot;PNIE&quot;</span>, <span class="st">&quot;TE&quot;</span>, <span class="st">&quot;PM&quot;</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(m_lin_y_lin) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Point Estimate&quot;</span>, <span class="st">&quot;Standard Error&quot;</span>), <span class="dv">2</span>))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>m_log_y_lin <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(books[[<span class="dv">6</span>]], books[[<span class="dv">5</span>]])</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(m_log_y_lin) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CDE&quot;</span>, <span class="st">&quot;PNDE&quot;</span>, <span class="st">&quot;TNIE&quot;</span>, <span class="st">&quot;TNDE&quot;</span>, <span class="st">&quot;PNIE&quot;</span>, <span class="st">&quot;TE&quot;</span>, <span class="st">&quot;PM&quot;</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(m_log_y_lin) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Point Estimate&quot;</span>, <span class="st">&quot;Standard Error&quot;</span>), <span class="dv">2</span>))</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>m_lin_y_log <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(books[[<span class="dv">4</span>]], books[[<span class="dv">3</span>]])</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(m_lin_y_log) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CDE&quot;</span>, <span class="st">&quot;PNDE&quot;</span>, <span class="st">&quot;TNIE&quot;</span>, <span class="st">&quot;TNDE&quot;</span>, <span class="st">&quot;PNIE&quot;</span>, <span class="st">&quot;TE&quot;</span>, <span class="st">&quot;PM&quot;</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(m_lin_y_log) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Point Estimate&quot;</span>, <span class="st">&quot;Standard Error&quot;</span>), <span class="dv">2</span>))</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>m_log_y_log <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(books[[<span class="dv">8</span>]], books[[<span class="dv">7</span>]])</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(m_log_y_log) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CDE&quot;</span>, <span class="st">&quot;PNDE&quot;</span>, <span class="st">&quot;TNIE&quot;</span>, <span class="st">&quot;TNDE&quot;</span>, <span class="st">&quot;PNIE&quot;</span>, <span class="st">&quot;TE&quot;</span>, <span class="st">&quot;PM&quot;</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(m_log_y_log) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Point Estimate&quot;</span>, <span class="st">&quot;Standard Error&quot;</span>), <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># output table</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(formattable)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>col_names <span class="ot">&lt;-</span> <span class="fu">colnames</span>(m_lin_y_lin)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>kbl1 <span class="ot">&lt;-</span> knitr<span class="sc">::</span><span class="fu">kable</span>(m_lin_y_lin, <span class="at">align =</span> <span class="st">&quot;cccc&quot;</span>, <span class="at">col.names =</span> col_names,  <span class="at">digits =</span> <span class="dv">8</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>kbl2 <span class="ot">&lt;-</span> knitr<span class="sc">::</span><span class="fu">kable</span>(m_log_y_lin, <span class="at">align =</span> <span class="st">&quot;cccc&quot;</span>, <span class="at">col.names =</span> col_names,  <span class="at">digits =</span> <span class="dv">8</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>kbl3 <span class="ot">&lt;-</span> knitr<span class="sc">::</span><span class="fu">kable</span>(m_lin_y_log, <span class="at">align =</span> <span class="st">&quot;cccc&quot;</span>, <span class="at">col.names =</span> col_names,  <span class="at">digits =</span> <span class="dv">8</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>kbl4 <span class="ot">&lt;-</span> knitr<span class="sc">::</span><span class="fu">kable</span>(m_log_y_log, <span class="at">align =</span> <span class="st">&quot;cccc&quot;</span>, <span class="at">col.names =</span> col_names,  <span class="at">digits =</span> <span class="dv">8</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># formatting:</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># https://haozhu233.github.io/kableExtra/awesome_table_in_html.html</span></span></code></pre></div>
+<div id="linear-mediator-model-linear-outcome-model-1" class="section level2">
+<h2>1. Linear mediator model, linear outcome model</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>kbl1 <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">html_font =</span> <span class="st">&quot;Garamond&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot; &quot;</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">&quot;Non-bootstrap&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;Bootstrap&quot;</span> <span class="ot">=</span> <span class="dv">2</span>))</span></code></pre></div>
+<table class=" lightable-classic" style="font-family: Garamond; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;" colspan="1">
+</th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+Non-bootstrap
+</div>
+</th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+Bootstrap
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Point Estimate
+</th>
+<th style="text-align:center;">
+Standard Error
+</th>
+<th style="text-align:center;">
+Point Estimate
+</th>
+<th style="text-align:center;">
+Standard Error
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CDE
+</td>
+<td style="text-align:center;">
+0.54832158
+</td>
+<td style="text-align:center;">
+0.02201021
+</td>
+<td style="text-align:center;">
+0.5476528
+</td>
+<td style="text-align:center;">
+0.02170323
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PNDE
+</td>
+<td style="text-align:center;">
+0.37202753
+</td>
+<td style="text-align:center;">
+0.02273628
+</td>
+<td style="text-align:center;">
+0.3719104
+</td>
+<td style="text-align:center;">
+0.02241993
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TNIE
+</td>
+<td style="text-align:center;">
+0.28120386
+</td>
+<td style="text-align:center;">
+0.01480052
+</td>
+<td style="text-align:center;">
+0.2807417
+</td>
+<td style="text-align:center;">
+0.01490996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TNDE
+</td>
+<td style="text-align:center;">
+0.58513575
+</td>
+<td style="text-align:center;">
+0.02334807
+</td>
+<td style="text-align:center;">
+0.5843535
+</td>
+<td style="text-align:center;">
+0.02312960
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PNIE
+</td>
+<td style="text-align:center;">
+0.06809564
+</td>
+<td style="text-align:center;">
+0.01196713
+</td>
+<td style="text-align:center;">
+0.0682987
+</td>
+<td style="text-align:center;">
+0.01233101
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TE
+</td>
+<td style="text-align:center;">
+0.65323139
+</td>
+<td style="text-align:center;">
+0.02075177
+</td>
+<td style="text-align:center;">
+0.6526522
+</td>
+<td style="text-align:center;">
+0.02123155
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PM
+</td>
+<td style="text-align:center;">
+0.43048124
+</td>
+<td style="text-align:center;">
+0.02380022
+</td>
+<td style="text-align:center;">
+0.4304126
+</td>
+<td style="text-align:center;">
+0.02344534
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="logistic-mediator-model-linear-outcome-model-1" class="section level2">
+<h2>2. Logistic mediator model, linear outcome model</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>kbl2 <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">html_font =</span> <span class="st">&quot;Garamond&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot; &quot;</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">&quot;Non-bootstrap&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;Bootstrap&quot;</span> <span class="ot">=</span> <span class="dv">2</span>))</span></code></pre></div>
+<table class=" lightable-classic" style="font-family: Garamond; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;" colspan="1">
+</th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+Non-bootstrap
+</div>
+</th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+Bootstrap
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Point Estimate
+</th>
+<th style="text-align:center;">
+Standard Error
+</th>
+<th style="text-align:center;">
+Point Estimate
+</th>
+<th style="text-align:center;">
+Standard Error
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CDE
+</td>
+<td style="text-align:center;">
+0.2674768
+</td>
+<td style="text-align:center;">
+0.02753958
+</td>
+<td style="text-align:center;">
+0.27144584
+</td>
+<td style="text-align:center;">
+0.02890304
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PNDE
+</td>
+<td style="text-align:center;">
+0.5532311
+</td>
+<td style="text-align:center;">
+0.02144037
+</td>
+<td style="text-align:center;">
+0.55465628
+</td>
+<td style="text-align:center;">
+0.02129513
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TNIE
+</td>
+<td style="text-align:center;">
+0.0869584
+</td>
+<td style="text-align:center;">
+0.01342216
+</td>
+<td style="text-align:center;">
+0.08809824
+</td>
+<td style="text-align:center;">
+0.01480665
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TNDE
+</td>
+<td style="text-align:center;">
+0.6227790
+</td>
+<td style="text-align:center;">
+0.02032353
+</td>
+<td style="text-align:center;">
+0.62500131
+</td>
+<td style="text-align:center;">
+0.01874403
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PNIE
+</td>
+<td style="text-align:center;">
+0.0174105
+</td>
+<td style="text-align:center;">
+0.00459631
+</td>
+<td style="text-align:center;">
+0.01775321
+</td>
+<td style="text-align:center;">
+0.00467464
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TE
+</td>
+<td style="text-align:center;">
+0.6401895
+</td>
+<td style="text-align:center;">
+0.02035298
+</td>
+<td style="text-align:center;">
+0.64275452
+</td>
+<td style="text-align:center;">
+0.01879988
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PM
+</td>
+<td style="text-align:center;">
+0.1358323
+</td>
+<td style="text-align:center;">
+0.02033647
+</td>
+<td style="text-align:center;">
+0.13703290
+</td>
+<td style="text-align:center;">
+0.02272391
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="linear-mediator-model-logistic-outcome-model-1" class="section level2">
+<h2>3. Linear mediator model, logistic outcome model</h2>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>kbl3 <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">html_font =</span> <span class="st">&quot;Garamond&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot; &quot;</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">&quot;Non-bootstrap&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;Bootstrap&quot;</span> <span class="ot">=</span> <span class="dv">2</span>))</span></code></pre></div>
+<table class=" lightable-classic" style="font-family: Garamond; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;" colspan="1">
+</th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+Non-bootstrap
+</div>
+</th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+Bootstrap
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Point Estimate
+</th>
+<th style="text-align:center;">
+Standard Error
+</th>
+<th style="text-align:center;">
+Point Estimate
+</th>
+<th style="text-align:center;">
+Standard Error
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CDE
+</td>
+<td style="text-align:center;">
+0.9731831
+</td>
+<td style="text-align:center;">
+0.2696701
+</td>
+<td style="text-align:center;">
+0.9779244
+</td>
+<td style="text-align:center;">
+0.2712117
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PNDE
+</td>
+<td style="text-align:center;">
+1.0001259
+</td>
+<td style="text-align:center;">
+0.2838602
+</td>
+<td style="text-align:center;">
+1.0044763
+</td>
+<td style="text-align:center;">
+0.2857491
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TNIE
+</td>
+<td style="text-align:center;">
+0.6608177
+</td>
+<td style="text-align:center;">
+0.2557117
+</td>
+<td style="text-align:center;">
+0.6606327
+</td>
+<td style="text-align:center;">
+0.2528156
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TNDE
+</td>
+<td style="text-align:center;">
+0.6089993
+</td>
+<td style="text-align:center;">
+0.3558141
+</td>
+<td style="text-align:center;">
+0.6078226
+</td>
+<td style="text-align:center;">
+0.3542694
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PNIE
+</td>
+<td style="text-align:center;">
+1.0519444
+</td>
+<td style="text-align:center;">
+0.3044409
+</td>
+<td style="text-align:center;">
+1.0572864
+</td>
+<td style="text-align:center;">
+0.3059525
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TE
+</td>
+<td style="text-align:center;">
+1.6609436
+</td>
+<td style="text-align:center;">
+0.1614044
+</td>
+<td style="text-align:center;">
+1.6651091
+</td>
+<td style="text-align:center;">
+0.1599455
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PM
+</td>
+<td style="text-align:center;">
+0.5969717
+</td>
+<td style="text-align:center;">
+0.1616112
+</td>
+<td style="text-align:center;">
+0.5776469
+</td>
+<td style="text-align:center;">
+0.1685690
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="logistic-mediator-model-logistic-outcome-model-1" class="section level2">
+<h2>4. Logistic mediator model, logistic outcome model</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>kbl4 <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">html_font =</span> <span class="st">&quot;Garamond&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot; &quot;</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">&quot;Non-bootstrap&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;Bootstrap&quot;</span> <span class="ot">=</span> <span class="dv">2</span>))</span></code></pre></div>
+<table class=" lightable-classic" style="font-family: Garamond; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;" colspan="1">
+</th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+Non-bootstrap
+</div>
+</th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #111111; margin-bottom: -1px; ">
+Bootstrap
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Point Estimate
+</th>
+<th style="text-align:center;">
+Standard Error
+</th>
+<th style="text-align:center;">
+Point Estimate
+</th>
+<th style="text-align:center;">
+Standard Error
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CDE
+</td>
+<td style="text-align:center;">
+0.20341749
+</td>
+<td style="text-align:center;">
+0.11831758
+</td>
+<td style="text-align:center;">
+0.20089667
+</td>
+<td style="text-align:center;">
+0.12168979
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PNDE
+</td>
+<td style="text-align:center;">
+0.76137841
+</td>
+<td style="text-align:center;">
+0.08613598
+</td>
+<td style="text-align:center;">
+0.76132524
+</td>
+<td style="text-align:center;">
+0.08675318
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TNIE
+</td>
+<td style="text-align:center;">
+0.06535229
+</td>
+<td style="text-align:center;">
+0.01561403
+</td>
+<td style="text-align:center;">
+0.06497380
+</td>
+<td style="text-align:center;">
+0.01562340
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TNDE
+</td>
+<td style="text-align:center;">
+0.82960632
+</td>
+<td style="text-align:center;">
+0.08759429
+</td>
+<td style="text-align:center;">
+0.82951442
+</td>
+<td style="text-align:center;">
+0.08783860
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PNIE
+</td>
+<td style="text-align:center;">
+-0.00287562
+</td>
+<td style="text-align:center;">
+0.01138042
+</td>
+<td style="text-align:center;">
+-0.00321537
+</td>
+<td style="text-align:center;">
+0.01164672
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TE
+</td>
+<td style="text-align:center;">
+0.82673070
+</td>
+<td style="text-align:center;">
+0.08688896
+</td>
+<td style="text-align:center;">
+0.82629904
+</td>
+<td style="text-align:center;">
+0.08757983
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PM
+</td>
+<td style="text-align:center;">
+0.11246227
+</td>
+<td style="text-align:center;">
+0.02606395
+</td>
+<td style="text-align:center;">
+0.11228721
+</td>
+<td style="text-align:center;">
+0.02634418
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
