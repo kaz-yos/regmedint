@@ -39,7 +39,8 @@ Suggests:
     rmarkdown,
     stringr,
     testthat,
-    tidyverse
+    tidyverse,
+    magic
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 URL: https://kaz-yos.github.io/regmedint/
