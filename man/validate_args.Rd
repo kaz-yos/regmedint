@@ -25,37 +25,37 @@ validate_args(
 )
 }
 \arguments{
-\item{data}{Data frame containing the relevant variables.}
+\item{data}{Data frame containing the following relevant variables.}
 
-\item{yvar}{A character vector of length 1. Outcome variable name. It should be the time variable for survival outcomes.}
+\item{yvar}{A character vector of length 1. Outcome variable name. It should be the time variable for the survival outcome.}
 
 \item{avar}{A character vector of length 1. Treatment variable name.}
 
 \item{mvar}{A character vector of length 1. Mediator variable name.}
 
-\item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
+\item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
 
-\item{EMM_AC_Mmodel}{A character vector of length > 0. Effect modifiers names. The C in AxC product term in mediator model. Use \code{NULL} if there is no covariate.}
+\item{EMM_AC_Mmodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.}
 
-\item{EMM_AC_Ymodel}{A character vector of length > 0. Effect modifiers names. The C in AxC product term in outcome model. Use \code{NULL} if there is no covariate.}
+\item{EMM_AC_Ymodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the outcome model.}
 
-\item{EMM_MC}{A character vector of length > 0. Effect modifiers names. The C in MxC product term in mediator model. Use \code{NULL} if there is no covariate.}
+\item{EMM_MC}{A character vector of length > 0. Effect modifiers names. The covariate vector in mediator-covariate product term in outcome model.}
 
 \item{eventvar}{An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.}
 
-\item{a0}{A numeric vector of length 1. Reference level of treatment variable that is considered "untreated" or "unexposed".}
+\item{a0}{A numeric vector of length 1. The reference level of treatment variable that is considered "untreated" or "unexposed".}
 
 \item{a1}{A numeric vector of length 1.}
 
 \item{m_cde}{A numeric vector of length 1. Mediator level at which controlled direct effect is evaluated at.}
 
-\item{c_cond}{A numeric vector of the same length as \code{cvar}. Covariate vector at which conditional effects are evaluated at.}
+\item{c_cond}{A numeric vector of the same length as \code{cvar}. Covariate levels at which natural direct and indirect effects are evaluated at.}
 
 \item{mreg}{A character vector of length 1. Mediator regression type: \code{"linear"} or \code{"logistic"}.}
 
 \item{yreg}{A character vector of length 1. Outcome regression type: \code{"linear"}, \code{"logistic"}, \code{"loglinear"}, \code{"poisson"}, \code{"negbin"}, \code{"survCox"}, \code{"survAFT_exp"}, or \code{"survAFT_weibull"}.}
 
-\item{interaction}{A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.}
+\item{interaction}{A logical vector of length 1. The presence of treatment-mediator interaction in the outcome model. Default to TRUE.}
 
 \item{casecontrol}{A logical vector of length 1. Default to FALSE. Whether data comes from a case-control study.}
 }

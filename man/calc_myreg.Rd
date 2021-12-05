@@ -2,7 +2,7 @@
 % Please edit documentation in R/05_calc_myreg_mediation_analysis.R
 \name{calc_myreg}
 \alias{calc_myreg}
-\title{Return mediation analysis functions given mediator and outcome models.}
+\title{Return mediation analysis functions given mediator and outcome models specifications.}
 \usage{
 calc_myreg(
   mreg,
@@ -31,15 +31,15 @@ calc_myreg(
 
 \item{mvar}{A character vector of length 1. Mediator variable name.}
 
-\item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
+\item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
 
-\item{EMM_AC_Mmodel}{A character vector of length > 0. Effect modifiers names. The C in AxC product term in mediator model. Use \code{NULL} if there is no covariate.}
+\item{EMM_AC_Mmodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.}
 
-\item{EMM_AC_Ymodel}{A character vector of length > 0. Effect modifiers names. The C in AxC product term in outcome model. Use \code{NULL} if there is no covariate.}
+\item{EMM_AC_Ymodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the outcome model.}
 
-\item{EMM_MC}{A character vector of length > 0. Effect modifiers names. The C in MxC product term in mediator model. Use \code{NULL} if there is no covariate.}
+\item{EMM_MC}{A character vector of length > 0. Effect modifiers names. The covariate vector in mediator-covariate product term in outcome model.}
 
-\item{interaction}{A logical vector of length 1. Default to TRUE. Whether to include a mediator-treatment interaction term in the outcome regression model.}
+\item{interaction}{A logical vector of length 1. The presence of treatment-mediator interaction in the outcome model. Default to TRUE.}
 }
 \value{
 A list containing two functions. The first is for calculating point estimates. The second is for calculating the correspoding

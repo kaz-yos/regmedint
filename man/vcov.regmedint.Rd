@@ -9,13 +9,13 @@
 \arguments{
 \item{object}{An object of the \code{\link{regmedint}} class.}
 
-\item{a0}{A numeric vector of length one.}
+\item{a0}{A numeric vector of length 1}
 
-\item{a1}{A numeric vector of length one.}
+\item{a1}{A numeric vector of length 1}
 
-\item{m_cde}{A numeric vector of length one. A mediator value at which the controlled direct effect (CDE) conditional on the adjustment covariates is evaluated. If not provided, the default value supplied to the call to \code{\link{regmedint}} will be used. Only the CDE is affected.}
+\item{m_cde}{A numeric vector of length 1 The mediator value at which the controlled direct effect (CDE) conditional on the adjustment covariates is evaluated. If not provided, the default value supplied to the call to \code{\link{regmedint}} will be used. Only the CDE is affected.}
 
-\item{c_cond}{A numeric vector as long as the number of adjustment covariates. A set of covariate values at which the conditional natural effects are evaluated.}
+\item{c_cond}{A numeric vector of the same length as \code{cvar}. A set of covariate values at which the conditional natural effects are evaluated.}
 
 \item{...}{For compatibility with the generic. Ignored.}
 }

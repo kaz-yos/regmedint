@@ -7,15 +7,15 @@
 report_missing(data, yvar, avar, mvar, cvar, eventvar)
 }
 \arguments{
-\item{data}{Data frame containing the relevant variables.}
+\item{data}{Data frame containing the following relevant variables.}
 
-\item{yvar}{A character vector of length 1. Outcome variable name. It should be the time variable for survival outcomes.}
+\item{yvar}{A character vector of length 1. Outcome variable name. It should be the time variable for the survival outcome.}
 
 \item{avar}{A character vector of length 1. Treatment variable name.}
 
 \item{mvar}{A character vector of length 1. Mediator variable name.}
 
-\item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there should usually be some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
+\item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
 
 \item{eventvar}{An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.}
 }
