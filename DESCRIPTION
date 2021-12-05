@@ -1,6 +1,6 @@
 Package: regmedint
-Title: Regression-Based Causal Mediation Analysis with an Interaction Term
-Version: 0.2.1
+Title: Regression-Based Causal Mediation Analysis with Interaction and Effect Modification Terms
+Version: 1.0.0
 Authors@R: c(
     # http://r-pkgs.had.co.nz/description.html#author
     person('Kazuki', 'Yoshida',
@@ -14,7 +14,7 @@ Authors@R: c(
     role = c('ctb'),
     comment = c(ORCID = '0000-0001-6698-2607'))
     )
-Description: 'R' implementation of the regression-based causal mediation analysis with a treatment-mediator interaction term, as originally implemented in the 'SAS' macro by Valeri and VanderWeele (2013) <doi:10.1037/a0031034> and Valeri and VanderWeele (2015) <doi:10.1097/EDE.0000000000000253>. Linear and logistic models are supported for the mediator model. Linear, logistic, loglinear, Poisson, negative binomial, Cox, and accelerated failure time (exponential and Weibull) models are supported for the outcome model.
+Description: 'R' implementation of the regression-based causal mediation analysis with a treatment-mediator interaction term (as originally implemented in the 'SAS' macro by Valeri and VanderWeele (2013) <doi:10.1037/a0031034> and Valeri and VanderWeele (2015) <doi:10.1097/EDE.0000000000000253>) and also effect modification terms by covariates. The current version now supports treatment-covariate and mediator-covariate product terms in mediator and outcome regression models. Linear and logistic models are supported for the mediator model. Linear, logistic, loglinear, Poisson, negative binomial, Cox, and accelerated failure time (exponential and Weibull) models are supported for the outcome model.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
