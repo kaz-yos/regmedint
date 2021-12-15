@@ -343,7 +343,7 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
         }
         pnde_d11 <- rep(0, length(theta6))
         
-        ## 20211105 YL: below has some typos, but I couldn't figure out.
+        ## 20211212 Yl: no typo in PNDE
         ## d2 and d3 in VanderWeele 2015 p471 and VV 2013 Appendix p12 have typos.
         ## a0 and c_cond and theta3 are outside the fraction.
         # pnde_d1 <- theta3 * expit(a0*(beta1+beta3_c) + beta0 + beta2_c) * (1 - expit(a0*(beta1+beta3_c) + beta0 + beta2_c))
@@ -399,7 +399,7 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
         .e20 <- expit(.e8) - expit(.e5)
         .e25 <- .e14 * .e10/.e12 - .e13 * .e9/.e11
         .e32 <- a1 * .e14 * .e10/.e12 - a0 * .e13 * .e9/.e11
-        
+
         tnie_d1 <- .e25 * .e17
         tnie_d2 <- .e32 * .e17
         tnie_d3 <- c_cond * .e25 * .e17
@@ -420,11 +420,11 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
           tnie_d11 <- c_cond * .e20
         }
 
-        ## 20211105 YL: below has some typos, but I couldn't figure out.
+        ## 20211212 YL: FIXED typo in tnide_d2. can use either below code or from Deriv
         # tnie_expit_a1 <- expit(a1*(beta1+beta3_c) + beta0 + beta2_c)
         # tnie_expit_a0 <- expit(a0*(beta1+beta3_c) + beta0 + beta2_c)
         # tnie_d1 <- (theta2 + theta3*a1 + theta6_c) * (tnie_expit_a1*(1 - tnie_expit_a1) - tnie_expit_a0*(1 - tnie_expit_a0))
-        # tnie_d2 <- a1 * tnie_d1
+        # tnie_d2 <- (theta2 + theta3*a1 + theta6_c) * (a1*tnie_expit_a1*(1 - tnie_expit_a1) - a0*tnie_expit_a0*(1 - tnie_expit_a0))
         # tnie_d3 <- c_cond * tnie_d1
         # 
         # if(is.null(beta3)){
@@ -435,7 +435,7 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
         # tnie_d5 <- 0
         # tnie_d6 <- 0
         # tnie_d7 <- tnie_expit_a1 - tnie_expit_a0
-        # tnie_d8 <- a1*tnie_d7
+        # tnie_d8 <- a1 * tnie_d7
         # tnie_d9 <- rep(0, length(theta4))
         # tnie_d10 <- rep(0, length(theta5))
         # if(is.null(theta6)){
@@ -487,14 +487,14 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
         }
         tnde_d11 <- rep(0, length(theta6))
         
-        ## 20211105 YL: below has some typos, but I couldn't figure out.
+        ## 20211212 YL: no typo in TNDE
         # tnde_d1 <- theta3 * (tnie_expit_a1*(1-tnie_expit_a1) - tnie_expit_a0*(1-tnie_expit_a0))
-        # tnde_d2 <- a1*tnde_d1
-        # tnde_d3 <- c_cond*tnde_d1
+        # tnde_d2 <- a1 * tnde_d1
+        # tnde_d3 <- c_cond * tnde_d1
         # if(is.null(beta3)){
         #   tnde_d4 <- rep(0, length(beta3))
         # }else{
-        #   tnde_d4 <- c_cond*a1*tnde_d1
+        #   tnde_d4 <- c_cond * a1 * tnde_d1
         # }
         # tnde_d5 <- 0 
         # tnde_d6 <- 1
@@ -540,7 +540,7 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
         .e20 <- expit(.e8) - expit(.e5)
         .e25 <- .e14 * .e10/.e12 - .e13 * .e9/.e11
         .e32 <- a1 * .e14 * .e10/.e12 - a0 * .e13 * .e9/.e11
-        
+
         pnie_d1 <- .e25 * .e17
         pnie_d2 <- .e32 * .e17
         pnie_d3 <- c_cond * .e25 * .e17
@@ -561,29 +561,28 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
           pnie_d11 <- c_cond * .e20
         }
         
-        ## 20211105 YL: below has some typos, but I couldn't figure out.
+        ## 20211212 YL: FIXED typo in pnide_d2. can use either below code or from Deriv
         # pnie_d1 <- (theta2 + theta3*a0 + theta6_c) * (tnie_expit_a1*(1-tnie_expit_a1) - tnie_expit_a0*(1-tnie_expit_a0))
-        # pnie_d2 <- a1*pnie_d1
-        # pnie_d3 <- c_cond*pnie_d1
-        # # pnie_d4 <- c_cond * (a1*tnie_expit_a1*(1-tnie_expit_a1) - a0*tnie_expit_a0*(1-tnie_expit_a0))
+        # pnie_d2 <- (theta2 + theta3*a0 + theta6_c) * (a1*tnie_expit_a1*(1 - tnie_expit_a1) - a0*tnie_expit_a0*(1 - tnie_expit_a0))
+        # pnie_d3 <- c_cond * pnie_d1
         # if(is.null(beta3)){
         #   pnie_d4 <- rep(0, length(beta3))
         # }else{
-        #   pnie_d4 <- c_cond * (a1*tnie_expit_a1*(1-tnie_expit_a1) - a0*tnie_expit_a0*(1-tnie_expit_a0))
+        #   pnie_d4 <- c_cond * pnie_d2
         # }
         # pnie_d5 <- 0
         # pnie_d6 <- 0
         # pnie_d7 <- tnie_expit_a1 - tnie_expit_a0
-        # pnie_d8 <- a0*pnie_d7
+        # pnie_d8 <- a0 * pnie_d7
         # pnie_d9 <- rep(0, length(theta4))
         # pnie_d10 <- rep(0, length(theta5))
         # # pnie_d11 <- c_cond*pnie_d7
         # if(is.null(theta6)){
         #   pnie_d11 <- rep(0, length(theta6))
         # }else{
-        #   pnie_d11 <- c_cond*pnie_d7
+        #   pnie_d11 <- c_cond * pnie_d7
         # }
-      
+        # 
         Gamma_pnie <-
             matrix(c(
                 pnie_d1,   # beta0
@@ -598,7 +597,7 @@ calc_myreg_mreg_logistic_yreg_linear_se <- function(beta0,
                 pnie_d9,   # theta4 vector
                 pnie_d10,  # theta5 vector
                 pnie_d11   # theta6 vector
-                ))  
+                ))
         
         ## (a1 - a0) without abs must enter here for pnde
         ## because Gamma_pnie does not have a common factor.
