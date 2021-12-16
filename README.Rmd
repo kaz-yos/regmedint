@@ -26,33 +26,34 @@ options(width = 116, scipen = 5)
 [![](http://www.r-pkg.org/badges/version/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 
-This is an R re-implementation of the regression-based causal mediation analysis method, supporting a treatment-mediator interaction term, as implemented in the SAS macro by Valeri and VanderWeele (2013 and 2015). The original is found at Dr. VanderWeele's [Tools and Tutorials](https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/).
+This is an extension of the regression-based causal mediation analysis first proposed by Valeri and VanderWeele (2013) and Valeri and VanderWeele (2015). The current version supports including effect measure modification by covariates (treatment-covariate and mediator-covariate product terms in mediator and outcome regression models). It also accommodates the original 'SAS' macro (can be found at Dr. VanderWeele's [Tools and Tutorials](https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/)) and PROC CAUSALMED procedure in 'SAS' when there is no effect measure modification. Linear and logistic models are supported for the mediator model. Linear, logistic, loglinear, Poisson, negative binomial, Cox, and accelerated failure time (exponential and Weibull) models are supported for the outcome model. 
 
-This package is meant to be an educational tool. Thanks to R's expressibility, the code is likely easier to read than SAS IML. Thus, the correspondence between the mathematical formulas presented in the Appendix of Explanation in Causal Inference (V2015) and the code should be easier to grasp. See the vignette (Article on the package website) for the code that implements formulas.
+To cite this software, please use: *regmedint* (v1.0.0; Yoshida, Li, & Mathur, 2021)
+<!-- cite the r package:  https://easystats.github.io/report/articles/cite_packages.html -->
 
-To cite this software, please refer to https://osf.io/6c79f/.
+
 
 
 # Implemented models
 
-This package is currently under development and is not on CRAN, yet. Following VV2015, the following grid of models are implemented. yreg refers to the outcome model and mreg refers to the mediator model. See the [Github repo](https://github.com/kaz-yos/regmedint/tree/master/tests/reference_results) for cross-check results against the SAS macro.
+The following grid of models are implemented. `yreg` refers to the outcome model and `mreg` refers to the mediator model. 
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 | yreg \\\\ mreg  | linear          | logistic        |
 |:----------------|:---------------:|:---------------:|
-| linear          | implemented     | implemented     |
-| logistic (1)    | implemented     | implemented     |
-| loglinear       | implemented (2) | implemented (2) |
-| poisson         | implemented     | implemented     |
-| negbin          | implemented     | implemented     |
-| survCox (1)     | implemented     | implemented     |
-| survAFT exp     | implemented     | implemented     |
-| survAFT weibull | implemented     | implemented     |
+| linear          | :heavy_check_mark:       | :heavy_check_mark:       |
+| logistic$^1$    | :heavy_check_mark:       | :heavy_check_mark:       |
+| loglinear       | :heavy_check_mark:$^2$   | :heavy_check_mark:$^2$   |
+| poisson         | :heavy_check_mark:       | :heavy_check_mark:       |
+| negbin          | :heavy_check_mark:       | :heavy_check_mark:       |
+| survCox$^1$     | :heavy_check_mark:       | :heavy_check_mark:       |
+| survAFT exp     | :heavy_check_mark:       | :heavy_check_mark:       |
+| survAFT weibull | :heavy_check_mark:       | :heavy_check_mark:       |
 
-(1) Approximation depends on the rare event assumptions.
+$^1$ Approximation depends on the rare event assumptions.
 
-(2) As oppose to the SAS macro, the outcome model is implemented as a modified Poisson model (log link with robust variance) as in Z2004.
+$^2$ Implemented as a modified Poisson model (log link with robust variance) as in Z2004.
 
 See the corresponding vignettes (Articles on the package website) for how to perform bootstrapping and multiple imputation.
 
@@ -60,80 +61,178 @@ See the corresponding vignettes (Articles on the package website) for how to per
 # Installation
 
 For the developmental version on Github, use the following commands to install the package.
-```{r, eval = FALSE}
+```{r}
 install.packages("devtools") # If you do not have devtools already.
-devtools::install_github("kaz-yos/regmedint")
+devtools::install_github("einsley1993/regmedint") 
 ```
 
-Once released on CRAN, the following should install the stable version.
 ```{r, eval = FALSE}
 install.packages("regmedint")
 ```
 
 
-# Example
-Here we will analyze the simulated example that is included with the SAS macro. See the introduction vignette (Article on the package website) for details of the user interface functions.
+# Data Example
+Here we show how to use `regmedint()` to analyze an empirical dataset. We use an heart disease dataset from the UCI Machine Learning Repository: http://archive.ics.uci.edu/ml/datasets/Heart+Disease. We examine the effect of cholesterol level on the risk of heart disease. The exposure is cholesterol level, the outcome is heart disease, the mediator is blood pressure. Covariates include age, sex, chest pain, blood sugar, and maximum heart rate. 
 
 ## `regmedint()` to fit models
-The `regmedint` function is the user interface for constructing a result object of class `regmedint`. The interface is made similar to the original SAS macro. For survival outcomes, the indicator variable is an event indicator (1 for event, 0 for censoring). The `c_cond` vector is required. This vector is the vector of covariate values at which the conditional effects are evaluated at.
+The `regmedint` function is the user interface for constructing a result object of class `regmedint`. The interface is similar to the original SAS macro. For survival outcomes, the indicator variable is an event indicator (1 for event, 0 for censoring). `c_cond` vector is required be specified. This vector is the vector of covariate values at which the conditional effects are evaluated at.
 ```{r, eval = TRUE}
 library(regmedint)
-library(tidyverse)
+# library(tidyverse)
 
-## Example data
-data(vv2015)
+## Example data: Heart disease dataset
+# This data comes from the UCI Machine Learning Repository, containing a collection of demographic and clinical characteristics from 303 patients: http://archive.ics.uci.edu/ml/datasets/Heart+Disease
 
-regmedint_obj <- regmedint(data = vv2015,
-                           ## Variables
-                           yvar = "y",
-                           avar = "x",
-                           mvar = "m",
-                           cvar = c("c"),
-                           eventvar = "event",
-                           ## Values at which effects are evaluated
-                           a0 = 0,
-                           a1 = 1,
-                           m_cde = 1,
-                           c_cond = 0.5,
-                           ## Model types
-                           mreg = "logistic",
-                           yreg = "survAFT_weibull",
-                           ## Additional specification
-                           interaction = TRUE,
-                           casecontrol = FALSE)
+# install.packages("cheese")
+require(cheese)
+# dataset 'heart_disease':
+# A: Cholesterol
+# M: BP
+# Y: HeartDisease
+
+# Pre-process data to convert all variables to numeric type:
+age <- heart_disease$Age
+sex_M <- ifelse(heart_disease$Sex == "Male", 1, 0)
+pain_typical <- ifelse(heart_disease$ChestPain == "Typical angina", 1, 0)
+pain_atypical <- ifelse(heart_disease$ChestPain == "Atypical angina", 1, 0)
+pain_non <- ifelse(heart_disease$ChestPain == "Non-anginal pain", 1, 0)
+bp <- heart_disease$BP
+cholesterol <- heart_disease$Cholesterol
+bloodsugar_T <- ifelse(heart_disease$BloodSugar == "TRUE", 1, 0)
+maximumHR <- heart_disease$MaximumHR
+HD <- ifelse(heart_disease$HeartDisease == "Yes", 1, 0)
+
+heart.disease <- cbind.data.frame(age, sex_M, pain_typical, pain_atypical, pain_non, 
+                         bp, cholesterol, bloodsugar_T, maximumHR, HD)
 ```
+
+
+1. When there is no effect measure modification by covariates, `EMM_AC_Mmodel = NULL`, `EMM_AC_Ymodel = NULL`, `EMM_MC = NULL`.
+```{r}
+regmedint_obj1 <- regmedint(data = heart.disease,
+                            ## Variables
+                            yvar = "HD",
+                            avar = "cholesterol",
+                            mvar = "bp",
+                            cvar = c("age", "sex_M", "pain_non",
+                                     "bloodsugar_T", "maximumHR"),
+                            EMM_AC_Mmodel = NULL, 
+                            EMM_AC_Ymodel = NULL, 
+                            EMM_MC = NULL, 
+                            eventvar = NULL,
+                            ## Values at which effects are evaluated
+                            a0 = 211,
+                            a1 = 275,
+                            m_cde = 131.7,
+                            c_cond = c(mean(heart.disease$age), 0, 0, 
+                                       mean(heart.disease$bloodsugar_T),
+                                       mean(heart.disease$maximumHR)),
+                            ## Model types
+                            mreg = "linear",
+                            yreg = "logistic",
+                            ## Additional specification
+                            interaction = TRUE,
+                            casecontrol = FALSE)
+summary(regmedint_obj1)
+```
+
+
+
+2. When there is effect measure modification by covariates, `EMM_AC_Mmodel`, `EMM_AC_Ymodel` and `EMM_MC` can take a sub-vector of covariates in `cvar`.
+```{r}
+regmedint_obj2 <- regmedint(data = heart.disease,
+                            ## Variables
+                            yvar = "HD",
+                            avar = "cholesterol",
+                            mvar = "bp",
+                            cvar = c("age", "sex_M", "pain_non", "bloodsugar_T",
+                                     "maximumHR"),
+                            EMM_AC_Mmodel = c("age", "sex_M", "pain_non", "bloodsugar_T",
+                                              "maximumHR"), 
+                            EMM_AC_Ymodel = c("age", "sex_M", "pain_non", "maximumHR"), 
+                            EMM_MC = c("age", "pain_non", "bloodsugar_T", "maximumHR"), 
+                            eventvar = NULL,
+                            ## Values at which effects are evaluated
+                            a0 = 211,
+                            a1 = 275,
+                            m_cde = 131.7,
+                            c_cond = c(mean(heart.disease$age), 0, 0, 
+                                       mean(heart.disease$bloodsugar_T),
+                                       mean(heart.disease$maximumHR)),
+                            ## Model types
+                            mreg = "linear",
+                            yreg = "logistic",
+                            ## Additional specification
+                            interaction = TRUE,
+                            casecontrol = FALSE)
+summary(regmedint_obj2)
+```
+
 
 ## `print()` to examine simplified results
 Implicit printing prints mreg, yreg, and mediation analysis point estimates. All effect estimates are on the scale of the link function.
 ```{r}
-regmedint_obj
+regmedint_obj2
 ```
 
 ## `summary()` to examine extended results
 The `summary` method gives the summary for `mreg`, `yreg`, and mediation analysis results. The `exponentiate` option will add the exponentiated estimate and confidence limits if the outcome model is not a linear model. The pure natural direct effect (`pnde`) is what is typically called the natural direct effect (NDE). The total natural indirect effect  (`tnie`) is the corresponding natural indirect effect (NIE).
 ```{r}
-summary(regmedint_obj, exponentiate = TRUE)
+summary(regmedint_obj2, exponentiate = TRUE)
 ```
 Use `coef` to extract the mediation analysis results only.
 ```{r}
-coef(summary(regmedint_obj, exponentiate = TRUE))
+coef(summary(regmedint_obj2, exponentiate = TRUE))
 ```
 Note that the estimates can be re-evaluated at different `m_cde` and `c_cond` without re-fitting the underlyng models.
 ```{r}
-coef(summary(regmedint_obj, exponentiate = TRUE, m_cde = 0, c_cond = 5))
+coef(summary(regmedint_obj2, exponentiate = TRUE, 
+             m_cde = min(heart.disease$bp), 
+             c_cond = c(min(heart.disease$age), 0, 1, 
+                                       max(heart.disease$bloodsugar_T),
+                                       min(heart.disease$maximumHR))))
 ```
 
 
 # Formulas
-The point estimate and standard error formulas (multivariate delta method) were taken from the following references. See https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf for type-set formulas.
+See https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf for the following formulas.
+
+## Effect formulas in the supplementary document
+| yreg \\\\ mreg  | linear                               | logistic                             |
+|-----------------|--------------------------------------|--------------------------------------|
+| linear          | Formulas (1) - (5)                   | Formulas (11) - (15)                 |
+|                 |                                      |                                      |
+| logistic        | Formulas (21) - (25)                 | Formulas (31) - (35)                 |
+| loglinear       | Formulas (21) - (25)                 | Formulas (31) - (35)                 |
+| poisson         | Formulas (21) - (25)                 | Formulas (31) - (35)                 |
+| negbin          | Formulas (21) - (25)                 | Formulas (31) - (35)                 |
+|                 |                                      |                                      |
+| survCox         | Formulas (21) - (25)                 | Formulas (31) - (35)                 |
+| survAFT exp     | Formulas (21) - (25)                 | Formulas (31) - (35)                 |
+| survAFT weibull | Formulas (21) - (25)                 | Formulas (31) - (35)                 |
+
+## Standard error formulas in the supplementary document
+| yreg \\\\ mreg  | linear                         | logistic                       |
+|-----------------|--------------------------------|--------------------------------|
+| linear          | Formulas (6) - (10)            | Formulas (16) - (20)           |
+|                 |                                |                                |
+| logistic        | Formulas (26) - (30)           | Formulas (36) - (40)           |
+| loglinear       | Formulas (26) - (30)           | Formulas (36) - (40)           |
+| poisson         | Formulas (26) - (30)           | Formulas (36) - (40)           |
+| negbin          | Formulas (26) - (30)           | Formulas (36) - (40)           |
+|                 |                                |                                |
+| survCox         | Formulas (26) - (30)           | Formulas (36) - (40)           |
+| survAFT exp     | Formulas (26) - (30)           | Formulas (36) - (40)           |
+| survAFT weibull | Formulas (26) - (30)           | Formulas (36) - (40)           |
+
+
+Note: The point estimate and standard error formulas (multivariate delta method) were derived based on the following references. 
 
 - V2015: VanderWeele (2015) Explanation in Causal Inference.
 - VV2013A: Valeri & VanderWeele (2013) Appendix
 - VV2015A: Valeri & VanderWeele (2015) Appendix
 
-As seen below, there are only four patterns.
-
-## Effect formulas
+## Effect formulas are based on the following propositions
 | yreg \\\\ mreg  | linear                               | logistic                             |
 |-----------------|--------------------------------------|--------------------------------------|
 | linear          | V2015 p466 Proposition 2.3           | V2015 p471 Proposition 2.5           |
@@ -147,9 +246,7 @@ As seen below, there are only four patterns.
 | survAFT exp     | V2015 p494 Proposition 4.1 (Use 2.4) | V2015 p495 Proposition 4.3 (Use 2.6) |
 | survAFT weibull | V2015 p494 Proposition 4.1 (Use 2.4) | V2015 p495 Proposition 4.3 (Use 2.6) |
 
-Note the loglinear outcome model means log link with binomial error.
-
-## Standard error formulas
+## Standard error formulas are based on the following propositions
 | yreg \\\\ mreg  | linear                         | logistic                       |
 |-----------------|--------------------------------|--------------------------------|
 | linear          | V2015 p466 Proposition 2.3     | V2015 p471 Proposition 2.5     |
@@ -164,46 +261,49 @@ Note the loglinear outcome model means log link with binomial error.
 | survAFT weibull | V2015 p494 Use Proposition 2.4 | V2015 p495 Use Proposition 2.6 |
 
 
-# Design
 
-The software design is outlined here for those who may be interested.
+<!-- # Design -->
 
-- Call structure
-  - regmedint UI function
-    - new_regmedint internal constructor
-      - fit_mreg
-      - fit_yreg
-      - calc_myreg calls a specialized worker function, which return two functions, one for point estimates and the other for standard error estimate.
-        - calc_myreg_mreg_linear_yreg_linear
-        - calc_myreg_mreg_linear_yreg_logistic
-        - calc_myreg_mreg_logistic_yreg_linear
-        - calc_myreg_mreg_logistic_yreg_logistic
+<!-- The software design is outlined here for those who may be interested. -->
 
-- regmedint object structure
-  - mreg_fit mediator regression model object as is
-  - yreg_fit outcome regression model object as is
-  - myreg_funs list
-    - est_fun: (a0,a1,m_cde,c_cond) → (cde,pnde,tnie,tnde,pnie,te,pm)
-    - se_fun: (a0,a1,m_cde,c_cond) → se for (cde,pnde,tnie,tnde,pnie,te,pm)
-    - args preserves arguments given to the UI
+<!-- - Call structure -->
+<!--   - regmedint UI function -->
+<!--     - new_regmedint internal constructor -->
+<!--       - fit_mreg -->
+<!--       - fit_yreg -->
+<!--       - calc_myreg calls a specialized worker function, which return two functions, one for point estimates and the other for standard error estimate. -->
+<!--         - calc_myreg_mreg_linear_yreg_linear -->
+<!--         - calc_myreg_mreg_linear_yreg_logistic -->
+<!--         - calc_myreg_mreg_logistic_yreg_linear -->
+<!--         - calc_myreg_mreg_logistic_yreg_logistic -->
 
-- User methods for the regmedint object
-  - print.regmedint: prints coefficients for mreg, yreg, and mediation analysis
-  - summary.regmedint: regmedint → summary_regmedint
-    - print.summary_regmedint: prints summary objects for mreg, yreg, and mediation analysis
-    - coef.summary_regmedint:
-  - coef.regmedint: regmedint → vector (cde,pnde,tnie,tnde,pnie,te,pm)
-  - vcov.regmedint: regmedint → matrix (cde,pnde,tnie,tnde,pnie,te,pm). Off-diagonals are NA.
-  - confint.regmedint: regmedint → matrix of (lower,upper)
+<!-- - regmedint object structure -->
+<!--   - mreg_fit mediator regression model object as is -->
+<!--   - yreg_fit outcome regression model object as is -->
+<!--   - myreg_funs list -->
+<!--     - est_fun: (a0,a1,m_cde,c_cond) → (cde,pnde,tnie,tnde,pnie,te,pm) -->
+<!--     - se_fun: (a0,a1,m_cde,c_cond) → se for (cde,pnde,tnie,tnde,pnie,te,pm) -->
+<!--     - args preserves arguments given to the UI -->
+
+<!-- - User methods for the regmedint object -->
+<!--   - print.regmedint: prints coefficients for mreg, yreg, and mediation analysis -->
+<!--   - summary.regmedint: regmedint → summary_regmedint -->
+<!--     - print.summary_regmedint: prints summary objects for mreg, yreg, and mediation analysis -->
+<!--     - coef.summary_regmedint: -->
+<!--   - coef.regmedint: regmedint → vector (cde,pnde,tnie,tnde,pnie,te,pm) -->
+<!--   - vcov.regmedint: regmedint → matrix (cde,pnde,tnie,tnde,pnie,te,pm). Off-diagonals are NA. -->
+<!--   - confint.regmedint: regmedint → matrix of (lower,upper) -->
 
 
-# Similar or related projects for counterfactual causal mediation analysis
+# Similar or related projects for counterfactual-based causal mediation analysis
 ## R
 - mediation (simulation-based): https://CRAN.R-project.org/package=mediation
 - medflex (natural effect model): https://CRAN.R-project.org/package=medflex
 - intmed (interventional analogue): https://CRAN.R-project.org/package=intmed
-- mediator (regression-based): https:/github.com/GerkeLab/mediator
+- CMAverse (regression-based approach, weighting-based approach, inverse odd-ratio weighting, natural effect model, marginal structural model, g-formula approach): https://bs1125.github.io/CMAverse/
+- mediator (regression-based): https://github.com/GerkeLab/mediator
 - causalMediation (regression-based): https:/github.com/harvard-P01/causalMediation
+
 
 ## Other statistical environment
 - SAS macro (original regression-based) https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/
