@@ -56,14 +56,20 @@ For the developmental version on Github, use the following commands to
 install the package.
 
 ``` r
-install.packages("devtools") # If you do not have devtools already.
-```
-
-    ## Error in contrib.url(repos, "source"): trying to use CRAN without setting a mirror
-
-``` r
+# install.packages("devtools") # If you do not have devtools already.
 devtools::install_github("einsley1993/regmedint") 
 ```
+
+    ## 
+    ##      checking for file ‘/private/var/folders/7d/w68_c5z97jsdlnp1fbsxm8km0000gn/T/RtmpKySGoc/remotes394364026284/einsley1993-regmedint-ccc0a2c/DESCRIPTION’ ...  ✓  checking for file ‘/private/var/folders/7d/w68_c5z97jsdlnp1fbsxm8km0000gn/T/RtmpKySGoc/remotes394364026284/einsley1993-regmedint-ccc0a2c/DESCRIPTION’
+    ##   ─  preparing ‘regmedint’: (337ms)
+    ##      checking DESCRIPTION meta-information ...  ✓  checking DESCRIPTION meta-information
+    ##   ─  checking for LF line-endings in source and make files and shell scripts
+    ##   ─  checking for empty or unneeded directories
+    ##      Removed empty directory ‘regmedint/man/figures’
+    ##   ─  building ‘regmedint_1.0.0.tar.gz’
+    ##      
+    ## 
 
 ``` r
 install.packages("regmedint")
