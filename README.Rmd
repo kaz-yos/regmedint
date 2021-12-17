@@ -169,11 +169,8 @@ summary(regmedint_obj2)
 ```
 
 
-## `print()` to examine simplified results
-Implicit printing prints `mreg`, `yreg`, and mediation analysis point estimates. All effect estimates are on the scale of the link function.
-```{r}
-regmedint_obj2
-```
+<!-- ## `print()` to examine simplified results -->
+<!-- Implicit printing prints `mreg`, `yreg`, and mediation analysis point estimates. All effect estimates are on the scale of the link function. -->
 
 ## `summary()` to examine extended results
 The `summary` method gives the summary for `mreg`, `yreg`, and mediation analysis results. The `exponentiate` option will add the exponentiated estimate and confidence limits if the outcome model is not a linear model. The pure natural direct effect (`pnde`) is what is typically called the natural direct effect (NDE). The total natural indirect effect  (`tnie`) is the corresponding natural indirect effect (NIE).
@@ -302,7 +299,7 @@ Note: The point estimate and standard error formulas (multivariate delta method)
 - intmed (interventional analogue): https://CRAN.R-project.org/package=intmed
 - CMAverse (regression-based approach, weighting-based approach, inverse odd-ratio weighting, natural effect model, marginal structural model, g-formula approach): https://bs1125.github.io/CMAverse/
 - mediator (regression-based): https://github.com/GerkeLab/mediator
-- causalMediation (regression-based): https:/github.com/harvard-P01/causalMediation
+- causalMediation (regression-based): https://github.com/harvard-P01/causalMediation
 
 
 ## Other statistical environment
