@@ -61,9 +61,9 @@ devtools::install_github("einsley1993/regmedint")
 ```
 
     ## 
-    ##      checking for file ‘/private/var/folders/7d/w68_c5z97jsdlnp1fbsxm8km0000gn/T/Rtmpk7aaT2/remotes50fe517ad7/einsley1993-regmedint-8ada703/DESCRIPTION’ ...  ✓  checking for file ‘/private/var/folders/7d/w68_c5z97jsdlnp1fbsxm8km0000gn/T/Rtmpk7aaT2/remotes50fe517ad7/einsley1993-regmedint-8ada703/DESCRIPTION’
-    ##   ─  preparing ‘regmedint’:
-    ##      checking DESCRIPTION meta-information ...  ✓  checking DESCRIPTION meta-information
+    ##      checking for file ‘/private/var/folders/7d/w68_c5z97jsdlnp1fbsxm8km0000gn/T/RtmpYqb2Jz/remotes699b488a762/einsley1993-regmedint-1080efa/DESCRIPTION’ ...  ✓  checking for file ‘/private/var/folders/7d/w68_c5z97jsdlnp1fbsxm8km0000gn/T/RtmpYqb2Jz/remotes699b488a762/einsley1993-regmedint-1080efa/DESCRIPTION’
+    ##   ─  preparing ‘regmedint’: (344ms)
+    ##    checking DESCRIPTION meta-information ...  ✓  checking DESCRIPTION meta-information
     ##   ─  checking for LF line-endings in source and make files and shell scripts
     ##   ─  checking for empty or unneeded directories
     ##      Removed empty directory ‘regmedint/man/figures’
@@ -362,54 +362,8 @@ summary(regmedint_obj2)
     ## 
     ## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
 
-## `print()` to examine simplified results
-
-Implicit printing prints `mreg`, `yreg`, and mediation analysis point
-estimates. All effect estimates are on the scale of the link function.
-
-``` r
-regmedint_obj2
-```
-
-    ## ### Mediator model
-    ## 
-    ## Call:
-    ## lm(formula = bp ~ cholesterol + age + sex_M + pain_non + bloodsugar_T + 
-    ##     maximumHR + cholesterol:age + cholesterol:sex_M + cholesterol:pain_non + 
-    ##     cholesterol:bloodsugar_T + cholesterol:maximumHR, data = data)
-    ## 
-    ## Coefficients:
-    ##              (Intercept)               cholesterol                       age                     sex_M  
-    ##               -13.541915                  0.437803                  1.286279                  9.551806  
-    ##                 pain_non              bloodsugar_T                 maximumHR           cholesterol:age  
-    ##                11.731604                  9.131180                  0.387337                 -0.003008  
-    ##        cholesterol:sex_M      cholesterol:pain_non  cholesterol:bloodsugar_T     cholesterol:maximumHR  
-    ##                -0.044940                 -0.056694                 -0.009854                 -0.001345  
-    ## 
-    ## ### Outcome model
-    ## 
-    ## Call:  glm(formula = HD ~ cholesterol + bp + cholesterol:bp + age + 
-    ##     sex_M + pain_non + bloodsugar_T + maximumHR + cholesterol:age + 
-    ##     cholesterol:sex_M + cholesterol:pain_non + cholesterol:maximumHR + 
-    ##     bp:age + bp:pain_non + bp:bloodsugar_T + bp:maximumHR, family = binomial(link = "logit"), 
-    ##     data = data)
-    ## 
-    ## Coefficients:
-    ##           (Intercept)            cholesterol                     bp                    age                  sex_M  
-    ##           -3.27456006             0.00590456             0.03823159             0.03842520             1.42976060  
-    ##              pain_non           bloodsugar_T              maximumHR         cholesterol:bp        cholesterol:age  
-    ##            0.85755051            -1.71590298            -0.01857166             0.00004744             0.00015077  
-    ##     cholesterol:sex_M   cholesterol:pain_non  cholesterol:maximumHR                 bp:age            bp:pain_non  
-    ##            0.00145389            -0.00792115            -0.00008135            -0.00042252            -0.00263279  
-    ##       bp:bloodsugar_T           bp:maximumHR  
-    ##            0.01276240            -0.00005575  
-    ## 
-    ## Degrees of Freedom: 302 Total (i.e. Null);  286 Residual
-    ## Null Deviance:       418 
-    ## Residual Deviance: 297   AIC: 331
-    ## ### Mediation analysis 
-    ##        cde       pnde       tnie       tnde       pnie         te         pm 
-    ## 0.52417076 0.53875628 0.09977534 0.55263268 0.08589894 0.63853162 0.20121358
+<!-- ## `print()` to examine simplified results -->
+<!-- Implicit printing prints `mreg`, `yreg`, and mediation analysis point estimates. All effect estimates are on the scale of the link function. -->
 
 ## `summary()` to examine extended results
 
@@ -670,7 +624,7 @@ method) were derived based on the following references.
     <https://bs1125.github.io/CMAverse/>
 -   mediator (regression-based): <https://github.com/GerkeLab/mediator>
 -   causalMediation (regression-based):
-    <https:/github.com/harvard-P01/causalMediation>
+    <https://github.com/harvard-P01/causalMediation>
 
 ## Other statistical environment
 
