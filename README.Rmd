@@ -170,7 +170,7 @@ summary(regmedint_obj2)
 
 
 ## `print()` to examine simplified results
-Implicit printing prints mreg, yreg, and mediation analysis point estimates. All effect estimates are on the scale of the link function.
+Implicit printing prints `mreg`, `yreg`, and mediation analysis point estimates. All effect estimates are on the scale of the link function.
 ```{r}
 regmedint_obj2
 ```
