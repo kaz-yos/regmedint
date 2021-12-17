@@ -61,8 +61,8 @@ devtools::install_github("einsley1993/regmedint")
 ```
 
     ## 
-    ##      checking for file ‘/private/var/folders/7d/w68_c5z97jsdlnp1fbsxm8km0000gn/T/RtmpKySGoc/remotes394364026284/einsley1993-regmedint-ccc0a2c/DESCRIPTION’ ...  ✓  checking for file ‘/private/var/folders/7d/w68_c5z97jsdlnp1fbsxm8km0000gn/T/RtmpKySGoc/remotes394364026284/einsley1993-regmedint-ccc0a2c/DESCRIPTION’
-    ##   ─  preparing ‘regmedint’: (337ms)
+    ##      checking for file ‘/private/var/folders/7d/w68_c5z97jsdlnp1fbsxm8km0000gn/T/Rtmpk7aaT2/remotes50fe517ad7/einsley1993-regmedint-8ada703/DESCRIPTION’ ...  ✓  checking for file ‘/private/var/folders/7d/w68_c5z97jsdlnp1fbsxm8km0000gn/T/Rtmpk7aaT2/remotes50fe517ad7/einsley1993-regmedint-8ada703/DESCRIPTION’
+    ##   ─  preparing ‘regmedint’:
     ##      checking DESCRIPTION meta-information ...  ✓  checking DESCRIPTION meta-information
     ##   ─  checking for LF line-endings in source and make files and shell scripts
     ##   ─  checking for empty or unneeded directories
@@ -364,7 +364,7 @@ summary(regmedint_obj2)
 
 ## `print()` to examine simplified results
 
-Implicit printing prints mreg, yreg, and mediation analysis point
+Implicit printing prints `mreg`, `yreg`, and mediation analysis point
 estimates. All effect estimates are on the scale of the link function.
 
 ``` r
