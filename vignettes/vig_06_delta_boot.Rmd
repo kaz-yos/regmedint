@@ -32,7 +32,8 @@ We use simulated data, and present the estimates from 5000 times of boostrap. Fo
 ```{r}
 library(regmedint)
 library(tidyverse)
-library(locfit)
+
+function(x){exp(x)/(1 + exp(x))}
 ```
 
 # Parallel computing setup
