@@ -72,100 +72,64 @@ install.packages("regmedint")
 
 
 # Data Example
-Here we show how to use `regmedint()` to analyze an empirical dataset. We use an heart disease dataset from the UCI Machine Learning Repository: http://archive.ics.uci.edu/ml/datasets/Heart+Disease. We examine the effect of cholesterol level on the risk of heart disease. The exposure is cholesterol level, the outcome is heart disease, the mediator is blood pressure. Covariates include age, sex, chest pain, blood sugar, and maximum heart rate. 
+We use `VV2015` dataset for demonstration.
+```{r, eval = TRUE}
+library(regmedint)
+data(vv2015)
+```
 
 ## `regmedint()` to fit models
 The `regmedint` function is the user interface for constructing a result object of class `regmedint`. The interface is similar to the original SAS macro. For survival outcomes, the indicator variable is an event indicator (1 for event, 0 for censoring). `c_cond` vector is required be specified. This vector is the vector of covariate values at which the conditional effects are evaluated at.
-```{r, eval = TRUE}
-library(regmedint)
-# library(tidyverse)
-
-## Example data: Heart disease dataset
-# This data comes from the UCI Machine Learning Repository, containing a collection of demographic and clinical characteristics from 303 patients: http://archive.ics.uci.edu/ml/datasets/Heart+Disease
-
-# install.packages("cheese")
-require(cheese)
-# dataset 'heart_disease':
-# A: Cholesterol
-# M: BP
-# Y: HeartDisease
-
-# Pre-process data to convert all variables to numeric type:
-age <- heart_disease$Age
-sex_M <- ifelse(heart_disease$Sex == "Male", 1, 0)
-pain_typical <- ifelse(heart_disease$ChestPain == "Typical angina", 1, 0)
-pain_atypical <- ifelse(heart_disease$ChestPain == "Atypical angina", 1, 0)
-pain_non <- ifelse(heart_disease$ChestPain == "Non-anginal pain", 1, 0)
-bp <- heart_disease$BP
-cholesterol <- heart_disease$Cholesterol
-bloodsugar_T <- ifelse(heart_disease$BloodSugar == "TRUE", 1, 0)
-maximumHR <- heart_disease$MaximumHR
-HD <- ifelse(heart_disease$HeartDisease == "Yes", 1, 0)
-
-heart.disease <- cbind.data.frame(age, sex_M, pain_typical, pain_atypical, pain_non, 
-                         bp, cholesterol, bloodsugar_T, maximumHR, HD)
-```
-
 
 1. When there is no effect measure modification by covariates, `EMM_AC_Mmodel = NULL`, `EMM_AC_Ymodel = NULL`, `EMM_MC = NULL`.
 ```{r}
-regmedint_obj1 <- regmedint(data = heart.disease,
+regmedint_obj1 <- regmedint(data = vv2015,
                             ## Variables
-                            yvar = "HD",
-                            avar = "cholesterol",
-                            mvar = "bp",
-                            cvar = c("age", "sex_M", "pain_non",
-                                     "bloodsugar_T", "maximumHR"),
-                            EMM_AC_Mmodel = NULL, 
-                            EMM_AC_Ymodel = NULL, 
-                            EMM_MC = NULL, 
-                            eventvar = NULL,
+                            yvar = "y",
+                            avar = "x",
+                            mvar = "m",
+                            cvar = c("c"),
+                            eventvar = "event",
                             ## Values at which effects are evaluated
-                            a0 = 211,
-                            a1 = 275,
-                            m_cde = 131.7,
-                            c_cond = c(mean(heart.disease$age), 0, 0, 
-                                       mean(heart.disease$bloodsugar_T),
-                                       mean(heart.disease$maximumHR)),
+                            a0 = 0,
+                            a1 = 1,
+                            m_cde = 1,
+                            c_cond = 3,
                             ## Model types
-                            mreg = "linear",
-                            yreg = "logistic",
+                            mreg = "logistic",
+                            yreg = "survAFT_weibull",
                             ## Additional specification
                             interaction = TRUE,
                             casecontrol = FALSE)
-summary(regmedint_obj1)
+ summary(regmedint_obj1)
 ```
 
 
 
 2. When there is effect measure modification by covariates, `EMM_AC_Mmodel`, `EMM_AC_Ymodel` and `EMM_MC` can take a sub-vector of covariates in `cvar`.
 ```{r}
-regmedint_obj2 <- regmedint(data = heart.disease,
+regmedint_obj2 <- regmedint(data = vv2015,
                             ## Variables
-                            yvar = "HD",
-                            avar = "cholesterol",
-                            mvar = "bp",
-                            cvar = c("age", "sex_M", "pain_non", "bloodsugar_T",
-                                     "maximumHR"),
-                            EMM_AC_Mmodel = c("age", "sex_M", "pain_non", "bloodsugar_T",
-                                              "maximumHR"), 
-                            EMM_AC_Ymodel = c("age", "sex_M", "pain_non", "maximumHR"), 
-                            EMM_MC = c("age", "pain_non", "bloodsugar_T", "maximumHR"), 
-                            eventvar = NULL,
+                            yvar = "y",
+                            avar = "x",
+                            mvar = "m",
+                            cvar = c("c"),
+                            EMM_AC_Mmodel = c("c"),
+                            EMM_AC_Ymodel = c("c"),
+                            EMM_MC = c("c"),
+                            eventvar = "event",
                             ## Values at which effects are evaluated
-                            a0 = 211,
-                            a1 = 275,
-                            m_cde = 131.7,
-                            c_cond = c(mean(heart.disease$age), 0, 0, 
-                                       mean(heart.disease$bloodsugar_T),
-                                       mean(heart.disease$maximumHR)),
+                            a0 = 0,
+                            a1 = 1,
+                            m_cde = 1,
+                            c_cond = 3,
                             ## Model types
-                            mreg = "linear",
-                            yreg = "logistic",
+                            mreg = "logistic",
+                            yreg = "survAFT_weibull",
                             ## Additional specification
                             interaction = TRUE,
                             casecontrol = FALSE)
-summary(regmedint_obj2)
+ summary(regmedint_obj2)
 ```
 
 
@@ -192,7 +156,7 @@ coef(summary(regmedint_obj2, exponentiate = TRUE,
 
 
 # Formulas
-See https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf for the following formulas.
+See [here](https://osf.io/d4brv/) for the following formulas.
 
 ## Effect formulas in the supplementary document
 | yreg \\\\ mreg  | linear                               | logistic                             |

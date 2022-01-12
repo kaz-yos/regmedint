@@ -60,30 +60,18 @@ install the package.
 devtools::install_github("einsley1993/regmedint") 
 ```
 
-    ## 
-    ##      checking for file ‘/private/var/folders/7d/w68_c5z97jsdlnp1fbsxm8km0000gn/T/RtmpYqb2Jz/remotes699b488a762/einsley1993-regmedint-1080efa/DESCRIPTION’ ...  ✓  checking for file ‘/private/var/folders/7d/w68_c5z97jsdlnp1fbsxm8km0000gn/T/RtmpYqb2Jz/remotes699b488a762/einsley1993-regmedint-1080efa/DESCRIPTION’
-    ##   ─  preparing ‘regmedint’: (344ms)
-    ##    checking DESCRIPTION meta-information ...  ✓  checking DESCRIPTION meta-information
-    ##   ─  checking for LF line-endings in source and make files and shell scripts
-    ##   ─  checking for empty or unneeded directories
-    ##      Removed empty directory ‘regmedint/man/figures’
-    ##   ─  building ‘regmedint_1.0.0.tar.gz’
-    ##      
-    ## 
-
 ``` r
 install.packages("regmedint")
 ```
 
 # Data Example
 
-Here we show how to use `regmedint()` to analyze an empirical dataset.
-We use an heart disease dataset from the UCI Machine Learning
-Repository: <http://archive.ics.uci.edu/ml/datasets/Heart+Disease>. We
-examine the effect of cholesterol level on the risk of heart disease.
-The exposure is cholesterol level, the outcome is heart disease, the
-mediator is blood pressure. Covariates include age, sex, chest pain,
-blood sugar, and maximum heart rate.
+We use `VV2015` dataset for demonstration.
+
+``` r
+library(regmedint)
+data(vv2015)
+```
 
 ## `regmedint()` to fit models
 
@@ -94,144 +82,93 @@ indicator (1 for event, 0 for censoring). `c_cond` vector is required be
 specified. This vector is the vector of covariate values at which the
 conditional effects are evaluated at.
 
-``` r
-library(regmedint)
-# library(tidyverse)
-
-## Example data: Heart disease dataset
-# This data comes from the UCI Machine Learning Repository, containing a collection of demographic and clinical characteristics from 303 patients: http://archive.ics.uci.edu/ml/datasets/Heart+Disease
-
-# install.packages("cheese")
-require(cheese)
-# dataset 'heart_disease':
-# A: Cholesterol
-# M: BP
-# Y: HeartDisease
-
-# Pre-process data to convert all variables to numeric type:
-age <- heart_disease$Age
-sex_M <- ifelse(heart_disease$Sex == "Male", 1, 0)
-pain_typical <- ifelse(heart_disease$ChestPain == "Typical angina", 1, 0)
-pain_atypical <- ifelse(heart_disease$ChestPain == "Atypical angina", 1, 0)
-pain_non <- ifelse(heart_disease$ChestPain == "Non-anginal pain", 1, 0)
-bp <- heart_disease$BP
-cholesterol <- heart_disease$Cholesterol
-bloodsugar_T <- ifelse(heart_disease$BloodSugar == "TRUE", 1, 0)
-maximumHR <- heart_disease$MaximumHR
-HD <- ifelse(heart_disease$HeartDisease == "Yes", 1, 0)
-
-heart.disease <- cbind.data.frame(age, sex_M, pain_typical, pain_atypical, pain_non, 
-                         bp, cholesterol, bloodsugar_T, maximumHR, HD)
-```
-
 1.  When there is no effect measure modification by covariates,
     `EMM_AC_Mmodel = NULL`, `EMM_AC_Ymodel = NULL`, `EMM_MC = NULL`.
 
 ``` r
-regmedint_obj1 <- regmedint(data = heart.disease,
+regmedint_obj1 <- regmedint(data = vv2015,
                             ## Variables
-                            yvar = "HD",
-                            avar = "cholesterol",
-                            mvar = "bp",
-                            cvar = c("age", "sex_M", "pain_non",
-                                     "bloodsugar_T", "maximumHR"),
-                            EMM_AC_Mmodel = NULL, 
-                            EMM_AC_Ymodel = NULL, 
-                            EMM_MC = NULL, 
-                            eventvar = NULL,
+                            yvar = "y",
+                            avar = "x",
+                            mvar = "m",
+                            cvar = c("c"),
+                            eventvar = "event",
                             ## Values at which effects are evaluated
-                            a0 = 211,
-                            a1 = 275,
-                            m_cde = 131.7,
-                            c_cond = c(mean(heart.disease$age), 0, 0, 
-                                       mean(heart.disease$bloodsugar_T),
-                                       mean(heart.disease$maximumHR)),
+                            a0 = 0,
+                            a1 = 1,
+                            m_cde = 1,
+                            c_cond = 3,
                             ## Model types
-                            mreg = "linear",
-                            yreg = "logistic",
+                            mreg = "logistic",
+                            yreg = "survAFT_weibull",
                             ## Additional specification
                             interaction = TRUE,
                             casecontrol = FALSE)
-summary(regmedint_obj1)
+ summary(regmedint_obj1)
 ```
 
     ## ### Mediator model
     ## 
     ## Call:
-    ## lm(formula = bp ~ cholesterol + age + sex_M + pain_non + bloodsugar_T + 
-    ##     maximumHR, data = data)
+    ## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
     ## 
-    ## Residuals:
-    ##     Min      1Q  Median      3Q     Max 
-    ## -37.323 -11.853  -1.564  10.521  59.618 
+    ## Deviance Residuals: 
+    ##     Min       1Q   Median       3Q      Max  
+    ## -1.5143  -1.1765   0.9177   1.1133   1.4602  
     ## 
     ## Coefficients:
-    ##              Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept)  89.31699   11.86603   7.527 6.29e-13 ***
-    ## cholesterol   0.02103    0.01942   1.083  0.27972    
-    ## age           0.53800    0.12038   4.469 1.12e-05 ***
-    ## sex_M        -1.35956    2.13286  -0.637  0.52433    
-    ## pain_non     -2.44490    2.18569  -1.119  0.26422    
-    ## bloodsugar_T  7.39882    2.74156   2.699  0.00736 ** 
-    ## maximumHR     0.05626    0.04662   1.207  0.22848    
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ##             Estimate Std. Error z value Pr(>|z|)
+    ## (Intercept)  -0.3545     0.3252  -1.090    0.276
+    ## x             0.3842     0.4165   0.922    0.356
+    ## c             0.2694     0.2058   1.309    0.191
     ## 
-    ## Residual standard error: 16.72 on 296 degrees of freedom
-    ## Multiple R-squared:  0.1152, Adjusted R-squared:  0.09726 
-    ## F-statistic: 6.423 on 6 and 296 DF,  p-value: 0.000002236
+    ## (Dispersion parameter for binomial family taken to be 1)
+    ## 
+    ##     Null deviance: 138.59  on 99  degrees of freedom
+    ## Residual deviance: 136.08  on 97  degrees of freedom
+    ## AIC: 142.08
+    ## 
+    ## Number of Fisher Scoring iterations: 4
     ## 
     ## ### Outcome model
     ## 
     ## Call:
-    ## glm(formula = HD ~ cholesterol + bp + cholesterol:bp + age + 
-    ##     sex_M + pain_non + bloodsugar_T + maximumHR, family = binomial(link = "logit"), 
-    ##     data = data)
+    ## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c, 
+    ##     data = data, dist = "weibull")
+    ##               Value Std. Error     z           p
+    ## (Intercept) -1.0424     0.1903 -5.48 0.000000043
+    ## x            0.4408     0.3008  1.47        0.14
+    ## m            0.0905     0.2683  0.34        0.74
+    ## c           -0.0669     0.0915 -0.73        0.46
+    ## x:m          0.1003     0.4207  0.24        0.81
+    ## Log(scale)  -0.0347     0.0810 -0.43        0.67
     ## 
-    ## Deviance Residuals: 
-    ##     Min       1Q   Median       3Q      Max  
-    ## -2.4432  -0.7932  -0.2803   0.7902   2.1564  
+    ## Scale= 0.966 
     ## 
-    ## Coefficients:
-    ##                   Estimate  Std. Error z value     Pr(>|z|)    
-    ## (Intercept)     1.57342995  5.71003005   0.276        0.783    
-    ## cholesterol     0.00187241  0.02235911   0.084        0.933    
-    ## bp              0.01122220  0.04414423   0.254        0.799    
-    ## age             0.01744350  0.01849884   0.943        0.346    
-    ## sex_M           1.78266199  0.34921575   5.105 0.0000003312 ***
-    ## pain_non       -1.40164684  0.33883294  -4.137 0.0000352352 ***
-    ## bloodsugar_T    0.04235784  0.39394071   0.108        0.914    
-    ## maximumHR      -0.04507294  0.00806080  -5.592 0.0000000225 ***
-    ## cholesterol:bp  0.00003755  0.00016984   0.221        0.825    
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## (Dispersion parameter for binomial family taken to be 1)
-    ## 
-    ##     Null deviance: 417.98  on 302  degrees of freedom
-    ## Residual deviance: 299.44  on 294  degrees of freedom
-    ## AIC: 317.44
-    ## 
-    ## Number of Fisher Scoring iterations: 5
+    ## Weibull distribution
+    ## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
+    ##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
+    ## Number of Newton-Raphson Iterations: 5 
+    ## n= 100 
     ## 
     ## ### Mediation analysis 
-    ##             est         se         Z          p       lower      upper
-    ## cde  0.43635433 0.18584088 2.3479998 0.01887453  0.07211291 0.80059575
-    ## pnde 0.45208929 0.20299243 2.2271239 0.02593899  0.05423144 0.84994714
-    ## tnie 0.02900112 0.02967081 0.9774292 0.32835673 -0.02915261 0.08715484
-    ## tnde 0.45532375 0.20935009 2.1749393 0.02963466  0.04500511 0.86564239
-    ## pnie 0.02576666 0.02841159 0.9069065 0.36445626 -0.02991904 0.08145235
-    ## te   0.48109041 0.20687280 2.3255372 0.02004325  0.07562716 0.88655365
-    ## pm   0.07485022 0.07458535 1.0035512 0.31559497 -0.07133438 0.22103481
+    ##              est         se         Z          p       lower      upper
+    ## cde  0.541070807 0.29422958 1.8389409 0.06592388 -0.03560858 1.11775019
+    ## pnde 0.505391952 0.21797147 2.3186151 0.02041591  0.07817572 0.93260819
+    ## tnie 0.015988820 0.03171597 0.5041252 0.61417338 -0.04617334 0.07815098
+    ## tnde 0.513662425 0.22946248 2.2385465 0.02518544  0.06392423 0.96340062
+    ## pnie 0.007718348 0.02398457 0.3218047 0.74760066 -0.03929055 0.05472725
+    ## te   0.521380773 0.22427066 2.3247837 0.02008353  0.08181835 0.96094319
+    ## pm   0.039039346 0.07444080 0.5244348 0.59997616 -0.10686194 0.18494063
     ## 
     ## Evaluated at:
-    ## avar: cholesterol
-    ##  a1 (intervened value of avar) = 275
-    ##  a0 (reference value of avar)  = 211
-    ## mvar: bp
-    ##  m_cde (intervend value of mvar for cde) = 131.7
-    ## cvar: age sex_M pain_non bloodsugar_T maximumHR
-    ##  c_cond (covariate vector value) = 54.43894 0 0 0.1485149 149.6073
+    ## avar: x
+    ##  a1 (intervened value of avar) = 1
+    ##  a0 (reference value of avar)  = 0
+    ## mvar: m
+    ##  m_cde (intervend value of mvar for cde) = 1
+    ## cvar: c
+    ##  c_cond (covariate vector value) = 3
     ## 
     ## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
 
@@ -240,125 +177,96 @@ summary(regmedint_obj1)
     of covariates in `cvar`.
 
 ``` r
-regmedint_obj2 <- regmedint(data = heart.disease,
+regmedint_obj2 <- regmedint(data = vv2015,
                             ## Variables
-                            yvar = "HD",
-                            avar = "cholesterol",
-                            mvar = "bp",
-                            cvar = c("age", "sex_M", "pain_non", "bloodsugar_T",
-                                     "maximumHR"),
-                            EMM_AC_Mmodel = c("age", "sex_M", "pain_non", "bloodsugar_T",
-                                              "maximumHR"), 
-                            EMM_AC_Ymodel = c("age", "sex_M", "pain_non", "maximumHR"), 
-                            EMM_MC = c("age", "pain_non", "bloodsugar_T", "maximumHR"), 
-                            eventvar = NULL,
+                            yvar = "y",
+                            avar = "x",
+                            mvar = "m",
+                            cvar = c("c"),
+                            EMM_AC_Mmodel = c("c"),
+                            EMM_AC_Ymodel = c("c"),
+                            EMM_MC = c("c"),
+                            eventvar = "event",
                             ## Values at which effects are evaluated
-                            a0 = 211,
-                            a1 = 275,
-                            m_cde = 131.7,
-                            c_cond = c(mean(heart.disease$age), 0, 0, 
-                                       mean(heart.disease$bloodsugar_T),
-                                       mean(heart.disease$maximumHR)),
+                            a0 = 0,
+                            a1 = 1,
+                            m_cde = 1,
+                            c_cond = 3,
                             ## Model types
-                            mreg = "linear",
-                            yreg = "logistic",
+                            mreg = "logistic",
+                            yreg = "survAFT_weibull",
                             ## Additional specification
                             interaction = TRUE,
                             casecontrol = FALSE)
-summary(regmedint_obj2)
+ summary(regmedint_obj2)
 ```
 
     ## ### Mediator model
     ## 
     ## Call:
-    ## lm(formula = bp ~ cholesterol + age + sex_M + pain_non + bloodsugar_T + 
-    ##     maximumHR + cholesterol:age + cholesterol:sex_M + cholesterol:pain_non + 
-    ##     cholesterol:bloodsugar_T + cholesterol:maximumHR, data = data)
-    ## 
-    ## Residuals:
-    ##     Min      1Q  Median      3Q     Max 
-    ## -37.558 -11.115  -1.517   9.361  59.999 
-    ## 
-    ## Coefficients:
-    ##                            Estimate Std. Error t value Pr(>|t|)  
-    ## (Intercept)              -13.541915  57.480892  -0.236   0.8139  
-    ## cholesterol                0.437803   0.231494   1.891   0.0596 .
-    ## age                        1.286279   0.571829   2.249   0.0252 *
-    ## sex_M                      9.551806  10.756004   0.888   0.3753  
-    ## pain_non                  11.731604  10.516827   1.116   0.2656  
-    ## bloodsugar_T               9.131180  13.829918   0.660   0.5096  
-    ## maximumHR                  0.387337   0.251201   1.542   0.1242  
-    ## cholesterol:age           -0.003008   0.002324  -1.294   0.1965  
-    ## cholesterol:sex_M         -0.044940   0.042359  -1.061   0.2896  
-    ## cholesterol:pain_non      -0.056694   0.042179  -1.344   0.1799  
-    ## cholesterol:bloodsugar_T  -0.009854   0.054340  -0.181   0.8562  
-    ## cholesterol:maximumHR     -0.001345   0.001019  -1.319   0.1881  
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## Residual standard error: 16.68 on 291 degrees of freedom
-    ## Multiple R-squared:  0.1347, Adjusted R-squared:  0.102 
-    ## F-statistic: 4.119 on 11 and 291 DF,  p-value: 0.000012
-    ## 
-    ## ### Outcome model
-    ## 
-    ## Call:
-    ## glm(formula = HD ~ cholesterol + bp + cholesterol:bp + age + 
-    ##     sex_M + pain_non + bloodsugar_T + maximumHR + cholesterol:age + 
-    ##     cholesterol:sex_M + cholesterol:pain_non + cholesterol:maximumHR + 
-    ##     bp:age + bp:pain_non + bp:bloodsugar_T + bp:maximumHR, family = binomial(link = "logit"), 
+    ## glm(formula = m ~ x + c + x:c, family = binomial(link = "logit"), 
     ##     data = data)
     ## 
     ## Deviance Residuals: 
     ##     Min       1Q   Median       3Q      Max  
-    ## -2.5347  -0.7863  -0.2692   0.8258   2.1475  
+    ## -1.5689  -1.1585   0.8925   1.1242   1.4342  
     ## 
     ## Coefficients:
-    ##                          Estimate  Std. Error z value Pr(>|z|)
-    ## (Intercept)           -3.27456006 14.15169818  -0.231    0.817
-    ## cholesterol            0.00590456  0.04125558   0.143    0.886
-    ## bp                     0.03823159  0.10784117   0.355    0.723
-    ## age                    0.03842520  0.16834820   0.228    0.819
-    ## sex_M                  1.42976060  1.69132559   0.845    0.398
-    ## pain_non               0.85755051  3.11124366   0.276    0.783
-    ## bloodsugar_T          -1.71590298  2.98998472  -0.574    0.566
-    ## maximumHR             -0.01857166  0.06417856  -0.289    0.772
-    ## cholesterol:bp         0.00004744  0.00020223   0.235    0.815
-    ## cholesterol:age        0.00015077  0.00038859   0.388    0.698
-    ## cholesterol:sex_M      0.00145389  0.00655231   0.222    0.824
-    ## cholesterol:pain_non  -0.00792115  0.00679099  -1.166    0.243
-    ## cholesterol:maximumHR -0.00008135  0.00017001  -0.478    0.632
-    ## bp:age                -0.00042252  0.00115497  -0.366    0.714
-    ## bp:pain_non           -0.00263279  0.02108868  -0.125    0.901
-    ## bp:bloodsugar_T        0.01276240  0.02174713   0.587    0.557
-    ## bp:maximumHR          -0.00005575  0.00045093  -0.124    0.902
+    ##             Estimate Std. Error z value Pr(>|z|)
+    ## (Intercept) -0.32727    0.34979  -0.936    0.349
+    ## x            0.30431    0.56789   0.536    0.592
+    ## c            0.24085    0.24688   0.976    0.329
+    ## x:c          0.09216    0.44624   0.207    0.836
     ## 
     ## (Dispersion parameter for binomial family taken to be 1)
     ## 
-    ##     Null deviance: 417.98  on 302  degrees of freedom
-    ## Residual deviance: 296.99  on 286  degrees of freedom
-    ## AIC: 330.99
+    ##     Null deviance: 138.59  on 99  degrees of freedom
+    ## Residual deviance: 136.04  on 96  degrees of freedom
+    ## AIC: 144.04
     ## 
-    ## Number of Fisher Scoring iterations: 5
+    ## Number of Fisher Scoring iterations: 4
+    ## 
+    ## ### Outcome model
+    ## 
+    ## Call:
+    ## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c + 
+    ##     x:c + m:c, data = data, dist = "weibull")
+    ##               Value Std. Error     z         p
+    ## (Intercept) -0.9959     0.2071 -4.81 0.0000015
+    ## x            0.4185     0.3354  1.25      0.21
+    ## m           -0.0216     0.3112 -0.07      0.94
+    ## c           -0.1339     0.1405 -0.95      0.34
+    ## x:m          0.0905     0.4265  0.21      0.83
+    ## x:c          0.0327     0.2242  0.15      0.88
+    ## m:c          0.1275     0.1861  0.69      0.49
+    ## Log(scale)  -0.0406     0.0814 -0.50      0.62
+    ## 
+    ## Scale= 0.96 
+    ## 
+    ## Weibull distribution
+    ## Loglik(model)= -11.1   Loglik(intercept only)= -14.5
+    ##  Chisq= 6.78 on 6 degrees of freedom, p= 0.34 
+    ## Number of Newton-Raphson Iterations: 5 
+    ## n= 100 
     ## 
     ## ### Mediation analysis 
-    ##             est         se        Z         p       lower     upper
-    ## cde  0.52417076 0.33182933 1.579640 0.1141894 -0.12620277 1.1745443
-    ## pnde 0.53875628 0.33738505 1.596859 0.1102972 -0.12250627 1.2000188
-    ## tnie 0.09977534 0.07255725 1.375126 0.1690925 -0.04243426 0.2419849
-    ## tnde 0.55263268 0.34806254 1.587740 0.1123452 -0.12955737 1.2348227
-    ## pnie 0.08589894 0.07311084 1.174914 0.2400292 -0.05739568 0.2291935
-    ## te   0.63853162 0.34394634 1.856486 0.0633843 -0.03559082 1.3126541
-    ## pm   0.20121358 0.14544718 1.383413 0.1665381 -0.08385765 0.4862848
+    ##             est         se         Z         p      lower     upper
+    ## cde  0.60705735 0.52594922 1.1542128 0.2484129 -0.4237842 1.6378989
+    ## pnde 0.57902523 0.51447701 1.1254638 0.2603926 -0.4293312 1.5873816
+    ## tnie 0.05333600 0.10591830 0.5035579 0.6145721 -0.1542601 0.2609321
+    ## tnde 0.58889505 0.51488644 1.1437377 0.2527324 -0.4202638 1.5980539
+    ## pnie 0.04346618 0.09107534 0.4772552 0.6331804 -0.1350382 0.2219706
+    ## te   0.63236123 0.52776615 1.1981845 0.2308452 -0.4020414 1.6667639
+    ## pm   0.11082259 0.20960355 0.5287248 0.5969964 -0.2999928 0.5216380
     ## 
     ## Evaluated at:
-    ## avar: cholesterol
-    ##  a1 (intervened value of avar) = 275
-    ##  a0 (reference value of avar)  = 211
-    ## mvar: bp
-    ##  m_cde (intervend value of mvar for cde) = 131.7
-    ## cvar: age sex_M pain_non bloodsugar_T maximumHR
-    ##  c_cond (covariate vector value) = 54.43894 0 0 0.1485149 149.6073
+    ## avar: x
+    ##  a1 (intervened value of avar) = 1
+    ##  a0 (reference value of avar)  = 0
+    ## mvar: m
+    ##  m_cde (intervend value of mvar for cde) = 1
+    ## cvar: c
+    ##  c_cond (covariate vector value) = 3
     ## 
     ## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
 
@@ -381,94 +289,69 @@ summary(regmedint_obj2, exponentiate = TRUE)
     ## ### Mediator model
     ## 
     ## Call:
-    ## lm(formula = bp ~ cholesterol + age + sex_M + pain_non + bloodsugar_T + 
-    ##     maximumHR + cholesterol:age + cholesterol:sex_M + cholesterol:pain_non + 
-    ##     cholesterol:bloodsugar_T + cholesterol:maximumHR, data = data)
-    ## 
-    ## Residuals:
-    ##     Min      1Q  Median      3Q     Max 
-    ## -37.558 -11.115  -1.517   9.361  59.999 
-    ## 
-    ## Coefficients:
-    ##                            Estimate Std. Error t value Pr(>|t|)  
-    ## (Intercept)              -13.541915  57.480892  -0.236   0.8139  
-    ## cholesterol                0.437803   0.231494   1.891   0.0596 .
-    ## age                        1.286279   0.571829   2.249   0.0252 *
-    ## sex_M                      9.551806  10.756004   0.888   0.3753  
-    ## pain_non                  11.731604  10.516827   1.116   0.2656  
-    ## bloodsugar_T               9.131180  13.829918   0.660   0.5096  
-    ## maximumHR                  0.387337   0.251201   1.542   0.1242  
-    ## cholesterol:age           -0.003008   0.002324  -1.294   0.1965  
-    ## cholesterol:sex_M         -0.044940   0.042359  -1.061   0.2896  
-    ## cholesterol:pain_non      -0.056694   0.042179  -1.344   0.1799  
-    ## cholesterol:bloodsugar_T  -0.009854   0.054340  -0.181   0.8562  
-    ## cholesterol:maximumHR     -0.001345   0.001019  -1.319   0.1881  
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## Residual standard error: 16.68 on 291 degrees of freedom
-    ## Multiple R-squared:  0.1347, Adjusted R-squared:  0.102 
-    ## F-statistic: 4.119 on 11 and 291 DF,  p-value: 0.000012
-    ## 
-    ## ### Outcome model
-    ## 
-    ## Call:
-    ## glm(formula = HD ~ cholesterol + bp + cholesterol:bp + age + 
-    ##     sex_M + pain_non + bloodsugar_T + maximumHR + cholesterol:age + 
-    ##     cholesterol:sex_M + cholesterol:pain_non + cholesterol:maximumHR + 
-    ##     bp:age + bp:pain_non + bp:bloodsugar_T + bp:maximumHR, family = binomial(link = "logit"), 
+    ## glm(formula = m ~ x + c + x:c, family = binomial(link = "logit"), 
     ##     data = data)
     ## 
     ## Deviance Residuals: 
     ##     Min       1Q   Median       3Q      Max  
-    ## -2.5347  -0.7863  -0.2692   0.8258   2.1475  
+    ## -1.5689  -1.1585   0.8925   1.1242   1.4342  
     ## 
     ## Coefficients:
-    ##                          Estimate  Std. Error z value Pr(>|z|)
-    ## (Intercept)           -3.27456006 14.15169818  -0.231    0.817
-    ## cholesterol            0.00590456  0.04125558   0.143    0.886
-    ## bp                     0.03823159  0.10784117   0.355    0.723
-    ## age                    0.03842520  0.16834820   0.228    0.819
-    ## sex_M                  1.42976060  1.69132559   0.845    0.398
-    ## pain_non               0.85755051  3.11124366   0.276    0.783
-    ## bloodsugar_T          -1.71590298  2.98998472  -0.574    0.566
-    ## maximumHR             -0.01857166  0.06417856  -0.289    0.772
-    ## cholesterol:bp         0.00004744  0.00020223   0.235    0.815
-    ## cholesterol:age        0.00015077  0.00038859   0.388    0.698
-    ## cholesterol:sex_M      0.00145389  0.00655231   0.222    0.824
-    ## cholesterol:pain_non  -0.00792115  0.00679099  -1.166    0.243
-    ## cholesterol:maximumHR -0.00008135  0.00017001  -0.478    0.632
-    ## bp:age                -0.00042252  0.00115497  -0.366    0.714
-    ## bp:pain_non           -0.00263279  0.02108868  -0.125    0.901
-    ## bp:bloodsugar_T        0.01276240  0.02174713   0.587    0.557
-    ## bp:maximumHR          -0.00005575  0.00045093  -0.124    0.902
+    ##             Estimate Std. Error z value Pr(>|z|)
+    ## (Intercept) -0.32727    0.34979  -0.936    0.349
+    ## x            0.30431    0.56789   0.536    0.592
+    ## c            0.24085    0.24688   0.976    0.329
+    ## x:c          0.09216    0.44624   0.207    0.836
     ## 
     ## (Dispersion parameter for binomial family taken to be 1)
     ## 
-    ##     Null deviance: 417.98  on 302  degrees of freedom
-    ## Residual deviance: 296.99  on 286  degrees of freedom
-    ## AIC: 330.99
+    ##     Null deviance: 138.59  on 99  degrees of freedom
+    ## Residual deviance: 136.04  on 96  degrees of freedom
+    ## AIC: 144.04
     ## 
-    ## Number of Fisher Scoring iterations: 5
+    ## Number of Fisher Scoring iterations: 4
+    ## 
+    ## ### Outcome model
+    ## 
+    ## Call:
+    ## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c + 
+    ##     x:c + m:c, data = data, dist = "weibull")
+    ##               Value Std. Error     z         p
+    ## (Intercept) -0.9959     0.2071 -4.81 0.0000015
+    ## x            0.4185     0.3354  1.25      0.21
+    ## m           -0.0216     0.3112 -0.07      0.94
+    ## c           -0.1339     0.1405 -0.95      0.34
+    ## x:m          0.0905     0.4265  0.21      0.83
+    ## x:c          0.0327     0.2242  0.15      0.88
+    ## m:c          0.1275     0.1861  0.69      0.49
+    ## Log(scale)  -0.0406     0.0814 -0.50      0.62
+    ## 
+    ## Scale= 0.96 
+    ## 
+    ## Weibull distribution
+    ## Loglik(model)= -11.1   Loglik(intercept only)= -14.5
+    ##  Chisq= 6.78 on 6 degrees of freedom, p= 0.34 
+    ## Number of Newton-Raphson Iterations: 5 
+    ## n= 100 
     ## 
     ## ### Mediation analysis 
-    ##             est         se        Z         p       lower     upper exp(est) exp(lower) exp(upper)
-    ## cde  0.52417076 0.33182933 1.579640 0.1141894 -0.12620277 1.1745443 1.689058  0.8814361   3.236668
-    ## pnde 0.53875628 0.33738505 1.596859 0.1102972 -0.12250627 1.2000188 1.713874  0.8847004   3.320179
-    ## tnie 0.09977534 0.07255725 1.375126 0.1690925 -0.04243426 0.2419849 1.104923  0.9584535   1.273775
-    ## tnde 0.55263268 0.34806254 1.587740 0.1123452 -0.12955737 1.2348227 1.737822  0.8784842   3.437769
-    ## pnie 0.08589894 0.07311084 1.174914 0.2400292 -0.05739568 0.2291935 1.089696  0.9442204   1.257585
-    ## te   0.63853162 0.34394634 1.856486 0.0633843 -0.03559082 1.3126541 1.893698  0.9650351   3.716023
-    ## pm   0.20121358 0.14544718 1.383413 0.1665381 -0.08385765 0.4862848       NA         NA         NA
+    ##             est         se         Z         p      lower     upper exp(est) exp(lower) exp(upper)
+    ## cde  0.60705735 0.52594922 1.1542128 0.2484129 -0.4237842 1.6378989 1.835024  0.6545651   5.144349
+    ## pnde 0.57902523 0.51447701 1.1254638 0.2603926 -0.4293312 1.5873816 1.784298  0.6509443   4.890926
+    ## tnie 0.05333600 0.10591830 0.5035579 0.6145721 -0.1542601 0.2609321 1.054784  0.8570491   1.298139
+    ## tnde 0.58889505 0.51488644 1.1437377 0.2527324 -0.4202638 1.5980539 1.801996  0.6568735   4.943403
+    ## pnie 0.04346618 0.09107534 0.4772552 0.6331804 -0.1350382 0.2219706 1.044425  0.8736825   1.248535
+    ## te   0.63236123 0.52776615 1.1981845 0.2308452 -0.4020414 1.6667639 1.882049  0.6689530   5.295005
+    ## pm   0.11082259 0.20960355 0.5287248 0.5969964 -0.2999928 0.5216380       NA         NA         NA
     ## 
     ## Evaluated at:
-    ## avar: cholesterol
-    ##  a1 (intervened value of avar) = 275
-    ##  a0 (reference value of avar)  = 211
-    ## mvar: bp
-    ##  m_cde (intervend value of mvar for cde) = 131.7
-    ## cvar: age sex_M pain_non bloodsugar_T maximumHR
-    ##  c_cond (covariate vector value) = 54.43894 0 0 0.1485149 149.6073
+    ## avar: x
+    ##  a1 (intervened value of avar) = 1
+    ##  a0 (reference value of avar)  = 0
+    ## mvar: m
+    ##  m_cde (intervend value of mvar for cde) = 1
+    ## cvar: c
+    ##  c_cond (covariate vector value) = 3
     ## 
     ## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
 
@@ -478,14 +361,14 @@ Use `coef` to extract the mediation analysis results only.
 coef(summary(regmedint_obj2, exponentiate = TRUE))
 ```
 
-    ##             est         se        Z         p       lower     upper exp(est) exp(lower) exp(upper)
-    ## cde  0.52417076 0.33182933 1.579640 0.1141894 -0.12620277 1.1745443 1.689058  0.8814361   3.236668
-    ## pnde 0.53875628 0.33738505 1.596859 0.1102972 -0.12250627 1.2000188 1.713874  0.8847004   3.320179
-    ## tnie 0.09977534 0.07255725 1.375126 0.1690925 -0.04243426 0.2419849 1.104923  0.9584535   1.273775
-    ## tnde 0.55263268 0.34806254 1.587740 0.1123452 -0.12955737 1.2348227 1.737822  0.8784842   3.437769
-    ## pnie 0.08589894 0.07311084 1.174914 0.2400292 -0.05739568 0.2291935 1.089696  0.9442204   1.257585
-    ## te   0.63853162 0.34394634 1.856486 0.0633843 -0.03559082 1.3126541 1.893698  0.9650351   3.716023
-    ## pm   0.20121358 0.14544718 1.383413 0.1665381 -0.08385765 0.4862848       NA         NA         NA
+    ##             est         se         Z         p      lower     upper exp(est) exp(lower) exp(upper)
+    ## cde  0.60705735 0.52594922 1.1542128 0.2484129 -0.4237842 1.6378989 1.835024  0.6545651   5.144349
+    ## pnde 0.57902523 0.51447701 1.1254638 0.2603926 -0.4293312 1.5873816 1.784298  0.6509443   4.890926
+    ## tnie 0.05333600 0.10591830 0.5035579 0.6145721 -0.1542601 0.2609321 1.054784  0.8570491   1.298139
+    ## tnde 0.58889505 0.51488644 1.1437377 0.2527324 -0.4202638 1.5980539 1.801996  0.6568735   4.943403
+    ## pnie 0.04346618 0.09107534 0.4772552 0.6331804 -0.1350382 0.2219706 1.044425  0.8736825   1.248535
+    ## te   0.63236123 0.52776615 1.1981845 0.2308452 -0.4020414 1.6667639 1.882049  0.6689530   5.295005
+    ## pm   0.11082259 0.20960355 0.5287248 0.5969964 -0.2999928 0.5216380       NA         NA         NA
 
 Note that the estimates can be re-evaluated at different `m_cde` and
 `c_cond` without re-fitting the underlyng models.
@@ -498,20 +381,11 @@ coef(summary(regmedint_obj2, exponentiate = TRUE,
                                        min(heart.disease$maximumHR))))
 ```
 
-    ##             est        se          Z         p     lower    upper exp(est) exp(lower) exp(upper)
-    ## cde  0.06653441 1.3668539 0.04867705 0.9611767 -2.612450 2.745519 1.068798 0.07335460  15.572693
-    ## pnde 0.15779864 1.3416660 0.11761395 0.9063736 -2.471818 2.787416 1.170930 0.08443119  16.239000
-    ## tnie 0.54539895 0.8725055 0.62509517 0.5319086 -1.164680 2.255478 1.725297 0.31202238   9.539855
-    ## tnde 0.19443891 1.3683849 0.14209373 0.8870060 -2.487546 2.876424 1.214629 0.08311366  17.750683
-    ## pnie 0.50875868 0.8269748 0.61520461 0.5384196 -1.112082 2.129599 1.663225 0.32887352   8.411497
-    ## te   0.70319759 1.4715535 0.47786071 0.6327493 -2.180994 3.587389 2.020202 0.11292920  36.139607
-    ## pm   0.83245440 1.1787537 0.70621572 0.4800540 -1.477860 3.142769       NA         NA         NA
+    ## Error in eval(assertion, env): object 'heart.disease' not found
 
 # Formulas
 
-See
-<https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf>
-for the following formulas.
+See [here](https://osf.io/d4brv/) for the following formulas.
 
 ## Effect formulas in the supplementary document
 
