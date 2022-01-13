@@ -40,7 +40,9 @@ Suggests:
     stringr,
     testthat,
     tidyverse,
-    magic
+    magic,
+    formattable,
+    kableExtra
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 URL: https://kaz-yos.github.io/regmedint/
