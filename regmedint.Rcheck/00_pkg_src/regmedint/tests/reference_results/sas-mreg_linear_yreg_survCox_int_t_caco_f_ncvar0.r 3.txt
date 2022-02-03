@@ -1,0 +1,64 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.4000 -2.5000 -1.7000  0.4434 24.3000 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   2.2132     0.8784   2.520   0.0123 *
+trt           0.7434     0.5532   1.344   0.1801  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.594 on 274 degrees of freedom
+Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
+F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
+
+### Outcome model
+Call:
+survival::coxph(formula = Surv(time, status) ~ trt * bili, data = data, 
+    ties = "efron")
+
+  n= 276, number of events= 129 
+
+             coef exp(coef) se(coef)      z Pr(>|z|)    
+trt      -0.08286   0.92048  0.22094 -0.375    0.708    
+bili      0.19522   1.21558  0.04565  4.276 0.000019 ***
+trt:bili -0.03103   0.96944  0.02608 -1.190    0.234    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+         exp(coef) exp(-coef) lower .95 upper .95
+trt         0.9205     1.0864    0.5970     1.419
+bili        1.2156     0.8227    1.1115     1.329
+trt:bili    0.9694     1.0315    0.9211     1.020
+
+Concordance= 0.782  (se = 0.019 )
+Likelihood ratio test= 76.52  on 3 df,   p=<2e-16
+Wald test            = 115.1  on 3 df,   p=<2e-16
+Score (logrank) test = 158.6  on 3 df,   p=<2e-16
+
+### Mediation analysis 
+            est         se          Z         p       lower      upper  exp(est) exp(lower) exp(upper)
+cde  -0.1515674 0.24167061 -0.6271652 0.5305510 -0.62523308 0.32209831 0.8593600  0.5351367   1.380020
+pnde -0.3242940 0.21724139 -1.4927820 0.1354943 -0.75007935 0.10149126 0.7230376  0.4723291   1.106820
+tnie  0.1104747 0.08434748  1.3097565 0.1902782 -0.05484337 0.27579269 1.1168081  0.9466334   1.317575
+tnde -0.3575153 0.22336190 -1.6006101 0.1094633 -0.79529658 0.08026597 0.6994120  0.4514473   1.083575
+pnie  0.1436959 0.10841715  1.3253985 0.1850390 -0.06879778 0.35618962 1.1545330  0.9335154   1.427878
+te   -0.2138194 0.23637352 -0.9045826 0.3656865 -0.67710297 0.24946421 0.8074942  0.5080868   1.283338
+pm   -0.4387225 0.72508267 -0.6050655 0.5451355 -1.85985839 0.98241344        NA         NA         NA
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2.3
+ a0 (reference value of avar)  = 1.1
+mvar: bili
+ m_cde (intervend value of mvar for cde) = 1.4
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.

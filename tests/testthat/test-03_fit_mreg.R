@@ -29,7 +29,8 @@ describe("fit_mreg", {
                                          data = pbc_cc,
                                          avar = "trt",
                                          mvar = "bili",
-                                         cvar = NULL)
+                                         cvar = NULL,
+                                         EMM_AC_Mmodel = NULL)
             lm0 <- lm(formula = bili ~ trt,
                       data = pbc_cc)
             ## Same classes
@@ -51,7 +52,8 @@ describe("fit_mreg", {
                                          data = pbc_cc,
                                          avar = "trt",
                                          mvar = "bili",
-                                         cvar = c("age"))
+                                         cvar = c("age"),
+                                         EMM_AC_Mmodel = NULL)
             lm1 <- lm(formula = bili ~ trt + age,
                       data = pbc_cc)
             ## Same classes
@@ -73,7 +75,8 @@ describe("fit_mreg", {
                                          data = pbc_cc,
                                          avar = "trt",
                                          mvar = "bili",
-                                         cvar = c("age","male","stage"))
+                                         cvar = c("age","male","stage"),
+                                         EMM_AC_Mmodel = NULL)
             lm3 <- lm(formula = bili ~ trt + age + male + stage,
                       data = pbc_cc)
             ## Same classes
@@ -89,6 +92,29 @@ describe("fit_mreg", {
             expect_equal(vcov(mreg_linear_fit3),
                          vcov(lm3))
         })
+        it("works ok with three cvar, and non-null 'EMM_AC_Mmodel'", {
+            ## Three covariates
+            mreg_linear_fit4 <- fit_mreg(mreg = "linear",
+                                         data = pbc_cc,
+                                         avar = "trt",
+                                         mvar = "bili",
+                                         cvar = c("age","male","stage"),
+                                         EMM_AC_Mmodel = c("male", "stage"))
+            lm4 <- lm(formula = bili ~ trt + age + male + stage + trt:male + trt:stage,
+                      data = pbc_cc)
+            ## Same classes
+            expect_equal(class(mreg_linear_fit4),
+                         class(lm4))
+            ## Same formula
+            expect_equal(as.character(mreg_linear_fit4$call$formula),
+                         as.character(lm4$call$formula))
+            ## Same coef
+            expect_equal(coef(mreg_linear_fit4),
+                         coef(lm4))
+            ## Same vcov
+            expect_equal(vcov(mreg_linear_fit4),
+                         vcov(lm4))
+        })
     })
     ##
     describe("fit_mreg = logistic (glm)", {
@@ -98,7 +124,8 @@ describe("fit_mreg", {
                                            data = pbc_cc,
                                            avar = "trt",
                                            mvar = "hepato",
-                                           cvar = NULL)
+                                           cvar = NULL,
+                                           EMM_AC_Mmodel = NULL)
             glm0 <- glm(formula = hepato ~ trt,
                         family = binomial(link = "logit"),
                         data = pbc_cc)
@@ -121,7 +148,8 @@ describe("fit_mreg", {
                                            data = pbc_cc,
                                            avar = "trt",
                                            mvar = "hepato",
-                                           cvar = c("age"))
+                                           cvar = c("age"),
+                                           EMM_AC_Mmodel = NULL)
             glm1 <- glm(formula = hepato ~ trt + age,
                         family = binomial(link = "logit"),
                         data = pbc_cc)
@@ -144,7 +172,8 @@ describe("fit_mreg", {
                                            data = pbc_cc,
                                            avar = "trt",
                                            mvar = "hepato",
-                                           cvar = c("age","male","stage"))
+                                           cvar = c("age","male","stage"),
+                                           EMM_AC_Mmodel = NULL)
             glm3 <- glm(formula = hepato ~ trt + age + male + stage,
                         family = binomial(link = "logit"),
                         data = pbc_cc)
@@ -160,6 +189,30 @@ describe("fit_mreg", {
             ## Same vcov
             expect_equal(vcov(mreg_logistic_fit3),
                          vcov(glm3))
+        })
+        it("works ok with three cvar, and non-null EMM_AC_Mmodel", {
+            ## Three covariates
+            mreg_logistic_fit4 <- fit_mreg(mreg = "logistic",
+                                          data = pbc_cc,
+                                          avar = "trt",
+                                          mvar = "hepato",
+                                          cvar = c("age","male","stage"),
+                                          EMM_AC_Mmodel = c("male", "stage"))
+            glm4 <- glm(formula = hepato ~ trt + age + male + stage + trt:male + trt:stage,
+                        family = binomial(link = "logit"),
+                        data = pbc_cc)
+            ## Same classes
+            expect_equal(class(mreg_logistic_fit4),
+                         class(glm4))
+            ## Same formula
+            expect_equal(as.character(mreg_logistic_fit4$call$formula),
+                         as.character(glm4$call$formula))
+            ## Same coef
+            expect_equal(coef(mreg_logistic_fit4),
+                         coef(glm4))
+            ## Same vcov
+            expect_equal(vcov(mreg_logistic_fit4),
+                         vcov(glm4))
         })
     })
 })

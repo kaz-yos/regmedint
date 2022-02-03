@@ -1,6 +1,6 @@
 ---
 title: "Introduction to user interface functions"
-author: "Kazuki Yoshida"
+author: "Kazuki Yoshida, Yi Li"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -22,7 +22,7 @@ opts_chunk$set(comment = "##", error= TRUE, warning = showWarning, message = sho
 ```
 
 # Data preparation
-The package require all variables to be numerical. So a multi-category factor needs to be converted to multiple dichotomous indicators. For survival outcome models, the indicator variable is for event (1 = event, 0 = censored).
+The package require all variables to be numerical. So a multi-categorical factor needs to be converted to dummy variables or multiple dichotomous indicators. For survival outcome models, the indicator variable is for the event (1 = event, 0 = censored).
 
 ```{r}
 library(regmedint)

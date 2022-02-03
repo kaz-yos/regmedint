@@ -1,0 +1,61 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-1.177  -1.141  -1.141   1.177   1.214  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  0.08577    0.38245   0.224    0.823
+trt         -0.08577    0.24091  -0.356    0.722
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 382.36  on 274  degrees of freedom
+AIC: 386.36
+
+Number of Fisher Scoring iterations: 3
+
+### Outcome model
+
+Call:
+survival::survreg(formula = Surv(time, status) ~ trt + bili_bin, 
+    data = data, dist = "exponential")
+              Value Std. Error     z       p
+(Intercept)  9.1586     0.3175 28.85 < 2e-16
+trt          0.0599     0.1762  0.34    0.73
+bili_bin    -1.5907     0.2018 -7.88 3.3e-15
+
+Scale fixed at 1 
+
+Exponential distribution
+Loglik(model)= -1169.3   Loglik(intercept only)= -1206.3
+	Chisq= 74.04 on 2 degrees of freedom, p= 8.4e-17 
+Number of Newton-Raphson Iterations: 5 
+n= 276 
+
+### Mediation analysis 
+            est         se         Z         p      lower     upper exp(est) exp(lower) exp(upper)
+cde  0.07188147 0.21141598 0.3400002 0.7338564 -0.3424862 0.4862492 1.074528  0.7100029   1.626205
+pnde 0.07188147 0.21141598 0.3400002 0.7338564 -0.3424862 0.4862492 1.074528  0.7100029   1.626205
+tnie 0.03334020 0.09313021 0.3579955 0.7203467 -0.1491917 0.2158721 1.033902  0.8614040   1.240944
+tnde 0.07188147 0.21141598 0.3400002 0.7338564 -0.3424862 0.4862492 1.074528  0.7100029   1.626205
+pnie 0.03334020 0.09313021 0.3579955 0.7203467 -0.1491917 0.2158721 1.033902  0.8614040   1.240944
+te   0.10522167 0.23096318 0.4555777 0.6486937 -0.3474579 0.5579012 1.110957  0.7064818   1.747002
+pm   0.32831570 0.03547485 9.2548855 0.0000000  0.2587863 0.3978451       NA         NA         NA
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2.3
+ a0 (reference value of avar)  = 1.1
+mvar: bili_bin
+ m_cde (intervend value of mvar for cde) = 1.4
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.

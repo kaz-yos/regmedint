@@ -33,6 +33,8 @@ describe("fit_yreg Weibull AFT (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = "status")
         ref_fit0 <- survreg(formula = Surv(time,status) ~ trt + bili,
@@ -60,6 +62,8 @@ describe("fit_yreg Weibull AFT (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = FALSE,
                               eventvar = "status")
         ref_fit1 <- survreg(formula = Surv(time,status) ~ trt + bili + age,
@@ -87,6 +91,8 @@ describe("fit_yreg Weibull AFT (no interaction)", {
                           avar = "trt",
                           mvar = "bili",
                           cvar = c("age","male","stage"),
+                          EMM_AC_Ymodel = NULL,
+                          EMM_MC = NULL,
                           interaction = FALSE,
                           eventvar = "status")
     ref_fit3 <- survreg(formula = Surv(time,status) ~ trt + bili + age + male + stage,
@@ -104,6 +110,37 @@ describe("fit_yreg Weibull AFT (no interaction)", {
     ## Same vcov
     expect_equal(vcov(yreg_fit3),
                  vcov(ref_fit3))
+    })
+    
+    # only test when EMM_AC_Ymodel and EMM_MC are both not null:
+    it("fits a correct model with three covariates", {
+        ## Three covariates
+        yreg_fit6 <- fit_yreg(yreg = "survAFT_weibull",
+                              data = pbc_cc,
+                              yvar = "time",
+                              avar = "trt",
+                              mvar = "bili",
+                              cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = c("age"),
+                              EMM_MC = c("male", "stage"),
+                              interaction = FALSE,
+                              eventvar = "status")
+        ref_fit6 <- survreg(formula = Surv(time,status) ~ trt + bili + age + male + stage +
+                                trt:age + bili:male + bili:stage,
+                            dist = "weibull",
+                            data = pbc_cc)
+        ## Same classes
+        expect_equal(class(yreg_fit6),
+                     class(ref_fit6))
+        ## Same formula
+        expect_equal(as.character(yreg_fit6$call$formula),
+                     as.character(ref_fit6$call$formula))
+        ## Same coef
+        expect_equal(coef(yreg_fit6),
+                     coef(ref_fit6))
+        ## Same vcov
+        expect_equal(vcov(yreg_fit6),
+                     vcov(ref_fit6))
     })
 
 })
@@ -127,9 +164,11 @@ describe("fit_yreg Weibull AFT (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = "status")
-        ref_fit0 <- survreg(formula = Surv(time,status) ~ trt*bili,
+        ref_fit0 <- survreg(formula = Surv(time,status) ~ trt + bili + trt:bili,
                             dist = "weibull",
                             data = pbc_cc)
         ## Same classes
@@ -154,9 +193,11 @@ describe("fit_yreg Weibull AFT (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
+                              EMM_AC_Ymodel = NULL,
+                              EMM_MC = NULL,
                               interaction = TRUE,
                               eventvar = "status")
-        ref_fit1 <- survreg(formula = Surv(time,status) ~ trt*bili + age,
+        ref_fit1 <- survreg(formula = Surv(time,status) ~ trt + bili + trt:bili + age,
                             dist = "weibull",
                             data = pbc_cc)
         ## Same classes
@@ -181,9 +222,11 @@ describe("fit_yreg Weibull AFT (interaction)", {
                           avar = "trt",
                           mvar = "bili",
                           cvar = c("age","male","stage"),
+                          EMM_AC_Ymodel = NULL,
+                          EMM_MC = NULL,
                           interaction = TRUE,
                           eventvar = "status")
-    ref_fit3 <- survreg(formula = Surv(time,status) ~ trt*bili + age + male + stage,
+    ref_fit3 <- survreg(formula = Surv(time,status) ~ trt + bili + trt:bili + age + male + stage,
                         dist = "weibull",
                         data = pbc_cc)
     ## Same classes
@@ -198,6 +241,37 @@ describe("fit_yreg Weibull AFT (interaction)", {
     ## Same vcov
     expect_equal(vcov(yreg_fit3),
                  vcov(ref_fit3))
+    })
+    
+    # only test when EMM_AC_Ymodel and EMM_MC are both not null:
+    it("fits a correct model with three covariates", {
+        ## Three covariates
+        yreg_fit6 <- fit_yreg(yreg = "survAFT_weibull",
+                              data = pbc_cc,
+                              yvar = "time",
+                              avar = "trt",
+                              mvar = "bili",
+                              cvar = c("age","male","stage"),
+                              EMM_AC_Ymodel = c("age"),
+                              EMM_MC = c("male", "stage"),
+                              interaction = TRUE,
+                              eventvar = "status")
+        ref_fit6 <- survreg(formula = Surv(time,status) ~ trt + bili + trt:bili + age + male + stage +
+                                trt:age + bili:male + bili:stage,
+                            dist = "weibull",
+                            data = pbc_cc)
+        ## Same classes
+        expect_equal(class(yreg_fit6),
+                     class(ref_fit6))
+        ## Same formula
+        expect_equal(as.character(yreg_fit6$call$formula),
+                     as.character(ref_fit6$call$formula))
+        ## Same coef
+        expect_equal(coef(yreg_fit6),
+                     coef(ref_fit6))
+        ## Same vcov
+        expect_equal(vcov(yreg_fit6),
+                     vcov(ref_fit6))
     })
 
 })

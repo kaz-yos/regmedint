@@ -24,7 +24,7 @@ Number of Fisher Scoring iterations: 3
 ### Outcome model
 
 Call:
-lm(formula = alk_phos ~ trt * bili_bin, data = data)
+lm(formula = alk_phos ~ trt + bili_bin + trt:bili_bin, data = data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -37,7 +37,7 @@ trt            -47.75     354.84  -0.135  0.89304
 bili_bin       536.00     805.22   0.666  0.50619   
 trt:bili_bin    42.76     507.20   0.084  0.93287   
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 2105 on 272 degrees of freedom
 Multiple R-squared:  0.02031,	Adjusted R-squared:  0.009503 

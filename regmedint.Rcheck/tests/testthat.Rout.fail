@@ -1,0 +1,687 @@
+
+R version 4.0.2 (2020-06-22) -- "Taking Off Again"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(regmedint)
+> 
+> test_check("regmedint")
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+Error in coef_ready[vars] : invalid subscript type 'closure'
+Error in Sigma_beta_hat(mreg = mreg, mreg_fit = mreg_fit, avar = avar,  : 
+  object 'vcov_beta' not found
+══ Failed tests ════════════════════════════════════════════════════════════════
+── Error (test-01_regmedint_class_ui.R:18:1): (code run outside of `test_that()`) ──
+Error: c_cond is not NULL
+Backtrace:
+     █
+  1. └─testthat::describe(...) test-01_regmedint_class_ui.R:18:0
+  2.   └─base::eval(substitute(code), describe_environment)
+  3.     └─base::eval(substitute(code), describe_environment)
+  4.       └─testthat::describe(...) test-01_regmedint_class_ui.R:22:4
+  5.         └─base::eval(substitute(code), describe_environment)
+  6.           └─base::eval(substitute(code), describe_environment)
+  7.             └─testthat::describe(...) test-01_regmedint_class_ui.R:35:8
+  8.               └─base::eval(substitute(code), describe_environment)
+  9.                 └─base::eval(substitute(code), describe_environment)
+ 10.                   ├─base::summary(fit_regmedint_obj) test-01_regmedint_class_ui.R:60:12
+ 11.                   └─regmedint:::summary.regmedint(fit_regmedint_obj)
+ 12.                     └─x$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond)
+ 13.                       └─assertthat::assert_that(is.null(c_cond))
+── Failure (test-03_helpers_fit_mreg_fit_yreg.R:76:17): string_yreg_formula (non-survival yvar; good args): handles NULL cvar by omitting ──
+string_yreg_formula(...) not equal to "Y ~ A*M".
+1/1 mismatches
+x[1]: "Y ~ A + M + A : M"
+y[1]: "Y ~ A*M"
+── Failure (test-03_helpers_fit_mreg_fit_yreg.R:97:17): string_yreg_formula (non-survival yvar; good args): handles one cvar by adding ──
+string_yreg_formula(...) not equal to "Y ~ A*M + C".
+1/1 mismatches
+x[1]: "Y ~ A + M + A : M + C"
+y[1]: "Y ~ A*M + C"
+── Failure (test-03_helpers_fit_mreg_fit_yreg.R:118:17): string_yreg_formula (non-survival yvar; good args): handles three cvar by adding all ──
+string_yreg_formula(...) not equal to "Y ~ A*M + C1 + C2 + C3".
+1/1 mismatches
+x[1]: "Y ~ A + M + A : M + C1 + C2 + C3"
+y[1]: "Y ~ A*M + C1 + C2 + C3"
+── Failure (test-03_helpers_fit_mreg_fit_yreg.R:176:17): string_yreg_formula (survival yvar; good args): handles NULL cvar by omitting ──
+string_yreg_formula(...) not equal to "Surv(time, event) ~ A*M".
+1/1 mismatches
+x[1]: "Surv(time, event) ~ A + M + A : M"
+y[1]: "Surv(time, event) ~ A*M"
+── Failure (test-03_helpers_fit_mreg_fit_yreg.R:197:17): string_yreg_formula (survival yvar; good args): handles one cvar by adding ──
+string_yreg_formula(...) not equal to "Surv(time, event) ~ A*M + C".
+1/1 mismatches
+x[1]: "Surv(time, event) ~ A + M + A : M + C"
+y[1]: "Surv(time, event) ~ A*M + C"
+── Failure (test-03_helpers_fit_mreg_fit_yreg.R:218:17): string_yreg_formula (survival yvar; good args): handles three cvar by adding all ──
+string_yreg_formula(...) not equal to "Surv(time, event) ~ A*M + C1 + C2 + C3".
+1/1 mismatches
+x[1]: "Surv(time, event) ~ A + M + A : M + C1 + C2 + C3"
+y[1]: "Surv(time, event) ~ A*M + C1 + C2 + C3"
+── Failure (test-04_fit_yreg_linear.R:140:9): fit_yreg linear (interaction): fits a correct model with no covariates ──
+as.character(yreg_fit0$call$formula) not equal to as.character(ref_fit0$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili"
+y[3]: "trt * bili"
+── Failure (test-04_fit_yreg_linear.R:168:9): fit_yreg linear (interaction): fits a correct model with one covariate ──
+as.character(yreg_fit1$call$formula) not equal to as.character(ref_fit1$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age"
+y[3]: "trt * bili + age"
+── Failure (test-04_fit_yreg_linear.R:196:9): fit_yreg linear (interaction): fits a correct model with three covariates ──
+as.character(yreg_fit3$call$formula) not equal to as.character(ref_fit3$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age + male + stage"
+y[3]: "trt * bili + age + male + stage"
+── Failure (test-04_fit_yreg_logistic.R:144:9): fit_yreg logistic (interaction): fits a correct model with no covariates ──
+as.character(yreg_fit0$call$formula) not equal to as.character(ref_fit0$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili"
+y[3]: "trt * bili"
+── Failure (test-04_fit_yreg_logistic.R:173:9): fit_yreg logistic (interaction): fits a correct model with one covariate ──
+as.character(yreg_fit1$call$formula) not equal to as.character(ref_fit1$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age"
+y[3]: "trt * bili + age"
+── Failure (test-04_fit_yreg_logistic.R:202:9): fit_yreg logistic (interaction): fits a correct model with three covariates ──
+as.character(yreg_fit3$call$formula) not equal to as.character(ref_fit3$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age + male + stage"
+y[3]: "trt * bili + age + male + stage"
+── Failure (test-04_fit_yreg_loglinear.R:233:9): fit_yreg loglinear as modified poisson (interaction): fits a correct model with no covariates ──
+as.character(yreg_fit0$call$formula) not equal to as.character(ref_fit0$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili"
+y[3]: "trt * bili"
+── Failure (test-04_fit_yreg_loglinear.R:265:9): fit_yreg loglinear as modified poisson (interaction): fits a correct model with one covariate ──
+as.character(yreg_fit1$call$formula) not equal to as.character(ref_fit1$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age"
+y[3]: "trt * bili + age"
+── Failure (test-04_fit_yreg_loglinear.R:297:9): fit_yreg loglinear as modified poisson (interaction): fits a correct model with three covariates ──
+as.character(yreg_fit3$call$formula) not equal to as.character(ref_fit3$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age + male + stage"
+y[3]: "trt * bili + age + male + stage"
+── Failure (test-04_fit_yreg_negbin.R:140:9): fit_yreg negbin (interaction): fits a correct model with no covariates ──
+as.character(yreg_fit0$call$formula) not equal to as.character(ref_fit0$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili"
+y[3]: "trt * bili"
+── Failure (test-04_fit_yreg_negbin.R:168:9): fit_yreg negbin (interaction): fits a correct model with one covariate ──
+as.character(yreg_fit1$call$formula) not equal to as.character(ref_fit1$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age"
+y[3]: "trt * bili + age"
+── Failure (test-04_fit_yreg_negbin.R:196:9): fit_yreg negbin (interaction): fits a correct model with three covariates ──
+as.character(yreg_fit3$call$formula) not equal to as.character(ref_fit3$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age + male + stage"
+y[3]: "trt * bili + age + male + stage"
+── Failure (test-04_fit_yreg_poisson.R:143:9): fit_yreg poisson (interaction): fits a correct model with no covariates ──
+as.character(yreg_fit0$call$formula) not equal to as.character(ref_fit0$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili"
+y[3]: "trt * bili"
+── Failure (test-04_fit_yreg_poisson.R:172:9): fit_yreg poisson (interaction): fits a correct model with one covariate ──
+as.character(yreg_fit1$call$formula) not equal to as.character(ref_fit1$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age"
+y[3]: "trt * bili + age"
+── Failure (test-04_fit_yreg_poisson.R:201:9): fit_yreg poisson (interaction): fits a correct model with three covariates ──
+as.character(yreg_fit3$call$formula) not equal to as.character(ref_fit3$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age + male + stage"
+y[3]: "trt * bili + age + male + stage"
+── Failure (test-04_fit_yreg_survAFT_exp.R:147:9): fit_yreg exponential AFT (interaction): fits a correct model with no covariates ──
+as.character(yreg_fit0$call$formula) not equal to as.character(ref_fit0$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili"
+y[3]: "trt * bili"
+── Failure (test-04_fit_yreg_survAFT_exp.R:176:9): fit_yreg exponential AFT (interaction): fits a correct model with one covariate ──
+as.character(yreg_fit1$call$formula) not equal to as.character(ref_fit1$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age"
+y[3]: "trt * bili + age"
+── Failure (test-04_fit_yreg_survAFT_exp.R:205:9): fit_yreg exponential AFT (interaction): fits a correct model with three covariates ──
+as.character(yreg_fit3$call$formula) not equal to as.character(ref_fit3$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age + male + stage"
+y[3]: "trt * bili + age + male + stage"
+── Failure (test-04_fit_yreg_survAFT_weibull.R:148:9): fit_yreg Weibull AFT (interaction): fits a correct model with no covariates ──
+as.character(yreg_fit0$call$formula) not equal to as.character(ref_fit0$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili"
+y[3]: "trt * bili"
+── Failure (test-04_fit_yreg_survAFT_weibull.R:177:9): fit_yreg Weibull AFT (interaction): fits a correct model with one covariate ──
+as.character(yreg_fit1$call$formula) not equal to as.character(ref_fit1$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age"
+y[3]: "trt * bili + age"
+── Failure (test-04_fit_yreg_survAFT_weibull.R:206:5): fit_yreg Weibull AFT (interaction): fits a correct model with three covariates ──
+as.character(yreg_fit3$call$formula) not equal to as.character(ref_fit3$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age + male + stage"
+y[3]: "trt * bili + age + male + stage"
+── Failure (test-04_fit_yreg_survCox.R:144:9): fit_yreg Cox (interaction): fits a correct model with no covariates ──
+as.character(yreg_fit0$call$formula) not equal to as.character(ref_fit0$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili"
+y[3]: "trt * bili"
+── Failure (test-04_fit_yreg_survCox.R:172:9): fit_yreg Cox (interaction): fits a correct model with one covariate ──
+as.character(yreg_fit1$call$formula) not equal to as.character(ref_fit1$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age"
+y[3]: "trt * bili + age"
+── Failure (test-04_fit_yreg_survCox.R:200:9): fit_yreg Cox (interaction): fits a correct model with three covariates ──
+as.character(yreg_fit3$call$formula) not equal to as.character(ref_fit3$call$formula).
+1/3 mismatches
+x[3]: "trt + bili + trt:bili + age + male + stage"
+y[3]: "trt * bili + age + male + stage"
+── Error (test-06_calc_myreg_helpers_coef.R:191:17): theta_hat (NULL cvar) for yreg linear: extracts coef correctly when there is no interaction (add zero) ──
+Error: invalid subscript type 'closure'
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_coef.R:191:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::theta_hat(...)
+── Failure (test-06_calc_myreg_helpers_coef.R:222:17): theta_hat (NULL cvar) for yreg linear: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+── Error (test-06_calc_myreg_helpers_coef.R:231:17): theta_hat (NULL cvar) for yreg linear: extracts coef correctly when there is an interaction ──
+Error: invalid subscript type 'closure'
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_coef.R:231:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. ├─`%>%`(...)
+ 5. └─regmedint:::theta_hat(...)
+── Error (test-06_calc_myreg_helpers_coef.R:259:17): theta_hat (NULL cvar) for yreg logistic: extracts coef correctly when there is no interaction (add zero) ──
+Error: invalid subscript type 'closure'
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_coef.R:259:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::theta_hat(...)
+── Failure (test-06_calc_myreg_helpers_coef.R:290:17): theta_hat (NULL cvar) for yreg logistic: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+── Error (test-06_calc_myreg_helpers_coef.R:327:17): theta_hat (NULL cvar) for yreg loglinear: extracts coef correctly when there is no interaction (add zero) ──
+Error: invalid subscript type 'closure'
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_coef.R:327:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::theta_hat(...)
+── Failure (test-06_calc_myreg_helpers_coef.R:358:17): theta_hat (NULL cvar) for yreg loglinear: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+── Error (test-06_calc_myreg_helpers_coef.R:396:17): theta_hat (NULL cvar) for yreg poisson: extracts coef correctly when there is no interaction (add zero) ──
+Error: invalid subscript type 'closure'
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_coef.R:396:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::theta_hat(...)
+── Failure (test-06_calc_myreg_helpers_coef.R:427:17): theta_hat (NULL cvar) for yreg poisson: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+── Error (test-06_calc_myreg_helpers_coef.R:465:17): theta_hat (NULL cvar) for yreg negbin: extracts coef correctly when there is no interaction (add zero) ──
+Error: invalid subscript type 'closure'
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_coef.R:465:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::theta_hat(...)
+── Failure (test-06_calc_myreg_helpers_coef.R:496:17): theta_hat (NULL cvar) for yreg negbin: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+── Error (test-06_calc_myreg_helpers_coef.R:534:17): theta_hat (NULL cvar) for yreg survCox: extracts coef correctly when there is no interaction (add two zeros) ──
+Error: invalid subscript type 'closure'
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_coef.R:534:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::theta_hat(...)
+── Failure (test-06_calc_myreg_helpers_coef.R:567:17): theta_hat (NULL cvar) for yreg survCox: extracts coef correctly when there is an interaction (add zero for Intercept) ──
+theta_hat(...) not equal to `ref_coef`.
+Types not compatible: character is not double
+── Error (test-06_calc_myreg_helpers_coef.R:604:17): theta_hat (NULL cvar) for yreg survAFT_exp: extracts coef correctly when there is no interaction (add zero) ──
+Error: invalid subscript type 'closure'
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_coef.R:604:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::theta_hat(...)
+── Failure (test-06_calc_myreg_helpers_coef.R:635:17): theta_hat (NULL cvar) for yreg survAFT_exp: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+── Error (test-06_calc_myreg_helpers_coef.R:672:17): theta_hat (NULL cvar) for yreg survAFT_weibull: extracts coef correctly when there is no interaction (add zero) ──
+Error: invalid subscript type 'closure'
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_coef.R:672:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::theta_hat(...)
+── Failure (test-06_calc_myreg_helpers_coef.R:703:17): theta_hat (NULL cvar) for yreg survAFT_weibull: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit0)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:775:17): theta_hat (1 cvar) for yreg linear: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:844:17): theta_hat (1 cvar) for yreg logistic: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:913:17): theta_hat (1 cvar) for yreg loglinear: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:983:17): theta_hat (1 cvar) for yreg poisson: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:1053:17): theta_hat (1 cvar) for yreg negbin: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:1125:17): theta_hat (1 cvar) for yreg survCox: extracts coef correctly when there is an interaction (add zero for Intercept) ──
+theta_hat(...) not equal to `ref_coef`.
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:1194:17): theta_hat (1 cvar) for yreg survAFT_exp: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:1263:17): theta_hat (1 cvar) for yreg survAFT_weibull: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit1)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:1335:17): theta_hat (3 cvar) for yreg linear: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:1404:17): theta_hat (3 cvar) for yreg logistic: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:1473:17): theta_hat (3 cvar) for yreg loglinear: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:1543:17): theta_hat (3 cvar) for yreg poisson: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:1613:17): theta_hat (3 cvar) for yreg negbin: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:1685:17): theta_hat (3 cvar) for yreg survCox: extracts coef correctly when there is an interaction (Add zero for Intercept) ──
+theta_hat(...) not equal to `ref_coef`.
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:1754:17): theta_hat (3 cvar) for yreg survAFT_exp: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+── Failure (test-06_calc_myreg_helpers_coef.R:1823:17): theta_hat (3 cvar) for yreg survAFT_weibull: extracts coef correctly when there is an interaction ──
+theta_hat(...) not equal to coef(yreg_fit3)[vars].
+Types not compatible: character is not double
+── Error (test-06_calc_myreg_helpers_vcov.R:32:13): Sigma_beta_hat (NULL cvar): extracts vcov from linear models correctly without cvar ──
+Error: object 'vcov_beta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:32:12
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_beta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:50:13): Sigma_beta_hat (NULL cvar): extracts vcov from logistic models correctly without cvar ──
+Error: object 'vcov_beta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:50:12
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_beta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:197:17): Sigma_theta_hat (NULL cvar) for yreg linear: extracts vcov correctly when there is no interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:197:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:228:17): Sigma_theta_hat (NULL cvar) for yreg linear: extracts vcov correctly when there is an interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:228:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:266:17): Sigma_theta_hat (NULL cvar) for yreg logistic: extracts vcov correctly when there is no interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:266:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:297:17): Sigma_theta_hat (NULL cvar) for yreg logistic: extracts vcov correctly when there is an interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:297:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:335:17): Sigma_theta_hat (NULL cvar) for yreg loglinear: extracts vcov correctly when there is no interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:335:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:366:17): Sigma_theta_hat (NULL cvar) for yreg loglinear: extracts vcov correctly when there is an interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:366:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:405:17): Sigma_theta_hat (NULL cvar) for yreg poisson: extracts vcov correctly when there is no interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:405:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:437:17): Sigma_theta_hat (NULL cvar) for yreg poisson: extracts vcov correctly when there is an interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:437:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:476:17): Sigma_theta_hat (NULL cvar) for yreg negbin: extracts vcov correctly when there is no interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:476:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:507:17): Sigma_theta_hat (NULL cvar) for yreg negbin: extracts vcov correctly when there is an interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:507:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:546:17): Sigma_theta_hat (NULL cvar) for yreg survCox: extracts vcov correctly when there is no interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:546:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:581:17): Sigma_theta_hat (NULL cvar) for yreg survCox: extracts vcov correctly when there is an interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:581:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:619:17): Sigma_theta_hat (NULL cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:619:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:650:17): Sigma_theta_hat (NULL cvar) for yreg survAFT_exp: extracts vcov correctly when there is an interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:650:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:688:17): Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:688:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Error (test-06_calc_myreg_helpers_vcov.R:720:17): Sigma_theta_hat (NULL cvar) for yreg survAFT_weibull: extracts vcov correctly when there is an interaction ──
+Error: object 'vcov_theta' not found
+Backtrace:
+    █
+ 1. ├─testthat::expect_equal(...) test-06_calc_myreg_helpers_vcov.R:720:16
+ 2. │ └─testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. │   └─rlang::eval_bare(expr, quo_get_env(quo))
+ 4. └─regmedint:::Sigma_theta_hat(...)
+── Failure (test-06_calc_myreg_helpers_vcov.R:764:17): Sigma_theta_hat (1 cvar) for yreg linear: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:834:17): Sigma_theta_hat (1 cvar) for yreg logistic: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:904:17): Sigma_theta_hat (1 cvar) for yreg loglinear: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:975:17): Sigma_theta_hat (1 cvar) for yreg poisson: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1047:17): Sigma_theta_hat (1 cvar) for yreg negbin: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1118:17): Sigma_theta_hat (1 cvar) for yreg survCox: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1153:17): Sigma_theta_hat (1 cvar) for yreg survCox: extracts vcov correctly when there is an interaction ──
+Sigma_theta_hat(...) not equal to `ref_vcov`.
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1192:17): Sigma_theta_hat (1 cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1262:17): Sigma_theta_hat (1 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1338:17): Sigma_theta_hat (3 cvar) for yreg linear: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1408:17): Sigma_theta_hat (3 cvar) for yreg logistic: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1478:17): Sigma_theta_hat (3 cvar) for yreg loglinear: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1549:17): Sigma_theta_hat (3 cvar) for yreg poisson: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1621:17): Sigma_theta_hat (3 cvar) for yreg negbin: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1692:17): Sigma_theta_hat (3 cvar) for yreg survCox: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1727:17): Sigma_theta_hat (3 cvar) for yreg survCox: extracts vcov correctly when there is an interaction ──
+Sigma_theta_hat(...) not equal to `ref_vcov`.
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1766:17): Sigma_theta_hat (3 cvar) for yreg survAFT_exp: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Failure (test-06_calc_myreg_helpers_vcov.R:1836:17): Sigma_theta_hat (3 cvar) for yreg survAFT_weibull: extracts vcov correctly when there is no interaction ──
+Sigma_theta_hat(...) not equal to ref_vcov[vars, vars].
+Types not compatible: double is not S4
+── Error (test-07_calc_myreg_mreg_linear_yreg_linear.R:26:1): (code run outside of `test_that()`) ──
+Error: invalid subscript type 'closure'
+Backtrace:
+    █
+ 1. └─testthat::describe(...) test-07_calc_myreg_mreg_linear_yreg_linear.R:26:0
+ 2.   └─base::eval(substitute(code), describe_environment)
+ 3.     └─base::eval(substitute(code), describe_environment)
+ 4.       └─testthat::describe(...) test-07_calc_myreg_mreg_linear_yreg_linear.R:28:4
+ 5.         └─base::eval(substitute(code), describe_environment)
+ 6.           └─base::eval(substitute(code), describe_environment)
+ 7.             └─regmedint:::calc_myreg_mreg_linear_yreg_linear(...) test-07_calc_myreg_mreg_linear_yreg_linear.R:42:8
+ 8.               └─regmedint:::theta_hat_helper(...)
+ 9.                 └─regmedint:::theta_hat(...)
+── Error (test-07_calc_myreg_mreg_linear_yreg_logistic.R:26:1): (code run outside of `test_that()`) ──
+Error: argument "EMM_AC_Mmodel" is missing, with no default
+Backtrace:
+    █
+ 1. └─testthat::describe(...) test-07_calc_myreg_mreg_linear_yreg_logistic.R:26:0
+ 2.   └─base::eval(substitute(code), describe_environment)
+ 3.     └─base::eval(substitute(code), describe_environment)
+ 4.       └─testthat::describe(...) test-07_calc_myreg_mreg_linear_yreg_logistic.R:28:4
+ 5.         └─base::eval(substitute(code), describe_environment)
+ 6.           └─base::eval(substitute(code), describe_environment)
+ 7.             └─regmedint:::calc_myreg_mreg_linear_yreg_logistic(...) test-07_calc_myreg_mreg_linear_yreg_logistic.R:42:8
+ 8.               └─regmedint:::beta_hat_helper(...)
+── Error (test-07_calc_myreg_mreg_logistic_yreg_linear.R:28:1): (code run outside of `test_that()`) ──
+Error: argument "EMM_AC_Mmodel" is missing, with no default
+Backtrace:
+    █
+ 1. └─testthat::describe(...) test-07_calc_myreg_mreg_logistic_yreg_linear.R:28:0
+ 2.   └─base::eval(substitute(code), describe_environment)
+ 3.     └─base::eval(substitute(code), describe_environment)
+ 4.       └─testthat::describe(...) test-07_calc_myreg_mreg_logistic_yreg_linear.R:30:4
+ 5.         └─base::eval(substitute(code), describe_environment)
+ 6.           └─base::eval(substitute(code), describe_environment)
+ 7.             └─regmedint:::calc_myreg_mreg_logistic_yreg_linear(...) test-07_calc_myreg_mreg_logistic_yreg_linear.R:44:8
+ 8.               └─regmedint:::beta_hat_helper(...)
+── Error (test-07_calc_myreg_mreg_logistic_yreg_logistic.R:28:1): (code run outside of `test_that()`) ──
+Error: invalid subscript type 'closure'
+Backtrace:
+    █
+ 1. └─testthat::describe(...) test-07_calc_myreg_mreg_logistic_yreg_logistic.R:28:0
+ 2.   └─base::eval(substitute(code), describe_environment)
+ 3.     └─base::eval(substitute(code), describe_environment)
+ 4.       └─testthat::describe(...) test-07_calc_myreg_mreg_logistic_yreg_logistic.R:30:4
+ 5.         └─base::eval(substitute(code), describe_environment)
+ 6.           └─base::eval(substitute(code), describe_environment)
+ 7.             └─regmedint:::calc_myreg_mreg_logistic_yreg_logistic(...) test-07_calc_myreg_mreg_logistic_yreg_logistic.R:44:8
+ 8.               └─regmedint:::theta_hat_helper(...)
+ 9.                 └─regmedint:::theta_hat(...)
+── Error (test-08_regmedint_class_user_methods.R:12:1): (code run outside of `test_that()`) ──
+Error: invalid subscript type 'closure'
+Backtrace:
+     █
+  1. └─testthat::describe(...) test-08_regmedint_class_user_methods.R:12:0
+  2.   └─base::eval(substitute(code), describe_environment)
+  3.     └─base::eval(substitute(code), describe_environment)
+  4.       └─testthat::describe(...) test-08_regmedint_class_user_methods.R:23:4
+  5.         └─base::eval(substitute(code), describe_environment)
+  6.           └─base::eval(substitute(code), describe_environment)
+  7.             └─regmedint::regmedint(...) test-08_regmedint_class_user_methods.R:24:8
+  8.               └─regmedint:::new_regmedint(...)
+  9.                 └─regmedint:::calc_myreg(...)
+ 10.                   └─regmedint:::calc_myreg_mreg_linear_yreg_linear(...)
+ 11.                     └─regmedint:::theta_hat_helper(...)
+ 12.                       └─regmedint:::theta_hat(...)
+── Error (test-09_cross_check_with_sas_macro.R:236:1): (code run outside of `test_that()`) ──
+Error: Problem with `mutate()` column `junk`.
+ℹ `junk = pmap(...)`.
+✖ c_cond is not NULL
+Backtrace:
+     █
+  1. ├─`%>%`(...) test-09_cross_check_with_sas_macro.R:236:0
+  2. ├─dplyr::mutate(...)
+  3. ├─dplyr:::mutate.data.frame(...)
+  4. │ └─dplyr:::mutate_cols(.data, ..., caller_env = caller_env())
+  5. │   ├─base::withCallingHandlers(...)
+  6. │   └─mask$eval_all_mutate(quo)
+  7. ├─purrr::pmap(...)
+  8. │ └─regmedint:::.f(.l[[1L]][[i]], .l[[2L]][[i]], .l[[3L]][[i]], ...)
+  9. │   ├─utils::capture.output(summary(res, exponentiate = TRUE)) test-09_cross_check_with_sas_macro.R:240:8
+ 10. │   │ └─utils:::evalVis(expr)
+ 11. │   │   ├─base::withVisible(eval(expr, pf))
+ 12. │   │   └─base::eval(expr, pf)
+ 13. │   │     └─base::eval(expr, pf)
+ 14. │   ├─base::summary(res, exponentiate = TRUE)
+ 15. │   └─regmedint:::summary.regmedint(res, exponentiate = TRUE)
+ 16. │     └─x$myreg$est_fun(a0 = a0, a1 = a1, m_cde = m_cde, c_cond = c_cond)
+ 17. │       └─assertthat::assert_that(is.null(c_cond))
+ 18. │         └─base::stop(assertError(attr(res, "msg")))
+ 19. └─(function (e) ...
+
+[ FAIL 106 | WARN 0 | SKIP 0 | PASS 512 ]
+Error: Test failures
+Execution halted

@@ -1,0 +1,88 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.0116  -1.0649  -0.5783   1.0511   1.7122  
+
+Coefficients:
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 349.60  on 271  degrees of freedom
+AIC: 359.6
+
+Number of Fisher Scoring iterations: 4
+
+### Outcome model
+Call:
+survival::coxph(formula = Surv(time, status) ~ trt * bili_bin + 
+    age + male + stage, data = data, ties = "efron")
+
+  n= 276, number of events= 129 
+
+                  coef exp(coef)  se(coef)      z   Pr(>|z|)    
+trt          -0.026402  0.973944  0.349565 -0.076    0.93979    
+bili_bin      1.900175  6.687068  0.649277  2.927    0.00343 ** 
+age           0.017670  1.017827  0.009092  1.943    0.05197 .  
+male         -0.007798  0.992233  0.241523 -0.032    0.97424    
+stage         0.590715  1.805278  0.130943  4.511 0.00000645 ***
+trt:bili_bin -0.225433  0.798170  0.407892 -0.553    0.58048    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+             exp(coef) exp(-coef) lower .95 upper .95
+trt             0.9739     1.0268    0.4909     1.932
+bili_bin        6.6871     0.1495    1.8731    23.873
+age             1.0178     0.9825    0.9998     1.036
+male            0.9922     1.0078    0.6181     1.593
+stage           1.8053     0.5539    1.3966     2.333
+trt:bili_bin    0.7982     1.2529    0.3588     1.775
+
+Concordance= 0.793  (se = 0.019 )
+Likelihood ratio test= 117  on 6 df,   p=<2e-16
+Wald test            = 99.74  on 6 df,   p=<2e-16
+Score (logrank) test = 118.3  on 6 df,   p=<2e-16
+
+### Mediation analysis 
+             est         se          Z           p       lower     upper  exp(est) exp(lower) exp(upper)
+cde  -0.41040997 0.39551584 -1.0376575 0.299429546 -1.18560677 0.3647868 0.6633782  0.3055607   1.440207
+pnde -0.26780383 0.23080518 -1.1603025 0.245925664 -0.72017366 0.1845660 0.7650579  0.4866677   1.202696
+tnie -0.05496194 0.08634058 -0.6365713 0.524404121 -0.22418637 0.1142625 0.9465212  0.7991662   1.121046
+tnde -0.26115583 0.22771177 -1.1468702 0.251435283 -0.70746270 0.1851510 0.7701609  0.4928932   1.203400
+pnie -0.06160993 0.09652707 -0.6382658 0.523300686 -0.25079952 0.1275797 0.9402496  0.7781784   1.136075
+te   -0.32276576 0.24422404 -1.3215970 0.186302372 -0.80143608 0.1559046 0.7241435  0.4486842   1.168715
+pm    0.14831765 0.04700707  3.1552200 0.001603771  0.05618549 0.2404498        NA         NA         NA
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2.3
+ a0 (reference value of avar)  = 1.1
+mvar: bili_bin
+ m_cde (intervend value of mvar for cde) = 1.4
+cvar: age male stage
+ c_cond (covariate vector value) = 50 1 2
+
+Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+
+### Re-evaluation at c_cond = cmean
+             est         se          Z            p      lower     upper  exp(est) exp(lower) exp(upper)
+cde  -0.41040997 0.39551584 -1.0376575 0.2994295457 -1.1856068 0.3647868 0.6633782  0.3055607   1.440207
+pnde -0.25440700 0.22442467 -1.1335964 0.2569638867 -0.6942713 0.1854573 0.7753762  0.4994383   1.203769
+tnie -0.06281427 0.09700377 -0.6475446 0.5172795399 -0.2529382 0.1273096 0.9391179  0.7765159   1.135769
+tnde -0.24579044 0.22209372 -1.1066969 0.2684249751 -0.6810861 0.1895052 0.7820861  0.5060670   1.208651
+pnie -0.07143083 0.10971539 -0.6510557 0.5150105142 -0.2864690 0.1436074 0.9310607  0.7509103   1.154431
+te   -0.31722127 0.24408364 -1.2996417 0.1937238052 -0.7956164 0.1611739 0.7281696  0.4513030   1.174889
+pm    0.17366176 0.04771009  3.6399376 0.0002727041  0.0801517 0.2671718        NA         NA         NA

@@ -1,0 +1,66 @@
+### Mediator model
+
+Call:
+lm(formula = bili ~ trt, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.4000 -2.5000 -1.7000  0.4434 24.3000 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   2.2132     0.8784   2.520   0.0123 *
+trt           0.7434     0.5532   1.344   0.1801  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.594 on 274 degrees of freedom
+Multiple R-squared:  0.006548,	Adjusted R-squared:  0.002923 
+F-statistic: 1.806 on 1 and 274 DF,  p-value: 0.1801
+
+### Outcome model
+
+Call:
+glm(formula = platelet ~ trt + bili, family = poisson(link = "log"), 
+    data = data)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-14.1974   -3.8696   -0.3429    3.3537   16.1278  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  5.5390793  0.0120167 460.949  < 2e-16 ***
+trt          0.0323306  0.0074641   4.331 1.48e-05 ***
+bili        -0.0062492  0.0008434  -7.409 1.27e-13 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 9286.7  on 275  degrees of freedom
+Residual deviance: 9216.2  on 273  degrees of freedom
+AIC: 11247
+
+Number of Fisher Scoring iterations: 4
+
+### Mediation analysis 
+             est          se         Z             p       lower       upper  exp(est) exp(lower) exp(upper)
+cde   0.03879670 0.008956943  4.331467 0.00001481194  0.02124141 0.056351983 1.0395591  1.0214686   1.057970
+pnde  0.03879670 0.008956943  4.331467 0.00001481194  0.02124141 0.056351983 1.0395591  1.0214686   1.057970
+tnie -0.00557464 0.004215782 -1.322326 0.18605951023 -0.01383742 0.002688142 0.9944409  0.9862579   1.002692
+tnde  0.03879670 0.008956943  4.331467 0.00001481194  0.02124141 0.056351983 1.0395591  1.0214686   1.057970
+pnie -0.00557464 0.004215782 -1.322326 0.18605951023 -0.01383742 0.002688142 0.9944409  0.9862579   1.002692
+te    0.03322206 0.009849044  3.373125 0.00074320119  0.01391829 0.052525829 1.0337801  1.0140156   1.053930
+pm   -0.17107851 0.157177384 -1.088442 0.27639989522 -0.47914053 0.136983498        NA         NA         NA
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2.3
+ a0 (reference value of avar)  = 1.1
+mvar: bili
+ m_cde (intervend value of mvar for cde) = 1.4
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.

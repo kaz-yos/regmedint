@@ -24,8 +24,8 @@ Number of Fisher Scoring iterations: 3
 ### Outcome model
 
 Call:
-survival::survreg(formula = Surv(time, status) ~ trt * bili_bin, 
-    data = data, dist = "exponential")
+survival::survreg(formula = Surv(time, status) ~ trt + bili_bin + 
+    trt:bili_bin, data = data, dist = "exponential")
                Value Std. Error     z      p
 (Intercept)   9.2078     0.5557 16.57 <2e-16
 trt           0.0274     0.3483  0.08 0.9374
@@ -48,7 +48,7 @@ tnie 0.03285015 0.09188457 0.3575154 0.7207060 -0.1472403 0.2129406 1.033396  0.
 tnde 0.04099885 0.35469634 0.1155886 0.9079786 -0.6541932 0.7361909 1.041851  0.5198613   2.087967
 pnie 0.03358388 0.09383305 0.3579110 0.7204099 -0.1503255 0.2174933 1.034154  0.8604278   1.242957
 te   0.07458273 0.36475046 0.2044760 0.8379815 -0.6403150 0.7894805 1.077434  0.5271263   2.202252
-pm   0.44965572 0.04520592 9.9468336 0.0000000  0.3610538 0.5382577       NA         NA         NA
+pm   0.44965572 2.11928459 0.2121734 0.8319718 -3.7040658 4.6033772       NA         NA         NA
 
 Evaluated at:
 avar: trt

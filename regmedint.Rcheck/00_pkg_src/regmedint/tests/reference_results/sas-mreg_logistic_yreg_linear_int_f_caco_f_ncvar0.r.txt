@@ -1,0 +1,64 @@
+### Mediator model
+
+Call:
+glm(formula = bili_bin ~ trt, family = binomial(link = "logit"), 
+    data = data)
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-1.177  -1.141  -1.141   1.177   1.214  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)  0.08577    0.38245   0.224    0.823
+trt         -0.08577    0.24091  -0.356    0.722
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 382.49  on 275  degrees of freedom
+Residual deviance: 382.36  on 274  degrees of freedom
+AIC: 386.36
+
+Number of Fisher Scoring iterations: 3
+
+### Outcome model
+
+Call:
+lm(formula = alk_phos ~ trt + bili_bin, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1980.1 -1054.2  -605.8    59.9 12172.7 
+
+Coefficients:
+            Estimate Std. Error t value  Pr(>|t|)    
+(Intercept)  1743.35     422.93   4.122 0.0000498 ***
+trt           -26.82     253.08  -0.106    0.9157    
+bili_bin      600.44     253.12   2.372    0.0184 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2102 on 273 degrees of freedom
+Multiple R-squared:  0.02028,	Adjusted R-squared:  0.01311 
+F-statistic: 2.826 on 2 and 273 DF,  p-value: 0.06099
+
+### Mediation analysis 
+             est         se          Z         p       lower      upper
+cde  -32.1879862 303.700838 -0.1059858 0.9155936 -627.430691 563.054719
+pnde -32.1879862 303.700838 -0.1059858 0.9155936 -627.430691 563.054719
+tnie -15.4319663  43.791397 -0.3523972 0.7245404 -101.261528  70.397596
+tnde -32.1879862 303.700838 -0.1059858 0.9155936 -627.430691 563.054719
+pnie -15.4319663  43.791397 -0.3523972 0.7245404 -101.261528  70.397596
+te   -47.6199525 306.703769 -0.1552637 0.8766135 -648.748293 553.508388
+pm     0.3240651   2.160101  0.1500231 0.8807464   -3.909656   4.557786
+
+Evaluated at:
+avar: trt
+ a1 (intervened value of avar) = 2.3
+ a0 (reference value of avar)  = 1.1
+mvar: bili_bin
+ m_cde (intervend value of mvar for cde) = 1.4
+cvar: 
+ c_cond (covariate vector value) = 
+
+Note that effect estimates do not vary over m_cde and c_cond values when interaction = FALSE.

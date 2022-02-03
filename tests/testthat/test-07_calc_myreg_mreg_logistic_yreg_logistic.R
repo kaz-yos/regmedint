@@ -48,7 +48,10 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                                                    avar = "trt",
                                                    mvar = "bili_bin",
                                                    cvar = NULL,
-                                                   interaction = FALSE)
+                                                   interaction = FALSE,
+                                                   EMM_AC_Mmodel = NULL,
+                                                   EMM_AC_Ymodel = NULL,
+                                                   EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -106,7 +109,52 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                                                    avar = "trt",
                                                    mvar = "bili_bin",
                                                    cvar = c("age"),
-                                                   interaction = FALSE)
+                                                   interaction = FALSE,
+                                                   EMM_AC_Mmodel = NULL,
+                                                   EMM_AC_Ymodel = NULL,
+                                                   EMM_MC = NULL)
+        
+        # add EMM
+        myreg_funs_EMM1 <-
+          calc_myreg_mreg_logistic_yreg_logistic(mreg = "logistic",
+                                                 mreg_fit = mreg_fit,
+                                                 yreg = "logistic",
+                                                 yreg_fit = yreg_fit,
+                                                 avar = "trt",
+                                                 mvar = "bili_bin",
+                                                 cvar = c("age"),
+                                                 interaction = FALSE,
+                                                 EMM_AC_Mmodel = c("age"),
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = NULL)
+        
+        myreg_funs_EMM2 <-
+          calc_myreg_mreg_logistic_yreg_logistic(mreg = "logistic",
+                                                 mreg_fit = mreg_fit,
+                                                 yreg = "logistic",
+                                                 yreg_fit = yreg_fit,
+                                                 avar = "trt",
+                                                 mvar = "bili_bin",
+                                                 cvar = c("age"),
+                                                 interaction = FALSE,
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = c("age"),
+                                                 EMM_MC = NULL)
+        
+        myreg_funs_EMM3 <-
+          calc_myreg_mreg_logistic_yreg_logistic(mreg = "logistic",
+                                                 mreg_fit = mreg_fit,
+                                                 yreg = "logistic",
+                                                 yreg_fit = yreg_fit,
+                                                 avar = "trt",
+                                                 mvar = "bili_bin",
+                                                 cvar = c("age"),
+                                                 interaction = FALSE,
+                                                 EMM_AC_Mmodel = NULL,
+                                                 EMM_AC_Ymodel = NULL,
+                                                 EMM_MC = c("age"))
+        
+        
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -140,6 +188,13 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
             expect_error(myreg_funs[[1]](1,2,3,c(4,5,6)), regexp = "c_cond")
             expect_error(myreg_funs[[2]](1,2,3,c(4,5,6)), regexp = "c_cond")
         })
+        
+        # check functions with EMM differ from no EMM 
+        it("check functions with EMM differ from no EMM", {
+          expect_false(isTRUE(all.equal(myreg_funs, myreg_funs_EMM1)))
+          expect_false(isTRUE(all.equal(myreg_funs_EMM1, myreg_funs_EMM2)))
+          expect_false(isTRUE(all.equal(myreg_funs_EMM2, myreg_funs_EMM3)))
+        })
     })
     ##
     describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction (3 cvar)", {
@@ -164,7 +219,10 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                                                    avar = "trt",
                                                    mvar = "bili_bin",
                                                    cvar = c("age","male","stage"),
-                                                   interaction = FALSE)
+                                                   interaction = FALSE,
+                                                   EMM_AC_Mmodel = NULL,
+                                                   EMM_AC_Ymodel = NULL,
+                                                   EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -221,7 +279,10 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                                                    avar = "trt",
                                                    mvar = "bili_bin",
                                                    cvar = c("age","male","stage"),
-                                                   interaction = FALSE)
+                                                   interaction = FALSE,
+                                                   EMM_AC_Mmodel = NULL,
+                                                   EMM_AC_Ymodel = NULL,
+                                                   EMM_MC = NULL)
         it("returns functions where cde does not depend on m_cde", {
             expect_equal(myreg_funs[[1]](1,2,-3,c(4,5,6))["cde"],
                          myreg_funs[[1]](1,2,+3,c(4,5,6))["cde"])
@@ -298,7 +359,10 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                                                    avar = "trt",
                                                    mvar = "bili_bin",
                                                    cvar = NULL,
-                                                   interaction = TRUE)
+                                                   interaction = TRUE,
+                                                   EMM_AC_Mmodel = NULL,
+                                                   EMM_AC_Ymodel = NULL,
+                                                   EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -356,7 +420,10 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                                                    avar = "trt",
                                                    mvar = "bili_bin",
                                                    cvar = c("age"),
-                                                   interaction = TRUE)
+                                                   interaction = TRUE,
+                                                   EMM_AC_Mmodel = NULL,
+                                                   EMM_AC_Ymodel = NULL,
+                                                   EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -414,7 +481,10 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                                                    avar = "trt",
                                                    mvar = "bili_bin",
                                                    cvar = c("age","male","stage"),
-                                                   interaction = TRUE)
+                                                   interaction = TRUE,
+                                                   EMM_AC_Mmodel = NULL,
+                                                   EMM_AC_Ymodel = NULL,
+                                                   EMM_MC = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -475,7 +545,10 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                                                    avar = "trt",
                                                    mvar = "bili_bin",
                                                    cvar = c("age","male","stage"),
-                                                   interaction = TRUE)
+                                                   interaction = TRUE,
+                                                   EMM_AC_Mmodel = NULL,
+                                                   EMM_AC_Ymodel = NULL,
+                                                   EMM_MC = NULL)
         it("returns functions where cde depends on m_cde", {
             ## Positive (a1 - a0)
             if (theta3 > 0) {
@@ -488,7 +561,7 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                           myreg_funs[[1]](1,2,-3,c(4,5,6))["cde"])
             }
         })
-        it("returns functions where cde does no depend on c_cond", {
+        it("returns functions where cde does not depend on c_cond", {
             expect_equal(myreg_funs[[1]](1,2,+3,-1 * c(4,5,6))["cde"],
                          myreg_funs[[1]](1,2,+3,+2 * c(4,5,6))["cde"])
             expect_equal(myreg_funs[[2]](1,2,+3,-1 * c(4,5,6))["cde"],
@@ -606,132 +679,174 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_est function factory", {
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                            beta1 = 2,
                                                            beta2 = 3,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4,
                                                            theta2 = 5,
                                                            theta3 = 6,
-                                                           theta4 = NULL))
+                                                           theta4 = NULL,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                            beta1 = 2,
                                                            beta2 = 1:2,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4,
                                                            theta2 = 5,
                                                            theta3 = 6,
-                                                           theta4 = NULL))
+                                                           theta4 = NULL,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                            beta1 = 2,
                                                            beta2 = NULL,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4,
                                                            theta2 = 5,
                                                            theta3 = 6,
-                                                           theta4 = 7))
+                                                           theta4 = 7,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                            beta1 = 2,
                                                            beta2 = NULL,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4,
                                                            theta2 = 5,
                                                            theta3 = 6,
-                                                           theta4 = 7:8))
+                                                           theta4 = 7:8,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
         })
         it("errors given vector inputs in arguments other than beta2 and theta4", {
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1:2,
                                                            beta1 = 2,
                                                            beta2 = 3,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4,
                                                            theta2 = 5,
                                                            theta3 = 6,
-                                                           theta4 = 7))
+                                                           theta4 = 7,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                            beta1 = 2:3,
                                                            beta2 = 3,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4,
                                                            theta2 = 5,
                                                            theta3 = 6,
-                                                           theta4 = 7))
+                                                           theta4 = 7,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                            beta1 = 2,
                                                            beta2 = 3,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4:5,
                                                            theta2 = 5,
                                                            theta3 = 6,
-                                                           theta4 = 7))
+                                                           theta4 = 7,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                            beta1 = 2,
                                                            beta2 = 3,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4,
                                                            theta2 = 5:6,
                                                            theta3 = 6,
-                                                           theta4 = 7))
+                                                           theta4 = 7,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                            beta1 = 2,
                                                            beta2 = 3,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4,
                                                            theta2 = 5,
                                                            theta3 = 6:7,
-                                                           theta4 = 7))
+                                                           theta4 = 7,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
         })
         it("errors given NULL inputs in arguments other than beta2 and theta4", {
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = NULL,
                                                            beta1 = 2,
                                                            beta2 = 3,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4,
                                                            theta2 = 5,
                                                            theta3 = 6,
-                                                           theta4 = 7))
+                                                           theta4 = 7,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                            beta1 = NULL,
                                                            beta2 = 3,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4,
                                                            theta2 = 5,
                                                            theta3 = 6,
-                                                           theta4 = 7))
+                                                           theta4 = 7,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                            beta1 = 2,
                                                            beta2 = 3,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = NULL,
                                                            theta2 = 5,
                                                            theta3 = 6,
-                                                           theta4 = 7))
+                                                           theta4 = 7,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                            beta1 = 2,
                                                            beta2 = 3,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4,
                                                            theta2 = NULL,
                                                            theta3 = 6,
-                                                           theta4 = 7))
+                                                           theta4 = 7,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                            beta1 = 2,
                                                            beta2 = 3,
+                                                           beta3 = NULL,
                                                            theta0 = 0,
                                                            theta1 = 4,
                                                            theta2 = 5,
                                                            theta3 = NULL,
-                                                           theta4 = 7))
+                                                           theta4 = 7,
+                                                           theta5 = NULL,
+                                                           theta6 = NULL))
         })
     })
     ## Note that this function does not require a model object and easy to test.
@@ -740,16 +855,19 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_est function factory", {
             calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                        beta1 = 2,
                                                        beta2 = NULL,
+                                                       beta3 = NULL,
                                                        theta0 = 0,
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = NULL)
+                                                       theta4 = NULL,
+                                                       theta5 = NULL,
+                                                       theta6 = NULL)
         it("returns a function", {
             expect_equal(class(est_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, and c_cond", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(est_fun)),
                          c("a0","a1","m_cde","c_cond"))
         })
@@ -783,16 +901,19 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_est function factory", {
             calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                        beta1 = 2,
                                                        beta2 = 3,
+                                                       beta3 = NULL,
                                                        theta0 = 0,
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = 7)
+                                                       theta4 = 7,
+                                                       theta5 = NULL,
+                                                       theta6 = NULL)
         it("returns a function", {
             expect_equal(class(est_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, and c_cond", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(est_fun)),
                          c("a0","a1","m_cde","c_cond"))
         })
@@ -826,16 +947,19 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_est function factory", {
             calc_myreg_mreg_logistic_yreg_logistic_est(beta0 = 1,
                                                        beta1 = 2,
                                                        beta2 = 3:5,
+                                                       beta3 = NULL,
                                                        theta0 = 0,
                                                        theta1 = 4,
                                                        theta2 = 5,
                                                        theta3 = 6,
-                                                       theta4 = 7:9)
+                                                       theta4 = 7:9,
+                                                       theta5 = NULL,
+                                                       theta6 = NULL)
         it("returns a function", {
             expect_equal(class(est_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, and c_cond", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(est_fun)),
                          c("a0","a1","m_cde","c_cond"))
         })
@@ -879,44 +1003,56 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
                                                           beta1 = 2,
                                                           beta2 = 3,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4,
                                                           theta2 = 5,
                                                           theta3 = 6,
                                                           theta4 = NULL,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
                                                           beta1 = 2,
                                                           beta2 = 1:2,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4,
                                                           theta2 = 5,
                                                           theta3 = 6,
                                                           theta4 = NULL,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
                                                           beta1 = 2,
                                                           beta2 = NULL,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4,
                                                           theta2 = 5,
                                                           theta3 = 6,
                                                           theta4 = 7,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
                                                           beta1 = 2,
                                                           beta2 = NULL,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4,
                                                           theta2 = 5,
                                                           theta3 = 6,
                                                           theta4 = 7:8,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
         })
@@ -925,55 +1061,70 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1:2,
                                                           beta1 = 2,
                                                           beta2 = 3,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4,
                                                           theta2 = 5,
                                                           theta3 = 6,
                                                           theta4 = 7,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
                                                           beta1 = 2:3,
                                                           beta2 = 3,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4,
                                                           theta2 = 5,
                                                           theta3 = 6,
                                                           theta4 = 7,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
                                                           beta1 = 2,
                                                           beta2 = 3,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4:5,
                                                           theta2 = 5,
                                                           theta3 = 6,
                                                           theta4 = 7,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
                                                           beta1 = 2,
                                                           beta2 = 3,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4,
                                                           theta2 = 5:6,
                                                           theta3 = 6,
                                                           theta4 = 7,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
                                                           beta1 = 2,
                                                           beta2 = 3,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4,
                                                           theta2 = 5,
                                                           theta3 = 6:7,
                                                           theta4 = 7,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
         })
@@ -982,55 +1133,70 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = NULL,
                                                           beta1 = 2,
                                                           beta2 = 3,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4,
                                                           theta2 = 5,
                                                           theta3 = 6,
                                                           theta4 = 7,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
                                                           beta1 = NULL,
                                                           beta2 = 3,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4,
                                                           theta2 = 5,
                                                           theta3 = 6,
                                                           theta4 = 7,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
                                                           beta1 = 2,
                                                           beta2 = 3,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = NULL,
                                                           theta2 = 5,
                                                           theta3 = 6,
                                                           theta4 = 7,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
                                                           beta1 = 2,
                                                           beta2 = 3,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4,
                                                           theta2 = NULL,
                                                           theta3 = 6,
                                                           theta4 = 7,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
             expect_error(
                 calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 1,
                                                           beta1 = 2,
                                                           beta2 = 3,
+                                                          beta3 = NULL,
                                                           theta0 = 0,
                                                           theta1 = 4,
                                                           theta2 = 5,
                                                           theta3 = NULL,
                                                           theta4 = 7,
+                                                          theta5 = NULL,
+                                                          theta6 = NULL,
                                                           Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                           Sigma_theta = diag(2, nrow = 4, ncol = 4)))
         })
@@ -1041,18 +1207,21 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
             calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 0.1,
                                                       beta1 = 0.2,
                                                       beta2 = NULL,
+                                                      beta3 = NULL,
                                                       theta0 = 0,
                                                       theta1 = 0.4,
                                                       theta2 = 0.5,
                                                       theta3 = 0.6,
                                                       theta4 = NULL,
+                                                      theta5 = NULL,
+                                                      theta6 = NULL,
                                                       Sigma_beta = diag(1, nrow = 2, ncol = 2),
                                                       Sigma_theta = diag(1.2, nrow = 4, ncol = 4))
         it("returns a function", {
             expect_equal(class(se_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, and c_cond", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(se_fun)),
                          c("a0","a1","m_cde","c_cond"))
         })
@@ -1086,18 +1255,21 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
             calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 0.1,
                                                       beta1 = 0.2,
                                                       beta2 = 0.3,
+                                                      beta3 = NULL,
                                                       theta0 = 0,
                                                       theta1 = 0.4,
                                                       theta2 = 0.5,
                                                       theta3 = 0.6,
                                                       theta4 = 0.7,
+                                                      theta5 = NULL,
+                                                      theta6 = NULL,
                                                       Sigma_beta = diag(1, nrow = 3, ncol = 3),
                                                       Sigma_theta = diag(1.1, nrow = 5, ncol = 5))
         it("returns a function", {
             expect_equal(class(se_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, and c_cond", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(se_fun)),
                          c("a0","a1","m_cde","c_cond"))
         })
@@ -1131,18 +1303,21 @@ describe("calc_myreg_mreg_logistic_yreg_logistic_se function factory", {
             calc_myreg_mreg_logistic_yreg_logistic_se(beta0 = 0.1,
                                                       beta1 = 0.2,
                                                       beta2 = 3:5/10,
+                                                      beta3 = NULL,
                                                       theta0 = 0,
                                                       theta1 = 0.4,
                                                       theta2 = 0.5,
                                                       theta3 = 0.6,
                                                       theta4 = 7:9/10,
+                                                      theta5 = NULL,
+                                                      theta6 = NULL,
                                                       Sigma_beta = diag(1, nrow = 5, ncol = 5),
                                                       Sigma_theta = diag(1.1, nrow = 7, ncol = 7))
         it("returns a function", {
             expect_equal(class(se_fun),
                          "function")
         })
-        it("returns a function that takes a0, a1, m_cde, and c_cond", {
+        it("returns a function that takes a0, a1, m_cde, c_cond", {
             expect_equal(names(formals(se_fun)),
                          c("a0","a1","m_cde","c_cond"))
         })

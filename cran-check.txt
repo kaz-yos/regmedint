@@ -1,10 +1,10 @@
-* using log directory ‘/Users/kazuki/Dropbox (Personal)/documents/programming/r/regmedint/regmedint.Rcheck’
-* using R version 4.0.5 (2021-03-31)
-* using platform: x86_64-apple-darwin20.3.0 (64-bit)
+* using log directory ‘/Users/yili/Desktop/regmedint_Dec2021/regmedint.Rcheck’
+* using R version 4.1.1 (2021-08-10)
+* using platform: x86_64-apple-darwin17.0 (64-bit)
 * using session charset: UTF-8
 * using option ‘--as-cran’
 * checking for file ‘regmedint/DESCRIPTION’ ... OK
-* this is package ‘regmedint’ version ‘0.2.1’
+* this is package ‘regmedint’ version ‘1.0.0’
 * package encoding: UTF-8
 * checking CRAN incoming feasibility ... Note_to_CRAN_maintainers
 Maintainer: ‘Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>’
@@ -34,7 +34,6 @@ Maintainer: ‘Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>’
 * checking whether the package can be unloaded cleanly ... OK
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
-* checking loading without being on the library search path ... OK
 * checking use of S3 registration ... OK
 * checking dependencies in R code ... OK
 * checking S3 generic/method consistency ... OK
@@ -52,6 +51,7 @@ Maintainer: ‘Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>’
 * checking for unstated dependencies in examples ... OK
 * checking contents of ‘data’ directory ... OK
 * checking data for non-ASCII characters ... OK
+* checking LazyData ... OK
 * checking data for ASCII and uncompressed saves ... OK
 * checking installed files from ‘inst/doc’ ... OK
 * checking files in ‘vignettes’ ... OK
@@ -59,11 +59,13 @@ Maintainer: ‘Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>’
 * checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ...
  OK
-* checking for unstated dependencies in vignettes ... OK
+* checking for unstated dependencies in vignettes ... NOTE
+'library' or 'require' calls not declared from:
+  ‘formattable’ ‘kableExtra’ ‘locfit’
 * checking package vignettes in ‘inst/doc’ ... OK
 * checking re-building of vignette outputs ... OK
 * checking PDF version of manual ... OK
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: OK
+Status: 1 NOTE

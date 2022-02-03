@@ -33,7 +33,7 @@ describe("regmedint", {
 
         describe("na_omit (mreg linear, yreg linear)", {
             ## Specify variables of interest
-            yvar <- "alk_phos"
+            yvar <- "alk.phos"
             avar <- "trt"
             mvar <- "bili_bin"
             cvar <- c("age","male","stage")

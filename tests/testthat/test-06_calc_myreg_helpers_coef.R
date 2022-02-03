@@ -33,13 +33,15 @@ describe("beta_hat", {
             expect_equal(beta_hat(mreg = "linear",
                                   mreg_fit = lm0,
                                   avar = c("trt"),
-                                  cvar = NULL),
+                                  cvar = NULL,
+                                  EMM_AC_Mmodel = NULL),
                          coef(lm0))
             vars <- c("(Intercept)","trt")
             expect_equal(beta_hat(mreg = "linear",
                                   mreg_fit = lm0,
                                   avar = c("trt"),
-                                  cvar = NULL),
+                                  cvar = NULL,
+                                  EMM_AC_Mmodel = NULL),
                          coef(lm0)[vars])
         })
         ##
@@ -51,13 +53,15 @@ describe("beta_hat", {
             expect_equal(beta_hat(mreg = "logistic",
                                   mreg_fit = glm0,
                                   avar = c("trt"),
-                                  cvar = NULL),
+                                  cvar = NULL,
+                                  EMM_AC_Mmodel = NULL),
                          coef(glm0))
             vars <- c("(Intercept)","trt")
             expect_equal(beta_hat(mreg = "logistic",
                                   mreg_fit = glm0,
                                   avar = c("trt"),
-                                  cvar = NULL),
+                                  cvar = NULL,
+                                  EMM_AC_Mmodel = NULL),
                          coef(glm0)[vars])
         })
     })
@@ -174,6 +178,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -186,6 +192,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "linear",
@@ -193,6 +201,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit0)) + 1)
             })
@@ -203,6 +213,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -211,6 +223,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit0)[vars])
                 expect_equal(theta_hat(yreg = "linear",
@@ -218,7 +232,9 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
-                                       interaction = FALSE) %>% length(),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
+                                       interaction = TRUE) %>% length(),
                              length(coef(yreg_fit0)) + 0)
             })
         })
@@ -230,6 +246,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -242,6 +260,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "logistic",
@@ -249,6 +269,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit0)) + 1)
             })
@@ -259,6 +281,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -267,6 +291,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit0)[vars])
                 expect_equal(theta_hat(yreg = "poisson",
@@ -274,6 +300,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit0)) + 0)
             })
@@ -286,6 +314,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -298,6 +328,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "loglinear",
@@ -305,6 +337,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit0)) + 1)
             })
@@ -315,6 +349,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -323,6 +359,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit0)[vars])
                 expect_equal(theta_hat(yreg = "loglinear",
@@ -330,6 +368,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit0)) + 0)
             })
@@ -343,6 +383,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -355,6 +397,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "poisson",
@@ -362,6 +406,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit0)) + 1)
             })
@@ -372,6 +418,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -380,6 +428,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit0)[vars])
                 expect_equal(theta_hat(yreg = "poisson",
@@ -387,6 +437,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit0)) + 0)
             })
@@ -400,6 +452,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -412,6 +466,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "negbin",
@@ -419,6 +475,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit0)) + 1)
             })
@@ -429,6 +487,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -437,6 +497,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit0)[vars])
                 expect_equal(theta_hat(yreg = "negbin",
@@ -444,6 +506,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit0)) + 0)
             })
@@ -456,6 +520,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("trt","bili")
@@ -469,6 +535,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "survCox",
@@ -476,6 +544,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit0)) + 2)
             })
@@ -486,6 +556,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("trt","bili","trt:bili")
@@ -496,6 +568,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              ref_coef)
                 expect_equal(theta_hat(yreg = "survCox",
@@ -503,6 +577,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit0)) + 1)
             })
@@ -515,6 +591,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("(Intercept)","trt","bili")
@@ -527,6 +605,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "survAFT_exp",
@@ -534,6 +614,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit0)) + 1)
             })
@@ -544,6 +626,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -552,6 +636,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit0)[vars])
                 expect_equal(theta_hat(yreg = "survAFT_exp",
@@ -559,6 +645,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit0)) + 0)
             })
@@ -571,6 +659,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("(Intercept)","trt","bili")
@@ -583,6 +673,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "survAFT_weibull",
@@ -590,6 +682,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit0)) + 1)
             })
@@ -600,6 +694,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = NULL,
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili")
@@ -608,6 +704,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit0)[vars])
                 expect_equal(theta_hat(yreg = "survAFT_weibull",
@@ -615,6 +713,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = NULL,
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit0)) + 0)
             })
@@ -630,6 +730,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -643,6 +745,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "linear",
@@ -650,6 +754,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit1)) + 1)
             })
@@ -660,6 +766,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -668,6 +776,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit1)[vars])
                 expect_equal(theta_hat(yreg = "linear",
@@ -675,6 +785,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit1)) + 0)
             })
@@ -687,6 +799,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -700,6 +814,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "logistic",
@@ -707,6 +823,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit1)) + 1)
             })
@@ -717,6 +835,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -725,6 +845,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit1)[vars])
                 expect_equal(theta_hat(yreg = "poisson",
@@ -732,6 +854,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit1)) + 0)
             })
@@ -744,6 +868,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -757,6 +883,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "loglinear",
@@ -764,6 +892,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit1)) + 1)
             })
@@ -774,6 +904,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -782,6 +914,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit1)[vars])
                 expect_equal(theta_hat(yreg = "loglinear",
@@ -789,6 +923,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit1)) + 0)
             })
@@ -802,6 +938,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -815,6 +953,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "poisson",
@@ -822,6 +962,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit1)) + 1)
             })
@@ -832,6 +974,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -840,6 +984,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit1)[vars])
                 expect_equal(theta_hat(yreg = "poisson",
@@ -847,6 +993,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit1)) + 0)
             })
@@ -860,6 +1008,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -873,6 +1023,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "negbin",
@@ -880,6 +1032,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit1)) + 1)
             })
@@ -890,6 +1044,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -898,6 +1054,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit1)[vars])
                 expect_equal(theta_hat(yreg = "negbin",
@@ -905,6 +1063,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit1)) + 0)
             })
@@ -917,6 +1077,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("trt","bili")
@@ -931,6 +1093,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "survCox",
@@ -938,6 +1102,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit1)) + 2)
             })
@@ -948,6 +1114,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("trt","bili","trt:bili","age")
@@ -958,6 +1126,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              ref_coef)
                 expect_equal(theta_hat(yreg = "survCox",
@@ -965,6 +1135,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit1)) + 1)
             })
@@ -977,6 +1149,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("(Intercept)","trt","bili")
@@ -990,6 +1164,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "survAFT_exp",
@@ -997,6 +1173,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit1)) + 1)
             })
@@ -1007,6 +1185,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -1015,6 +1195,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit1)[vars])
                 expect_equal(theta_hat(yreg = "survAFT_exp",
@@ -1022,6 +1204,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit1)) + 0)
             })
@@ -1034,6 +1218,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1047,6 +1233,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "survAFT_weibull",
@@ -1054,6 +1242,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit1)) + 1)
             })
@@ -1064,6 +1254,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age")
@@ -1072,6 +1264,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit1)[vars])
                 expect_equal(theta_hat(yreg = "survAFT_weibull",
@@ -1079,6 +1273,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit1)) + 0)
             })
@@ -1094,6 +1290,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1107,6 +1305,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "linear",
@@ -1114,6 +1314,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit3)) + 1)
             })
@@ -1124,6 +1326,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1132,6 +1336,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit3)[vars])
                 expect_equal(theta_hat(yreg = "linear",
@@ -1139,6 +1345,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit3)) + 0)
             })
@@ -1151,6 +1359,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1164,6 +1374,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "logistic",
@@ -1171,6 +1383,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit3)) + 1)
             })
@@ -1181,6 +1395,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1189,6 +1405,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit3)[vars])
                 expect_equal(theta_hat(yreg = "poisson",
@@ -1196,6 +1414,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit3)) + 0)
             })
@@ -1208,6 +1428,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1221,6 +1443,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "loglinear",
@@ -1228,6 +1452,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit3)) + 1)
             })
@@ -1238,6 +1464,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1246,6 +1474,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit3)[vars])
                 expect_equal(theta_hat(yreg = "loglinear",
@@ -1253,6 +1483,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit3)) + 0)
             })
@@ -1266,6 +1498,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1279,6 +1513,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "poisson",
@@ -1286,6 +1522,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit3)) + 1)
             })
@@ -1296,6 +1534,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1304,6 +1544,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit3)[vars])
                 expect_equal(theta_hat(yreg = "poisson",
@@ -1311,6 +1553,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit3)) + 0)
             })
@@ -1324,6 +1568,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = NULL)
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1337,6 +1583,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "negbin",
@@ -1344,6 +1592,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit3)) + 1)
             })
@@ -1354,6 +1604,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = NULL)
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1362,6 +1614,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit3)[vars])
                 expect_equal(theta_hat(yreg = "negbin",
@@ -1369,6 +1623,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit3)) + 0)
             })
@@ -1381,6 +1637,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("trt","bili")
@@ -1395,6 +1653,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "survCox",
@@ -1402,6 +1662,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit3)) + 2)
             })
@@ -1412,6 +1674,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("trt","bili","trt:bili","age","male","stage")
@@ -1422,6 +1686,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              ref_coef)
                 expect_equal(theta_hat(yreg = "survCox",
@@ -1429,6 +1695,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit3)) + 1)
             })
@@ -1441,6 +1709,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1454,6 +1724,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "survAFT_exp",
@@ -1461,6 +1733,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit3)) + 1)
             })
@@ -1471,6 +1745,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1479,6 +1755,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit3)[vars])
                 expect_equal(theta_hat(yreg = "survAFT_exp",
@@ -1486,6 +1764,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit3)) + 0)
             })
@@ -1498,6 +1778,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = FALSE,
                                       eventvar = "status")
                 vars1 <- c("(Intercept)","trt","bili")
@@ -1511,6 +1793,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE),
                              ref_coef[vars])
                 expect_equal(theta_hat(yreg = "survAFT_weibull",
@@ -1518,6 +1802,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = FALSE) %>% length(),
                              length(coef(yreg_fit3)) + 1)
             })
@@ -1528,6 +1814,8 @@ describe("theta_hat", {
                                       avar = "trt",
                                       mvar = "bili",
                                       cvar = c("age","male","stage"),
+                                      EMM_AC_Ymodel = NULL,
+                                      EMM_MC = NULL,
                                       interaction = TRUE,
                                       eventvar = "status")
                 vars <- c("(Intercept)","trt","bili","trt:bili","age","male","stage")
@@ -1536,6 +1824,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE),
                              coef(yreg_fit3)[vars])
                 expect_equal(theta_hat(yreg = "survAFT_weibull",
@@ -1543,6 +1833,8 @@ describe("theta_hat", {
                                        avar = "trt",
                                        mvar = "bili",
                                        cvar = c("age","male","stage"),
+                                       EMM_AC_Ymodel = NULL,
+                                       EMM_MC = NULL,
                                        interaction = TRUE) %>% length(),
                              length(coef(yreg_fit3)) + 0)
             })

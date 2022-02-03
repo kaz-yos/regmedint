@@ -31,12 +31,12 @@ Residuals:
 -1980.1 -1054.2  -605.8    59.9 12172.7 
 
 Coefficients:
-            Estimate Std. Error t value  Pr(>|t|)    
-(Intercept)  1743.35     422.93   4.122 0.0000498 ***
-trt           -26.82     253.08  -0.106    0.9157    
-bili_bin      600.44     253.12   2.372    0.0184 *  
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1743.35     422.93   4.122 4.98e-05 ***
+trt           -26.82     253.08  -0.106   0.9157    
+bili_bin      600.44     253.12   2.372   0.0184 *  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 2102 on 273 degrees of freedom
 Multiple R-squared:  0.02028,	Adjusted R-squared:  0.01311 
