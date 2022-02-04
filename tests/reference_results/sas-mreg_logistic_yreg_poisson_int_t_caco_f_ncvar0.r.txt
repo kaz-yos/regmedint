@@ -32,11 +32,11 @@ Deviance Residuals:
 -14.3173   -4.0410   -0.6337    3.2533   15.8995  
 
 Coefficients:
-             Estimate Std. Error z value Pr(>|z|)    
-(Intercept)   5.48429    0.01640 334.308  < 2e-16 ***
-trt           0.09494    0.01013   9.375  < 2e-16 ***
-bili_bin      0.09973    0.02379   4.191 2.77e-05 ***
-trt:bili_bin -0.15251    0.01497 -10.190  < 2e-16 ***
+             Estimate Std. Error z value  Pr(>|z|)    
+(Intercept)   5.48429    0.01640 334.308   < 2e-16 ***
+trt           0.09494    0.01013   9.375   < 2e-16 ***
+bili_bin      0.09973    0.02379   4.191 0.0000277 ***
+trt:bili_bin -0.15251    0.01497 -10.190   < 2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 

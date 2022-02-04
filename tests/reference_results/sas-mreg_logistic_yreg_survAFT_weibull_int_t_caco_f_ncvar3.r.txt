@@ -9,12 +9,12 @@ Deviance Residuals:
 -2.0116  -1.0649  -0.5783   1.0511   1.7122  
 
 Coefficients:
-            Estimate Std. Error z value Pr(>|z|)    
-(Intercept) -1.53024    0.85116  -1.798  0.07220 .  
-trt         -0.17117    0.25982  -0.659  0.51003    
-age         -0.01386    0.01299  -1.067  0.28610    
-male         1.33046    0.43911   3.030  0.00245 ** 
-stage        0.74640    0.16356   4.563 5.03e-06 ***
+            Estimate Std. Error z value   Pr(>|z|)    
+(Intercept) -1.53024    0.85116  -1.798    0.07220 .  
+trt         -0.17117    0.25982  -0.659    0.51003    
+age         -0.01386    0.01299  -1.067    0.28610    
+male         1.33046    0.43911   3.030    0.00245 ** 
+stage        0.74640    0.16356   4.563 0.00000503 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
@@ -31,15 +31,15 @@ Number of Fisher Scoring iterations: 4
 Call:
 survival::survreg(formula = Surv(time, status) ~ trt + bili_bin + 
     trt:bili_bin + age + male + stage, data = data, dist = "weibull")
-                Value Std. Error     z       p
-(Intercept)  10.71512    0.57782 18.54 < 2e-16
-trt           0.01629    0.24802  0.07  0.9476
-bili_bin     -1.28237    0.45770 -2.80  0.0051
-age          -0.01345    0.00645 -2.09  0.0370
-male         -0.00304    0.17204 -0.02  0.9859
-stage        -0.41048    0.09388 -4.37 1.2e-05
-trt:bili_bin  0.12524    0.28772  0.44  0.6634
-Log(scale)   -0.34227    0.07190 -4.76 1.9e-06
+                Value Std. Error     z         p
+(Intercept)  10.71512    0.57782 18.54   < 2e-16
+trt           0.01629    0.24802  0.07    0.9476
+bili_bin     -1.28237    0.45770 -2.80    0.0051
+age          -0.01345    0.00645 -2.09    0.0370
+male         -0.00304    0.17204 -0.02    0.9859
+stage        -0.41048    0.09388 -4.37 0.0000123
+trt:bili_bin  0.12524    0.28772  0.44    0.6634
+Log(scale)   -0.34227    0.07190 -4.76 0.0000019
 
 Scale= 0.71 
 

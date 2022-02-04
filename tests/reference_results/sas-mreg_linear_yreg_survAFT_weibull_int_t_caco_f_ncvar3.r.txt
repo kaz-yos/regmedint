@@ -26,15 +26,15 @@ F-statistic: 5.016 on 4 and 271 DF,  p-value: 0.0006483
 Call:
 survival::survreg(formula = Surv(time, status) ~ trt + bili + 
     trt:bili + age + male + stage, data = data, dist = "weibull")
-               Value Std. Error     z       p
-(Intercept)  9.97519    0.45912 21.73 < 2e-16
-trt          0.15705    0.15386  1.02   0.307
-bili        -0.07941    0.03454 -2.30   0.021
-age         -0.00564    0.00634 -0.89   0.374
-male        -0.34136    0.16281 -2.10   0.036
-stage       -0.45524    0.08900 -5.12 3.1e-07
-trt:bili    -0.00866    0.01931 -0.45   0.654
-Log(scale)  -0.40002    0.07290 -5.49 4.1e-08
+               Value Std. Error     z           p
+(Intercept)  9.97519    0.45912 21.73     < 2e-16
+trt          0.15705    0.15386  1.02       0.307
+bili        -0.07941    0.03454 -2.30       0.021
+age         -0.00564    0.00634 -0.89       0.374
+male        -0.34136    0.16281 -2.10       0.036
+stage       -0.45524    0.08900 -5.12 0.000000313
+trt:bili    -0.00866    0.01931 -0.45       0.654
+Log(scale)  -0.40002    0.07290 -5.49 0.000000041
 
 Scale= 0.67 
 

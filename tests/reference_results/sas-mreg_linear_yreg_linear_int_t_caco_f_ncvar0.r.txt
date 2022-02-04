@@ -29,7 +29,7 @@ Residuals:
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  2163.95     512.54   4.222  3.3e-05 ***
+(Intercept)  2163.95     512.54   4.222 0.000033 ***
 trt          -240.62     317.49  -0.758    0.449    
 bili          -16.36     104.49  -0.157    0.876    
 trt:bili       47.96      59.70   0.803    0.422    

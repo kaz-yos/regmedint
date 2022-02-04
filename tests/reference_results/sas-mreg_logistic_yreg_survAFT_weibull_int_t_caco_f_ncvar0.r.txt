@@ -26,12 +26,12 @@ Number of Fisher Scoring iterations: 3
 Call:
 survival::survreg(formula = Surv(time, status) ~ trt + bili_bin + 
     trt:bili_bin, data = data, dist = "weibull")
-               Value Std. Error     z       p
-(Intercept)   8.8862     0.4204 21.14 < 2e-16
-trt           0.0166     0.2601  0.06  0.9491
-bili_bin     -1.3617     0.4825 -2.82  0.0048
-trt:bili_bin  0.0612     0.3015  0.20  0.8392
-Log(scale)   -0.2922     0.0736 -3.97 7.2e-05
+               Value Std. Error     z        p
+(Intercept)   8.8862     0.4204 21.14  < 2e-16
+trt           0.0166     0.2601  0.06   0.9491
+bili_bin     -1.3617     0.4825 -2.82   0.0048
+trt:bili_bin  0.0612     0.3015  0.20   0.8392
+Log(scale)   -0.2922     0.0736 -3.97 0.000072
 
 Scale= 0.747 
 

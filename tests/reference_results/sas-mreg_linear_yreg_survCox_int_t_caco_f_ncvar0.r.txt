@@ -27,7 +27,7 @@ survival::coxph(formula = Surv(time, status) ~ trt + bili + trt:bili,
 
              coef exp(coef) se(coef)      z Pr(>|z|)    
 trt      -0.08286   0.92048  0.22094 -0.375    0.708    
-bili      0.19522   1.21558  0.04565  4.276  1.9e-05 ***
+bili      0.19522   1.21558  0.04565  4.276 0.000019 ***
 trt:bili -0.03103   0.96944  0.02608 -1.190    0.234    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
