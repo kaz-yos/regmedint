@@ -32,7 +32,7 @@ data(vv2015)
 
 # No EMM by covariates
 
-In the first model fit, we do not include any EMM term.  
+In the first model fit, we do not include any EMM term.
 ```{r}
 regmedint_obj1 <- regmedint(data = vv2015,
                             ## Variables
@@ -146,6 +146,3 @@ regmedint_obj4 <- regmedint(data = vv2015,
                             casecontrol = FALSE)
 summary(regmedint_obj4)
 ```
-
-
-
