@@ -1,6 +1,6 @@
-* using log directory ‘/Users/yili/Desktop/regmedint_Dec2021/regmedint.Rcheck’
-* using R version 4.1.1 (2021-08-10)
-* using platform: x86_64-apple-darwin17.0 (64-bit)
+* using log directory ‘/Users/kazuki/Dropbox (Personal)/documents/programming/r/regmedint/regmedint.Rcheck’
+* using R version 4.1.2 (2021-11-01)
+* using platform: x86_64-apple-darwin21.1.0 (64-bit)
 * using session charset: UTF-8
 * using option ‘--as-cran’
 * checking for file ‘regmedint/DESCRIPTION’ ... OK
@@ -59,13 +59,11 @@ Maintainer: ‘Kazuki Yoshida <kazukiyoshida@mail.harvard.edu>’
 * checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ...
  OK
-* checking for unstated dependencies in vignettes ... NOTE
-'library' or 'require' calls not declared from:
-  ‘formattable’ ‘kableExtra’ ‘locfit’
+* checking for unstated dependencies in vignettes ... OK
 * checking package vignettes in ‘inst/doc’ ... OK
 * checking re-building of vignette outputs ... OK
 * checking PDF version of manual ... OK
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 NOTE
+Status: OK
