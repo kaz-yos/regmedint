@@ -1,2 +1,0 @@
-   Length     Class      Mode 
-        1 try-error character 
