@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">regmedint</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -65,6 +61,12 @@
     <li>
       <a href="../articles/vig_04_mi.html">Using multiple imputation with regmedint</a>
     </li>
+    <li>
+      <a href="../articles/vig_05_emm.html">Implementation of extended formulas when there are effect measure modifiers</a>
+    </li>
+    <li>
+      <a href="../articles/vig_06_delta_boot.html">Validation of extended formuals with effect modification using bootstrap</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -73,8 +75,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/kaz-yos/regmedint">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/kaz-yos/regmedint" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -88,645 +90,1179 @@
 
       
 
-      </header><script src="vig_02_formulas_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Implementation of formulas</h1>
-                        <h4 class="author">Kazuki Yoshida</h4>
+                        <h4 data-toc-skip class="author">Kazuki Yoshida</h4>
             
-            <h4 class="date">2021-05-11</h4>
+            <h4 data-toc-skip class="date">2022-02-11</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/master/vignettes/vig_02_formulas.Rmd"><code>vignettes/vig_02_formulas.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/HEAD/vignettes/vig_02_formulas.Rmd" class="external-link"><code>vignettes/vig_02_formulas.Rmd</code></a></small>
       <div class="hidden name"><code>vig_02_formulas.Rmd</code></div>
 
     </div>
 
     
     
-<p>The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references. The code seen here is compacted and lacks the comments. For more redable code, please refer to the <a href="https://github.com/kaz-yos/regmedint">Github repo</a> and search for the function names without the preceding <code>regmedint:::</code>. For the type-set mathematical expressions and LaTeX source, please see the <a href="https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf">supplement</a>.</p>
-<div id="mreg-linear-yreg-linear-v2015-p466-proposition-2-3" class="section level1">
-<h1 class="hasAnchor">
-<a href="#mreg-linear-yreg-linear-v2015-p466-proposition-2-3" class="anchor"></a>mreg linear yreg linear (V2015 p466 Proposition 2.3)</h1>
+<p>The bodies of the following functions contain the R implementation of the formulas in V2015. Although many models are covered, there are only four patterns. See the package top page for further references. The code seen here is compacted and lacks the comments. For more redable code, please refer to the <a href="https://github.com/kaz-yos/regmedint" class="external-link">Github repo</a> and search for the function names without the preceding <code>regmedint:::</code>. For the type-set mathematical expressions and LaTeX source, please see the <a href="https://github.com/kaz-yos/regmedint-supplement/blob/master/supplement.pdf" class="external-link">supplement</a>.</p>
+<div class="section level2">
+<h2 id="mreg-linear-yreg-linear-v2015-p466-proposition-2-3">mreg linear yreg linear (V2015 p466 Proposition 2.3)<a class="anchor" aria-label="anchor" href="#mreg-linear-yreg-linear-v2015-p466-proposition-2-3"></a>
+</h2>
 <p>These functions are only used in the setting where both the mediator model and the outcome model are linear regression.</p>
-<div id="point-estimates" class="section level2">
-<h2 class="hasAnchor">
-<a href="#point-estimates" class="anchor"></a>Point estimates</h2>
+<div class="section level3">
+<h3 id="point-estimates">Point estimates<a class="anchor" aria-label="anchor" href="#point-estimates"></a>
+</h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_linear_yreg_linear_est</span></code></pre></div>
-<pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
-##     theta4) 
-## {
-##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, 
-##         theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
-##         theta4 = theta4)
-##     fun_est &lt;- function(a0, a1, m_cde, c_cond) {
-##         if (is.null(beta2)) {
-##             assertthat::assert_that(is.null(c_cond))
-##             beta2_c &lt;- 0
-##         }
-##         else {
-##             assertthat::assert_that(!is.null(c_cond))
-##             assertthat::assert_that(length(c_cond) == length(beta2))
-##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))
-##         }
-##         cde &lt;- (theta1 + (theta3 * m_cde)) * (a1 - a0)
-##         pnde &lt;- (theta1 + (theta3 * beta0) + (theta3 * beta1 * 
-##             a0) + (theta3 * beta2_c)) * (a1 - a0)
-##         tnie &lt;- ((theta2 * beta1) + (theta3 * beta1 * a1)) * 
-##             (a1 - a0)
-##         tnde &lt;- (theta1 + (theta3 * beta0) + (theta3 * beta1 * 
-##             a1) + (theta3 * beta2_c)) * (a1 - a0)
-##         pnie &lt;- ((theta2 * beta1) + (theta3 * beta1 * a0)) * 
-##             (a1 - a0)
-##         te &lt;- pnde + tnie
-##         pm &lt;- tnie/te
-##         c(cde = unname(cde), pnde = unname(pnde), tnie = unname(tnie), 
-##             tnde = unname(tnde), pnie = unname(pnie), te = unname(te), 
-##             pm = unname(pm))
-##     }
-##     return(fun_est)
-## }
-## &lt;bytecode: 0x7fe0ba78ee90&gt;
-## &lt;environment: namespace:regmedint&gt;</code></pre>
+<pre><code><span class="co">## function (beta0, beta1, beta2, beta3, theta0, theta1, theta2, </span>
+<span class="co">##     theta3, theta4, theta5, theta6) </span>
+<span class="co">## {</span>
+<span class="co">##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, </span>
+<span class="co">##         beta3 = beta3, theta0 = theta0, theta1 = theta1, theta2 = theta2, </span>
+<span class="co">##         theta3 = theta3, theta4 = theta4, theta5 = theta5, theta6 = theta6)</span>
+<span class="co">##     fun_est &lt;- function(a0, a1, m_cde, c_cond) {</span>
+<span class="co">##         if (is.null(beta2)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             beta2_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta2))</span>
+<span class="co">##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             beta3_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta3))</span>
+<span class="co">##             beta3_c &lt;- sum(t(matrix(beta3)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta4)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             theta4_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta4))</span>
+<span class="co">##             theta4_c &lt;- sum(t(matrix(theta4)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             theta5_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta5))</span>
+<span class="co">##             theta5_c &lt;- sum(t(matrix(theta5)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             theta6_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta6))</span>
+<span class="co">##             theta6_c &lt;- sum(t(matrix(theta6)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         cde &lt;- (theta1 + theta3 * m_cde + theta5_c) * (a1 - a0)</span>
+<span class="co">##         pnde &lt;- (theta1 + theta3 * (beta0 + beta1 * a0 + beta2_c + </span>
+<span class="co">##             beta3_c * a0) + theta5_c) * (a1 - a0)</span>
+<span class="co">##         tnie &lt;- (theta2 + theta3 * a1 + theta6_c) * (beta1 + </span>
+<span class="co">##             beta3_c) * (a1 - a0)</span>
+<span class="co">##         tnde &lt;- (theta1 + theta3 * (beta0 + beta1 * a1 + beta2_c + </span>
+<span class="co">##             beta3_c * a1) + theta5_c) * (a1 - a0)</span>
+<span class="co">##         pnie &lt;- (theta2 + theta3 * a0 + theta6_c) * (beta1 + </span>
+<span class="co">##             beta3_c) * (a1 - a0)</span>
+<span class="co">##         te &lt;- pnde + tnie</span>
+<span class="co">##         pm &lt;- tnie/te</span>
+<span class="co">##         c(cde = unname(cde), pnde = unname(pnde), tnie = unname(tnie), </span>
+<span class="co">##             tnde = unname(tnde), pnie = unname(pnie), te = unname(te), </span>
+<span class="co">##             pm = unname(pm))</span>
+<span class="co">##     }</span>
+<span class="co">##     return(fun_est)</span>
+<span class="co">## }</span>
+<span class="co">## &lt;bytecode: 0x7fbc41d39b70&gt;</span>
+<span class="co">## &lt;environment: namespace:regmedint&gt;</span></code></pre>
 </div>
-<div id="standard-error-estimates" class="section level2">
-<h2 class="hasAnchor">
-<a href="#standard-error-estimates" class="anchor"></a>Standard error estimates</h2>
+<div class="section level3">
+<h3 id="standard-error-estimates">Standard error estimates<a class="anchor" aria-label="anchor" href="#standard-error-estimates"></a>
+</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_linear_yreg_linear_se</span></code></pre></div>
-<pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
-##     theta4, Sigma_beta, Sigma_theta) 
-## {
-##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, 
-##         theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
-##         theta4 = theta4)
-##     validate_myreg_vcovs(beta0 = beta0, beta1 = beta1, beta2 = beta2, 
-##         theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
-##         theta4 = theta4, Sigma_beta = Sigma_beta, Sigma_theta = Sigma_theta)
-##     Sigma &lt;- Matrix::bdiag(Sigma_beta, Sigma_theta)
-##     fun_se &lt;- function(a0, a1, m_cde, c_cond) {
-##         if (is.null(beta2)) {
-##             assertthat::assert_that(is.null(c_cond))
-##             beta2_c &lt;- 0
-##         }
-##         else {
-##             assertthat::assert_that(!is.null(c_cond))
-##             assertthat::assert_that(length(c_cond) == length(beta2))
-##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))
-##         }
-##         Gamma_cde &lt;- matrix(c(0, 0, rep(0, length(beta2)), 0, 
-##             1, 0, m_cde, rep(0, length(theta4))))
-##         Gamma_pnde &lt;- matrix(c(theta3, (theta3 * a0), (theta3 * 
-##             c_cond), 0, 1, 0, (beta0 + (beta1 * a0) + beta2_c), 
-##             rep(0, length(theta4))))
-##         Gamma_tnie &lt;- matrix(c(0, (theta2 + (theta3 * a1)), rep(0, 
-##             length(beta2)), 0, 0, beta1, (beta1 * a1), rep(0, 
-##             length(theta4))))
-##         Gamma_tnde &lt;- matrix(c(theta3, (theta3 * a1), (theta3 * 
-##             c_cond), 0, 1, 0, (beta0 + (beta1 * a1) + beta2_c), 
-##             rep(0, length(theta4))))
-##         Gamma_pnie &lt;- matrix(c(0, (theta2 + (theta3 * a0)), rep(0, 
-##             length(beta2)), 0, 0, beta1, (beta1 * a0), rep(0, 
-##             length(theta4))))
-##         Gamma_te &lt;- Gamma_pnde + Gamma_tnie
-##         pnde &lt;- (theta1 + (theta3 * beta0) + (theta3 * beta1 * 
-##             a0) + (theta3 * beta2_c)) * (a1 - a0)
-##         tnie &lt;- ((theta2 * beta1) + (theta3 * beta1 * a1)) * 
-##             (a1 - a0)
-##         d_pm &lt;- grad_prop_med_yreg_linear(pnde = unname(pnde), 
-##             tnie = unname(tnie))
-##         Gamma_pm &lt;- (d_pm[["pnde"]] * Gamma_pnde) + (d_pm[["tnie"]] * 
-##             Gamma_tnie)
-##         a1_sub_a0 &lt;- abs(a1 - a0)
-##         se_cde &lt;- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% 
-##             Gamma_cde)) * a1_sub_a0
-##         se_pnde &lt;- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% 
-##             Gamma_pnde)) * a1_sub_a0
-##         se_tnie &lt;- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% 
-##             Gamma_tnie)) * a1_sub_a0
-##         se_tnde &lt;- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% 
-##             Gamma_tnde)) * a1_sub_a0
-##         se_pnie &lt;- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% 
-##             Gamma_pnie)) * a1_sub_a0
-##         se_te &lt;- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te)) * 
-##             a1_sub_a0
-##         se_pm &lt;- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm)) * 
-##             a1_sub_a0
-##         c(se_cde = unname(se_cde), se_pnde = unname(se_pnde), 
-##             se_tnie = unname(se_tnie), se_tnde = unname(se_tnde), 
-##             se_pnie = unname(se_pnie), se_te = unname(se_te), 
-##             se_pm = unname(se_pm))
-##     }
-##     return(fun_se)
-## }
-## &lt;bytecode: 0x7fe0aa69f370&gt;
-## &lt;environment: namespace:regmedint&gt;</code></pre>
+<pre><code><span class="co">## function (beta0, beta1, beta2, beta3, theta0, theta1, theta2, </span>
+<span class="co">##     theta3, theta4, theta5, theta6, Sigma_beta, Sigma_theta) </span>
+<span class="co">## {</span>
+<span class="co">##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, </span>
+<span class="co">##         beta3 = beta3, theta0 = theta0, theta1 = theta1, theta2 = theta2, </span>
+<span class="co">##         theta3 = theta3, theta4 = theta4, theta5 = theta5, theta6 = theta6)</span>
+<span class="co">##     validate_myreg_vcovs(beta0 = beta0, beta1 = beta1, beta2 = beta2, </span>
+<span class="co">##         beta3 = beta3, theta0 = theta0, theta1 = theta1, theta2 = theta2, </span>
+<span class="co">##         theta3 = theta3, theta4 = theta4, theta5 = theta5, theta6 = theta6, </span>
+<span class="co">##         Sigma_beta = Sigma_beta, Sigma_theta = Sigma_theta)</span>
+<span class="co">##     Sigma &lt;- Matrix::bdiag(Sigma_beta, Sigma_theta)</span>
+<span class="co">##     fun_se &lt;- function(a0, a1, m_cde, c_cond) {</span>
+<span class="co">##         if (is.null(beta2)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             beta2_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta2))</span>
+<span class="co">##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             beta3_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta3))</span>
+<span class="co">##             beta3_c &lt;- sum(t(matrix(beta3)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta4)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             theta4_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta4))</span>
+<span class="co">##             theta4_c &lt;- sum(t(matrix(theta4)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             theta5_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta5))</span>
+<span class="co">##             theta5_c &lt;- sum(t(matrix(theta5)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             theta6_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta6))</span>
+<span class="co">##             theta6_c &lt;- sum(t(matrix(theta6)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             pd_cde_theta5 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_cde_theta5 &lt;- c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_cde &lt;- matrix(c(0, 0, rep(0, length(beta2)), rep(0, </span>
+<span class="co">##             length(beta3)), 0, 1, 0, m_cde, rep(0, length(theta4)), </span>
+<span class="co">##             pd_cde_theta5, rep(0, length(theta6))))</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             pd_pnde_beta3 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_pnde_beta3 &lt;- theta3 * c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             pd_pnde_theta5 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_pnde_theta5 &lt;- c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_pnde &lt;- matrix(c(theta3, theta3 * a0, theta3 * </span>
+<span class="co">##             c_cond, pd_pnde_beta3, 0, 1, 0, beta0 + beta1 * a0 + </span>
+<span class="co">##             beta2_c + beta3_c * a0, rep(0, length(theta4)), pd_pnde_theta5, </span>
+<span class="co">##             rep(0, length(theta6))))</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             pd_tnie_beta3 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_tnie_beta3 &lt;- c_cond * (theta2 + theta3 * a1 + </span>
+<span class="co">##                 theta6_c)</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             pd_tnie_theta6 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_tnie_theta6 &lt;- c_cond * (beta1 + beta3_c)</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_tnie &lt;- matrix(c(0, theta2 + theta3 * a1 + theta6_c, </span>
+<span class="co">##             rep(0, length(beta2)), pd_tnie_beta3, 0, 0, beta1 + </span>
+<span class="co">##                 beta3_c, a1 * (beta1 + beta3_c), rep(0, length(theta4)), </span>
+<span class="co">##             rep(0, length(theta5)), pd_tnie_theta6))</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             pd_tnde_beta3 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_tnde_beta3 &lt;- theta3 * a1 * c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             pd_tnde_theta5 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_tnde_theta5 &lt;- c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_tnde &lt;- matrix(c(theta3, theta3 * a1, theta3 * </span>
+<span class="co">##             c_cond, pd_tnde_beta3, 0, 1, 0, beta0 + beta1 * a1 + </span>
+<span class="co">##             beta2_c + beta3_c * a1, rep(0, length(theta4)), pd_tnde_theta5, </span>
+<span class="co">##             rep(0, length(theta6))))</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             pd_pnie_beta3 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_pnie_beta3 &lt;- c_cond * (theta2 + theta3 * a0 + </span>
+<span class="co">##                 theta6_c)</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             pd_pnie_theta6 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_pnie_theta6 &lt;- c_cond * (beta1 + beta3_c)</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_pnie &lt;- matrix(c(0, theta2 + theta3 * a0 + theta6_c, </span>
+<span class="co">##             rep(0, length(beta2)), pd_pnie_beta3, 0, 0, beta1 + </span>
+<span class="co">##                 beta3_c, a0 * (beta1 + beta3_c), rep(0, length(theta4)), </span>
+<span class="co">##             rep(0, length(theta5)), pd_pnie_theta6))</span>
+<span class="co">##         Gamma_te &lt;- Gamma_pnde + Gamma_tnie</span>
+<span class="co">##         pnde &lt;- (theta1 + theta3 * (beta0 + beta1 * a0 + beta2_c + </span>
+<span class="co">##             beta3_c * a0) + theta5_c) * (a1 - a0)</span>
+<span class="co">##         tnie &lt;- (theta2 + theta3 * a1 + theta6_c) * (beta1 + </span>
+<span class="co">##             beta3_c) * (a1 - a0)</span>
+<span class="co">##         d_pm &lt;- grad_prop_med_yreg_linear(pnde = unname(pnde), </span>
+<span class="co">##             tnie = unname(tnie))</span>
+<span class="co">##         Gamma_pm &lt;- (d_pm[["pnde"]] * Gamma_pnde) + (d_pm[["tnie"]] * </span>
+<span class="co">##             Gamma_tnie)</span>
+<span class="co">##         a1_sub_a0 &lt;- abs(a1 - a0)</span>
+<span class="co">##         se_cde &lt;- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% </span>
+<span class="co">##             Gamma_cde)) * a1_sub_a0</span>
+<span class="co">##         se_pnde &lt;- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% </span>
+<span class="co">##             Gamma_pnde)) * a1_sub_a0</span>
+<span class="co">##         se_tnie &lt;- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% </span>
+<span class="co">##             Gamma_tnie)) * a1_sub_a0</span>
+<span class="co">##         se_tnde &lt;- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% </span>
+<span class="co">##             Gamma_tnde)) * a1_sub_a0</span>
+<span class="co">##         se_pnie &lt;- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% </span>
+<span class="co">##             Gamma_pnie)) * a1_sub_a0</span>
+<span class="co">##         se_te &lt;- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te)) * </span>
+<span class="co">##             a1_sub_a0</span>
+<span class="co">##         se_pm &lt;- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm)) * </span>
+<span class="co">##             a1_sub_a0</span>
+<span class="co">##         c(se_cde = unname(se_cde), se_pnde = unname(se_pnde), </span>
+<span class="co">##             se_tnie = unname(se_tnie), se_tnde = unname(se_tnde), </span>
+<span class="co">##             se_pnie = unname(se_pnie), se_te = unname(se_te), </span>
+<span class="co">##             se_pm = unname(se_pm))</span>
+<span class="co">##     }</span>
+<span class="co">##     return(fun_se)</span>
+<span class="co">## }</span>
+<span class="co">## &lt;bytecode: 0x7fbc3ef19e90&gt;</span>
+<span class="co">## &lt;environment: namespace:regmedint&gt;</span></code></pre>
 </div>
 </div>
-<div id="mreg-linear-yreg-non-linear-v2015-p468-proposition-2-4" class="section level1">
-<h1 class="hasAnchor">
-<a href="#mreg-linear-yreg-non-linear-v2015-p468-proposition-2-4" class="anchor"></a>mreg linear yreg non-linear (V2015 p468 Proposition 2.4)</h1>
+<div class="section level2">
+<h2 id="mreg-linear-yreg-non-linear-v2015-p468-proposition-2-4">mreg linear yreg non-linear (V2015 p468 Proposition 2.4)<a class="anchor" aria-label="anchor" href="#mreg-linear-yreg-non-linear-v2015-p468-proposition-2-4"></a>
+</h2>
 <p>These functions are used in all cases where the mediator model is linear regression and the outcome model is any one of the non-linear models.</p>
-<div id="point-estimates-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#point-estimates-1" class="anchor"></a>Point estimates</h2>
+<div class="section level3">
+<h3 id="point-estimates-1">Point estimates<a class="anchor" aria-label="anchor" href="#point-estimates-1"></a>
+</h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_linear_yreg_logistic_est</span></code></pre></div>
-<pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
-##     theta4, sigma_sq) 
-## {
-##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, 
-##         theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
-##         theta4 = theta4, sigma_sq = sigma_sq)
-##     fun_est &lt;- function(a0, a1, m_cde, c_cond) {
-##         if (is.null(beta2)) {
-##             assertthat::assert_that(is.null(c_cond))
-##             beta2_c &lt;- 0
-##         }
-##         else {
-##             assertthat::assert_that(!is.null(c_cond))
-##             assertthat::assert_that(length(c_cond) == length(beta2))
-##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))
-##         }
-##         cde &lt;- (theta1 + (theta3 * m_cde)) * (a1 - a0)
-##         pnde &lt;- (theta1 + (theta3 * beta0) + (theta3 * beta1 * 
-##             a0) + (theta3 * beta2_c) + (theta3 * theta2 * sigma_sq)) * 
-##             (a1 - a0) + ((1/2) * theta3^2 * sigma_sq) * (a1^2 - 
-##             a0^2)
-##         tnie &lt;- ((theta2 * beta1) + theta3 * beta1 * a1) * (a1 - 
-##             a0)
-##         tnde &lt;- (theta1 + (theta3 * beta0) + (theta3 * beta1 * 
-##             a1) + (theta3 * beta2_c) + (theta3 * theta2 * sigma_sq)) * 
-##             (a1 - a0) + ((1/2) * theta3^2 * sigma_sq) * (a1^2 - 
-##             a0^2)
-##         pnie &lt;- ((theta2 * beta1) + theta3 * beta1 * a0) * (a1 - 
-##             a0)
-##         te &lt;- pnde + tnie
-##         pm &lt;- (exp(pnde) * (exp(tnie) - 1))/(exp(te) - 1)
-##         c(cde = unname(cde), pnde = unname(pnde), tnie = unname(tnie), 
-##             tnde = unname(tnde), pnie = unname(pnie), te = unname(te), 
-##             pm = unname(pm))
-##     }
-##     return(fun_est)
-## }
-## &lt;bytecode: 0x7fe078537758&gt;
-## &lt;environment: namespace:regmedint&gt;</code></pre>
+<pre><code><span class="co">## function (beta0, beta1, beta2, beta3, theta0, theta1, theta2, </span>
+<span class="co">##     theta3, theta4, theta5, theta6, sigma_sq) </span>
+<span class="co">## {</span>
+<span class="co">##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, </span>
+<span class="co">##         beta3 = beta3, theta0 = theta0, theta1 = theta1, theta2 = theta2, </span>
+<span class="co">##         theta3 = theta3, theta4 = theta4, theta5 = theta5, theta6 = theta6, </span>
+<span class="co">##         sigma_sq = sigma_sq)</span>
+<span class="co">##     fun_est &lt;- function(a0, a1, m_cde, c_cond) {</span>
+<span class="co">##         if (is.null(beta2)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             beta2_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta2))</span>
+<span class="co">##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             beta3_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta3))</span>
+<span class="co">##             beta3_c &lt;- sum(t(matrix(beta3)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta4)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             theta4_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta4))</span>
+<span class="co">##             theta4_c &lt;- sum(t(matrix(theta4)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             theta5_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta5))</span>
+<span class="co">##             theta5_c &lt;- sum(t(matrix(theta5)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             theta6_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta6))</span>
+<span class="co">##             theta6_c &lt;- sum(t(matrix(theta6)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         cde &lt;- (theta1 + theta3 * m_cde + theta5_c) * (a1 - a0)</span>
+<span class="co">##         pnde &lt;- ((theta1 + theta5_c + theta3 * (beta0 + beta1 * </span>
+<span class="co">##             a0 + beta2_c + beta3_c * a0) + 1/2 * sigma_sq * theta3 * </span>
+<span class="co">##             (2 * theta2 + theta3 * a1 + theta3 * a0 + 2 * theta6_c))) * </span>
+<span class="co">##             (a1 - a0)</span>
+<span class="co">##         tnie &lt;- (theta2 + theta3 * a1 + theta6_c) * (beta1 + </span>
+<span class="co">##             beta3_c) * (a1 - a0)</span>
+<span class="co">##         tnde &lt;- ((theta1 + theta5_c + theta3 * (beta0 + beta1 * </span>
+<span class="co">##             a1 + beta2_c + beta3_c * a1) + 1/2 * sigma_sq * theta3 * </span>
+<span class="co">##             (2 * theta2 + theta3 * a1 + theta3 * a0 + 2 * theta6_c))) * </span>
+<span class="co">##             (a1 - a0)</span>
+<span class="co">##         pnie &lt;- (theta2 + theta3 * a0 + theta6_c) * (beta1 + </span>
+<span class="co">##             beta3_c) * (a1 - a0)</span>
+<span class="co">##         te &lt;- pnde + tnie</span>
+<span class="co">##         pm &lt;- exp(pnde) * (exp(tnie) - 1)/(exp(te) - 1)</span>
+<span class="co">##         c(cde = unname(cde), pnde = unname(pnde), tnie = unname(tnie), </span>
+<span class="co">##             tnde = unname(tnde), pnie = unname(pnie), te = unname(te), </span>
+<span class="co">##             pm = unname(pm))</span>
+<span class="co">##     }</span>
+<span class="co">##     return(fun_est)</span>
+<span class="co">## }</span>
+<span class="co">## &lt;bytecode: 0x7fbc230cc2b0&gt;</span>
+<span class="co">## &lt;environment: namespace:regmedint&gt;</span></code></pre>
 </div>
-<div id="standard-error-estimates-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#standard-error-estimates-1" class="anchor"></a>Standard error estimates</h2>
+<div class="section level3">
+<h3 id="standard-error-estimates-1">Standard error estimates<a class="anchor" aria-label="anchor" href="#standard-error-estimates-1"></a>
+</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_linear_yreg_logistic_se</span></code></pre></div>
-<pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
-##     theta4, sigma_sq, Sigma_beta, Sigma_theta, Sigma_sigma_sq) 
-## {
-##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, 
-##         theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
-##         theta4 = theta4, sigma_sq = sigma_sq)
-##     validate_myreg_vcovs(beta0 = beta0, beta1 = beta1, beta2 = beta2, 
-##         theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
-##         theta4 = theta4, sigma_sq = sigma_sq, Sigma_beta = Sigma_beta, 
-##         Sigma_theta = Sigma_theta, Sigma_sigma_sq = Sigma_sigma_sq)
-##     Sigma &lt;- Matrix::bdiag(Sigma_beta, Sigma_theta, Sigma_sigma_sq)
-##     fun_se &lt;- function(a0, a1, m_cde, c_cond) {
-##         if (is.null(beta2)) {
-##             assertthat::assert_that(is.null(c_cond))
-##             beta2_c &lt;- 0
-##         }
-##         else {
-##             assertthat::assert_that(!is.null(c_cond))
-##             assertthat::assert_that(length(c_cond) == length(beta2))
-##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))
-##         }
-##         Gamma_cde &lt;- matrix(c(0, 0, rep(0, length(beta2)), 0, 
-##             1, 0, m_cde, rep(0, length(theta4)), 0))
-##         Gamma_pnde &lt;- matrix(c(theta3, (theta3 * a0), (theta3 * 
-##             c_cond), 0, 1, (theta3 * sigma_sq), (beta0 + beta1 * 
-##             a0 + beta2_c + theta2 * sigma_sq + theta3 * sigma_sq * 
-##             (a1 + a0)), rep(0, length(theta4)), (theta3 * theta2 + 
-##             (1/2) * theta3^2 * (a1 + a0))))
-##         Gamma_tnie &lt;- matrix(c(0, (theta2 + theta3 * a1), rep(0, 
-##             length(beta2)), 0, 0, beta1, (beta1 * a1), rep(0, 
-##             length(theta4)), 0))
-##         Gamma_tnde &lt;- matrix(c(theta3, (theta3 * a1), (theta3 * 
-##             c_cond), 0, 1, (theta3 * sigma_sq), (beta0 + beta1 * 
-##             a1 + beta2_c + theta2 * sigma_sq + theta3 * sigma_sq * 
-##             (a1 + a0)), rep(0, length(theta4)), (theta3 * theta2 + 
-##             (1/2) * theta3^2 * (a1 + a0))))
-##         Gamma_pnie &lt;- matrix(c(0, (theta2 + theta3 * a0), rep(0, 
-##             length(beta2)), 0, 0, beta1, (beta1 * a0), rep(0, 
-##             length(theta4)), 0))
-##         Gamma_te &lt;- Gamma_pnde + Gamma_tnie
-##         pnde &lt;- (theta1 + (theta3 * beta0) + (theta3 * beta1 * 
-##             a0) + (theta3 * beta2_c) + (theta3 * theta2 * sigma_sq)) * 
-##             (a1 - a0) + ((1/2) * theta3^2 * sigma_sq) * (a1^2 - 
-##             a0^2)
-##         tnie &lt;- ((theta2 * beta1) + theta3 * beta1 * a1) * (a1 - 
-##             a0)
-##         d_pm &lt;- grad_prop_med_yreg_logistic(pnde = unname(pnde), 
-##             tnie = unname(tnie))
-##         Gamma_pm &lt;- d_pm[["pnde"]] * Gamma_pnde + d_pm[["tnie"]] * 
-##             Gamma_tnie
-##         a1_sub_a0 &lt;- abs(a1 - a0)
-##         se_cde &lt;- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% 
-##             Gamma_cde)) * a1_sub_a0
-##         se_pnde &lt;- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% 
-##             Gamma_pnde)) * a1_sub_a0
-##         se_tnie &lt;- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% 
-##             Gamma_tnie)) * a1_sub_a0
-##         se_tnde &lt;- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% 
-##             Gamma_tnde)) * a1_sub_a0
-##         se_pnie &lt;- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% 
-##             Gamma_pnie)) * a1_sub_a0
-##         se_te &lt;- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te)) * 
-##             a1_sub_a0
-##         se_pm &lt;- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm)) * 
-##             a1_sub_a0
-##         c(se_cde = unname(se_cde), se_pnde = unname(se_pnde), 
-##             se_tnie = unname(se_tnie), se_tnde = unname(se_tnde), 
-##             se_pnie = unname(se_pnie), se_te = unname(se_te), 
-##             se_pm = unname(se_pm))
-##     }
-##     return(fun_se)
-## }
-## &lt;bytecode: 0x7fe0786c2090&gt;
-## &lt;environment: namespace:regmedint&gt;</code></pre>
+<pre><code><span class="co">## function (beta0, beta1, beta2, beta3, theta0, theta1, theta2, </span>
+<span class="co">##     theta3, theta4, theta5, theta6, sigma_sq, Sigma_beta, Sigma_theta, </span>
+<span class="co">##     Sigma_sigma_sq) </span>
+<span class="co">## {</span>
+<span class="co">##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, </span>
+<span class="co">##         beta3 = beta3, theta0 = theta0, theta1 = theta1, theta2 = theta2, </span>
+<span class="co">##         theta3 = theta3, theta4 = theta4, theta5 = theta5, theta6 = theta6, </span>
+<span class="co">##         sigma_sq = sigma_sq)</span>
+<span class="co">##     validate_myreg_vcovs(beta0 = beta0, beta1 = beta1, beta2 = beta2, </span>
+<span class="co">##         beta3 = beta3, theta0 = theta0, theta1 = theta1, theta2 = theta2, </span>
+<span class="co">##         theta3 = theta3, theta4 = theta4, theta5 = theta5, theta6 = theta6, </span>
+<span class="co">##         sigma_sq = sigma_sq, Sigma_beta = Sigma_beta, Sigma_theta = Sigma_theta, </span>
+<span class="co">##         Sigma_sigma_sq = Sigma_sigma_sq)</span>
+<span class="co">##     Sigma &lt;- Matrix::bdiag(Sigma_beta, Sigma_theta, Sigma_sigma_sq)</span>
+<span class="co">##     fun_se &lt;- function(a0, a1, m_cde, c_cond) {</span>
+<span class="co">##         if (is.null(beta2)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             beta2_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta2))</span>
+<span class="co">##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             beta3_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta3))</span>
+<span class="co">##             beta3_c &lt;- sum(t(matrix(beta3)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta4)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             theta4_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta4))</span>
+<span class="co">##             theta4_c &lt;- sum(t(matrix(theta4)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             theta5_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta5))</span>
+<span class="co">##             theta5_c &lt;- sum(t(matrix(theta5)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             theta6_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta6))</span>
+<span class="co">##             theta6_c &lt;- sum(t(matrix(theta6)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             pd_cde_theta5 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_cde_theta5 &lt;- c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_cde &lt;- matrix(c(0, 0, rep(0, length(beta2)), rep(0, </span>
+<span class="co">##             length(beta3)), 0, 1, 0, m_cde, rep(0, length(theta4)), </span>
+<span class="co">##             pd_cde_theta5, rep(0, length(theta6)), 0))</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             pd_pnde_beta3 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_pnde_beta3 &lt;- theta3 * a1 * c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             pd_pnde_theta5 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_pnde_theta5 &lt;- c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             pd_pnde_theta6 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_pnde_theta6 &lt;- theta3 * sigma_sq * c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_pnde &lt;- matrix(c(theta3, theta3 * a0, theta3 * </span>
+<span class="co">##             c_cond, pd_pnde_beta3, 0, 1, theta3 * sigma_sq, a0 * </span>
+<span class="co">##             (beta1 + beta3_c) + beta0 + beta2_c + sigma_sq * </span>
+<span class="co">##             ((theta2 + theta6_c) + theta3 * (a0 + a1)), rep(0, </span>
+<span class="co">##             length(theta4)), pd_pnde_theta5, pd_pnde_theta6, </span>
+<span class="co">##             1/2 * theta3 * (2 * (theta2 + theta6_c) + theta3 * </span>
+<span class="co">##                 (a0 + a1))))</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             pd_tnie_beta3 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_tnie_beta3 &lt;- c_cond * (theta2 + theta3 * a1 + </span>
+<span class="co">##                 theta6_c)</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             pd_tnie_theta6 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_tnie_theta6 &lt;- c_cond * (beta1 + beta3_c)</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_tnie &lt;- matrix(c(0, theta2 + theta3 * a1 + theta6_c, </span>
+<span class="co">##             rep(0, length(beta2)), pd_tnie_beta3, 0, 0, beta1 + </span>
+<span class="co">##                 beta3_c, a1 * (beta1 + beta3_c), rep(0, length(theta4)), </span>
+<span class="co">##             rep(0, length(theta5)), pd_tnie_theta6, 0))</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             pd_tnde_beta3 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_tnde_beta3 &lt;- theta3 * a1 * c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             pd_tnde_theta5 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_tnde_theta5 &lt;- c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             pd_tnde_theta6 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_tnde_theta6 &lt;- theta3 * sigma_sq * c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_tnde &lt;- matrix(c(theta3, theta3 * a1, theta3 * </span>
+<span class="co">##             c_cond, pd_tnde_beta3, 0, 1, theta3 * sigma_sq, a1 * </span>
+<span class="co">##             (beta1 + beta3_c) + beta0 + beta2_c + sigma_sq * </span>
+<span class="co">##             ((theta2 + theta6_c) + theta3 * (a0 + a1)), rep(0, </span>
+<span class="co">##             length(theta4)), pd_tnde_theta5, pd_tnde_theta6, </span>
+<span class="co">##             1/2 * theta3 * (2 * (theta2 + theta6_c) + theta3 * </span>
+<span class="co">##                 (a0 + a1))))</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             pd_pnie_beta3 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_pnie_beta3 &lt;- c_cond * (theta2 + theta3 * a0 + </span>
+<span class="co">##                 theta6_c)</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             pd_pnie_theta6 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_pnie_theta6 &lt;- c_cond * (beta1 + beta3_c)</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_pnie &lt;- matrix(c(0, theta2 + theta3 * a0 + theta6_c, </span>
+<span class="co">##             rep(0, length(beta2)), pd_pnie_beta3, 0, 0, beta1 + </span>
+<span class="co">##                 beta3_c, a0 * (beta1 + beta3_c), rep(0, length(theta4)), </span>
+<span class="co">##             rep(0, length(theta5)), pd_pnie_theta6, 0))</span>
+<span class="co">##         Gamma_te &lt;- Gamma_pnde + Gamma_tnie</span>
+<span class="co">##         pnde &lt;- ((theta1 + theta5_c + theta3 * (beta0 + beta1 * </span>
+<span class="co">##             a0 + beta2_c + beta3_c * a0) + 1/2 * sigma_sq * theta3 * </span>
+<span class="co">##             (2 * theta2 + theta3 * a1 + theta3 * a0 + 2 * theta6_c))) * </span>
+<span class="co">##             (a1 - a0)</span>
+<span class="co">##         tnie &lt;- (theta2 + theta3 * a1 + theta6_c) * (beta1 + </span>
+<span class="co">##             beta3_c) * (a1 - a0)</span>
+<span class="co">##         d_pm &lt;- grad_prop_med_yreg_logistic(pnde = unname(pnde), </span>
+<span class="co">##             tnie = unname(tnie))</span>
+<span class="co">##         Gamma_pm &lt;- d_pm[["pnde"]] * Gamma_pnde + d_pm[["tnie"]] * </span>
+<span class="co">##             Gamma_tnie</span>
+<span class="co">##         a1_sub_a0 &lt;- abs(a1 - a0)</span>
+<span class="co">##         se_cde &lt;- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% </span>
+<span class="co">##             Gamma_cde)) * a1_sub_a0</span>
+<span class="co">##         se_pnde &lt;- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% </span>
+<span class="co">##             Gamma_pnde)) * a1_sub_a0</span>
+<span class="co">##         se_tnie &lt;- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% </span>
+<span class="co">##             Gamma_tnie)) * a1_sub_a0</span>
+<span class="co">##         se_tnde &lt;- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% </span>
+<span class="co">##             Gamma_tnde)) * a1_sub_a0</span>
+<span class="co">##         se_pnie &lt;- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% </span>
+<span class="co">##             Gamma_pnie)) * a1_sub_a0</span>
+<span class="co">##         se_te &lt;- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te)) * </span>
+<span class="co">##             a1_sub_a0</span>
+<span class="co">##         se_pm &lt;- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm)) * </span>
+<span class="co">##             a1_sub_a0</span>
+<span class="co">##         c(se_cde = unname(se_cde), se_pnde = unname(se_pnde), </span>
+<span class="co">##             se_tnie = unname(se_tnie), se_tnde = unname(se_tnde), </span>
+<span class="co">##             se_pnie = unname(se_pnie), se_te = unname(se_te), </span>
+<span class="co">##             se_pm = unname(se_pm))</span>
+<span class="co">##     }</span>
+<span class="co">##     return(fun_se)</span>
+<span class="co">## }</span>
+<span class="co">## &lt;bytecode: 0x7fbc34929018&gt;</span>
+<span class="co">## &lt;environment: namespace:regmedint&gt;</span></code></pre>
 </div>
 </div>
-<div id="mreg-logistic-yreg-linear-v2015-p471-proposition-2-5" class="section level1">
-<h1 class="hasAnchor">
-<a href="#mreg-logistic-yreg-linear-v2015-p471-proposition-2-5" class="anchor"></a>mreg logistic yreg linear (V2015 p471 Proposition 2.5)</h1>
+<div class="section level2">
+<h2 id="mreg-logistic-yreg-linear-v2015-p471-proposition-2-5">mreg logistic yreg linear (V2015 p471 Proposition 2.5)<a class="anchor" aria-label="anchor" href="#mreg-logistic-yreg-linear-v2015-p471-proposition-2-5"></a>
+</h2>
 <p>These functions are only used in the setting where the mediator model is logistic regression and the outcome model is non-linear regression.</p>
-<div id="point-estimates-2" class="section level2">
-<h2 class="hasAnchor">
-<a href="#point-estimates-2" class="anchor"></a>Point estimates</h2>
+<div class="section level3">
+<h3 id="point-estimates-2">Point estimates<a class="anchor" aria-label="anchor" href="#point-estimates-2"></a>
+</h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_logistic_yreg_linear_est</span></code></pre></div>
-<pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
-##     theta4) 
-## {
-##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, 
-##         theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
-##         theta4 = theta4)
-##     fun_est &lt;- function(a0, a1, m_cde, c_cond) {
-##         if (is.null(beta2)) {
-##             assertthat::assert_that(is.null(c_cond))
-##             beta2_c &lt;- 0
-##         }
-##         else {
-##             assertthat::assert_that(!is.null(c_cond))
-##             assertthat::assert_that(length(c_cond) == length(beta2))
-##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))
-##         }
-##         cde &lt;- (theta1 + (theta3 * m_cde)) * (a1 - a0)
-##         pnde &lt;- (theta1 * (a1 - a0)) + (theta3 * (a1 - a0)) * 
-##             (exp(beta0 + (beta1 * a0) + beta2_c)/(1 + exp(beta0 + 
-##                 (beta1 * a0) + beta2_c)))
-##         tnie &lt;- (theta2 + (theta3 * a1)) * ((exp(beta0 + (beta1 * 
-##             a1) + beta2_c)/(1 + exp(beta0 + (beta1 * a1) + beta2_c))) - 
-##             (exp(beta0 + (beta1 * a0) + beta2_c)/(1 + exp(beta0 + 
-##                 (beta1 * a0) + beta2_c))))
-##         tnde &lt;- (theta1 * (a1 - a0)) + (theta3 * (a1 - a0)) * 
-##             (exp(beta0 + (beta1 * a1) + beta2_c)/(1 + exp(beta0 + 
-##                 (beta1 * a1) + beta2_c)))
-##         pnie &lt;- (theta2 + (theta3 * a0)) * ((exp(beta0 + (beta1 * 
-##             a1) + beta2_c)/(1 + exp(beta0 + (beta1 * a1) + beta2_c))) - 
-##             (exp(beta0 + (beta1 * a0) + beta2_c)/(1 + exp(beta0 + 
-##                 (beta1 * a0) + beta2_c))))
-##         te &lt;- pnde + tnie
-##         pm &lt;- tnie/te
-##         c(cde = unname(cde), pnde = unname(pnde), tnie = unname(tnie), 
-##             tnde = unname(tnde), pnie = unname(pnie), te = unname(te), 
-##             pm = unname(pm))
-##     }
-##     return(fun_est)
-## }
-## &lt;bytecode: 0x7fe07b05a6a0&gt;
-## &lt;environment: namespace:regmedint&gt;</code></pre>
+<pre><code><span class="co">## function (beta0, beta1, beta2, beta3, theta0, theta1, theta2, </span>
+<span class="co">##     theta3, theta4, theta5, theta6) </span>
+<span class="co">## {</span>
+<span class="co">##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, </span>
+<span class="co">##         beta3 = beta3, theta0 = theta0, theta1 = theta1, theta2 = theta2, </span>
+<span class="co">##         theta3 = theta3, theta4 = theta4, theta5 = theta5, theta6 = theta6)</span>
+<span class="co">##     fun_est &lt;- function(a0, a1, m_cde, c_cond) {</span>
+<span class="co">##         if (is.null(beta2)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             beta2_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta2))</span>
+<span class="co">##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             beta3_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta3))</span>
+<span class="co">##             beta3_c &lt;- sum(t(matrix(beta3)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta4)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             theta4_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta4))</span>
+<span class="co">##             theta4_c &lt;- sum(t(matrix(theta4)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             theta5_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta5))</span>
+<span class="co">##             theta5_c &lt;- sum(t(matrix(theta5)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             theta6_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta6))</span>
+<span class="co">##             theta6_c &lt;- sum(t(matrix(theta6)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         expit &lt;- function(x) {</span>
+<span class="co">##             exp(x)/(1 + exp(x))</span>
+<span class="co">##         }</span>
+<span class="co">##         cde &lt;- (theta1 + theta3 * m_cde + theta5_c) * (a1 - a0)</span>
+<span class="co">##         pnde &lt;- (theta1 + theta3 * expit(beta0 + beta1 * a0 + </span>
+<span class="co">##             beta2_c + beta3_c * a0) + theta5_c) * (a1 - a0)</span>
+<span class="co">##         tnie &lt;- (theta2 + theta3 * a1 + theta6_c) * (expit(beta0 + </span>
+<span class="co">##             beta1 * a1 + beta2_c + beta3_c * a1) - expit(beta0 + </span>
+<span class="co">##             beta1 * a0 + beta2_c + beta3_c * a0))</span>
+<span class="co">##         tnde &lt;- (theta1 + theta3 * expit(beta0 + beta1 * a1 + </span>
+<span class="co">##             beta2_c + beta3_c * a1) + theta5_c) * (a1 - a0)</span>
+<span class="co">##         pnie &lt;- (theta2 + theta3 * a0 + theta6_c) * (expit(beta0 + </span>
+<span class="co">##             beta1 * a1 + beta2_c + beta3_c * a1) - expit(beta0 + </span>
+<span class="co">##             beta1 * a0 + beta2_c + beta3_c * a0))</span>
+<span class="co">##         te &lt;- pnde + tnie</span>
+<span class="co">##         pm &lt;- tnie/te</span>
+<span class="co">##         c(cde = unname(cde), pnde = unname(pnde), tnie = unname(tnie), </span>
+<span class="co">##             tnde = unname(tnde), pnie = unname(pnie), te = unname(te), </span>
+<span class="co">##             pm = unname(pm))</span>
+<span class="co">##     }</span>
+<span class="co">##     return(fun_est)</span>
+<span class="co">## }</span>
+<span class="co">## &lt;bytecode: 0x7fbc40cff400&gt;</span>
+<span class="co">## &lt;environment: namespace:regmedint&gt;</span></code></pre>
 </div>
-<div id="standard-error-estimates-2" class="section level2">
-<h2 class="hasAnchor">
-<a href="#standard-error-estimates-2" class="anchor"></a>Standard error estimates</h2>
+<div class="section level3">
+<h3 id="standard-error-estimates-2">Standard error estimates<a class="anchor" aria-label="anchor" href="#standard-error-estimates-2"></a>
+</h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_logistic_yreg_linear_se</span></code></pre></div>
-<pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
-##     theta4, Sigma_beta, Sigma_theta) 
-## {
-##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, 
-##         theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
-##         theta4 = theta4)
-##     validate_myreg_vcovs(beta0 = beta0, beta1 = beta1, beta2 = beta2, 
-##         theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
-##         theta4 = theta4, Sigma_beta = Sigma_beta, Sigma_theta = Sigma_theta)
-##     Sigma &lt;- Matrix::bdiag(Sigma_beta, Sigma_theta)
-##     fun_se &lt;- function(a0, a1, m_cde, c_cond) {
-##         if (is.null(beta2)) {
-##             assertthat::assert_that(is.null(c_cond))
-##             beta2_c &lt;- 0
-##         }
-##         else {
-##             assertthat::assert_that(!is.null(c_cond))
-##             assertthat::assert_that(length(c_cond) == length(beta2))
-##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))
-##         }
-##         Gamma_cde &lt;- matrix(c(0, 0, rep(0, length(beta2)), 0, 
-##             1, 0, m_cde, rep(0, length(theta4))))
-##         pnde_d1 &lt;- theta3 * (exp(beta0 + (beta1 * a0) + beta2_c)/(1 + 
-##             exp(beta0 + (beta1 * a0) + beta2_c))^2)
-##         pnde_d2 &lt;- a0 * pnde_d1
-##         pnde_d3 &lt;- c_cond * pnde_d1
-##         pnde_d4 &lt;- 0
-##         pnde_d5 &lt;- 1
-##         pnde_d6 &lt;- 0
-##         pnde_d7 &lt;- exp(beta0 + (beta1 * a0) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a0) + beta2_c))
-##         pnde_d8 &lt;- rep(0, length(theta4))
-##         Gamma_pnde &lt;- matrix(c(pnde_d1, pnde_d2, pnde_d3, pnde_d4, 
-##             pnde_d5, pnde_d6, pnde_d7, pnde_d8))
-##         tnie_Q &lt;- exp(beta0 + (beta1 * a1) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a1) + beta2_c))^2
-##         tnie_B &lt;- exp(beta0 + (beta1 * a0) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a0) + beta2_c))^2
-##         tnie_K &lt;- exp(beta0 + (beta1 * a1) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a1) + beta2_c))
-##         tnie_D &lt;- exp(beta0 + (beta1 * a0) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a0) + beta2_c))
-##         tnie_d1 &lt;- (theta2 + (theta3 * a1)) * (tnie_Q - tnie_B)
-##         tnie_d2 &lt;- (theta2 + (theta3 * a1)) * ((a1 * tnie_Q) - 
-##             (a0 * tnie_B))
-##         tnie_d3 &lt;- (theta2 + (theta3 * a1)) * c_cond * (tnie_Q - 
-##             tnie_B)
-##         tnie_d4 &lt;- 0
-##         tnie_d5 &lt;- 0
-##         tnie_d6 &lt;- tnie_K - tnie_D
-##         tnie_d7 &lt;- a1 * (tnie_K - tnie_D)
-##         tnie_d8 &lt;- rep(0, length(theta4))
-##         Gamma_tnie &lt;- matrix(c(tnie_d1, tnie_d2, tnie_d3, tnie_d4, 
-##             tnie_d5, tnie_d6, tnie_d7, tnie_d8))
-##         tnde_d1 &lt;- theta3 * (exp(beta0 + (beta1 * a1) + beta2_c)/(1 + 
-##             exp(beta0 + (beta1 * a1) + beta2_c))^2)
-##         tnde_d2 &lt;- a1 * tnde_d1
-##         tnde_d3 &lt;- c_cond * tnde_d1
-##         tnde_d4 &lt;- 0
-##         tnde_d5 &lt;- 1
-##         tnde_d6 &lt;- 0
-##         tnde_d7 &lt;- exp(beta0 + (beta1 * a1) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a1) + beta2_c))
-##         tnde_d8 &lt;- rep(0, length(theta4))
-##         Gamma_tnde &lt;- matrix(c(tnde_d1, tnde_d2, tnde_d3, tnde_d4, 
-##             tnde_d5, tnde_d6, tnde_d7, tnde_d8))
-##         pnie_Q &lt;- exp(beta0 + (beta1 * a1) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a1) + beta2_c))^2
-##         pnie_B &lt;- exp(beta0 + (beta1 * a0) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a0) + beta2_c))^2
-##         pnie_K &lt;- exp(beta0 + (beta1 * a1) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a1) + beta2_c))
-##         pnie_D &lt;- exp(beta0 + (beta1 * a0) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a0) + beta2_c))
-##         pnie_d1 &lt;- (theta2 + (theta3 * a0)) * (pnie_Q - pnie_B)
-##         pnie_d2 &lt;- (theta2 + (theta3 * a0)) * ((a1 * pnie_Q) - 
-##             (a0 * pnie_B))
-##         pnie_d3 &lt;- (theta2 + (theta3 * a0)) * c_cond * (pnie_Q - 
-##             pnie_B)
-##         pnie_d4 &lt;- 0
-##         pnie_d5 &lt;- 0
-##         pnie_d6 &lt;- pnie_K - pnie_D
-##         pnie_d7 &lt;- a0 * (pnie_K - pnie_D)
-##         pnie_d8 &lt;- rep(0, length(theta4))
-##         Gamma_pnie &lt;- matrix(c(pnie_d1, pnie_d2, pnie_d3, pnie_d4, 
-##             pnie_d5, pnie_d6, pnie_d7, pnie_d8))
-##         Gamma_te &lt;- ((a1 - a0) * Gamma_pnde) + Gamma_tnie
-##         pnde &lt;- (theta1 * (a1 - a0)) + (theta3 * (a1 - a0)) * 
-##             (exp(beta0 + (beta1 * a0) + beta2_c)/(1 + exp(beta0 + 
-##                 (beta1 * a0) + beta2_c)))
-##         tnie &lt;- (theta2 + (theta3 * a1)) * ((exp(beta0 + (beta1 * 
-##             a1) + beta2_c)/(1 + exp(beta0 + (beta1 * a1) + beta2_c))) - 
-##             (exp(beta0 + (beta1 * a0) + beta2_c)/(1 + exp(beta0 + 
-##                 (beta1 * a0) + beta2_c))))
-##         d_pm &lt;- grad_prop_med_yreg_linear(pnde = unname(pnde), 
-##             tnie = unname(tnie))
-##         Gamma_pm &lt;- (d_pm[["pnde"]] * (a1 - a0) * Gamma_pnde) + 
-##             (d_pm[["tnie"]] * Gamma_tnie)
-##         a1_sub_a0 &lt;- abs(a1 - a0)
-##         se_cde &lt;- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% 
-##             Gamma_cde)) * a1_sub_a0
-##         se_pnde &lt;- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% 
-##             Gamma_pnde)) * a1_sub_a0
-##         se_tnie &lt;- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% 
-##             Gamma_tnie))
-##         se_tnde &lt;- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% 
-##             Gamma_tnde)) * a1_sub_a0
-##         se_pnie &lt;- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% 
-##             Gamma_pnie))
-##         se_te &lt;- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te))
-##         se_pm &lt;- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm))
-##         c(se_cde = unname(se_cde), se_pnde = unname(se_pnde), 
-##             se_tnie = unname(se_tnie), se_tnde = unname(se_tnde), 
-##             se_pnie = unname(se_pnie), se_te = unname(se_te), 
-##             se_pm = unname(se_pm))
-##     }
-##     return(fun_se)
-## }
-## &lt;bytecode: 0x7fe07b14d880&gt;
-## &lt;environment: namespace:regmedint&gt;</code></pre>
+<pre><code><span class="co">## function (beta0, beta1, beta2, beta3, theta0, theta1, theta2, </span>
+<span class="co">##     theta3, theta4, theta5, theta6, Sigma_beta, Sigma_theta) </span>
+<span class="co">## {</span>
+<span class="co">##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, </span>
+<span class="co">##         beta3 = beta3, theta0 = theta0, theta1 = theta1, theta2 = theta2, </span>
+<span class="co">##         theta3 = theta3, theta4 = theta4, theta5 = theta5, theta6 = theta6)</span>
+<span class="co">##     validate_myreg_vcovs(beta0 = beta0, beta1 = beta1, beta2 = beta2, </span>
+<span class="co">##         beta3 = beta3, theta0 = theta0, theta1 = theta1, theta2 = theta2, </span>
+<span class="co">##         theta3 = theta3, theta4 = theta4, theta5 = theta5, theta6 = theta6, </span>
+<span class="co">##         Sigma_beta = Sigma_beta, Sigma_theta = Sigma_theta)</span>
+<span class="co">##     Sigma &lt;- Matrix::bdiag(Sigma_beta, Sigma_theta)</span>
+<span class="co">##     fun_se &lt;- function(a0, a1, m_cde, c_cond) {</span>
+<span class="co">##         if (is.null(beta2)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             beta2_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta2))</span>
+<span class="co">##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             beta3_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta3))</span>
+<span class="co">##             beta3_c &lt;- sum(t(matrix(beta3)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta4)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             theta4_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta4))</span>
+<span class="co">##             theta4_c &lt;- sum(t(matrix(theta4)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             theta5_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta5))</span>
+<span class="co">##             theta5_c &lt;- sum(t(matrix(theta5)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             theta6_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta6))</span>
+<span class="co">##             theta6_c &lt;- sum(t(matrix(theta6)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         expit &lt;- function(x) {</span>
+<span class="co">##             exp(x)/(1 + exp(x))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             pd_cde_theta5 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_cde_theta5 &lt;- c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_cde &lt;- matrix(c(0, 0, rep(0, length(beta2)), rep(0, </span>
+<span class="co">##             length(beta3)), 0, 1, 0, m_cde, rep(0, length(theta4)), </span>
+<span class="co">##             pd_cde_theta5, rep(0, length(theta6))))</span>
+<span class="co">##         .e3 &lt;- a0 * (beta1 + beta3_c) + beta0 + beta2_c</span>
+<span class="co">##         .e4 &lt;- exp(.e3)</span>
+<span class="co">##         .e5 &lt;- 1 + .e4</span>
+<span class="co">##         .e6 &lt;- 1 - .e4/.e5</span>
+<span class="co">##         pnde_d1 &lt;- theta3 * .e6 * .e4/.e5</span>
+<span class="co">##         pnde_d2 &lt;- a0 * theta3 * .e6 * .e4/.e5</span>
+<span class="co">##         pnde_d3 &lt;- c_cond * theta3 * .e6 * .e4/.e5</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             pnde_d4 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pnde_d4 &lt;- a0 * c_cond * theta3 * .e6 * .e4/.e5</span>
+<span class="co">##         }</span>
+<span class="co">##         pnde_d5 &lt;- 0</span>
+<span class="co">##         pnde_d6 &lt;- 1</span>
+<span class="co">##         pnde_d7 &lt;- 0</span>
+<span class="co">##         pnde_d8 &lt;- expit(.e3)</span>
+<span class="co">##         pnde_d9 &lt;- rep(0, length(theta4))</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             pnde_d10 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pnde_d10 &lt;- c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         pnde_d11 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         Gamma_pnde &lt;- matrix(c(pnde_d1, pnde_d2, pnde_d3, pnde_d4, </span>
+<span class="co">##             pnde_d5, pnde_d6, pnde_d7, pnde_d8, pnde_d9, pnde_d10, </span>
+<span class="co">##             pnde_d11))</span>
+<span class="co">##         .e1 &lt;- beta1 + beta3_c</span>
+<span class="co">##         .e2 &lt;- beta2_c</span>
+<span class="co">##         .e5 &lt;- a0 * .e1 + beta0 + .e2</span>
+<span class="co">##         .e8 &lt;- a1 * .e1 + beta0 + .e2</span>
+<span class="co">##         .e9 &lt;- exp(.e5)</span>
+<span class="co">##         .e10 &lt;- exp(.e8)</span>
+<span class="co">##         .e11 &lt;- 1 + .e9</span>
+<span class="co">##         .e12 &lt;- 1 + .e10</span>
+<span class="co">##         .e13 &lt;- 1 - .e9/.e11</span>
+<span class="co">##         .e14 &lt;- 1 - .e10/.e12</span>
+<span class="co">##         .e17 &lt;- a1 * theta3 + theta6_c + theta2</span>
+<span class="co">##         .e20 &lt;- expit(.e8) - expit(.e5)</span>
+<span class="co">##         .e25 &lt;- .e14 * .e10/.e12 - .e13 * .e9/.e11</span>
+<span class="co">##         .e32 &lt;- a1 * .e14 * .e10/.e12 - a0 * .e13 * .e9/.e11</span>
+<span class="co">##         tnie_d1 &lt;- .e25 * .e17</span>
+<span class="co">##         tnie_d2 &lt;- .e32 * .e17</span>
+<span class="co">##         tnie_d3 &lt;- c_cond * .e25 * .e17</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             tnie_d4 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             tnie_d4 &lt;- c_cond * .e32 * .e17</span>
+<span class="co">##         }</span>
+<span class="co">##         tnie_d5 &lt;- 0</span>
+<span class="co">##         tnie_d6 &lt;- 0</span>
+<span class="co">##         tnie_d7 &lt;- .e20</span>
+<span class="co">##         tnie_d8 &lt;- a1 * .e20</span>
+<span class="co">##         tnie_d9 &lt;- rep(0, length(theta4))</span>
+<span class="co">##         tnie_d10 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             tnie_d11 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             tnie_d11 &lt;- c_cond * .e20</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_tnie &lt;- matrix(c(tnie_d1, tnie_d2, tnie_d3, tnie_d4, </span>
+<span class="co">##             tnie_d5, tnie_d6, tnie_d7, tnie_d8, tnie_d9, tnie_d10, </span>
+<span class="co">##             tnie_d11))</span>
+<span class="co">##         .e3 &lt;- a1 * (beta1 + beta3_c) + beta0 + beta2_c</span>
+<span class="co">##         .e4 &lt;- exp(.e3)</span>
+<span class="co">##         .e5 &lt;- 1 + .e4</span>
+<span class="co">##         .e6 &lt;- 1 - .e4/.e5</span>
+<span class="co">##         tnde_d1 &lt;- theta3 * .e6 * .e4/.e5</span>
+<span class="co">##         tnde_d2 &lt;- a1 * theta3 * .e6 * .e4/.e5</span>
+<span class="co">##         tnde_d3 &lt;- c_cond * theta3 * .e6 * .e4/.e5</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             tnde_d4 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             tnde_d4 &lt;- a1 * c_cond * theta3 * .e6 * .e4/.e5</span>
+<span class="co">##         }</span>
+<span class="co">##         tnde_d5 &lt;- 0</span>
+<span class="co">##         tnde_d6 &lt;- 1</span>
+<span class="co">##         tnde_d7 &lt;- 0</span>
+<span class="co">##         tnde_d8 &lt;- expit(.e3)</span>
+<span class="co">##         tnde_d9 &lt;- rep(0, length(theta4))</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             tnde_d10 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             tnde_d10 &lt;- c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         tnde_d11 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         Gamma_tnde &lt;- matrix(c(tnde_d1, tnde_d2, tnde_d3, tnde_d4, </span>
+<span class="co">##             tnde_d5, tnde_d6, tnde_d7, tnde_d8, tnde_d9, tnde_d10, </span>
+<span class="co">##             tnde_d11))</span>
+<span class="co">##         .e1 &lt;- beta1 + beta3_c</span>
+<span class="co">##         .e2 &lt;- beta2_c</span>
+<span class="co">##         .e5 &lt;- a0 * .e1 + beta0 + .e2</span>
+<span class="co">##         .e8 &lt;- a1 * .e1 + beta0 + .e2</span>
+<span class="co">##         .e9 &lt;- exp(.e5)</span>
+<span class="co">##         .e10 &lt;- exp(.e8)</span>
+<span class="co">##         .e11 &lt;- 1 + .e9</span>
+<span class="co">##         .e12 &lt;- 1 + .e10</span>
+<span class="co">##         .e13 &lt;- 1 - .e9/.e11</span>
+<span class="co">##         .e14 &lt;- 1 - .e10/.e12</span>
+<span class="co">##         .e17 &lt;- a0 * theta3 + theta6_c + theta2</span>
+<span class="co">##         .e20 &lt;- expit(.e8) - expit(.e5)</span>
+<span class="co">##         .e25 &lt;- .e14 * .e10/.e12 - .e13 * .e9/.e11</span>
+<span class="co">##         .e32 &lt;- a1 * .e14 * .e10/.e12 - a0 * .e13 * .e9/.e11</span>
+<span class="co">##         pnie_d1 &lt;- .e25 * .e17</span>
+<span class="co">##         pnie_d2 &lt;- .e32 * .e17</span>
+<span class="co">##         pnie_d3 &lt;- c_cond * .e25 * .e17</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             pnie_d4 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pnie_d4 &lt;- c_cond * .e32 * .e17</span>
+<span class="co">##         }</span>
+<span class="co">##         pnie_d5 &lt;- 0</span>
+<span class="co">##         pnie_d6 &lt;- 0</span>
+<span class="co">##         pnie_d7 &lt;- .e20</span>
+<span class="co">##         pnie_d8 &lt;- a0 * .e20</span>
+<span class="co">##         pnie_d9 &lt;- rep(0, length(theta4))</span>
+<span class="co">##         pnie_d10 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             pnie_d11 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pnie_d11 &lt;- c_cond * .e20</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_pnie &lt;- matrix(c(pnie_d1, pnie_d2, pnie_d3, pnie_d4, </span>
+<span class="co">##             pnie_d5, pnie_d6, pnie_d7, pnie_d8, pnie_d9, pnie_d10, </span>
+<span class="co">##             pnie_d11))</span>
+<span class="co">##         Gamma_te &lt;- ((a1 - a0) * Gamma_pnde) + Gamma_tnie</span>
+<span class="co">##         pnde &lt;- (theta1 + theta3 * expit(beta0 + beta1 * a0 + </span>
+<span class="co">##             beta2_c + beta3_c * a0) + theta5_c) * (a1 - a0)</span>
+<span class="co">##         tnie &lt;- (theta2 + theta3 * a1 + theta6_c) * (expit(beta0 + </span>
+<span class="co">##             beta1 * a1 + beta2_c + beta3_c * a1) - expit(beta0 + </span>
+<span class="co">##             beta1 * a0 + beta2_c + beta3_c * a0))</span>
+<span class="co">##         d_pm &lt;- grad_prop_med_yreg_linear(pnde = unname(pnde), </span>
+<span class="co">##             tnie = unname(tnie))</span>
+<span class="co">##         Gamma_pm &lt;- (d_pm[["pnde"]] * (a1 - a0) * Gamma_pnde) + </span>
+<span class="co">##             (d_pm[["tnie"]] * Gamma_tnie)</span>
+<span class="co">##         a1_sub_a0 &lt;- abs(a1 - a0)</span>
+<span class="co">##         se_cde &lt;- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% </span>
+<span class="co">##             Gamma_cde)) * a1_sub_a0</span>
+<span class="co">##         se_pnde &lt;- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% </span>
+<span class="co">##             Gamma_pnde)) * a1_sub_a0</span>
+<span class="co">##         se_tnie &lt;- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% </span>
+<span class="co">##             Gamma_tnie))</span>
+<span class="co">##         se_tnde &lt;- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% </span>
+<span class="co">##             Gamma_tnde)) * a1_sub_a0</span>
+<span class="co">##         se_pnie &lt;- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% </span>
+<span class="co">##             Gamma_pnie))</span>
+<span class="co">##         se_te &lt;- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te))</span>
+<span class="co">##         se_pm &lt;- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm))</span>
+<span class="co">##         c(se_cde = unname(se_cde), se_pnde = unname(se_pnde), </span>
+<span class="co">##             se_tnie = unname(se_tnie), se_tnde = unname(se_tnde), </span>
+<span class="co">##             se_pnie = unname(se_pnie), se_te = unname(se_te), </span>
+<span class="co">##             se_pm = unname(se_pm))</span>
+<span class="co">##     }</span>
+<span class="co">##     return(fun_se)</span>
+<span class="co">## }</span>
+<span class="co">## &lt;bytecode: 0x7fbc40e32358&gt;</span>
+<span class="co">## &lt;environment: namespace:regmedint&gt;</span></code></pre>
 </div>
 </div>
-<div id="mreg-logistic-yreg-non-linear-v2015-p473-proposition-2-6" class="section level1">
-<h1 class="hasAnchor">
-<a href="#mreg-logistic-yreg-non-linear-v2015-p473-proposition-2-6" class="anchor"></a>mreg logistic yreg non-linear (V2015 p473 Proposition 2.6)</h1>
+<div class="section level2">
+<h2 id="mreg-logistic-yreg-non-linear-v2015-p473-proposition-2-6">mreg logistic yreg non-linear (V2015 p473 Proposition 2.6)<a class="anchor" aria-label="anchor" href="#mreg-logistic-yreg-non-linear-v2015-p473-proposition-2-6"></a>
+</h2>
 <p>These functions are used in all cases where the mediator model is logistic regression and the outcome model is any one of the non-linear models.</p>
-<div id="point-estimates-3" class="section level2">
-<h2 class="hasAnchor">
-<a href="#point-estimates-3" class="anchor"></a>Point estimates</h2>
+<div class="section level3">
+<h3 id="point-estimates-3">Point estimates<a class="anchor" aria-label="anchor" href="#point-estimates-3"></a>
+</h3>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_logistic_yreg_logistic_est</span></code></pre></div>
-<pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
-##     theta4) 
-## {
-##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, 
-##         theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
-##         theta4 = theta4)
-##     fun_est &lt;- function(a0, a1, m_cde, c_cond) {
-##         if (is.null(beta2)) {
-##             assertthat::assert_that(is.null(c_cond))
-##             beta2_c &lt;- 0
-##         }
-##         else {
-##             assertthat::assert_that(!is.null(c_cond))
-##             assertthat::assert_that(length(c_cond) == length(beta2))
-##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))
-##         }
-##         cde &lt;- (theta1 + (theta3 * m_cde)) * (a1 - a0)
-##         pnde &lt;- (theta1 * (a1 - a0)) + log(1 + exp(theta2 + (theta3 * 
-##             a1) + beta0 + (beta1 * a0) + beta2_c)) - log(1 + 
-##             exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a0) + 
-##                 beta2_c))
-##         tnie &lt;- log(1 + exp(beta0 + (beta1 * a0) + beta2_c)) - 
-##             log(1 + exp(beta0 + (beta1 * a1) + beta2_c)) + log(1 + 
-##             exp(theta2 + (theta3 * a1) + beta0 + (beta1 * a1) + 
-##                 beta2_c)) - log(1 + exp(theta2 + (theta3 * a1) + 
-##             beta0 + (beta1 * a0) + beta2_c))
-##         tnde &lt;- (theta1 * (a1 - a0)) + log(1 + exp(theta2 + (theta3 * 
-##             a1) + beta0 + (beta1 * a1) + beta2_c)) - log(1 + 
-##             exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a1) + 
-##                 beta2_c))
-##         pnie &lt;- log(1 + exp(beta0 + (beta1 * a0) + beta2_c)) - 
-##             log(1 + exp(beta0 + (beta1 * a1) + beta2_c)) + log(1 + 
-##             exp(theta2 + (theta3 * a0) + beta0 + (beta1 * a1) + 
-##                 beta2_c)) - log(1 + exp(theta2 + (theta3 * a0) + 
-##             beta0 + (beta1 * a0) + beta2_c))
-##         te &lt;- pnde + tnie
-##         pm &lt;- (exp(pnde) * (exp(tnie) - 1))/(exp(te) - 1)
-##         c(cde = unname(cde), pnde = unname(pnde), tnie = unname(tnie), 
-##             tnde = unname(tnde), pnie = unname(pnie), te = unname(te), 
-##             pm = unname(pm))
-##     }
-##     return(fun_est)
-## }
-## &lt;bytecode: 0x7fe078942cf0&gt;
-## &lt;environment: namespace:regmedint&gt;</code></pre>
+<pre><code><span class="co">## function (beta0, beta1, beta2, beta3, theta0, theta1, theta2, </span>
+<span class="co">##     theta3, theta4, theta5, theta6) </span>
+<span class="co">## {</span>
+<span class="co">##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, </span>
+<span class="co">##         beta3 = beta3, theta0 = theta0, theta1 = theta1, theta2 = theta2, </span>
+<span class="co">##         theta3 = theta3, theta4 = theta4, theta5 = theta5, theta6 = theta6)</span>
+<span class="co">##     fun_est &lt;- function(a0, a1, m_cde, c_cond) {</span>
+<span class="co">##         if (is.null(beta2)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             beta2_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta2))</span>
+<span class="co">##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             beta3_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta3))</span>
+<span class="co">##             beta3_c &lt;- sum(t(matrix(beta3)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta4)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             theta4_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta4))</span>
+<span class="co">##             theta4_c &lt;- sum(t(matrix(theta4)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             theta5_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta5))</span>
+<span class="co">##             theta5_c &lt;- sum(t(matrix(theta5)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             theta6_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta6))</span>
+<span class="co">##             theta6_c &lt;- sum(t(matrix(theta6)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         expit &lt;- function(x) {</span>
+<span class="co">##             exp(x)/(1 + exp(x))</span>
+<span class="co">##         }</span>
+<span class="co">##         cde &lt;- (theta1 + theta3 * m_cde + theta5_c) * (a1 - a0)</span>
+<span class="co">##         pnde &lt;- ((theta1 + theta5_c) * (a1 - a0)) + log(1 + exp(beta0 + </span>
+<span class="co">##             beta1 * a0 + beta2_c + beta3_c * a0 + theta2 + theta3 * </span>
+<span class="co">##             a1 + theta6_c)) - log(1 + exp(beta0 + beta1 * a0 + </span>
+<span class="co">##             beta2_c + beta3_c * a0 + theta2 + theta3 * a0 + theta6_c))</span>
+<span class="co">##         tnie &lt;- log(1 + exp(beta0 + beta1 * a1 + beta2_c + beta3_c * </span>
+<span class="co">##             a1 + theta2 + theta3 * a1 + theta6_c)) - log(1 + </span>
+<span class="co">##             exp(beta0 + beta1 * a0 + beta2_c + beta3_c * a0 + </span>
+<span class="co">##                 theta2 + theta3 * a1 + theta6_c)) + log(1 + exp(beta0 + </span>
+<span class="co">##             beta1 * a0 + beta2_c + beta3_c * a0)) - log(1 + exp(beta0 + </span>
+<span class="co">##             beta1 * a1 + beta2_c + beta3_c * a1))</span>
+<span class="co">##         tnde &lt;- ((theta1 + theta5_c) * (a1 - a0)) + log(1 + exp(beta0 + </span>
+<span class="co">##             beta1 * a1 + beta2_c + beta3_c * a1 + theta2 + theta3 * </span>
+<span class="co">##             a1 + theta6_c)) - log(1 + exp(beta0 + beta1 * a1 + </span>
+<span class="co">##             beta2_c + beta3_c * a1 + theta2 + theta3 * a0 + theta6_c))</span>
+<span class="co">##         pnie &lt;- log(1 + exp(beta0 + beta1 * a1 + beta2_c + beta3_c * </span>
+<span class="co">##             a1 + theta2 + theta3 * a0 + theta6_c)) - log(1 + </span>
+<span class="co">##             exp(beta0 + beta1 * a0 + beta2_c + beta3_c * a0 + </span>
+<span class="co">##                 theta2 + theta3 * a0 + theta6_c)) + log(1 + exp(beta0 + </span>
+<span class="co">##             beta1 * a0 + beta2_c + beta3_c * a0)) - log(1 + exp(beta0 + </span>
+<span class="co">##             beta1 * a1 + beta2_c + beta3_c * a1))</span>
+<span class="co">##         te &lt;- pnde + tnie</span>
+<span class="co">##         pm &lt;- (exp(pnde) * (exp(tnie) - 1))/(exp(te) - 1)</span>
+<span class="co">##         c(cde = unname(cde), pnde = unname(pnde), tnie = unname(tnie), </span>
+<span class="co">##             tnde = unname(tnde), pnie = unname(pnie), te = unname(te), </span>
+<span class="co">##             pm = unname(pm))</span>
+<span class="co">##     }</span>
+<span class="co">##     return(fun_est)</span>
+<span class="co">## }</span>
+<span class="co">## &lt;bytecode: 0x7fbc232a7d98&gt;</span>
+<span class="co">## &lt;environment: namespace:regmedint&gt;</span></code></pre>
 </div>
-<div id="standard-error-estimates-3" class="section level2">
-<h2 class="hasAnchor">
-<a href="#standard-error-estimates-3" class="anchor"></a>Standard error estimates</h2>
+<div class="section level3">
+<h3 id="standard-error-estimates-3">Standard error estimates<a class="anchor" aria-label="anchor" href="#standard-error-estimates-3"></a>
+</h3>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">regmedint</span><span class="fu">:::</span><span class="va">calc_myreg_mreg_logistic_yreg_logistic_se</span></code></pre></div>
-<pre><code>## function (beta0, beta1, beta2, theta0, theta1, theta2, theta3, 
-##     theta4, Sigma_beta, Sigma_theta) 
-## {
-##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, 
-##         theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
-##         theta4 = theta4)
-##     validate_myreg_vcovs(beta0 = beta0, beta1 = beta1, beta2 = beta2, 
-##         theta0 = theta0, theta1 = theta1, theta2 = theta2, theta3 = theta3, 
-##         theta4 = theta4, Sigma_beta = Sigma_beta, Sigma_theta = Sigma_theta)
-##     Sigma &lt;- Matrix::bdiag(Sigma_beta, Sigma_theta)
-##     fun_se &lt;- function(a0, a1, m_cde, c_cond) {
-##         if (is.null(beta2)) {
-##             assertthat::assert_that(is.null(c_cond))
-##             beta2_c &lt;- 0
-##         }
-##         else {
-##             assertthat::assert_that(!is.null(c_cond))
-##             assertthat::assert_that(length(c_cond) == length(beta2))
-##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))
-##         }
-##         Gamma_cde &lt;- matrix(c(0, 0, rep(0, length(beta2)), 0, 
-##             (a1 - a0), 0, (a1 - a0) * m_cde, rep(0, length(theta4))))
-##         pnde_Q &lt;- exp(theta2 + (theta3 * a1) + beta0 + (beta1 * 
-##             a0) + beta2_c)/(1 + exp(theta2 + (theta3 * a1) + 
-##             beta0 + (beta1 * a0) + beta2_c))
-##         pnde_B &lt;- exp(theta2 + (theta3 * a0) + beta0 + (beta1 * 
-##             a0) + beta2_c)/(1 + exp(theta2 + (theta3 * a0) + 
-##             beta0 + (beta1 * a0) + beta2_c))
-##         pnde_d1 &lt;- pnde_Q - pnde_B
-##         pnde_d2 &lt;- a0 * pnde_d1
-##         pnde_d3 &lt;- c_cond * pnde_d1
-##         pnde_d4 &lt;- 0
-##         pnde_d5 &lt;- (a1 - a0)
-##         pnde_d6 &lt;- pnde_Q - pnde_B
-##         pnde_d7 &lt;- (a1 * pnde_Q) - (a0 * pnde_B)
-##         pnde_d8 &lt;- rep(0, length(theta4))
-##         Gamma_pnde &lt;- matrix(c(pnde_d1, pnde_d2, pnde_d3, pnde_d4, 
-##             pnde_d5, pnde_d6, pnde_d7, pnde_d8))
-##         tnie_Q &lt;- exp(theta2 + (theta3 * a1) + beta0 + (beta1 * 
-##             a1) + beta2_c)/(1 + exp(theta2 + (theta3 * a1) + 
-##             beta0 + (beta1 * a1) + beta2_c))
-##         tnie_B &lt;- exp(theta2 + (theta3 * a1) + beta0 + (beta1 * 
-##             a0) + beta2_c)/(1 + exp(theta2 + (theta3 * a1) + 
-##             beta0 + (beta1 * a0) + beta2_c))
-##         tnie_K &lt;- exp(beta0 + (beta1 * a1) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a1) + beta2_c))
-##         tnie_D &lt;- exp(beta0 + (beta1 * a0) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a0) + beta2_c))
-##         tnie_d1 &lt;- (tnie_D + tnie_Q) - (tnie_K + tnie_B)
-##         tnie_d2 &lt;- (a0 * (tnie_D - tnie_B)) + (a1 * (tnie_Q - 
-##             tnie_K))
-##         tnie_d3 &lt;- c_cond * ((tnie_D + tnie_Q) - (tnie_K + tnie_B))
-##         tnie_d4 &lt;- 0
-##         tnie_d5 &lt;- 0
-##         tnie_d6 &lt;- tnie_Q - tnie_B
-##         tnie_d7 &lt;- a1 * (tnie_Q - tnie_B)
-##         tnie_d8 &lt;- rep(0, length(theta4))
-##         Gamma_tnie &lt;- matrix(c(tnie_d1, tnie_d2, tnie_d3, tnie_d4, 
-##             tnie_d5, tnie_d6, tnie_d7, tnie_d8))
-##         tnde_Q &lt;- exp(theta2 + (theta3 * a1) + beta0 + (beta1 * 
-##             a1) + beta2_c)/(1 + exp(theta2 + (theta3 * a1) + 
-##             beta0 + (beta1 * a1) + beta2_c))
-##         tnde_B &lt;- exp(theta2 + (theta3 * a0) + beta0 + (beta1 * 
-##             a1) + beta2_c)/(1 + exp(theta2 + (theta3 * a0) + 
-##             beta0 + (beta1 * a1) + beta2_c))
-##         tnde_d1 &lt;- tnde_Q - tnde_B
-##         tnde_d2 &lt;- a1 * tnde_d1
-##         tnde_d3 &lt;- c_cond * tnde_d1
-##         tnde_d4 &lt;- 0
-##         tnde_d5 &lt;- (a1 - a0)
-##         tnde_d6 &lt;- tnde_Q - tnde_B
-##         tnde_d7 &lt;- (a1 * tnde_Q) - (a0 * tnde_B)
-##         tnde_d8 &lt;- rep(0, length(theta4))
-##         Gamma_tnde &lt;- matrix(c(tnde_d1, tnde_d2, tnde_d3, tnde_d4, 
-##             tnde_d5, tnde_d6, tnde_d7, tnde_d8))
-##         pnie_Q &lt;- exp(theta2 + (theta3 * a0) + beta0 + (beta1 * 
-##             a1) + beta2_c)/(1 + exp(theta2 + (theta3 * a0) + 
-##             beta0 + (beta1 * a1) + beta2_c))
-##         pnie_B &lt;- exp(theta2 + (theta3 * a0) + beta0 + (beta1 * 
-##             a0) + beta2_c)/(1 + exp(theta2 + (theta3 * a0) + 
-##             beta0 + (beta1 * a0) + beta2_c))
-##         pnie_K &lt;- exp(beta0 + (beta1 * a1) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a1) + beta2_c))
-##         pnie_D &lt;- exp(beta0 + (beta1 * a0) + beta2_c)/(1 + exp(beta0 + 
-##             (beta1 * a0) + beta2_c))
-##         pnie_d1 &lt;- (pnie_D + pnie_Q) - (pnie_K + pnie_B)
-##         pnie_d2 &lt;- (a0 * (pnie_D - pnie_B)) + (a1 * (pnie_Q - 
-##             pnie_K))
-##         pnie_d3 &lt;- c_cond * ((pnie_D + pnie_Q) - (pnie_K + pnie_B))
-##         pnie_d4 &lt;- 0
-##         pnie_d5 &lt;- 0
-##         pnie_d6 &lt;- pnie_Q - pnie_B
-##         pnie_d7 &lt;- a0 * (pnie_Q - pnie_B)
-##         pnie_d8 &lt;- rep(0, length(theta4))
-##         Gamma_pnie &lt;- matrix(c(pnie_d1, pnie_d2, pnie_d3, pnie_d4, 
-##             pnie_d5, pnie_d6, pnie_d7, pnie_d8))
-##         Gamma_te &lt;- Gamma_pnde + Gamma_tnie
-##         pnde &lt;- (exp(theta1 * a1) * (1 + exp(theta2 + (theta3 * 
-##             a1) + beta0 + (beta1 * a0) + beta2_c)))/(exp(theta1 * 
-##             a0) * (1 + exp(theta2 + (theta3 * a0) + beta0 + (beta1 * 
-##             a0) + beta2_c)))
-##         tnie &lt;- ((1 + exp(beta0 + (beta1 * a0) + beta2_c)) * 
-##             (1 + exp(theta2 + (theta3 * a1) + beta0 + (beta1 * 
-##                 a1) + beta2_c)))/((1 + exp(beta0 + (beta1 * a1) + 
-##             beta2_c)) * (1 + exp(theta2 + (theta3 * a1) + beta0 + 
-##             (beta1 * a0) + beta2_c)))
-##         d_pm &lt;- grad_prop_med_yreg_logistic(pnde = unname(pnde), 
-##             tnie = unname(tnie))
-##         Gamma_pm &lt;- (d_pm[["pnde"]] * Gamma_pnde) + (d_pm[["tnie"]] * 
-##             Gamma_tnie)
-##         se_cde &lt;- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% 
-##             Gamma_cde))
-##         se_pnde &lt;- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% 
-##             Gamma_pnde))
-##         se_tnie &lt;- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% 
-##             Gamma_tnie))
-##         se_tnde &lt;- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% 
-##             Gamma_tnde))
-##         se_pnie &lt;- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% 
-##             Gamma_pnie))
-##         se_te &lt;- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te))
-##         se_pm &lt;- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm))
-##         c(se_cde = unname(se_cde), se_pnde = unname(se_pnde), 
-##             se_tnie = unname(se_tnie), se_tnde = unname(se_tnde), 
-##             se_pnie = unname(se_pnie), se_te = unname(se_te), 
-##             se_pm = unname(se_pm))
-##     }
-##     return(fun_se)
-## }
-## &lt;bytecode: 0x7fe078ad5cd0&gt;
-## &lt;environment: namespace:regmedint&gt;</code></pre>
+<pre><code><span class="co">## function (beta0, beta1, beta2, beta3, theta0, theta1, theta2, </span>
+<span class="co">##     theta3, theta4, theta5, theta6, Sigma_beta, Sigma_theta) </span>
+<span class="co">## {</span>
+<span class="co">##     validate_myreg_coefs(beta0 = beta0, beta1 = beta1, beta2 = beta2, </span>
+<span class="co">##         beta3 = beta3, theta0 = theta0, theta1 = theta1, theta2 = theta2, </span>
+<span class="co">##         theta3 = theta3, theta4 = theta4, theta5 = theta5, theta6 = theta6)</span>
+<span class="co">##     validate_myreg_vcovs(beta0 = beta0, beta1 = beta1, beta2 = beta2, </span>
+<span class="co">##         beta3 = beta3, theta0 = theta0, theta1 = theta1, theta2 = theta2, </span>
+<span class="co">##         theta3 = theta3, theta4 = theta4, theta5 = theta5, theta6 = theta6, </span>
+<span class="co">##         Sigma_beta = Sigma_beta, Sigma_theta = Sigma_theta)</span>
+<span class="co">##     Sigma &lt;- Matrix::bdiag(Sigma_beta, Sigma_theta)</span>
+<span class="co">##     fun_se &lt;- function(a0, a1, m_cde, c_cond) {</span>
+<span class="co">##         if (is.null(beta2)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             beta2_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta2))</span>
+<span class="co">##             beta2_c &lt;- sum(t(matrix(beta2)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             beta3_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(beta3))</span>
+<span class="co">##             beta3_c &lt;- sum(t(matrix(beta3)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta4)) {</span>
+<span class="co">##             assertthat::assert_that(is.null(c_cond))</span>
+<span class="co">##             theta4_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(!is.null(c_cond))</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta4))</span>
+<span class="co">##             theta4_c &lt;- sum(t(matrix(theta4)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             theta5_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta5))</span>
+<span class="co">##             theta5_c &lt;- sum(t(matrix(theta5)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             theta6_c &lt;- 0</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             assertthat::assert_that(length(c_cond) == length(theta6))</span>
+<span class="co">##             theta6_c &lt;- sum(t(matrix(theta6)) %*% matrix(c_cond))</span>
+<span class="co">##         }</span>
+<span class="co">##         expit &lt;- function(x) {</span>
+<span class="co">##             exp(x)/(1 + exp(x))</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             pd_cde_theta5 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pd_cde_theta5 &lt;- c_cond</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_cde &lt;- matrix(c(0, 0, rep(0, length(beta2)), rep(0, </span>
+<span class="co">##             length(beta3)), 0, (a1 - a0), 0, (a1 - a0) * m_cde, </span>
+<span class="co">##             rep(0, length(theta4)), pd_cde_theta5, rep(0, length(theta6))))</span>
+<span class="co">##         pnde_expit_a1 &lt;- expit(a0 * (beta1 + beta3_c) + a1 * </span>
+<span class="co">##             theta3 + beta0 + beta2_c + theta6_c + theta2)</span>
+<span class="co">##         pnde_expit_a0 &lt;- expit(a0 * (beta1 + beta3_c) + a0 * </span>
+<span class="co">##             theta3 + beta0 + beta2_c + theta6_c + theta2)</span>
+<span class="co">##         pnde_d1 &lt;- pnde_expit_a1 - pnde_expit_a0</span>
+<span class="co">##         pnde_d2 &lt;- a0 * pnde_d1</span>
+<span class="co">##         pnde_d3 &lt;- c_cond * pnde_d1</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             pnde_d4 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pnde_d4 &lt;- c_cond * a0 * pnde_d1</span>
+<span class="co">##         }</span>
+<span class="co">##         pnde_d5 &lt;- 0</span>
+<span class="co">##         pnde_d6 &lt;- a1 - a0</span>
+<span class="co">##         pnde_d7 &lt;- pnde_d1</span>
+<span class="co">##         pnde_d8 &lt;- a1 * pnde_expit_a1 - a0 * pnde_expit_a0</span>
+<span class="co">##         pnde_d9 &lt;- rep(0, length(theta4))</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             pnde_d10 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pnde_d10 &lt;- c_cond * (a1 - a0)</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             pnde_d11 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pnde_d11 &lt;- c_cond * pnde_d1</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_pnde &lt;- matrix(c(pnde_d1, pnde_d2, pnde_d3, pnde_d4, </span>
+<span class="co">##             pnde_d5, pnde_d6, pnde_d7, pnde_d8, pnde_d9, pnde_d10, </span>
+<span class="co">##             pnde_d11))</span>
+<span class="co">##         tnie_expit_q1 &lt;- expit(a0 * (beta1 + beta3_c) + beta0 + </span>
+<span class="co">##             beta2_c)</span>
+<span class="co">##         tnie_expit_q2 &lt;- expit(a0 * (beta1 + beta3_c) + a1 * </span>
+<span class="co">##             theta3 + beta0 + beta2_c + theta6_c + theta2)</span>
+<span class="co">##         tnie_expit_q3 &lt;- expit(a1 * (beta1 + beta3_c) + beta0 + </span>
+<span class="co">##             beta2_c)</span>
+<span class="co">##         tnie_expit_q4 &lt;- expit(a1 * (beta1 + beta3_c) + a1 * </span>
+<span class="co">##             theta3 + beta0 + beta2_c + theta6_c + theta2)</span>
+<span class="co">##         tnie_d1 &lt;- tnie_expit_q1 - tnie_expit_q2 - tnie_expit_q3 + </span>
+<span class="co">##             tnie_expit_q4</span>
+<span class="co">##         tnie_d2 &lt;- a0 * (tnie_expit_q1 - tnie_expit_q2) + a1 * </span>
+<span class="co">##             (-tnie_expit_q3 + tnie_expit_q4)</span>
+<span class="co">##         tnie_d3 &lt;- c_cond * tnie_d1</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             tnie_d4 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             tnie_d4 &lt;- c_cond * tnie_d2</span>
+<span class="co">##         }</span>
+<span class="co">##         tnie_d5 &lt;- 0</span>
+<span class="co">##         tnie_d6 &lt;- 0</span>
+<span class="co">##         tnie_d7 &lt;- tnie_expit_q4 - tnie_expit_q2</span>
+<span class="co">##         tnie_d8 &lt;- a1 * tnie_d7</span>
+<span class="co">##         tnie_d9 &lt;- rep(0, length(theta4))</span>
+<span class="co">##         tnie_d10 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             tnie_d11 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             tnie_d11 &lt;- c_cond * tnie_d7</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_tnie &lt;- matrix(c(tnie_d1, tnie_d2, tnie_d3, tnie_d4, </span>
+<span class="co">##             tnie_d5, tnie_d6, tnie_d7, tnie_d8, tnie_d9, tnie_d10, </span>
+<span class="co">##             tnie_d11))</span>
+<span class="co">##         tnde_expit_a1 &lt;- expit(a1 * (beta1 + beta3_c) + a1 * </span>
+<span class="co">##             theta3 + beta0 + beta2_c + theta6_c + theta2)</span>
+<span class="co">##         tnde_expit_a0 &lt;- expit(a1 * (beta1 + beta3_c) + a0 * </span>
+<span class="co">##             theta3 + beta0 + beta2_c + theta6_c + theta2)</span>
+<span class="co">##         tnde_d1 &lt;- tnde_expit_a1 - tnde_expit_a0</span>
+<span class="co">##         tnde_d2 &lt;- a1 * tnde_d1</span>
+<span class="co">##         tnde_d3 &lt;- c_cond * tnde_d1</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             tnde_d4 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             tnde_d4 &lt;- c_cond * a1 * tnde_d1</span>
+<span class="co">##         }</span>
+<span class="co">##         tnde_d5 &lt;- 0</span>
+<span class="co">##         tnde_d6 &lt;- a1 - a0</span>
+<span class="co">##         tnde_d7 &lt;- tnde_d1</span>
+<span class="co">##         tnde_d8 &lt;- a1 * tnde_expit_a1 - a0 * tnde_expit_a0</span>
+<span class="co">##         tnde_d9 &lt;- rep(0, length(theta4))</span>
+<span class="co">##         if (is.null(theta5)) {</span>
+<span class="co">##             tnde_d10 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             tnde_d10 &lt;- c_cond * (a1 - a0)</span>
+<span class="co">##         }</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             tnde_d11 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             tnde_d11 &lt;- tnde_d3</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_tnde &lt;- matrix(c(tnde_d1, tnde_d2, tnde_d3, tnde_d4, </span>
+<span class="co">##             tnde_d5, tnde_d6, tnde_d7, tnde_d8, tnde_d9, tnde_d10, </span>
+<span class="co">##             tnde_d11))</span>
+<span class="co">##         pnie_expit_q1 &lt;- expit(a0 * (beta1 + beta3_c) + beta0 + </span>
+<span class="co">##             beta2_c)</span>
+<span class="co">##         pnie_expit_q2 &lt;- expit(a0 * (beta1 + beta3_c) + a0 * </span>
+<span class="co">##             theta3 + beta0 + beta2_c + theta6_c + theta2)</span>
+<span class="co">##         pnie_expit_q3 &lt;- expit(a1 * (beta1 + beta3_c) + beta0 + </span>
+<span class="co">##             beta2_c)</span>
+<span class="co">##         pnie_expit_q4 &lt;- expit(a1 * (beta1 + beta3_c) + a0 * </span>
+<span class="co">##             theta3 + beta0 + beta2_c + theta6_c + theta2)</span>
+<span class="co">##         pnie_d1 &lt;- pnie_expit_q1 - pnie_expit_q2 - pnie_expit_q3 + </span>
+<span class="co">##             pnie_expit_q4</span>
+<span class="co">##         pnie_d2 &lt;- a0 * (pnie_expit_q1 - pnie_expit_q2) + a1 * </span>
+<span class="co">##             (-pnie_expit_q3 + pnie_expit_q4)</span>
+<span class="co">##         pnie_d3 &lt;- c_cond * pnie_d1</span>
+<span class="co">##         if (is.null(beta3)) {</span>
+<span class="co">##             pnie_d4 &lt;- rep(0, length(beta3))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pnie_d4 &lt;- c_cond * pnie_d2</span>
+<span class="co">##         }</span>
+<span class="co">##         pnie_d5 &lt;- 0</span>
+<span class="co">##         pnie_d6 &lt;- 0</span>
+<span class="co">##         pnie_d7 &lt;- pnie_expit_q4 - pnie_expit_q2</span>
+<span class="co">##         pnie_d8 &lt;- a0 * pnie_d7</span>
+<span class="co">##         pnie_d9 &lt;- rep(0, length(theta4))</span>
+<span class="co">##         pnie_d10 &lt;- rep(0, length(theta5))</span>
+<span class="co">##         if (is.null(theta6)) {</span>
+<span class="co">##             pnie_d11 &lt;- rep(0, length(theta6))</span>
+<span class="co">##         }</span>
+<span class="co">##         else {</span>
+<span class="co">##             pnie_d11 &lt;- c_cond * pnie_d7</span>
+<span class="co">##         }</span>
+<span class="co">##         Gamma_pnie &lt;- matrix(c(pnie_d1, pnie_d2, pnie_d3, pnie_d4, </span>
+<span class="co">##             pnie_d5, pnie_d6, pnie_d7, pnie_d8, pnie_d9, pnie_d10, </span>
+<span class="co">##             pnie_d11))</span>
+<span class="co">##         Gamma_te &lt;- Gamma_pnde + Gamma_tnie</span>
+<span class="co">##         pnde &lt;- ((theta1 + theta5_c) * (a1 - a0)) + log(1 + exp(beta0 + </span>
+<span class="co">##             beta1 * a0 + beta2_c + beta3_c * a0 + theta2 + theta3 * </span>
+<span class="co">##             a1 + theta6_c)) - log(1 + exp(beta0 + beta1 * a0 + </span>
+<span class="co">##             beta2_c + beta3_c * a0 + theta2 + theta3 * a0 + theta6_c))</span>
+<span class="co">##         tnie &lt;- log(1 + exp(beta0 + beta1 * a1 + beta2_c + beta3_c * </span>
+<span class="co">##             a1 + theta2 + theta3 * a1 + theta6_c)) - log(1 + </span>
+<span class="co">##             exp(beta0 + beta1 * a0 + beta2_c + beta3_c * a0 + </span>
+<span class="co">##                 theta2 + theta3 * a1 + theta6_c)) + log(1 + exp(beta0 + </span>
+<span class="co">##             beta1 * a0 + beta2_c + beta3_c * a0)) - log(1 + exp(beta0 + </span>
+<span class="co">##             beta1 * a1 + beta2_c + beta3_c * a1))</span>
+<span class="co">##         d_pm &lt;- grad_prop_med_yreg_logistic(pnde = unname(pnde), </span>
+<span class="co">##             tnie = unname(tnie))</span>
+<span class="co">##         Gamma_pm &lt;- (d_pm[["pnde"]] * Gamma_pnde) + (d_pm[["tnie"]] * </span>
+<span class="co">##             Gamma_tnie)</span>
+<span class="co">##         se_cde &lt;- sqrt(as.numeric(t(Gamma_cde) %*% Sigma %*% </span>
+<span class="co">##             Gamma_cde))</span>
+<span class="co">##         se_pnde &lt;- sqrt(as.numeric(t(Gamma_pnde) %*% Sigma %*% </span>
+<span class="co">##             Gamma_pnde))</span>
+<span class="co">##         se_tnie &lt;- sqrt(as.numeric(t(Gamma_tnie) %*% Sigma %*% </span>
+<span class="co">##             Gamma_tnie))</span>
+<span class="co">##         se_tnde &lt;- sqrt(as.numeric(t(Gamma_tnde) %*% Sigma %*% </span>
+<span class="co">##             Gamma_tnde))</span>
+<span class="co">##         se_pnie &lt;- sqrt(as.numeric(t(Gamma_pnie) %*% Sigma %*% </span>
+<span class="co">##             Gamma_pnie))</span>
+<span class="co">##         se_te &lt;- sqrt(as.numeric(t(Gamma_te) %*% Sigma %*% Gamma_te))</span>
+<span class="co">##         se_pm &lt;- sqrt(as.numeric(t(Gamma_pm) %*% Sigma %*% Gamma_pm))</span>
+<span class="co">##         c(se_cde = unname(se_cde), se_pnde = unname(se_pnde), </span>
+<span class="co">##             se_tnie = unname(se_tnie), se_tnde = unname(se_tnde), </span>
+<span class="co">##             se_pnie = unname(se_pnie), se_te = unname(se_te), </span>
+<span class="co">##             se_pm = unname(se_pm))</span>
+<span class="co">##     }</span>
+<span class="co">##     return(fun_se)</span>
+<span class="co">## }</span>
+<span class="co">## &lt;bytecode: 0x7fbc240f0d70&gt;</span>
+<span class="co">## &lt;environment: namespace:regmedint&gt;</span></code></pre>
 </div>
 </div>
-<div id="bibliography" class="section level1">
-<h1 class="hasAnchor">
-<a href="#bibliography" class="anchor"></a>Bibliography</h1>
+<div class="section level2">
+<h2 id="bibliography">Bibliography<a class="anchor" aria-label="anchor" href="#bibliography"></a>
+</h2>
 <ul>
 <li>V2015: VanderWeele (2015) Explanation in Causal Inference</li>
 </ul>
@@ -744,11 +1280,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Kazuki Yoshida, Yi Li.</p>
+  <p></p>
+<p>Developed by Kazuki Yoshida, Yi Li.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -756,6 +1294,8 @@
 
   
 
+
+  
 
   </body>
 </html>

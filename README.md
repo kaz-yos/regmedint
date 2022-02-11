@@ -1,5 +1,5 @@
-
-# regmedint <img src="man/figures/hex.png" align="right" height="140"/>
+regmedint <img src="man/figures/hex.png" align="right" height="140"/>
+=====================================================================
 
 [![R-CMD-check](https://github.com/kaz-yos/regmedint/workflows/R-CMD-check/badge.svg)](https://github.com/kaz-yos/regmedint/actions)
 [![](http://www.r-pkg.org/badges/version/regmedint)](http://www.r-pkg.org/pkg/regmedint)
@@ -24,23 +24,65 @@ To cite this software, please use: *regmedint* (v1.0.0; Yoshida, Li, &
 Mathur, 2021)
 <!-- cite the r package:  https://easystats.github.io/report/articles/cite_packages.html -->
 
-# Implemented models
+Implemented models
+==================
 
 The following grid of models are implemented. `yreg` refers to the
 outcome model and `mreg` refers to the mediator model.
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
-| yreg \\\\ mreg       |             linear             |            logistic            |
-|:---------------------|:------------------------------:|:------------------------------:|
-| linear               |       :heavy_check_mark:       |       :heavy_check_mark:       |
-| logistic<sup>1</sup> |       :heavy_check_mark:       |       :heavy_check_mark:       |
-| loglinear            | :heavy_check_mark:<sup>2</sup> | :heavy_check_mark:<sup>2</sup> |
-| poisson              |       :heavy_check_mark:       |       :heavy_check_mark:       |
-| negbin               |       :heavy_check_mark:       |       :heavy_check_mark:       |
-| survCox<sup>1</sup>  |       :heavy_check_mark:       |       :heavy_check_mark:       |
-| survAFT exp          |       :heavy_check_mark:       |       :heavy_check_mark:       |
-| survAFT weibull      |       :heavy_check_mark:       |       :heavy_check_mark:       |
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">yreg \\ mreg</th>
+<th style="text-align: center;">linear</th>
+<th style="text-align: center;">logistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">linear</td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">logistic<span class="math inline"><sup>1</sup></span></td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">loglinear</td>
+<td style="text-align: center;">:heavy_check_mark:<span class="math inline"><sup>2</sup></span></td>
+<td style="text-align: center;">:heavy_check_mark:<span class="math inline"><sup>2</sup></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">poisson</td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">negbin</td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">survCox<span class="math inline"><sup>1</sup></span></td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">survAFT exp</td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">survAFT weibull</td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+<td style="text-align: center;">:heavy_check_mark:</td>
+</tr>
+</tbody>
+</table>
 
 <sup>1</sup> Approximation depends on the rare event assumptions.
 
@@ -50,30 +92,27 @@ robust variance) as in Z2004.
 See the corresponding vignettes (Articles on the package website) for
 how to perform bootstrapping and multiple imputation.
 
-# Installation
+Installation
+============
 
 For the developmental version on Github, use the following commands to
 install the package.
 
-``` r
-# install.packages("devtools") # If you do not have devtools already.
-devtools::install_github("einsley1993/regmedint") 
-```
+    # install.packages("devtools") # If you do not have devtools already.
+    devtools::install_github("kaz-yos/regmedint")
 
-``` r
-install.packages("regmedint")
-```
+    install.packages("regmedint")
 
-# Data Example
+Data Example
+============
 
 We use `VV2015` dataset for demonstration.
 
-``` r
-library(regmedint)
-data(vv2015)
-```
+    library(regmedint)
+    data(vv2015)
 
-## `regmedint()` to fit models
+`regmedint()` to fit models
+---------------------------
 
 The `regmedint` function is the user interface for constructing a result
 object of class `regmedint`. The interface is similar to the original
@@ -85,27 +124,27 @@ conditional effects are evaluated at.
 1.  When there is no effect measure modification by covariates,
     `EMM_AC_Mmodel = NULL`, `EMM_AC_Ymodel = NULL`, `EMM_MC = NULL`.
 
-``` r
-regmedint_obj1 <- regmedint(data = vv2015,
-                            ## Variables
-                            yvar = "y",
-                            avar = "x",
-                            mvar = "m",
-                            cvar = c("c"),
-                            eventvar = "event",
-                            ## Values at which effects are evaluated
-                            a0 = 0,
-                            a1 = 1,
-                            m_cde = 1,
-                            c_cond = 3,
-                            ## Model types
-                            mreg = "logistic",
-                            yreg = "survAFT_weibull",
-                            ## Additional specification
-                            interaction = TRUE,
-                            casecontrol = FALSE)
- summary(regmedint_obj1)
-```
+<!-- -->
+
+    regmedint_obj1 <- regmedint(data = vv2015,
+                                ## Variables
+                                yvar = "y",
+                                avar = "x",
+                                mvar = "m",
+                                cvar = c("c"),
+                                eventvar = "event",
+                                ## Values at which effects are evaluated
+                                a0 = 0,
+                                a1 = 1,
+                                m_cde = 1,
+                                c_cond = 3,
+                                ## Model types
+                                mreg = "logistic",
+                                yreg = "survAFT_weibull",
+                                ## Additional specification
+                                interaction = TRUE,
+                                casecontrol = FALSE)
+     summary(regmedint_obj1)
 
     ## ### Mediator model
     ## 
@@ -172,34 +211,34 @@ regmedint_obj1 <- regmedint(data = vv2015,
     ## 
     ## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
 
-2.  When there is effect measure modification by covariates,
+1.  When there is effect measure modification by covariates,
     `EMM_AC_Mmodel`, `EMM_AC_Ymodel` and `EMM_MC` can take a sub-vector
     of covariates in `cvar`.
 
-``` r
-regmedint_obj2 <- regmedint(data = vv2015,
-                            ## Variables
-                            yvar = "y",
-                            avar = "x",
-                            mvar = "m",
-                            cvar = c("c"),
-                            EMM_AC_Mmodel = c("c"),
-                            EMM_AC_Ymodel = c("c"),
-                            EMM_MC = c("c"),
-                            eventvar = "event",
-                            ## Values at which effects are evaluated
-                            a0 = 0,
-                            a1 = 1,
-                            m_cde = 1,
-                            c_cond = 3,
-                            ## Model types
-                            mreg = "logistic",
-                            yreg = "survAFT_weibull",
-                            ## Additional specification
-                            interaction = TRUE,
-                            casecontrol = FALSE)
- summary(regmedint_obj2)
-```
+<!-- -->
+
+    regmedint_obj2 <- regmedint(data = vv2015,
+                                ## Variables
+                                yvar = "y",
+                                avar = "x",
+                                mvar = "m",
+                                cvar = c("c"),
+                                EMM_AC_Mmodel = c("c"),
+                                EMM_AC_Ymodel = c("c"),
+                                EMM_MC = c("c"),
+                                eventvar = "event",
+                                ## Values at which effects are evaluated
+                                a0 = 0,
+                                a1 = 1,
+                                m_cde = 1,
+                                c_cond = 3,
+                                ## Model types
+                                mreg = "logistic",
+                                yreg = "survAFT_weibull",
+                                ## Additional specification
+                                interaction = TRUE,
+                                casecontrol = FALSE)
+     summary(regmedint_obj2)
 
     ## ### Mediator model
     ## 
@@ -273,7 +312,8 @@ regmedint_obj2 <- regmedint(data = vv2015,
 <!-- ## `print()` to examine simplified results -->
 <!-- Implicit printing prints `mreg`, `yreg`, and mediation analysis point estimates. All effect estimates are on the scale of the link function. -->
 
-## `summary()` to examine extended results
+`summary()` to examine extended results
+---------------------------------------
 
 The `summary` method gives the summary for `mreg`, `yreg`, and mediation
 analysis results. The `exponentiate` option will add the exponentiated
@@ -282,9 +322,7 @@ model. The pure natural direct effect (`pnde`) is what is typically
 called the natural direct effect (NDE). The total natural indirect
 effect (`tnie`) is the corresponding natural indirect effect (NIE).
 
-``` r
-summary(regmedint_obj2, exponentiate = TRUE)
-```
+    summary(regmedint_obj2, exponentiate = TRUE)
 
     ## ### Mediator model
     ## 
@@ -357,9 +395,7 @@ summary(regmedint_obj2, exponentiate = TRUE)
 
 Use `coef` to extract the mediation analysis results only.
 
-``` r
-coef(summary(regmedint_obj2, exponentiate = TRUE))
-```
+    coef(summary(regmedint_obj2, exponentiate = TRUE))
 
     ##             est         se         Z         p      lower     upper exp(est) exp(lower) exp(upper)
     ## cde  0.60705735 0.52594922 1.1542128 0.2484129 -0.4237842 1.6378989 1.835024  0.6545651   5.144349
@@ -373,49 +409,148 @@ coef(summary(regmedint_obj2, exponentiate = TRUE))
 Note that the estimates can be re-evaluated at different `m_cde` and
 `c_cond` without re-fitting the underlyng models.
 
-``` r
-coef(summary(regmedint_obj2, exponentiate = TRUE, 
-             m_cde = min(heart.disease$bp), 
-             c_cond = c(min(heart.disease$age), 0, 1, 
-                                       max(heart.disease$bloodsugar_T),
-                                       min(heart.disease$maximumHR))))
-```
+    coef(summary(regmedint_obj2, exponentiate = TRUE,
+                 m_cde = min(heart.disease$bp),
+                 c_cond = c(min(heart.disease$age), 0, 1,
+                                           max(heart.disease$bloodsugar_T),
+                                           min(heart.disease$maximumHR))))
 
     ## Error in eval(assertion, env): object 'heart.disease' not found
 
-# Formulas
+Formulas
+========
 
 See [here](https://osf.io/d4brv/) for the following formulas.
 
-## Effect formulas in the supplementary document
+Effect formulas in the supplementary document
+---------------------------------------------
 
-| yreg \\\\ mreg  | linear               | logistic             |
-|-----------------|----------------------|----------------------|
-| linear          | Formulas (1) - (5)   | Formulas (11) - (15) |
-|                 |                      |                      |
-| logistic        | Formulas (21) - (25) | Formulas (31) - (35) |
-| loglinear       | Formulas (21) - (25) | Formulas (31) - (35) |
-| poisson         | Formulas (21) - (25) | Formulas (31) - (35) |
-| negbin          | Formulas (21) - (25) | Formulas (31) - (35) |
-|                 |                      |                      |
-| survCox         | Formulas (21) - (25) | Formulas (31) - (35) |
-| survAFT exp     | Formulas (21) - (25) | Formulas (31) - (35) |
-| survAFT weibull | Formulas (21) - (25) | Formulas (31) - (35) |
+<table>
+<thead>
+<tr class="header">
+<th>yreg \\ mreg</th>
+<th>linear</th>
+<th>logistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>linear</td>
+<td>Formulas (1) - (5)</td>
+<td>Formulas (11) - (15)</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>logistic</td>
+<td>Formulas (21) - (25)</td>
+<td>Formulas (31) - (35)</td>
+</tr>
+<tr class="even">
+<td>loglinear</td>
+<td>Formulas (21) - (25)</td>
+<td>Formulas (31) - (35)</td>
+</tr>
+<tr class="odd">
+<td>poisson</td>
+<td>Formulas (21) - (25)</td>
+<td>Formulas (31) - (35)</td>
+</tr>
+<tr class="even">
+<td>negbin</td>
+<td>Formulas (21) - (25)</td>
+<td>Formulas (31) - (35)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>survCox</td>
+<td>Formulas (21) - (25)</td>
+<td>Formulas (31) - (35)</td>
+</tr>
+<tr class="odd">
+<td>survAFT exp</td>
+<td>Formulas (21) - (25)</td>
+<td>Formulas (31) - (35)</td>
+</tr>
+<tr class="even">
+<td>survAFT weibull</td>
+<td>Formulas (21) - (25)</td>
+<td>Formulas (31) - (35)</td>
+</tr>
+</tbody>
+</table>
 
-## Standard error formulas in the supplementary document
+Standard error formulas in the supplementary document
+-----------------------------------------------------
 
-| yreg \\\\ mreg  | linear               | logistic             |
-|-----------------|----------------------|----------------------|
-| linear          | Formulas (6) - (10)  | Formulas (16) - (20) |
-|                 |                      |                      |
-| logistic        | Formulas (26) - (30) | Formulas (36) - (40) |
-| loglinear       | Formulas (26) - (30) | Formulas (36) - (40) |
-| poisson         | Formulas (26) - (30) | Formulas (36) - (40) |
-| negbin          | Formulas (26) - (30) | Formulas (36) - (40) |
-|                 |                      |                      |
-| survCox         | Formulas (26) - (30) | Formulas (36) - (40) |
-| survAFT exp     | Formulas (26) - (30) | Formulas (36) - (40) |
-| survAFT weibull | Formulas (26) - (30) | Formulas (36) - (40) |
+<table>
+<thead>
+<tr class="header">
+<th>yreg \\ mreg</th>
+<th>linear</th>
+<th>logistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>linear</td>
+<td>Formulas (6) - (10)</td>
+<td>Formulas (16) - (20)</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>logistic</td>
+<td>Formulas (26) - (30)</td>
+<td>Formulas (36) - (40)</td>
+</tr>
+<tr class="even">
+<td>loglinear</td>
+<td>Formulas (26) - (30)</td>
+<td>Formulas (36) - (40)</td>
+</tr>
+<tr class="odd">
+<td>poisson</td>
+<td>Formulas (26) - (30)</td>
+<td>Formulas (36) - (40)</td>
+</tr>
+<tr class="even">
+<td>negbin</td>
+<td>Formulas (26) - (30)</td>
+<td>Formulas (36) - (40)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>survCox</td>
+<td>Formulas (26) - (30)</td>
+<td>Formulas (36) - (40)</td>
+</tr>
+<tr class="odd">
+<td>survAFT exp</td>
+<td>Formulas (26) - (30)</td>
+<td>Formulas (36) - (40)</td>
+</tr>
+<tr class="even">
+<td>survAFT weibull</td>
+<td>Formulas (26) - (30)</td>
+<td>Formulas (36) - (40)</td>
+</tr>
+</tbody>
+</table>
 
 Note: The point estimate and standard error formulas (multivariate delta
 method) were derived based on the following references.
@@ -424,35 +559,145 @@ method) were derived based on the following references.
 -   VV2013A: Valeri & VanderWeele (2013) Appendix
 -   VV2015A: Valeri & VanderWeele (2015) Appendix
 
-## Effect formulas are based on the following propositions
+Effect formulas are based on the following propositions
+-------------------------------------------------------
 
-| yreg \\\\ mreg  | linear                               | logistic                             |
-|-----------------|--------------------------------------|--------------------------------------|
-| linear          | V2015 p466 Proposition 2.3           | V2015 p471 Proposition 2.5           |
-|                 |                                      |                                      |
-| logistic        | V2015 p468 Proposition 2.4           | V2015 p473 Proposition 2.6           |
-| loglinear       | VV2013A p8 Use Proposition 2.4       | VV2013A p8 Use Proposition 2.6       |
-| poisson         | VV2013A p8 Use Proposition 2.4       | VV2013A p8 Use Proposition 2.6       |
-| negbin          | VV2013A p8 Use Proposition 2.4       | VV2013A p8 Use Proposition 2.6       |
-|                 |                                      |                                      |
-| survCox         | V2015 p496 Proposition 4.4 (Use 2.4) | V2015 p499 Proposition 4.6 (Use 2.6) |
-| survAFT exp     | V2015 p494 Proposition 4.1 (Use 2.4) | V2015 p495 Proposition 4.3 (Use 2.6) |
-| survAFT weibull | V2015 p494 Proposition 4.1 (Use 2.4) | V2015 p495 Proposition 4.3 (Use 2.6) |
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>yreg \\ mreg</th>
+<th>linear</th>
+<th>logistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>linear</td>
+<td>V2015 p466 Proposition 2.3</td>
+<td>V2015 p471 Proposition 2.5</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>logistic</td>
+<td>V2015 p468 Proposition 2.4</td>
+<td>V2015 p473 Proposition 2.6</td>
+</tr>
+<tr class="even">
+<td>loglinear</td>
+<td>VV2013A p8 Use Proposition 2.4</td>
+<td>VV2013A p8 Use Proposition 2.6</td>
+</tr>
+<tr class="odd">
+<td>poisson</td>
+<td>VV2013A p8 Use Proposition 2.4</td>
+<td>VV2013A p8 Use Proposition 2.6</td>
+</tr>
+<tr class="even">
+<td>negbin</td>
+<td>VV2013A p8 Use Proposition 2.4</td>
+<td>VV2013A p8 Use Proposition 2.6</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>survCox</td>
+<td>V2015 p496 Proposition 4.4 (Use 2.4)</td>
+<td>V2015 p499 Proposition 4.6 (Use 2.6)</td>
+</tr>
+<tr class="odd">
+<td>survAFT exp</td>
+<td>V2015 p494 Proposition 4.1 (Use 2.4)</td>
+<td>V2015 p495 Proposition 4.3 (Use 2.6)</td>
+</tr>
+<tr class="even">
+<td>survAFT weibull</td>
+<td>V2015 p494 Proposition 4.1 (Use 2.4)</td>
+<td>V2015 p495 Proposition 4.3 (Use 2.6)</td>
+</tr>
+</tbody>
+</table>
 
-## Standard error formulas are based on the following propositions
+Standard error formulas are based on the following propositions
+---------------------------------------------------------------
 
-| yreg \\\\ mreg  | linear                         | logistic                       |
-|-----------------|--------------------------------|--------------------------------|
-| linear          | V2015 p466 Proposition 2.3     | V2015 p471 Proposition 2.5     |
-|                 |                                |                                |
-| logistic        | V2015 p468 Proposition 2.4     | V2015 p473 Proposition 2.6     |
-| loglinear       | VV2013A p8 Use Proposition 2.4 | VV2013A p8 Use Proposition 2.6 |
-| poisson         | VV2013A p8 Use Proposition 2.4 | VV2013A p8 Use Proposition 2.6 |
-| negbin          | VV2013A p8 Use Proposition 2.4 | VV2013A p8 Use Proposition 2.6 |
-|                 |                                |                                |
-| survCox         | V2015 p496 Use Proposition 2.4 | V2015 p499 Use Proposition 2.6 |
-| survAFT exp     | V2015 p494 Use Proposition 2.4 | V2015 p495 Use Proposition 2.6 |
-| survAFT weibull | V2015 p494 Use Proposition 2.4 | V2015 p495 Use Proposition 2.6 |
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 39%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>yreg \\ mreg</th>
+<th>linear</th>
+<th>logistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>linear</td>
+<td>V2015 p466 Proposition 2.3</td>
+<td>V2015 p471 Proposition 2.5</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>logistic</td>
+<td>V2015 p468 Proposition 2.4</td>
+<td>V2015 p473 Proposition 2.6</td>
+</tr>
+<tr class="even">
+<td>loglinear</td>
+<td>VV2013A p8 Use Proposition 2.4</td>
+<td>VV2013A p8 Use Proposition 2.6</td>
+</tr>
+<tr class="odd">
+<td>poisson</td>
+<td>VV2013A p8 Use Proposition 2.4</td>
+<td>VV2013A p8 Use Proposition 2.6</td>
+</tr>
+<tr class="even">
+<td>negbin</td>
+<td>VV2013A p8 Use Proposition 2.4</td>
+<td>VV2013A p8 Use Proposition 2.6</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>survCox</td>
+<td>V2015 p496 Use Proposition 2.4</td>
+<td>V2015 p499 Use Proposition 2.6</td>
+</tr>
+<tr class="odd">
+<td>survAFT exp</td>
+<td>V2015 p494 Use Proposition 2.4</td>
+<td>V2015 p495 Use Proposition 2.6</td>
+</tr>
+<tr class="even">
+<td>survAFT weibull</td>
+<td>V2015 p494 Use Proposition 2.4</td>
+<td>V2015 p495 Use Proposition 2.6</td>
+</tr>
+</tbody>
+</table>
 
 <!-- # Design -->
 <!-- The software design is outlined here for those who may be interested. -->
@@ -482,9 +727,11 @@ method) were derived based on the following references.
 <!--   - vcov.regmedint: regmedint → matrix (cde,pnde,tnie,tnde,pnie,te,pm). Off-diagonals are NA. -->
 <!--   - confint.regmedint: regmedint → matrix of (lower,upper) -->
 
-# Similar or related projects for counterfactual-based causal mediation analysis
+Similar or related projects for counterfactual-based causal mediation analysis
+==============================================================================
 
-## R
+R
+-
 
 -   mediation (simulation-based):
     <https://CRAN.R-project.org/package=mediation>
@@ -500,14 +747,16 @@ method) were derived based on the following references.
 -   causalMediation (regression-based):
     <https://github.com/harvard-P01/causalMediation>
 
-## Other statistical environment
+Other statistical environment
+-----------------------------
 
 -   SAS macro (original regression-based)
     <https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/>
 -   SAS PROC CAUSALMED (regression-based)
     <https://support.sas.com/rnd/app/stat/procedures/causalmed.html>
 
-# References
+References
+==========
 
 -   V2015: VanderWeele (2015) Explanation in Causal Inference.
 -   VV2013: Valeri & VanderWeele (2013) Psych Method. 18:137.

@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">regmedint</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -65,6 +61,12 @@
     <li>
       <a href="../articles/vig_04_mi.html">Using multiple imputation with regmedint</a>
     </li>
+    <li>
+      <a href="../articles/vig_05_emm.html">Implementation of extended formulas when there are effect measure modifiers</a>
+    </li>
+    <li>
+      <a href="../articles/vig_06_delta_boot.html">Validation of extended formuals with effect modification using bootstrap</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -73,8 +75,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/kaz-yos/regmedint">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/kaz-yos/regmedint" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -88,45 +90,47 @@
 
       
 
-      </header><script src="vig_01_introduction_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to user interface functions</h1>
-                        <h4 class="author">Kazuki Yoshida</h4>
+                        <h4 data-toc-skip class="author">Kazuki Yoshida, Yi Li</h4>
             
-            <h4 class="date">2021-05-11</h4>
+            <h4 data-toc-skip class="date">2022-02-11</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/master/vignettes/vig_01_introduction.Rmd"><code>vignettes/vig_01_introduction.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/HEAD/vignettes/vig_01_introduction.Rmd" class="external-link"><code>vignettes/vig_01_introduction.Rmd</code></a></small>
       <div class="hidden name"><code>vig_01_introduction.Rmd</code></div>
 
     </div>
 
     
     
-<div id="data-preparation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#data-preparation" class="anchor"></a>Data preparation</h1>
-<p>The package require all variables to be numerical. So a multi-category factor needs to be converted to multiple dichotomous indicators. For survival outcome models, the indicator variable is for event (1 = event, 0 = censored).</p>
+<div class="section level2">
+<h2 id="data-preparation">Data preparation<a class="anchor" aria-label="anchor" href="#data-preparation"></a>
+</h2>
+<p>The package require all variables to be numerical. So a multi-categorical factor needs to be converted to dummy variables or multiple dichotomous indicators. For survival outcome models, the indicator variable is for the event (1 = event, 0 = censored).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kaz-yos.github.io/regmedint/">regmedint</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kaz-yos.github.io/regmedint/" class="external-link">regmedint</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
 <span class="co">## Prepare dataset</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">vv2015</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">vv2015</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="regmedint-object" class="section level1">
-<h1 class="hasAnchor">
-<a href="#regmedint-object" class="anchor"></a><code>regmedint</code> object</h1>
+<div class="section level2">
+<h2 id="regmedint-object">
+<code>regmedint</code> object<a class="anchor" aria-label="anchor" href="#regmedint-object"></a>
+</h2>
 <p>Following typical modeling workflow in R (e.g., <code>lm</code> and <code>glm</code>), a constructor function is used to create a model fit object. The <code>summary</code> method is the main user function for examining the results in the object. Lower-level methods such as <code>coef</code>, <code>vcov</code>, and <code>confint</code> are also provided for flexibility. The <code>print</code> method is mainly for meaningful implicit printing when only the object name is evaluated. All methods for the <code>regmedint</code> object has arguments <code>a0</code>, <code>a1</code>, <code>m_cde</code>, and <code>c_cond</code>. These are used to re-evaluate the results without re-fitting the underlying models.</p>
-<div id="regemedint-object-constructor" class="section level2">
-<h2 class="hasAnchor">
-<a href="#regemedint-object-constructor" class="anchor"></a><code>regemedint()</code> object constructor</h2>
+<div class="section level3">
+<h3 id="regemedint-object-constructor">
+<code>regemedint()</code> object constructor<a class="anchor" aria-label="anchor" href="#regemedint-object-constructor"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regmedint_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">vv2015</span>,
                            <span class="co">## Variables</span>
                            yvar <span class="op">=</span> <span class="st">"y"</span>,
                            avar <span class="op">=</span> <span class="st">"x"</span>,
                            mvar <span class="op">=</span> <span class="st">"m"</span>,
-                           cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+                           cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
                            eventvar <span class="op">=</span> <span class="st">"event"</span>,
                            <span class="co">## Values at which effects are evaluated</span>
                            a0 <span class="op">=</span> <span class="fl">0</span>,
@@ -140,718 +144,717 @@
                            interaction <span class="op">=</span> <span class="cn">TRUE</span>,
                            casecontrol <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="summary-for-regmedint" class="section level2">
-<h2 class="hasAnchor">
-<a href="#summary-for-regmedint" class="anchor"></a><code>summary()</code> for <code>regmedint</code>
-</h2>
+<div class="section level3">
+<h3 id="summary-for-regmedint">
+<code>summary()</code> for <code>regmedint</code><a class="anchor" aria-label="anchor" href="#summary-for-regmedint"></a>
+</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span></code></pre></div>
-<pre><code>## ### Mediator model
-## 
-## Call:
-## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.5143  -1.1765   0.9177   1.1133   1.4602  
-## 
-## Coefficients:
-##             Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)  -0.3545     0.3252  -1.090    0.276
-## x             0.3842     0.4165   0.922    0.356
-## c             0.2694     0.2058   1.309    0.191
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 138.59  on 99  degrees of freedom
-## Residual deviance: 136.08  on 97  degrees of freedom
-## AIC: 142.08
-## 
-## Number of Fisher Scoring iterations: 4
-## 
-## ### Outcome model
-## 
-## Call:
-## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
-##     dist = "weibull")
-##               Value Std. Error     z       p
-## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
-## x            0.4408     0.3008  1.47    0.14
-## m            0.0905     0.2683  0.34    0.74
-## c           -0.0669     0.0915 -0.73    0.46
-## x:m          0.1003     0.4207  0.24    0.81
-## Log(scale)  -0.0347     0.0810 -0.43    0.67
-## 
-## Scale= 0.966 
-## 
-## Weibull distribution
-## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
-##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
-## Number of Newton-Raphson Iterations: 5 
-## n= 100 
-## 
-## ### Mediation analysis 
-##              est         se         Z           p       lower      upper
-## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
-## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
-## tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
-## tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
-## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
-## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
-## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926
-## 
-## Evaluated at:
-## avar: x
-##  a1 (intervened value of avar) = 1
-##  a0 (reference value of avar)  = 0
-## mvar: m
-##  m_cde (intervend value of mvar for cde) = 1
-## cvar: c
-##  c_cond (covariate vector value) = 0.5
-## 
-## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## ### Mediator model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span>
+<span class="co">## </span>
+<span class="co">## Deviance Residuals: </span>
+<span class="co">##     Min       1Q   Median       3Q      Max  </span>
+<span class="co">## -1.5143  -1.1765   0.9177   1.1133   1.4602  </span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">##             Estimate Std. Error z value Pr(&gt;|z|)</span>
+<span class="co">## (Intercept)  -0.3545     0.3252  -1.090    0.276</span>
+<span class="co">## x             0.3842     0.4165   0.922    0.356</span>
+<span class="co">## c             0.2694     0.2058   1.309    0.191</span>
+<span class="co">## </span>
+<span class="co">## (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">## </span>
+<span class="co">##     Null deviance: 138.59  on 99  degrees of freedom</span>
+<span class="co">## Residual deviance: 136.08  on 97  degrees of freedom</span>
+<span class="co">## AIC: 142.08</span>
+<span class="co">## </span>
+<span class="co">## Number of Fisher Scoring iterations: 4</span>
+<span class="co">## </span>
+<span class="co">## ### Outcome model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c, </span>
+<span class="co">##     data = data, dist = "weibull")</span>
+<span class="co">##               Value Std. Error     z       p</span>
+<span class="co">## (Intercept) -1.0424     0.1903 -5.48 4.3e-08</span>
+<span class="co">## x            0.4408     0.3008  1.47    0.14</span>
+<span class="co">## m            0.0905     0.2683  0.34    0.74</span>
+<span class="co">## c           -0.0669     0.0915 -0.73    0.46</span>
+<span class="co">## x:m          0.1003     0.4207  0.24    0.81</span>
+<span class="co">## Log(scale)  -0.0347     0.0810 -0.43    0.67</span>
+<span class="co">## </span>
+<span class="co">## Scale= 0.966 </span>
+<span class="co">## </span>
+<span class="co">## Weibull distribution</span>
+<span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span>
+<span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 </span>
+<span class="co">## Number of Newton-Raphson Iterations: 5 </span>
+<span class="co">## n= 100 </span>
+<span class="co">## </span>
+<span class="co">## ### Mediation analysis </span>
+<span class="co">##              est         se         Z          p       lower      upper</span>
+<span class="co">## cde  0.541070807 0.29422958 1.8389409 0.06592388 -0.03560858 1.11775019</span>
+<span class="co">## pnde 0.488930417 0.21049248 2.3227928 0.02019028  0.07637274 0.90148809</span>
+<span class="co">## tnie 0.018240025 0.03706111 0.4921608 0.62260566 -0.05439841 0.09087846</span>
+<span class="co">## tnde 0.498503455 0.21209540 2.3503737 0.01875457  0.08280410 0.91420281</span>
+<span class="co">## pnie 0.008666987 0.02730994 0.3173565 0.75097309 -0.04485951 0.06219348</span>
+<span class="co">## te   0.507170442 0.21090051 2.4047853 0.01618197  0.09381303 0.92052785</span>
+<span class="co">## pm   0.045436278 0.09119614 0.4982259 0.61832484 -0.13330488 0.22417743</span>
+<span class="co">## </span>
+<span class="co">## Evaluated at:</span>
+<span class="co">## avar: x</span>
+<span class="co">##  a1 (intervened value of avar) = 1</span>
+<span class="co">##  a0 (reference value of avar)  = 0</span>
+<span class="co">## mvar: m</span>
+<span class="co">##  m_cde (intervend value of mvar for cde) = 1</span>
+<span class="co">## cvar: c</span>
+<span class="co">##  c_cond (covariate vector value) = 0.5</span>
+<span class="co">## </span>
+<span class="co">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></code></pre>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, exponentiate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## ### Mediator model
-## 
-## Call:
-## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.5143  -1.1765   0.9177   1.1133   1.4602  
-## 
-## Coefficients:
-##             Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)  -0.3545     0.3252  -1.090    0.276
-## x             0.3842     0.4165   0.922    0.356
-## c             0.2694     0.2058   1.309    0.191
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 138.59  on 99  degrees of freedom
-## Residual deviance: 136.08  on 97  degrees of freedom
-## AIC: 142.08
-## 
-## Number of Fisher Scoring iterations: 4
-## 
-## ### Outcome model
-## 
-## Call:
-## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
-##     dist = "weibull")
-##               Value Std. Error     z       p
-## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
-## x            0.4408     0.3008  1.47    0.14
-## m            0.0905     0.2683  0.34    0.74
-## c           -0.0669     0.0915 -0.73    0.46
-## x:m          0.1003     0.4207  0.24    0.81
-## Log(scale)  -0.0347     0.0810 -0.43    0.67
-## 
-## Scale= 0.966 
-## 
-## Weibull distribution
-## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
-##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
-## Number of Newton-Raphson Iterations: 5 
-## n= 100 
-## 
-## ### Mediation analysis 
-##              est         se         Z           p       lower      upper
-## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
-## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
-## tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
-## tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
-## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
-## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
-## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926
-##      exp(est) exp(lower) exp(upper)
-## cde  1.717845  0.9650179   3.057967
-## pnde 1.630571  1.0793648   2.463266
-## tnie 1.018407  0.9470547   1.095136
-## tnde 1.646256  1.0863290   2.494786
-## pnie 1.008705  0.9561318   1.064168
-## te   1.660586  1.0983544   2.510615
-## pm         NA         NA         NA
-## 
-## Evaluated at:
-## avar: x
-##  a1 (intervened value of avar) = 1
-##  a0 (reference value of avar)  = 0
-## mvar: m
-##  m_cde (intervend value of mvar for cde) = 1
-## cvar: c
-##  c_cond (covariate vector value) = 0.5
-## 
-## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, exponentiate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## ### Mediator model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span>
+<span class="co">## </span>
+<span class="co">## Deviance Residuals: </span>
+<span class="co">##     Min       1Q   Median       3Q      Max  </span>
+<span class="co">## -1.5143  -1.1765   0.9177   1.1133   1.4602  </span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">##             Estimate Std. Error z value Pr(&gt;|z|)</span>
+<span class="co">## (Intercept)  -0.3545     0.3252  -1.090    0.276</span>
+<span class="co">## x             0.3842     0.4165   0.922    0.356</span>
+<span class="co">## c             0.2694     0.2058   1.309    0.191</span>
+<span class="co">## </span>
+<span class="co">## (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">## </span>
+<span class="co">##     Null deviance: 138.59  on 99  degrees of freedom</span>
+<span class="co">## Residual deviance: 136.08  on 97  degrees of freedom</span>
+<span class="co">## AIC: 142.08</span>
+<span class="co">## </span>
+<span class="co">## Number of Fisher Scoring iterations: 4</span>
+<span class="co">## </span>
+<span class="co">## ### Outcome model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c, </span>
+<span class="co">##     data = data, dist = "weibull")</span>
+<span class="co">##               Value Std. Error     z       p</span>
+<span class="co">## (Intercept) -1.0424     0.1903 -5.48 4.3e-08</span>
+<span class="co">## x            0.4408     0.3008  1.47    0.14</span>
+<span class="co">## m            0.0905     0.2683  0.34    0.74</span>
+<span class="co">## c           -0.0669     0.0915 -0.73    0.46</span>
+<span class="co">## x:m          0.1003     0.4207  0.24    0.81</span>
+<span class="co">## Log(scale)  -0.0347     0.0810 -0.43    0.67</span>
+<span class="co">## </span>
+<span class="co">## Scale= 0.966 </span>
+<span class="co">## </span>
+<span class="co">## Weibull distribution</span>
+<span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span>
+<span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 </span>
+<span class="co">## Number of Newton-Raphson Iterations: 5 </span>
+<span class="co">## n= 100 </span>
+<span class="co">## </span>
+<span class="co">## ### Mediation analysis </span>
+<span class="co">##              est         se         Z          p       lower      upper</span>
+<span class="co">## cde  0.541070807 0.29422958 1.8389409 0.06592388 -0.03560858 1.11775019</span>
+<span class="co">## pnde 0.488930417 0.21049248 2.3227928 0.02019028  0.07637274 0.90148809</span>
+<span class="co">## tnie 0.018240025 0.03706111 0.4921608 0.62260566 -0.05439841 0.09087846</span>
+<span class="co">## tnde 0.498503455 0.21209540 2.3503737 0.01875457  0.08280410 0.91420281</span>
+<span class="co">## pnie 0.008666987 0.02730994 0.3173565 0.75097309 -0.04485951 0.06219348</span>
+<span class="co">## te   0.507170442 0.21090051 2.4047853 0.01618197  0.09381303 0.92052785</span>
+<span class="co">## pm   0.045436278 0.09119614 0.4982259 0.61832484 -0.13330488 0.22417743</span>
+<span class="co">##      exp(est) exp(lower) exp(upper)</span>
+<span class="co">## cde  1.717845  0.9650179   3.057967</span>
+<span class="co">## pnde 1.630571  1.0793648   2.463266</span>
+<span class="co">## tnie 1.018407  0.9470547   1.095136</span>
+<span class="co">## tnde 1.646256  1.0863290   2.494786</span>
+<span class="co">## pnie 1.008705  0.9561318   1.064168</span>
+<span class="co">## te   1.660586  1.0983544   2.510615</span>
+<span class="co">## pm         NA         NA         NA</span>
+<span class="co">## </span>
+<span class="co">## Evaluated at:</span>
+<span class="co">## avar: x</span>
+<span class="co">##  a1 (intervened value of avar) = 1</span>
+<span class="co">##  a0 (reference value of avar)  = 0</span>
+<span class="co">## mvar: m</span>
+<span class="co">##  m_cde (intervend value of mvar for cde) = 1</span>
+<span class="co">## cvar: c</span>
+<span class="co">##  c_cond (covariate vector value) = 0.5</span>
+<span class="co">## </span>
+<span class="co">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<pre><code>## ### Mediator model
-## 
-## Call:
-## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.5143  -1.1765   0.9177   1.1133   1.4602  
-## 
-## Coefficients:
-##             Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)  -0.3545     0.3252  -1.090    0.276
-## x             0.3842     0.4165   0.922    0.356
-## c             0.2694     0.2058   1.309    0.191
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 138.59  on 99  degrees of freedom
-## Residual deviance: 136.08  on 97  degrees of freedom
-## AIC: 142.08
-## 
-## Number of Fisher Scoring iterations: 4
-## 
-## ### Outcome model
-## 
-## Call:
-## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
-##     dist = "weibull")
-##               Value Std. Error     z       p
-## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
-## x            0.4408     0.3008  1.47    0.14
-## m            0.0905     0.2683  0.34    0.74
-## c           -0.0669     0.0915 -0.73    0.46
-## x:m          0.1003     0.4207  0.24    0.81
-## Log(scale)  -0.0347     0.0810 -0.43    0.67
-## 
-## Scale= 0.966 
-## 
-## Weibull distribution
-## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
-##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
-## Number of Newton-Raphson Iterations: 5 
-## n= 100 
-## 
-## ### Mediation analysis 
-##              est         se         Z          p       lower      upper
-## cde  0.440756562 0.30083077 1.4651313 0.14288511 -0.14886090 1.03037403
-## pnde 0.492306223 0.21015655 2.3425690 0.01915149  0.08040695 0.90420550
-## tnie 0.018077074 0.03653416 0.4947991 0.62074191 -0.05352857 0.08968272
-## tnde 0.501765186 0.21433402 2.3410432 0.01922994  0.08167823 0.92185214
-## pnie 0.008618111 0.02707487 0.3183067 0.75025232 -0.04444765 0.06168388
-## te   0.510383297 0.21212172 2.4060870 0.01612443  0.09463237 0.92613422
-## pm   0.044816400 0.01671605 2.6810406 0.00733936  0.01205355 0.07757925
-## 
-## Evaluated at:
-## avar: x
-##  a1 (intervened value of avar) = 1
-##  a0 (reference value of avar)  = 0
-## mvar: m
-##  m_cde (intervend value of mvar for cde) = 0
-## cvar: c
-##  c_cond (covariate vector value) = 1
-## 
-## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## ### Mediator model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span>
+<span class="co">## </span>
+<span class="co">## Deviance Residuals: </span>
+<span class="co">##     Min       1Q   Median       3Q      Max  </span>
+<span class="co">## -1.5143  -1.1765   0.9177   1.1133   1.4602  </span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">##             Estimate Std. Error z value Pr(&gt;|z|)</span>
+<span class="co">## (Intercept)  -0.3545     0.3252  -1.090    0.276</span>
+<span class="co">## x             0.3842     0.4165   0.922    0.356</span>
+<span class="co">## c             0.2694     0.2058   1.309    0.191</span>
+<span class="co">## </span>
+<span class="co">## (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">## </span>
+<span class="co">##     Null deviance: 138.59  on 99  degrees of freedom</span>
+<span class="co">## Residual deviance: 136.08  on 97  degrees of freedom</span>
+<span class="co">## AIC: 142.08</span>
+<span class="co">## </span>
+<span class="co">## Number of Fisher Scoring iterations: 4</span>
+<span class="co">## </span>
+<span class="co">## ### Outcome model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c, </span>
+<span class="co">##     data = data, dist = "weibull")</span>
+<span class="co">##               Value Std. Error     z       p</span>
+<span class="co">## (Intercept) -1.0424     0.1903 -5.48 4.3e-08</span>
+<span class="co">## x            0.4408     0.3008  1.47    0.14</span>
+<span class="co">## m            0.0905     0.2683  0.34    0.74</span>
+<span class="co">## c           -0.0669     0.0915 -0.73    0.46</span>
+<span class="co">## x:m          0.1003     0.4207  0.24    0.81</span>
+<span class="co">## Log(scale)  -0.0347     0.0810 -0.43    0.67</span>
+<span class="co">## </span>
+<span class="co">## Scale= 0.966 </span>
+<span class="co">## </span>
+<span class="co">## Weibull distribution</span>
+<span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span>
+<span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 </span>
+<span class="co">## Number of Newton-Raphson Iterations: 5 </span>
+<span class="co">## n= 100 </span>
+<span class="co">## </span>
+<span class="co">## ### Mediation analysis </span>
+<span class="co">##              est         se         Z          p       lower      upper</span>
+<span class="co">## cde  0.440756562 0.30083077 1.4651313 0.14288511 -0.14886090 1.03037403</span>
+<span class="co">## pnde 0.492306223 0.21015655 2.3425690 0.01915149  0.08040695 0.90420550</span>
+<span class="co">## tnie 0.018077074 0.03653416 0.4947991 0.62074191 -0.05352857 0.08968272</span>
+<span class="co">## tnde 0.501765186 0.21433402 2.3410432 0.01922994  0.08167823 0.92185214</span>
+<span class="co">## pnie 0.008618111 0.02707487 0.3183067 0.75025232 -0.04444765 0.06168388</span>
+<span class="co">## te   0.510383297 0.21212172 2.4060870 0.01612443  0.09463237 0.92613422</span>
+<span class="co">## pm   0.044816400 0.08889613 0.5041434 0.61416060 -0.12941682 0.21904962</span>
+<span class="co">## </span>
+<span class="co">## Evaluated at:</span>
+<span class="co">## avar: x</span>
+<span class="co">##  a1 (intervened value of avar) = 1</span>
+<span class="co">##  a0 (reference value of avar)  = 0</span>
+<span class="co">## mvar: m</span>
+<span class="co">##  m_cde (intervend value of mvar for cde) = 0</span>
+<span class="co">## cvar: c</span>
+<span class="co">##  c_cond (covariate vector value) = 1</span>
+<span class="co">## </span>
+<span class="co">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span>, level <span class="op">=</span> <span class="fl">0.99</span><span class="op">)</span></code></pre></div>
-<pre><code>## ### Mediator model
-## 
-## Call:
-## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.5143  -1.1765   0.9177   1.1133   1.4602  
-## 
-## Coefficients:
-##             Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)  -0.3545     0.3252  -1.090    0.276
-## x             0.3842     0.4165   0.922    0.356
-## c             0.2694     0.2058   1.309    0.191
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 138.59  on 99  degrees of freedom
-## Residual deviance: 136.08  on 97  degrees of freedom
-## AIC: 142.08
-## 
-## Number of Fisher Scoring iterations: 4
-## 
-## ### Outcome model
-## 
-## Call:
-## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
-##     dist = "weibull")
-##               Value Std. Error     z       p
-## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
-## x            0.4408     0.3008  1.47    0.14
-## m            0.0905     0.2683  0.34    0.74
-## c           -0.0669     0.0915 -0.73    0.46
-## x:m          0.1003     0.4207  0.24    0.81
-## Log(scale)  -0.0347     0.0810 -0.43    0.67
-## 
-## Scale= 0.966 
-## 
-## Weibull distribution
-## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
-##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
-## Number of Newton-Raphson Iterations: 5 
-## n= 100 
-## 
-## ### Mediation analysis 
-##              est         se         Z          p        lower      upper
-## cde  0.440756562 0.30083077 1.4651313 0.14288511 -0.334132138 1.21564526
-## pnde 0.492306223 0.21015655 2.3425690 0.01915149 -0.049021181 1.03363363
-## tnie 0.018077074 0.03653416 0.4947991 0.62074191 -0.076028699 0.11218285
-## tnde 0.501765186 0.21433402 2.3410432 0.01922994 -0.050322656 1.05385303
-## pnie 0.008618111 0.02707487 0.3183067 0.75025232 -0.061122126 0.07835835
-## te   0.510383297 0.21212172 2.4060870 0.01612443 -0.036006037 1.05677263
-## pm   0.044816400 0.01671605 2.6810406 0.00733936  0.001758718 0.08787408
-## 
-## Evaluated at:
-## avar: x
-##  a1 (intervened value of avar) = 1
-##  a0 (reference value of avar)  = 0
-## mvar: m
-##  m_cde (intervend value of mvar for cde) = 0
-## cvar: c
-##  c_cond (covariate vector value) = 1
-## 
-## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span>, level <span class="op">=</span> <span class="fl">0.99</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## ### Mediator model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span>
+<span class="co">## </span>
+<span class="co">## Deviance Residuals: </span>
+<span class="co">##     Min       1Q   Median       3Q      Max  </span>
+<span class="co">## -1.5143  -1.1765   0.9177   1.1133   1.4602  </span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">##             Estimate Std. Error z value Pr(&gt;|z|)</span>
+<span class="co">## (Intercept)  -0.3545     0.3252  -1.090    0.276</span>
+<span class="co">## x             0.3842     0.4165   0.922    0.356</span>
+<span class="co">## c             0.2694     0.2058   1.309    0.191</span>
+<span class="co">## </span>
+<span class="co">## (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">## </span>
+<span class="co">##     Null deviance: 138.59  on 99  degrees of freedom</span>
+<span class="co">## Residual deviance: 136.08  on 97  degrees of freedom</span>
+<span class="co">## AIC: 142.08</span>
+<span class="co">## </span>
+<span class="co">## Number of Fisher Scoring iterations: 4</span>
+<span class="co">## </span>
+<span class="co">## ### Outcome model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c, </span>
+<span class="co">##     data = data, dist = "weibull")</span>
+<span class="co">##               Value Std. Error     z       p</span>
+<span class="co">## (Intercept) -1.0424     0.1903 -5.48 4.3e-08</span>
+<span class="co">## x            0.4408     0.3008  1.47    0.14</span>
+<span class="co">## m            0.0905     0.2683  0.34    0.74</span>
+<span class="co">## c           -0.0669     0.0915 -0.73    0.46</span>
+<span class="co">## x:m          0.1003     0.4207  0.24    0.81</span>
+<span class="co">## Log(scale)  -0.0347     0.0810 -0.43    0.67</span>
+<span class="co">## </span>
+<span class="co">## Scale= 0.966 </span>
+<span class="co">## </span>
+<span class="co">## Weibull distribution</span>
+<span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span>
+<span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 </span>
+<span class="co">## Number of Newton-Raphson Iterations: 5 </span>
+<span class="co">## n= 100 </span>
+<span class="co">## </span>
+<span class="co">## ### Mediation analysis </span>
+<span class="co">##              est         se         Z          p       lower      upper</span>
+<span class="co">## cde  0.440756562 0.30083077 1.4651313 0.14288511 -0.33413214 1.21564526</span>
+<span class="co">## pnde 0.492306223 0.21015655 2.3425690 0.01915149 -0.04902118 1.03363363</span>
+<span class="co">## tnie 0.018077074 0.03653416 0.4947991 0.62074191 -0.07602870 0.11218285</span>
+<span class="co">## tnde 0.501765186 0.21433402 2.3410432 0.01922994 -0.05032266 1.05385303</span>
+<span class="co">## pnie 0.008618111 0.02707487 0.3183067 0.75025232 -0.06112213 0.07835835</span>
+<span class="co">## te   0.510383297 0.21212172 2.4060870 0.01612443 -0.03600604 1.05677263</span>
+<span class="co">## pm   0.044816400 0.08889613 0.5041434 0.61416060 -0.18416486 0.27379767</span>
+<span class="co">## </span>
+<span class="co">## Evaluated at:</span>
+<span class="co">## avar: x</span>
+<span class="co">##  a1 (intervened value of avar) = 1</span>
+<span class="co">##  a0 (reference value of avar)  = 0</span>
+<span class="co">## mvar: m</span>
+<span class="co">##  m_cde (intervend value of mvar for cde) = 0</span>
+<span class="co">## cvar: c</span>
+<span class="co">##  c_cond (covariate vector value) = 1</span>
+<span class="co">## </span>
+<span class="co">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></code></pre>
 </div>
-<div id="coef-for-regmedint" class="section level2">
-<h2 class="hasAnchor">
-<a href="#coef-for-regmedint" class="anchor"></a><code>coef()</code> for <code>regmedint</code>
-</h2>
+<div class="section level3">
+<h3 id="coef-for-regmedint">
+<code>coef()</code> for <code>regmedint</code><a class="anchor" aria-label="anchor" href="#coef-for-regmedint"></a>
+</h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span></code></pre></div>
-<pre><code>##         cde        pnde        tnie        tnde        pnie          te 
-## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 
-##          pm 
-## 0.045436278 
-## attr(,"args")
-## attr(,"args")$a0
-## [1] 0
-## 
-## attr(,"args")$a1
-## [1] 1
-## 
-## attr(,"args")$m_cde
-## [1] 1
-## 
-## attr(,"args")$c_cond
-## [1] 0.5</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##         cde        pnde        tnie        tnde        pnie          te </span>
+<span class="co">## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 </span>
+<span class="co">##          pm </span>
+<span class="co">## 0.045436278 </span>
+<span class="co">## attr(,"args")</span>
+<span class="co">## attr(,"args")$a0</span>
+<span class="co">## [1] 0</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$a1</span>
+<span class="co">## [1] 1</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$m_cde</span>
+<span class="co">## [1] 1</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$c_cond</span>
+<span class="co">## [1] 0.5</span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<pre><code>##         cde        pnde        tnie        tnde        pnie          te 
-## 0.440756562 0.492306223 0.018077074 0.501765186 0.008618111 0.510383297 
-##          pm 
-## 0.044816400 
-## attr(,"args")
-## attr(,"args")$a0
-## [1] 0
-## 
-## attr(,"args")$a1
-## [1] 1
-## 
-## attr(,"args")$m_cde
-## [1] 0
-## 
-## attr(,"args")$c_cond
-## [1] 1</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##         cde        pnde        tnie        tnde        pnie          te </span>
+<span class="co">## 0.440756562 0.492306223 0.018077074 0.501765186 0.008618111 0.510383297 </span>
+<span class="co">##          pm </span>
+<span class="co">## 0.044816400 </span>
+<span class="co">## attr(,"args")</span>
+<span class="co">## attr(,"args")$a0</span>
+<span class="co">## [1] 0</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$a1</span>
+<span class="co">## [1] 1</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$m_cde</span>
+<span class="co">## [1] 0</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$c_cond</span>
+<span class="co">## [1] 1</span></code></pre>
 </div>
-<div id="vcov-for-regmedint" class="section level2">
-<h2 class="hasAnchor">
-<a href="#vcov-for-regmedint" class="anchor"></a><code>vcov()</code> for <code>regmedint</code>
-</h2>
+<div class="section level3">
+<h3 id="vcov-for-regmedint">
+<code>vcov()</code> for <code>regmedint</code><a class="anchor" aria-label="anchor" href="#vcov-for-regmedint"></a>
+</h3>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span></code></pre></div>
-<pre><code>##             cde       pnde        tnie       tnde         pnie         te
-## cde  0.08657105         NA          NA         NA           NA         NA
-## pnde         NA 0.04430708          NA         NA           NA         NA
-## tnie         NA         NA 0.001373526         NA           NA         NA
-## tnde         NA         NA          NA 0.04498446           NA         NA
-## pnie         NA         NA          NA         NA 0.0007458327         NA
-## te           NA         NA          NA         NA           NA 0.04447903
-## pm           NA         NA          NA         NA           NA         NA
-##               pm
-## cde           NA
-## pnde          NA
-## tnie          NA
-## tnde          NA
-## pnie          NA
-## te            NA
-## pm   0.000297802
-## attr(,"args")
-## attr(,"args")$a0
-## [1] 0
-## 
-## attr(,"args")$a1
-## [1] 1
-## 
-## attr(,"args")$m_cde
-## [1] 1
-## 
-## attr(,"args")$c_cond
-## [1] 0.5</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##             cde       pnde        tnie       tnde         pnie         te</span>
+<span class="co">## cde  0.08657105         NA          NA         NA           NA         NA</span>
+<span class="co">## pnde         NA 0.04430708          NA         NA           NA         NA</span>
+<span class="co">## tnie         NA         NA 0.001373526         NA           NA         NA</span>
+<span class="co">## tnde         NA         NA          NA 0.04498446           NA         NA</span>
+<span class="co">## pnie         NA         NA          NA         NA 0.0007458327         NA</span>
+<span class="co">## te           NA         NA          NA         NA           NA 0.04447903</span>
+<span class="co">## pm           NA         NA          NA         NA           NA         NA</span>
+<span class="co">##               pm</span>
+<span class="co">## cde           NA</span>
+<span class="co">## pnde          NA</span>
+<span class="co">## tnie          NA</span>
+<span class="co">## tnde          NA</span>
+<span class="co">## pnie          NA</span>
+<span class="co">## te            NA</span>
+<span class="co">## pm   0.008316736</span>
+<span class="co">## attr(,"args")</span>
+<span class="co">## attr(,"args")$a0</span>
+<span class="co">## [1] 0</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$a1</span>
+<span class="co">## [1] 1</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$m_cde</span>
+<span class="co">## [1] 1</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$c_cond</span>
+<span class="co">## [1] 0.5</span></code></pre>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<pre><code>##             cde       pnde        tnie       tnde         pnie         te
-## cde  0.09049915         NA          NA         NA           NA         NA
-## pnde         NA 0.04416578          NA         NA           NA         NA
-## tnie         NA         NA 0.001334745         NA           NA         NA
-## tnde         NA         NA          NA 0.04593907           NA         NA
-## pnie         NA         NA          NA         NA 0.0007330485         NA
-## te           NA         NA          NA         NA           NA 0.04499562
-## pm           NA         NA          NA         NA           NA         NA
-##                pm
-## cde            NA
-## pnde           NA
-## tnie           NA
-## tnde           NA
-## pnie           NA
-## te             NA
-## pm   0.0002794262
-## attr(,"args")
-## attr(,"args")$a0
-## [1] 0
-## 
-## attr(,"args")$a1
-## [1] 1
-## 
-## attr(,"args")$m_cde
-## [1] 0
-## 
-## attr(,"args")$c_cond
-## [1] 1</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##             cde       pnde        tnie       tnde         pnie         te</span>
+<span class="co">## cde  0.09049915         NA          NA         NA           NA         NA</span>
+<span class="co">## pnde         NA 0.04416578          NA         NA           NA         NA</span>
+<span class="co">## tnie         NA         NA 0.001334745         NA           NA         NA</span>
+<span class="co">## tnde         NA         NA          NA 0.04593907           NA         NA</span>
+<span class="co">## pnie         NA         NA          NA         NA 0.0007330485         NA</span>
+<span class="co">## te           NA         NA          NA         NA           NA 0.04499562</span>
+<span class="co">## pm           NA         NA          NA         NA           NA         NA</span>
+<span class="co">##               pm</span>
+<span class="co">## cde           NA</span>
+<span class="co">## pnde          NA</span>
+<span class="co">## tnie          NA</span>
+<span class="co">## tnde          NA</span>
+<span class="co">## pnie          NA</span>
+<span class="co">## te            NA</span>
+<span class="co">## pm   0.007902522</span>
+<span class="co">## attr(,"args")</span>
+<span class="co">## attr(,"args")$a0</span>
+<span class="co">## [1] 0</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$a1</span>
+<span class="co">## [1] 1</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$m_cde</span>
+<span class="co">## [1] 0</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$c_cond</span>
+<span class="co">## [1] 1</span></code></pre>
 </div>
-<div id="confint-for-regmedint" class="section level2">
-<h2 class="hasAnchor">
-<a href="#confint-for-regmedint" class="anchor"></a><code>confint()</code> for <code>regmedint</code>
-</h2>
+<div class="section level3">
+<h3 id="confint-for-regmedint">
+<code>confint()</code> for <code>regmedint</code><a class="anchor" aria-label="anchor" href="#confint-for-regmedint"></a>
+</h3>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span></code></pre></div>
-<pre><code>##            lower      upper
-## cde  -0.03560858 1.11775019
-## pnde  0.07637274 0.90148809
-## tnie -0.05439841 0.09087846
-## tnde  0.08280410 0.91420281
-## pnie -0.04485951 0.06219348
-## te    0.09381303 0.92052785
-## pm    0.01161329 0.07925926
-## attr(,"args")
-## attr(,"args")$a0
-## [1] 0
-## 
-## attr(,"args")$a1
-## [1] 1
-## 
-## attr(,"args")$m_cde
-## [1] 1
-## 
-## attr(,"args")$c_cond
-## [1] 0.5</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##            lower      upper</span>
+<span class="co">## cde  -0.03560858 1.11775019</span>
+<span class="co">## pnde  0.07637274 0.90148809</span>
+<span class="co">## tnie -0.05439841 0.09087846</span>
+<span class="co">## tnde  0.08280410 0.91420281</span>
+<span class="co">## pnie -0.04485951 0.06219348</span>
+<span class="co">## te    0.09381303 0.92052785</span>
+<span class="co">## pm   -0.13330488 0.22417743</span>
+<span class="co">## attr(,"args")</span>
+<span class="co">## attr(,"args")$a0</span>
+<span class="co">## [1] 0</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$a1</span>
+<span class="co">## [1] 1</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$m_cde</span>
+<span class="co">## [1] 1</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$c_cond</span>
+<span class="co">## [1] 0.5</span></code></pre>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<pre><code>##            lower      upper
-## cde  -0.14886090 1.03037403
-## pnde  0.08040695 0.90420550
-## tnie -0.05352857 0.08968272
-## tnde  0.08167823 0.92185214
-## pnie -0.04444765 0.06168388
-## te    0.09463237 0.92613422
-## pm    0.01205355 0.07757925
-## attr(,"args")
-## attr(,"args")$a0
-## [1] 0
-## 
-## attr(,"args")$a1
-## [1] 1
-## 
-## attr(,"args")$m_cde
-## [1] 0
-## 
-## attr(,"args")$c_cond
-## [1] 1</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##            lower      upper</span>
+<span class="co">## cde  -0.14886090 1.03037403</span>
+<span class="co">## pnde  0.08040695 0.90420550</span>
+<span class="co">## tnie -0.05352857 0.08968272</span>
+<span class="co">## tnde  0.08167823 0.92185214</span>
+<span class="co">## pnie -0.04444765 0.06168388</span>
+<span class="co">## te    0.09463237 0.92613422</span>
+<span class="co">## pm   -0.12941682 0.21904962</span>
+<span class="co">## attr(,"args")</span>
+<span class="co">## attr(,"args")$a0</span>
+<span class="co">## [1] 0</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$a1</span>
+<span class="co">## [1] 1</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$m_cde</span>
+<span class="co">## [1] 0</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$c_cond</span>
+<span class="co">## [1] 1</span></code></pre>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span>, level <span class="op">=</span> <span class="fl">0.99</span><span class="op">)</span></code></pre></div>
-<pre><code>##             lower      upper
-## cde  -0.334132138 1.21564526
-## pnde -0.049021181 1.03363363
-## tnie -0.076028699 0.11218285
-## tnde -0.050322656 1.05385303
-## pnie -0.061122126 0.07835835
-## te   -0.036006037 1.05677263
-## pm    0.001758718 0.08787408
-## attr(,"args")
-## attr(,"args")$a0
-## [1] 0
-## 
-## attr(,"args")$a1
-## [1] 1
-## 
-## attr(,"args")$m_cde
-## [1] 0
-## 
-## attr(,"args")$c_cond
-## [1] 1</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span>, level <span class="op">=</span> <span class="fl">0.99</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##            lower      upper</span>
+<span class="co">## cde  -0.33413214 1.21564526</span>
+<span class="co">## pnde -0.04902118 1.03363363</span>
+<span class="co">## tnie -0.07602870 0.11218285</span>
+<span class="co">## tnde -0.05032266 1.05385303</span>
+<span class="co">## pnie -0.06112213 0.07835835</span>
+<span class="co">## te   -0.03600604 1.05677263</span>
+<span class="co">## pm   -0.18416486 0.27379767</span>
+<span class="co">## attr(,"args")</span>
+<span class="co">## attr(,"args")$a0</span>
+<span class="co">## [1] 0</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$a1</span>
+<span class="co">## [1] 1</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$m_cde</span>
+<span class="co">## [1] 0</span>
+<span class="co">## </span>
+<span class="co">## attr(,"args")$c_cond</span>
+<span class="co">## [1] 1</span></code></pre>
 </div>
-<div id="print-for-regmedint" class="section level2">
-<h2 class="hasAnchor">
-<a href="#print-for-regmedint" class="anchor"></a><code>print()</code> for <code>regmedint</code>
-</h2>
+<div class="section level3">
+<h3 id="print-for-regmedint">
+<code>print()</code> for <code>regmedint</code><a class="anchor" aria-label="anchor" href="#print-for-regmedint"></a>
+</h3>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regmedint_obj</span> <span class="co"># Implicit printing</span></code></pre></div>
-<pre><code>## ### Mediator model
-## 
-## Call:  glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
-## 
-## Coefficients:
-## (Intercept)            x            c  
-##     -0.3545       0.3842       0.2694  
-## 
-## Degrees of Freedom: 99 Total (i.e. Null);  97 Residual
-## Null Deviance:       138.6 
-## Residual Deviance: 136.1     AIC: 142.1
-## ### Outcome model
-## Call:
-## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
-##     dist = "weibull")
-## 
-## Coefficients:
-## (Intercept)           x           m           c         x:m 
-## -1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424 
-## 
-## Scale= 0.9658808 
-## 
-## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
-##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177 
-## n= 100 
-## ### Mediation analysis 
-##         cde        pnde        tnie        tnde        pnie          te 
-## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 
-##          pm 
-## 0.045436278</code></pre>
+<pre><code><span class="co">## ### Mediator model</span>
+<span class="co">## </span>
+<span class="co">## Call:  glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">## (Intercept)            x            c  </span>
+<span class="co">##     -0.3545       0.3842       0.2694  </span>
+<span class="co">## </span>
+<span class="co">## Degrees of Freedom: 99 Total (i.e. Null);  97 Residual</span>
+<span class="co">## Null Deviance:       138.6 </span>
+<span class="co">## Residual Deviance: 136.1     AIC: 142.1</span>
+<span class="co">## ### Outcome model</span>
+<span class="co">## Call:</span>
+<span class="co">## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c, </span>
+<span class="co">##     data = data, dist = "weibull")</span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">## (Intercept)           x           m           c         x:m </span>
+<span class="co">## -1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424 </span>
+<span class="co">## </span>
+<span class="co">## Scale= 0.9658808 </span>
+<span class="co">## </span>
+<span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span>
+<span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177 </span>
+<span class="co">## n= 100 </span>
+<span class="co">## ### Mediation analysis </span>
+<span class="co">##         cde        pnde        tnie        tnde        pnie          te </span>
+<span class="co">## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 </span>
+<span class="co">##          pm </span>
+<span class="co">## 0.045436278</span></code></pre>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span></code></pre></div>
-<pre><code>## ### Mediator model
-## 
-## Call:  glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
-## 
-## Coefficients:
-## (Intercept)            x            c  
-##     -0.3545       0.3842       0.2694  
-## 
-## Degrees of Freedom: 99 Total (i.e. Null);  97 Residual
-## Null Deviance:       138.6 
-## Residual Deviance: 136.1     AIC: 142.1
-## ### Outcome model
-## Call:
-## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
-##     dist = "weibull")
-## 
-## Coefficients:
-## (Intercept)           x           m           c         x:m 
-## -1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424 
-## 
-## Scale= 0.9658808 
-## 
-## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
-##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177 
-## n= 100 
-## ### Mediation analysis 
-##         cde        pnde        tnie        tnde        pnie          te 
-## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 
-##          pm 
-## 0.045436278</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## ### Mediator model</span>
+<span class="co">## </span>
+<span class="co">## Call:  glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">## (Intercept)            x            c  </span>
+<span class="co">##     -0.3545       0.3842       0.2694  </span>
+<span class="co">## </span>
+<span class="co">## Degrees of Freedom: 99 Total (i.e. Null);  97 Residual</span>
+<span class="co">## Null Deviance:       138.6 </span>
+<span class="co">## Residual Deviance: 136.1     AIC: 142.1</span>
+<span class="co">## ### Outcome model</span>
+<span class="co">## Call:</span>
+<span class="co">## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c, </span>
+<span class="co">##     data = data, dist = "weibull")</span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">## (Intercept)           x           m           c         x:m </span>
+<span class="co">## -1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424 </span>
+<span class="co">## </span>
+<span class="co">## Scale= 0.9658808 </span>
+<span class="co">## </span>
+<span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span>
+<span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177 </span>
+<span class="co">## n= 100 </span>
+<span class="co">## ### Mediation analysis </span>
+<span class="co">##         cde        pnde        tnie        tnde        pnie          te </span>
+<span class="co">## 0.541070807 0.488930417 0.018240025 0.498503455 0.008666987 0.507170442 </span>
+<span class="co">##          pm </span>
+<span class="co">## 0.045436278</span></code></pre>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<pre><code>## ### Mediator model
-## 
-## Call:  glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
-## 
-## Coefficients:
-## (Intercept)            x            c  
-##     -0.3545       0.3842       0.2694  
-## 
-## Degrees of Freedom: 99 Total (i.e. Null);  97 Residual
-## Null Deviance:       138.6 
-## Residual Deviance: 136.1     AIC: 142.1
-## ### Outcome model
-## Call:
-## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
-##     dist = "weibull")
-## 
-## Coefficients:
-## (Intercept)           x           m           c         x:m 
-## -1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424 
-## 
-## Scale= 0.9658808 
-## 
-## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
-##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177 
-## n= 100 
-## ### Mediation analysis 
-##         cde        pnde        tnie        tnde        pnie          te 
-## 0.440756562 0.492306223 0.018077074 0.501765186 0.008618111 0.510383297 
-##          pm 
-## 0.044816400</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">regmedint_obj</span>, m_cde <span class="op">=</span> <span class="fl">0</span>, c_cond <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## ### Mediator model</span>
+<span class="co">## </span>
+<span class="co">## Call:  glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">## (Intercept)            x            c  </span>
+<span class="co">##     -0.3545       0.3842       0.2694  </span>
+<span class="co">## </span>
+<span class="co">## Degrees of Freedom: 99 Total (i.e. Null);  97 Residual</span>
+<span class="co">## Null Deviance:       138.6 </span>
+<span class="co">## Residual Deviance: 136.1     AIC: 142.1</span>
+<span class="co">## ### Outcome model</span>
+<span class="co">## Call:</span>
+<span class="co">## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c, </span>
+<span class="co">##     data = data, dist = "weibull")</span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">## (Intercept)           x           m           c         x:m </span>
+<span class="co">## -1.04244118  0.44075656  0.09053705 -0.06689165  0.10031424 </span>
+<span class="co">## </span>
+<span class="co">## Scale= 0.9658808 </span>
+<span class="co">## </span>
+<span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span>
+<span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.177 </span>
+<span class="co">## n= 100 </span>
+<span class="co">## ### Mediation analysis </span>
+<span class="co">##         cde        pnde        tnie        tnde        pnie          te </span>
+<span class="co">## 0.440756562 0.492306223 0.018077074 0.501765186 0.008618111 0.510383297 </span>
+<span class="co">##          pm </span>
+<span class="co">## 0.044816400</span></code></pre>
 </div>
-<div id="methods-for-summary_regmedint" class="section level2">
-<h2 class="hasAnchor">
-<a href="#methods-for-summary_regmedint" class="anchor"></a>Methods for <code>summary_regmedint</code>
-</h2>
+<div class="section level3">
+<h3 id="methods-for-summary_regmedint">Methods for <code>summary_regmedint</code><a class="anchor" aria-label="anchor" href="#methods-for-summary_regmedint"></a>
+</h3>
 <p>The <code>summary</code> method for the <code>regmedint</code> object returns an object of class <code>summary_regmedint</code>. To extract the mediation analysis result table as a matrix, use the <code>coef</code> method.</p>
-<div id="coef-for-summary_regmedint" class="section level3">
-<h3 class="hasAnchor">
-<a href="#coef-for-summary_regmedint" class="anchor"></a><code>coef()</code> for <code>summary_regmedint</code>
-</h3>
+<div class="section level4">
+<h4 id="coef-for-summary_regmedint">
+<code>coef()</code> for <code>summary_regmedint</code><a class="anchor" aria-label="anchor" href="#coef-for-summary_regmedint"></a>
+</h4>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>##              est         se         Z           p       lower      upper
-## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
-## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
-## tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
-## tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
-## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
-## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
-## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##              est         se         Z          p       lower      upper</span>
+<span class="co">## cde  0.541070807 0.29422958 1.8389409 0.06592388 -0.03560858 1.11775019</span>
+<span class="co">## pnde 0.488930417 0.21049248 2.3227928 0.02019028  0.07637274 0.90148809</span>
+<span class="co">## tnie 0.018240025 0.03706111 0.4921608 0.62260566 -0.05439841 0.09087846</span>
+<span class="co">## tnde 0.498503455 0.21209540 2.3503737 0.01875457  0.08280410 0.91420281</span>
+<span class="co">## pnie 0.008666987 0.02730994 0.3173565 0.75097309 -0.04485951 0.06219348</span>
+<span class="co">## te   0.507170442 0.21090051 2.4047853 0.01618197  0.09381303 0.92052785</span>
+<span class="co">## pm   0.045436278 0.09119614 0.4982259 0.61832484 -0.13330488 0.22417743</span></code></pre>
 </div>
-<div id="print-for-summary_regmedint" class="section level3">
-<h3 class="hasAnchor">
-<a href="#print-for-summary_regmedint" class="anchor"></a><code>print()</code> for <code>summary_regmedint</code>
-</h3>
+<div class="section level4">
+<h4 id="print-for-summary_regmedint">
+<code>print()</code> for <code>summary_regmedint</code><a class="anchor" aria-label="anchor" href="#print-for-summary_regmedint"></a>
+</h4>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">regmedint_summary_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">regmedint_summary_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span>
 <span class="va">regmedint_summary_obj</span> <span class="co"># Implicit printing</span></code></pre></div>
-<pre><code>## ### Mediator model
-## 
-## Call:
-## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.5143  -1.1765   0.9177   1.1133   1.4602  
-## 
-## Coefficients:
-##             Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)  -0.3545     0.3252  -1.090    0.276
-## x             0.3842     0.4165   0.922    0.356
-## c             0.2694     0.2058   1.309    0.191
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 138.59  on 99  degrees of freedom
-## Residual deviance: 136.08  on 97  degrees of freedom
-## AIC: 142.08
-## 
-## Number of Fisher Scoring iterations: 4
-## 
-## ### Outcome model
-## 
-## Call:
-## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
-##     dist = "weibull")
-##               Value Std. Error     z       p
-## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
-## x            0.4408     0.3008  1.47    0.14
-## m            0.0905     0.2683  0.34    0.74
-## c           -0.0669     0.0915 -0.73    0.46
-## x:m          0.1003     0.4207  0.24    0.81
-## Log(scale)  -0.0347     0.0810 -0.43    0.67
-## 
-## Scale= 0.966 
-## 
-## Weibull distribution
-## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
-##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
-## Number of Newton-Raphson Iterations: 5 
-## n= 100 
-## 
-## ### Mediation analysis 
-##              est         se         Z           p       lower      upper
-## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
-## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
-## tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
-## tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
-## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
-## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
-## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926
-## 
-## Evaluated at:
-## avar: x
-##  a1 (intervened value of avar) = 1
-##  a0 (reference value of avar)  = 0
-## mvar: m
-##  m_cde (intervend value of mvar for cde) = 1
-## cvar: c
-##  c_cond (covariate vector value) = 0.5
-## 
-## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</code></pre>
+<pre><code><span class="co">## ### Mediator model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span>
+<span class="co">## </span>
+<span class="co">## Deviance Residuals: </span>
+<span class="co">##     Min       1Q   Median       3Q      Max  </span>
+<span class="co">## -1.5143  -1.1765   0.9177   1.1133   1.4602  </span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">##             Estimate Std. Error z value Pr(&gt;|z|)</span>
+<span class="co">## (Intercept)  -0.3545     0.3252  -1.090    0.276</span>
+<span class="co">## x             0.3842     0.4165   0.922    0.356</span>
+<span class="co">## c             0.2694     0.2058   1.309    0.191</span>
+<span class="co">## </span>
+<span class="co">## (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">## </span>
+<span class="co">##     Null deviance: 138.59  on 99  degrees of freedom</span>
+<span class="co">## Residual deviance: 136.08  on 97  degrees of freedom</span>
+<span class="co">## AIC: 142.08</span>
+<span class="co">## </span>
+<span class="co">## Number of Fisher Scoring iterations: 4</span>
+<span class="co">## </span>
+<span class="co">## ### Outcome model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c, </span>
+<span class="co">##     data = data, dist = "weibull")</span>
+<span class="co">##               Value Std. Error     z       p</span>
+<span class="co">## (Intercept) -1.0424     0.1903 -5.48 4.3e-08</span>
+<span class="co">## x            0.4408     0.3008  1.47    0.14</span>
+<span class="co">## m            0.0905     0.2683  0.34    0.74</span>
+<span class="co">## c           -0.0669     0.0915 -0.73    0.46</span>
+<span class="co">## x:m          0.1003     0.4207  0.24    0.81</span>
+<span class="co">## Log(scale)  -0.0347     0.0810 -0.43    0.67</span>
+<span class="co">## </span>
+<span class="co">## Scale= 0.966 </span>
+<span class="co">## </span>
+<span class="co">## Weibull distribution</span>
+<span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span>
+<span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 </span>
+<span class="co">## Number of Newton-Raphson Iterations: 5 </span>
+<span class="co">## n= 100 </span>
+<span class="co">## </span>
+<span class="co">## ### Mediation analysis </span>
+<span class="co">##              est         se         Z          p       lower      upper</span>
+<span class="co">## cde  0.541070807 0.29422958 1.8389409 0.06592388 -0.03560858 1.11775019</span>
+<span class="co">## pnde 0.488930417 0.21049248 2.3227928 0.02019028  0.07637274 0.90148809</span>
+<span class="co">## tnie 0.018240025 0.03706111 0.4921608 0.62260566 -0.05439841 0.09087846</span>
+<span class="co">## tnde 0.498503455 0.21209540 2.3503737 0.01875457  0.08280410 0.91420281</span>
+<span class="co">## pnie 0.008666987 0.02730994 0.3173565 0.75097309 -0.04485951 0.06219348</span>
+<span class="co">## te   0.507170442 0.21090051 2.4047853 0.01618197  0.09381303 0.92052785</span>
+<span class="co">## pm   0.045436278 0.09119614 0.4982259 0.61832484 -0.13330488 0.22417743</span>
+<span class="co">## </span>
+<span class="co">## Evaluated at:</span>
+<span class="co">## avar: x</span>
+<span class="co">##  a1 (intervened value of avar) = 1</span>
+<span class="co">##  a0 (reference value of avar)  = 0</span>
+<span class="co">## mvar: m</span>
+<span class="co">##  m_cde (intervend value of mvar for cde) = 1</span>
+<span class="co">## cvar: c</span>
+<span class="co">##  c_cond (covariate vector value) = 0.5</span>
+<span class="co">## </span>
+<span class="co">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></code></pre>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">regmedint_summary_obj</span><span class="op">)</span></code></pre></div>
-<pre><code>## ### Mediator model
-## 
-## Call:
-## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.5143  -1.1765   0.9177   1.1133   1.4602  
-## 
-## Coefficients:
-##             Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)  -0.3545     0.3252  -1.090    0.276
-## x             0.3842     0.4165   0.922    0.356
-## c             0.2694     0.2058   1.309    0.191
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 138.59  on 99  degrees of freedom
-## Residual deviance: 136.08  on 97  degrees of freedom
-## AIC: 142.08
-## 
-## Number of Fisher Scoring iterations: 4
-## 
-## ### Outcome model
-## 
-## Call:
-## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
-##     dist = "weibull")
-##               Value Std. Error     z       p
-## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
-## x            0.4408     0.3008  1.47    0.14
-## m            0.0905     0.2683  0.34    0.74
-## c           -0.0669     0.0915 -0.73    0.46
-## x:m          0.1003     0.4207  0.24    0.81
-## Log(scale)  -0.0347     0.0810 -0.43    0.67
-## 
-## Scale= 0.966 
-## 
-## Weibull distribution
-## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
-##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
-## Number of Newton-Raphson Iterations: 5 
-## n= 100 
-## 
-## ### Mediation analysis 
-##              est         se         Z           p       lower      upper
-## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
-## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
-## tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
-## tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
-## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
-## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
-## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926
-## 
-## Evaluated at:
-## avar: x
-##  a1 (intervened value of avar) = 1
-##  a0 (reference value of avar)  = 0
-## mvar: m
-##  m_cde (intervend value of mvar for cde) = 1
-## cvar: c
-##  c_cond (covariate vector value) = 0.5
-## 
-## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">regmedint_summary_obj</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## ### Mediator model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span>
+<span class="co">## </span>
+<span class="co">## Deviance Residuals: </span>
+<span class="co">##     Min       1Q   Median       3Q      Max  </span>
+<span class="co">## -1.5143  -1.1765   0.9177   1.1133   1.4602  </span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">##             Estimate Std. Error z value Pr(&gt;|z|)</span>
+<span class="co">## (Intercept)  -0.3545     0.3252  -1.090    0.276</span>
+<span class="co">## x             0.3842     0.4165   0.922    0.356</span>
+<span class="co">## c             0.2694     0.2058   1.309    0.191</span>
+<span class="co">## </span>
+<span class="co">## (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">## </span>
+<span class="co">##     Null deviance: 138.59  on 99  degrees of freedom</span>
+<span class="co">## Residual deviance: 136.08  on 97  degrees of freedom</span>
+<span class="co">## AIC: 142.08</span>
+<span class="co">## </span>
+<span class="co">## Number of Fisher Scoring iterations: 4</span>
+<span class="co">## </span>
+<span class="co">## ### Outcome model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c, </span>
+<span class="co">##     data = data, dist = "weibull")</span>
+<span class="co">##               Value Std. Error     z       p</span>
+<span class="co">## (Intercept) -1.0424     0.1903 -5.48 4.3e-08</span>
+<span class="co">## x            0.4408     0.3008  1.47    0.14</span>
+<span class="co">## m            0.0905     0.2683  0.34    0.74</span>
+<span class="co">## c           -0.0669     0.0915 -0.73    0.46</span>
+<span class="co">## x:m          0.1003     0.4207  0.24    0.81</span>
+<span class="co">## Log(scale)  -0.0347     0.0810 -0.43    0.67</span>
+<span class="co">## </span>
+<span class="co">## Scale= 0.966 </span>
+<span class="co">## </span>
+<span class="co">## Weibull distribution</span>
+<span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span>
+<span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 </span>
+<span class="co">## Number of Newton-Raphson Iterations: 5 </span>
+<span class="co">## n= 100 </span>
+<span class="co">## </span>
+<span class="co">## ### Mediation analysis </span>
+<span class="co">##              est         se         Z          p       lower      upper</span>
+<span class="co">## cde  0.541070807 0.29422958 1.8389409 0.06592388 -0.03560858 1.11775019</span>
+<span class="co">## pnde 0.488930417 0.21049248 2.3227928 0.02019028  0.07637274 0.90148809</span>
+<span class="co">## tnie 0.018240025 0.03706111 0.4921608 0.62260566 -0.05439841 0.09087846</span>
+<span class="co">## tnde 0.498503455 0.21209540 2.3503737 0.01875457  0.08280410 0.91420281</span>
+<span class="co">## pnie 0.008666987 0.02730994 0.3173565 0.75097309 -0.04485951 0.06219348</span>
+<span class="co">## te   0.507170442 0.21090051 2.4047853 0.01618197  0.09381303 0.92052785</span>
+<span class="co">## pm   0.045436278 0.09119614 0.4982259 0.61832484 -0.13330488 0.22417743</span>
+<span class="co">## </span>
+<span class="co">## Evaluated at:</span>
+<span class="co">## avar: x</span>
+<span class="co">##  a1 (intervened value of avar) = 1</span>
+<span class="co">##  a0 (reference value of avar)  = 0</span>
+<span class="co">## mvar: m</span>
+<span class="co">##  m_cde (intervend value of mvar for cde) = 1</span>
+<span class="co">## cvar: c</span>
+<span class="co">##  c_cond (covariate vector value) = 0.5</span>
+<span class="co">## </span>
+<span class="co">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></code></pre>
 </div>
 </div>
 </div>
@@ -868,11 +871,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Kazuki Yoshida, Yi Li.</p>
+  <p></p>
+<p>Developed by Kazuki Yoshida, Yi Li.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -880,6 +885,8 @@
 
   
 
+
+  
 
   </body>
 </html>

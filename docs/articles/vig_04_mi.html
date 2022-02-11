@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">regmedint</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -65,6 +61,12 @@
     <li>
       <a href="../articles/vig_04_mi.html">Using multiple imputation with regmedint</a>
     </li>
+    <li>
+      <a href="../articles/vig_05_emm.html">Implementation of extended formulas when there are effect measure modifiers</a>
+    </li>
+    <li>
+      <a href="../articles/vig_06_delta_boot.html">Validation of extended formuals with effect modification using bootstrap</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -73,8 +75,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/kaz-yos/regmedint">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/kaz-yos/regmedint" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -88,15 +90,15 @@
 
       
 
-      </header><script src="vig_04_mi_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using multiple imputation with regmedint</h1>
-                        <h4 class="author">Kazuki Yoshida</h4>
+                        <h4 data-toc-skip class="author">Kazuki Yoshida</h4>
             
-            <h4 class="date">2021-05-11</h4>
+            <h4 data-toc-skip class="date">2022-02-11</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/master/vignettes/vig_04_mi.Rmd"><code>vignettes/vig_04_mi.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/HEAD/vignettes/vig_04_mi.Rmd" class="external-link"><code>vignettes/vig_04_mi.Rmd</code></a></small>
       <div class="hidden name"><code>vig_04_mi.Rmd</code></div>
 
     </div>
@@ -104,29 +106,29 @@
     
     
 <p>Missing data is the norm in real-life data analysis. Multiple imputation via the <code>mice</code> package is a popular option in R. Here we introduce simple missingness and demonstrate use of <code>regmedint</code> along with <code>mice</code>.</p>
-<div id="missing-data-generation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#missing-data-generation" class="anchor"></a>Missing data generation</h2>
+<div class="section level2">
+<h2 id="missing-data-generation">Missing data generation<a class="anchor" aria-label="anchor" href="#missing-data-generation"></a>
+</h2>
 <p>For demonstration purpose, missing data is introduced here.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">138087069</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kaz-yos.github.io/regmedint/">regmedint</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">138087069</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kaz-yos.github.io/regmedint/" class="external-link">regmedint</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
 <span class="co">## Prepare dataset</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">vv2015</span><span class="op">)</span>
-<span class="va">vv2015</span> <span class="op">&lt;-</span> <span class="va">vv2015</span> <span class="op">%&gt;%</span>
-    <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">cens</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">vv2015</span><span class="op">)</span>
+<span class="va">vv2015</span> <span class="op">&lt;-</span> <span class="va">vv2015</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">cens</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
     <span class="co">## Generate exposure-dependent missing of mediator</span>
-    <span class="fu">mutate</span><span class="op">(</span>logit_p_m_miss <span class="op">=</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="va">x</span>,
-           p_m_miss <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">logit_p_m_miss</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">logit_p_m_miss</span><span class="op">)</span><span class="op">)</span>,
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>logit_p_m_miss <span class="op">=</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="va">x</span>,
+           p_m_miss <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">logit_p_m_miss</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">logit_p_m_miss</span><span class="op">)</span><span class="op">)</span>,
            <span class="co">## Indicator draw</span>
-           ind_m_miss <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">p_m_miss</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="va">p_m_miss</span><span class="op">)</span>,
+           ind_m_miss <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">p_m_miss</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="va">p_m_miss</span><span class="op">)</span>,
            m_true <span class="op">=</span> <span class="va">m</span>,
-           m <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">ind_m_miss</span> <span class="op">==</span> <span class="fl">1L</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>, <span class="va">m</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+           m <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="va">ind_m_miss</span> <span class="op">==</span> <span class="fl">1L</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>, <span class="va">m</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="truth-fit" class="section level2">
-<h2 class="hasAnchor">
-<a href="#truth-fit" class="anchor"></a>Truth fit</h2>
+<div class="section level2">
+<h2 id="truth-fit">Truth fit<a class="anchor" aria-label="anchor" href="#truth-fit"></a>
+</h2>
 <p>Taking the advantage of the simulated setting, the true model is fit here.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regmedint_true</span> <span class="op">&lt;-</span>
@@ -135,7 +137,7 @@
               yvar <span class="op">=</span> <span class="st">"y"</span>,
               avar <span class="op">=</span> <span class="st">"x"</span>,
               mvar <span class="op">=</span> <span class="st">"m_true"</span>,
-              cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+              cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
               eventvar <span class="op">=</span> <span class="st">"event"</span>,
               <span class="co">## Values at which effects are evaluated</span>
               a0 <span class="op">=</span> <span class="fl">0</span>,
@@ -148,85 +150,85 @@
               <span class="co">## Additional specification</span>
               interaction <span class="op">=</span> <span class="cn">TRUE</span>,
               casecontrol <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_true</span><span class="op">)</span></code></pre></div>
-<pre><code>## ### Mediator model
-## 
-## Call:
-## glm(formula = m_true ~ x + c, family = binomial(link = "logit"), 
-##     data = data)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.5143  -1.1765   0.9177   1.1133   1.4602  
-## 
-## Coefficients:
-##             Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)  -0.3545     0.3252  -1.090    0.276
-## x             0.3842     0.4165   0.922    0.356
-## c             0.2694     0.2058   1.309    0.191
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 138.59  on 99  degrees of freedom
-## Residual deviance: 136.08  on 97  degrees of freedom
-## AIC: 142.08
-## 
-## Number of Fisher Scoring iterations: 4
-## 
-## ### Outcome model
-## 
-## Call:
-## survival::survreg(formula = Surv(y, event) ~ x * m_true + c, 
-##     data = data, dist = "weibull")
-##               Value Std. Error     z       p
-## (Intercept) -1.0424     0.1903 -5.48 4.3e-08
-## x            0.4408     0.3008  1.47    0.14
-## m_true       0.0905     0.2683  0.34    0.74
-## c           -0.0669     0.0915 -0.73    0.46
-## x:m_true     0.1003     0.4207  0.24    0.81
-## Log(scale)  -0.0347     0.0810 -0.43    0.67
-## 
-## Scale= 0.966 
-## 
-## Weibull distribution
-## Loglik(model)= -11.4   Loglik(intercept only)= -14.5
-##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 
-## Number of Newton-Raphson Iterations: 5 
-## n= 100 
-## 
-## ### Mediation analysis 
-##              est         se         Z           p       lower      upper
-## cde  0.541070807 0.29422958 1.8389409 0.065923882 -0.03560858 1.11775019
-## pnde 0.488930417 0.21049248 2.3227928 0.020190284  0.07637274 0.90148809
-## tnie 0.018240025 0.03706111 0.4921608 0.622605663 -0.05439841 0.09087846
-## tnde 0.498503455 0.21209540 2.3503737 0.018754573  0.08280410 0.91420281
-## pnie 0.008666987 0.02730994 0.3173565 0.750973092 -0.04485951 0.06219348
-## te   0.507170442 0.21090051 2.4047853 0.016181972  0.09381303 0.92052785
-## pm   0.045436278 0.01725694 2.6329276 0.008465238  0.01161329 0.07925926
-## 
-## Evaluated at:
-## avar: x
-##  a1 (intervened value of avar) = 1
-##  a0 (reference value of avar)  = 0
-## mvar: m_true
-##  m_cde (intervend value of mvar for cde) = 1
-## cvar: c
-##  c_cond (covariate vector value) = 0.5
-## 
-## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</code></pre>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint_true</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## ### Mediator model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## glm(formula = m_true ~ x + c, family = binomial(link = "logit"), </span>
+<span class="co">##     data = data)</span>
+<span class="co">## </span>
+<span class="co">## Deviance Residuals: </span>
+<span class="co">##     Min       1Q   Median       3Q      Max  </span>
+<span class="co">## -1.5143  -1.1765   0.9177   1.1133   1.4602  </span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">##             Estimate Std. Error z value Pr(&gt;|z|)</span>
+<span class="co">## (Intercept)  -0.3545     0.3252  -1.090    0.276</span>
+<span class="co">## x             0.3842     0.4165   0.922    0.356</span>
+<span class="co">## c             0.2694     0.2058   1.309    0.191</span>
+<span class="co">## </span>
+<span class="co">## (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">## </span>
+<span class="co">##     Null deviance: 138.59  on 99  degrees of freedom</span>
+<span class="co">## Residual deviance: 136.08  on 97  degrees of freedom</span>
+<span class="co">## AIC: 142.08</span>
+<span class="co">## </span>
+<span class="co">## Number of Fisher Scoring iterations: 4</span>
+<span class="co">## </span>
+<span class="co">## ### Outcome model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## survival::survreg(formula = Surv(y, event) ~ x + m_true + x:m_true + </span>
+<span class="co">##     c, data = data, dist = "weibull")</span>
+<span class="co">##               Value Std. Error     z       p</span>
+<span class="co">## (Intercept) -1.0424     0.1903 -5.48 4.3e-08</span>
+<span class="co">## x            0.4408     0.3008  1.47    0.14</span>
+<span class="co">## m_true       0.0905     0.2683  0.34    0.74</span>
+<span class="co">## c           -0.0669     0.0915 -0.73    0.46</span>
+<span class="co">## x:m_true     0.1003     0.4207  0.24    0.81</span>
+<span class="co">## Log(scale)  -0.0347     0.0810 -0.43    0.67</span>
+<span class="co">## </span>
+<span class="co">## Scale= 0.966 </span>
+<span class="co">## </span>
+<span class="co">## Weibull distribution</span>
+<span class="co">## Loglik(model)= -11.4   Loglik(intercept only)= -14.5</span>
+<span class="co">##  Chisq= 6.31 on 4 degrees of freedom, p= 0.18 </span>
+<span class="co">## Number of Newton-Raphson Iterations: 5 </span>
+<span class="co">## n= 100 </span>
+<span class="co">## </span>
+<span class="co">## ### Mediation analysis </span>
+<span class="co">##              est         se         Z          p       lower      upper</span>
+<span class="co">## cde  0.541070807 0.29422958 1.8389409 0.06592388 -0.03560858 1.11775019</span>
+<span class="co">## pnde 0.488930417 0.21049248 2.3227928 0.02019028  0.07637274 0.90148809</span>
+<span class="co">## tnie 0.018240025 0.03706111 0.4921608 0.62260566 -0.05439841 0.09087846</span>
+<span class="co">## tnde 0.498503455 0.21209540 2.3503737 0.01875457  0.08280410 0.91420281</span>
+<span class="co">## pnie 0.008666987 0.02730994 0.3173565 0.75097309 -0.04485951 0.06219348</span>
+<span class="co">## te   0.507170442 0.21090051 2.4047853 0.01618197  0.09381303 0.92052785</span>
+<span class="co">## pm   0.045436278 0.09119614 0.4982259 0.61832484 -0.13330488 0.22417743</span>
+<span class="co">## </span>
+<span class="co">## Evaluated at:</span>
+<span class="co">## avar: x</span>
+<span class="co">##  a1 (intervened value of avar) = 1</span>
+<span class="co">##  a0 (reference value of avar)  = 0</span>
+<span class="co">## mvar: m_true</span>
+<span class="co">##  m_cde (intervend value of mvar for cde) = 1</span>
+<span class="co">## cvar: c</span>
+<span class="co">##  c_cond (covariate vector value) = 0.5</span>
+<span class="co">## </span>
+<span class="co">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></code></pre>
 </div>
-<div id="naive-complete-case-analysis" class="section level2">
-<h2 class="hasAnchor">
-<a href="#naive-complete-case-analysis" class="anchor"></a>Naive complete case analysis</h2>
+<div class="section level2">
+<h2 id="naive-complete-case-analysis">Naive complete case analysis<a class="anchor" aria-label="anchor" href="#naive-complete-case-analysis"></a>
+</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">regmedint_cca</span> <span class="op">&lt;-</span> <span class="va">vv2015</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">regmedint_cca</span> <span class="op">&lt;-</span> <span class="va">vv2015</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
     <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>,
               <span class="co">## Variables</span>
               yvar <span class="op">=</span> <span class="st">"y"</span>,
               avar <span class="op">=</span> <span class="st">"x"</span>,
               mvar <span class="op">=</span> <span class="st">"m"</span>,
-              cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+              cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
               eventvar <span class="op">=</span> <span class="st">"event"</span>,
               <span class="co">## Values at which effects are evaluated</span>
               a0 <span class="op">=</span> <span class="fl">0</span>,
@@ -239,116 +241,116 @@
               <span class="co">## Additional specification</span>
               interaction <span class="op">=</span> <span class="cn">TRUE</span>,
               casecontrol <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_cca</span><span class="op">)</span></code></pre></div>
-<pre><code>## ### Mediator model
-## 
-## Call:
-## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)
-## 
-## Deviance Residuals: 
-##    Min      1Q  Median      3Q     Max  
-## -1.306  -1.133  -1.028   1.183   1.360  
-## 
-## Coefficients:
-##             Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)  -0.2500     0.3880  -0.644    0.519
-## x             0.1278     0.4883   0.262    0.794
-## c             0.1587     0.2415   0.657    0.511
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 99.758  on 71  degrees of freedom
-## Residual deviance: 99.287  on 69  degrees of freedom
-## AIC: 105.29
-## 
-## Number of Fisher Scoring iterations: 3
-## 
-## ### Outcome model
-## 
-## Call:
-## survival::survreg(formula = Surv(y, event) ~ x * m + c, data = data, 
-##     dist = "weibull")
-##               Value Std. Error     z       p
-## (Intercept) -1.2689     0.2229 -5.69 1.2e-08
-## x            0.7213     0.3315  2.18    0.03
-## m            0.4517     0.2985  1.51    0.13
-## c           -0.0652     0.1110 -0.59    0.56
-## x:m         -0.2579     0.4750 -0.54    0.59
-## Log(scale)  -0.0581     0.0958 -0.61    0.54
-## 
-## Scale= 0.944 
-## 
-## Weibull distribution
-## Loglik(model)= -6.1   Loglik(intercept only)= -10.5
-##  Chisq= 8.79 on 4 degrees of freedom, p= 0.066 
-## Number of Newton-Raphson Iterations: 5 
-## n= 72 
-## 
-## ### Mediation analysis 
-##              est         se         Z          p       lower      upper
-## cde  0.463323084 0.34636957 1.3376553 0.18100884 -0.21554880 1.14219497
-## pnde 0.582515084 0.24557485 2.3720470 0.01768984  0.10119722 1.06383295
-## tnie 0.006182822 0.02643657 0.2338738 0.81508294 -0.04563191 0.05799755
-## tnde 0.574385442 0.24784035 2.3175623 0.02047312  0.08862728 1.06014360
-## pnie 0.014312464 0.05541066 0.2582980 0.79617690 -0.09429043 0.12291536
-## te   0.588697906 0.24809627 2.3728608 0.01765092  0.10243816 1.07495766
-## pm   0.013852661 0.01383244 1.0014616 0.31660367 -0.01325843 0.04096375
-## 
-## Evaluated at:
-## avar: x
-##  a1 (intervened value of avar) = 1
-##  a0 (reference value of avar)  = 0
-## mvar: m
-##  m_cde (intervend value of mvar for cde) = 1
-## cvar: c
-##  c_cond (covariate vector value) = 0.5
-## 
-## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</code></pre>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint_cca</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## ### Mediator model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## glm(formula = m ~ x + c, family = binomial(link = "logit"), data = data)</span>
+<span class="co">## </span>
+<span class="co">## Deviance Residuals: </span>
+<span class="co">##    Min      1Q  Median      3Q     Max  </span>
+<span class="co">## -1.306  -1.133  -1.028   1.183   1.360  </span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">##             Estimate Std. Error z value Pr(&gt;|z|)</span>
+<span class="co">## (Intercept)  -0.2500     0.3880  -0.644    0.519</span>
+<span class="co">## x             0.1278     0.4883   0.262    0.794</span>
+<span class="co">## c             0.1587     0.2415   0.657    0.511</span>
+<span class="co">## </span>
+<span class="co">## (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">## </span>
+<span class="co">##     Null deviance: 99.758  on 71  degrees of freedom</span>
+<span class="co">## Residual deviance: 99.287  on 69  degrees of freedom</span>
+<span class="co">## AIC: 105.29</span>
+<span class="co">## </span>
+<span class="co">## Number of Fisher Scoring iterations: 3</span>
+<span class="co">## </span>
+<span class="co">## ### Outcome model</span>
+<span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c, </span>
+<span class="co">##     data = data, dist = "weibull")</span>
+<span class="co">##               Value Std. Error     z       p</span>
+<span class="co">## (Intercept) -1.2689     0.2229 -5.69 1.2e-08</span>
+<span class="co">## x            0.7213     0.3315  2.18    0.03</span>
+<span class="co">## m            0.4517     0.2985  1.51    0.13</span>
+<span class="co">## c           -0.0652     0.1110 -0.59    0.56</span>
+<span class="co">## x:m         -0.2579     0.4750 -0.54    0.59</span>
+<span class="co">## Log(scale)  -0.0581     0.0958 -0.61    0.54</span>
+<span class="co">## </span>
+<span class="co">## Scale= 0.944 </span>
+<span class="co">## </span>
+<span class="co">## Weibull distribution</span>
+<span class="co">## Loglik(model)= -6.1   Loglik(intercept only)= -10.5</span>
+<span class="co">##  Chisq= 8.79 on 4 degrees of freedom, p= 0.066 </span>
+<span class="co">## Number of Newton-Raphson Iterations: 5 </span>
+<span class="co">## n= 72 </span>
+<span class="co">## </span>
+<span class="co">## ### Mediation analysis </span>
+<span class="co">##              est         se         Z          p       lower      upper</span>
+<span class="co">## cde  0.463323084 0.34636957 1.3376553 0.18100884 -0.21554880 1.14219497</span>
+<span class="co">## pnde 0.582515084 0.24557485 2.3720470 0.01768984  0.10119722 1.06383295</span>
+<span class="co">## tnie 0.006182822 0.02643657 0.2338738 0.81508294 -0.04563191 0.05799755</span>
+<span class="co">## tnde 0.574385442 0.24784035 2.3175623 0.02047312  0.08862728 1.06014360</span>
+<span class="co">## pnie 0.014312464 0.05541066 0.2582980 0.79617690 -0.09429043 0.12291536</span>
+<span class="co">## te   0.588697906 0.24809627 2.3728608 0.01765092  0.10243816 1.07495766</span>
+<span class="co">## pm   0.013852661 0.05856686 0.2365273 0.81302354 -0.10093628 0.12864160</span>
+<span class="co">## </span>
+<span class="co">## Evaluated at:</span>
+<span class="co">## avar: x</span>
+<span class="co">##  a1 (intervened value of avar) = 1</span>
+<span class="co">##  a0 (reference value of avar)  = 0</span>
+<span class="co">## mvar: m</span>
+<span class="co">##  m_cde (intervend value of mvar for cde) = 1</span>
+<span class="co">## cvar: c</span>
+<span class="co">##  c_cond (covariate vector value) = 0.5</span>
+<span class="co">## </span>
+<span class="co">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></code></pre>
 </div>
-<div id="multiple-imputation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#multiple-imputation" class="anchor"></a>Multiple imputation</h2>
+<div class="section level2">
+<h2 id="multiple-imputation">Multiple imputation<a class="anchor" aria-label="anchor" href="#multiple-imputation"></a>
+</h2>
 <p>This specific data setting is a little tricky in that the outcome variable is a censored survival time variable. Here we will use a log transformed survival time.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice">mice</a></span><span class="op">)</span>
-<span class="va">vv2015_mod</span> <span class="op">&lt;-</span> <span class="va">vv2015</span> <span class="op">%&gt;%</span>
-    <span class="fu">mutate</span><span class="op">(</span>log_y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">select</span><span class="op">(</span><span class="va">x</span>,<span class="va">m</span>,<span class="va">c</span>,<span class="va">log_y</span>,<span class="va">event</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice" class="external-link">mice</a></span><span class="op">)</span>
+<span class="va">vv2015_mod</span> <span class="op">&lt;-</span> <span class="va">vv2015</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>log_y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">m</span>,<span class="va">c</span>,<span class="va">log_y</span>,<span class="va">event</span><span class="op">)</span>
 <span class="co">## Run mice</span>
-<span class="va">vv2015_mice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://amices.org/mice/reference/mice.html">mice</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">vv2015_mod</span>, m <span class="op">=</span> <span class="fl">50</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="va">vv2015_mice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://amices.org/mice/reference/mice.html" class="external-link">mice</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">vv2015_mod</span>, m <span class="op">=</span> <span class="fl">50</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">## Object containig 50 imputed dataset</span>
 <span class="va">vv2015_mice</span></code></pre></div>
-<pre><code>## Class: mids
-## Number of multiple imputations:  50 
-## Imputation methods:
-##     x     m     c log_y event 
-##    "" "pmm"    ""    ""    "" 
-## PredictorMatrix:
-##       x m c log_y event
-## x     0 1 1     1     1
-## m     1 0 1     1     1
-## c     1 1 0     1     1
-## log_y 1 1 1     0     1
-## event 1 1 1     1     0</code></pre>
+<pre><code><span class="co">## Class: mids</span>
+<span class="co">## Number of multiple imputations:  50 </span>
+<span class="co">## Imputation methods:</span>
+<span class="co">##     x     m     c log_y event </span>
+<span class="co">##    "" "pmm"    ""    ""    "" </span>
+<span class="co">## PredictorMatrix:</span>
+<span class="co">##       x m c log_y event</span>
+<span class="co">## x     0 1 1     1     1</span>
+<span class="co">## m     1 0 1     1     1</span>
+<span class="co">## c     1 1 0     1     1</span>
+<span class="co">## log_y 1 1 1     0     1</span>
+<span class="co">## event 1 1 1     1     0</span></code></pre>
 <p>After creating such MI datasets, mediation analysis can be performed in each dataset.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Fit in each MI dataset</span>
 <span class="va">vv2015_mice_regmedint</span> <span class="op">&lt;-</span>
-    <span class="va">vv2015_mice</span> <span class="op">%&gt;%</span>
+    <span class="va">vv2015_mice</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
     <span class="co">## Stacked up dataset</span>
-    <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/complete.mids.html">complete</a></span><span class="op">(</span><span class="st">"long"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">mutate</span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">log_y</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">group_by</span><span class="op">(</span><span class="va">.imp</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/complete.mids.html" class="external-link">complete</a></span><span class="op">(</span><span class="st">"long"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+    <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">log_y</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">.imp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
     <span class="co">## Nested data frame</span>
-    <span class="fu">nest</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">mutate</span><span class="op">(</span>fit <span class="op">=</span> <span class="fu">map</span><span class="op">(</span><span class="va">data</span>, <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span>
+    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">nest</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>fit <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">data</span>, <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span>
         <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span>,
                   <span class="co">## Variables</span>
                   yvar <span class="op">=</span> <span class="st">"y"</span>,
                   avar <span class="op">=</span> <span class="st">"x"</span>,
                   mvar <span class="op">=</span> <span class="st">"m"</span>,
-                  cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+                  cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
                   eventvar <span class="op">=</span> <span class="st">"event"</span>,
                   <span class="co">## Values at which effects are evaluated</span>
                   a0 <span class="op">=</span> <span class="fl">0</span>,
@@ -361,58 +363,58 @@
                   <span class="co">## Additional specification</span>
                   interaction <span class="op">=</span> <span class="cn">TRUE</span>,
                   casecontrol <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-    <span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
     <span class="co">## Extract point estimates and variance estimates</span>
-    <span class="fu">mutate</span><span class="op">(</span>coef_fit <span class="op">=</span> <span class="fu">map</span><span class="op">(</span><span class="va">fit</span>, <span class="va">coef</span><span class="op">)</span>,
-           vcov_fit <span class="op">=</span> <span class="fu">map</span><span class="op">(</span><span class="va">fit</span>, <span class="va">vcov</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>coef_fit <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">coef</span><span class="op">)</span>,
+           vcov_fit <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">vcov</span><span class="op">)</span><span class="op">)</span>
 <span class="va">vv2015_mice_regmedint</span></code></pre></div>
-<pre><code>## # A tibble: 50 x 5
-## # Groups:   .imp [50]
-##     .imp data                   fit            coef_fit  vcov_fit         
-##    &lt;int&gt; &lt;list&gt;                 &lt;list&gt;         &lt;list&gt;    &lt;list&gt;           
-##  1     1 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  2     2 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  3     3 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  4     4 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  5     5 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  6     6 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  7     7 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  8     8 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-##  9     9 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-## 10    10 &lt;tibble[,7] [100 × 7]&gt; &lt;regmednt [4]&gt; &lt;dbl [7]&gt; &lt;dbl[,7] [7 × 7]&gt;
-## # … with 40 more rows</code></pre>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 50 x 5</span></span>
+<span class="co">## <span style="color: #949494;"># Groups:   .imp [50]</span></span>
+<span class="co">##     .imp data               fit            coef_fit  vcov_fit     </span>
+<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>       </span>
+<span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 <span style="color: #949494;">&lt;tibble [100 × 7]&gt;</span> <span style="color: #949494;">&lt;regmednt [4]&gt;</span> <span style="color: #949494;">&lt;dbl [7]&gt;</span> <span style="color: #949494;">&lt;dbl [7 × 7]&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 2</span>     2 <span style="color: #949494;">&lt;tibble [100 × 7]&gt;</span> <span style="color: #949494;">&lt;regmednt [4]&gt;</span> <span style="color: #949494;">&lt;dbl [7]&gt;</span> <span style="color: #949494;">&lt;dbl [7 × 7]&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 3</span>     3 <span style="color: #949494;">&lt;tibble [100 × 7]&gt;</span> <span style="color: #949494;">&lt;regmednt [4]&gt;</span> <span style="color: #949494;">&lt;dbl [7]&gt;</span> <span style="color: #949494;">&lt;dbl [7 × 7]&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 4</span>     4 <span style="color: #949494;">&lt;tibble [100 × 7]&gt;</span> <span style="color: #949494;">&lt;regmednt [4]&gt;</span> <span style="color: #949494;">&lt;dbl [7]&gt;</span> <span style="color: #949494;">&lt;dbl [7 × 7]&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 5</span>     5 <span style="color: #949494;">&lt;tibble [100 × 7]&gt;</span> <span style="color: #949494;">&lt;regmednt [4]&gt;</span> <span style="color: #949494;">&lt;dbl [7]&gt;</span> <span style="color: #949494;">&lt;dbl [7 × 7]&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 6</span>     6 <span style="color: #949494;">&lt;tibble [100 × 7]&gt;</span> <span style="color: #949494;">&lt;regmednt [4]&gt;</span> <span style="color: #949494;">&lt;dbl [7]&gt;</span> <span style="color: #949494;">&lt;dbl [7 × 7]&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 7</span>     7 <span style="color: #949494;">&lt;tibble [100 × 7]&gt;</span> <span style="color: #949494;">&lt;regmednt [4]&gt;</span> <span style="color: #949494;">&lt;dbl [7]&gt;</span> <span style="color: #949494;">&lt;dbl [7 × 7]&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 8</span>     8 <span style="color: #949494;">&lt;tibble [100 × 7]&gt;</span> <span style="color: #949494;">&lt;regmednt [4]&gt;</span> <span style="color: #949494;">&lt;dbl [7]&gt;</span> <span style="color: #949494;">&lt;dbl [7 × 7]&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 9</span>     9 <span style="color: #949494;">&lt;tibble [100 × 7]&gt;</span> <span style="color: #949494;">&lt;regmednt [4]&gt;</span> <span style="color: #949494;">&lt;dbl [7]&gt;</span> <span style="color: #949494;">&lt;dbl [7 × 7]&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;">10</span>    10 <span style="color: #949494;">&lt;tibble [100 × 7]&gt;</span> <span style="color: #949494;">&lt;regmednt [4]&gt;</span> <span style="color: #949494;">&lt;dbl [7]&gt;</span> <span style="color: #949494;">&lt;dbl [7 × 7]&gt;</span></span>
+<span class="co">## <span style="color: #949494;"># … with 40 more rows</span></span></code></pre>
 <p>The results can be combined using the mitools package.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">regmedint_mi</span> <span class="op">&lt;-</span> <span class="fu">mitools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mitools/man/MIcombine.html">MIcombine</a></span><span class="op">(</span>results <span class="op">=</span> <span class="va">vv2015_mice_regmedint</span><span class="op">$</span><span class="va">coef_fit</span>,
+<code class="sourceCode R"><span class="va">regmedint_mi</span> <span class="op">&lt;-</span> <span class="fu">mitools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mitools/man/MIcombine.html" class="external-link">MIcombine</a></span><span class="op">(</span>results <span class="op">=</span> <span class="va">vv2015_mice_regmedint</span><span class="op">$</span><span class="va">coef_fit</span>,
                                    variances <span class="op">=</span> <span class="va">vv2015_mice_regmedint</span><span class="op">$</span><span class="va">vcov_fit</span><span class="op">)</span>
-<span class="va">regmedint_mi_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">regmedint_mi</span><span class="op">)</span></code></pre></div>
-<pre><code>## Multiple imputation results:
-##       MIcombine.default(results = vv2015_mice_regmedint$coef_fit, variances = vv2015_mice_regmedint$vcov_fit)
-##         results         se      (lower     upper) missInfo
-## cde  0.35334826 0.31280990 -0.25988229 0.96657881      9 %
-## pnde 0.48716281 0.21292928  0.06982892 0.90449669      0 %
-## tnie 0.00486299 0.03096690 -0.05584982 0.06557580     11 %
-## tnde 0.47324382 0.21699611  0.04793551 0.89855213      2 %
-## pnie 0.01878197 0.06178469 -0.10246510 0.14002905     23 %
-## te   0.49202580 0.21430966  0.07198654 0.91206506      0 %
-## pm   0.01232649 0.03060726 -0.04852257 0.07317555     76 %</code></pre>
+<span class="va">regmedint_mi_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint_mi</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Multiple imputation results:</span>
+<span class="co">##       MIcombine.default(results = vv2015_mice_regmedint$coef_fit, variances = vv2015_mice_regmedint$vcov_fit)</span>
+<span class="co">##         results         se      (lower    upper) missInfo</span>
+<span class="co">## cde  0.35334826 0.31280990 -0.25988229 0.9665788      9 %</span>
+<span class="co">## pnde 0.48716281 0.21292928  0.06982892 0.9044967      0 %</span>
+<span class="co">## tnie 0.00486299 0.03096690 -0.05584982 0.0655758     11 %</span>
+<span class="co">## tnde 0.47324382 0.21699611  0.04793551 0.8985521      2 %</span>
+<span class="co">## pnie 0.01878197 0.06178469 -0.10246510 0.1400291     23 %</span>
+<span class="co">## te   0.49202580 0.21430966  0.07198654 0.9120651      0 %</span>
+<span class="co">## pm   0.01232649 0.07897926 -0.14251938 0.1671724     11 %</span></code></pre>
 </div>
-<div id="comparison" class="section level2">
-<h2 class="hasAnchor">
-<a href="#comparison" class="anchor"></a>Comparison</h2>
+<div class="section level2">
+<h2 id="comparison">Comparison<a class="anchor" aria-label="anchor" href="#comparison"></a>
+</h2>
 <p>We can observe the MI estimtates are generally more in alignment with the true estimates than the complete-case analysis estimates.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://amices.org/mice/reference/cbind.html">cbind</a></span><span class="op">(</span>true <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">regmedint_true</span><span class="op">)</span>,
-      cca <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">regmedint_cca</span><span class="op">)</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://amices.org/mice/reference/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>true <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">regmedint_true</span><span class="op">)</span>,
+      cca <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">regmedint_cca</span><span class="op">)</span>,
       mi <span class="op">=</span> <span class="va">regmedint_mi_summary</span><span class="op">$</span><span class="va">results</span><span class="op">)</span></code></pre></div>
-<pre><code>##             true         cca         mi
-## cde  0.541070807 0.463323084 0.35334826
-## pnde 0.488930417 0.582515084 0.48716281
-## tnie 0.018240025 0.006182822 0.00486299
-## tnde 0.498503455 0.574385442 0.47324382
-## pnie 0.008666987 0.014312464 0.01878197
-## te   0.507170442 0.588697906 0.49202580
-## pm   0.045436278 0.013852661 0.01232649</code></pre>
+<pre><code><span class="co">##             true         cca         mi</span>
+<span class="co">## cde  0.541070807 0.463323084 0.35334826</span>
+<span class="co">## pnde 0.488930417 0.582515084 0.48716281</span>
+<span class="co">## tnie 0.018240025 0.006182822 0.00486299</span>
+<span class="co">## tnde 0.498503455 0.574385442 0.47324382</span>
+<span class="co">## pnie 0.008666987 0.014312464 0.01878197</span>
+<span class="co">## te   0.507170442 0.588697906 0.49202580</span>
+<span class="co">## pm   0.045436278 0.013852661 0.01232649</span></code></pre>
 </div>
   </div>
 
@@ -427,11 +429,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Kazuki Yoshida, Yi Li.</p>
+  <p></p>
+<p>Developed by Kazuki Yoshida, Yi Li.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -439,6 +443,8 @@
 
   
 
+
+  
 
   </body>
 </html>
