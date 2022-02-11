@@ -1,5 +1,5 @@
 ---
-title: "Validation of extended formuals with effect modification terms"
+title: "Validation of extended formuals with effect modification using bootstrap"
 author: "Yi Li, Kazuki Yoshida"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
