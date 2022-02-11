@@ -14,7 +14,7 @@ Authors@R: c(
     role = c('ctb'),
     comment = c(ORCID = '0000-0001-6698-2607'))
     )
-Description: This is an extension of the regression-based causal mediation analysis first proposed by Valeri and VanderWeele (2013) <doi:10.1037/a0031034> and Valeri and VanderWeele (2015) <doi:10.1097/EDE.0000000000000253>). It supports including effect measure modification by covariates(treatment-covariate and mediator-covariate product terms in mediator and outcome regression models). It also accommodates the original 'SAS' macro and PROC CAUSALMED procedure in 'SAS' when there is no effect measure modification. Linear and logistic models are supported for the mediator model. Linear, logistic, loglinear, Poisson, negative binomial, Cox, and accelerated failure time (exponential and Weibull) models are supported for the outcome model. 
+Description: This is an extension of the regression-based causal mediation analysis first proposed by Valeri and VanderWeele (2013) <doi:10.1037/a0031034> and Valeri and VanderWeele (2015) <doi:10.1097/EDE.0000000000000253>). It supports including effect measure modification by covariates(treatment-covariate and mediator-covariate product terms in mediator and outcome regression models). It also accommodates the original 'SAS' macro and 'PROC CAUSALMED' procedure in 'SAS' when there is no effect measure modification. Linear and logistic models are supported for the mediator model. Linear, logistic, loglinear, Poisson, negative binomial, Cox, and accelerated failure time (exponential and Weibull) models are supported for the outcome model.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
