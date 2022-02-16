@@ -33,8 +33,8 @@ describe("fit_yreg Cox (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = FALSE,
                               eventvar = "status")
         ref_fit0 <- coxph(formula = Surv(time,status) ~ trt + bili,
@@ -61,8 +61,8 @@ describe("fit_yreg Cox (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = FALSE,
                               eventvar = "status")
         ref_fit1 <- coxph(formula = Surv(time,status) ~ trt + bili + age,
@@ -89,8 +89,8 @@ describe("fit_yreg Cox (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = FALSE,
                               eventvar = "status")
         ref_fit3 <- coxph(formula = Surv(time,status) ~ trt + bili + age + male + stage,
@@ -109,7 +109,7 @@ describe("fit_yreg Cox (no interaction)", {
                      vcov(ref_fit3))
     })
     
-    # only test when EMM_AC_Ymodel and EMM_MC are both not null:
+    # only test when emm_ac_yreg and emm_mc_yreg are both not null:
     it("fits a correct model with three covariates", {
         ## Three covariates
         yreg_fit6 <- fit_yreg(yreg = "survCox",
@@ -118,8 +118,8 @@ describe("fit_yreg Cox (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = c("age"),
-                              EMM_MC = c("male", "stage"),
+                              emm_ac_yreg = c("age"),
+                              emm_mc_yreg = c("male", "stage"),
                               interaction = FALSE,
                               eventvar = "status")
         ref_fit6 <- coxph(formula = Surv(time,status) ~ trt + bili + age + male + stage +
@@ -160,8 +160,8 @@ describe("fit_yreg Cox (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = TRUE,
                               eventvar = "status")
         ref_fit0 <- coxph(formula = Surv(time,status) ~ trt + bili + trt:bili,
@@ -188,8 +188,8 @@ describe("fit_yreg Cox (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = TRUE,
                               eventvar = "status")
         ref_fit1 <- coxph(formula = Surv(time,status) ~ trt + bili + trt:bili + age,
@@ -216,8 +216,8 @@ describe("fit_yreg Cox (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = TRUE,
                               eventvar = "status")
         ref_fit3 <- coxph(formula = Surv(time,status) ~ trt + bili + trt:bili + age + male + stage,
@@ -236,7 +236,7 @@ describe("fit_yreg Cox (interaction)", {
                      vcov(ref_fit3))
     })
     
-    # only test when EMM_AC_Ymodel and EMM_MC are both not null:
+    # only test when emm_ac_yreg and emm_mc_yreg are both not null:
     it("fits a correct model with three covariates", {
         ## Three covariates
         yreg_fit6 <- fit_yreg(yreg = "survCox",
@@ -245,8 +245,8 @@ describe("fit_yreg Cox (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = c("age"),
-                              EMM_MC = c("male", "stage"),
+                              emm_ac_yreg = c("age"),
+                              emm_mc_yreg = c("male", "stage"),
                               interaction = TRUE,
                               eventvar = "status")
         ref_fit6 <- coxph(formula = Surv(time,status) ~ trt + bili + trt:bili + age + male + stage +

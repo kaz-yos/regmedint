@@ -32,8 +32,8 @@ describe("fit_yreg linear (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit0 <- lm(formula = alk.phos ~ trt + bili,
@@ -60,8 +60,8 @@ describe("fit_yreg linear (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit1 <- lm(formula = alk.phos ~ trt + bili + age,
@@ -88,8 +88,8 @@ describe("fit_yreg linear (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit3 <- lm(formula = alk.phos ~ trt + bili + age + male + stage,
@@ -108,7 +108,7 @@ describe("fit_yreg linear (no interaction)", {
                      vcov(ref_fit3))
     })
     
-    it("fits a correct model with three covariates, and non-null EMM_AC_Ymodel", {
+    it("fits a correct model with three covariates, and non-null emm_ac_yreg", {
         ## Three covariates
         yreg_fit4 <- fit_yreg(yreg = "linear",
                               data = pbc_cc,
@@ -116,8 +116,8 @@ describe("fit_yreg linear (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = c("age"),
-                              EMM_MC = NULL,
+                              emm_ac_yreg = c("age"),
+                              emm_mc_yreg = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit4 <- lm(formula = alk.phos ~ trt + bili + age + male + stage + trt:age,
@@ -136,7 +136,7 @@ describe("fit_yreg linear (no interaction)", {
                      vcov(ref_fit4))
     })
     
-    it("fits a correct model with three covariates, and non-null EMM_MC", {
+    it("fits a correct model with three covariates, and non-null emm_mc_yreg", {
         ## Three covariates
         yreg_fit5 <- fit_yreg(yreg = "linear",
                               data = pbc_cc,
@@ -144,8 +144,8 @@ describe("fit_yreg linear (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = c("male", "stage"),
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = c("male", "stage"),
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit5 <- lm(formula = alk.phos ~ trt + bili + age + male + stage + 
@@ -165,7 +165,7 @@ describe("fit_yreg linear (no interaction)", {
                      vcov(ref_fit5))
     })
     
-    it("fits a correct model with three covariates, and non-null EMM_AC_Ymodel and non-null EMM_MC", {
+    it("fits a correct model with three covariates, and non-null emm_ac_yreg and non-null emm_mc_yreg", {
         ## Three covariates
         yreg_fit6 <- fit_yreg(yreg = "linear",
                               data = pbc_cc,
@@ -173,8 +173,8 @@ describe("fit_yreg linear (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = c("age"),
-                              EMM_MC = c("male", "stage"),
+                              emm_ac_yreg = c("age"),
+                              emm_mc_yreg = c("male", "stage"),
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit6 <- lm(formula = alk.phos ~ trt + bili + age + male + stage + 
@@ -213,8 +213,8 @@ describe("fit_yreg linear (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
         ref_fit0 <- lm(formula = alk.phos ~ trt + bili + trt:bili,
@@ -241,8 +241,8 @@ describe("fit_yreg linear (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
         ref_fit1 <- lm(formula = alk.phos ~ trt + bili + trt:bili + age,
@@ -269,8 +269,8 @@ describe("fit_yreg linear (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
         ref_fit3 <- lm(formula = alk.phos ~ trt + bili + trt:bili + age + male + stage,
@@ -289,8 +289,8 @@ describe("fit_yreg linear (interaction)", {
                      vcov(ref_fit3))
     })
     
-    # only test when EMM_AC_Ymodel and EMM_MC are both not null:
-    it("fits a correct model with three covariates, and non-null EMM_AC_Ymodel and non-null EMM_MC", {
+    # only test when emm_ac_yreg and emm_mc_yreg are both not null:
+    it("fits a correct model with three covariates, and non-null emm_ac_yreg and non-null emm_mc_yreg", {
         ## Three covariates
         yreg_fit6 <- fit_yreg(yreg = "linear",
                               data = pbc_cc,
@@ -298,8 +298,8 @@ describe("fit_yreg linear (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = c("age"),
-                              EMM_MC = c("male", "stage"),
+                              emm_ac_yreg = c("age"),
+                              emm_mc_yreg = c("male", "stage"),
                               interaction = TRUE,
                               eventvar = NULL)
         ref_fit6 <- lm(formula = alk.phos ~ trt + bili + trt:bili + age + male + stage + 

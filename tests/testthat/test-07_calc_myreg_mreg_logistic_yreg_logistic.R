@@ -49,9 +49,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                                                    mvar = "bili_bin",
                                                    cvar = NULL,
                                                    interaction = FALSE,
-                                                   EMM_AC_Mmodel = NULL,
-                                                   EMM_AC_Ymodel = NULL,
-                                                   EMM_MC = NULL)
+                                                   emm_ac_mreg = NULL,
+                                                   emm_ac_yreg = NULL,
+                                                   emm_mc_yreg = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -110,9 +110,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                                                    mvar = "bili_bin",
                                                    cvar = c("age"),
                                                    interaction = FALSE,
-                                                   EMM_AC_Mmodel = NULL,
-                                                   EMM_AC_Ymodel = NULL,
-                                                   EMM_MC = NULL)
+                                                   emm_ac_mreg = NULL,
+                                                   emm_ac_yreg = NULL,
+                                                   emm_mc_yreg = NULL)
         
         # add EMM
         myreg_funs_EMM1 <-
@@ -124,9 +124,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                                                  mvar = "bili_bin",
                                                  cvar = c("age"),
                                                  interaction = FALSE,
-                                                 EMM_AC_Mmodel = c("age"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL)
+                                                 emm_ac_mreg = c("age"),
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL)
         
         myreg_funs_EMM2 <-
           calc_myreg_mreg_logistic_yreg_logistic(mreg = "logistic",
@@ -137,9 +137,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                                                  mvar = "bili_bin",
                                                  cvar = c("age"),
                                                  interaction = FALSE,
-                                                 EMM_AC_Mmodel = NULL,
-                                                 EMM_AC_Ymodel = c("age"),
-                                                 EMM_MC = NULL)
+                                                 emm_ac_mreg = NULL,
+                                                 emm_ac_yreg = c("age"),
+                                                 emm_mc_yreg = NULL)
         
         myreg_funs_EMM3 <-
           calc_myreg_mreg_logistic_yreg_logistic(mreg = "logistic",
@@ -150,9 +150,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                                                  mvar = "bili_bin",
                                                  cvar = c("age"),
                                                  interaction = FALSE,
-                                                 EMM_AC_Mmodel = NULL,
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = c("age"))
+                                                 emm_ac_mreg = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = c("age"))
         
         
         ##
@@ -220,9 +220,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                                                    mvar = "bili_bin",
                                                    cvar = c("age","male","stage"),
                                                    interaction = FALSE,
-                                                   EMM_AC_Mmodel = NULL,
-                                                   EMM_AC_Ymodel = NULL,
-                                                   EMM_MC = NULL)
+                                                   emm_ac_mreg = NULL,
+                                                   emm_ac_yreg = NULL,
+                                                   emm_mc_yreg = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -280,9 +280,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic no interaction", {
                                                    mvar = "bili_bin",
                                                    cvar = c("age","male","stage"),
                                                    interaction = FALSE,
-                                                   EMM_AC_Mmodel = NULL,
-                                                   EMM_AC_Ymodel = NULL,
-                                                   EMM_MC = NULL)
+                                                   emm_ac_mreg = NULL,
+                                                   emm_ac_yreg = NULL,
+                                                   emm_mc_yreg = NULL)
         it("returns functions where cde does not depend on m_cde", {
             expect_equal(myreg_funs[[1]](1,2,-3,c(4,5,6))["cde"],
                          myreg_funs[[1]](1,2,+3,c(4,5,6))["cde"])
@@ -360,9 +360,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                                                    mvar = "bili_bin",
                                                    cvar = NULL,
                                                    interaction = TRUE,
-                                                   EMM_AC_Mmodel = NULL,
-                                                   EMM_AC_Ymodel = NULL,
-                                                   EMM_MC = NULL)
+                                                   emm_ac_mreg = NULL,
+                                                   emm_ac_yreg = NULL,
+                                                   emm_mc_yreg = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -421,9 +421,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                                                    mvar = "bili_bin",
                                                    cvar = c("age"),
                                                    interaction = TRUE,
-                                                   EMM_AC_Mmodel = NULL,
-                                                   EMM_AC_Ymodel = NULL,
-                                                   EMM_MC = NULL)
+                                                   emm_ac_mreg = NULL,
+                                                   emm_ac_yreg = NULL,
+                                                   emm_mc_yreg = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -482,9 +482,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                                                    mvar = "bili_bin",
                                                    cvar = c("age","male","stage"),
                                                    interaction = TRUE,
-                                                   EMM_AC_Mmodel = NULL,
-                                                   EMM_AC_Ymodel = NULL,
-                                                   EMM_MC = NULL)
+                                                   emm_ac_mreg = NULL,
+                                                   emm_ac_yreg = NULL,
+                                                   emm_mc_yreg = NULL)
         ##
         it("returns a list of two functions", {
             expect_equal(class(myreg_funs),
@@ -546,9 +546,9 @@ describe("calc_myreg_mreg_logistic_yreg_logistic logistic interaction", {
                                                    mvar = "bili_bin",
                                                    cvar = c("age","male","stage"),
                                                    interaction = TRUE,
-                                                   EMM_AC_Mmodel = NULL,
-                                                   EMM_AC_Ymodel = NULL,
-                                                   EMM_MC = NULL)
+                                                   emm_ac_mreg = NULL,
+                                                   emm_ac_yreg = NULL,
+                                                   emm_mc_yreg = NULL)
         it("returns functions where cde depends on m_cde", {
             ## Positive (a1 - a0)
             if (theta3 > 0) {

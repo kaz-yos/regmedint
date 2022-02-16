@@ -31,8 +31,8 @@ describe("fit_yreg logistic (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit0 <- glm(formula = spiders ~ trt + bili,
@@ -60,8 +60,8 @@ describe("fit_yreg logistic (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit1 <- glm(formula = spiders ~ trt + bili + age,
@@ -89,8 +89,8 @@ describe("fit_yreg logistic (no interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = FALSE,
                               eventvar = NULL)
         ref_fit3 <- glm(formula = spiders ~ trt + bili + age + male + stage,
@@ -129,8 +129,8 @@ describe("fit_yreg logistic (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = NULL,
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
         ref_fit0 <- glm(formula = spiders ~ trt + bili + trt:bili,
@@ -158,8 +158,8 @@ describe("fit_yreg logistic (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
         ref_fit1 <- glm(formula = spiders ~ trt + bili + trt:bili + age,
@@ -187,8 +187,8 @@ describe("fit_yreg logistic (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = NULL,
-                              EMM_MC = NULL,
+                              emm_ac_yreg = NULL,
+                              emm_mc_yreg = NULL,
                               interaction = TRUE,
                               eventvar = NULL)
         ref_fit3 <- glm(formula = spiders ~ trt + bili + trt:bili + age + male + stage,
@@ -208,8 +208,8 @@ describe("fit_yreg logistic (interaction)", {
                      vcov(ref_fit3))
     })
     
-    # only test when EMM_AC_Ymodel and EMM_MC are both not null:
-    it("fits a correct model with three covariates, and non-null EMM_AC_Ymodel and non-null EMM_MC", {
+    # only test when emm_ac_yreg and emm_mc_yreg are both not null:
+    it("fits a correct model with three covariates, and non-null emm_ac_yreg and non-null emm_mc_yreg", {
         ## Three covariates
         yreg_fit6 <- fit_yreg(yreg = "logistic",
                               data = pbc_cc,
@@ -217,8 +217,8 @@ describe("fit_yreg logistic (interaction)", {
                               avar = "trt",
                               mvar = "bili",
                               cvar = c("age","male","stage"),
-                              EMM_AC_Ymodel = c("age"),
-                              EMM_MC = c("male", "stage"),
+                              emm_ac_yreg = c("age"),
+                              emm_mc_yreg = c("male", "stage"),
                               interaction = TRUE,
                               eventvar = NULL)
         ref_fit6 <- glm(formula = spiders ~ trt + bili + trt:bili + age + male + stage +

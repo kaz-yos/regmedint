@@ -19,21 +19,21 @@ describe("string_mreg_formula", {
             expect_equal(string_mreg_formula(mvar = "M",
                                              avar = "A",
                                              cvar = NULL,
-                                             EMM_AC_Mmodel = NULL),
+                                             emm_ac_mreg = NULL),
                          "M ~ A")
         })
         it("handles one cvar by adding", {
             expect_equal(string_mreg_formula(mvar = "M",
                                              avar = "A",
                                              cvar = c("C"),
-                                             EMM_AC_Mmodel = NULL),
+                                             emm_ac_mreg = NULL),
                          "M ~ A + C")
         })
         it("handles three cvar by adding all", {
             expect_equal(string_mreg_formula(mvar = "M",
                                              avar = "A",
                                              cvar = c("C1","C2","C3"),
-                                             EMM_AC_Mmodel = NULL),
+                                             emm_ac_mreg = NULL),
                          "M ~ A + C1 + C2 + C3")
         })
     })
@@ -43,13 +43,13 @@ describe("string_mreg_formula", {
             expect_error(string_mreg_formula(mvar = NULL,
                                              avar = "A",
                                              cvar = NULL,
-                                             EMM_AC_Mmodel = NULL))
+                                             emm_ac_mreg = NULL))
         })
         it("throws an error on NULL avar", {
             expect_error(string_mreg_formula(mvar = "M",
                                              avar = NULL,
                                              cvar = NULL,
-                                             EMM_AC_Mmodel = NULL))
+                                             emm_ac_mreg = NULL))
         })
     })
 })
@@ -68,8 +68,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = NULL,
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = FALSE,
                                                  eventvar = NULL),
                              "Y ~ A + M")
@@ -77,8 +77,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = NULL,
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = TRUE,
                                                  eventvar = NULL),
                              "Y ~ A + M + A:M")
@@ -89,8 +89,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = c("C"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = FALSE,
                                                  eventvar = NULL),
                              "Y ~ A + M + C")
@@ -98,8 +98,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = c("C"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = TRUE,
                                                  eventvar = NULL),
                              "Y ~ A + M + A:M + C")
@@ -110,8 +110,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = c("C1","C2","C3"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = FALSE,
                                                  eventvar = NULL),
                              "Y ~ A + M + C1 + C2 + C3")
@@ -119,8 +119,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = c("C1","C2","C3"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = TRUE,
                                                  eventvar = NULL),
                              "Y ~ A + M + A:M + C1 + C2 + C3")
@@ -132,8 +132,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = c("C1","C2","C3"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = FALSE,
                                                  eventvar = NULL))
             })
@@ -142,8 +142,8 @@ describe("string_yreg_formula", {
                                                  avar = NULL,
                                                  mvar = "M",
                                                  cvar = c("C1","C2","C3"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = FALSE,
                                                  eventvar = NULL))
             })
@@ -152,8 +152,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = NULL,
                                                  cvar = c("C1","C2","C3"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = FALSE,
                                                  eventvar = NULL))
             })
@@ -168,8 +168,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = NULL,
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = FALSE,
                                                  eventvar = "event"),
                              "Surv(time, event) ~ A + M")
@@ -177,8 +177,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = NULL,
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = TRUE,
                                                  eventvar = "event"),
                              "Surv(time, event) ~ A + M + A:M")
@@ -189,8 +189,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = c("C"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = FALSE,
                                                  eventvar = "event"),
                              "Surv(time, event) ~ A + M + C")
@@ -198,8 +198,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = c("C"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = TRUE,
                                                  eventvar = "event"),
                              "Surv(time, event) ~ A + M + A:M + C")
@@ -210,8 +210,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = c("C1","C2","C3"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = FALSE,
                                                  eventvar = "event"),
                              "Surv(time, event) ~ A + M + C1 + C2 + C3")
@@ -219,8 +219,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = c("C1","C2","C3"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = TRUE,
                                                  eventvar = "event"),
                              "Surv(time, event) ~ A + M + A:M + C1 + C2 + C3")
@@ -232,8 +232,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = "M",
                                                  cvar = c("C1","C2","C3"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = FALSE,
                                                  eventvar = "event"))
             })
@@ -242,8 +242,8 @@ describe("string_yreg_formula", {
                                                  avar = NULL,
                                                  mvar = "M",
                                                  cvar = c("C1","C2","C3"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = FALSE,
                                                  eventvar = "event"))
             })
@@ -252,8 +252,8 @@ describe("string_yreg_formula", {
                                                  avar = "A",
                                                  mvar = NULL,
                                                  cvar = c("C1","C2","C3"),
-                                                 EMM_AC_Ymodel = NULL,
-                                                 EMM_MC = NULL,
+                                                 emm_ac_yreg = NULL,
+                                                 emm_mc_yreg = NULL,
                                                  interaction = FALSE,
                                                  eventvar = "event"))
             })

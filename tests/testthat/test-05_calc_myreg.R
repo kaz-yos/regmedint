@@ -36,15 +36,15 @@ describe("calc_myreg", {
                              avar = "trt",
                              mvar = "bili",
                              cvar = NULL,
-                             EMM_AC_Mmodel = NULL)
+                             emm_ac_mreg = NULL)
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
                              yvar = "alk_phos",
                              avar = "trt",
                              mvar = "bili",
                              cvar = NULL,
-                             EMM_AC_Ymodel = NULL,
-                             EMM_MC = NULL,
+                             emm_ac_yreg = NULL,
+                             emm_mc_yreg = NULL,
                              interaction = TRUE,
                              eventvar = NULL)
         expect_error(calc_myreg(mreg = "unsupported",
@@ -54,9 +54,9 @@ describe("calc_myreg", {
                                 avar = "trt",
                                 mvar = "bili",
                                 cvar = NULL,
-                                EMM_AC_Mmodel = NULL,
-                                EMM_AC_Ymodel = NULL,
-                                EMM_MC = NULL,
+                                emm_ac_mreg = NULL,
+                                emm_ac_yreg = NULL,
+                                emm_mc_yreg = NULL,
                                 interaction = TRUE),
                      regexp = "Unsupported mreg or yreg!")
     })
@@ -67,7 +67,7 @@ describe("calc_myreg", {
                              avar = "trt",
                              mvar = "bili",
                              cvar = NULL,
-                             EMM_AC_Mmodel = NULL)
+                             emm_ac_mreg = NULL)
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
                              yvar = "alk_phos",
@@ -75,8 +75,8 @@ describe("calc_myreg", {
                              mvar = "bili",
                              cvar = NULL,
                              interaction = TRUE,
-                             EMM_AC_Ymodel = NULL,
-                             EMM_MC = NULL,
+                             emm_ac_yreg = NULL,
+                             emm_mc_yreg = NULL,
                              eventvar = NULL)
         expect_error(calc_myreg(mreg = "linear",
                                 mreg_fit = mreg_fit,
@@ -85,9 +85,9 @@ describe("calc_myreg", {
                                 avar = "trt",
                                 mvar = "bili",
                                 cvar = NULL,
-                                EMM_AC_Mmodel = NULL,
-                                EMM_AC_Ymodel = NULL,
-                                EMM_MC = NULL,
+                                emm_ac_mreg = NULL,
+                                emm_ac_yreg = NULL,
+                                emm_mc_yreg = NULL,
                                 interaction = TRUE),
                      regexp = "Unsupported mreg or yreg!")
     })
@@ -98,15 +98,15 @@ describe("calc_myreg", {
                              avar = "trt",
                              mvar = "bili",
                              cvar = NULL,
-                             EMM_AC_Mmodel = NULL)
+                             emm_ac_mreg = NULL)
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
                              yvar = "alk_phos",
                              avar = "trt",
                              mvar = "bili",
                              cvar = NULL,
-                             EMM_AC_Ymodel = NULL,
-                             EMM_MC = NULL,
+                             emm_ac_yreg = NULL,
+                             emm_mc_yreg = NULL,
                              interaction = TRUE,
                              eventvar = NULL)
         with_mock(
@@ -125,9 +125,9 @@ describe("calc_myreg", {
                                           avar = "trt",
                                           mvar = "bili",
                                           cvar = NULL,
-                                          EMM_AC_Mmodel = NULL,
-                                          EMM_AC_Ymodel = NULL,
-                                          EMM_MC = NULL,
+                                          emm_ac_mreg = NULL,
+                                          emm_ac_yreg = NULL,
+                                          emm_mc_yreg = NULL,
                                           interaction = TRUE),
                                regexp = "calc_myreg_mreg_linear_yreg_linear was called!")
             })
@@ -139,15 +139,15 @@ describe("calc_myreg", {
                              avar = "trt",
                              mvar = "bili",
                              cvar = NULL,
-                             EMM_AC_Mmodel = NULL)
+                             emm_ac_mreg = NULL)
         yreg_fit <- fit_yreg(yreg = "logistic",
                              data = pbc_cc,
                              yvar = "spiders",
                              avar = "trt",
                              mvar = "bili",
                              cvar = NULL,
-                             EMM_AC_Ymodel = NULL,
-                             EMM_MC = NULL,
+                             emm_ac_yreg = NULL,
+                             emm_mc_yreg = NULL,
                              interaction = TRUE,
                              eventvar = NULL)
         with_mock(
@@ -166,9 +166,9 @@ describe("calc_myreg", {
                                           avar = "trt",
                                           mvar = "bili",
                                           cvar = NULL,
-                                          EMM_AC_Mmodel = NULL,
-                                          EMM_AC_Ymodel = NULL,
-                                          EMM_MC = NULL,
+                                          emm_ac_mreg = NULL,
+                                          emm_ac_yreg = NULL,
+                                          emm_mc_yreg = NULL,
                                           interaction = TRUE),
                                regexp = "calc_myreg_mreg_linear_yreg_logistic was called!")
             })
@@ -180,15 +180,15 @@ describe("calc_myreg", {
                              avar = "trt",
                              mvar = "bili_bin",
                              cvar = NULL,
-                             EMM_AC_Mmodel = NULL)
+                             emm_ac_mreg = NULL)
         yreg_fit <- fit_yreg(yreg = "linear",
                              data = pbc_cc,
                              yvar = "alk_phos",
                              avar = "trt",
                              mvar = "bili_bin",
                              cvar = NULL,
-                             EMM_AC_Ymodel = NULL,
-                             EMM_MC = NULL,
+                             emm_ac_yreg = NULL,
+                             emm_mc_yreg = NULL,
                              interaction = TRUE,
                              eventvar = NULL)
         with_mock(
@@ -207,9 +207,9 @@ describe("calc_myreg", {
                                           avar = "trt",
                                           mvar = "bili",
                                           cvar = NULL,
-                                          EMM_AC_Mmodel = NULL,
-                                          EMM_AC_Ymodel = NULL,
-                                          EMM_MC = NULL,
+                                          emm_ac_mreg = NULL,
+                                          emm_ac_yreg = NULL,
+                                          emm_mc_yreg = NULL,
                                           interaction = TRUE),
                                regexp = "calc_myreg_mreg_logistic_yreg_linear was called!")
             })
@@ -221,15 +221,15 @@ describe("calc_myreg", {
                              avar = "trt",
                              mvar = "bili_bin",
                              cvar = NULL,
-                             EMM_AC_Mmodel = NULL)
+                             emm_ac_mreg = NULL)
         yreg_fit <- fit_yreg(yreg = "logistic",
                              data = pbc_cc,
                              yvar = "spiders",
                              avar = "trt",
                              mvar = "bili_bin",
                              cvar = NULL,
-                             EMM_AC_Ymodel = NULL,
-                             EMM_MC = NULL,
+                             emm_ac_yreg = NULL,
+                             emm_mc_yreg = NULL,
                              interaction = TRUE,
                              eventvar = NULL)
         with_mock(
@@ -248,9 +248,9 @@ describe("calc_myreg", {
                                           avar = "trt",
                                           mvar = "bili",
                                           cvar = NULL,
-                                          EMM_AC_Mmodel = NULL,
-                                          EMM_AC_Ymodel = NULL,
-                                          EMM_MC = NULL,
+                                          emm_ac_mreg = NULL,
+                                          emm_ac_yreg = NULL,
+                                          emm_mc_yreg = NULL,
                                           interaction = TRUE),
                                regexp = "calc_myreg_mreg_logistic_yreg_logistic was called!")
             })
