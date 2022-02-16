@@ -60,7 +60,7 @@ summary(regmedint_obj1)
 # EMM by covariates
 
 ## There is $A\times C$ term in mediator model
-Now suppose the covariate $C$ modifies the treatment effect on the mediator. We add `EMM_AC_Mmodel = c("c")` in `regmedint()`. Although there is only one covariate in our dataset, `EMM_AC_Mmodel` can take a vector of multiple covariates. Please note that the covariates in `EMM_AC_Mmodel` should be a subset of the covariates specified in `cvar`, i.e. if a covariate is an effect measure modifier included in `EMM_AC_Mmodel`, it must be included in `cvar`, otherwise an error message will be printed.
+Now suppose the covariate $C$ modifies the treatment effect on the mediator. We add `emm_ac_mreg = c("c")` in `regmedint()`. Although there is only one covariate in our dataset, `emm_ac_mreg` can take a vector of multiple covariates. Please note that the covariates in `emm_ac_mreg` should be a subset of the covariates specified in `cvar`, i.e. if a covariate is an effect measure modifier included in `emm_ac_mreg`, it must be included in `cvar`, otherwise an error message will be printed.
 
 ```{r}
 regmedint_obj2 <- regmedint(data = vv2015,
@@ -69,9 +69,9 @@ regmedint_obj2 <- regmedint(data = vv2015,
                             avar = "x",
                             mvar = "m",
                             cvar = c("c"),
-                            EMM_AC_Mmodel = c("c"),
-                            EMM_AC_Ymodel = NULL,
-                            EMM_MC = NULL,
+                            emm_ac_mreg = c("c"),
+                            emm_ac_yreg = NULL,
+                            emm_mc_yreg = NULL,
                             eventvar = "event",
                             ## Values at which effects are evaluated
                             a0 = 0,
@@ -91,7 +91,7 @@ summary(regmedint_obj2)
 
 
 ## There is $A\times C$ term in both mediator and outcome models
-Now suppose in addition to the EMM on mediator, the covariate $C$ also modifies the treatment effect on the outcome We add `EMM_AC_Ymodel = c("c")` in `regmedint()`.  Please note that the covariates in `EMM_AC_Ymodel` should be a subset of the covariates specified in `cvar`, i.e. if a covariate is an effect measure modifier included in `EMM_AC_Ymodel`, it must be included in `cvar`, otherwise an error message will be printed.
+Now suppose in addition to the EMM on mediator, the covariate $C$ also modifies the treatment effect on the outcome We add `emm_ac_yreg = c("c")` in `regmedint()`.  Please note that the covariates in `emm_ac_yreg` should be a subset of the covariates specified in `cvar`, i.e. if a covariate is an effect measure modifier included in `emm_ac_yreg`, it must be included in `cvar`, otherwise an error message will be printed.
 ```{r}
 regmedint_obj3 <- regmedint(data = vv2015,
                             ## Variables
@@ -99,9 +99,9 @@ regmedint_obj3 <- regmedint(data = vv2015,
                             avar = "x",
                             mvar = "m",
                             cvar = c("c"),
-                            EMM_AC_Mmodel = c("c"),
-                            EMM_AC_Ymodel = c("c"),
-                            EMM_MC = NULL,
+                            emm_ac_mreg = c("c"),
+                            emm_ac_yreg = c("c"),
+                            emm_mc_yreg = NULL,
                             eventvar = "event",
                             ## Values at which effects are evaluated
                             a0 = 0,
@@ -121,7 +121,7 @@ summary(regmedint_obj3)
 
 
 ## There are $A\times C$ term in both mediator and outcome models, and $M\times C$ term in outcome model
-Now suppose in addition to the EMM of treatment effect, the covariate $C$ also modifies the mediator effect on the outcome. We add `EMM_MC = c("c")` in `regmedint()`.  Please note that the covariates in `EMM_MC` should be a subset of the covariates specified in `cvar`, i.e. if a covariate is an effect measure modifier included in `EMM_MC`, it must be included in `cvar`, otherwise an error message will be printed.
+Now suppose in addition to the EMM of treatment effect, the covariate $C$ also modifies the mediator effect on the outcome. We add `emm_mc_yreg = c("c")` in `regmedint()`.  Please note that the covariates in `emm_mc_yreg` should be a subset of the covariates specified in `cvar`, i.e. if a covariate is an effect measure modifier included in `emm_mc_yreg`, it must be included in `cvar`, otherwise an error message will be printed.
 ```{r}
 regmedint_obj4 <- regmedint(data = vv2015,
                             ## Variables
@@ -129,9 +129,9 @@ regmedint_obj4 <- regmedint(data = vv2015,
                             avar = "x",
                             mvar = "m",
                             cvar = c("c"),
-                            EMM_AC_Mmodel = c("c"),
-                            EMM_AC_Ymodel = c("c"),
-                            EMM_MC = c("c"),
+                            emm_ac_mreg = c("c"),
+                            emm_ac_yreg = c("c"),
+                            emm_mc_yreg = c("c"),
                             eventvar = "event",
                             ## Values at which effects are evaluated
                             a0 = 0,

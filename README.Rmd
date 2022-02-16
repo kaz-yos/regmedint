@@ -66,6 +66,8 @@ For the developmental version on Github, use the following commands to install t
 devtools::install_github("kaz-yos/regmedint")
 ```
 
+The CRAN version can be installed as follows.
+
 ```{r, eval = FALSE}
 install.packages("regmedint")
 ```
@@ -81,7 +83,7 @@ data(vv2015)
 ## `regmedint()` to fit models
 The `regmedint` function is the user interface for constructing a result object of class `regmedint`. The interface is similar to the original SAS macro. For survival outcomes, the indicator variable is an event indicator (1 for event, 0 for censoring). `c_cond` vector is required be specified. This vector is the vector of covariate values at which the conditional effects are evaluated at.
 
-1. When there is no effect measure modification by covariates, `EMM_AC_Mmodel = NULL`, `EMM_AC_Ymodel = NULL`, `EMM_MC = NULL`.
+1. When there is no effect measure modification by covariates, `emm_ac_mreg = NULL`, `emm_ac_yreg = NULL`, `emm_mc_yreg = NULL`.
 ```{r}
 regmedint_obj1 <- regmedint(data = vv2015,
                             ## Variables
@@ -106,7 +108,7 @@ regmedint_obj1 <- regmedint(data = vv2015,
 
 
 
-2. When there is effect measure modification by covariates, `EMM_AC_Mmodel`, `EMM_AC_Ymodel` and `EMM_MC` can take a sub-vector of covariates in `cvar`.
+2. When there is effect measure modification by covariates, `emm_ac_mreg`, `emm_ac_yreg` and `emm_mc_yreg` can take a sub-vector of covariates in `cvar`.
 ```{r}
 regmedint_obj2 <- regmedint(data = vv2015,
                             ## Variables
@@ -114,9 +116,9 @@ regmedint_obj2 <- regmedint(data = vv2015,
                             avar = "x",
                             mvar = "m",
                             cvar = c("c"),
-                            EMM_AC_Mmodel = c("c"),
-                            EMM_AC_Ymodel = c("c"),
-                            EMM_MC = c("c"),
+                            emm_ac_mreg = c("c"),
+                            emm_ac_yreg = c("c"),
+                            emm_mc_yreg = c("c"),
                             eventvar = "event",
                             ## Values at which effects are evaluated
                             a0 = 0,
