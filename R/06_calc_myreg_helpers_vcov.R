@@ -10,10 +10,10 @@
 ### vcov extractors
 ################################################################################
 
-Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
+Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar, emm_ac_mreg) {
     ## Assign row and column names, stratified by is.null(cvar), because paste0(avar, ":", cvar) will have avar:  .
     if(!is.null(cvar)){
-      if(!is.null(EMM_AC_Mmodel)){
+      if(!is.null(emm_ac_mreg)){
         vcov_beta <- matrix(0, 2+2*length(cvar), 2+2*length(cvar))
         rownames(vcov_beta) <- colnames(vcov_beta) <- 
           c("(Intercept)", avar, cvar, paste0(avar, ":", cvar))
@@ -42,19 +42,19 @@ Sigma_beta_hat <- function(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel) {
 
 
 # Note1: always has AxM row/column, even though there is interaction = FALSE
-Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, EMM_AC_Ymodel, EMM_MC, interaction) {
+Sigma_theta_hat <- function(yreg, yreg_fit, avar, mvar, cvar, emm_ac_yreg, emm_mc_yreg, interaction) {
     ## Assign row and column names, stratified by is.null(cvar), because paste0(avar, ":", cvar) will generate string 'avar:'.
     if(!is.null(cvar)){
-      if(!is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
+      if(!is.null(emm_ac_yreg) & !is.null(emm_mc_yreg)){
         vcov_theta <- matrix(0, 4+3*length(cvar), 4+3*length(cvar))
         rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar), cvar, 
                                                           paste0(avar, ":", cvar), # AxC in Y model
                                                           paste0(mvar, ":", cvar)) # MxC
-      } else if (!is.null(EMM_AC_Ymodel) & is.null(EMM_MC)){
+      } else if (!is.null(emm_ac_yreg) & is.null(emm_mc_yreg)){
         vcov_theta <- matrix(0, 4+2*length(cvar), 4+2*length(cvar))
         rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar), cvar, 
                                                           paste0(avar, ":", cvar)) # AxC in Y model
-      } else if (is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
+      } else if (is.null(emm_ac_yreg) & !is.null(emm_mc_yreg)){
         vcov_theta <- matrix(0, 4+2*length(cvar), 4+2*length(cvar))
         rownames(vcov_theta) <- colnames(vcov_theta) <- c("(Intercept)", avar, mvar, paste0(avar,":", mvar), cvar, 
                                                           paste0(mvar, ":", cvar)) # MxC

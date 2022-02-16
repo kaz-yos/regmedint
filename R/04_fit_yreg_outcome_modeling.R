@@ -38,8 +38,8 @@ fit_yreg <- function(yreg,
                      avar,
                      mvar,
                      cvar,
-                     EMM_AC_Ymodel = NULL,
-                     EMM_MC = NULL,
+                     emm_ac_yreg = NULL,
+                     emm_mc_yreg = NULL,
                      eventvar,
                      interaction) {
 
@@ -48,8 +48,8 @@ fit_yreg <- function(yreg,
                                           avar,
                                           mvar,
                                           cvar,
-                                          EMM_AC_Ymodel,
-                                          EMM_MC,
+                                          emm_ac_yreg,
+                                          emm_mc_yreg,
                                           interaction,
                                           eventvar)
 
@@ -155,8 +155,8 @@ string_yreg_formula <- function(yvar,
                                 avar,
                                 mvar,
                                 cvar,
-                                EMM_AC_Ymodel,
-                                EMM_MC,
+                                emm_ac_yreg,
+                                emm_mc_yreg,
                                 interaction,
                                 eventvar) {
 
@@ -175,38 +175,38 @@ string_yreg_formula <- function(yvar,
     if (is.null(cvar)) {
       amcvar_string <- amvar_string
     } else {
-      if(is.null(EMM_AC_Ymodel) & is.null(EMM_MC)){
+      if(is.null(emm_ac_yreg) & is.null(emm_mc_yreg)){
         cvar_string <- paste0(cvar, collapse = " + ")
         amcvar_string <- sprintf("%s + %s", amvar_string, cvar_string)
       }
-      else if(!is.null(EMM_AC_Ymodel) & is.null(EMM_MC)){
+      else if(!is.null(emm_ac_yreg) & is.null(emm_mc_yreg)){
         cvar_string <- paste0(cvar, collapse = " + ")
-        ## Add avar * EMM_AC_Ymodel product terms:
+        ## Add avar * emm_ac_yreg product terms:
         temp <- NULL
-        for(i in 1:length(EMM_AC_Ymodel)){
-          temp <- paste0(c(temp, paste0(c(avar, EMM_AC_Ymodel[i]), collapse = " : ")), collapse = " + ")
+        for(i in 1:length(emm_ac_yreg)){
+          temp <- paste0(c(temp, paste0(c(avar, emm_ac_yreg[i]), collapse = " : ")), collapse = " + ")
         }
         amcvar_string <- paste(amvar_string, cvar_string, temp, sep = " + ") 
       }
-      else if(is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
+      else if(is.null(emm_ac_yreg) & !is.null(emm_mc_yreg)){
         cvar_string <- paste0(cvar, collapse = " + ")
-        ## Add mvar * EMM_MC product terms:
+        ## Add mvar * emm_mc_yreg product terms:
         temp <- NULL
-        for(i in 1:length(EMM_MC)){
-          temp <- paste0(c(temp, paste0(c(mvar, EMM_MC[i]), collapse = " : ")), collapse = " + ")
+        for(i in 1:length(emm_mc_yreg)){
+          temp <- paste0(c(temp, paste0(c(mvar, emm_mc_yreg[i]), collapse = " : ")), collapse = " + ")
         }
         amcvar_string <- paste(amvar_string, cvar_string, temp, sep = " + ")  
       }
-      else if(!is.null(EMM_AC_Ymodel) & !is.null(EMM_MC)){
+      else if(!is.null(emm_ac_yreg) & !is.null(emm_mc_yreg)){
         cvar_string <- paste0(cvar, collapse = " + ")
-        ## Add avar * EMM_AC_Mmodel product terms:
+        ## Add avar * emm_ac_mreg product terms:
         temp1 <- temp2 <- NULL
-        for(i in 1:length(EMM_AC_Ymodel)){
-          temp1 <- paste0(c(temp1, paste0(c(avar, EMM_AC_Ymodel[i]), collapse = " : ")), collapse = " + ")
+        for(i in 1:length(emm_ac_yreg)){
+          temp1 <- paste0(c(temp1, paste0(c(avar, emm_ac_yreg[i]), collapse = " : ")), collapse = " + ")
         }
-        ## Add mvar * EMM_MC product terms:
-        for(j in 1:length(EMM_MC)){
-          temp2 <- paste0(c(temp2, paste0(c(mvar, EMM_MC[j]), collapse = " : ")), collapse = " + ")
+        ## Add mvar * emm_mc_yreg product terms:
+        for(j in 1:length(emm_mc_yreg)){
+          temp2 <- paste0(c(temp2, paste0(c(mvar, emm_mc_yreg[j]), collapse = " : ")), collapse = " + ")
         }
         amcvar_string <- paste(amvar_string, cvar_string, temp1, temp2, sep = " + ") 
       }

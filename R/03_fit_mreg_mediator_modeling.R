@@ -22,13 +22,13 @@ fit_mreg <- function(mreg,
                      avar,
                      mvar,
                      cvar,
-                     EMM_AC_Mmodel = NULL) { 
+                     emm_ac_mreg = NULL) { 
 
     ## Create a string representation of the formula
     string_formula <- string_mreg_formula(mvar,
                                           avar,
                                           cvar,
-                                          EMM_AC_Mmodel)
+                                          emm_ac_mreg)
 
     ## Quasi-quoting to make the formula readable.
     ## bquote suppresses evaluation except within .(...).
@@ -67,7 +67,7 @@ fit_mreg <- function(mreg,
 string_mreg_formula <- function(mvar,
                                 avar,
                                 cvar,
-                                EMM_AC_Mmodel) {
+                                emm_ac_mreg) {
 
     assertthat::assert_that(!is.null(mvar))
     assertthat::assert_that(!is.null(avar))
@@ -76,15 +76,15 @@ string_mreg_formula <- function(mvar,
         acvar_string <- avar
     } else { 
       cvar_string <- paste0(cvar, collapse = " + ")
-      if(is.null(EMM_AC_Mmodel)){
+      if(is.null(emm_ac_mreg)){
       acvar_string <- paste0(c(avar, cvar_string), collapse = " + ")
       }
       else {
         cvar_string <- paste0(c(avar, cvar), collapse = " + ")
-        ## Add avar*EMM_AC_Mmodel terms:
+        ## Add avar*emm_ac_mreg terms:
         temp <- NULL
-        for(i in 1:length(EMM_AC_Mmodel)){
-          temp <- paste0(c(temp, paste0(c(avar, EMM_AC_Mmodel[i]), collapse = " : ")), collapse = " + ")
+        for(i in 1:length(emm_ac_mreg)){
+          temp <- paste0(c(temp, paste0(c(avar, emm_ac_mreg[i]), collapse = " : ")), collapse = " + ")
         }
         acvar_string <- paste(cvar_string, temp, sep = " + ")
       }

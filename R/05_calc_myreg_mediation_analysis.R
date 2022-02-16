@@ -22,9 +22,9 @@ calc_myreg <- function(mreg,
                        avar,
                        mvar,
                        cvar,
-                       EMM_AC_Mmodel,
-                       EMM_AC_Ymodel,
-                       EMM_MC,
+                       emm_ac_mreg,
+                       emm_ac_yreg,
+                       emm_mc_yreg,
                        interaction) {
 
     supported_nonlinear_yreg <- c("logistic","loglinear","poisson","negbin",
@@ -38,9 +38,9 @@ calc_myreg <- function(mreg,
                  avar = avar,
                  mvar = mvar,
                  cvar = cvar,
-                 EMM_AC_Mmodel = EMM_AC_Mmodel,
-                 EMM_AC_Ymodel = EMM_AC_Ymodel,
-                 EMM_MC = EMM_MC,
+                 emm_ac_mreg = emm_ac_mreg,
+                 emm_ac_yreg = emm_ac_yreg,
+                 emm_mc_yreg = emm_mc_yreg,
                  interaction = interaction)
 
     ## Only four patterns as the non-linear yreg cases are the
@@ -60,9 +60,9 @@ calc_myreg <- function(mreg,
                                                avar = avar,
                                                mvar = mvar,
                                                cvar = cvar,
-                                               EMM_AC_Mmodel = EMM_AC_Mmodel,
-                                               EMM_AC_Ymodel = EMM_AC_Ymodel,
-                                               EMM_MC = EMM_MC,
+                                               emm_ac_mreg = emm_ac_mreg,
+                                               emm_ac_yreg = emm_ac_yreg,
+                                               emm_mc_yreg = emm_mc_yreg,
                                                interaction = interaction)
 
     } else if (mreg == "linear" & yreg %in% supported_nonlinear_yreg) {
@@ -76,9 +76,9 @@ calc_myreg <- function(mreg,
                                                  avar = avar,
                                                  mvar = mvar,
                                                  cvar = cvar,
-                                                 EMM_AC_Mmodel = EMM_AC_Mmodel,
-                                                 EMM_AC_Ymodel = EMM_AC_Ymodel,
-                                                 EMM_MC = EMM_MC,
+                                                 emm_ac_mreg = emm_ac_mreg,
+                                                 emm_ac_yreg = emm_ac_yreg,
+                                                 emm_mc_yreg = emm_mc_yreg,
                                                  interaction = interaction)
 
     } else if (mreg == "logistic" & yreg == "linear") {
@@ -92,9 +92,9 @@ calc_myreg <- function(mreg,
                                                  avar = avar,
                                                  mvar = mvar,
                                                  cvar = cvar,
-                                                 EMM_AC_Mmodel = EMM_AC_Mmodel,
-                                                 EMM_AC_Ymodel = EMM_AC_Ymodel,
-                                                 EMM_MC = EMM_MC,
+                                                 emm_ac_mreg = emm_ac_mreg,
+                                                 emm_ac_yreg = emm_ac_yreg,
+                                                 emm_mc_yreg = emm_mc_yreg,
                                                  interaction = interaction)
 
 
@@ -109,9 +109,9 @@ calc_myreg <- function(mreg,
                                                    avar = avar,
                                                    mvar = mvar,
                                                    cvar = cvar,
-                                                   EMM_AC_Mmodel = EMM_AC_Mmodel,
-                                                   EMM_AC_Ymodel = EMM_AC_Ymodel,
-                                                   EMM_MC = EMM_MC,
+                                                   emm_ac_mreg = emm_ac_mreg,
+                                                   emm_ac_yreg = emm_ac_yreg,
+                                                   emm_mc_yreg = emm_mc_yreg,
                                                    interaction = interaction)
 
     } else  {

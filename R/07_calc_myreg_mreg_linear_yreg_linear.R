@@ -23,9 +23,9 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                                avar,
                                                mvar,
                                                cvar, 
-                                               EMM_AC_Mmodel,
-                                               EMM_AC_Ymodel,
-                                               EMM_MC,
+                                               emm_ac_mreg,
+                                               emm_ac_yreg,
+                                               emm_mc_yreg,
                                                interaction) {
 
     ## mreg coefficients
@@ -33,15 +33,15 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                 mreg_fit = mreg_fit,
                                 avar = avar,
                                 cvar = cvar,
-                                EMM_AC_Mmodel = EMM_AC_Mmodel)
+                                emm_ac_mreg = emm_ac_mreg)
     ## yreg coefficients
     theta_hat <- theta_hat_helper(yreg = yreg,
                                   yreg_fit = yreg_fit,
                                   avar = avar,
                                   mvar = mvar,
                                   cvar = cvar,
-                                  EMM_AC_Ymodel = EMM_AC_Ymodel,
-                                  EMM_MC = EMM_MC,
+                                  emm_ac_yreg = emm_ac_yreg,
+                                  emm_mc_yreg = emm_mc_yreg,
                                   interaction = interaction)
     ## Construct a function of (a1, a0, m_cde, c_cond) that returns
     ## a vector of point estimates for quantities of interest.
@@ -63,14 +63,14 @@ calc_myreg_mreg_linear_yreg_linear <- function(mreg,
                                      mreg_fit = mreg_fit,
                                      avar = avar,
                                      cvar = cvar,
-                                     EMM_AC_Mmodel = EMM_AC_Mmodel)
+                                     emm_ac_mreg = emm_ac_mreg)
     Sigma_theta_hat <- Sigma_theta_hat(yreg = yreg,
                                        yreg_fit = yreg_fit,
                                        avar = avar,
                                        mvar = mvar,
                                        cvar = cvar,
-                                       EMM_AC_Ymodel = EMM_AC_Ymodel,
-                                       EMM_MC = EMM_MC,
+                                       emm_ac_yreg = emm_ac_yreg,
+                                       emm_mc_yreg = emm_mc_yreg,
                                        interaction = interaction)
     ## Construct a function of (a0, a1, m_cde, c_cond) that returns
     ## a vector of estimates.

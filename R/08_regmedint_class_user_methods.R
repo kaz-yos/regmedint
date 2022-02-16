@@ -327,9 +327,9 @@ print.summary_regmedint <- function(x, ...) {
                            avar = x$args$avar,
                            mvar = x$args$mvar,
                            cvar = x$args$cvar,
-                           EMM_AC_Mmodel =  x$args$EMM_AC_Mmodel,
-                           EMM_AC_Ymodel = x$args$EMM_AC_Ymodel,
-                           EMM_MC = x$args$EMM_MC,
+                           emm_ac_mreg =  x$args$emm_ac_mreg,
+                           emm_ac_yreg = x$args$emm_ac_yreg,
+                           emm_mc_yreg = x$args$emm_mc_yreg,
                            yreg = x$args$yreg,
                            mreg = x$args$mreg,
                            interaction = x$args$interaction,
@@ -378,7 +378,7 @@ coef.summary_regmedint <- function(object, ...) {
 
 
 print_eval_info_helper <- function(a0, a1, m_cde, c_cond,
-                                   avar, mvar, cvar, EMM_AC_Mmodel, EMM_AC_Ymodel, EMM_MC,
+                                   avar, mvar, cvar, emm_ac_mreg, emm_ac_yreg, emm_mc_yreg,
                                    yreg, mreg, interaction, casecontrol) {
 
     cat("\n")
