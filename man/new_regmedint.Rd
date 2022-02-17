@@ -10,9 +10,9 @@ new_regmedint(
   avar,
   mvar,
   cvar,
-  EMM_AC_Mmodel,
-  EMM_AC_Ymodel,
-  EMM_MC,
+  emm_ac_mreg,
+  emm_ac_yreg,
+  emm_mc_yreg,
   eventvar,
   a0,
   a1,
@@ -35,11 +35,11 @@ new_regmedint(
 
 \item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
 
-\item{EMM_AC_Mmodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.}
+\item{emm_ac_mreg}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.}
 
-\item{EMM_AC_Ymodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the outcome model.}
+\item{emm_ac_yreg}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the outcome model.}
 
-\item{EMM_MC}{A character vector of length > 0. Effect modifiers names. The covariate vector in mediator-covariate product term in outcome model.}
+\item{emm_mc_yreg}{A character vector of length > 0. Effect modifiers names. The covariate vector in mediator-covariate product term in outcome model.}
 
 \item{eventvar}{An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.}
 

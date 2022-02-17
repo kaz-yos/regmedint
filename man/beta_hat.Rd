@@ -4,7 +4,7 @@
 \alias{beta_hat}
 \title{Create a vector of coefficients from the mediator model (mreg)}
 \usage{
-beta_hat(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel = NULL)
+beta_hat(mreg, mreg_fit, avar, cvar, emm_ac_mreg = NULL)
 }
 \arguments{
 \item{mreg}{A character vector of length 1. Mediator regression type: \code{"linear"} or \code{"logistic"}.}
@@ -15,7 +15,7 @@ beta_hat(mreg, mreg_fit, avar, cvar, EMM_AC_Mmodel = NULL)
 
 \item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
 
-\item{EMM_AC_Mmodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.}
+\item{emm_ac_mreg}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.}
 }
 \value{
 A named numeric vector of coefficients.
@@ -25,5 +25,5 @@ This function extracts \code{\link{coef}} from \code{mreg_fit} and pads with zer
 \code{(Intercept)},
 \code{avar},
 \code{cvar} (this part is eliminated when \code{cvar = NULL}),
-\code{EMM_AC_Mmodel} (this part is eliminated when \code{EMM_AC_Mmodel = NULL}).
+\code{emm_ac_mreg} (this part is eliminated when \code{emm_ac_mreg = NULL}).
 }

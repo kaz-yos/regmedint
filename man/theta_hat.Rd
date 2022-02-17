@@ -10,8 +10,8 @@ theta_hat(
   avar,
   mvar,
   cvar,
-  EMM_AC_Ymodel = NULL,
-  EMM_MC = NULL,
+  emm_ac_yreg = NULL,
+  emm_mc_yreg = NULL,
   interaction
 )
 }
@@ -26,9 +26,9 @@ theta_hat(
 
 \item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
 
-\item{EMM_AC_Ymodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the outcome model.}
+\item{emm_ac_yreg}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the outcome model.}
 
-\item{EMM_MC}{A character vector of length > 0. Effect modifiers names. The covariate vector in mediator-covariate product term in outcome model.}
+\item{emm_mc_yreg}{A character vector of length > 0. Effect modifiers names. The covariate vector in mediator-covariate product term in outcome model.}
 
 \item{interaction}{A logical vector of length 1. The presence of treatment-mediator interaction in the outcome model. Default to TRUE.}
 }
@@ -42,6 +42,6 @@ This function extracts \code{\link{coef}} from \code{yreg_fit} and 3s with zeros
 \code{mvar},
 \code{avar:mvar} (a zero element is added when \code{interaction = FALSE}).
 \code{cvar} (this part is eliminated when \code{cvar = NULL}),
-\code{EMM_AC_Ymodel} (this part is eliminated when \code{EMM_AC_Ymodel = NULL}),
-\code{EMM_MC} (this part is eliminated when \code{EMM_MC = NULL}).
+\code{emm_ac_yreg} (this part is eliminated when \code{emm_ac_yreg = NULL}),
+\code{emm_mc_yreg} (this part is eliminated when \code{emm_mc_yreg = NULL}).
 }

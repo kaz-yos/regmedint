@@ -12,9 +12,9 @@ regmedint(
   avar,
   mvar,
   cvar,
-  EMM_AC_Mmodel = NULL,
-  EMM_AC_Ymodel = NULL,
-  EMM_MC = NULL,
+  emm_ac_mreg = NULL,
+  emm_ac_yreg = NULL,
+  emm_mc_yreg = NULL,
   eventvar = NULL,
   a0,
   a1,
@@ -38,11 +38,11 @@ regmedint(
 
 \item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
 
-\item{EMM_AC_Mmodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.}
+\item{emm_ac_mreg}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.}
 
-\item{EMM_AC_Ymodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the outcome model.}
+\item{emm_ac_yreg}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the outcome model.}
 
-\item{EMM_MC}{A character vector of length > 0. Effect modifiers names. The covariate vector in mediator-covariate product term in outcome model.}
+\item{emm_mc_yreg}{A character vector of length > 0. Effect modifiers names. The covariate vector in mediator-covariate product term in outcome model.}
 
 \item{eventvar}{An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.}
 
@@ -117,9 +117,9 @@ regmedint_obj2 <- regmedint(data = vv2015,
                             avar = "x",
                             mvar = "m",
                             cvar = c("c"),
-                            EMM_AC_Mmodel = c("c"), 
-                            EMM_AC_Ymodel = c("c"), 
-                            EMM_MC = c("c"), 
+                            emm_ac_mreg = c("c"), 
+                            emm_ac_yreg = c("c"), 
+                            emm_mc_yreg = c("c"), 
                             eventvar = "event",
                             ## Values at which effects are evaluated
                             a0 = 0,

@@ -4,7 +4,7 @@
 \alias{fit_mreg}
 \title{Fit a model for the mediator given the treatment and covariates.}
 \usage{
-fit_mreg(mreg, data, avar, mvar, cvar, EMM_AC_Mmodel = NULL)
+fit_mreg(mreg, data, avar, mvar, cvar, emm_ac_mreg = NULL)
 }
 \arguments{
 \item{mreg}{A character vector of length 1. Mediator regression type: \code{"linear"} or \code{"logistic"}.}
@@ -17,7 +17,7 @@ fit_mreg(mreg, data, avar, mvar, cvar, EMM_AC_Mmodel = NULL)
 
 \item{cvar}{A character vector of length > 0. Covariate names. Use \code{NULL} if there is no covariate. However, this is a highly suspicious situation. Even if \code{avar} is randomized, \code{mvar} is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between \code{mvar} and \code{yvar}.}
 
-\item{EMM_AC_Mmodel}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.}
+\item{emm_ac_mreg}{A character vector of length > 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.}
 }
 \value{
 A regression object of class lm (linear) or glm (logistic)
