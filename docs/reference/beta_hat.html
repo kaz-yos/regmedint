@@ -3,7 +3,7 @@
 (Intercept),
 avar,
 cvar (this part is eliminated when cvar = NULL),
-EMM_AC_Mmodel (this part is eliminated when EMM_AC_Mmodel = NULL)."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+emm_ac_mreg (this part is eliminated when emm_ac_mreg = NULL)."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
@@ -82,11 +82,11 @@ EMM_AC_Mmodel (this part is eliminated when EMM_AC_Mmodel = NULL)."><!-- mathjax
 <code>(Intercept)</code>,
 <code>avar</code>,
 <code>cvar</code> (this part is eliminated when <code>cvar = NULL</code>),
-<code>EMM_AC_Mmodel</code> (this part is eliminated when <code>EMM_AC_Mmodel = NULL</code>).</p>
+<code>emm_ac_mreg</code> (this part is eliminated when <code>emm_ac_mreg = NULL</code>).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">beta_hat</span><span class="op">(</span><span class="va">mreg</span>, <span class="va">mreg_fit</span>, <span class="va">avar</span>, <span class="va">cvar</span>, EMM_AC_Mmodel <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">beta_hat</span><span class="op">(</span><span class="va">mreg</span>, <span class="va">mreg_fit</span>, <span class="va">avar</span>, <span class="va">cvar</span>, emm_ac_mreg <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -99,7 +99,7 @@ EMM_AC_Mmodel (this part is eliminated when EMM_AC_Mmodel = NULL)."><!-- mathjax
 <dd><p>A character vector of length 1. Treatment variable name.</p></dd>
 <dt>cvar</dt>
 <dd><p>A character vector of length &gt; 0. Covariate names. Use <code>NULL</code> if there is no covariate. However, this is a highly suspicious situation. Even if <code>avar</code> is randomized, <code>mvar</code> is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between <code>mvar</code> and <code>yvar</code>.</p></dd>
-<dt>EMM_AC_Mmodel</dt>
+<dt>emm_ac_mreg</dt>
 <dd><p>A character vector of length &gt; 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.</p></dd>
 </dl></div>
     <div id="value">

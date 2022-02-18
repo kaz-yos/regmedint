@@ -96,7 +96,7 @@
       <h1 data-toc-skip>Using multiple imputation with regmedint</h1>
                         <h4 data-toc-skip class="author">Kazuki Yoshida</h4>
             
-            <h4 data-toc-skip class="date">2022-02-11</h4>
+            <h4 data-toc-skip class="date">2022-02-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/HEAD/vignettes/vig_04_mi.Rmd" class="external-link"><code>vignettes/vig_04_mi.Rmd</code></a></small>
       <div class="hidden name"><code>vig_04_mi.Rmd</code></div>
@@ -368,7 +368,7 @@
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>coef_fit <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">coef</span><span class="op">)</span>,
            vcov_fit <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">vcov</span><span class="op">)</span><span class="op">)</span>
 <span class="va">vv2015_mice_regmedint</span></code></pre></div>
-<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 50 x 5</span></span>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 50 × 5</span></span>
 <span class="co">## <span style="color: #949494;"># Groups:   .imp [50]</span></span>
 <span class="co">##     .imp data               fit            coef_fit  vcov_fit     </span>
 <span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>       </span>

@@ -122,7 +122,7 @@ specified. This vector is the vector of covariate values at which the
 conditional effects are evaluated at.
 
 1.  When there is no effect measure modification by covariates,
-    `EMM_AC_Mmodel = NULL`, `EMM_AC_Ymodel = NULL`, `EMM_MC = NULL`.
+    `emm_ac_mreg = NULL`, `emm_ac_yreg = NULL`, `emm_mc_yreg = NULL`.
 
 <!-- -->
 
@@ -212,7 +212,7 @@ conditional effects are evaluated at.
     ## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
 
 1.  When there is effect measure modification by covariates,
-    `EMM_AC_Mmodel`, `EMM_AC_Ymodel` and `EMM_MC` can take a sub-vector
+    `emm_ac_mreg`, `emm_ac_yreg` and `emm_mc_yreg` can take a sub-vector
     of covariates in `cvar`.
 
 <!-- -->
@@ -223,9 +223,9 @@ conditional effects are evaluated at.
                                 avar = "x",
                                 mvar = "m",
                                 cvar = c("c"),
-                                EMM_AC_Mmodel = c("c"),
-                                EMM_AC_Ymodel = c("c"),
-                                EMM_MC = c("c"),
+                                emm_ac_mreg = c("c"),
+                                emm_ac_yreg = c("c"),
+                                emm_mc_yreg = c("c"),
                                 eventvar = "event",
                                 ## Values at which effects are evaluated
                                 a0 = 0,
@@ -238,76 +238,12 @@ conditional effects are evaluated at.
                                 ## Additional specification
                                 interaction = TRUE,
                                 casecontrol = FALSE)
+
+    ## Error in regmedint(data = vv2015, yvar = "y", avar = "x", mvar = "m", : unused arguments (emm_ac_mreg = c("c"), emm_ac_yreg = c("c"), emm_mc_yreg = c("c"))
+
      summary(regmedint_obj2)
 
-    ## ### Mediator model
-    ## 
-    ## Call:
-    ## glm(formula = m ~ x + c + x:c, family = binomial(link = "logit"), 
-    ##     data = data)
-    ## 
-    ## Deviance Residuals: 
-    ##     Min       1Q   Median       3Q      Max  
-    ## -1.5689  -1.1585   0.8925   1.1242   1.4342  
-    ## 
-    ## Coefficients:
-    ##             Estimate Std. Error z value Pr(>|z|)
-    ## (Intercept) -0.32727    0.34979  -0.936    0.349
-    ## x            0.30431    0.56789   0.536    0.592
-    ## c            0.24085    0.24688   0.976    0.329
-    ## x:c          0.09216    0.44624   0.207    0.836
-    ## 
-    ## (Dispersion parameter for binomial family taken to be 1)
-    ## 
-    ##     Null deviance: 138.59  on 99  degrees of freedom
-    ## Residual deviance: 136.04  on 96  degrees of freedom
-    ## AIC: 144.04
-    ## 
-    ## Number of Fisher Scoring iterations: 4
-    ## 
-    ## ### Outcome model
-    ## 
-    ## Call:
-    ## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c + 
-    ##     x:c + m:c, data = data, dist = "weibull")
-    ##               Value Std. Error     z         p
-    ## (Intercept) -0.9959     0.2071 -4.81 0.0000015
-    ## x            0.4185     0.3354  1.25      0.21
-    ## m           -0.0216     0.3112 -0.07      0.94
-    ## c           -0.1339     0.1405 -0.95      0.34
-    ## x:m          0.0905     0.4265  0.21      0.83
-    ## x:c          0.0327     0.2242  0.15      0.88
-    ## m:c          0.1275     0.1861  0.69      0.49
-    ## Log(scale)  -0.0406     0.0814 -0.50      0.62
-    ## 
-    ## Scale= 0.96 
-    ## 
-    ## Weibull distribution
-    ## Loglik(model)= -11.1   Loglik(intercept only)= -14.5
-    ##  Chisq= 6.78 on 6 degrees of freedom, p= 0.34 
-    ## Number of Newton-Raphson Iterations: 5 
-    ## n= 100 
-    ## 
-    ## ### Mediation analysis 
-    ##             est         se         Z         p      lower     upper
-    ## cde  0.60705735 0.52594922 1.1542128 0.2484129 -0.4237842 1.6378989
-    ## pnde 0.57902523 0.51447701 1.1254638 0.2603926 -0.4293312 1.5873816
-    ## tnie 0.05333600 0.10591830 0.5035579 0.6145721 -0.1542601 0.2609321
-    ## tnde 0.58889505 0.51488644 1.1437377 0.2527324 -0.4202638 1.5980539
-    ## pnie 0.04346618 0.09107534 0.4772552 0.6331804 -0.1350382 0.2219706
-    ## te   0.63236123 0.52776615 1.1981845 0.2308452 -0.4020414 1.6667639
-    ## pm   0.11082259 0.20960355 0.5287248 0.5969964 -0.2999928 0.5216380
-    ## 
-    ## Evaluated at:
-    ## avar: x
-    ##  a1 (intervened value of avar) = 1
-    ##  a0 (reference value of avar)  = 0
-    ## mvar: m
-    ##  m_cde (intervend value of mvar for cde) = 1
-    ## cvar: c
-    ##  c_cond (covariate vector value) = 3
-    ## 
-    ## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+    ## Error in summary(regmedint_obj2): object 'regmedint_obj2' not found
 
 <!-- ## `print()` to examine simplified results -->
 <!-- Implicit printing prints `mreg`, `yreg`, and mediation analysis point estimates. All effect estimates are on the scale of the link function. -->
@@ -324,87 +260,13 @@ effect (`tnie`) is the corresponding natural indirect effect (NIE).
 
     summary(regmedint_obj2, exponentiate = TRUE)
 
-    ## ### Mediator model
-    ## 
-    ## Call:
-    ## glm(formula = m ~ x + c + x:c, family = binomial(link = "logit"), 
-    ##     data = data)
-    ## 
-    ## Deviance Residuals: 
-    ##     Min       1Q   Median       3Q      Max  
-    ## -1.5689  -1.1585   0.8925   1.1242   1.4342  
-    ## 
-    ## Coefficients:
-    ##             Estimate Std. Error z value Pr(>|z|)
-    ## (Intercept) -0.32727    0.34979  -0.936    0.349
-    ## x            0.30431    0.56789   0.536    0.592
-    ## c            0.24085    0.24688   0.976    0.329
-    ## x:c          0.09216    0.44624   0.207    0.836
-    ## 
-    ## (Dispersion parameter for binomial family taken to be 1)
-    ## 
-    ##     Null deviance: 138.59  on 99  degrees of freedom
-    ## Residual deviance: 136.04  on 96  degrees of freedom
-    ## AIC: 144.04
-    ## 
-    ## Number of Fisher Scoring iterations: 4
-    ## 
-    ## ### Outcome model
-    ## 
-    ## Call:
-    ## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c + 
-    ##     x:c + m:c, data = data, dist = "weibull")
-    ##               Value Std. Error     z         p
-    ## (Intercept) -0.9959     0.2071 -4.81 0.0000015
-    ## x            0.4185     0.3354  1.25      0.21
-    ## m           -0.0216     0.3112 -0.07      0.94
-    ## c           -0.1339     0.1405 -0.95      0.34
-    ## x:m          0.0905     0.4265  0.21      0.83
-    ## x:c          0.0327     0.2242  0.15      0.88
-    ## m:c          0.1275     0.1861  0.69      0.49
-    ## Log(scale)  -0.0406     0.0814 -0.50      0.62
-    ## 
-    ## Scale= 0.96 
-    ## 
-    ## Weibull distribution
-    ## Loglik(model)= -11.1   Loglik(intercept only)= -14.5
-    ##  Chisq= 6.78 on 6 degrees of freedom, p= 0.34 
-    ## Number of Newton-Raphson Iterations: 5 
-    ## n= 100 
-    ## 
-    ## ### Mediation analysis 
-    ##             est         se         Z         p      lower     upper exp(est) exp(lower) exp(upper)
-    ## cde  0.60705735 0.52594922 1.1542128 0.2484129 -0.4237842 1.6378989 1.835024  0.6545651   5.144349
-    ## pnde 0.57902523 0.51447701 1.1254638 0.2603926 -0.4293312 1.5873816 1.784298  0.6509443   4.890926
-    ## tnie 0.05333600 0.10591830 0.5035579 0.6145721 -0.1542601 0.2609321 1.054784  0.8570491   1.298139
-    ## tnde 0.58889505 0.51488644 1.1437377 0.2527324 -0.4202638 1.5980539 1.801996  0.6568735   4.943403
-    ## pnie 0.04346618 0.09107534 0.4772552 0.6331804 -0.1350382 0.2219706 1.044425  0.8736825   1.248535
-    ## te   0.63236123 0.52776615 1.1981845 0.2308452 -0.4020414 1.6667639 1.882049  0.6689530   5.295005
-    ## pm   0.11082259 0.20960355 0.5287248 0.5969964 -0.2999928 0.5216380       NA         NA         NA
-    ## 
-    ## Evaluated at:
-    ## avar: x
-    ##  a1 (intervened value of avar) = 1
-    ##  a0 (reference value of avar)  = 0
-    ## mvar: m
-    ##  m_cde (intervend value of mvar for cde) = 1
-    ## cvar: c
-    ##  c_cond (covariate vector value) = 3
-    ## 
-    ## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.
+    ## Error in summary(regmedint_obj2, exponentiate = TRUE): object 'regmedint_obj2' not found
 
 Use `coef` to extract the mediation analysis results only.
 
     coef(summary(regmedint_obj2, exponentiate = TRUE))
 
-    ##             est         se         Z         p      lower     upper exp(est) exp(lower) exp(upper)
-    ## cde  0.60705735 0.52594922 1.1542128 0.2484129 -0.4237842 1.6378989 1.835024  0.6545651   5.144349
-    ## pnde 0.57902523 0.51447701 1.1254638 0.2603926 -0.4293312 1.5873816 1.784298  0.6509443   4.890926
-    ## tnie 0.05333600 0.10591830 0.5035579 0.6145721 -0.1542601 0.2609321 1.054784  0.8570491   1.298139
-    ## tnde 0.58889505 0.51488644 1.1437377 0.2527324 -0.4202638 1.5980539 1.801996  0.6568735   4.943403
-    ## pnie 0.04346618 0.09107534 0.4772552 0.6331804 -0.1350382 0.2219706 1.044425  0.8736825   1.248535
-    ## te   0.63236123 0.52776615 1.1981845 0.2308452 -0.4020414 1.6667639 1.882049  0.6689530   5.295005
-    ## pm   0.11082259 0.20960355 0.5287248 0.5969964 -0.2999928 0.5216380       NA         NA         NA
+    ## Error in summary(regmedint_obj2, exponentiate = TRUE): object 'regmedint_obj2' not found
 
 Note that the estimates can be re-evaluated at different `m_cde` and
 `c_cond` without re-fitting the underlyng models.
@@ -415,7 +277,7 @@ Note that the estimates can be re-evaluated at different `m_cde` and
                                            max(heart.disease$bloodsugar_T),
                                            min(heart.disease$maximumHR))))
 
-    ## Error in eval(assertion, env): object 'heart.disease' not found
+    ## Error in summary(regmedint_obj2, exponentiate = TRUE, m_cde = min(heart.disease$bp), : object 'regmedint_obj2' not found
 
 Formulas
 ========

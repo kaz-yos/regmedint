@@ -88,9 +88,9 @@ The earlier version is a sister program of the SAS macro. The current version ex
   <span class="va">avar</span>,
   <span class="va">mvar</span>,
   <span class="va">cvar</span>,
-  EMM_AC_Mmodel <span class="op">=</span> <span class="cn">NULL</span>,
-  EMM_AC_Ymodel <span class="op">=</span> <span class="cn">NULL</span>,
-  EMM_MC <span class="op">=</span> <span class="cn">NULL</span>,
+  emm_ac_mreg <span class="op">=</span> <span class="cn">NULL</span>,
+  emm_ac_yreg <span class="op">=</span> <span class="cn">NULL</span>,
+  emm_mc_yreg <span class="op">=</span> <span class="cn">NULL</span>,
   eventvar <span class="op">=</span> <span class="cn">NULL</span>,
   <span class="va">a0</span>,
   <span class="va">a1</span>,
@@ -116,11 +116,11 @@ The earlier version is a sister program of the SAS macro. The current version ex
 <dd><p>A character vector of length 1. Mediator variable name.</p></dd>
 <dt>cvar</dt>
 <dd><p>A character vector of length &gt; 0. Covariate names. Use <code>NULL</code> if there is no covariate. However, this is a highly suspicious situation. Even if <code>avar</code> is randomized, <code>mvar</code> is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between <code>mvar</code> and <code>yvar</code>.</p></dd>
-<dt>EMM_AC_Mmodel</dt>
+<dt>emm_ac_mreg</dt>
 <dd><p>A character vector of length &gt; 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.</p></dd>
-<dt>EMM_AC_Ymodel</dt>
+<dt>emm_ac_yreg</dt>
 <dd><p>A character vector of length &gt; 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the outcome model.</p></dd>
-<dt>EMM_MC</dt>
+<dt>emm_mc_yreg</dt>
 <dd><p>A character vector of length &gt; 0. Effect modifiers names. The covariate vector in mediator-covariate product term in outcome model.</p></dd>
 <dt>eventvar</dt>
 <dd><p>An character vector of length 1. Only required for survival outcome regression models. Note that the coding is 1 for event and 0 for censoring, following the R survival package convention.</p></dd>
@@ -259,9 +259,9 @@ FIXME: Document once implemented.</p>
 <span class="r-in">                            avar <span class="op">=</span> <span class="st">"x"</span>,</span>
 <span class="r-in">                            mvar <span class="op">=</span> <span class="st">"m"</span>,</span>
 <span class="r-in">                            cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,</span>
-<span class="r-in">                            EMM_AC_Mmodel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>, </span>
-<span class="r-in">                            EMM_AC_Ymodel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>, </span>
-<span class="r-in">                            EMM_MC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>, </span>
+<span class="r-in">                            emm_ac_mreg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>, </span>
+<span class="r-in">                            emm_ac_yreg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>, </span>
+<span class="r-in">                            emm_mc_yreg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>, </span>
 <span class="r-in">                            eventvar <span class="op">=</span> <span class="st">"event"</span>,</span>
 <span class="r-in">                            <span class="co">## Values at which effects are evaluated</span></span>
 <span class="r-in">                            a0 <span class="op">=</span> <span class="fl">0</span>,</span>

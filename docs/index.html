@@ -233,7 +233,7 @@ survAFT weibull
 </h2>
 <p>The <code>regmedint</code> function is the user interface for constructing a result object of class <code>regmedint</code>. The interface is similar to the original SAS macro. For survival outcomes, the indicator variable is an event indicator (1 for event, 0 for censoring). <code>c_cond</code> vector is required be specified. This vector is the vector of covariate values at which the conditional effects are evaluated at.</p>
 <ol style="list-style-type: decimal">
-<li>When there is no effect measure modification by covariates, <code>EMM_AC_Mmodel = NULL</code>, <code>EMM_AC_Ymodel = NULL</code>, <code>EMM_MC = NULL</code>.</li>
+<li>When there is no effect measure modification by covariates, <code>emm_ac_mreg = NULL</code>, <code>emm_ac_yreg = NULL</code>, <code>emm_mc_yreg = NULL</code>.</li>
 </ol>
 <!-- --><div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>regmedint_obj1 <span class="ot">&lt;-</span> <span class="fu">regmedint</span>(<span class="at">data =</span> vv2015,</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                            <span class="do">## Variables</span></span>
@@ -320,7 +320,7 @@ survAFT weibull
 <span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="do">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></span></code></pre></div>
 <ol style="list-style-type: decimal">
-<li>When there is effect measure modification by covariates, <code>EMM_AC_Mmodel</code>, <code>EMM_AC_Ymodel</code> and <code>EMM_MC</code> can take a sub-vector of covariates in <code>cvar</code>.</li>
+<li>When there is effect measure modification by covariates, <code>emm_ac_mreg</code>, <code>emm_ac_yreg</code> and <code>emm_mc_yreg</code> can take a sub-vector of covariates in <code>cvar</code>.</li>
 </ol>
 <!-- --><div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>regmedint_obj2 <span class="ot">&lt;-</span> <span class="fu">regmedint</span>(<span class="at">data =</span> vv2015,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                            <span class="do">## Variables</span></span>
@@ -328,9 +328,9 @@ survAFT weibull
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">avar =</span> <span class="st">"x"</span>,</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">mvar =</span> <span class="st">"m"</span>,</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">cvar =</span> <span class="fu">c</span>(<span class="st">"c"</span>),</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">EMM_AC_Mmodel =</span> <span class="fu">c</span>(<span class="st">"c"</span>),</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">EMM_AC_Ymodel =</span> <span class="fu">c</span>(<span class="st">"c"</span>),</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                            <span class="at">EMM_MC =</span> <span class="fu">c</span>(<span class="st">"c"</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">emm_ac_mreg =</span> <span class="fu">c</span>(<span class="st">"c"</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">emm_ac_yreg =</span> <span class="fu">c</span>(<span class="st">"c"</span>),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                            <span class="at">emm_mc_yreg =</span> <span class="fu">c</span>(<span class="st">"c"</span>),</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                            <span class="at">eventvar =</span> <span class="st">"event"</span>,</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                            <span class="do">## Values at which effects are evaluated</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                            <span class="at">a0 =</span> <span class="dv">0</span>,</span>
@@ -343,76 +343,12 @@ survAFT weibull
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                            <span class="do">## Additional specification</span></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                            <span class="at">interaction =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                            <span class="at">casecontrol =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a> <span class="fu">summary</span>(regmedint_obj2)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="do">## </span><span class="al">###</span><span class="do"> Mediator model</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="do">## glm(formula = m ~ x + c + x:c, family = binomial(link = "logit"), </span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="do">##     data = data)</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="do">## -1.5689  -1.1585   0.8925   1.1242   1.4342  </span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="do">##             Estimate Std. Error z value Pr(&gt;|z|)</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept) -0.32727    0.34979  -0.936    0.349</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="do">## x            0.30431    0.56789   0.536    0.592</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="do">## c            0.24085    0.24688   0.976    0.329</span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="do">## x:c          0.09216    0.44624   0.207    0.836</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="do">##     Null deviance: 138.59  on 99  degrees of freedom</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="do">## Residual deviance: 136.04  on 96  degrees of freedom</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="do">## AIC: 144.04</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 4</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="do">## </span><span class="al">###</span><span class="do"> Outcome model</span></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="do">## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c + </span></span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="do">##     x:c + m:c, data = data, dist = "weibull")</span></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="do">##               Value Std. Error     z         p</span></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept) -0.9959     0.2071 -4.81 0.0000015</span></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="do">## x            0.4185     0.3354  1.25      0.21</span></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="do">## m           -0.0216     0.3112 -0.07      0.94</span></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="do">## c           -0.1339     0.1405 -0.95      0.34</span></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="do">## x:m          0.0905     0.4265  0.21      0.83</span></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="do">## x:c          0.0327     0.2242  0.15      0.88</span></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="do">## m:c          0.1275     0.1861  0.69      0.49</span></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="do">## Log(scale)  -0.0406     0.0814 -0.50      0.62</span></span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="do">## Scale= 0.96 </span></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="do">## Weibull distribution</span></span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="do">## Loglik(model)= -11.1   Loglik(intercept only)= -14.5</span></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="do">##  Chisq= 6.78 on 6 degrees of freedom, p= 0.34 </span></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of Newton-Raphson Iterations: 5 </span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="do">## n= 100 </span></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="do">## </span><span class="al">###</span><span class="do"> Mediation analysis </span></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="do">##             est         se         Z         p      lower     upper</span></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="do">## cde  0.60705735 0.52594922 1.1542128 0.2484129 -0.4237842 1.6378989</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="do">## pnde 0.57902523 0.51447701 1.1254638 0.2603926 -0.4293312 1.5873816</span></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="do">## tnie 0.05333600 0.10591830 0.5035579 0.6145721 -0.1542601 0.2609321</span></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="do">## tnde 0.58889505 0.51488644 1.1437377 0.2527324 -0.4202638 1.5980539</span></span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="do">## pnie 0.04346618 0.09107534 0.4772552 0.6331804 -0.1350382 0.2219706</span></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="do">## te   0.63236123 0.52776615 1.1981845 0.2308452 -0.4020414 1.6667639</span></span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a><span class="do">## pm   0.11082259 0.20960355 0.5287248 0.5969964 -0.2999928 0.5216380</span></span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="do">## Evaluated at:</span></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="do">## avar: x</span></span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="do">##  a1 (intervened value of avar) = 1</span></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="do">##  a0 (reference value of avar)  = 0</span></span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="do">## mvar: m</span></span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="do">##  m_cde (intervend value of mvar for cde) = 1</span></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="do">## cvar: c</span></span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="do">##  c_cond (covariate vector value) = 3</span></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="do">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></span></code></pre></div>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in regmedint(data = vv2015, yvar = "y", avar = "x", mvar = "m", : unused arguments (emm_ac_mreg = c("c"), emm_ac_yreg = c("c"), emm_mc_yreg = c("c"))</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a> <span class="fu">summary</span>(regmedint_obj2)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in summary(regmedint_obj2): object 'regmedint_obj2' not found</span></span></code></pre></div>
 <!-- ## `print()` to examine simplified results -->
 <!-- Implicit printing prints `mreg`, `yreg`, and mediation analysis point estimates. All effect estimates are on the scale of the link function. -->
 </div>
@@ -423,85 +359,11 @@ survAFT weibull
 <p>The <code>summary</code> method gives the summary for <code>mreg</code>, <code>yreg</code>, and mediation analysis results. The <code>exponentiate</code> option will add the exponentiated estimate and confidence limits if the outcome model is not a linear model. The pure natural direct effect (<code>pnde</code>) is what is typically called the natural direct effect (NDE). The total natural indirect effect (<code>tnie</code>) is the corresponding natural indirect effect (NIE).</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regmedint_obj2, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">## </span><span class="al">###</span><span class="do"> Mediator model</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## glm(formula = m ~ x + c + x:c, family = binomial(link = "logit"), </span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">##     data = data)</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Deviance Residuals: </span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="do">##     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="do">## -1.5689  -1.1585   0.8925   1.1242   1.4342  </span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="do">##             Estimate Std. Error z value Pr(&gt;|z|)</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept) -0.32727    0.34979  -0.936    0.349</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="do">## x            0.30431    0.56789   0.536    0.592</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="do">## c            0.24085    0.24688   0.976    0.329</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="do">## x:c          0.09216    0.44624   0.207    0.836</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="do">## (Dispersion parameter for binomial family taken to be 1)</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="do">##     Null deviance: 138.59  on 99  degrees of freedom</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Residual deviance: 136.04  on 96  degrees of freedom</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="do">## AIC: 144.04</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of Fisher Scoring iterations: 4</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="do">## </span><span class="al">###</span><span class="do"> Outcome model</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="do">## survival::survreg(formula = Surv(y, event) ~ x + m + x:m + c + </span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="do">##     x:c + m:c, data = data, dist = "weibull")</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="do">##               Value Std. Error     z         p</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept) -0.9959     0.2071 -4.81 0.0000015</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="do">## x            0.4185     0.3354  1.25      0.21</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="do">## m           -0.0216     0.3112 -0.07      0.94</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="do">## c           -0.1339     0.1405 -0.95      0.34</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="do">## x:m          0.0905     0.4265  0.21      0.83</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="do">## x:c          0.0327     0.2242  0.15      0.88</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="do">## m:c          0.1275     0.1861  0.69      0.49</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="do">## Log(scale)  -0.0406     0.0814 -0.50      0.62</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="do">## Scale= 0.96 </span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="do">## Weibull distribution</span></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="do">## Loglik(model)= -11.1   Loglik(intercept only)= -14.5</span></span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="do">##  Chisq= 6.78 on 6 degrees of freedom, p= 0.34 </span></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of Newton-Raphson Iterations: 5 </span></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="do">## n= 100 </span></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="do">## </span><span class="al">###</span><span class="do"> Mediation analysis </span></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="do">##             est         se         Z         p      lower     upper exp(est) exp(lower) exp(upper)</span></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="do">## cde  0.60705735 0.52594922 1.1542128 0.2484129 -0.4237842 1.6378989 1.835024  0.6545651   5.144349</span></span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="do">## pnde 0.57902523 0.51447701 1.1254638 0.2603926 -0.4293312 1.5873816 1.784298  0.6509443   4.890926</span></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="do">## tnie 0.05333600 0.10591830 0.5035579 0.6145721 -0.1542601 0.2609321 1.054784  0.8570491   1.298139</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="do">## tnde 0.58889505 0.51488644 1.1437377 0.2527324 -0.4202638 1.5980539 1.801996  0.6568735   4.943403</span></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="do">## pnie 0.04346618 0.09107534 0.4772552 0.6331804 -0.1350382 0.2219706 1.044425  0.8736825   1.248535</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="do">## te   0.63236123 0.52776615 1.1981845 0.2308452 -0.4020414 1.6667639 1.882049  0.6689530   5.295005</span></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="do">## pm   0.11082259 0.20960355 0.5287248 0.5969964 -0.2999928 0.5216380       NA         NA         NA</span></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="do">## Evaluated at:</span></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="do">## avar: x</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="do">##  a1 (intervened value of avar) = 1</span></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="do">##  a0 (reference value of avar)  = 0</span></span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="do">## mvar: m</span></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="do">##  m_cde (intervend value of mvar for cde) = 1</span></span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="do">## cvar: c</span></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="do">##  c_cond (covariate vector value) = 3</span></span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a><span class="do">## Note that effect estimates can vary over m_cde and c_cond values when interaction = TRUE.</span></span></code></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in summary(regmedint_obj2, exponentiate = TRUE): object 'regmedint_obj2' not found</span></span></code></pre></div>
 <p>Use <code>coef</code> to extract the mediation analysis results only.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">summary</span>(regmedint_obj2, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="do">##             est         se         Z         p      lower     upper exp(est) exp(lower) exp(upper)</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">## cde  0.60705735 0.52594922 1.1542128 0.2484129 -0.4237842 1.6378989 1.835024  0.6545651   5.144349</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="do">## pnde 0.57902523 0.51447701 1.1254638 0.2603926 -0.4293312 1.5873816 1.784298  0.6509443   4.890926</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="do">## tnie 0.05333600 0.10591830 0.5035579 0.6145721 -0.1542601 0.2609321 1.054784  0.8570491   1.298139</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="do">## tnde 0.58889505 0.51488644 1.1437377 0.2527324 -0.4202638 1.5980539 1.801996  0.6568735   4.943403</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="do">## pnie 0.04346618 0.09107534 0.4772552 0.6331804 -0.1350382 0.2219706 1.044425  0.8736825   1.248535</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="do">## te   0.63236123 0.52776615 1.1981845 0.2308452 -0.4020414 1.6667639 1.882049  0.6689530   5.295005</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="do">## pm   0.11082259 0.20960355 0.5287248 0.5969964 -0.2999928 0.5216380       NA         NA         NA</span></span></code></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in summary(regmedint_obj2, exponentiate = TRUE): object 'regmedint_obj2' not found</span></span></code></pre></div>
 <p>Note that the estimates can be re-evaluated at different <code>m_cde</code> and <code>c_cond</code> without re-fitting the underlyng models.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">summary</span>(regmedint_obj2, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">m_cde =</span> <span class="fu">min</span>(heart.disease<span class="sc">$</span>bp),</span>
@@ -509,7 +371,7 @@ survAFT weibull
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">max</span>(heart.disease<span class="sc">$</span>bloodsugar_T),</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">min</span>(heart.disease<span class="sc">$</span>maximumHR))))</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in eval(assertion, env): object 'heart.disease' not found</span></span></code></pre></div>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in summary(regmedint_obj2, exponentiate = TRUE, m_cde = min(heart.disease$bp), : object 'regmedint_obj2' not found</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level1">

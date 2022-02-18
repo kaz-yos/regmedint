@@ -96,7 +96,7 @@
       <h1 data-toc-skip>Using bootstrapping with regemedint</h1>
                         <h4 data-toc-skip class="author">Kazuki Yoshida</h4>
             
-            <h4 data-toc-skip class="date">2022-02-11</h4>
+            <h4 data-toc-skip class="date">2022-02-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/HEAD/vignettes/vig_03_bootstrap.Rmd" class="external-link"><code>vignettes/vig_03_bootstrap.Rmd</code></a></small>
       <div class="hidden name"><code>vig_03_bootstrap.Rmd</code></div>
@@ -204,8 +204,8 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://modelr.tidyverse.org" class="external-link">modelr</a></span><span class="op">)</span>
 
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/HenrikBengtsson/future" class="external-link">future</a></span><span class="op">)</span>
-<span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/future/man/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="va">sequential</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://future.futureverse.org" class="external-link">future</a></span><span class="op">)</span>
+<span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="va">sequential</span><span class="op">)</span>
 <span class="co">## For parallization, use the following instead.</span>
 <span class="co">## future::plan(multiprocess)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/DavisVaughan/furrr" class="external-link">furrr</a></span><span class="op">)</span>
@@ -249,7 +249,7 @@
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>lower_boot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">value</span>, probs <span class="op">=</span> <span class="fl">0.025</span><span class="op">)</span>,
               upper_boot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">value</span>, probs <span class="op">=</span> <span class="fl">0.975</span><span class="op">)</span><span class="op">)</span>
 <span class="va">tib_obj2</span></code></pre></div>
-<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 7 x 3</span></span>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 7 × 3</span></span>
 <span class="co">##   name  lower_boot upper_boot</span>
 <span class="co">##   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="co">## <span style="color: #BCBCBC;">1</span> cde      -<span style="color: #BB0000;">0.096</span><span style="color: #BB0000; text-decoration: underline;">8</span>     1.17  </span>
@@ -267,7 +267,7 @@
 <code class="sourceCode R"><span class="va">tib_obj2</span> <span class="op"><a href="https://modelr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>lower_delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span><span class="op">[</span>,<span class="st">"lower"</span><span class="op">]</span>,
            upper_delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">regmedint_obj</span><span class="op">)</span><span class="op">[</span>,<span class="st">"upper"</span><span class="op">]</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 7 x 5</span></span>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 7 × 5</span></span>
 <span class="co">##   name  lower_boot upper_boot lower_delta upper_delta</span>
 <span class="co">##   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="co">## <span style="color: #BCBCBC;">1</span> cde      -<span style="color: #BB0000;">0.096</span><span style="color: #BB0000; text-decoration: underline;">8</span>     1.17       -<span style="color: #BB0000;">0.035</span><span style="color: #BB0000; text-decoration: underline;">6</span>      1.12  </span>

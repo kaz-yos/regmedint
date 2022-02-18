@@ -86,9 +86,9 @@
   <span class="va">avar</span>,
   <span class="va">mvar</span>,
   <span class="va">cvar</span>,
-  <span class="va">EMM_AC_Mmodel</span>,
-  <span class="va">EMM_AC_Ymodel</span>,
-  <span class="va">EMM_MC</span>,
+  <span class="va">emm_ac_mreg</span>,
+  <span class="va">emm_ac_yreg</span>,
+  <span class="va">emm_mc_yreg</span>,
   <span class="va">interaction</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -109,11 +109,11 @@
 <dd><p>A character vector of length 1. Mediator variable name.</p></dd>
 <dt>cvar</dt>
 <dd><p>A character vector of length &gt; 0. Covariate names. Use <code>NULL</code> if there is no covariate. However, this is a highly suspicious situation. Even if <code>avar</code> is randomized, <code>mvar</code> is not. Thus, there are usually some confounder(s) to account for the common cause structure (confounding) between <code>mvar</code> and <code>yvar</code>.</p></dd>
-<dt>EMM_AC_Mmodel</dt>
+<dt>emm_ac_mreg</dt>
 <dd><p>A character vector of length &gt; 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the mediator model.</p></dd>
-<dt>EMM_AC_Ymodel</dt>
+<dt>emm_ac_yreg</dt>
 <dd><p>A character vector of length &gt; 0. Effect modifiers names. The covariate vector in treatment-covariate product term in the outcome model.</p></dd>
-<dt>EMM_MC</dt>
+<dt>emm_mc_yreg</dt>
 <dd><p>A character vector of length &gt; 0. Effect modifiers names. The covariate vector in mediator-covariate product term in outcome model.</p></dd>
 <dt>interaction</dt>
 <dd><p>A logical vector of length 1. The presence of treatment-mediator interaction in the outcome model. Default to TRUE.</p></dd>

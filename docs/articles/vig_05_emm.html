@@ -96,7 +96,7 @@
       <h1 data-toc-skip>Implementation of extended formulas when there are effect measure modifiers</h1>
                         <h4 data-toc-skip class="author">Yi Li, Kazuki Yoshida</h4>
             
-            <h4 data-toc-skip class="date">2022-02-11</h4>
+            <h4 data-toc-skip class="date">2022-02-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kaz-yos/regmedint/blob/HEAD/vignettes/vig_05_emm.Rmd" class="external-link"><code>vignettes/vig_05_emm.Rmd</code></a></small>
       <div class="hidden name"><code>vig_05_emm.Rmd</code></div>
@@ -206,7 +206,7 @@
 <div class="section level3">
 <h3 id="there-is-atimes-c-term-in-mediator-model">There is <span class="math inline">\(A\times C\)</span> term in mediator model<a class="anchor" aria-label="anchor" href="#there-is-atimes-c-term-in-mediator-model"></a>
 </h3>
-<p>Now suppose the covariate <span class="math inline">\(C\)</span> modifies the treatment effect on the mediator. We add <code>EMM_AC_Mmodel = c("c")</code> in <code><a href="../reference/regmedint.html">regmedint()</a></code>. Although there is only one covariate in our dataset, <code>EMM_AC_Mmodel</code> can take a vector of multiple covariates. Please note that the covariates in <code>EMM_AC_Mmodel</code> should be a subset of the covariates specified in <code>cvar</code>, i.e. if a covariate is an effect measure modifier included in <code>EMM_AC_Mmodel</code>, it must be included in <code>cvar</code>, otherwise an error message will be printed.</p>
+<p>Now suppose the covariate <span class="math inline">\(C\)</span> modifies the treatment effect on the mediator. We add <code>emm_ac_mreg = c("c")</code> in <code><a href="../reference/regmedint.html">regmedint()</a></code>. Although there is only one covariate in our dataset, <code>emm_ac_mreg</code> can take a vector of multiple covariates. Please note that the covariates in <code>emm_ac_mreg</code> should be a subset of the covariates specified in <code>cvar</code>, i.e. if a covariate is an effect measure modifier included in <code>emm_ac_mreg</code>, it must be included in <code>cvar</code>, otherwise an error message will be printed.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regmedint_obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">vv2015</span>,
                             <span class="co">## Variables</span>
@@ -214,9 +214,9 @@
                             avar <span class="op">=</span> <span class="st">"x"</span>,
                             mvar <span class="op">=</span> <span class="st">"m"</span>,
                             cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
-                            EMM_AC_Mmodel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
-                            EMM_AC_Ymodel <span class="op">=</span> <span class="cn">NULL</span>,
-                            EMM_MC <span class="op">=</span> <span class="cn">NULL</span>,
+                            emm_ac_mreg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+                            emm_ac_yreg <span class="op">=</span> <span class="cn">NULL</span>,
+                            emm_mc_yreg <span class="op">=</span> <span class="cn">NULL</span>,
                             eventvar <span class="op">=</span> <span class="st">"event"</span>,
                             <span class="co">## Values at which effects are evaluated</span>
                             a0 <span class="op">=</span> <span class="fl">0</span>,
@@ -300,7 +300,7 @@
 <div class="section level3">
 <h3 id="there-is-atimes-c-term-in-both-mediator-and-outcome-models">There is <span class="math inline">\(A\times C\)</span> term in both mediator and outcome models<a class="anchor" aria-label="anchor" href="#there-is-atimes-c-term-in-both-mediator-and-outcome-models"></a>
 </h3>
-<p>Now suppose in addition to the EMM on mediator, the covariate <span class="math inline">\(C\)</span> also modifies the treatment effect on the outcome We add <code>EMM_AC_Ymodel = c("c")</code> in <code><a href="../reference/regmedint.html">regmedint()</a></code>. Please note that the covariates in <code>EMM_AC_Ymodel</code> should be a subset of the covariates specified in <code>cvar</code>, i.e. if a covariate is an effect measure modifier included in <code>EMM_AC_Ymodel</code>, it must be included in <code>cvar</code>, otherwise an error message will be printed.</p>
+<p>Now suppose in addition to the EMM on mediator, the covariate <span class="math inline">\(C\)</span> also modifies the treatment effect on the outcome We add <code>emm_ac_yreg = c("c")</code> in <code><a href="../reference/regmedint.html">regmedint()</a></code>. Please note that the covariates in <code>emm_ac_yreg</code> should be a subset of the covariates specified in <code>cvar</code>, i.e. if a covariate is an effect measure modifier included in <code>emm_ac_yreg</code>, it must be included in <code>cvar</code>, otherwise an error message will be printed.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regmedint_obj3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">vv2015</span>,
                             <span class="co">## Variables</span>
@@ -308,9 +308,9 @@
                             avar <span class="op">=</span> <span class="st">"x"</span>,
                             mvar <span class="op">=</span> <span class="st">"m"</span>,
                             cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
-                            EMM_AC_Mmodel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
-                            EMM_AC_Ymodel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
-                            EMM_MC <span class="op">=</span> <span class="cn">NULL</span>,
+                            emm_ac_mreg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+                            emm_ac_yreg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+                            emm_mc_yreg <span class="op">=</span> <span class="cn">NULL</span>,
                             eventvar <span class="op">=</span> <span class="st">"event"</span>,
                             <span class="co">## Values at which effects are evaluated</span>
                             a0 <span class="op">=</span> <span class="fl">0</span>,
@@ -395,7 +395,7 @@
 <div class="section level3">
 <h3 id="there-are-atimes-c-term-in-both-mediator-and-outcome-models-and-mtimes-c-term-in-outcome-model">There are <span class="math inline">\(A\times C\)</span> term in both mediator and outcome models, and <span class="math inline">\(M\times C\)</span> term in outcome model<a class="anchor" aria-label="anchor" href="#there-are-atimes-c-term-in-both-mediator-and-outcome-models-and-mtimes-c-term-in-outcome-model"></a>
 </h3>
-<p>Now suppose in addition to the EMM of treatment effect, the covariate <span class="math inline">\(C\)</span> also modifies the mediator effect on the outcome. We add <code>EMM_MC = c("c")</code> in <code><a href="../reference/regmedint.html">regmedint()</a></code>. Please note that the covariates in <code>EMM_MC</code> should be a subset of the covariates specified in <code>cvar</code>, i.e. if a covariate is an effect measure modifier included in <code>EMM_MC</code>, it must be included in <code>cvar</code>, otherwise an error message will be printed.</p>
+<p>Now suppose in addition to the EMM of treatment effect, the covariate <span class="math inline">\(C\)</span> also modifies the mediator effect on the outcome. We add <code>emm_mc_yreg = c("c")</code> in <code><a href="../reference/regmedint.html">regmedint()</a></code>. Please note that the covariates in <code>emm_mc_yreg</code> should be a subset of the covariates specified in <code>cvar</code>, i.e. if a covariate is an effect measure modifier included in <code>emm_mc_yreg</code>, it must be included in <code>cvar</code>, otherwise an error message will be printed.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regmedint_obj4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">vv2015</span>,
                             <span class="co">## Variables</span>
@@ -403,9 +403,9 @@
                             avar <span class="op">=</span> <span class="st">"x"</span>,
                             mvar <span class="op">=</span> <span class="st">"m"</span>,
                             cvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
-                            EMM_AC_Mmodel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
-                            EMM_AC_Ymodel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
-                            EMM_MC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+                            emm_ac_mreg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+                            emm_ac_yreg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
+                            emm_mc_yreg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,
                             eventvar <span class="op">=</span> <span class="st">"event"</span>,
                             <span class="co">## Values at which effects are evaluated</span>
                             a0 <span class="op">=</span> <span class="fl">0</span>,
