@@ -33,7 +33,7 @@ We use simulated data, and present the estimates from 5000 times of boostrap. Fo
 library(regmedint)
 library(tidyverse)
 
-function(x){exp(x)/(1 + exp(x))}
+expit <- function(x){exp(x)/(1 + exp(x))}
 ```
 
 # Parallel computing setup
