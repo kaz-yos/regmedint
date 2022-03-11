@@ -411,13 +411,16 @@ Use `coef` to extract the mediation analysis results only.
 Note that the estimates can be re-evaluated at different `m_cde` and
 `c_cond` without re-fitting the underlyng models.
 
-    coef(summary(regmedint_obj2, exponentiate = TRUE,
-                 m_cde = min(heart.disease$bp),
-                 c_cond = c(min(heart.disease$age), 0, 1,
-                                           max(heart.disease$bloodsugar_T),
-                                           min(heart.disease$maximumHR))))
+    coef(summary(regmedint_obj2, exponentiate = TRUE, m_cde = 0, c_cond = 5))
 
-    ## Error in eval(assertion, env): object 'heart.disease' not found
+    ##             est        se         Z         p      lower     upper exp(est) exp(lower) exp(upper)
+    ## cde  0.58192722 1.0143233 0.5737098 0.5661642 -1.4061100 2.5699644 1.789484  0.2450949  13.065360
+    ## pnde 0.65642157 0.9349234 0.7021127 0.4826089 -1.1759946 2.4888377 1.927881  0.3085120  12.047265
+    ## tnie 0.07541287 0.1873908 0.4024363 0.6873630 -0.2918664 0.4426921 1.078329  0.7468683   1.556893
+    ## tnde 0.66420100 0.9330958 0.7118251 0.4765731 -1.1646332 2.4930352 1.942937  0.3120371  12.097940
+    ## pnie 0.06763343 0.1720653 0.3930683 0.6942690 -0.2696084 0.4048753 1.069973  0.7636785   1.499116
+    ## te   0.73183444 0.9597352 0.7625379 0.4457390 -1.1492119 2.6128808 2.078891  0.3168864  13.638283
+    ## pm   0.13996739 0.3295286 0.4247503 0.6710187 -0.5058969 0.7858316       NA         NA         NA
 
 Formulas
 ========

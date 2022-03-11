@@ -503,13 +503,16 @@ survAFT weibull
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">## te   0.63236123 0.52776615 1.1981845 0.2308452 -0.4020414 1.6667639 1.882049  0.6689530   5.295005</span></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="do">## pm   0.11082259 0.20960355 0.5287248 0.5969964 -0.2999928 0.5216380       NA         NA         NA</span></span></code></pre></div>
 <p>Note that the estimates can be re-evaluated at different <code>m_cde</code> and <code>c_cond</code> without re-fitting the underlyng models.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">summary</span>(regmedint_obj2, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">m_cde =</span> <span class="fu">min</span>(heart.disease<span class="sc">$</span>bp),</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">c_cond =</span> <span class="fu">c</span>(<span class="fu">min</span>(heart.disease<span class="sc">$</span>age), <span class="dv">0</span>, <span class="dv">1</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">max</span>(heart.disease<span class="sc">$</span>bloodsugar_T),</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">min</span>(heart.disease<span class="sc">$</span>maximumHR))))</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in eval(assertion, env): object 'heart.disease' not found</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">summary</span>(regmedint_obj2, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>, <span class="at">m_cde =</span> <span class="dv">0</span>, <span class="at">c_cond =</span> <span class="dv">5</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="do">##             est        se         Z         p      lower     upper exp(est) exp(lower) exp(upper)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="do">## cde  0.58192722 1.0143233 0.5737098 0.5661642 -1.4061100 2.5699644 1.789484  0.2450949  13.065360</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="do">## pnde 0.65642157 0.9349234 0.7021127 0.4826089 -1.1759946 2.4888377 1.927881  0.3085120  12.047265</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">## tnie 0.07541287 0.1873908 0.4024363 0.6873630 -0.2918664 0.4426921 1.078329  0.7468683   1.556893</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">## tnde 0.66420100 0.9330958 0.7118251 0.4765731 -1.1646332 2.4930352 1.942937  0.3120371  12.097940</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">## pnie 0.06763343 0.1720653 0.3930683 0.6942690 -0.2696084 0.4048753 1.069973  0.7636785   1.499116</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">## te   0.73183444 0.9597352 0.7625379 0.4457390 -1.1492119 2.6128808 2.078891  0.3168864  13.638283</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## pm   0.13996739 0.3295286 0.4247503 0.6710187 -0.5058969 0.7858316       NA         NA         NA</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level1">
