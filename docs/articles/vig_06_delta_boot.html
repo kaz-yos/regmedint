@@ -115,19 +115,18 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kaz-yos.github.io/regmedint/" class="external-link">regmedint</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
 
-<span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></code></pre></div>
-<pre><code><span class="co">## function(x){exp(x)/(1 + exp(x))}</span></code></pre>
+<span class="va">expit</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">}</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="parallel-computing-setup">Parallel computing setup<a class="anchor" aria-label="anchor" href="#parallel-computing-setup"></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">parallel</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/" class="external-link">MASS</a></span><span class="op">)</span>
 <span class="va">numCores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">numCores</span></code></pre></div>
 <pre><code><span class="co">## [1] 8</span></code></pre>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Number of bootstrap</span>
 <span class="va">trials</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5000</span>
 <span class="va">seed</span> <span class="op">&lt;-</span>  <span class="fl">3104</span></code></pre></div>
@@ -135,7 +134,7 @@
 <div class="section level2">
 <h2 id="simulated-data-generating-process">Simulated data generating process<a class="anchor" aria-label="anchor" href="#simulated-data-generating-process"></a>
 </h2>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Model 1: M linear, Y linear</span>
 <span class="va">datamaker.s4.m1</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span>, <span class="va">k</span><span class="op">)</span><span class="op">{</span>
   <span class="va">C</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">*</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
@@ -174,19 +173,12 @@
 <div class="section level3">
 <h3 id="generate-datasets">Generate datasets<a class="anchor" aria-label="anchor" href="#generate-datasets"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="va">seed</span><span class="op">)</span>
-<span class="va">dat_linear_M_linear_Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu">datamaker.s4.m1</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5000</span>, k <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## Error in expit(C + C^2): could not find function "expit"</span></code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat_logistic_M_linear_Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu">datamaker.s4.m2</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5000</span>, k <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## Error in expit(C + C^2): could not find function "expit"</span></code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat_linear_M_logistic_Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu">datamaker.s4.m3</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5000</span>, k <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## Error in expit(C + C^2): could not find function "expit"</span></code></pre>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat_logistic_M_logistic_Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu">datamaker.s4.m4</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5000</span>, k <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## Error in expit(C + C^2): could not find function "expit"</span></code></pre>
+<span class="va">dat_linear_M_linear_Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu">datamaker.s4.m1</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5000</span>, k <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
+<span class="va">dat_logistic_M_linear_Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu">datamaker.s4.m2</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5000</span>, k <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span>
+<span class="va">dat_linear_M_logistic_Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu">datamaker.s4.m3</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5000</span>, k <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span><span class="op">)</span>
+<span class="va">dat_logistic_M_logistic_Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu">datamaker.s4.m4</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5000</span>, k <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -195,7 +187,7 @@
 <div class="section level3">
 <h3 id="linear-mediator-model-linear-outcome-model">1. Linear mediator model, linear outcome model<a class="anchor" aria-label="anchor" href="#linear-mediator-model-linear-outcome-model"></a>
 </h3>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regmedint1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat_linear_M_linear_Y</span>,
                         yvar <span class="op">=</span> <span class="st">"Y"</span>,
                         avar <span class="op">=</span> <span class="st">"A"</span>,
@@ -215,7 +207,7 @@
                         casecontrol <span class="op">=</span> <span class="cn">FALSE</span>,
                         na_omit <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint1</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data1</span> <span class="op">&lt;-</span> <span class="va">dat_linear_M_linear_Y</span>
 <span class="va">boot1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">trials</span><span class="op">)</span><span class="op">{</span>
   <span class="va">ind</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="fl">5000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -266,7 +258,7 @@
 <div class="section level3">
 <h3 id="logistic-mediator-model-linear-outcome-model">2. Logistic mediator model, linear outcome model<a class="anchor" aria-label="anchor" href="#logistic-mediator-model-linear-outcome-model"></a>
 </h3>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regmedint2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat_logistic_M_linear_Y</span>,
                         yvar <span class="op">=</span> <span class="st">"Y"</span>,
                         avar <span class="op">=</span> <span class="st">"A"</span>,
@@ -286,7 +278,7 @@
                         casecontrol <span class="op">=</span> <span class="cn">FALSE</span>,
                         na_omit <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint2</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data2</span> <span class="op">&lt;-</span> <span class="va">dat_logistic_M_linear_Y</span>
 <span class="va">boot2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">trials</span><span class="op">)</span><span class="op">{</span>
   <span class="va">ind</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="fl">5000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -337,7 +329,7 @@
 <div class="section level3">
 <h3 id="linear-mediator-model-logistic-outcome-model">3. Linear mediator model, logistic outcome model<a class="anchor" aria-label="anchor" href="#linear-mediator-model-logistic-outcome-model"></a>
 </h3>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regmedint3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat_linear_M_logistic_Y</span>,
                         yvar <span class="op">=</span> <span class="st">"Y"</span>,
                         avar <span class="op">=</span> <span class="st">"A"</span>,
@@ -357,7 +349,7 @@
                         casecontrol <span class="op">=</span> <span class="cn">FALSE</span>,
                         na_omit <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint3</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data3</span> <span class="op">&lt;-</span> <span class="va">dat_linear_M_logistic_Y</span>
 <span class="va">boot3</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">trials</span><span class="op">)</span><span class="op">{</span>
   <span class="va">ind</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="fl">5000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -408,7 +400,7 @@
 <div class="section level3">
 <h3 id="logistic-mediator-model-logistic-outcome-model">4. Logistic mediator model, logistic outcome model<a class="anchor" aria-label="anchor" href="#logistic-mediator-model-logistic-outcome-model"></a>
 </h3>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regmedint4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regmedint.html">regmedint</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat_logistic_M_logistic_Y</span>,
                         yvar <span class="op">=</span> <span class="st">"Y"</span>,
                         avar <span class="op">=</span> <span class="st">"A"</span>,
@@ -428,7 +420,7 @@
                         casecontrol <span class="op">=</span> <span class="cn">FALSE</span>,
                         na_omit <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">regmedint4</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data4</span> <span class="op">&lt;-</span> <span class="va">dat_logistic_M_logistic_Y</span>
 <span class="va">boot4</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">trials</span><span class="op">)</span><span class="op">{</span>
   <span class="va">ind</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="fl">5000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
