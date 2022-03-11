@@ -149,11 +149,7 @@ coef(summary(regmedint_obj2, exponentiate = TRUE))
 ```
 Note that the estimates can be re-evaluated at different `m_cde` and `c_cond` without re-fitting the underlyng models.
 ```{r}
-coef(summary(regmedint_obj2, exponentiate = TRUE,
-             m_cde = min(heart.disease$bp),
-             c_cond = c(min(heart.disease$age), 0, 1,
-                                       max(heart.disease$bloodsugar_T),
-                                       min(heart.disease$maximumHR))))
+coef(summary(regmedint_obj2, exponentiate = TRUE, m_cde = 0, c_cond = 5))
 ```
 
 
