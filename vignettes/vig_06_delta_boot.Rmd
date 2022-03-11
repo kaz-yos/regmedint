@@ -54,7 +54,7 @@ seed <-  3104
 # Simulated data generating process
 ```{r}
 # Model 1: M linear, Y linear
-datamaker.s4.m1 = function(n, k){
+datamaker.s4.m1 <- function(n, k){
   C <- matrix(rnorm(n*1, 0, 2), ncol = 1)
   A <- rbinom(n, 1, expit(C + C^2))
   M <- 0.2 + 0.4*A + 0.5*C + 0.2*A*C + rnorm(n, 0, 0.5)
@@ -63,7 +63,7 @@ datamaker.s4.m1 = function(n, k){
 }
 
 # Model 2: M logistic, Y linear
-datamaker.s4.m2 = function(n, k){
+datamaker.s4.m2 <- function(n, k){
   C <- matrix(rnorm(n*1, 0, 2), ncol = 1)
   A <- rbinom(n, 1, expit(C + C^2))
   M <- rbinom(n, 1, expit(0.2 + 0.4*A + 0.5*C + 0.2*A*C))
@@ -72,7 +72,7 @@ datamaker.s4.m2 = function(n, k){
 }
 
 # Model 3: M linear, Y logistic
-datamaker.s4.m3 = function(n, k){
+datamaker.s4.m3 <- function(n, k){
   C <- matrix(rnorm(n*1, 0, 2), ncol = 1)
   A <- rbinom(n, 1, expit(C + C^2))
   M <- (0.2 + 0.4*A + 0.5*C + 0.2*A*C + rnorm(n, 0, 0.5)/5)
@@ -81,7 +81,7 @@ datamaker.s4.m3 = function(n, k){
 }
 
 # Model 4: M logistic, Y logistic
-datamaker.s4.m4 = function(n, k){
+datamaker.s4.m4 <- function(n, k){
   C <- matrix(rnorm(n*1, 0, 2), ncol = 1)
   A <- rbinom(n, 1, expit(C + C^2))
   M <- rbinom(n, 1, expit(0.2 + 0.4*A + 0.5*C + 0.2*A*C))
@@ -93,9 +93,9 @@ datamaker.s4.m4 = function(n, k){
 ## Generate datasets
 ```{r}
 set.seed(seed)
-dat_linear_M_linear_Y <- as.data.frame(datamaker.s4.m1(n = 5000, k = 0.3))
-dat_logistic_M_linear_Y <- as.data.frame(datamaker.s4.m2(n = 5000, k = 0.3))
-dat_linear_M_logistic_Y <- as.data.frame(datamaker.s4.m3(n = 5000, k = 0.7))
+dat_linear_M_linear_Y     <- as.data.frame(datamaker.s4.m1(n = 5000, k = 0.3))
+dat_logistic_M_linear_Y   <- as.data.frame(datamaker.s4.m2(n = 5000, k = 0.3))
+dat_linear_M_logistic_Y   <- as.data.frame(datamaker.s4.m3(n = 5000, k = 0.7))
 dat_logistic_M_logistic_Y <- as.data.frame(datamaker.s4.m4(n = 5000, k = 0.3))
 ```
 
