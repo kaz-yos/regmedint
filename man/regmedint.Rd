@@ -68,8 +68,7 @@ regmedint(
 regmedint object, which is a list containing the mediator regression object, the outcome regression object, and the regression-based mediation results.
 }
 \description{
-The package is an R implementation of the SAS macro as described in Valeri & VanderWeele 2013 and Valeri & VanderWeele 2015 \url{https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/}.
-The earlier version is a sister program of the SAS macro. The current version extends the formulas in Valeri & VanderWeele 2013 and Valeri & VanderWeele 2015 and supports effect modification by covariates (treatment-covariate and mediator-covariate product terms) in mediator and outcome models.
+The package is an R implementation of regression-based closed-form causal mediation as originally described in Valeri & VanderWeele 2013 and Valeri & VanderWeele 2015 \url{https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/}. The earlier version is a sister program of the SAS macro. The current extended version (version 1.0 and later) supports effect modification by covariates (treatment-covariate and mediator-covariate product terms) in mediator and outcome models.
 
 This is a user-interface for regression-based causal mediation analysis as described in Valeri & VanderWeele 2013 and Valeri & VanderWeele 2015.
 }
@@ -85,7 +84,6 @@ print
 summary
 coef
 confint
-FIXME: Document once implemented.
 }
 
 \examples{
