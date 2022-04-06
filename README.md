@@ -101,6 +101,17 @@ install the package.
     # install.packages("devtools") # If you do not have devtools already.
     devtools::install_github("kaz-yos/regmedint")
 
+    ## 
+    ##      checking for file ‘/private/var/folders/5m/w191nn3d52bc91mq5_jjgw880000gn/T/RtmpTDYzP5/remotesf00c1976f8fd/kaz-yos-regmedint-43d42e2/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/5m/w191nn3d52bc91mq5_jjgw880000gn/T/RtmpTDYzP5/remotesf00c1976f8fd/kaz-yos-regmedint-43d42e2/DESCRIPTION’
+    ##   ─  preparing ‘regmedint’:
+    ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+    ##   ─  checking for LF line-endings in source and make files and shell scripts
+    ##   ─  checking for empty or unneeded directories
+    ##      Removed empty directory ‘regmedint/man/figures’
+    ##   ─  building ‘regmedint_1.0.0.tar.gz’
+    ##      
+    ## 
+
 The CRAN version can be installed as follows.
 
     install.packages("regmedint")
