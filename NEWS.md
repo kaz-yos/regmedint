@@ -4,6 +4,7 @@
   regmedint() now allows the inclusion of the product terms between
   covariates and the treatment or the mediator terms to include
   effect modification by covariates in the underlying regression models.
+  Contribution by @einsley1993
 
 
 # regmedint 0.2.1
