@@ -1,10 +1,16 @@
+# regmedint 1.0.1
+
+* MINOR UPDATE to transition maintainer to Yi Li (@einsley1993).
+
+
 # regmedint 1.0.0
 
 * MAJOR UPDATE to add effect modification product terms
   regmedint() now allows the inclusion of the product terms between
   covariates and the treatment or the mediator terms to include
   effect modification by covariates in the underlying regression models.
-  Contribution by @einsley1993
+  Contribution by @einsley1993 <doi:10.1097/EDE.0000000000001643>
+
 
 
 # regmedint 0.2.1
