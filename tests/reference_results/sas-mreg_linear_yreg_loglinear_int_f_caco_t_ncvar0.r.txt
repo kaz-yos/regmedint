@@ -5,7 +5,7 @@ lm(formula = bili ~ trt, data = data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--2.6050 -1.8125 -1.2588  0.0875 25.0950 
+-2.6050 -1.8125 -1.2587  0.0875 25.0950 
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)  
@@ -23,10 +23,6 @@ F-statistic: 1.684 on 1 and 194 DF,  p-value: 0.1959
 Call:
 glm(formula = spiders ~ trt + bili, family = poisson(link = "log"), 
     data = data)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.5239  -0.7171  -0.6785   0.6314   1.2098  
 
 Coefficients:
             Estimate Std. Error z value   Pr(>|z|)    

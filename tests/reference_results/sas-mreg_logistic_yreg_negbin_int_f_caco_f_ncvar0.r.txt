@@ -4,10 +4,6 @@ Call:
 glm(formula = bili_bin ~ trt, family = binomial(link = "logit"), 
     data = data)
 
-Deviance Residuals: 
-   Min      1Q  Median      3Q     Max  
--1.177  -1.141  -1.141   1.177   1.214  
-
 Coefficients:
             Estimate Std. Error z value Pr(>|z|)
 (Intercept)  0.08577    0.38245   0.224    0.823
@@ -26,10 +22,6 @@ Number of Fisher Scoring iterations: 3
 Call:
 MASS::glm.nb(formula = platelet ~ trt + bili_bin, data = data, 
     init.theta = 7.759836932, link = log)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--3.0134  -0.6911  -0.1032   0.5350   2.3978  
 
 Coefficients:
             Estimate Std. Error z value Pr(>|z|)    

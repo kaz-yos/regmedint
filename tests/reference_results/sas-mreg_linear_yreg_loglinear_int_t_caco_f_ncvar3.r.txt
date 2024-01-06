@@ -27,10 +27,6 @@ Call:
 glm(formula = spiders ~ trt + bili + trt:bili + age + male + 
     stage, family = poisson(link = "log"), data = data)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.3561  -0.6964  -0.5068   0.4453   1.7418  
-
 Coefficients:
              Estimate Std. Error z value    Pr(>|z|)    
 (Intercept) -2.872069   0.714776  -4.018 0.000058660 ***

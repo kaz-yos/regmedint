@@ -24,10 +24,6 @@ Call:
 MASS::glm.nb(formula = platelet ~ trt + bili + trt:bili, data = data, 
     init.theta = 7.58167734, link = log)
 
-Deviance Residuals: 
-     Min        1Q    Median        3Q       Max  
--2.91134  -0.69429  -0.04919   0.53754   2.34755  
-
 Coefficients:
              Estimate Std. Error z value Pr(>|z|)    
 (Intercept)  5.579867   0.089778  62.152   <2e-16 ***

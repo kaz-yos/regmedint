@@ -24,10 +24,6 @@ Call:
 glm(formula = spiders ~ trt + bili, family = binomial(link = "logit"), 
     data = data)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--2.0340  -0.7631  -0.7128   1.1039   1.7662  
-
 Coefficients:
             Estimate Std. Error z value Pr(>|z|)    
 (Intercept)  -1.1071     0.4392  -2.521   0.0117 *  

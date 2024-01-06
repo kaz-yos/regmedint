@@ -4,10 +4,6 @@ Call:
 glm(formula = bili_bin ~ trt + age + male + stage, family = binomial(link = "logit"), 
     data = data)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--2.0116  -1.0649  -0.5783   1.0511   1.7122  
-
 Coefficients:
             Estimate Std. Error z value   Pr(>|z|)    
 (Intercept) -1.53024    0.85116  -1.798    0.07220 .  

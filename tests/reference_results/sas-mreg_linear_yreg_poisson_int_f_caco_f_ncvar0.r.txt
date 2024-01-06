@@ -24,10 +24,6 @@ Call:
 glm(formula = platelet ~ trt + bili, family = poisson(link = "log"), 
     data = data)
 
-Deviance Residuals: 
-     Min        1Q    Median        3Q       Max  
--14.1974   -3.8696   -0.3429    3.3537   16.1278  
-
 Coefficients:
               Estimate Std. Error z value Pr(>|z|)    
 (Intercept)  5.5390793  0.0120167 460.949  < 2e-16 ***

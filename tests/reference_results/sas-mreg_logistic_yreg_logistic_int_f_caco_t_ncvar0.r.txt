@@ -4,10 +4,6 @@ Call:
 glm(formula = bili_bin ~ trt, family = binomial(link = "logit"), 
     data = data)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.0383  -1.0383  -0.9943   1.3232   1.3723  
-
 Coefficients:
             Estimate Std. Error z value Pr(>|z|)
 (Intercept)  -0.2256     0.4620  -0.488    0.625
@@ -26,10 +22,6 @@ Number of Fisher Scoring iterations: 4
 Call:
 glm(formula = spiders ~ trt + bili_bin, family = binomial(link = "logit"), 
     data = data)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.0385  -1.0319  -0.6087   1.3230   1.8854  
 
 Coefficients:
             Estimate Std. Error z value  Pr(>|z|)    
