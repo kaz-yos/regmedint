@@ -388,6 +388,8 @@ prop_med_yreg_linear <- function(pnde, tnie) {
 ##' @param tnie A numeric vector of length one. Total natural indirect effect.
 ##'
 ##' @return A numeric vector of length two. Gradient of the proportion mediated with respect to pnde and tnie.
+##'
+##' @importFrom Deriv Deriv
 grad_prop_med_yreg_linear <- Deriv::Deriv(prop_med_yreg_linear)
 ## function (pnde, tnie)
 ## {
