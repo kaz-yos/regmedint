@@ -26,7 +26,7 @@ options(width = 116, scipen = 5)
 [![](http://www.r-pkg.org/badges/version/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/regmedint)](http://www.r-pkg.org/pkg/regmedint)
 
-This is an extension of the regression-based causal mediation analysis first proposed by Valeri and VanderWeele (2013) and Valeri and VanderWeele (2015). The current version supports including effect measure modification by covariates (treatment-covariate and mediator-covariate product terms in mediator and outcome regression models). It also accommodates the original 'SAS' macro (can be found at Dr. VanderWeele's [Tools and Tutorials](https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/)) and PROC CAUSALMED procedure in 'SAS' when there is no effect measure modification. Linear and logistic models are supported for the mediator model. Linear, logistic, loglinear, Poisson, negative binomial, Cox, and accelerated failure time (exponential and Weibull) models are supported for the outcome model.
+This is an extension of the regression-based causal mediation analysis first proposed by Valeri and VanderWeele (2013) and Valeri and VanderWeele (2015). The current version supports including effect measure modification by covariates (treatment-covariate and mediator-covariate product terms in mediator and outcome regression models). It also accommodates the original 'SAS' macro (can be found at Dr. VanderWeele's [Tools and Tutorials](https://hsph.harvard.edu/research/vanderweele-lab/tools-and-tutorials/)) and PROC CAUSALMED procedure in 'SAS' when there is no effect measure modification. Linear and logistic models are supported for the mediator model. Linear, logistic, loglinear, Poisson, negative binomial, Cox, and accelerated failure time (exponential and Weibull) models are supported for the outcome model.
 
 To cite this software, please cite Li et al (2023) <doi:10.1097/EDE.0000000000001643>
 <!-- cite the r package:  https://easystats.github.io/report/articles/cite_packages.html -->
@@ -265,7 +265,7 @@ Note: The point estimate and standard error formulas (multivariate delta method)
 
 
 ## Other statistical environment
-- SAS macro (original regression-based) https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/
+- SAS macro (original regression-based) https://hsph.harvard.edu/research/vanderweele-lab/tools-and-tutorials/
 - SAS PROC CAUSALMED (regression-based) https://support.sas.com/rnd/app/stat/procedures/causalmed.html
 
 
