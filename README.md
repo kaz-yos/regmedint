@@ -10,7 +10,7 @@ measure modification by covariates (treatment-covariate and
 mediator-covariate product terms in mediator and outcome regression
 models). It also accommodates the original ‘SAS’ macro (can be found at
 Dr. VanderWeele’s [Tools and
-Tutorials](https://www.hsph.harvard.edu/tyler-vanderweele/tools-and-tutorials/))
+Tutorials](https://hsph.harvard.edu/research/vanderweele-group/tools-and-tutorials/))
 and PROC CAUSALMED procedure in ‘SAS’ when there is no effect measure
 modification. Linear and logistic models are supported for the mediator
 model. Linear, logistic, loglinear, Poisson, negative binomial, Cox, and
